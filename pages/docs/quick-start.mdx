@@ -1,0 +1,59 @@
+# Quick start guide
+
+## Installation
+
+Let's install basic components with the prerequisite `core` library. Run the following command:
+
+```bash copy
+ npm install @creation-ui/core @creation-ui/button
+```
+
+```bash copy
+ yarn add @creation-ui/core @creation-ui/button
+```
+
+## Usage
+
+```tsx copy
+import React, { useState } from 'react'
+
+// import styles
+import '@creation-ui/core/dist/index.css'
+
+// import components
+import { Button } from '@creation-ui/button'
+import { Icon } from '@creation-ui/core'
+
+export const QuickStartExample = () => {
+  const [clicks, setClicks] = useState(0)
+
+  const handleClick = () => setClicks(c => c + 1)
+  const resetCounter = () => setClicks(0)
+
+  return (
+    <div className='flex gap-2'>
+      <Button
+        //
+        onClick={handleClick}
+        iconLeft={<Icon icon='add' />}
+      >
+        Clicks counter: {clicks}
+      </Button>
+      <Button
+        //
+        variant='outlined'
+        onClick={resetCounter}
+        disabled={clicks === 0}
+        iconLeft={<Icon icon='refresh' />}
+      >
+        Reset
+      </Button>
+    </div>
+  )
+}
+
+```
+
+import { QuickStartExample } from '@examples/quick-start'
+
+<QuickStartExample />

@@ -1,0 +1,69 @@
+import { Container } from '@components/container'
+
+# DarkModeToggle
+
+Toggle for changing the theme of the application
+
+import PartOfCore from '@components/shared/part-of-core.mdx'
+
+<PartOfCore />
+
+## Usage
+
+```tsx copy
+import { DarkModeToggle } from '@creation-ui/core'
+;<DarkModeToggle />
+```
+
+import { DarkModeToggleExample } from '@examples/dark-mode-toggle'
+
+<DarkModeToggleExample />
+
+## Component API
+
+import { properties } from '@examples/dark-mode-toggle'
+import PropsTable from '@components/props-table'
+
+<PropsTable
+  properties={properties}
+  name='DarkModeToggle'
+  description={'DarkModeToggle component props'}
+/>
+
+## AnimationProperties
+
+```tsx copy
+const defaultProperties: AnimationProperties = {
+  dark: {
+    circle: {
+      r: 9,
+    },
+    mask: {
+      cx: '50%',
+      cy: '23%',
+    },
+    svg: {
+      transform: 'rotate(40deg)',
+    },
+    lines: {
+      opacity: 0,
+    },
+  },
+  light: {
+    circle: {
+      r: 5,
+    },
+    mask: {
+      cx: '100%',
+      cy: '0%',
+    },
+    svg: {
+      transform: 'rotate(90deg)',
+    },
+    lines: {
+      opacity: 1,
+    },
+  },
+  springConfig: { mass: 4, tension: 250, friction: 35 },
+}
+```

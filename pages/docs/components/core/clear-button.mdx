@@ -1,0 +1,36 @@
+import { Container } from '@components/container'
+
+# Clear button
+
+Used in dropdowns to clear input content.
+
+import PartOfCore from '@components/shared/part-of-core.mdx'
+
+<PartOfCore />
+
+## Usage
+
+```tsx copy
+import { ClearButton } from '@creation-ui/core'
+
+<ClearButton />
+```
+
+### Props definition
+
+```tsx copy
+interface ClearButtonProps {
+  onClick?: () => void
+}
+```
+
+import { ClearButton } from '@creation-ui/core'
+
+<Container>
+  <ClearButton onClick={()=>console.log('Close me')}/>
+</Container>
+
+
+## Component API
+
+Props of the `ClearButton` are the same as those of an [`Icon`](/docs/components/icons#component-api)

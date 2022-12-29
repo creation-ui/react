@@ -1,0 +1,54 @@
+# Radio Group
+
+import { RadioExample } from '@examples/radio'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/core'
+import PropsTable from '@components/props-table'
+import { properties } from '@examples/Radio'
+
+```tsx copy
+import { Radio, RadioProps } from '@creation-ui/radio'
+
+export const RadioComponet = ({ ...props }: Omit<RadioProps, 'onChange'>) => {
+  const [checked, setChecked] = useState<boolean>(false)
+
+  return <Radio onChange={setChecked} checked={checked} {...props} />
+}
+```
+
+<Container>
+  <RadioExample label='Radio option' />
+</Container>
+
+## Sizes
+
+This component supports `size` prop with values `sm`, `md`, `lg`:
+
+<UnfoldVariants
+  component={RadioExample}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  nameProp='label'
+/>
+
+## States
+
+<Container>
+  <RadioExample disabled label='Disabled' />
+  <RadioExample required label='Required' />
+  <RadioExample readOnly label='Read only' />
+</Container>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Radio'
+  description={
+    <>
+      Rest of the props are the same as for the native <code>input</code>{' '}
+      component.
+    </>
+  }
+/>

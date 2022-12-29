@@ -1,0 +1,34 @@
+import { Container } from '@components/container'
+
+# ErrorText
+
+Used in inputs to display an error message. When content is falsy then it won't be displayed.
+
+import PartOfCore from '@components/shared/part-of-core.mdx'
+
+<PartOfCore />
+
+## Usage
+
+```tsx copy
+import { ErrorText } from '@creation-ui/core'
+
+<ErrorText
+  error={`The message`}
+/>
+```
+
+import { ErrorTextExample } from '@examples/error-text'
+
+<ErrorTextExample />
+
+## Component API
+
+import { properties } from '@examples/error-text'
+import PropsTable from '@components/props-table'
+
+<PropsTable
+  properties={properties}
+  name='ErrorText'
+  description={'ErrorText component props'}
+/>

@@ -1,0 +1,31 @@
+---
+title: 'Creation UI - React Tailwind CSS components'
+---
+
+import Link from 'next/link'
+import cn from 'clsx'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+
+import { Features, Feature } from '../components/features'
+
+<div className="flex flex-col place-items-center h-[90vh]">
+  <div className="max-w-6xl">
+    <div className="content-container">
+      <h1 className="headline">Make beautiful websites <br className='sm:block hidden'/>with tailwind components</h1>
+      <p className="subtitle">Simple, powerful and flexible design system.</p>
+      <p className="subtitle"><Link href="/docs">Start →</Link></p>
+    </div>
+
+  <div className="features-container">
+    <div className="content-container">
+      <Features>
+        <Feature large centered id="docs-card">
+          <h3>Full-power documentation <br className="show-on-mobile"/>in minutes.</h3>
+        </Feature>
+      </Features>
+    </div>
+
+  </div>
+</div>
+</div>

@@ -1,0 +1,139 @@
+@import '../core/styles/index.scss';
+
+.button {
+  &:disabled {
+    @apply opacity-50 cursor-not-allowed pointer-events-none;
+  }
+
+  @apply inline-flex gap-2
+  flex-nowrap
+  rounded-md
+  items-center
+  cursor-pointer
+  select-none;
+
+  &-size {
+    &--sm {
+      @apply px-3 py-1 text-sm;
+    }
+
+    &--md {
+      @apply px-4 py-1 text-base;
+    }
+
+    &--lg {
+      @apply px-6 py-2 text-lg;
+    }
+  }
+
+  &-circle {
+    &--sm {
+      @apply p-2;
+    }
+    &--md {
+      @apply p-3;
+    }
+    &--lg {
+      @apply p-5;
+    }
+  }
+
+  &-variant {
+    &--contained {
+      &--primary {
+        @apply text-white
+        bg-primary-500
+        hover:bg-primary-600
+        focus:bg-primary-600
+        active:bg-primary-700;
+      }
+      &--success {
+        @apply text-white
+        bg-success-500
+        hover:bg-success-600
+        focus:bg-success-600
+        active:bg-success-700;
+      }
+      &--error {
+        @apply text-white
+        bg-error-500
+        hover:bg-error-600
+        focus:bg-error-600
+        active:bg-error-700;
+      }
+      &--warning {
+        @apply text-white
+        bg-warning-500
+        hover:bg-warning-600
+        focus:bg-warning-600
+        active:bg-warning-700;
+      }
+    }
+
+    &--outlined {
+      &--primary {
+        @apply border
+      border-primary-500
+      text-primary-500
+      hover:bg-primary-50
+      active:bg-primary-100;
+      }
+      &--success {
+        @apply border
+        border-success-500
+        text-success-500
+        hover:bg-success-50
+        active:bg-success-100;
+      }
+      &--error {
+        @apply border
+        border-error-500
+        text-error-500
+        hover:bg-error-50
+        active:bg-error-100;
+      }
+      &--warning {
+        @apply border
+        border-primary-500
+        text-primary-500
+        hover:bg-primary-50
+        active:bg-primary-100;
+      }
+    }
+
+    &--text {
+      &--primary {
+        @apply bg-transparent
+      text-primary-500
+      focus:text-primary-600
+      hover:text-primary-600
+      hover:bg-primary-50/10
+      active:text-primary-500;
+      }
+      &--success {
+        @apply bg-transparent
+        text-success-500
+        focus:text-success-600
+        hover:text-success-600
+        hover:bg-success-50/10
+        active:text-success-500;
+      }
+      &--error {
+        @apply bg-transparent
+        text-error-500
+        focus:text-error-600
+        hover:text-error-600
+        hover:bg-error-50/10
+        active:text-error-500;
+      }
+      &--warning {
+        @apply bg-transparent
+        text-warning-500
+        focus:text-warning-600
+        hover:text-warning-600
+        hover:bg-warning-50/10
+        active:text-warning-500;
+      }
+    }
+  }
+}

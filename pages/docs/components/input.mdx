@@ -1,0 +1,89 @@
+# Input
+
+import { InputExample, properties } from '@examples/input'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/core'
+import PropsTable from '@components/props-table'
+
+```tsx copy
+export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
+  const [value, setValue] = useState('')
+
+  return (
+    <Input
+      //
+      onChange={e => setValue(e.target.value)}
+      value={value}
+      {...props}
+    />
+  )
+}
+```
+
+<Container>
+  <InputExample label='Input' debug />
+</Container>
+As you may observe in this example the longer the content inside the Input component
+the longer it gets. To fix that you would need to provide your own **width** constraints
+either by a **custom wrapper** or passing class to `className` e.g.
+
+```tsx copy
+//example with tailwindcss custom width
+<Input className='w-[200px]' />
+```
+
+## Sizes
+
+This component supports `size` prop with values `sm`, `md`, `lg`:
+
+<UnfoldVariants
+  component={InputExample}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  nameProp='label'
+/>
+
+## States
+
+<Container variant='column'>
+  <InputExample disabled label='Disabled' />
+  <InputExample required label='Required' />
+  <InputExample readOnly label='Read only' value="I'm read only" />
+  <InputExample loading label='Loading' value='Loading' />
+</Container>
+
+## Error text
+
+<Container>
+  <InputExample
+    error='This field is required'
+    label='Error'
+    value=''
+    required
+  />
+</Container>
+
+## Error text
+
+<Container>
+  <InputExample
+    helperText='This field is required'
+    label='With helper text'
+    value='Hello world'
+  />
+</Container>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Input'
+  description={
+    <>
+      Rest of the props are the same as for the native <code>input</code>{' '}
+      component.
+    </>
+  }
+/>
+

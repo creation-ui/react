@@ -1,0 +1,153 @@
+import PropsTable from '@components/props-table'
+import {
+  properties,
+  colorsProps,
+  fontProps,
+  drawersProps,
+  headingsProps,
+  helpersProps,
+  textsProps,
+  zIndexProps,
+  headingConfigProps,
+  ThemeExampleValues,
+} from '@examples/theme'
+
+# Theme
+
+Theme Provider
+
+import PartOfCore from '@components/shared/part-of-core.mdx'
+
+<PartOfCore />
+
+## Usage
+
+```tsx copy
+import { Theme, ThemeProps } from '@creation-ui/core'
+
+export const App = () => {
+  const myTheme: ThemeProps = {
+    // ... your theme options
+  }
+
+  return (
+    <Theme theme={myTheme}>
+      <>{/* Rest of your code  */}</>
+    </Theme>
+  )
+}
+```
+
+## Default theme values
+
+```
+{
+  theme: 'light',
+  dir: 'ltr',
+  focusRing: true,
+  colors: {
+    primary: '#007DFF',
+    success: '#00C48C',
+    warning: '#FFA940',
+    error: '#FF4D4F',
+  },
+  roundness: 'rounded-md',
+  size: 'md',
+  font: {
+    leading: 'leading-normal',
+    fontFamily: 'Plus Jakarta Sans, sans-serif',
+    fontFamilyMonospace: 'font-mono',
+    fontWeight: 'font-bold',
+  },
+  respectReducedMotion: true,
+  drawers: {
+    size: '50vw',
+    position: 'right',
+  },
+  headings: {
+    fontFamily: 'font-sans',
+    fontWeight: 'font-bold',
+    sizes: {
+      h1: { fontSize: 'text-6xl', leading: 'leading-snug' },
+      h2: { fontSize: 'text-5xl', leading: 'leading-5' },
+      h3: { fontSize: 'text-4xl', leading: 'leading-6' },
+      h4: { fontSize: 'text-3xl', leading: 'leading-6' },
+      h5: { fontSize: 'text-2xl', leading: 'leading-normal' },
+      h6: { fontSize: 'text-xl', leading: 'leading-normal' },
+    },
+  },
+  texts: {
+    invalidInput: 'Input invalid',
+  },
+  zIndex: {
+    base: 'z-0',
+    dropdowns: 'z-[200]',
+    tooltips: 'z-[400]',
+    overlays: 'z-[600]',
+    modals: 'z-[800]',
+    notifications: 'z-[1000]',
+  },
+  helpers: {
+    getLimitText: more => `+${more}`,
+    optionFormatter: option => (option?.value ? `${option.value}` : ''),
+  },
+}
+```
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Theme'
+  description='Theme properties for configuration.'
+/>
+<PropsTable
+  properties={colorsProps}
+  name='Colors'
+  description='Theme colors.'
+/>
+<PropsTable
+  properties={drawersProps}
+  name='Drawers'
+  description='Theme drawers.'
+/>
+<PropsTable properties={fontProps} name='Font' description='Theme font.' />
+
+<PropsTable
+  properties={headingsProps}
+  name='Heading'
+  description='Theme Heading.'
+/>
+
+<PropsTable
+  properties={headingConfigProps}
+  name='Heading Config'
+  description='Theme Heading Config properties.'
+/>
+
+#### Default headings settings
+
+| Heading | `fontSize` | `leading`      | `fontWeight` |
+| ------- | ---------- | -------------- | ------------ |
+| h1      | text-6xl   | leading-snug   | —            |
+| h2      | text-5xl   | leading-5      | —            |
+| h3      | text-4xl   | leading-6      | —            |
+| h4      | text-3xl   | leading-6      | —            |
+| h5      | text-2xl   | leading-normal | —            |
+| h6      | text-xl    | leading-normal | —            |
+
+<PropsTable
+  properties={helpersProps}
+  name='Helper functions'
+  description='Theme helper functions.'
+/>
+<PropsTable
+  properties={textsProps}
+  name='Texts'
+  description='Theme default texts.'
+/>
+<PropsTable
+  properties={zIndexProps}
+  name='Z-index'
+  description='Theme z-index.'
+/>
