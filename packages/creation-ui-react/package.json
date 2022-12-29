@@ -11,9 +11,9 @@
     "access": "public"
   },
   "scripts": {
-    "build:cjs": "swc ./src -d ./dist --only ./src/**/*.ts --config-file .swcrc",
+    "build:cjs": "swc ./src -d ./build --only ./src/**/*.ts --config-file .swcrc",
     "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
-    "copy": "cp ./package.json ./dist && cp ./README.md ./dist && cp ./LICENSE ./dist",
+    "copy": "cp ./package.json ./build && cp ./README.md ./build && cp ./LICENSE ./build",
     "build": "pnpm build:cjs && pnpm build:dts && pnpm copy",
     "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
     "prettier:check": "prettier -c ."
