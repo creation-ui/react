@@ -42,4 +42,4 @@ next-env.d.ts
 .yarn/*
 
 .pnp.*
-packages/creation-ui-react/src/components/core/node_modules/
+
