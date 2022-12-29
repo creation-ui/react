@@ -56,6 +56,9 @@
       "@root": [
         "./"
       ],
+      "@creation-ui/react": [
+        "./packages/creation-ui-react/src"
+      ],
     }
   },
   "include": [

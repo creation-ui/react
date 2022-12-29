@@ -1,0 +1,71 @@
+{
+  "name": "@creation-ui/react",
+  "homepage": "https://creation-ui.com",
+  "version": "0.0.1",
+  "description": "@creation-ui/react is an easy-to-use components library for ReactJS & Tailwind CSS.",
+  "repository": "https://github.com/creativetimofficial/creation-ui",
+  "license": "MIT",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build:cjs": "swc ./src -d ./dist --only ./src/**/*.ts --config-file .swcrc",
+    "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
+    "copy": "cp ./package.json ./dist && cp ./README.md ./dist && cp ./LICENSE ./dist",
+    "build": "pnpm build:cjs && pnpm build:dts && pnpm copy",
+    "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
+    "prettier:check": "prettier -c ."
+  },
+  "dependencies": {
+    "clsx": "latest",
+    "downshift": "^6.1.7",
+    "tailwind-merge": "^1.5.1",
+    "class-variance-authority": "^0.4.0"
+  },
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "react-dom": "^16 || ^17 || ^18"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.224",
+    "@types/node": "^18.6.1",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "keywords": [
+    "javascript",
+    "react",
+    "next",
+    "create react app",
+    "remix",
+    "vite",
+    "gatsby",
+    "tailwind",
+    "tailwind components",
+    "tailwind elements",
+    "tailwind library",
+    "react library",
+    "react components library",
+    "tailwind sections",
+    "tailwind css",
+    "tailwind ui",
+    "tailwind css react",
+    "tailwind css next",
+    "tailwind css remix",
+    "tailwind css vite",
+    "tailwind css gatsby"
+  ]
+}
