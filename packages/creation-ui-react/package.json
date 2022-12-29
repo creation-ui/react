@@ -29,6 +29,7 @@
     "react-dom": "^16 || ^17 || ^18"
   },
   "devDependencies": {
+    "deepmerge": "^4.2.2",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.224",
     "@types/node": "^18.6.1",
