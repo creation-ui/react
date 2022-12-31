@@ -1,6 +1,5 @@
 import { Container } from '@components/container'
-import { Button } from '@creation-ui/button'
-import { ErrorText } from '@creation-ui/react'
+import { Button, ErrorText } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

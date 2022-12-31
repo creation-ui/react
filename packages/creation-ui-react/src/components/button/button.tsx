@@ -1,8 +1,8 @@
-import { useId } from '@hooks'
-import { useTheme } from '@theme'
+import { useId } from '../../hooks'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import React from 'react'
-import { Loader } from '@components/loader'
+import { Loader } from '../'
 import { ButtonProps } from './button.types'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

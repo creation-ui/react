@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClassName, ElementTypography } from '@types'
+import { ClassName, ElementTypography } from '../../types'
 import { ElementType } from 'react'
 import { typography } from './classes'
 

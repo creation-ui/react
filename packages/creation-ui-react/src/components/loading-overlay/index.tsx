@@ -1,9 +1,9 @@
-import { Loader } from '@components/loader'
-import { useTheme } from '@theme'
+import { Loader } from '../'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { LoadingOverlayProps } from './loading-overlay.types'
 
-const LoadingOverlay = ({
+export const LoadingOverlay = ({
   active,
   className,
   ...props
@@ -16,4 +16,3 @@ const LoadingOverlay = ({
     </div>
   ) : null
 }
-export default LoadingOverlay

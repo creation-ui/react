@@ -1,7 +1,7 @@
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
-import { TextArea, TextAreaProps } from '@creation-ui/textarea'
+import { TextArea, TextAreaProps } from '@creation-ui/react'
+import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react/types'
 import { DocumentedProperty } from 'models/system'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 
 interface TextAreaExampleProps extends Omit<TextAreaProps, 'onChange' | 'ref'> {

@@ -1,8 +1,8 @@
-import { useId } from '@hooks'
-import { useTheme } from '@theme'
+import { useId } from '../../hooks'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { Loader, ErrorText } from '@components'
+import { Loader, ErrorText } from '../'
 import { InputProps } from './input.types'
 
 const Input = forwardRef<HTMLInputElement, InputProps>(

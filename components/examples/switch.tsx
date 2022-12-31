@@ -1,5 +1,5 @@
-import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Switch, SwitchProps } from '@creation-ui/switch'
+import { ELEMENT_SIZES } from '@creation-ui/react/types'
+import { Switch, SwitchProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

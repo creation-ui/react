@@ -1,5 +1,5 @@
 import { RadioGroup } from '@headlessui/react'
-import { useTheme } from '@theme'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
 

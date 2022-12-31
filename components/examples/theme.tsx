@@ -1,6 +1,5 @@
-import { Theme, ThemeProps } from '@creation-ui/react'
+import { Theme, ThemeProps, defaultTheme as theme } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
-import theme from '@root/../core/theme/theme.default'
 import { positionProp, sizeProp } from './shared-props'
 
 export const App = () => {
@@ -15,7 +14,6 @@ export const App = () => {
     </Theme>
   )
 }
-
 
 const ofAll = ' of all children components'
 const fromTailwind = 'TailwindCSS classname'

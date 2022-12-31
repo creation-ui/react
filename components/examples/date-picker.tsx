@@ -1,7 +1,4 @@
-import {
-  DatePicker,
-  DatePickerProps,
-} from '@creation-ui/react/components/date-picker'
+import { DatePicker, DatePickerProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

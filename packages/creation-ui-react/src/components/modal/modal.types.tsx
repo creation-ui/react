@@ -1,4 +1,4 @@
-import { ClassName } from '@types'
+import { ClassName } from '../../types'
 import React from 'react'
 
 export type ModalProps = React.ComponentProps<'div'> & {

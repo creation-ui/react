@@ -1,5 +1,5 @@
 import React from 'react'
-import { Colors, ElementSize, ElementVariants } from '@types'
+import { Colors, ElementSize, ElementVariants } from '../../types'
 
 export type ButtonShape = 'default' | 'circle'
 

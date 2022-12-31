@@ -1,4 +1,4 @@
-import { ElementSize } from '@types'
+import { ElementSize } from '../../types'
 
 export interface SwitchProps {
   /**

@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { ElementSize, ElementVariants } from '@types'
+import type { ElementSize, ElementVariants } from '../../types'
 
 export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> & {
   /**

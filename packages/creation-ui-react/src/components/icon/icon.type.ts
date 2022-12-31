@@ -1,4 +1,4 @@
-import { ClassName } from '@types'
+import { ClassName } from '../../types'
 import { HTMLProps } from 'react'
 import { icons } from './list-of-icons'
 

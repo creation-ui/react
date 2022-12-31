@@ -1,6 +1,6 @@
-import { useTheme } from '@theme'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
-import { ErrorText } from '@components'
+import { ErrorText } from '../'
 import { RadioGroupProps } from './types'
 
 const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {

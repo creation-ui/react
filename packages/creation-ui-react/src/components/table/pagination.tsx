@@ -1,4 +1,4 @@
-import { Button, Select, Icon } from '@components'
+import { Button, Select, Icon } from '../'
 import { Table } from '@tanstack/react-table'
 import clsx from 'clsx'
 import './table.scss'

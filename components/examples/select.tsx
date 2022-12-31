@@ -1,5 +1,5 @@
-import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Select, SelectProps } from '@creation-ui/select'
+import { ELEMENT_SIZES } from '@creation-ui/react/types'
+import { Select, SelectProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

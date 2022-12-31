@@ -1,6 +1,4 @@
-import clsx from 'clsx'
-import { TITLE } from 'constants'
-import { BASE_URL } from 'constants'
+import { BASE_URL, TITLE } from '../constants'
 import { Logo } from './logo'
 
 export default function Footer() {
@@ -9,7 +7,7 @@ export default function Footer() {
       <span>{new Date().getFullYear()} &copy;</span>
       <a
         href={BASE_URL}
-        rel="noreferrer"
+        rel='noreferrer'
         target='_blank'
         className='flex place-items-center gap-2'
       >
@@ -18,4 +16,3 @@ export default function Footer() {
     </footer>
   )
 }
-

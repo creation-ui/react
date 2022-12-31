@@ -1,6 +1,5 @@
 import { Container } from '@components/container'
-import { Button } from '@creation-ui/button'
-import { Icon } from '@creation-ui/react'
+import { Button, Icon } from '@creation-ui/react'
 import { useState } from 'react'
 
 export const QuickStartExample = () => {

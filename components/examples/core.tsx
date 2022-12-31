@@ -1,5 +1,5 @@
 import { Card, Cards } from '@components/card'
-import { Icon } from '@root/../core'
+import { Icon } from '@creation-ui/react'
 
 const URL = '/docs/components/core'
 

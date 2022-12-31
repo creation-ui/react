@@ -1,5 +1,5 @@
-import { Button } from '@creation-ui/button'
-import { SelectOption, SelectOptionsType } from '@creation-ui/react'
+import { Button, SelectOption } from '@creation-ui/react'
+import { SelectOptionsType } from '@creation-ui/react/types'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

@@ -1,4 +1,4 @@
-import { useTheme } from '@theme'
+import { useTheme } from '../../theme'
 import { LoaderProps } from './loader.types'
 import clsx from 'clsx'
 

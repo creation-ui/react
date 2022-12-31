@@ -1,5 +1,5 @@
 import { ELEMENT_SIZES } from '@creation-ui/react/types'
-import { Checkbox, CheckboxProps } from '@creation-ui/react/components/checkbox'
+import { Checkbox, CheckboxProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

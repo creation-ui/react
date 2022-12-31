@@ -1,4 +1,4 @@
-import { useTheme } from '@theme'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ProgressBarProps } from './progress-bar.types'
 

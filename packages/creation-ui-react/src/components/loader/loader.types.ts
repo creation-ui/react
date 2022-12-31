@@ -1,4 +1,4 @@
-import { ClassName, ElementSize } from '@types'
+import { ClassName, ElementSize } from '../../types'
 
 export interface LoaderProps {
   /**

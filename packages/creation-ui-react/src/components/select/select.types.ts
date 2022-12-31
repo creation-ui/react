@@ -1,4 +1,4 @@
-import { ClassName, ElementSize, SelectOptionsType } from '@types'
+import { ClassName, ElementSize, SelectOptionsType } from '../../types'
 import React from 'react'
 
 export interface SelectProps {

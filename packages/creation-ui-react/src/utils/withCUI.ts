@@ -9,7 +9,7 @@ import { typography } from '../theme/base/typography'
 import { shadows } from '../theme/base/shadows'
 import { breakpoints } from '../theme/base/breakpoints'
 
-const materialTailwindConfig = {
+const creationUiConfig = {
   darkMode: 'class',
   content: [
     './node_modules/@creation-ui/react/components/**/*.{js,ts,jsx,tsx}',
@@ -28,8 +28,8 @@ const materialTailwindConfig = {
  * @param {object} tailwindConfig - Tailwind config object
  * @return {object} new config object
  */
-function withCUI(tailwindConfig) {
-  const themeFont = materialTailwindConfig.theme.fontFamily
+export default function withTailwindConfig(tailwindConfig) {
+  const themeFont = creationUiConfig.theme.fontFamily
 
   if (tailwindConfig.theme.fontFamily) {
     const { sans, serif, body } = tailwindConfig.theme.fontFamily
@@ -39,7 +39,5 @@ function withCUI(tailwindConfig) {
     themeFont.body = body || themeFont.body
   }
 
-  return merge(materialTailwindConfig, { ...tailwindConfig })
+  return merge(creationUiConfig, { ...tailwindConfig })
 }
-
-module.exports = withCUI

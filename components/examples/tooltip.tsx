@@ -1,6 +1,5 @@
-import { Button } from '@creation-ui/button'
-import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/react'
-import { Tooltip, TooltipProps } from '@creation-ui/tooltip'
+import { Button, Tooltip, TooltipProps } from '@creation-ui/react'
+import { ELEMENT_POSITION } from '@creation-ui/react/types'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
 

@@ -1,5 +1,4 @@
-import { Button } from '@creation-ui/button'
-import { Modal, ModalProps } from '@creation-ui/modal'
+import { Button, Modal, ModalProps } from '@creation-ui/react'
 import { childrenProp, elementTypeProp, openProp } from '@examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
@@ -18,8 +17,8 @@ export const ModalExample = (props: ModalProps) => {
           <Modal.Title>Payment successful</Modal.Title>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>
-              Your payment has been successfully submitted. We&apos;ve sent you an
-              email with all of the details of your order.
+              Your payment has been successfully submitted. We&apos;ve sent you
+              an email with all of the details of your order.
             </p>
           </div>
           <div className='mt-4'>
@@ -43,7 +42,7 @@ export const properties: DocumentedProperty[] = [
     name: 'onOverlayClick',
     type: '() => void',
   },
-  childrenProp
+  childrenProp,
 ]
 
 export const titlesProps: DocumentedProperty[] = [

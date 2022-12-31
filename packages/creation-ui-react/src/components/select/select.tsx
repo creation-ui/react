@@ -1,16 +1,11 @@
-import {
-  ClearButton,
-  DropdownChevron,
-  ErrorText,
-  SelectOption,
-} from '@components'
 import { Listbox, Transition } from '@headlessui/react'
-import useId from '@hooks/use-id'
-import { useTheme } from '@theme/theme'
-import { MultipleEllipsisFormatter } from '@types'
-import { formatOptionValue } from '@utils/format-option-value'
-import { passThrough } from '@utils/functions'
-import { getTruncatedMultipleValues } from '@utils/get-truncated-values'
+import { ClearButton, DropdownChevron, ErrorText, SelectOption } from '../'
+import useId from '../../hooks/use-id'
+import { useTheme } from '../../theme'
+import { MultipleEllipsisFormatter } from '../../types'
+import { formatOptionValue } from '../../utils/format-option-value'
+import { passThrough } from '../../utils/functions'
+import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 
 import clsx from 'clsx'
 import { Fragment } from 'react'

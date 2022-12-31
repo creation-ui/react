@@ -1,5 +1,5 @@
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
-import { Input, InputProps } from '@creation-ui/input'
+import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react/types'
+import { Input, InputProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

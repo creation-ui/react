@@ -1,5 +1,5 @@
 import { Switch as HSwitch } from '@headlessui/react'
-import { useTheme } from '@theme'
+import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { SwitchProps } from './switch.types'
 

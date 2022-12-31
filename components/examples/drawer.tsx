@@ -1,5 +1,4 @@
-import { Button } from '@creation-ui/button'
-import { Drawer, DrawerProps } from '@creation-ui/drawer'
+import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { childrenProp, openProp } from '@examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
@@ -18,8 +17,8 @@ export const DrawerExample = (props: DrawerProps) => {
           <h1>Payment successful</h1>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>
-              Your payment has been successfully submitted. We&apos;ve sent you an
-              email with all of the details of your order.
+              Your payment has been successfully submitted. We&apos;ve sent you
+              an email with all of the details of your order.
             </p>
           </div>
           <div className='mt-4'>

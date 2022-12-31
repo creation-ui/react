@@ -1,5 +1,5 @@
-import { Icon } from '@components/icon'
-import { AutocompleteOptionsType, SelectOptionsType } from '@types'
+import { Icon } from '../'
+import { AutocompleteOptionsType, SelectOptionsType } from '../../types'
 import clsx from 'clsx'
 import React from 'react'
 

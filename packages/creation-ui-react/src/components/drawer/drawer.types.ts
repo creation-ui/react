@@ -1,4 +1,4 @@
-import { ElementPosition } from '@types'
+import { ElementPosition } from '../../types'
 
 export interface DrawerProps {
   size?: number | string

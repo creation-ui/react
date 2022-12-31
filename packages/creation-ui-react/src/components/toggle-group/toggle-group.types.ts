@@ -1,4 +1,4 @@
-import type { GetComponentProps } from '@types'
+import type { GetComponentProps } from '../../types'
 import type { RadioGroupProps } from '../radio'
 import type { RadioGroup } from '@headlessui/react'
 

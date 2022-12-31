@@ -1,4 +1,4 @@
-import { ElementSize } from '@types'
+import { ElementSize } from '../../types'
 
 export interface CheckboxProps
   extends Omit<React.ComponentProps<'input'>, 'size'> {

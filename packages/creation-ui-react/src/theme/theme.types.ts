@@ -4,7 +4,7 @@ import {
   ElementSize,
   ElementTheme,
   TailwindColorSet,
-} from '@types'
+} from '../types'
 
 type ThemeColors = {
   inherit: string
