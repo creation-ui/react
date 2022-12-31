@@ -92,25 +92,25 @@ export const colorsProps: DocumentedProperty[] = [
     name: 'primary',
     type: 'string',
     description: 'Primary color',
-    defaultValue: theme.colors.primary,
+    defaultValue: theme.colors.primary['500'],
   },
   {
     name: 'success',
     type: 'string',
     description: 'Success info color.',
-    defaultValue: theme.colors.success,
+    defaultValue: theme.colors.success['500'],
   },
   {
     name: 'warning',
     type: 'string',
     description: 'Warning info color.',
-    defaultValue: theme.colors.warning,
+    defaultValue: theme.colors.warning['500'],
   },
   {
     name: 'error',
     type: 'string',
     description: 'Error info color.',
-    defaultValue: theme.colors.error,
+    defaultValue: theme.colors.error['500'],
   },
 ]
 export const drawersProps: DocumentedProperty[] = [

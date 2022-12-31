@@ -10,7 +10,9 @@ export interface TypographyProps extends React.ComponentProps<any> {
   as?: ElementType
 }
 
-const getElementType = (variant: ElementTypography): ElementType => {
+const getElementType = (
+  variant: ElementTypography = 'paragraph'
+): ElementType => {
   const map: Record<ElementTypography, ElementType> = {
     h1: 'h1',
     h2: 'h2',
@@ -22,7 +24,7 @@ const getElementType = (variant: ElementTypography): ElementType => {
     small: 'p',
     paragraph: 'p',
   }
-  return map[variant] ?? 'p'
+  return map[variant]
 }
 
 export const Typography = React.forwardRef<HTMLElement, TypographyProps>(
