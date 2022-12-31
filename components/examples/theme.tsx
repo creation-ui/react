@@ -1,4 +1,4 @@
-import { Theme, ThemeProps } from '@creation-ui/core'
+import { Theme, ThemeProps } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
 import theme from '@root/../core/theme/theme.default'
 import { positionProp, sizeProp } from './shared-props'

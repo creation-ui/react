@@ -1,4 +1,4 @@
-import { Button, ButtonProps, ButtonGroup } from '@creation-ui/button'
+import { Button, ButtonProps, ButtonGroup } from '@creation-ui/react/components/button'
 import { DocumentedProperty } from 'models/system'
 
 interface ButtonGroupExampleProps {

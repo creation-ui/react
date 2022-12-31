@@ -1,4 +1,5 @@
-import { useTheme, Overlay } from '@creation-ui/core'
+import { useTheme } from '@theme'
+import { Overlay } from '@components'
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment } from 'react'

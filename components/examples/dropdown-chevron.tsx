@@ -1,5 +1,5 @@
 import { Button } from '@creation-ui/button'
-import { DropdownChevron } from '@creation-ui/core'
+import { DropdownChevron } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

@@ -1,4 +1,4 @@
-import { Icon, IconProps } from '@creation-ui/core'
+import { Icon, IconProps } from '@creation-ui/react'
 import clsx from 'clsx'
 import { DocumentedProperty } from 'models/system'
 

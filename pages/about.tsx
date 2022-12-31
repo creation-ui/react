@@ -1,4 +1,4 @@
-import { Button } from '@creation-ui/button'
+import { Button } from '@creation-ui/react/components/button'
 
 export function AboutPage() {
   return (

@@ -1,5 +1,5 @@
-import { Icon } from '../'
-import { AutocompleteOptionsType, SelectOptionsType } from '../../types'
+import { Icon } from '@components/icon'
+import { AutocompleteOptionsType, SelectOptionsType } from '@types'
 import clsx from 'clsx'
 import React from 'react'
 
@@ -47,8 +47,8 @@ const OptionMultiple = ({
       icon='check'
       className={clsx(
         'dropdown--option--multiple-icon',
-        selected && 'dropdown--option--multiple-icon-selected'
-        ,active && 'dropdown--option--multiple-icon-active'
+        selected && 'dropdown--option--multiple-icon-selected',
+        active && 'dropdown--option--multiple-icon-active'
       )}
     />
     {value}
@@ -72,5 +72,3 @@ const SelectOption = (props: SelectOptionProps) => {
 }
 
 export default SelectOption
-
-

@@ -7,8 +7,8 @@ const Tooltip = (props: TooltipProps) => {
   return (
     <div className={clsx('tooltip--wrapper group')}>
       <div
-        className={clsx('tooltip', `tooltip--${position}`, className)}
         {...props}
+        className={clsx('tooltip', `tooltip--${position}`, className)}
       >
         {content}
       </div>

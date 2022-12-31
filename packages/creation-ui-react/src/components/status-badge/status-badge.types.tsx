@@ -1,4 +1,4 @@
-import { ElementSize, ElementStatus } from '@creation-ui/core'
+import { ElementSize, ElementStatus } from '@types'
 
 export interface StatusBadgeProps {
   /**

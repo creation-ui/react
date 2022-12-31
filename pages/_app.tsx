@@ -1,5 +1,5 @@
 import '../styles/index.scss'
-// import '@creation-ui/core/esm/index.css'
+// import '@creation-ui/react/esm/index.css'
 // import '@creation-ui/button/esm/index.css'
 
 import type { AppProps } from 'next/app'

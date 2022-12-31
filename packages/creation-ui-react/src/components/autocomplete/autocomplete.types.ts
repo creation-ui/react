@@ -1,4 +1,4 @@
-import { AutocompleteOptionsType, ElementSize } from '@creation-ui/core'
+import { AutocompleteOptionsType, ClassName, ElementSize } from '@types'
 import React from 'react'
 
 export interface AutocompleteProps {
@@ -25,7 +25,7 @@ export interface AutocompleteProps {
   /**
    * Class names
    */
-  className?: string
+  className?: ClassName
   /**
    * List options
    */

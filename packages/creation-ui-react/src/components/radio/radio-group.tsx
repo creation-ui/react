@@ -1,6 +1,7 @@
-import { ErrorText, useTheme } from '@creation-ui/core'
+import { useTheme } from '@theme'
 import clsx from 'clsx'
-import { RadioGroupProps } from './radio-group.types'
+import { ErrorText } from '@components'
+import { RadioGroupProps } from './types'
 
 const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {
   const { size: defaultSize } = useTheme()

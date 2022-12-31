@@ -1,4 +1,5 @@
 import { Transition } from '@headlessui/react'
+import clsx from 'clsx'
 import Stick from 'react-stick'
 import { PopoverProps } from './popover.types'
 
@@ -19,7 +20,7 @@ export default function Popover({
         <Transition
           show={open}
           as={'div'}
-          className={className}
+          className={clsx(className)}
           enter='transition ease-in-out duration-500'
           enterFrom='opacity-0 translate-y-10'
           enterTo='opacity-100 translate-y-0'

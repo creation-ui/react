@@ -1,7 +1,8 @@
-import { ElementPosition } from '@creation-ui/core'
+import { ClassName } from '@types'
+import { ElementPosition } from '@types'
 
 export interface TooltipProps {
-  className?: string
+ className?: ClassName
   children?: React.ReactNode
   content?: React.ReactNode
   position?: ElementPosition

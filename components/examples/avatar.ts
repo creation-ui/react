@@ -3,8 +3,8 @@ import {
   ELEMENT_SIZES,
   ELEMENT_PLACEMENT_HORIZONTAL,
   ELEMENT_PLACEMENT_VERTICAL,
-} from '@creation-ui/core'
-import { AVATAR_VARIANTS } from '@creation-ui/avatar'
+} from '@creation-ui/react/types'
+import { AVATAR_VARIANTS } from '@creation-ui/react/components/avatar'
 import { ListOrTypes } from 'utils/list-or-types'
 
 export const properties: DocumentedProperty[] = [

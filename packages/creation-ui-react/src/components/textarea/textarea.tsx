@@ -1,4 +1,6 @@
-import { ErrorText, Loader, useId, useTheme } from '@creation-ui/core'
+import { ErrorText, Loader } from '@components'
+import { useId } from '@hooks'
+import { useTheme } from '@theme'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
 import { TextAreaProps } from './textarea.types'

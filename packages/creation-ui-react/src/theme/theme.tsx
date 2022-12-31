@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import React, { createContext, useContext } from 'react'
 import theme from './theme.default'
 import { ThemeProps, ThemeProviderProps } from './theme.types'
 

@@ -1,15 +1,11 @@
 import { ThemeProps } from './theme.types'
+import { colors } from './base/colors'
 
 const theme: ThemeProps = {
   theme: 'light',
   dir: 'ltr',
   focusRing: true,
-  colors: {
-    primary: '#007DFF',
-    success: '#00C48C',
-    warning: '#FFA940',
-    error: '#FF4D4F',
-  },
+  colors,
   roundness: 'rounded-md',
   size: 'md',
   font: {
@@ -24,6 +20,7 @@ const theme: ThemeProps = {
     position: 'right',
   },
   headings: {
+    //TODO: use in component
     fontFamily: 'font-sans',
     fontWeight: 'font-bold',
     sizes: {

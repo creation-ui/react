@@ -1,8 +1,8 @@
-import { useTheme } from '../../theme/theme'
+import { useTheme } from '@theme'
 import { LoaderProps } from './loader.types'
 import clsx from 'clsx'
 
-const Loader = (props: LoaderProps) => {
+export const Loader = (props: LoaderProps) => {
   const { size: defaultSize } = useTheme()
   const { size = defaultSize, className, white } = props
 
@@ -31,5 +31,3 @@ const Loader = (props: LoaderProps) => {
     </div>
   )
 }
-
-export default Loader

@@ -1,5 +1,5 @@
+import { Icon, IconProps } from '@components/icon'
 import clsx from 'clsx'
-import { Icon, IconProps } from '..'
 
 const ClearButton = ({
   onClick,

@@ -1,4 +1,4 @@
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/core'
+import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { TextArea, TextAreaProps } from '@creation-ui/textarea'
 import { DocumentedProperty } from 'models/system'
 import React, { useEffect, useState } from 'react'

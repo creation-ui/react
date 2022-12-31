@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import { ClassName, ElementSize } from '@types'
 
 export interface ProgressBarProps {
   /**
@@ -12,7 +12,7 @@ export interface ProgressBarProps {
   /**
    * Class name to be applied to the progress bar.
    */
-  className?: string
+ className?: ClassName
   /**
    * Whether to show the value of the progress bar.
    */

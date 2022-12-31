@@ -1,4 +1,7 @@
-import { DatePicker, DatePickerProps } from '@creation-ui/date-picker'
+import {
+  DatePicker,
+  DatePickerProps,
+} from '@creation-ui/react/components/date-picker'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 
@@ -10,7 +13,7 @@ export const DatePickerExample = ({ ...props }: DatePickerProps) => {
       <DatePicker
         {...props}
         selected={startDate}
-        onChange={date => setStartDate(date)}
+        onChange={(date: Date | null) => setStartDate(date)}
       />
     </div>
   )

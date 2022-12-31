@@ -1,5 +1,6 @@
 import { RankingInfo } from '@tanstack/match-sorter-utils'
 import { FilterFn, Table } from '@tanstack/react-table'
+import { ClassName } from '@types'
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -12,5 +13,5 @@ declare module '@tanstack/table-core' {
 
 export interface TableProps {
   table: Table<any>
-  className?: string
+  className?: ClassName
 }

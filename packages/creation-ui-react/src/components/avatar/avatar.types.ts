@@ -1,5 +1,5 @@
 import React from 'react'
-import { ElementPlacement, ElementSize } from '@creation-ui/core'
+import { ClassName, ElementPlacement, ElementSize } from '@types'
 
 export const AVATAR_VARIANTS = ['circle', 'rounded', 'square'] as const
 
@@ -37,7 +37,7 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
   /**
    * Class name
    */
-  className?: string
+  className?: ClassName
   /**
    * Notification badge
    */

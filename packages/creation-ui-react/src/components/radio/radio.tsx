@@ -1,7 +1,9 @@
-import { ErrorText, useId, useTheme } from '@creation-ui/core'
+import { ErrorText } from '@components'
+import { useTheme } from '@theme'
+import { useId } from '@hooks'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { RadioProps } from './radio.types'
+import { RadioProps } from './types'
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (props, ref: ForwardedRef<HTMLInputElement>) => {

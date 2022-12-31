@@ -1,4 +1,4 @@
-import { ELEMENT_SIZES } from '@creation-ui/core'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Select, SelectProps } from '@creation-ui/select'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'

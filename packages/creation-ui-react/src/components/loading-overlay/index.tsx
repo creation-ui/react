@@ -1,5 +1,5 @@
-import { Loader } from '../'
-import { useTheme } from '../../../../theme'
+import { Loader } from '@components/loader'
+import { useTheme } from '@theme'
 import clsx from 'clsx'
 import { LoadingOverlayProps } from './loading-overlay.types'
 

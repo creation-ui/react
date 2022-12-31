@@ -1,5 +1,5 @@
-import { useTheme } from '@creation-ui/core'
 import { RadioGroup } from '@headlessui/react'
+import { useTheme } from '@theme'
 import clsx from 'clsx'
 import { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
 
@@ -20,7 +20,7 @@ const ToggleGroup = (props: ToggleGroupProps) => {
       >
         {title}
       </span>
-      <RadioGroup className={clsx('toggle-group--group', className)} {...rest}>
+      <RadioGroup {...rest} className={clsx('toggle-group--group', className)}>
         <div className={'toggle-group--options'}>
           {options.map(({ label, value, disabled }: ToggleGroupOption) => (
             <RadioGroup.Option

@@ -13,10 +13,11 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "types": [
       "react/next",
@@ -58,6 +59,9 @@
       ],
       "@creation-ui/react": [
         "./packages/creation-ui-react/src"
+      ],
+      "@creation-ui/react/*": [
+        "./packages/creation-ui-react/src/*"
       ],
     }
   },

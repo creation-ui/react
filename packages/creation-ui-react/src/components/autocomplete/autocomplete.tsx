@@ -1,18 +1,16 @@
-import {
-  DropdownChevron,
-  ErrorText,
-  formatOptionValue,
-  getTruncatedMultipleValues,
-  Icon,
-  MultipleEllipsisFormatter,
-  passThrough,
-  SelectOption,
-  useId,
-  useTheme,
-} from '@creation-ui/core'
+import { SelectOption } from '@components/select-option'
 import { Combobox, Transition } from '@headlessui/react'
+import { useId } from '@hooks'
+import { useTheme } from '@theme'
+import { MultipleEllipsisFormatter } from '@types'
+import { formatOptionValue } from '@utils/format-option-value'
+import { passThrough } from '@utils/functions'
+import { getTruncatedMultipleValues } from '@utils/get-truncated-values'
 import clsx from 'clsx'
 import React, { ChangeEvent, Fragment, useState } from 'react'
+import { DropdownChevron } from '@components/dropdown-chevron'
+import { Icon } from '@components/icon'
+import { ErrorText } from '@components/typography'
 import { AutocompleteProps } from './autocomplete.types'
 
 const Autocomplete = (props: AutocompleteProps) => {

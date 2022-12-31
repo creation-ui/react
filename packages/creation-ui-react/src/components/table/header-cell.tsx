@@ -1,4 +1,4 @@
-import { Icon } from '@creation-ui/core'
+import { Icon } from '@components'
 import { Column, flexRender, Table } from '@tanstack/react-table'
 import clsx from 'clsx'
 import React from 'react'
@@ -31,7 +31,6 @@ const HeaderCell = ({ header, table }: HeaderCellProps) => {
                 icon='straight'
                 className={clsx(
                   'table--header--sort-icon',
-
                   header.column.getIsSorted() === 'desc' &&
                     'table--header--sort-icon--desc'
                 )}

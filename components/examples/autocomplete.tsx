@@ -1,5 +1,5 @@
-import { ELEMENT_SIZES } from '@creation-ui/core'
-import { Autocomplete, AutocompleteProps } from '@creation-ui/autocomplete'
+import { ELEMENT_SIZES } from '@creation-ui/react/types'
+import { Autocomplete, AutocompleteProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

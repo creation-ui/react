@@ -1,5 +1,5 @@
 import { Button } from '@creation-ui/button'
-import { Box } from '@creation-ui/core'
+import { Box } from '@creation-ui/react'
 import { PopoverProps } from '@creation-ui/popover'
 import { DocumentedProperty } from 'models/system'
 import dynamic from 'next/dynamic'

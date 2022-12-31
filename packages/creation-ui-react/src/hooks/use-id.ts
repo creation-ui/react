@@ -1,5 +1,5 @@
+import getShortUUID from '@utils/short-uuid'
 import React, { useState, useEffect, useLayoutEffect } from 'react'
-import { getShortUUID } from '../components/core/utils'
 
 const useIsomorphicEffect =
   typeof document !== 'undefined' ? useLayoutEffect : useEffect

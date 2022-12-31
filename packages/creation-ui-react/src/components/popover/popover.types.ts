@@ -1,7 +1,10 @@
+import { ClassName } from '@types'
 import React from 'react'
 import Stick from 'react-stick'
 
-export interface PopoverProps extends React.ComponentProps<typeof Stick> {
-  className?: string
+type StickProps = React.ComponentProps<typeof Stick>
+
+export interface PopoverProps extends Omit<StickProps, 'className'> {
+  className?: ClassName
   open?: boolean
 }

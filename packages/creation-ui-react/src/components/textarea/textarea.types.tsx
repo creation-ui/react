@@ -1,5 +1,5 @@
 import React from 'react'
-import { ElementSize, ElementVariants } from '@creation-ui/core'
+import { ElementSize, ElementVariants } from '@types'
 
 export type TextAreaProps = Omit<React.ComponentProps<'textarea'>, 'size'> & {
   /**

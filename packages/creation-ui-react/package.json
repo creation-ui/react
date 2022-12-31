@@ -22,7 +22,15 @@
     "clsx": "latest",
     "downshift": "^6.1.7",
     "tailwind-merge": "^1.5.1",
-    "class-variance-authority": "^0.4.0"
+    "class-variance-authority": "^0.4.0",
+    "@headlessui/react": "^1.7.7",
+    "uuid": "^9.0.0",
+    "react-datepicker": "^4.8.0",
+    "@tanstack/table-core": "^8.7.4",
+    "@tanstack/react-table": "^8.7.4",
+    "@tanstack/match-sorter-utils": "^8.7.2",
+    "react-spring": "^9.6.1",
+    "react-stick": "^5.0.3"
   },
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",

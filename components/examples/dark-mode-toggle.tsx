@@ -1,5 +1,5 @@
 import { Container } from '@components/container'
-import { DarkModeToggle } from '@creation-ui/core'
+import { DarkModeToggle } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

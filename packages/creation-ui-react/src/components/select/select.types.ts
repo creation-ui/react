@@ -1,4 +1,4 @@
-import { ElementSize, SelectOptionsType } from '@creation-ui/core'
+import { ClassName, ElementSize, SelectOptionsType } from '@types'
 import React from 'react'
 
 export interface SelectProps {
@@ -25,7 +25,7 @@ export interface SelectProps {
   /**
    * Class names
    */
-  className?: string
+ className?: ClassName
   /**
    * List options
    */

@@ -1,6 +1,7 @@
-import { SharedClassName } from '../../types'
+import { ClassName } from '@types'
 
-export interface OverlayProps extends SharedClassName {
+export interface OverlayProps {
   active?: boolean
   onClick?: () => void
+  className?: ClassName
 }

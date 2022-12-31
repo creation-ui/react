@@ -1,3 +1,4 @@
+import { ClassName } from '@types'
 import React from 'react'
 
 export type ModalProps = React.ComponentProps<'div'> & {
@@ -9,6 +10,6 @@ export type ModalProps = React.ComponentProps<'div'> & {
 
 export interface ModalTitleProps {
   children: React.ReactNode
-  className?: string
+ className?: ClassName
   as?: React.ElementType
 }

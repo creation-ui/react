@@ -1,18 +1,21 @@
 import {
-  Breakpoints,
+  AutocompleteOptionsType,
   ElementPosition,
   ElementSize,
   ElementTheme,
-  AutocompleteOptionsType,
-  ElementVariants,
-  ElementColor,
-} from '../types'
+  TailwindColorSet,
+} from '@types'
 
 type ThemeColors = {
-  primary: string
-  success: string
-  warning: string
-  error: string
+  inherit: string
+  current: string
+  transparent: string
+  black: string
+  white: string
+  primary: TailwindColorSet | string
+  success: TailwindColorSet | string
+  warning: TailwindColorSet | string
+  error: TailwindColorSet | string
 }
 
 type ThemeDrawers = {

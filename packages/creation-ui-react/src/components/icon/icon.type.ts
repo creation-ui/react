@@ -1,3 +1,4 @@
+import { ClassName } from '@types'
 import { HTMLProps } from 'react'
 import { icons } from './list-of-icons'
 
@@ -10,7 +11,7 @@ export interface IconProps
   /**
    * Additional class names
    */
-  className?: string
+ className?: ClassName
 }
 
 export type MaterialIcon = typeof icons[number]

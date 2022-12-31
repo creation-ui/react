@@ -1,4 +1,4 @@
-import { useTheme } from '@creation-ui/core'
+import { useTheme } from '@theme'
 import clsx from 'clsx'
 import { StatusBadgeProps } from './status-badge.types'
 

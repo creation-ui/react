@@ -1,4 +1,4 @@
-import { ELEMENT_SIZES } from '@creation-ui/core'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Switch, SwitchProps } from '@creation-ui/switch'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'

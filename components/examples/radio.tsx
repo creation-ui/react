@@ -1,4 +1,4 @@
-import { ELEMENT_SIZES } from '@creation-ui/core'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Radio, RadioProps } from '@creation-ui/radio'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'

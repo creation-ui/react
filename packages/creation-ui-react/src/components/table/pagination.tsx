@@ -1,6 +1,4 @@
-import { Button } from '@creation-ui/button'
-import { Select } from '@creation-ui/select'
-import { Icon } from '@creation-ui/core'
+import { Button, Select, Icon } from '@components'
 import { Table } from '@tanstack/react-table'
 import clsx from 'clsx'
 import './table.scss'

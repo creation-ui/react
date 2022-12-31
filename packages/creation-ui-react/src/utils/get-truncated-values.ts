@@ -1,7 +1,5 @@
-import { MultipleEllipsisFormatter, SelectOptionsType } from '../../types'
-
-export const formatOptionValue = (value: SelectOptionsType | string | null) =>
-  value && typeof value === 'object' ? value.value : value
+import { MultipleEllipsisFormatter, SelectOptionsType } from '@types'
+import { formatOptionValue } from './format-option-value'
 
 export const getTruncatedMultipleValues = (
   values: SelectOptionsType[],
@@ -16,7 +14,10 @@ export const getTruncatedMultipleValues = (
     }
   }
   const sliced = values.slice(0, limit)
-  const value: string = values?.slice(0, limit).map(formatOptionValue).join(', ')
+  const value: string = values
+    ?.slice(0, limit)
+    .map(formatOptionValue)
+    .join(', ')
 
   return {
     value,

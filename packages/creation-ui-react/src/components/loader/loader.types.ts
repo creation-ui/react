@@ -1,6 +1,6 @@
-import { ElementSize, SharedClassName } from '../../types'
+import { ClassName, ElementSize } from '@types'
 
-export interface LoaderProps extends SharedClassName {
+export interface LoaderProps {
   /**
    * Use white loader
    */
@@ -9,4 +9,5 @@ export interface LoaderProps extends SharedClassName {
    * How large should the button be?
    */
   size?: ElementSize
+  className?: ClassName
 }

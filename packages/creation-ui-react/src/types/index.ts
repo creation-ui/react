@@ -1,3 +1,5 @@
+import { ClassValue } from 'clsx'
+
 export const ELEMENT_COLORS = [
   'amber',
   'blue',
@@ -30,6 +32,20 @@ export const ELEMENT_PLACEMENT_VERTICAL = ['top', 'bottom'] as const
 export const ELEMENT_PLACEMENT_HORIZONTAL = ['right', 'left'] as const
 export const ELEMENT_POSITION = ['top', 'bottom', 'right', 'left'] as const
 export const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl', 'xl2'] as const
+export const TYPOGRAPHY = [
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'lead',
+  'paragraph',
+  'small',
+] as const
+export const TAILWIND_SHADES = [
+  50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
+] as const
 
 export type Colors = typeof COLORS[number]
 export type Breakpoints = typeof BREAKPOINTS[number]
@@ -43,6 +59,7 @@ export type ElementPlacementHorizontal =
   typeof ELEMENT_PLACEMENT_HORIZONTAL[number]
 export type ElementPlacementVertical = typeof ELEMENT_PLACEMENT_VERTICAL[number]
 export type ElementPosition = typeof ELEMENT_POSITION[number]
+export type ElementTypography = typeof TYPOGRAPHY[number]
 export type ElementPlacement = {
   horizontal: ElementPlacementHorizontal
   vertical: ElementPlacementVertical
@@ -98,9 +115,7 @@ export interface MultipleEllipsisFormatter {
   total: number
 }
 
-export interface SharedClassName {
-  /**
-   * Classes to be added to the component
-   */
-  className?: string | string[]
-}
+export type ClassName = string[] | string | undefined
+
+export type TailwindShades = typeof TAILWIND_SHADES[number]
+export type TailwindColorSet = Record<TailwindShades, string>

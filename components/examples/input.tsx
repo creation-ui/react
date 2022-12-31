@@ -1,4 +1,4 @@
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/core'
+import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { Input, InputProps } from '@creation-ui/input'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'

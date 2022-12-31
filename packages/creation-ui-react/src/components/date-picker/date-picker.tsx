@@ -1,4 +1,4 @@
-import { Icon } from '@creation-ui/core'
+import { Icon } from '@components/icon'
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
 import { DatePickerProps } from './date-picker.types'

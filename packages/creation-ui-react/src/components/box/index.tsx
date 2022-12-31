@@ -1,10 +1,5 @@
 import { cva } from 'class-variance-authority'
-
-interface BoxProps {
-  children: React.ReactNode
-  className?: string
-  border?: boolean
-}
+import { BoxProps } from './box.types'
 
 const box = cva([], {
   variants: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Colors, ElementSize, ElementVariants } from '@creation-ui/core'
+import { Colors, ElementSize, ElementVariants } from '@types'
 
 export type ButtonShape = 'default' | 'circle'
 

@@ -1,4 +1,4 @@
-import { ElementPosition } from '@creation-ui/core'
+import { ElementPosition } from '@types'
 
 export interface DrawerProps {
   size?: number | string
