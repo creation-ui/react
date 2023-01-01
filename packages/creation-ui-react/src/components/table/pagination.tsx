@@ -1,7 +1,6 @@
 import { Button, Select, Icon } from '../'
 import { Table } from '@tanstack/react-table'
 import clsx from 'clsx'
-import './table.scss'
 
 interface PaginationBlockProps extends React.ComponentProps<'button'> {
   current?: boolean

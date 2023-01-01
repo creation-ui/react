@@ -1,12 +1,9 @@
-@import '../../styles/index.scss';
-
 .button-group {
-  @apply inline-flex;
+  display: inline-flex;
 }
 
 .button-group > button:not(:first-child):not(:last-child) {
   border-radius: 0;
-  border-right: none;
   border-left: none;
 }
 
@@ -18,9 +15,10 @@
 .button-group > button:last-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  border-left: none;
 }
 
-.button-group > .toggle:not(:first-child):not(:last-child) {
+/* .button-group > .toggle:not(:first-child):not(:last-child) {
   border-radius: 0;
   border-right: none;
   border-left: none;
@@ -34,4 +32,4 @@
 .button-group > .toggle:last-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
+} */

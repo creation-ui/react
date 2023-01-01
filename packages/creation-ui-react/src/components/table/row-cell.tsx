@@ -1,5 +1,4 @@
 import { flexRender, Row } from '@tanstack/react-table'
-import './table.scss'
 
 interface RowCellProps {
   row: Row<any>

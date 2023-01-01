@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import HeaderCell from './header-cell'
 import RowCell from './row-cell'
-import './table.scss'
 import { TableProps } from './table.types'
+import './table.module.scss'
 
 const Table = ({ table, className }: TableProps) => {
   return (

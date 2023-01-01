@@ -1,5 +1,5 @@
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react/types'
 import { Input, InputProps } from '@creation-ui/react'
+import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react/types'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
@@ -8,7 +8,7 @@ interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {
   debug?: boolean
 }
 
-export const InputExample = (props: InputExampleProps) => {
+export const InputExample = ({ debug, ...props }: InputExampleProps) => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
@@ -24,8 +24,8 @@ export const InputExample = (props: InputExampleProps) => {
         value={value}
         {...props}
       />
-      {props.debug && (
-        <pre className='bg-red-200 rounded p-3 text-xs'>
+      {debug && (
+        <pre className='bg-red-100 rounded px-3 py-1 text-xs'>
           {JSON.stringify({ value }, null, 2)}
         </pre>
       )}

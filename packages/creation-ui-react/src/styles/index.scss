@@ -1,11 +1,6 @@
 /* @layer reset, defaults, patterns, components, utilities, overrides; */
 @import './icon.scss';
 @import './avatar.scss';
-@import './date-picker.scss';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 $z-index-base: inherit;
 $z-index-dropdowns: 200;
@@ -13,15 +8,6 @@ $z-index-tooltips: 400;
 $z-index-overlays: 600;
 $z-index-modals: 800;
 $z-index-notifications: 1000;
-
-@layer base {
-  :root {
-    --color-primary: 0 125 255;
-    --color-success: 0 196 140;
-    --color-warning: 255 169 64;
-    --color-error: 255 77 79;
-  }
-}
 
 .text-size {
   &--sm {
@@ -59,7 +45,7 @@ $z-index-notifications: 1000;
     border-zinc-300
     dark:border-zinc-400
     invalid:ring-error-200
-    invalid:border-error
+    invalid:border-error-500
     dark:bg-zinc-900;
 
     &:focus {
@@ -68,7 +54,7 @@ $z-index-notifications: 1000;
       dark:border-primary-400
       dark:ring-primary-300
       invalid:ring-error-200
-      invalid:border-error;
+      invalid:border-error-500;
     }
 
     &--sm {
@@ -139,7 +125,7 @@ $z-index-notifications: 1000;
   &--label {
     @apply peer-required:after:content-['*']
     peer-required:after:ml-0.5
-    peer-required:after:text-error
+    peer-required:after:text-error-500
    select-none block;
 
     &--checkbox {
@@ -166,7 +152,7 @@ $z-index-notifications: 1000;
   &--wrapper {
     @apply flex flex-col gap-1 relative;
     &-row {
-      @apply flex gap-2 items-center;
+      @apply flex gap-2 items-center relative;
     }
   }
   &--read-only {

@@ -10,7 +10,7 @@ import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { AutocompleteProps } from './autocomplete.types'
 
-const Autocomplete = (props: AutocompleteProps) => {
+export const Autocomplete = (props: AutocompleteProps) => {
   const { size: defaultSize } = useTheme()
   const {
     loadingText = 'Loading...',
@@ -169,5 +169,3 @@ Autocomplete.defaultProps = {
   size: 'md',
   placeholder: 'Select',
 }
-
-export default Autocomplete

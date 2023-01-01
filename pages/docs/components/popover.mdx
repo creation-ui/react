@@ -11,8 +11,7 @@ import { Callout } from 'nextra-theme-docs'
 Popover element is based on [React Stick package](https://github.com/signavio/react-stick) instead of [headless-ui/react](https://headlessui.com/react/popover). Main reasoning behind this is that React Stick creates new portal for the popover element, which gets rid of all the problems with overflow in containers.
 
 ```tsx copy
-import { Popover, PopoverProps } from '@creation-ui/popover'
-import { Button } from '@creation-ui/button'
+import { Popover, PopoverProps, Button } from '@creation-ui/react'
 
 export const PopoverExample = ({ ...props }: PopoverProps) => {
   const [open, setOpen] = useState(false)
@@ -57,7 +56,7 @@ In other frameworks consult with the documentation.
 import dynamic from 'next/dynamic'
 
 const Popover = dynamic(
-  () => import('@creation-ui/popover').then(C => C.Popover),
+  () => import('@creation-ui/react').then(C => C.Popover),
   {
     ssr: false,
   }

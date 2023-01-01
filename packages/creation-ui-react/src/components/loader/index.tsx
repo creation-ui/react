@@ -1,20 +1,16 @@
 import { useTheme } from '../../theme'
+import { loader, loaderIcon } from './classes'
 import { LoaderProps } from './loader.types'
-import clsx from 'clsx'
 
 export const Loader = (props: LoaderProps) => {
   const { size: defaultSize } = useTheme()
   const { size = defaultSize, className, white } = props
 
   return (
-    <div className={clsx('loader', className)}>
+    <div className={loader({ size, className })}>
       <svg
         aria-hidden='true'
-        className={clsx(
-          'loader-icon',
-          `loader-size--${size}`,
-          white && 'loader-icon--white'
-        )}
+        className={loaderIcon({ size, white })}
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'

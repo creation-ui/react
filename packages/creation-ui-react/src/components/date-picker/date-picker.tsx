@@ -2,6 +2,7 @@ import { Icon } from '../'
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
 import { DatePickerProps } from './date-picker.types'
+import './date-picker.module.css'
 
 const iconClasses = 'w-5 h-5 text-gray-600 cursor-pointer'
 

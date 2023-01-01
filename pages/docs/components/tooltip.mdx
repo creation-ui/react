@@ -1,4 +1,4 @@
-import { Tooltip } from '@creation-ui/tooltip'
+import { Tooltip } from '@creation-ui/react'
 import { Container } from '@components/container'
 import { properties, TooltipExample } from '@examples/tooltip'
 import { UnfoldVariants } from '@components/unfold-variants'
@@ -14,8 +14,7 @@ export const list = ListOrTypes([...ELEMENT_POSITION])
 <Callout>Component is visible after hovering over the trigger element.</Callout>
 
 ```tsx copy
-import { Tooltip } from '@creation-ui/tooltip'
-import { Button } from '@creation-ui/button'
+import { Button, Tooltip } from '@creation-ui/react'
 
 export const TooltipExample = ({ ...props }: TooltipProps) => {
   return (

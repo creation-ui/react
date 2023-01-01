@@ -17,7 +17,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "types": [
       "react/next",
@@ -62,7 +62,7 @@
       ],
       "@creation-ui/react/*": [
         "./packages/creation-ui-react/src/*"
-      ],
+      ]
     }
   },
   "include": [
@@ -70,7 +70,7 @@
     "**/*.ts",
     "**/*.tsx",
     "theme.config.tsx",
-    "pages/index.mdx",
+    "pages/index.mdx"
   ],
   "exclude": [
     "node_modules"

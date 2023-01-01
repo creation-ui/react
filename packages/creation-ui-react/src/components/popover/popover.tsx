@@ -1,6 +1,7 @@
 import { Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import Stick from 'react-stick'
+import React from 'react'
+import { isBrowser } from '../../utils/functions'
 import { PopoverProps } from './popover.types'
 
 export default function Popover({
@@ -10,7 +11,9 @@ export default function Popover({
   open = false,
   ...props
 }: PopoverProps) {
-  return (
+  const Stick = React.lazy(() => import('react-stick'))
+
+  return !isBrowser ? null : (
     <Stick
       position={position}
       autoFlipHorizontally

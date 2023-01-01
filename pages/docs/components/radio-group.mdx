@@ -8,7 +8,7 @@ import PropsTable from '@components/props-table'
 import { properties } from '@examples/Radio'
 
 ```tsx copy
-import { Radio, RadioProps } from '@creation-ui/radio'
+import { Radio, RadioProps } from '@creation-ui/react'
 
 export const RadioComponet = ({ ...props }: Omit<RadioProps, 'onChange'>) => {
   const [checked, setChecked] = useState<boolean>(false)

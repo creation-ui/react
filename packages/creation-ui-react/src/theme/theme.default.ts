@@ -1,5 +1,5 @@
 import { ThemeProps } from './theme.types'
-import { colors } from './base/colors'
+import colors from './base/colors'
 
 const theme: ThemeProps = {
   theme: 'light',

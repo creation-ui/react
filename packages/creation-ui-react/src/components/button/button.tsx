@@ -1,9 +1,9 @@
-import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
-import clsx from 'clsx'
 import React from 'react'
 import { Loader } from '../'
+import { useId } from '../../hooks'
+import { useTheme } from '../../theme'
 import { ButtonProps } from './button.types'
+import { button } from './classes'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -15,31 +15,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // get the default values from theme
     const {
-      rounded = theme.roundness,
+      circle,
       size = theme.size,
       variant = 'contained',
       color = 'primary',
     } = props
 
-    const isContained = variant === 'contained'
+    const isLoaderWhite = variant === 'contained'
+    const disabled = loading || props.disabled
 
     return (
       <button
         id={componentId}
         ref={ref}
-        disabled={loading}
+        disabled={disabled}
         {...props}
-        className={clsx(
-          'button',
-          'button-base',
-          `button-variant--${variant}--${color}`,
-          rounded === 'circle'
-            ? `button-circle--${size} rounded-full`
-            : `button-size--${size}`,
-          className
-        )}
+        className={button({
+          size,
+          color,
+          circle,
+          variant,
+          disabled,
+          className: [theme.roundness, className],
+        })}
       >
-        <>{loading ? <Loader size={size} white={isContained} /> : null}</>
+        <>{loading ? <Loader size={size} white={isLoaderWhite} /> : null}</>
         <>{iconLeft}</>
         <span>{children}</span>
         <>{iconRight}</>

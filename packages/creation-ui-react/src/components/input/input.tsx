@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
 import { Loader, ErrorText } from '../'
 import { InputProps } from './input.types'
+import { label, text, input, shared, inputContainer } from '../../classes'
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (props, ref: ForwardedRef<HTMLInputElement>) => {
@@ -12,7 +13,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       loading,
       helperText,
       error,
-      label,
       size = defaultSize,
       type = 'text',
       className,
@@ -21,37 +21,30 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     } = props
     const componentId = useId(id)
 
+    const disabled = props.disabled || props.readOnly
+
+    const containerClasses = clsx(
+      inputContainer({ disabled, error: !!error }),
+      text({ size })
+    )
+
     return (
-      <div
-        className={clsx(
-          //
-          'form-element',
-          'form-element--wrapper',
-          `text-size--${size}`
-        )}
-      >
+      <div className={containerClasses}>
         <label
           htmlFor={componentId}
-          className={clsx(
-            'form-element--label',
-            props.required && 'form-element--required'
-          )}
-        >
-          {label}
-        </label>
+          className={label({ size, required: props.required })}
+          children={props.label}
+          aria-label={props.label?.toString()}
+        />
         <input
           ref={ref}
           id={componentId}
-          className={clsx(
-            'form-element--input',
-            `form-element--input--${size}`,
-            'peer',
-            className
-          )}
+          className={input({ size, variant: props.variant, className })}
           type={type}
+          aria-readonly={!!props.readOnly}
           {...rest}
         />
-        {loading && <Loader className='form-element--loader' />}
+        {loading && <Loader className={clsx(shared.loaderInputPosition)} />}
         <ErrorText error={error} />
       </div>
     )

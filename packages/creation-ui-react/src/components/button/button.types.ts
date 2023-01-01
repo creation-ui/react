@@ -1,7 +1,6 @@
 import React from 'react'
 import { Colors, ElementSize, ElementVariants } from '../../types'
 
-export type ButtonShape = 'default' | 'circle'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**
@@ -9,9 +8,9 @@ export type ButtonProps = React.ComponentProps<'button'> & {
    */
   loading?: boolean
   /**
-   * What shape button should be
+   * Is button a circle?
    */
-  rounded?: ButtonShape
+  circle?: boolean
   /**
    * What variant should button be ?
    */

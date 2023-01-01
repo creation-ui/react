@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   inherit: 'inherit',
   current: 'currentColor',
   transparent: 'transparent',
@@ -53,3 +53,5 @@ export const colors = {
     900: '#5F3400',
   },
 }
+
+module.exports = colors

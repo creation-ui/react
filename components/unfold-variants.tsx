@@ -1,7 +1,7 @@
 import { Container } from './container'
 
 interface UnfoldVariantsProps {
-  variants: string[]
+  variants?: string[]
   component: any
   prop: string
   nameProp?: string
@@ -17,7 +17,7 @@ export const UnfoldVariants = ({
 }: UnfoldVariantsProps) => {
   return (
     <Container>
-      {variants.map((variant: string) => (
+      {variants?.map((variant: string) => (
         <Component
           {...componentProps}
           key={variant}

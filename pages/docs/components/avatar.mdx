@@ -1,9 +1,13 @@
 # Avatar
 
-import { Avatar, AVATAR_VARIANTS } from '@creation-ui/avatar'
+import {
+  Avatar,
+  AVATAR_VARIANTS,
+  ELEMENT_SIZES,
+  ELEMENT_STATUS,
+} from '@creation-ui/react'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
-import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 import {
   properties,
@@ -12,9 +16,8 @@ import {
 } from '@examples/avatar'
 
 ```tsx copy
-import { Avatar } from '@creation-ui/avatar'
-
-<Avatar src='...' alt='John Doe' />
+import { Avatar } from '@creation-ui/react'
+;<Avatar src='...' alt='John Doe' />
 ```
 
 export const defaultProps = {

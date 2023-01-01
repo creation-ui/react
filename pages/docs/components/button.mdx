@@ -1,16 +1,14 @@
-# Button
-
-```tsx copy
-import { Button } from '@creation-ui/button'
-
-;<Button size='md'>Click me</Button>
-```
-
-import { Button } from '@creation-ui/button'
-import { Icon } from '@creation-ui/react'
+import { Button, Icon } from '@creation-ui/react'
 import { Container } from '@components/container'
 import { properties } from '@examples/button'
 import PropsTable from '@components/props-table'
+
+# Button
+
+```tsx copy
+import { Button } from '@creation-ui/react'
+;<Button size='md'>Click me</Button>
+```
 
 <Container>
   <Button>Click me</Button>
@@ -63,8 +61,7 @@ Button can have icons set on both left and right ends as well as loading indicat
 Button can be in loading state, which will disable it and show loading indicator on right:
 
 ```tsx copy
-import { Button } from '@creation-ui/button'
-
+import { Button } from '@creation-ui/react'
 ;<Button loading={true}>Loading</Button>
 ```
 

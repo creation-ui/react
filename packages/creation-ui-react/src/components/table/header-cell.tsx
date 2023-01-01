@@ -2,7 +2,7 @@ import { Icon } from '../'
 import { Column, flexRender, Table } from '@tanstack/react-table'
 import clsx from 'clsx'
 import React from 'react'
-import './table.scss'
+
 
 interface HeaderCellProps {
   header: any

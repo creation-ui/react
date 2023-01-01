@@ -1,4 +1,4 @@
-import { ClassValue } from 'clsx'
+declare module "*.module.css";
 
 export const ELEMENT_COLORS = [
   'amber',

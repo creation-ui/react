@@ -8,7 +8,7 @@ import PropsTable from '@components/props-table'
 import { properties } from '@examples/switch'
 
 ```tsx copy
-import { Switch, SwitchProps } from '@creation-ui/switch'
+import { Switch, SwitchProps } from '@creation-ui/react'
 
 export const SwitchComponet = ({ ...props }: Omit<SwitchProps, 'onChange'>) => {
   const [checked, setChecked] = useState<boolean>(false)

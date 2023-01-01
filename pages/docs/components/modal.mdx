@@ -1,8 +1,7 @@
-import { Modal } from '@creation-ui/modal'
 import { Container } from '@components/container'
 import { properties, ModalExample } from '@examples/modal'
 import { UnfoldVariants } from '@components/unfold-variants'
-import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/react'
+import { ELEMENT_POSITION, ELEMENT_SIZES, Modal } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 import { ListOrTypes } from 'utils/list-or-types'
 
@@ -11,8 +10,7 @@ export const list = ListOrTypes([...ELEMENT_POSITION])
 # Modal
 
 ```tsx copy
-import { Modal } from '@creation-ui/modal'
-import { Button } from '@creation-ui/button'
+import { Button, Modal } from '@creation-ui/react'
 
 export const ModalExample = (props: ModalProps) => {
   const [open, setOpen] = useState(false)
