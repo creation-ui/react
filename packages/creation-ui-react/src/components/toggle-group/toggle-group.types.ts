@@ -16,7 +16,7 @@ export type ToggleGroupOption = HeadlessRadioGroupOptionProps & {
 
 export type ToggleGroupProps = RadioGroupProps & {
   options: ToggleGroupOption[]
-  title?: string
+  label?: string
   required?: boolean
   onChange?: HeadlessRadioGroupProps['onChange']
 }

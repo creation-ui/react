@@ -1,1 +1,45 @@
 # Toggle Group
+
+import {
+  ToggleGroupExample,
+  properties,
+  optionProps,
+} from '@examples/toggle-group'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react/types'
+import PropsTable from '@components/props-table'
+
+```tsx copy
+import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
+
+export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
+  const options = [
+    { value: '1', label: <Icon icon='3d_rotation' /> },
+    { value: '2', label: <Icon icon='access_alarms' /> },
+    { value: '3', label: <Icon icon='add_to_queue' /> },
+  ]
+
+  return <ToggleGroup size={size} options={options} label='Select option' />
+}
+```
+
+<Container>
+  <ToggleGroupExample label='Radio option' />
+</Container>
+
+## Sizes
+
+This component supports `size` prop with values `sm`, `md`, `lg`:
+
+<UnfoldVariants
+  component={ToggleGroupExample}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  nameProp='label'
+/>
+
+## Component API
+
+<PropsTable properties={properties} name='ToggleGroup' description={'Props of ToggleGroup component.'} />
+<PropsTable properties={optionProps} name='ToggleGroupOption' description={'Props of ToggleGroupOption component.'} />

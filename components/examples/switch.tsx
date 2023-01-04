@@ -7,7 +7,16 @@ import { ListOrTypes } from 'utils/list-or-types'
 export const SwitchExample = ({ ...props }: Omit<SwitchProps, 'onChange'>) => {
   const [checked, setChecked] = useState<boolean>(false)
 
-  return <Switch onChange={setChecked} checked={checked} {...props} />
+  return (
+    <Switch
+      onChange={e => {
+        setChecked(e)
+      }}
+      checked={checked}
+      size='md'
+      {...props}
+    />
+  )
 }
 
 export const properties: DocumentedProperty[] = [

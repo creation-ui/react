@@ -1,8 +1,12 @@
-import { ProgressBar } from '@creation-ui/progress-bar'
+import { ProgressBar } from '@creation-ui/react'
 import { Container } from '@components/container'
-import { properties, ProgressBarExample } from '@examples/progress-bar'
+import {
+  properties,
+  ProgressBarExample,
+  ProgressBarAnimatedExample,
+} from '@examples/progress-bar'
 import { UnfoldVariants } from '@components/unfold-variants'
-import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/react'
+import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/react/types'
 import PropsTable from '@components/props-table'
 import { ListOrTypes } from 'utils/list-or-types'
 
@@ -68,6 +72,10 @@ Value can be custom formatted with your own function that takes `value` and retu
     showValue
   />
 </Container>
+
+## Animated
+
+<ProgressBarAnimatedExample />
 
 ## Component API
 

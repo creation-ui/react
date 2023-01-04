@@ -72,6 +72,10 @@ export interface AutocompleteProps {
    */
   clearable?: boolean
   /**
+   * Is field required
+   */
+  required?: boolean
+  /**
    * Is disabled
    */
   disabled?: boolean
@@ -97,4 +101,7 @@ export interface AutocompleteProps {
   size?: ElementSize
 
   onChange?: (value: AutocompleteOptionsType) => void
+
+  loading?: boolean
+  readOnly?: boolean
 }

@@ -22,4 +22,5 @@ export interface CheckboxProps
    * Element focus ring?
    */
   enableFocusRing?: boolean
+  error?: string
 }

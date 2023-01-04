@@ -4,29 +4,37 @@ import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
 import { TextAreaProps } from './textarea.types'
+import { label, text, input, shared, inputContainer } from '../../classes'
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref: ForwardedRef<HTMLTextAreaElement>) => {
     const { size: defaultSize } = useTheme()
-    const { error, label, size = defaultSize, className, id, loading } = props
+    const { error, size = defaultSize, className, id, loading } = props
     const componentId = useId(id)
+    const disabled = props.disabled || props.readOnly
 
+    const containerClasses = clsx(
+      inputContainer({ disabled, error: !!error }),
+      text({ size })
+    )
     return (
-      <div className={clsx(`text-size--${size}`, 'form-element--wrapper')}>
+      <div className={containerClasses}>
         <label
           htmlFor={componentId}
-          className={clsx(
-            'form-element--label',
-            props.required && 'form-element--required'
-          )}
-        >
-          {label}
-        </label>
+          className={label({ size, required: props.required })}
+          children={props.label}
+          aria-label={props.label?.toString()}
+        />
         <div className='mt-1'>
           <textarea
             ref={ref}
             id={componentId}
-            className={clsx('peer', 'resize', 'form-element--input', className)}
+            className={input({
+              size,
+              variant: props.variant,
+              className: ['resize', className],
+            })}
+            aria-readonly={!!props.readOnly}
             {...props}
           />
         </div>

@@ -6,8 +6,7 @@ import { useState } from 'react'
 
 // const Popover = dynamic(
 //   () =>
-//     import('@creation-ui/react').then(C => {
-//       console.log(C)
+//     import('../../packages/creation-ui-react/src').then(C => {
 //       return C.Popover
 //     }),
 //   {
@@ -21,7 +20,13 @@ export const PopoverExample = ({ ...props }: PopoverProps) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  return !isBrowser ? null : null
+  return (
+    <div className='text-center p-3 bg-error-500 rounded-lg'>
+      <div>This example does not work yet with Next.js</div>
+      <div>We are sorry for the inconvenience</div>
+    </div>
+  )
+
   // (
   //   <Popover
   //     open={open}

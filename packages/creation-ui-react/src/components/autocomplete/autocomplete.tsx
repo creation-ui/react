@@ -1,17 +1,19 @@
 import { Combobox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React, { ChangeEvent, Fragment, useState } from 'react'
-import { DropdownChevron, ErrorText, Icon, SelectOption } from '../'
+import { ClearButton, DropdownChevron, ErrorText, SelectOption } from '../'
+import { input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { MultipleEllipsisFormatter } from '../../types'
 import { formatOptionValue } from '../../utils/format-option-value'
 import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
+import { select } from '../select/classes'
 import { AutocompleteProps } from './autocomplete.types'
 
 export const Autocomplete = (props: AutocompleteProps) => {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, zIndex } = useTheme()
   const {
     loadingText = 'Loading...',
     emptyText = 'Data is empty',
@@ -24,7 +26,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     options,
     placeholder = 'Select option',
     id,
-    label,
     helperText,
     size = defaultSize,
     error,
@@ -74,21 +75,21 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const Option = optionComponent
 
   const value = multiple ? (!!props.value ? props.value : []) : props.value
+  const disabled = props.disabled || props.loading || props.readOnly
 
   return (
     <div
       className={clsx(
-        'form-element',
-        'form-element--wrapper',
-        `text-size--${size}`
+        inputContainer({ disabled, error: !!error }),
+        text({ size })
       )}
     >
       <label
         htmlFor={componentId}
-        className={clsx('form-element--label', `form-element--label-${size}`)}
-      >
-        {label}
-      </label>
+        className={label({ size, required: props.required })}
+        children={props.label}
+        aria-label={props.label?.toString()}
+      />
       <Combobox
         value={value}
         onChange={onChange}
@@ -96,32 +97,29 @@ export const Autocomplete = (props: AutocompleteProps) => {
         multiple={multiple as any}
       >
         {({ open }) => (
-          <div className='dropdown--wrapper--input'>
+          <div className={clsx(select.container.input)}>
             <Combobox.Input
               id={componentId}
               disabled={rest.disabled}
               placeholder={placeholder}
               displayValue={formatter}
               onChange={onSearchChange}
-              className={clsx(
-                'form-element--input',
-                `form-element--input--${size}`,
-                'relative',
-                'peer'
-              )}
+              className={input({ size })}
             />
-            <Combobox.Button className='dropdown--button'>
+            <Combobox.Button
+              className={clsx(select.buttons.base, select.buttons.chevron)}
+            >
               <DropdownChevron open={open} />
             </Combobox.Button>
-            <div className='clear-content--wrapper' onClick={clearSelection}>
-              {(isQuery || isSelected) && (
-                <Icon
-                  icon='close'
-                  className={clsx('clear-content--button')}
-                  aria-label={rest.clearText}
-                  title={rest.clearText}
-                />
+            <div
+              title={rest.clearText}
+              className={clsx(
+                clearable && !!value ? 'block' : 'hidden',
+                clsx(select.buttons.base, select.buttons.clear)
               )}
+              onClick={clearSelection}
+            >
+              {(isQuery || isSelected) && <ClearButton />}
             </div>
             {open && (
               <Transition
@@ -131,9 +129,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
                 leaveTo='opacity-0'
                 afterLeave={resetSearch}
               >
-                <Combobox.Options static className={clsx('dropdown--list')}>
+                <Combobox.Options
+                  static
+                  className={clsx(select.list, zIndex.dropdowns)}
+                >
                   {!filteredOptions?.length ? (
-                    <div className={'dropdown--list--not-found'}>
+                    <div className={clsx(select.notFound)}>
                       {notFoundText}
                       {/* OR create not found option */}
                     </div>

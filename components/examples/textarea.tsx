@@ -18,17 +18,20 @@ export const TextAreaExample = (props: TextAreaExampleProps) => {
   }, [props.value])
 
   return (
-    <div key={props.key} className='flex flex-col gap-5'>
+    <div
+      key={props.key}
+      className='
+      flex
+      flex-col
+      gap-5
+      max-w-md
+      items-center'
+    >
       <TextArea
         onChange={e => setValue(e.target.value)}
         value={value}
         {...props}
       />
-      {props.debug && (
-        <pre className='bg-red-200 rounded p-3 text-xs'>
-          {JSON.stringify({ value }, null, 2)}
-        </pre>
-      )}
     </div>
   )
 }
@@ -53,18 +56,6 @@ export const properties: DocumentedProperty[] = [
   { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
   { name: 'loading', type: 'boolean', description: 'Show loading state' },
   {
-    name: 'iconLeft',
-    type: 'React.ReactNode',
-    description: 'Icon to be displayed on the left side of the component',
-    experimental: true,
-  },
-  {
-    name: 'iconRight',
-    type: 'React.ReactNode',
-    description: 'Icon to be displayed on the right side of the component',
-    experimental: true,
-  },
-  {
     name: 'fullWidth',
     type: 'boolean',
     description: 'Should button take up all available width?',
@@ -73,12 +64,6 @@ export const properties: DocumentedProperty[] = [
     name: 'helperText',
     type: 'boolean',
     description: 'Additional information for display with component',
-    experimental: true,
-  },
-  {
-    name: 'error',
-    type: 'boolean',
-    description: 'Text to be displayed when TextArea is invalid',
     experimental: true,
   },
 ]

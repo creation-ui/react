@@ -1,6 +1,13 @@
 import { Icon, IconProps } from '../'
 import clsx from 'clsx'
 
+const classes = [
+  'text-zinc-400',
+  'hover:text-error-500',
+  'cursor-pointer',
+  'select-none',
+]
+
 const ClearButton = ({
   onClick,
   className,
@@ -9,7 +16,7 @@ const ClearButton = ({
   <Icon
     icon='close'
     onClick={onClick}
-    className={clsx('clear-button', className)}
+    className={clsx(classes, className)}
     aria-hidden='true'
     {...props}
   />

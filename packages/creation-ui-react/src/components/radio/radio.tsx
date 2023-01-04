@@ -4,6 +4,8 @@ import { useId } from '../../hooks'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
 import { RadioProps } from './types'
+import { label, text, input, shared, inputContainer } from '../../classes'
+import { radio } from './classes'
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (props, ref: ForwardedRef<HTMLInputElement>) => {
@@ -11,7 +13,6 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const {
       helperText,
       error,
-      label,
       size = defaultSize,
       className,
       id,
@@ -19,30 +20,30 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     } = props
     const componentId = useId(id)
 
+    const disabled = props.disabled || props.readOnly
+
+    const containerClasses = clsx(
+      inputContainer({ disabled, error: !!error, layout: 'row' }),
+      text({ size })
+    )
+
     return (
-      <div className={clsx(`text-size--${size}`, 'form-element--wrapper-row')}>
+      <div className={containerClasses}>
         <input
           ref={ref}
-          className={clsx(
-            'peer',
-            'form-element--radio',
-            `form-element--radio--${size}`,
-            className
-          )}
+          className={radio({ size, className })}
           type='radio'
           name={componentId}
           id={componentId}
+          disabled={disabled}
           {...rest}
         />
         <label
           htmlFor={componentId}
-          className={clsx(
-            'form-element--label',
-            'form-element--label--checkbox'
-          )}
-        >
-          {label}
-        </label>
+          className={label({ size, required: props.required, for: 'checkbox' })}
+          children={props.label}
+          aria-label={props.label?.toString()}
+        />
         <ErrorText error={error} />
       </div>
     )

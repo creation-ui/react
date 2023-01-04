@@ -25,7 +25,7 @@ export interface SelectProps {
   /**
    * Class names
    */
- className?: ClassName
+  className?: ClassName
   /**
    * List options
    */
@@ -65,4 +65,7 @@ export interface SelectProps {
   clearable?: boolean
 
   clearButtonText?: string
+  loading?: boolean
+  readOnly?: boolean
+  required?: boolean
 }

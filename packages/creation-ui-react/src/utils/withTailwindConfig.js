@@ -5,7 +5,6 @@
 const merge = require('deepmerge')
 const colors = require('../theme/base/colors')
 const typography = require('../theme/base/typography')
-const shadows = require('../theme/base/shadows')
 const breakpoints = require('../theme/base/breakpoints')
 const twColors = require('tailwindcss/colors')
 
@@ -17,7 +16,6 @@ const creationUiConfig = {
   theme: {
     colors: { ...twColors, ...colors },
     fontFamily: typography,
-    boxShadow: shadows,
     screens: breakpoints,
   },
   plugins: [

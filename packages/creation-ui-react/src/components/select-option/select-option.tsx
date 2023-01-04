@@ -2,6 +2,7 @@ import { Icon } from '../'
 import { AutocompleteOptionsType, SelectOptionsType } from '../../types'
 import clsx from 'clsx'
 import React from 'react'
+import { selectOption, selectOptionIcon } from './classes'
 
 interface SelectOptionProps {
   option: SelectOptionsType | AutocompleteOptionsType
@@ -18,39 +19,15 @@ interface OptionElement {
 }
 
 const OptionSingle = ({ selected, active, children: value }: OptionElement) => (
-  <span
-    className={clsx(
-      'dropdown--option',
-      selected && 'dropdown--option-selected',
-      active && 'dropdown--option-active',
-      'group'
-    )}
-  >
-    {value}
-  </span>
+  <span className={selectOption({ selected, active })}>{value}</span>
 )
 const OptionMultiple = ({
   selected,
   active,
   children: value,
 }: OptionElement) => (
-  <span
-    className={clsx(
-      'dropdown--option',
-      'dropdown--option--multiple',
-      selected && 'dropdown--option--multiple-selected',
-      active && 'dropdown--option-active',
-      'group'
-    )}
-  >
-    <Icon
-      icon='check'
-      className={clsx(
-        'dropdown--option--multiple-icon',
-        selected && 'dropdown--option--multiple-icon-selected',
-        active && 'dropdown--option--multiple-icon-active'
-      )}
-    />
+  <span className={selectOption({ selected, active, multiple: true })}>
+    <Icon icon='check' className={selectOptionIcon({ selected, active })} />
     {value}
   </span>
 )

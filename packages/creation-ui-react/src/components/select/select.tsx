@@ -1,18 +1,19 @@
 import { Listbox, Transition } from '@headlessui/react'
+import clsx from 'clsx'
+import { Fragment } from 'react'
 import { ClearButton, DropdownChevron, ErrorText, SelectOption } from '../'
+import { input, inputContainer, label, text } from '../../classes'
 import useId from '../../hooks/use-id'
 import { useTheme } from '../../theme'
 import { MultipleEllipsisFormatter } from '../../types'
 import { formatOptionValue } from '../../utils/format-option-value'
 import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
-
-import clsx from 'clsx'
-import { Fragment } from 'react'
+import { select } from './classes'
 import { SelectProps } from './select.types'
 
 const Select = (props: SelectProps) => {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, zIndex } = useTheme()
   const {
     optionComponent = SelectOption,
     error,
@@ -43,13 +44,13 @@ const Select = (props: SelectProps) => {
     e.stopPropagation?.()
     props.onChange?.(multiple ? [] : undefined)
   }
+  const disabled = props.disabled || props.loading || props.readOnly
 
   return (
     <div
       className={clsx(
-        'form-element',
-        'form-element--wrapper',
-        `text-size--${size}`
+        inputContainer({ disabled, error: !!error }),
+        text({ size })
       )}
       id={componentId}
     >
@@ -60,29 +61,21 @@ const Select = (props: SelectProps) => {
         multiple={props.multiple}
       >
         {({ open }) => (
-          <div className='dropdown--wrapper--input'>
+          <div className={clsx(select.container.input)}>
             {props.label && (
               <Listbox.Label
-                className={clsx(
-                  'form-element--label',
-                  `form-element--label-${size}`
-                )}
-              >
-                {props.label}
-              </Listbox.Label>
+                className={label({ size, required: props.required })}
+                children={props.label}
+                aria-label={props.label?.toString()}
+              />
             )}
             <Listbox.Button
-              className={clsx(
-                'form-element--input',
-                `form-element--input--${size}`,
-                'select--input',
-                'peer'
-              )}
+            className={clsx(input({ size }), select.input)}
             >
-              <span className='select--value'>
+              <span className={clsx(select.value)}>
                 {value}&nbsp;
                 {multiple && truncated.hidden > 0 && (
-                  <span className='select--value-hidden'>
+                  <span className={clsx(select.hiddenCount)}>
                     +{truncated.hidden}
                   </span>
                 )}
@@ -92,12 +85,14 @@ const Select = (props: SelectProps) => {
                 onClick={onClear}
                 className={clsx(
                   clearable && !!value ? 'block' : 'hidden',
-                  'dropdown--button--clear'
+                  clsx(select.buttons.base, select.buttons.clear)
                 )}
               >
                 <ClearButton />
               </span>
-              <span className='dropdown--button'>
+              <span
+                className={clsx(select.buttons.base, select.buttons.chevron)}
+              >
                 <DropdownChevron open={open} />
               </span>
             </Listbox.Button>
@@ -107,7 +102,7 @@ const Select = (props: SelectProps) => {
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Listbox.Options className={clsx('dropdown--list')}>
+              <Listbox.Options className={clsx(select.list, zIndex.dropdowns)}>
                 {props.options?.map(option => (
                   <Listbox.Option key={option.id} value={option}>
                     {({ selected, active, disabled }) => (

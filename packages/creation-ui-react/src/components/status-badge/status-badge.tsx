@@ -1,19 +1,15 @@
 import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { StatusBadgeProps } from './status-badge.types'
+import { badge } from './classes'
+import { text } from '../../classes'
 
 const StatusBadge = (props: StatusBadgeProps) => {
   const { size: defaultSize } = useTheme()
   const { label, status, size = defaultSize } = props
 
   return (
-    <span
-      className={clsx(
-        'status-badge',
-        `status-badge--${size}`,
-        status && `status-badge--${status}`
-      )}
-    >
+    <span className={clsx(text({ size }), badge({ size, status }))}>
       {label ?? status}
     </span>
   )

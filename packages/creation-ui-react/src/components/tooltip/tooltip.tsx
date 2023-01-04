@@ -1,15 +1,13 @@
 import clsx from 'clsx'
+import { tooltip } from './classes'
 import { TooltipProps } from './tooltip.types'
 
 const Tooltip = (props: TooltipProps) => {
   const { className, position = 'top', children, content, ...rest } = props
 
   return (
-    <div className={clsx('tooltip--wrapper group')}>
-      <div
-        {...props}
-        className={clsx('tooltip', `tooltip--${position}`, className)}
-      >
+    <div className={clsx(['relative', 'max-w-fit', 'group'])}>
+      <div {...props} className={tooltip({ className, position })}>
         {content}
       </div>
       {children}

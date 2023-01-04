@@ -1,4 +1,4 @@
-import '../styles/index.scss'
+import '../styles/index.css'
 
 import type { AppProps } from 'next/app'
 

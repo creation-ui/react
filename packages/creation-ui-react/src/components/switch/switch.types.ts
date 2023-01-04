@@ -1,6 +1,8 @@
+import React from 'react'
 import { ElementSize } from '../../types'
 
 export interface SwitchProps {
+  id?:string
   /**
    * Is element required?
    */
@@ -31,4 +33,6 @@ export interface SwitchProps {
   disabled?: boolean
 
   onChange: (value: boolean) => void
+
+  error?: React.ReactNode
 }

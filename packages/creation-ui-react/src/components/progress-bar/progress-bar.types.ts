@@ -20,5 +20,5 @@ export interface ProgressBarProps {
   /**
    * Function to format the value of the progress bar.
    */
-  formatDisplayValue: (value: number) => string
+  formatDisplayValue?: (value: number) => string
 }

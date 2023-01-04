@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment } from 'react'
 import { ModalProps, ModalTitleProps } from './modal.types'
+import { useTheme } from '../../theme'
 
 const transitionProps = {
   modal: {
@@ -14,23 +15,57 @@ const transitionProps = {
     leaveTo: 'opacity-0 scale-95',
   },
 }
+
+const modal = {
+  base: ['relative'],
+  layer: {
+    1: ['fixed', 'inset-0', 'overflow-y-auto'],
+    2: [
+      'flex',
+      'min-h-full',
+      'items-center',
+      'justify-center',
+      'p-4',
+      'text-center',
+    ],
+  },
+  title: ['text-lg', 'font-medium', 'leading-6'],
+  panel: [
+    'w-full',
+    'max-w-md',
+    'transform',
+    'overflow-hidden',
+    'rounded-xl',
+    'bg-zinc-50',
+    'dark:bg-zinc-900',
+    'p-6',
+    'text-left',
+    'align-middle',
+    'shadow-xl',
+    'transition-all',
+  ],
+}
+
 const Modal = (props: ModalProps) => {
+  const { zIndex } = useTheme()
   const { children, className, onClose, onOverlayClick, open, ...rest } = props
   return (
     <>
-      <Overlay active={open} onClick={onOverlayClick} />
+      <Overlay
+      className={'fixed'}
+      active={open} onClick={onOverlayClick} />
       <Transition appear={true} show={open} as={Fragment}>
         <Dialog
           as='div'
           open={open}
-          className={clsx('dialog', className)}
+          className={clsx(modal.base, zIndex.modals, className)}
           onClose={onClose as any}
           {...rest}
         >
-          <div className='dialog-layer-1'>
-            <div className='dialog-layer-2'>
+          <div className={clsx(modal.layer[1])}>
+            <div className={clsx(modal.layer[2])}>
               <Transition.Child as={Fragment} {...transitionProps.modal}>
-                <Dialog.Panel className={'dialog-panel'}>
+                <Dialog.Panel className={clsx(modal.panel)}>
                   {children}
                 </Dialog.Panel>
               </Transition.Child>
@@ -45,7 +80,7 @@ const Modal = (props: ModalProps) => {
 const Title = (props: ModalTitleProps) => {
   const { children, className, as = 'h3' } = props
   return (
-    <Dialog.Title as={as} className={clsx('dialog-title', className)}>
+    <Dialog.Title as={as} className={clsx(modal.title, className)}>
       {children}
     </Dialog.Title>
   )

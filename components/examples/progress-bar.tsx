@@ -1,10 +1,48 @@
+import { Container } from '@components/container'
+import { Button, ProgressBar, ProgressBarProps } from '@creation-ui/react'
 import { ELEMENT_SIZES } from '@creation-ui/react/types'
-import { ProgressBar, ProgressBarProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
+import { useEffect, useRef, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
+// @ts-ignore
+import { useStopwatch } from 'react-timer-hook'
 
 export const ProgressBarExample = ({ ...props }: ProgressBarProps) => {
   return <ProgressBar {...props} />
+}
+
+export const ProgressBarAnimatedExample = ({ ...props }: ProgressBarProps) => {
+  const [state, setState] = useState(0)
+
+  const { seconds, isRunning, start, pause, restart } = useStopwatch({
+    autoStart: false,
+  })
+
+  const onReset = () => setState(0)
+  const onTick = () => setState(s => s + 1)
+
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => onTick(), 200)
+      return () => clearInterval(interval)
+    }
+  }, [isRunning])
+
+  return (
+    <Container>
+      <ProgressBar value={state} key='animated-progress-bar' showValue />
+      <Button onClick={isRunning ? pause : start}>
+        {isRunning ? 'Stop' : 'Start'}
+      </Button>
+      <Button
+        disabled={isRunning || state === 0}
+        onClick={onReset}
+        variant='outlined'
+      >
+        Reset
+      </Button>
+    </Container>
+  )
 }
 
 export const properties: DocumentedProperty[] = [

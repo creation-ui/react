@@ -34,17 +34,12 @@ export const shared = {
     'transform',
     '-translate-y-1/2',
   ],
-}
-
-export const input = cva(
-  [
-    'peer',
-    'bg-transparent',
-    'block',
+  input: [
     'border-zinc-400',
     'border',
     'dark:bg-zinc-900',
     'dark:border-zinc-400',
+    'focus:ring-offset-0',
     'focus:border-primary-300',
     'focus:dark:border-primary-400',
     'focus:dark:ring-primary-300',
@@ -57,10 +52,20 @@ export const input = cva(
     'invalid:ring-error-200',
     'dark:invalid:border-error-400',
     'dark:invalid:ring-error-200',
+    'bg-white',
     'rounded-md',
-    'w-full',
-    'disabled:pointer-events-none',
   ],
+  checkable: [
+    'text-primary-500',
+    'checked:border-none',
+    'dark:checked:bg-primary-500',
+    'cursor-pointer',
+    'peer',
+  ],
+}
+
+export const input = cva(
+  [shared.input, 'peer', 'block', 'w-full', 'disabled:pointer-events-none'],
   {
     variants: {
       variant: {
@@ -98,7 +103,7 @@ export const inputContainer = cva(['flex', 'relative'], {
   variants: {
     layout: {
       column: ['flex-col', 'gap-1'],
-      row: ['flex-row', 'gap-2'],
+      row: ['flex-row', 'gap-2', 'items-center'],
     },
     disabled: sharedDisabledCVA,
     error: {
@@ -110,20 +115,21 @@ export const inputContainer = cva(['flex', 'relative'], {
   },
 })
 
-export const label = cva(shared.label, {
+export const label = cva([...shared.label], {
   variants: {
     size: {
-      sm: ['mb-1'],
-      md: ['mb-1'],
-      lg: ['mb-1'],
+      sm: [],
+      md: [],
+      lg: [],
     },
     required: {
       true: shared.required,
-      false: [],
+    },
+    for: {
+      checkbox: ['inline-flex', 'items-center', 'cursor-pointer'],
     },
   },
   defaultVariants: {
     size: 'md',
-    required: false,
   },
 })

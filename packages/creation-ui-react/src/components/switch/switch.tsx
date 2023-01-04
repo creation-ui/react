@@ -2,49 +2,38 @@ import { Switch as HSwitch } from '@headlessui/react'
 import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { SwitchProps } from './switch.types'
+import { label, text, input, shared, inputContainer } from '../../classes'
+import { useId } from '../../hooks'
+import { switchCircle, switchClasses } from './classes'
+import { checkbox } from '../checkbox/classes'
 
 const Switch = ({ checked, ...props }: SwitchProps) => {
   const { size: defaultSize } = useTheme()
-  const { size = defaultSize, required, readOnly } = props
+  const { size = defaultSize, id, required, readOnly, error } = props
+  const componentId = useId(id)
+
+  const disabled = props.disabled || props.readOnly
+
+  const containerClasses = clsx(
+    inputContainer({ disabled, error: !!error }),
+    text({ size })
+  )
 
   return (
-    <div
-      className={clsx(
-        'form-element--wrapper',
-        `text-size--${size}`,
-        readOnly && 'form-element--read-only'
-      )}
-    >
-      <span
-        className={clsx(
-          'form-element--label',
-          `form-element--label-${size}`,
-          required && 'form-element--required'
-        )}
-      >
-        {props.label}
-      </span>
+    <div className={containerClasses}>
+      <label
+        htmlFor={componentId}
+        className={label({ size, required: props.required })}
+        children={props.label}
+        aria-label={props.label?.toString()}
+      />
       <HSwitch
+        id={componentId}
         aria-required={required}
-        className={clsx(
-          'peer',
-          'form-element',
-          'form-element--input--checkbox ',
-          'switch',
-          `switch--${size}`,
-          checked && 'switch-checked',
-          readOnly && 'form-element--read-only'
-        )}
+        className={clsx(checkbox({ size }), switchClasses({ size, checked }))}
         {...props}
       >
-        <span
-          aria-hidden='true'
-          className={clsx(
-            'switch--circle',
-            `switch--circle--${size}`,
-            checked && `switch-checked--${size}`
-          )}
-        />
+        <span aria-hidden='true' className={switchCircle({ size, checked })} />
       </HSwitch>
     </div>
   )
