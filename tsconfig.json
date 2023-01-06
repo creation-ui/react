@@ -40,10 +40,10 @@
         "./components/examples"
       ],
       "@pages/*": [
-        "./pages/*"
+        "pages/*"
       ],
       "@pages": [
-        "./pages"
+        "pages"
       ],
       "@models/*": [
         "./models/*"
@@ -63,14 +63,20 @@
       "@creation-ui/react/*": [
         "./packages/creation-ui-react/src/*"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "theme.config.tsx",
-    "pages/index.mdx"
+    "pages/index.mdx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
