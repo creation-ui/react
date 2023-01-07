@@ -21,6 +21,7 @@ export const RadioGroupExample = ({ size }: RadioGroupProps) => {
     <RadioGroup size={size} label='Select your favorite activities'>
       {options.map(option => (
         <Radio
+          key={size}
           size={size}
           label={option.label}
           onClick={handleClick}

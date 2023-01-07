@@ -13,9 +13,9 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
         <>
           <div
             className={avatar.notifications({
-              horizontal: badge.placement.horizontal,
-              vertical: badge.placement.vertical,
-              type: badge.type,
+              horizontal: badge?.placement?.horizontal,
+              vertical: badge?.placement?.vertical,
+              type: badge?.type,
             })}
           >
             <span>{props.badge?.count}</span>

@@ -11,7 +11,7 @@ export interface IconProps
   /**
    * Additional class names
    */
- className?: ClassName
+  className?: ClassName
 }
 
 export type MaterialIcon = typeof icons[number]

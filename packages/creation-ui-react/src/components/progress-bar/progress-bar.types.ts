@@ -12,7 +12,7 @@ export interface ProgressBarProps {
   /**
    * Class name to be applied to the progress bar.
    */
- className?: ClassName
+  className?: ClassName
   /**
    * Whether to show the value of the progress bar.
    */

@@ -22,7 +22,7 @@ const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {
       className={containerClasses}
     >
       <span
-        className={label({ size, required: props.required,  })}
+        className={label({ size, required: props.required })}
         children={props.label}
         aria-label={props.label?.toString()}
       />

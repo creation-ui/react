@@ -10,6 +10,6 @@ export type ModalProps = React.ComponentProps<'div'> & {
 
 export interface ModalTitleProps {
   children: React.ReactNode
- className?: ClassName
+  className?: ClassName
   as?: React.ElementType
 }

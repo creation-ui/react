@@ -3,7 +3,6 @@ import { Column, flexRender, Table } from '@tanstack/react-table'
 import clsx from 'clsx'
 import React from 'react'
 
-
 interface HeaderCellProps {
   header: any
   table: Table<any>

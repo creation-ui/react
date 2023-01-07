@@ -69,9 +69,7 @@ const Select = (props: SelectProps) => {
                 aria-label={props.label?.toString()}
               />
             )}
-            <Listbox.Button
-            className={clsx(input({ size }), select.input)}
-            >
+            <Listbox.Button className={clsx(input({ size }), select.input)}>
               <span className={clsx(select.value)}>
                 {value}&nbsp;
                 {multiple && truncated.hidden > 0 && (

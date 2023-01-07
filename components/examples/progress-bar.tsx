@@ -2,7 +2,7 @@ import { Container } from '@components/container'
 import { Button, ProgressBar, ProgressBarProps } from '@creation-ui/react'
 import { ELEMENT_SIZES } from '@creation-ui/react/types'
 import { DocumentedProperty } from 'models/system'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 // @ts-ignore
 import { useStopwatch } from 'react-timer-hook'
@@ -14,7 +14,7 @@ export const ProgressBarExample = ({ ...props }: ProgressBarProps) => {
 export const ProgressBarAnimatedExample = ({ ...props }: ProgressBarProps) => {
   const [state, setState] = useState(0)
 
-  const { seconds, isRunning, start, pause, restart } = useStopwatch({
+  const { isRunning, start, pause } = useStopwatch({
     autoStart: false,
   })
 

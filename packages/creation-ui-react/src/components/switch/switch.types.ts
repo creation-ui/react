@@ -2,7 +2,7 @@ import React from 'react'
 import { ElementSize } from '../../types'
 
 export interface SwitchProps {
-  id?:string
+  id?: string
   /**
    * Is element required?
    */

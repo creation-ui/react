@@ -7,7 +7,13 @@ import { toggleGroup } from './classes'
 
 const ToggleGroup = (props: ToggleGroupProps) => {
   const { size: defaultSize } = useTheme()
-  const { size = defaultSize, options, className, label: title, ...rest } = props
+  const {
+    size = defaultSize,
+    options,
+    className,
+    label: title,
+    ...rest
+  } = props
   const disabled = props.disabled || props.readOnly
 
   const containerClasses = clsx(inputContainer({ disabled }), text({ size }))

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Colors, ElementSize, ElementVariants } from '../../types'
 
-
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**
    * Is button loading?
