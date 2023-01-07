@@ -10,6 +10,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build:cjs": "swc ./src -d ./build --only ./src/**/*.ts --config-file .swcrc",
     "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
@@ -18,7 +21,7 @@
     "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
     "prettier:check": "prettier -c .",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
-    "_publish": "pnpm publish --registry https://registry.npmjs.org --access public"
+    "_publish": "npm publish --registry https://registry.npmjs.org --access public"
   },
   "dependencies": {
     "clsx": "latest",

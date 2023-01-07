@@ -15,7 +15,7 @@
     "lint": "next lint",
     "nuke": "rm -rf node_modules yarn.lock",
     "sitemap": "next-sitemap",
-    "build:package": "pnpm --filter ./packages/creation-ui-react build",
+    "package:build": "pnpm --filter ./packages/creation-ui-react build",
     "package:publish": "pnpm --filter ./packages/creation-ui-react _publish",
     "export": "next export"
   },
