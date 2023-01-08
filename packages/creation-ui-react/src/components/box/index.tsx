@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { BoxProps } from './box.types'
+import type { BoxProps } from './box.types'
 
 const box = cva([], {
   variants: {

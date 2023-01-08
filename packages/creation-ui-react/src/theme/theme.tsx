@@ -1,6 +1,6 @@
-import React, { createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
 import theme from './theme.default'
-import { ThemeProps, ThemeProviderProps } from './theme.types'
+import type { ThemeProps, ThemeProviderProps } from './theme.types'
 
 export const ThemeCtx = createContext<ThemeProps>(theme)
 

@@ -1,7 +1,7 @@
 import { Icon } from '../'
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
-import { DatePickerProps } from './date-picker.types'
+import type { DatePickerProps } from './date-picker.types'
 
 // import 'react-datepicker/dist/react-datepicker.css'
 import '!style-loader!css-loader!./date-picker.css'

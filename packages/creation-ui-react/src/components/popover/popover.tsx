@@ -2,7 +2,7 @@ import { Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React from 'react'
 import { isBrowser } from '../../utils/functions'
-import { PopoverProps } from './popover.types'
+import type { PopoverProps } from './popover.types'
 
 export default function Popover({
   className,

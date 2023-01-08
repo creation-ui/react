@@ -1,6 +1,6 @@
 import { useTheme } from '../../theme'
 import { loader, loaderIcon } from './classes'
-import { LoaderProps } from './loader.types'
+import type { LoaderProps } from './loader.types'
 
 export const Loader = (props: LoaderProps) => {
   const { size: defaultSize } = useTheme()

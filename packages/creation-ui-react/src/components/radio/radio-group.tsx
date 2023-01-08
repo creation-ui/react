@@ -1,8 +1,8 @@
-import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ErrorText } from '../'
-import { RadioGroupProps } from './types'
-import { label, text, input, shared, inputContainer } from '../../classes'
+import { inputContainer, label, text } from '../../classes'
+import { useTheme } from '../../theme'
+import type { RadioGroupProps } from './types'
 
 const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {
   const { size: defaultSize } = useTheme()

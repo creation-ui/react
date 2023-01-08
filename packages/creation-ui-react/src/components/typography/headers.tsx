@@ -1,6 +1,6 @@
 import React from 'react'
-import { ClassName, ElementTypography } from '../../types'
-import { ElementType } from 'react'
+import type { ClassName, ElementTypography } from '../../types'
+import type { ElementType } from 'react'
 import { typography } from './classes'
 
 export interface TypographyProps extends React.ComponentProps<any> {

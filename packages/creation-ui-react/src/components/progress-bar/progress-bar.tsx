@@ -1,6 +1,6 @@
 import { useTheme } from '../../theme'
 import clsx from 'clsx'
-import { ProgressBarProps } from './progress-bar.types'
+import type { ProgressBarProps } from './progress-bar.types'
 import { cva } from 'class-variance-authority'
 
 const classes = {

@@ -1,5 +1,5 @@
-import React from 'react'
-import { ElementSize } from '../../types'
+import type React from 'react'
+import type { ElementSize } from '../../types'
 
 export interface SwitchProps {
   id?: string

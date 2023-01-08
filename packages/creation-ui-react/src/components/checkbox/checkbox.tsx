@@ -2,7 +2,7 @@ import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
-import { CheckboxProps } from './checkbox.types'
+import type { CheckboxProps } from './checkbox.types'
 import { checkbox } from './classes'
 import { label, text, input, shared, inputContainer } from '../../classes'
 

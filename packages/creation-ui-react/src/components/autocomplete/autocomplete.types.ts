@@ -1,5 +1,9 @@
-import { AutocompleteOptionsType, ClassName, ElementSize } from '../../types'
-import React from 'react'
+import type {
+  AutocompleteOptionsType,
+  ClassName,
+  ElementSize,
+} from '../../types'
+import type React from 'react'
 
 export interface AutocompleteProps {
   /**

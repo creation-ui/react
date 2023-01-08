@@ -1,6 +1,6 @@
-import { ClassName } from '../../types'
-import React from 'react'
-import Stick from 'react-stick'
+import type { ClassName } from '../../types'
+import type React from 'react'
+import type Stick from 'react-stick'
 
 type StickProps = React.ComponentProps<typeof Stick>
 

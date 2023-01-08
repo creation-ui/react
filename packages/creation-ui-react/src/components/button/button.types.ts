@@ -1,5 +1,5 @@
-import React from 'react'
-import { Colors, ElementSize, ElementVariants } from '../../types'
+import type React from 'react'
+import type { Colors, ElementSize, ElementVariants } from '../../types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**

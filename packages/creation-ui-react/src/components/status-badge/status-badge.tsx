@@ -1,6 +1,6 @@
 import { useTheme } from '../../theme'
 import clsx from 'clsx'
-import { StatusBadgeProps } from './status-badge.types'
+import type { StatusBadgeProps } from './status-badge.types'
 import { badge } from './classes'
 import { text } from '../../classes'
 

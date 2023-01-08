@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useLocalStorage } from '../../hooks'
-import { ElementTheme } from '../../types'
-import { AnimationProperties, DarkModeToggleProps } from './'
+import type { ElementTheme } from '../../types'
+import type { AnimationProperties, DarkModeToggleProps } from './'
 
 export const defaultProperties: AnimationProperties = {
   dark: {

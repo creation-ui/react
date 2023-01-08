@@ -1,11 +1,11 @@
 import { Switch as HSwitch } from '@headlessui/react'
-import { useTheme } from '../../theme'
 import clsx from 'clsx'
-import { SwitchProps } from './switch.types'
-import { label, text, input, shared, inputContainer } from '../../classes'
+import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
-import { switchCircle, switchClasses } from './classes'
+import { useTheme } from '../../theme'
 import { checkbox } from '../checkbox/classes'
+import { switchCircle, switchClasses } from './classes'
+import type { SwitchProps } from './switch.types'
 
 const Switch = ({ checked, ...props }: SwitchProps) => {
   const { size: defaultSize } = useTheme()

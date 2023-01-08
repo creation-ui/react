@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { IconProps } from './icon.type'
+import type { IconProps } from './icon.type'
 
 import '!style-loader!css-loader!./icon.css'
 

@@ -3,7 +3,7 @@ import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { TextAreaProps } from './textarea.types'
+import type { TextAreaProps } from './textarea.types'
 import { label, text, input, shared, inputContainer } from '../../classes'
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(

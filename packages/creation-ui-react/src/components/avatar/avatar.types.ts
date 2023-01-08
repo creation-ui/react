@@ -1,5 +1,5 @@
-import React from 'react'
-import { ClassName, ElementPlacement, ElementSize } from '../../types'
+import type React from 'react'
+import type { ClassName, ElementPlacement, ElementSize } from '../../types'
 
 export const AVATAR_VARIANTS = ['circle', 'rounded', 'square'] as const
 

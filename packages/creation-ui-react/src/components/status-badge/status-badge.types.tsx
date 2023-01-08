@@ -1,4 +1,4 @@
-import { ElementSize, ElementStatus } from '../../types'
+import type { ElementSize, ElementStatus } from '../../types'
 
 export interface StatusBadgeProps {
   /**

@@ -1,9 +1,9 @@
 import { RadioGroup } from '@headlessui/react'
-import { useTheme } from '../../theme'
 import clsx from 'clsx'
-import { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
-import { label, text, input, shared, inputContainer } from '../../classes'
+import { inputContainer, label, text } from '../../classes'
+import { useTheme } from '../../theme'
 import { toggleGroup } from './classes'
+import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
 
 const ToggleGroup = (props: ToggleGroupProps) => {
   const { size: defaultSize } = useTheme()

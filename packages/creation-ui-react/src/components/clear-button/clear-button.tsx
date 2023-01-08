@@ -1,4 +1,5 @@
-import { Icon, IconProps } from '../'
+import { Icon } from '../'
+import type { IconProps } from '../'
 import clsx from 'clsx'
 
 const classes = [

@@ -1,7 +1,6 @@
+import type React from 'react'
 import { Icon } from '../'
-import { AutocompleteOptionsType, SelectOptionsType } from '../../types'
-import clsx from 'clsx'
-import React from 'react'
+import type { AutocompleteOptionsType, SelectOptionsType } from '../../types'
 import { selectOption, selectOptionIcon } from './classes'
 
 interface SelectOptionProps {

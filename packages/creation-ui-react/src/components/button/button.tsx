@@ -2,7 +2,7 @@ import React from 'react'
 import { Loader } from '../'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { ButtonProps } from './button.types'
+import type { ButtonProps } from './button.types'
 import { button } from './classes'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

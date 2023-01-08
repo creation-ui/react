@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { tooltip } from './classes'
-import { TooltipProps } from './tooltip.types'
+import type { TooltipProps } from './tooltip.types'
 
 const Tooltip = (props: TooltipProps) => {
   const { className, position = 'top', children, content, ...rest } = props

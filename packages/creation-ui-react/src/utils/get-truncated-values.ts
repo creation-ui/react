@@ -1,4 +1,4 @@
-import { MultipleEllipsisFormatter, SelectOptionsType } from '../types'
+import type { MultipleEllipsisFormatter, SelectOptionsType } from '../types'
 import { formatOptionValue } from './format-option-value'
 
 export const getTruncatedMultipleValues = (

@@ -3,7 +3,7 @@ import { useTheme } from '../../theme'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
 import { Loader, ErrorText } from '../'
-import { InputProps } from './input.types'
+import type { InputProps } from './input.types'
 import { label, text, input, shared, inputContainer } from '../../classes'
 
 const Input = forwardRef<HTMLInputElement, InputProps>(

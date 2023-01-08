@@ -1,5 +1,5 @@
-import { LoaderProps } from '../loader/loader.types'
-import { OverlayProps } from '../overlay/overlay.types'
+import type { LoaderProps } from '../loader/loader.types'
+import type { OverlayProps } from '../overlay/overlay.types'
 
 export interface LoadingOverlayProps
   //

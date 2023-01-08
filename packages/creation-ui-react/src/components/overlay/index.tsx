@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
 import { overlay } from './classes'
-import { OverlayProps } from './overlay.types'
+import type { OverlayProps } from './overlay.types'
 
 export const Overlay = ({ active, onClick, className }: OverlayProps) => {
   const { zIndex } = useTheme()

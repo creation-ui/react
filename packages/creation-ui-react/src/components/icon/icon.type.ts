@@ -1,6 +1,6 @@
-import { ClassName } from '../../types'
-import { HTMLProps } from 'react'
-import { icons } from './list-of-icons'
+import type { ClassName } from '../../types'
+import type { HTMLProps } from 'react'
+import type { icons } from './list-of-icons'
 
 export interface IconProps
   extends Omit<HTMLProps<HTMLDivElement>, 'className'> {

@@ -3,7 +3,7 @@ import { useTheme } from '../../theme'
 import { useId } from '../../hooks'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { RadioProps } from './types'
+import type { RadioProps } from './types'
 import { label, text, input, shared, inputContainer } from '../../classes'
 import { radio } from './classes'
 

@@ -5,12 +5,12 @@ import { ClearButton, DropdownChevron, ErrorText, SelectOption } from '../'
 import { input, inputContainer, label, text } from '../../classes'
 import useId from '../../hooks/use-id'
 import { useTheme } from '../../theme'
-import { MultipleEllipsisFormatter } from '../../types'
 import { formatOptionValue } from '../../utils/format-option-value'
 import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { select } from './classes'
-import { SelectProps } from './select.types'
+import type { SelectProps } from './select.types'
+import type { MultipleEllipsisFormatter } from '../../types'
 
 const Select = (props: SelectProps) => {
   const { size: defaultSize, zIndex } = useTheme()

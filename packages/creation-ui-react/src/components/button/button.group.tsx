@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ButtonGroupProps } from './button.types'
+import type { ButtonGroupProps } from './button.types'
 // @ts-ignore
 import styles from './button-group.module.css'
 

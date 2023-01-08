@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { forwardRef } from 'react'
-import AvatarProps from './avatar.types'
+import type AvatarProps from './avatar.types'
 import { avatar } from './classes'
 
 const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {

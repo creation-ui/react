@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { CommitInfo } from '../../types'
+import type { CommitInfo } from '../../types'
 
 interface VersionProps {
   classNameOverride?: string

@@ -1,4 +1,4 @@
-import { ClassName, ElementSize } from '../../types'
+import type { ClassName, ElementSize } from '../../types'
 
 export interface ProgressBarProps {
   /**

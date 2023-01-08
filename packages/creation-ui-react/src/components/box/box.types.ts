@@ -1,4 +1,4 @@
-import { ClassName } from '../../types'
+import type { ClassName } from '../../types'
 
 export interface BoxProps {
   children?: React.ReactNode

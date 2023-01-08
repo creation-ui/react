@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { Overlay } from '../'
 import { useTheme } from '../../theme'
 import { child, drawer, drawerAnimation } from './classes'
-import { DrawerProps } from './drawer.types'
+import type { DrawerProps } from './drawer.types'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
