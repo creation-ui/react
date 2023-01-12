@@ -1,84 +1,25 @@
 {
+  "include": ["src"],
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "noImplicitAny": false,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "incremental": false,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "types": [
-      "react/next",
-      "react-dom/next",
-      "mdx"
-    ],
-    "rootDir": ".",
+    "importsNotUsedAsValues": "error",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "strict": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "noUncheckedIndexedAccess": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "build",
+    "declarationMap": true,
     "baseUrl": ".",
-    "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@components": [
-        "./components"
-      ],
-      "@examples/*": [
-        "./components/examples/*"
-      ],
-      "@examples": [
-        "./components/examples"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@pages": [
-        "pages"
-      ],
-      "@models/*": [
-        "./models/*"
-      ],
-      "@models": [
-        "./models"
-      ],
-      "@root/*": [
-        "./*"
-      ],
-      "@root": [
-        "./"
-      ],
-      "@creation-ui/react": [
-        "./packages/creation-ui-react/src"
-      ],
-      "@creation-ui/react/*": [
-        "./packages/creation-ui-react/src/*"
-      ]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "theme.config.tsx",
-    "pages/index.mdx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "typeRoots": ["./node_modules/@types"]
+  }
 }

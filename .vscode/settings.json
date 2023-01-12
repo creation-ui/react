@@ -8,6 +8,4 @@
     "**/Thumbs.db": true,
     "**/node_modules": true
   },
-  "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.3/node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
 }
