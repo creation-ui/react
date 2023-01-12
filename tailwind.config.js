@@ -6,9 +6,7 @@ module.exports = withTailwindConfig({
     //
     '!./packages/**/*/node_modules/**/*',
     '!node_modules/**/*',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './packages/**/*.{js,ts,jsx,tsx,mdx,css}',
-    '*.css'
+    './**/*.{js,ts,jsx,tsx,mdx}',
+    '*.css',
   ],
 })

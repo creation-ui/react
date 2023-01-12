@@ -1,10 +1,71 @@
 import clsx from 'clsx'
 import type { IconProps } from './icon.type'
 
-import './icon.css'
+// import './icon.css'
 
 const Icon = ({ icon, className }: IconProps) => {
-  return <i className={clsx(['material-icons'], className)}>{icon}</i>
+  return (
+    <>
+      <style>{`
+        @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(https://fonts.gstatic.com/s/materialicons/v135/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+            format('woff2');
+        }
+
+        .material-icons {
+          font-family: 'Material Icons';
+          font-weight: normal;
+          font-style: normal;
+          font-size: inherit;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          -moz-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+          -moz-osx-font-smoothing: grayscale;
+          font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Rules for sizing the icon. */
+        .material-icons.md-18 {
+          font-size: 18px;
+        }
+        .material-icons.md-24 {
+          font-size: 24px;
+        }
+        .material-icons.md-36 {
+          font-size: 36px;
+        }
+        .material-icons.md-48 {
+          font-size: 48px;
+        }
+
+        /* Rules for using icons as black on a light background. */
+        .material-icons.md-dark {
+          color: rgba(0, 0, 0, 0.54);
+        }
+        .material-icons.md-dark.md-inactive {
+          color: rgba(0, 0, 0, 0.26);
+        }
+
+        /* Rules for using icons as white on a dark background. */
+        .material-icons.md-light {
+          color: rgba(255, 255, 255, 1);
+        }
+        .material-icons.md-light.md-inactive {
+          color: rgba(255, 255, 255, 0.3);
+        }
+      `}</style>
+      <i className={clsx(['material-icons'], className)}>{icon}</i>
+    </>
+  )
 }
 
 export default Icon

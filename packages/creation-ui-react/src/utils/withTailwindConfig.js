@@ -11,7 +11,7 @@ const twColors = require('tailwindcss/colors')
 const creationUiConfig = {
   darkMode: 'class',
   content: [
-    './node_modules/@creation-ui/react/components/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: { ...twColors, ...colors },
