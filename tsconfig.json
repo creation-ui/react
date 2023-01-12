@@ -1,7 +1,13 @@
 {
-  "include": ["src"],
+  "include": [
+    "src"
+  ],
   "compilerOptions": {
-    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2021",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "incremental": false,
     "isolatedModules": true,
     "importsNotUsedAsValues": "error",
@@ -20,6 +26,8 @@
     "outDir": "build",
     "declarationMap": true,
     "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   }
 }
