@@ -6,6 +6,7 @@ import { useTheme } from '../../theme'
 import type { DatePickerProps } from './date-picker.types'
 import { ErrorText, Loader } from '..'
 import { input, inputContainer, label, shared, text } from '../../classes'
+import React from 'react'
 
 const iconClasses = 'w-5 h-5 text-gray-600 cursor-pointer'
 
