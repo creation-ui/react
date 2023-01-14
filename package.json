@@ -1,27 +1,25 @@
 {
   "name": "@creation-ui/react",
   "homepage": "https://creation-ui.com",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "@creation-ui/react is an easy-to-use components library for ReactJS & Tailwind CSS.",
   "repository": "https://github.com/creativetimofficial/creation-ui",
   "license": "MIT",
-  "main": "build/index.js",
-  "typings": "build/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "build"
-  ],
   "scripts": {
     "build:cjs": "swc ./src -d ./build --only ./src/**/*.ts --config-file .swcrc",
     "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
     "copy": "cp ./package.json ./build && cp ./README.md ./build && cp ./LICENSE ./build",
-    "build": "pnpm build:cjs && pnpm build:dts && pnpm copy",
+    "build": "yarn build:cjs && yarn build:dts && yarn copy && yarn build:version",
     "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
     "prettier:check": "prettier -c .",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
-    "_publish": "npm publish --registry https://registry.npmjs.org --access public"
+    "_publish": "cd build && npm publish --registry https://registry.npmjs.org --access public",
+    "build:version": "echo $(cat ./build/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
