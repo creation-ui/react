@@ -19,7 +19,9 @@
     "prettier:check": "prettier -c .",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
     "_publish": "cd build && npm publish --registry https://registry.npmjs.org --access public",
-    "build:version": "echo $(cat ./build/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+    "build:version": "echo $(cat ./build/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')",
+    "release": "yarn build && yarn _publish",
+    "amend": "git commit --amend --no-edit"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
