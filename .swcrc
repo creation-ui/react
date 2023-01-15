@@ -9,6 +9,17 @@
       "react": {
         "runtime": "automatic"
       }
+    },
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-styled-components",
+          {
+            "displayName": true,
+            "ssr": true
+          }
+        ]
+      ]
     }
   },
   "module": {

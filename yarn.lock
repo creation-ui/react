@@ -419,6 +419,11 @@
     "@swc/core-win32-ia32-msvc" "1.3.26"
     "@swc/core-win32-x64-msvc" "1.3.26"
 
+"@swc/plugin-styled-components@^1.5.36":
+  version "1.5.36"
+  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-1.5.36.tgz#e735eb9042d864c13af364ef3854449740b984dc"
+  integrity sha512-kvgEKBNWb1v6GI0gL7xlyFy671Jva7J2l8Adm8tOoRSHnH0Xwp4ITpkshKiMDnF1LfTBFsC2XRqqUgLY2TrXOA==
+
 "@tailwindcss/aspect-ratio@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz#9ffd52fee8e3c8b20623ff0dcb29e5c21fb0a9ba"
