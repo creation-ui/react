@@ -10,7 +10,7 @@ const twColors = require('tailwindcss/colors')
 
 const creationUiConfig = {
   darkMode: 'class',
-  content: ['./node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx}'],
+  content: ['node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: { ...twColors, ...colors },
     fontFamily: typography,
