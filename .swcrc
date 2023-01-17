@@ -1,18 +1,10 @@
 {
   "minify": true,
   "jsc": {
-    "parser": [
-      {
-        "syntax": "typescript",
-        "tsx": true
-      },
-      {
-        "test": ".*\\.css",
-        "module": {
-          "type": "commonjs"
-        }
-      }
-    ],
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true
+    },
     "keepClassNames": true,
     "transform": {
       "react": {
@@ -22,6 +14,5 @@
   },
   "module": {
     "type": "commonjs"
-  },
-  "sourceMaps": true
+  }
 }
