@@ -1,28 +1,27 @@
 {
   "minify": true,
   "jsc": {
-    "parser": {
-      "syntax": "typescript",
-      "tsx": true
-    },
+    "parser": [
+      {
+        "syntax": "typescript",
+        "tsx": true
+      },
+      {
+        "test": ".*\\.css",
+        "module": {
+          "type": "commonjs"
+        }
+      }
+    ],
+    "keepClassNames": true,
     "transform": {
       "react": {
         "runtime": "automatic"
       }
-    },
-    "experimental": {
-      "plugins": [
-        [
-          "@swc/plugin-styled-components",
-          {
-            "displayName": true,
-            "ssr": true
-          }
-        ]
-      ]
     }
   },
   "module": {
     "type": "commonjs"
-  }
+  },
+  "sourceMaps": true
 }

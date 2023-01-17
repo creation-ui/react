@@ -6,8 +6,8 @@ import { useTheme } from '../../theme'
 import type { DatePickerProps } from './date-picker.types'
 import { ErrorText, Loader } from '..'
 import { input, inputContainer, label, shared, text } from '../../classes'
+import './index.css'
 import React from 'react'
-import { DatePickerStyles } from './styled'
 
 const iconClasses = 'w-5 h-5 text-gray-600 cursor-pointer'
 
@@ -41,7 +41,7 @@ const DatePicker = (props: DatePickerProps) => {
         children={props.label}
         aria-label={props.label?.toString()}
       />
-     <DatePickerStyles>
+
       <ReactDatePicker
         {...rest}
         id={componentId}
@@ -52,7 +52,6 @@ const DatePicker = (props: DatePickerProps) => {
         })}
         aria-readonly={!!props.readOnly}
       />
-      </DatePickerStyles>
       {loading && <Loader className={clsx(shared.loaderInputPosition)} />}
       <ErrorText error={error} />
     </div>
