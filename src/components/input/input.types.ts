@@ -3,6 +3,11 @@ import type { ElementSize, ElementVariants } from '../../types'
 
 export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> & {
   /**
+   * Input type
+   * @default input
+   */
+  as: any,
+  /**
    * Is button loading?
    */
   loading?: boolean
