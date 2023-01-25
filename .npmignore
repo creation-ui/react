@@ -14,3 +14,4 @@ build/*
 /coverage
 /.nyc_output
 .babelrc
+./stats.html
