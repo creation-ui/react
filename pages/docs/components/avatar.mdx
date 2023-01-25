@@ -1,0 +1,158 @@
+# Avatar
+
+import { Avatar, AVATAR_VARIANTS } from '@creation-ui/react'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import PropsTable from '@components/props-table'
+import {
+  properties,
+  badgeProperties,
+  placementProperties,
+} from '@examples/avatar'
+
+```tsx copy
+import { Avatar } from '@creation-ui/react'
+;<Avatar src='...' alt='John Doe' />
+```
+
+export const defaultProps = {
+  variant: 'circle',
+  size: 'sm',
+  src: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80',
+  alt: 'avatar',
+}
+
+# Avatar
+
+<Avatar {...defaultProps} />
+
+## Sizes
+
+This component supports 3 different sizes `sm`, `md`, `lg`:
+
+<UnfoldVariants
+  component={Avatar}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  componentProps={defaultProps}
+/>
+
+## Shapes
+
+This component supports 3 different shapes `circle`, `square` and `rounded`:
+
+<UnfoldVariants
+  component={Avatar}
+  variants={AVATAR_VARIANTS}
+  prop='variant'
+  componentProps={defaultProps}
+/>
+
+## Notifications badges
+
+### Only dot
+
+<Avatar    {...defaultProps}
+      variant={'circle'}
+      size={'md'}
+      badge={{
+        type:'dot',
+        placement: {
+           horizontal: 'right',
+           vertical: 'top',
+        }
+        }
+      }
+
+/>
+
+### With 5 notifications
+
+<Avatar    {...defaultProps}
+      variant={'square'}
+      size={'md'}
+      badge={{
+        type: 'dot',
+        pulse: true,
+        placement: {
+           horizontal: 'right',
+           vertical: 'top',
+           count:5,
+           type:'count',
+        }
+        }
+      }
+
+/>
+
+### With 99 notifications
+
+<Avatar    {...defaultProps}
+      variant={'square'}
+      size={'md'}
+      badge={{
+        type: 'dot',
+        pulse: true,
+        placement: {
+           horizontal: 'left',
+           vertical: 'bottom',
+           count:99,
+           type:'count',
+           pulse: true
+        }
+        }
+      }
+
+/>
+
+### Square with 99 notifications pulsing
+
+<Avatar    {...defaultProps}
+      variant={'square'}
+      size={'md'}
+      badge={{
+        type: 'dot',
+        pulse: true,
+        placement: {
+           horizontal: 'left',
+           vertical: 'top',
+           count:99,
+           type:'count',
+           pulse: true
+        }
+        }
+      }
+
+/>
+
+### Circle with notification pulsing
+
+<Avatar
+  {...defaultProps}
+  variant={'circle'}
+  size={'sm'}
+  badge={{
+    type: 'dot',
+    pulse: true,
+    placement: { horizontal: 'right', vertical: 'top' },
+  }}
+/>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Avatar'
+  description='Avatar component props.'
+/>
+<PropsTable
+  properties={badgeProperties}
+  name='Badge'
+  description='Detailed props of "badge" Avatar props'
+/>
+<PropsTable
+  properties={placementProperties}
+  name='Placement'
+  description='Detailed props of "badge.placement" Avatar props'
+/>

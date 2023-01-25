@@ -1,0 +1,71 @@
+# Radio Group
+
+import { RadioGroupExample, properties } from '@examples/radio-group'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
+import PropsTable from '@components/props-table'
+
+Simple container for list of single-choice options
+
+```tsx copy
+import { useState } from 'react'
+import { Radio, RadioGroup, RadioGroupProps } from '@creation-ui/react'
+
+export const RadioGroupExample = ({ size }: RadioGroupProps) => {
+  const [selected, setSelected] = useState<string>('music')
+
+  const options = [
+    { label: 'Music', value: 'music' },
+    { label: 'Games', value: 'games' },
+    { label: 'Sports', value: 'sports' },
+    { label: 'Eating', value: 'eating' },
+    { label: 'Coding', value: 'coding' },
+    { label: 'Sleeping', value: 'sleeping' },
+  ]
+
+  const handleClick = e => setSelected(e.target.value)
+
+  return (
+    <RadioGroup size={size} label='Select your favorite activities'>
+      {options.map(option => (
+        <Radio
+          size={size}
+          label={option.label}
+          onClick={handleClick}
+          value={option.value}
+          checked={selected === option.value}
+        />
+      ))}
+    </RadioGroup>
+  )
+}
+```
+
+<Container>
+  <RadioGroupExample label='Radio option' />
+</Container>
+
+## Sizes
+
+This component supports `size` prop with values `sm`, `md`, `lg`:
+
+<UnfoldVariants
+  component={RadioGroupExample}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  nameProp='label'
+/>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Radio'
+  description={
+    <>
+      Rest of the props are the same as for the native <code>input</code>{' '}
+      component.
+    </>
+  }
+/>

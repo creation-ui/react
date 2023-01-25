@@ -1,0 +1,117 @@
+# Autocomplete
+
+Autocomplete component is using `Combobox` component from
+[headless ui](https://headlessui.com/react/combobox) library.
+
+## Instalation
+
+import { Tab, Tabs } from 'nextra-theme-docs'
+import { SCRIPTS_TABS } from '../../../constants'
+
+<Tabs items={SCRIPTS_TABS}>
+  <Tab>
+    ```bash copy yarn add @creation-ui/react @creation-ui/autocomplete ```
+  </Tab>
+  <Tab>```bash copy npm i @creation-ui/react @creation-ui/autocomplete ```</Tab>
+</Tabs>
+
+## Usage
+
+## Basic usage example
+
+```tsx copy
+import { Autocomplete } from '@creation-ui/react'
+
+const [Autocompleteion, setAutocompleteion] = useState<Option | never>()
+
+return (
+  <Autocomplete
+    size='sm'
+    options={options}
+    label={'Autocomplete'}
+    value={Autocompleteion}
+    onChange={setAutocompleteion}
+  />
+)
+```
+
+import {
+  AutocompleteExample,
+  properties,
+  AutocompleteOptionType,
+  AutocompleteOptionComponent,
+  AutocompleteMultipleExample,
+} from '@examples/Autocomplete'
+import PropsTable from '@components/props-table'
+import { Description } from '@components/typography'
+
+<div className='flex flex-col gap-3'>
+  <AutocompleteExample size='sm' label='Small input' />
+  <AutocompleteExample size='md' label='Medium input' />
+  <AutocompleteExample size='lg' label='Large input' />
+</div>
+
+## Autocompleteing multiple options
+
+In this example, we are using the `multiple` prop to allow Autocompleteing multiple options.
+
+<br />
+<AutocompleteMultipleExample
+  clearable
+  clearableButtonText='Clear Autocompleteion'
+/>
+<br />
+Because of the usage of the Listbox component under the hood, the `value` and `onChange`
+props change the signature:{' '}
+
+| Property | `!multiple` | `multiple`    |
+| -------- | ----------- | ------------- |
+| value    | `T`         | `T[]`         |
+| onChange | `T => void` | `T[] => void` |
+
+For details see [properties table](#onChange)
+
+## Error state
+
+```js copy
+
+const [Autocompleteion, setAutocompleteion] = useState<Option | never>()
+
+  return (
+    <Autocomplete
+      clearable
+      clearableButtonText="Clear Autocompleteion"
+      options={options}
+      label={'With error'}
+      value={Autocompleteion}
+      onChange={setAutocompleteion}
+      error={'You must Autocomplete an option'}
+    />
+  )
+
+```
+
+<AutocompleteExample
+  error='You must Autocomplete an option'
+  label='With error'
+/>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Autocomplete'
+  description='The main Autocomplete component.'
+/>
+
+<PropsTable
+  properties={AutocompleteOptionComponent}
+  name='AutocompleteOption'
+  description='The default Autocomplete option component.'
+/>
+<PropsTable
+  properties={AutocompleteOptionType}
+  name='AutocompleteOptionsType'
+  description='Default shape of options. Might be ignored in favor of `any`'
+/>
+

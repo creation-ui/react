@@ -1,0 +1,73 @@
+# Icons
+
+Material icons
+
+import { Icon, icons } from '@creation-ui/react'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { properties, IconExample } from '@examples/icon'
+import PropsTable from '@components/props-table'
+import { Container } from '@components/container'
+
+## About
+
+Icons are implemented as Google Fonts icons. Implementation is identical as in the official [documentation](https://developers.google.com/fonts/docs/material_icons).
+
+## Size
+
+Icon will respond to changing the font size e.g. tailwinds's `text-2xl` or by assigning the official material design size classes:
+
+| class name | size | icon                                            |
+| ---------- | ---- | ----------------------------------------------- |
+| md-18      | 18px | <IconExample icon={'home'} className='md-18' /> |
+| md-24      | 24px | <IconExample icon={'home'} className='md-24' /> |
+| md-36      | 36px | <IconExample icon={'home'} className='md-36' /> |
+| md-48      | 48px | <IconExample icon={'home'} className='md-48' /> |
+
+## Color
+
+Icon is a font so it will respond to the color property e.g. tailwinds's `text-red-500` or by assigning the official material design color classes:
+
+```tsx copy
+<Icon icon={'home'} className='text-red-500 text-3xl hover:bg-red-200' />
+```
+
+<Container>
+  <Icon icon={'home'} className='text-red-500 text-3xl hover:bg-red-200' />
+</Container>
+
+## List of available icons
+
+<UnfoldVariants
+  component={IconExample}
+  variants={icons}
+  prop='icon'
+  nameProp='label'
+/>
+
+## Official icons availability
+
+`icon` property accepts only a specific set of strings that are actual icons' [names](https://fonts.google.com/icons). This was introduced to make an easier selection of icons and to avoid guess work.
+If you are sure that there is icon that you want to use and is not supported by this package you can pass it as property anyway.
+
+If you are using TypeScript you will get an error if you pass an icon that is not supported by this package.
+
+```tsx copy
+<Icon icon={'new_icon' as any}/>
+//or
+<Icon
+ //@ts-ignore
+ icon={'new_icon'}
+ />
+```
+
+## Component API
+
+For a full list of icons please refer to the official [Google Fonts](https://fonts.google.com/icons) documentation.
+
+<PropsTable
+  properties={properties}
+  name='Icon'
+  description={'Icon component props'}
+/>
+
+<Icon icon='home' className='text-blue-500 text-4xl' />

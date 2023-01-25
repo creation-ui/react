@@ -1,0 +1,39 @@
+# Loader
+
+Animated spinner for loading states
+
+import InstallationGuide from '@components/shared/installation-guide.mdx'
+
+<InstallationGuide />
+
+import { LoaderExample, properties } from '@examples/loader'
+import PropsTable from '@components/props-table'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES } from '@creation-ui/react'
+
+```tsx copy
+import { Loader } from '@creation-ui/react'
+
+<Loader />
+```
+
+<LoaderExample />
+
+## Sizes
+
+This component supports `size` prop with values `sm`, `md`, `lg`:
+
+<UnfoldVariants
+  component={LoaderExample}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  nameProp='label'
+/>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Loader'
+  description='Loader component props'
+/>

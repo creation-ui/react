@@ -1,0 +1,89 @@
+import { Button, ButtonGroup } from '@creation-ui/react'
+import { Container, properties } from '@components/container'
+import { ButtonGroupExample } from '@examples/button-group'
+import PropsTable from '@components/props-table'
+import Icon from '@mdi/react'
+import {
+  mdiFormatAlignCenter,
+  mdiFormatAlignLeft,
+  mdiFormatAlignRight,
+  mdiFormatAlignJustify,
+} from '@mdi/js'
+
+# Button Group
+
+```tsx copy
+import { Button, ButtonProps, ButtonGroup } from '@creation-ui/react'
+
+interface ButtonGroupExampleProps {
+  options?: string[]
+  variant?: ButtonProps['variant']
+}
+
+export const ButtonGroupExample = ({
+  options,
+  variant,
+}: ButtonGroupExampleProps) => {
+  return (
+    <ButtonGroup>
+      {options?.map(option => (
+        <Button variant={variant}>{option}</Button>
+      ))}
+    </ButtonGroup>
+  )
+}
+```
+
+`div` wrapper for buttons.
+
+<Container>
+  <ButtonGroupExample options={[1, 2, 3]} />
+</Container>
+
+## Togglable options
+
+```tsx copy
+<ButtonGroupExample
+  options={[
+    <Icon size={1} key={1} path={mdiFormatAlignLeft} />,
+    <Icon size={1} key={2} path={mdiFormatAlignCenter} />,
+    <Icon size={1} key={3} path={mdiFormatAlignRight} />,
+  ]}
+  variant='outlined'
+/>
+```
+
+<Container>
+  <ButtonGroupExample
+    options={[
+      <Icon size={1} key={1} path={mdiFormatAlignLeft} />,
+      <Icon size={1} key={2} path={mdiFormatAlignCenter} />,
+      <Icon size={1} key={3} path={mdiFormatAlignRight} />,
+    ]}
+    variant='outlined'
+  />
+</Container>
+
+## More than 3 options
+
+<Container>
+  <ButtonGroupExample
+    options={[
+    <Icon size={1} key={1} path={mdiFormatAlignLeft}/>,
+    <Icon size={1} key={2} path={mdiFormatAlignCenter}/>,
+    <Icon size={1} key={3} path={mdiFormatAlignRight}/>,
+    <Icon size={1} key={4} path={mdiFormatAlignJustify}/>,
+    ]}
+    variant='outlined'
+
+/>
+
+</Container>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='ButtonGroup'
+  description={'ButtonGroup component props'}
+/>

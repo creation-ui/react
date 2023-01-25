@@ -1,0 +1,96 @@
+# Select
+
+Select component is using Listbox component from
+[headless ui](https://headlessui.com/react/listbox) library.
+
+## Basic usage example
+
+```js copy
+
+const [selection, setSelection] = useState<Option | never>()
+
+  return (
+    <Select
+      size='sm'
+      options={options}
+      label={'Select'}
+      value={selection}
+      onChange={setSelection}
+    />
+  )
+
+```
+
+import {
+  SelectExample,
+  properties,
+  selectOptionType,
+  selectOptionComponent,
+  SelectMultipleExample,
+} from '@examples/select'
+import PropsTable from '@components/props-table'
+import { Description } from '@components/typography'
+
+<div className='flex flex-col gap-3'>
+  <SelectExample size='sm' label='Small input' />
+  <SelectExample size='md' label='Medium input' />
+  <SelectExample size='lg' label='Large input' />
+</div>
+
+## Selecting multiple options
+
+In this example, we are using the `multiple` prop to allow selecting multiple options.
+
+<br />
+<SelectMultipleExample clearable clearableButtonText='Clear selection' />
+<br />
+Because of the usage of the Listbox component under the hood, the `value` and `onChange`
+props change the signature:{' '}
+
+| Property | `!multiple` | `multiple`    |
+| -------- | ----------- | ------------- |
+| value    | `T`         | `T[]`         |
+| onChange | `T => void` | `T[] => void` |
+
+For details see [properties table](#onChange)
+
+## Error state
+
+```js copy
+
+const [selection, setSelection] = useState<Option | never>()
+
+  return (
+    <Select
+      clearable
+      clearableButtonText="Clear selection"
+      options={options}
+      label={'With error'}
+      value={selection}
+      onChange={setSelection}
+      error={'You must select an option'}
+    />
+  )
+
+```
+
+<SelectExample error='You must select an option' label='With error' />
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Select'
+  description='The main Select component.'
+/>
+
+<PropsTable
+  properties={selectOptionComponent}
+  name='SelectOption'
+  description='The default select option component.'
+/>
+<PropsTable
+  properties={selectOptionType}
+  name='SelectOptionsType'
+  description='Default shape of options. Might be ignored in favor of `any`'
+/>
