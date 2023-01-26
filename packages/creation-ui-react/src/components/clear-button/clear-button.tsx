@@ -1,12 +1,13 @@
-import { Icon } from '..'
-import type { IconProps } from '..'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
+import type { IconProps } from '../icon'
+import { Icon } from '../icon'
 
 const classes = [
-  'text-zinc-400',
-  'hover:text-error-500',
+  'hover:fill-error-500',
+  'dark:hover:fill-error-500',
   'cursor-pointer',
   'select-none',
+  'z-0',
 ]
 
 const ClearButton = ({
@@ -17,7 +18,7 @@ const ClearButton = ({
   <Icon
     icon='close'
     onClick={onClick}
-    className={clsx(classes, className)}
+    className={twMerge(classes, className)}
     aria-hidden='true'
     {...props}
   />

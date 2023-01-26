@@ -12,12 +12,14 @@ import PropsTable from '@components/props-table'
 
 ```tsx copy
 import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
+import { mdiAbacus, mdiAlarm, mdiBedQueenOutline } from '@mdi/js'
+import Icon from '@mdi/react'
 
 export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
   const options = [
-    { value: '1', label: <Icon icon='3d_rotation' /> },
-    { value: '2', label: <Icon icon='access_alarms' /> },
-    { value: '3', label: <Icon icon='add_to_queue' /> },
+    { value: '1', label: <Icon path={mdiAbacus} size={0.9} /> },
+    { value: '2', label: <Icon path={mdiAlarm} size={0.9} /> },
+    { value: '3', label: <Icon path={mdiBedQueenOutline} size={0.9} /> },
   ]
 
   return <ToggleGroup size={size} options={options} label='Select option' />

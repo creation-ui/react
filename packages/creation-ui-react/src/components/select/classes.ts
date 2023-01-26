@@ -40,7 +40,7 @@ export const select = {
       'cursor-pointer',
     ],
     clear: ['pr-7'],
-    chevron: ['pr-2'],
+    chevron: ['pr-2', 'z-10'],
   },
   list: [
     'absolute',

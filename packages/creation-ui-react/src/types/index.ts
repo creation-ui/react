@@ -125,6 +125,7 @@ export const icons = [
   'chevron_right',
   'chevron_down',
   'close',
+  'check',
 ] as const
 
 export type IconType = (typeof icons)[number]

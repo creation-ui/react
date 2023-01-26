@@ -11,7 +11,7 @@ export const switchClasses = cva(
     'border-transparent',
     '!bg-zinc-300',
     '!dark:bg-zinc-700',
-    'rounded-full',
+    '!rounded-full',
     'border-2',
     'transition-all',
     'duration-300',

@@ -1,5 +1,7 @@
 import { Container } from '@components/container'
-import { Button, Icon } from '@creation-ui/react'
+import { Button } from '@creation-ui/react'
+import { mdiPlus, mdiRestore } from '@mdi/js'
+import Icon from '@mdi/react'
 import { useState } from 'react'
 
 export const QuickStartExample = () => {
@@ -13,7 +15,7 @@ export const QuickStartExample = () => {
       <Button
         //
         onClick={handleClick}
-        iconLeft={<Icon icon='add' />}
+        iconLeft={<Icon path={mdiPlus} size={1} />}
       >
         Clicks counter: {clicks}
       </Button>
@@ -22,7 +24,7 @@ export const QuickStartExample = () => {
         variant='outlined'
         onClick={resetCounter}
         disabled={clicks === 0}
-        iconLeft={<Icon icon='refresh' />}
+        iconLeft={<Icon path={mdiRestore} size={1} />}
       >
         Reset
       </Button>

@@ -1,5 +1,5 @@
 import type React from 'react'
-import { Icon } from '..'
+import { Icon } from '../icon'
 import type { AutocompleteOptionsType, SelectOptionsType } from '../../types'
 import { selectOption, selectOptionIcon } from './classes'
 
@@ -20,14 +20,10 @@ interface OptionElement {
 const OptionSingle = ({ selected, active, children: value }: OptionElement) => (
   <span className={selectOption({ selected, active })}>{value}</span>
 )
-const OptionMultiple = ({
-  selected,
-  active,
-  children: value,
-}: OptionElement) => (
+const OptionMultiple = ({ selected, active, children }: OptionElement) => (
   <span className={selectOption({ selected, active, multiple: true })}>
     <Icon icon='check' className={selectOptionIcon({ selected, active })} />
-    {value}
+    {children}
   </span>
 )
 
