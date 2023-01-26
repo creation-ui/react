@@ -2,6 +2,21 @@ import { cva } from 'class-variance-authority'
 
 export const sharedDisabledCVA = { true: ['opacity-50', 'cursor-not-allowed'] }
 
+const loaderClasses = cva(
+  ['absolute', 'top-0', 'right-0', 'transition-opacity', 'duration-300'],
+  {
+    variants: {
+      loading: {
+        true: ['opacity-100', 'pointer-events-auto'],
+        false: ['opacity-0', 'pointer-events-none'],
+      },
+    },
+    defaultVariants: {
+      loading: false,
+    },
+  }
+)
+
 export const shared = {
   error: {
     text: [
@@ -24,16 +39,7 @@ export const shared = {
     'select-none',
     'block',
   ],
-  loaderInputPosition: [
-    /*
-     * TODO: loader shouldn't be inside field. Maybe after label? Good for handling Radios, Checkboxes, etc.
-     */
-    'absolute',
-    'right-0',
-    'top-1/2',
-    'transform',
-    '-translate-y-1/2',
-  ],
+  loaderInputPosition: loaderClasses,
   input: [
     'border-zinc-400',
     'border',

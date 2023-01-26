@@ -38,6 +38,10 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
         children={props.label}
         aria-label={props.label?.toString()}
       />
+      <Loader
+        className={clsx(shared.loaderInputPosition({ loading }))}
+        size={size === 'lg' ? 'md' : 'sm'}
+      />
       <Component
         ref={ref}
         id={componentId}
@@ -46,7 +50,6 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
         {...(isInput && { type })}
         {...rest}
       />
-      {loading && <Loader className={clsx(shared.loaderInputPosition)} />}
       <ErrorText error={error} />
     </div>
   )

@@ -40,7 +40,7 @@ const DatePicker = (props: DatePickerProps) => {
         children={props.label}
         aria-label={props.label?.toString()}
       />
-
+      <Loader className={clsx(shared.loaderInputPosition({ loading }))} />
       <ReactDatePicker
         {...rest}
         id={componentId}
@@ -51,7 +51,6 @@ const DatePicker = (props: DatePickerProps) => {
         })}
         aria-readonly={!!props.readOnly}
       />
-      {loading && <Loader className={clsx(shared.loaderInputPosition)} />}
       <ErrorText error={error} />
     </div>
   )
