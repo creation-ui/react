@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
-import { Icon } from '..'
+import { Icon } from '../icon'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { DatePickerProps } from './date-picker.types'
@@ -44,11 +44,6 @@ const DatePicker = (props: DatePickerProps) => {
       <ReactDatePicker
         {...rest}
         id={componentId}
-        className={input({
-          size,
-          variant: props.variant,
-          className,
-        })}
         aria-readonly={!!props.readOnly}
       />
       <ErrorText error={error} />
