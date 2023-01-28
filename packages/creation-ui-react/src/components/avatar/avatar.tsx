@@ -4,11 +4,11 @@ import type AvatarProps from './avatar.types'
 import { avatar } from './classes'
 
 const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { size, variant, badge } = props
+  const { size, badge } = props
 
   return (
     <div ref={ref} className={clsx(avatar.container)}>
-      <img {...props} className={avatar.img({ size, variant })} />
+      <img {...props} className={avatar.img({ size })} />
       {props.badge && (
         <>
           <div
@@ -16,10 +16,18 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
               horizontal: badge?.placement?.horizontal,
               vertical: badge?.placement?.vertical,
               type: badge?.type,
+              color: badge?.color,
+              size,
             })}
           >
             <span>{props.badge?.count}</span>
-            <span className={avatar.pulse({ pulse: badge?.pulse })} />
+            <span
+              className={avatar.pulse({
+                pulse: badge?.pulse,
+                color: badge?.color,
+                size,
+              })}
+            />
           </div>
         </>
       )}
@@ -29,7 +37,6 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 
 Avatar.defaultProps = {
   size: 'md',
-  variant: 'circle',
 }
 
 export default Avatar

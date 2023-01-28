@@ -1,9 +1,9 @@
 import type React from 'react'
-import type { ClassName, ElementPlacement, ElementSize } from '../../types'
+import type { ClassName, Colors, ElementPlacement, ElementSize } from '../../types'
 
 export const AVATAR_VARIANTS = ['circle', 'rounded', 'square'] as const
 
-export type AvatarVariant = typeof AVATAR_VARIANTS[number]
+export type AvatarVariant = (typeof AVATAR_VARIANTS)[number]
 
 export type Badge = {
   /**
@@ -23,13 +23,13 @@ export type Badge = {
    * Badge notifications count
    */
   count?: number
+  /**
+   * Notifications color
+   */
+   color?: Colors
 }
 
 type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
-  /**
-   * What variant should button be ?
-   */
-  variant?: AvatarVariant
   /**
    * How large should the button be?
    */
@@ -42,5 +42,6 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
    * Notification badge
    */
   badge?: Badge
+
 }
 export default AvatarProps

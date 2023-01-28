@@ -22,11 +22,13 @@ export const ProgressBarAnimatedExample = ({ ...props }: ProgressBarProps) => {
   const onTick = () => setState(s => s + 1)
 
   useEffect(() => {
-    if (isRunning) {
+    if (isRunning && state < 100) {
       const interval = setInterval(() => onTick(), 200)
       return () => clearInterval(interval)
+    } else {
+      pause()
     }
-  }, [isRunning])
+  }, [isRunning, state])
 
   return (
     <Container>

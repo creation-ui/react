@@ -1,6 +1,6 @@
 # Avatar
 
-import { Avatar, AVATAR_VARIANTS } from '@creation-ui/react'
+import { Avatar } from '@creation-ui/react'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
@@ -38,104 +38,67 @@ This component supports 3 different sizes `sm`, `md`, `lg`:
   componentProps={defaultProps}
 />
 
-## Shapes
+## Notifications badges
 
-This component supports 3 different shapes `circle`, `square` and `rounded`:
+### Static dot only
 
 <UnfoldVariants
   component={Avatar}
-  variants={AVATAR_VARIANTS}
-  prop='variant'
-  componentProps={defaultProps}
-/>
-
-## Notifications badges
-
-### Only dot
-
-<Avatar    {...defaultProps}
-      variant={'circle'}
-      size={'md'}
-      badge={{
-        type:'dot',
-        placement: {
-           horizontal: 'right',
-           vertical: 'top',
-        }
-        }
-      }
-
+  variants={ELEMENT_SIZES}
+  prop='size'
+  componentProps={{
+    ...defaultProps,
+    badge: { type: 'dot', placement: { horizontal: 'right', vertical: 'top' } },
+  }}
 />
 
 ### With 5 notifications
 
-<Avatar    {...defaultProps}
-      variant={'square'}
-      size={'md'}
-      badge={{
-        type: 'dot',
-        pulse: true,
-        placement: {
-           horizontal: 'right',
-           vertical: 'top',
-           count:5,
-           type:'count',
-        }
-        }
-      }
-
+<UnfoldVariants
+  component={Avatar}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  componentProps={{
+    ...defaultProps,
+    badge: {
+      type: 'count',
+      pulse: true,
+      placement: { horizontal: 'right', vertical: 'top' },
+      count: 5,
+    },
+  }}
 />
 
 ### With 99 notifications
 
-<Avatar    {...defaultProps}
-      variant={'square'}
-      size={'md'}
-      badge={{
-        type: 'dot',
-        pulse: true,
-        placement: {
-           horizontal: 'left',
-           vertical: 'bottom',
-           count:99,
-           type:'count',
-           pulse: true
-        }
-        }
-      }
-
-/>
-
-### Square with 99 notifications pulsing
-
-<Avatar    {...defaultProps}
-      variant={'square'}
-      size={'md'}
-      badge={{
-        type: 'dot',
-        pulse: true,
-        placement: {
-           horizontal: 'left',
-           vertical: 'top',
-           count:99,
-           type:'count',
-           pulse: true
-        }
-        }
-      }
-
+<UnfoldVariants
+  component={Avatar}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  componentProps={{
+    ...defaultProps,
+    badge: {
+      type: 'count',
+      placement: { horizontal: 'right', vertical: 'top' },
+      count: 99,
+    },
+  }}
 />
 
 ### Circle with notification pulsing
 
-<Avatar
-  {...defaultProps}
-  variant={'circle'}
-  size={'sm'}
-  badge={{
-    type: 'dot',
-    pulse: true,
-    placement: { horizontal: 'right', vertical: 'top' },
+<UnfoldVariants
+  component={Avatar}
+  variants={ELEMENT_SIZES}
+  prop='size'
+  componentProps={{
+    ...defaultProps,
+    badge: {
+      color: 'primary',
+      type: 'dot',
+      pulse: true,
+      placement: { horizontal: 'right', vertical: 'top' },
+    },
   }}
 />
 
