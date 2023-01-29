@@ -1,8 +1,8 @@
 import type { SVGElementProps } from './icon.type'
 
-export const ChevronDown = ({ title, ...props }: SVGElementProps) => (
+export const Straight = ({ title = 'straight', ...props }: SVGElementProps) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' {...props}>
     <title>{title}</title>
-    <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
+    <path d='M7.03 9.97H11.03V18.89L13.04 18.92V9.97H17.03L12.03 4.97Z' />
   </svg>
 )

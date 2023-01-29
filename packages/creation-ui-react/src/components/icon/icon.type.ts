@@ -1,4 +1,4 @@
-import type { HTMLProps } from 'react'
+import type { HTMLProps, SVGProps } from 'react'
 import type { ClassName, IconType } from '../../types'
 
 export interface IconProps
@@ -11,4 +11,8 @@ export interface IconProps
    * Additional class names
    */
   className?: ClassName
+}
+
+export interface SVGElementProps extends SVGProps<SVGSVGElement> {
+  title?: string
 }

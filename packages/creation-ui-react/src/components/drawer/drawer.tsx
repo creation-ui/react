@@ -30,6 +30,7 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
       >
         <Dialog
           unmount={false}
+          // @ts-ignore
           onClose={onClose}
           className={drawer({ className: [zIndex.modals], position })}
         >

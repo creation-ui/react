@@ -1,4 +1,4 @@
-import { Icon } from '..'
+import { Icon } from '../icon'
 import { Column, flexRender, Table } from '@tanstack/react-table'
 import clsx from 'clsx'
 import React from 'react'
