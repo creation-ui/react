@@ -1,7 +1,7 @@
 import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { mdiAbacus, mdiAlarm, mdiBedQueenOutline } from '@mdi/js'
-import Icon from '@mdi/react'
+import { Icon } from '@mdi/react'
 
 export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
   const options = [

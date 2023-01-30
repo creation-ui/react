@@ -8,6 +8,12 @@ const typography = require('../theme/base/typography')
 const breakpoints = require('../theme/base/breakpoints')
 const twColors = require('tailwindcss/colors')
 
+delete twColors['lightBlue']
+delete twColors['warmGray']
+delete twColors['trueGray']
+delete twColors['coolGray']
+delete twColors['blueGray']
+
 const creationUiConfig = {
   darkMode: 'class',
   content: ['node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx}'],

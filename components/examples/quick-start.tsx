@@ -1,7 +1,7 @@
 import { Container } from '@components/container'
 import { Button } from '@creation-ui/react'
 import { mdiPlus, mdiRestore } from '@mdi/js'
-import Icon from '@mdi/react'
+import { Icon } from '@mdi/react'
 import { useState } from 'react'
 
 export const QuickStartExample = () => {
