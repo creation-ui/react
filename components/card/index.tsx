@@ -1,5 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
+import React from 'react'
 
 import styles from './style.module.css'
 
@@ -9,7 +10,6 @@ export interface CardProps {
   icon?: React.ReactNode
   arrow?: boolean
   image?: string
-
   title: string
   href: string
 }
@@ -19,7 +19,6 @@ export function Card({
   title,
   icon,
   image,
-  arrow = false,
   href,
   ...props
 }: CardProps) {

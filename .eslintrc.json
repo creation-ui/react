@@ -35,7 +35,8 @@
     ],
     "react/require-default-props": "off",
     "no-param-reassign": "off",
-    "jsx-a11y/alt-text": "off"
+    "jsx-a11y/alt-text": "off",
+    "no-unused-vars": 1
   },
   "settings": {
     "react": {

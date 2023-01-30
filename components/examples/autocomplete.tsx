@@ -1,10 +1,14 @@
-import { Autocomplete, AutocompleteProps, ELEMENT_SIZES } from '@creation-ui/react'
+import {
+  Autocomplete,
+  AutocompleteProps,
+  ELEMENT_SIZES,
+} from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
 
-type Option = typeof options[0]
+type Option = (typeof options)[0]
 
 export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
   const [value, setValue] = useState<Option | never>(options[0])
@@ -26,8 +30,7 @@ export const AutocompleteMultipleExample = ({
   const [value, setValue] = useState<Option[]>([options[0], options[3]])
 
   const handleChange = (value: Option[]) => {
-    console.log({ value })
-    setValue(!!value ? value : [])
+    setValue(value ? value : [])
   }
 
   return (
