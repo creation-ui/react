@@ -69,7 +69,7 @@ Reusable helpers
 
 In development
 
-- [x] [Table](/docs/components/Table)
+- [ ] [Table](/docs/components/Table)
 - [ ] [Menu](/docs/components/Menu)
 - [ ] [Layout](/docs/components/Layout)
 - [ ] [Context Menu](/docs/components/context-menu)

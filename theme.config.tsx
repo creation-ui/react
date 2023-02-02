@@ -19,9 +19,9 @@ export default {
   editLink: {
     text: 'Edit this page on GitHub',
   },
-  feedback: {
-    link: 'Question? Give us feedback →',
-  },
+  // feedback: {
+  //   link: 'Question? Give us feedback →',
+  // },
   head: () => {
     const { asPath } = useRouter()
     const { frontMatter } = useConfig()

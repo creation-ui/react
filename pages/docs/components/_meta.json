@@ -1,9 +1,9 @@
 {
-  "autocomplete": "Autocomplete",
-  "avatar": "Avatar",
-  "button": "Button",
-  "checkbox": "Checkbox",
-  "date-picker": "Date picker",
-  "drawer": "Drawer",
-  "input": "Input"
+  "autocomplete": { "title": "Autocomplete" },
+  "avatar": { "title": "Avatar" },
+  "button": { "title": "Button" },
+  "checkbox": { "title": "Checkbox" },
+  "date-picker": { "title": "Date picker" },
+  "drawer": { "title": "Drawer" },
+  "input": { "title": "Input" }
 }

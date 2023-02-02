@@ -3,33 +3,33 @@
 Autocomplete component is using `Combobox` component from
 [headless ui](https://headlessui.com/react/combobox) library.
 
-## Usage
-
-```tsx copy
-import { Autocomplete } from '@creation-ui/react'
-
-const [Autocompleteion, setAutocompleteion] = useState<Option | never>()
-
-return (
-  <Autocomplete
-    size='sm'
-    options={options}
-    label={'Autocomplete'}
-    value={Autocompleteion}
-    onChange={setAutocompleteion}
-  />
-)
-```
-
 import {
   AutocompleteExample,
   properties,
   AutocompleteOptionType,
   AutocompleteOptionComponent,
   AutocompleteMultipleExample,
-} from '@examples/autocomplete'
+} from '@components/examples/autocomplete'
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
+
+## Usage
+
+```tsx copy
+import { Autocomplete } from '@creation-ui/react'
+
+const [option, setOption] = useState<Option | never>()
+
+return (
+  <Autocomplete
+    size='sm'
+    options={options}
+    label={'Autocomplete'}
+    value={option}
+    onChange={setOption}
+  />
+)
+```
 
 <div className='flex flex-col gap-3'>
   <AutocompleteExample size='sm' label='Small input' />
@@ -39,7 +39,7 @@ import { Description } from '@components/typography'
 
 ## Autocompleteing multiple options
 
-In this example, we are using the `multiple` prop to allow Autocompleteing multiple options.
+In this example, we are using the `multiple` prop to allow multiple options.
 
 <br />
 <AutocompleteMultipleExample
@@ -61,16 +61,16 @@ For details see [properties table](#onChange)
 
 ```js copy
 
-const [Autocompleteion, setAutocompleteion] = useState<Option | never>()
+const [option, setOption] = useState<Option | never>()
 
   return (
     <Autocomplete
       clearable
-      clearableButtonText="Clear Autocompleteion"
+      clearableButtonText="Clear"
       options={options}
       label={'With error'}
-      value={Autocompleteion}
-      onChange={setAutocompleteion}
+      value={option}
+      onChange={setOption}
       error={'You must Autocomplete an option'}
     />
   )
@@ -100,4 +100,3 @@ const [Autocompleteion, setAutocompleteion] = useState<Option | never>()
   name='AutocompleteOptionsType'
   description='Default shape of options. Might be ignored in favor of `any`'
 />
-

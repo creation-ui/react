@@ -1,5 +1,5 @@
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
-import { childrenProp, openProp } from '@examples/shared-props'
+import { childrenProp, openProp } from '@components/examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

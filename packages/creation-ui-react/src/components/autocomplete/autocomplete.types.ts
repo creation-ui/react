@@ -98,7 +98,7 @@ export interface AutocompleteProps {
   /**
    * Format of count of multiple selected to be displayed in input
    */
-  getLimitText: (more: number) => string
+  getLimitText?: (more: number) => string
   /**
    * Element size
    */

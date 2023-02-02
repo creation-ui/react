@@ -23,6 +23,7 @@ export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
     />
   )
 }
+
 export const AutocompleteMultipleExample = ({
   label = 'Autocomplete multiple',
   ...props

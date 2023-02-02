@@ -1,6 +1,6 @@
 # Input
 
-import { InputExample, properties } from '@examples/input'
+import { InputExample, properties } from '@components/examples/input'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
@@ -12,7 +12,6 @@ export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
 
   return (
     <Input
-      //
       onChange={e => setValue(e.target.value)}
       value={value}
       {...props}

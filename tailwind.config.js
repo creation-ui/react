@@ -3,8 +3,10 @@ const withTailwindConfig = require('./packages/creation-ui-react/src/utils/withT
 
 module.exports = withTailwindConfig({
   content: [
-    '!node_modules/**/*',
-    './**/*.{js,ts,jsx,tsx,mdx}',
-    '*.css',
+    //
+    './packages/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './styles/*.css',
   ],
 })
