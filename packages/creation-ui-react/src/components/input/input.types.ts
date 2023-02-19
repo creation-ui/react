@@ -6,7 +6,7 @@ export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> & {
    * Input type
    * @default input
    */
-  as: any,
+  as?: any,
   /**
    * Is button loading?
    */

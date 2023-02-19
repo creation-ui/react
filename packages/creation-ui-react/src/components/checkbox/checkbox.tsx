@@ -36,10 +36,12 @@ const Checkbox = (props: CheckboxProps) => {
 
   const disabled = props.disabled || props.readOnly
 
-  const containerClasses = clsx(
-    inputContainer({ disabled, error: !!error, layout: 'row' }),
-    text({ size })
-  )
+  const containerClasses = inputContainer({
+    disabled,
+    error: !!error,
+    layout: 'row',
+    className: text({ size }),
+  })
 
   return (
     <div className={containerClasses}>

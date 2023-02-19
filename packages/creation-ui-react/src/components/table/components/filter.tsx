@@ -1,56 +1,8 @@
-import { Icon } from '../icon'
-import { Column, flexRender, Table } from '@tanstack/react-table'
-import clsx from 'clsx'
+import type { Column, Table } from '@tanstack/react-table'
 import React from 'react'
+import DebouncedInput from './debounced-input'
 
-interface HeaderCellProps {
-  header: any
-  table: Table<any>
-}
-
-const HeaderCell = ({ header, table }: HeaderCellProps) => {
-  return (
-    <th colSpan={header.colSpan} scope='col' className='table--header'>
-      {header.isPlaceholder ? null : (
-        <>
-          <div
-            {...{
-              className: clsx(
-                'table--header--cell',
-                header.column.getCanSort()
-                  ? 'table--header--cell--sortable'
-                  : ''
-              ),
-              onClick: header.column.getToggleSortingHandler(),
-            }}
-          >
-            {flexRender(header.column.columnDef.header, header.getContext())}
-            {header.column.getIsSorted() && (
-              <Icon
-                icon='straight'
-                className={clsx(
-                  'table--header--sort-icon',
-                  header.column.getIsSorted() === 'desc' &&
-                    'table--header--sort-icon--desc'
-                )}
-                aria-hidden='true'
-              />
-            )}
-          </div>
-          {header.column.getCanFilter() ? (
-            <div>
-              <Filter column={header.column} table={table} />
-            </div>
-          ) : null}
-        </>
-      )}
-    </th>
-  )
-}
-
-export default HeaderCell
-
-function Filter({
+export default function Filter({
   column,
   table,
 }: {
@@ -124,35 +76,5 @@ function Filter({
       />
       <div className='h-1' />
     </>
-  )
-}
-
-// A debounced input react component
-function DebouncedInput({
-  value: initialValue,
-  onChange,
-  debounce = 500,
-  ...props
-}: {
-  value: string | number
-  onChange: (value: string | number) => void
-  debounce?: number
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) {
-  const [value, setValue] = React.useState(initialValue)
-
-  React.useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
-
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      onChange(value)
-    }, debounce)
-
-    return () => clearTimeout(timeout)
-  }, [value])
-
-  return (
-    <input {...props} value={value} onChange={e => setValue(e.target.value)} />
   )
 }

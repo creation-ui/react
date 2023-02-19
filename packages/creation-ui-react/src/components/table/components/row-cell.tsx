@@ -5,10 +5,11 @@ interface RowCellProps {
 }
 
 const RowCell = ({ row }: RowCellProps) => {
+  const cells = row.getVisibleCells()
   return (
     <tr>
-      {row.getVisibleCells().map(cell => (
-        <td className='table--cell' key={cell.id}>
+      {cells.map(cell => (
+        <td className='py-2 px-4 whitespace-nowrap' key={cell.id}>
           {flexRender(cell.column.columnDef.cell, cell.getContext())}
         </td>
       ))}

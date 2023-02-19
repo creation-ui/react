@@ -1,7 +1,8 @@
-import type { Table } from '@tanstack/react-table'
-import clsx from 'clsx'
-import { Button, Select } from '..'
-import { Icon } from '../icon'
+import { useMemo } from 'react'
+import { Button, Select } from '../..'
+import { Icon } from '../../icon'
+import { paginationClasses } from '../classes'
+import { useTable } from '../table.context'
 
 interface PaginationBlockProps extends React.ComponentProps<'button'> {
   current?: boolean
@@ -14,62 +15,47 @@ const PaginationBlock = ({
   disabled,
   ...props
 }: PaginationBlockProps) => (
-  <button
-    className={clsx(
-      'table--pagination',
-      current && 'table--pagination_current',
-      disabled && 'table--pagination_disabled'
-    )}
-    {...props}
-  >
+  <button className={paginationClasses({ current, disabled })} {...props}>
     {value}
   </button>
 )
 
-interface PageSelectorButtonsProps {
-  texts: {
-    next: string
-    previous: string
-  }
-  table: Table<any>
+const PageSelectorButtons = () => {
+  const {
+    table,
+    pagination: {
+      texts: { next, previous },
+    },
+  } = useTable()
+  return (
+    <div className='flex gap-2'>
+      <Button
+        variant='outlined'
+        onClick={() => table.previousPage()}
+        disabled={!table.getCanPreviousPage()}
+      >
+        {previous}
+      </Button>
+      <Button
+        variant='outlined'
+        onClick={() => table.nextPage()}
+        disabled={!table.getCanNextPage()}
+      >
+        {next}
+      </Button>
+    </div>
+  )
 }
 
-const PageSelectorButtons = ({
-  texts: { next, previous },
-  table,
-}: PageSelectorButtonsProps) => (
-  <div className='flex gap-2'>
-    <Button
-      variant='outlined'
-      onClick={() => table.previousPage()}
-      disabled={!table.getCanPreviousPage()}
-    >
-      {previous}
-    </Button>
-    <Button
-      variant='outlined'
-      onClick={() => table.nextPage()}
-      disabled={!table.getCanNextPage()}
-    >
-      {next}
-    </Button>
-  </div>
-)
-PageSelectorButtons.defaultProps = {
-  texts: {
-    next: 'Next',
-    previous: 'Previous',
-  },
-}
-
-interface PageSelectorProps {
-  table: Table<any>
-}
-
-const PageSelector = ({ table }: PageSelectorProps) => {
+const PageSelector = () => {
+  const { table } = useTable()
   const currentPageIdx = table.getState().pagination.pageIndex
   const totalPages = table.getPageCount()
-  const pagesArray = Array.from({ length: totalPages }, (_, i) => i)
+
+  const pagesArray = useMemo(
+    () => Array.from({ length: totalPages }, (_, i) => i),
+    [totalPages]
+  )
 
   const goToPage = (idx: number) => table.setPageIndex(idx)
 
@@ -124,36 +110,24 @@ const PageSelector = ({ table }: PageSelectorProps) => {
         onClick={() => table.nextPage()}
         disabled={!table.getCanNextPage()}
         className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-        iconRight={
-          <Icon icon='chevron_right' className='h-5 w-5' aria-hidden='true' />
-        }
-      ></Button>
+      >
+        <Icon icon='chevron_right' className='h-5 w-5' aria-hidden='true' />
+      </Button>
     </>
   )
 }
 
-interface PaginationProps {
-  table: Table<any>
-  pageSizes?: number[]
-  showTotalCount?: boolean
-  totalInSizesSelector?: boolean
-  pageButtonsVariant?: 'numbers' | 'buttons'
-  texts?: {
-    next: string
-    total: string
-    previous: string
-    summary: string
-  }
-}
-
-const Pagination = ({
-  table,
-  pageSizes,
-  totalInSizesSelector,
-  showTotalCount,
-  texts,
-  pageButtonsVariant,
-}: PaginationProps) => {
+const Pagination = () => {
+  const {
+    table,
+    pagination: {
+      pageSizes,
+      totalInSizesSelector,
+      showTotalCount,
+      texts,
+      pageButtonsVariant,
+    },
+  } = useTable()
   const currentPageIdx = table.getState().pagination.pageIndex
   const totalPages = table.getPageCount()
   const resultsCount = table.getPrePaginationRowModel().rows.length
@@ -187,7 +161,7 @@ const Pagination = ({
                 .replace('{totalPages}', totalPages.toString())}
             </p>
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col z-50'>
             {pageSizes && (
               <Select
                 size='sm'
@@ -197,7 +171,7 @@ const Pagination = ({
               />
             )}
             {showTotalCount && (
-              <p className='text-xs text-gray-700'>
+              <p className='text-xs text-gray-700 dark:text-gray-400'>
                 {texts?.total?.replace(
                   '{resultsCount}',
                   resultsCount.toString()
@@ -210,28 +184,14 @@ const Pagination = ({
               className='relative z-0 inline-flex rounded-md shadow-sm -space-x-px'
               aria-label='Pagination'
             >
-              {pageButtonsVariant === 'numbers' && (
-                <PageSelector table={table} />
-              )}
-              {pageButtonsVariant === 'buttons' && (
-                <PageSelectorButtons table={table} />
-              )}
+              {pageButtonsVariant === 'numbers' && <PageSelector />}
+              {pageButtonsVariant === 'buttons' && <PageSelectorButtons />}
             </nav>
           </div>
         </div>
       </div>
     </>
   )
-}
-
-Pagination.defaultProps = {
-  texts: {
-    total: '{resultsCount} results',
-    summary: 'Showing page {currentPage} of {totalPages}',
-    previous: 'Previous',
-    next: 'Next',
-    pageButtonsVariant: 'numbers',
-  },
 }
 
 export default Pagination
