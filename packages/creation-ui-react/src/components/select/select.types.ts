@@ -68,4 +68,5 @@ export interface SelectProps {
   loading?: boolean
   readOnly?: boolean
   required?: boolean
+  showAbove?: boolean
 }

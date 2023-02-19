@@ -161,9 +161,10 @@ const Pagination = () => {
                 .replace('{totalPages}', totalPages.toString())}
             </p>
           </div>
-          <div className='flex flex-col z-50'>
+          <div className='flex flex-col'>
             {pageSizes && (
               <Select
+                showAbove
                 size='sm'
                 options={sizes}
                 value={table.getState().pagination.pageSize}

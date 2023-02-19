@@ -8,6 +8,10 @@ export interface StatusBadgeProps {
   /**
    * How large should the button be?
    */
+  border?: boolean
+  /**
+   * Should have border?
+   */
   size?: ElementSize
   /**
    * Contents

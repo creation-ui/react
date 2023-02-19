@@ -21,6 +21,7 @@ const Select = (props: SelectProps) => {
     multiple,
     clearable,
     clearButtonText,
+    showAbove,
   } = props
 
   const limit = 2 //move to theme
@@ -100,7 +101,13 @@ const Select = (props: SelectProps) => {
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Listbox.Options className={clsx(select.list, zIndex.dropdowns)}>
+              <Listbox.Options
+                className={clsx(
+                  select.list,
+                  zIndex.dropdowns,
+                  showAbove ? 'mb-2 bottom-full' : 'mt-2 top-full'
+                )}
+              >
                 {props.options?.map(option => (
                   <Listbox.Option key={option.id} value={option}>
                     {({ selected, active, disabled }) => (

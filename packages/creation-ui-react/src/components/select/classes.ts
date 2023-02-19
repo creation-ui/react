@@ -44,7 +44,7 @@ export const select = {
   },
   list: [
     'absolute',
-    'mt-2',
+
     'max-h-52',
     'overflow-y-auto',
     'px-2',

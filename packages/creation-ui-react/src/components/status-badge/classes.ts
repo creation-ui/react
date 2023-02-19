@@ -8,7 +8,7 @@ export const badge = cva(
     'leading-5',
     'font-semibold',
     'rounded-full',
-    'capitalize',
+    'uppercase',
     'w-fit',
     'select-none',
     'justify-center',
@@ -20,15 +20,22 @@ export const badge = cva(
   {
     variants: {
       status: {
-        active: 'bg-primary-100 text-primary-600',
-        success: 'bg-success-200 text-success-600',
-        error: 'bg-error-200 text-error-600',
-        warning: 'bg-warning-200 text-warning-600',
+        active: 'bg-white !text-primary-500',
+        success: 'bg-success-100 text-success-500',
+        error: 'bg-error-100 text-error-500',
+        warning: 'bg-warning-100 text-warning-500',
+      },
+      border: {
+        active: 'border border-primary-200',
+        success: 'border border-success-400',
+        error: 'border border-error-300',
+        warning: 'border border-warning-300',
+        default: 'border border-zinc-400',
       },
       size: {
-        sm: ['px-3', 'py-1'],
-        md: ['h-5', 'px-5', 'py-3'],
-        lg: ['py-1', 'px-5'],
+        sm: ['text-xs'],
+        md: ['text-sm'],
+        lg: ['text-base'],
       },
     },
     defaultVariants: {

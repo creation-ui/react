@@ -29,6 +29,18 @@ This component supports `size` prop with values `sm`, `md`, `lg`:
   componentProps={{ status: 'info' }}
 />
 
+## Bordered
+
+This component supports `border` flag:
+
+<UnfoldVariants
+  component={StatusBadge}
+  variants={[...ELEMENT_STATUS, 'undefined']}
+  prop='status'
+  nameProp='label'
+  componentProps={{ border: true }}
+/>
+
 ## Status
 
 This component supports `status` prop with values `success`, `warning`, `error`, `active`.
