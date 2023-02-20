@@ -20,11 +20,26 @@ type Person = {
   firstName: string
   lastName: string
   status: StatusBadgeProps['status']
+  workTime: number
+}
+
+const formatMinutes = (minutes: number) => {
+  if (minutes < 60) {
+    return `${minutes}m`
+  }
+
+  const hours = Math.floor(minutes / 60)
+  const remainingMinutes = minutes % 60
+
+  if (remainingMinutes === 0) {
+    return `${hours}h`
+  }
+
+  return `${hours}h ${remainingMinutes}m`
 }
 
 export const TableExample = () => {
   const [rowSelection, setRowSelection] = React.useState({})
-
   const columns = React.useMemo<ColumnDef<Person>[]>(
     () => [
       {
@@ -56,7 +71,6 @@ export const TableExample = () => {
         ),
         enableColumnFilter: false,
       },
-
       {
         accessorKey: 'firstName',
         cell: info => info.getValue(),
@@ -71,6 +85,22 @@ export const TableExample = () => {
         enableColumnFilter: false,
       },
       {
+        accessorKey: 'workTime',
+        id: 'workTime',
+        cell: info => formatMinutes(info.getValue() as number),
+        header: () => 'Work Time',
+        enableColumnFilter: false,
+        footer: ({ table }) => {
+          const value = table
+            .getFilteredRowModel()
+            .rows.reduce(
+              (total, row) => total + (row as any).getValue('workTime'),
+              0
+            )
+          return formatMinutes(value)
+        },
+      },
+      {
         accessorKey: 'status',
         id: 'status',
         cell: info => (
@@ -82,13 +112,10 @@ export const TableExample = () => {
     []
   )
 
-  // @ts-ignore
   const table = useReactTable({
-    data: data as Person[],
     columns,
-    state: {
-      rowSelection,
-    },
+    state: { rowSelection },
+    data: data as Person[],
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),

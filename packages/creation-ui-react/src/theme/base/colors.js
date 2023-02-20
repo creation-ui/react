@@ -1,9 +1,11 @@
+const { lime, red, amber, white, black } = require('tailwindcss/colors')
+
 const colors = {
   inherit: 'inherit',
   current: 'currentColor',
   transparent: 'transparent',
-  white: '#ffffff',
-  black: '#000000',
+  white,
+  black,
   primary: {
     50: '#B8DBFF',
     100: '#A3D0FF',
@@ -16,42 +18,9 @@ const colors = {
     800: '#002A57',
     900: '#000F1F',
   },
-  success: {
-    50: '#7DFFDA',
-    100: '#68FFD4',
-    200: '#3FFFC8',
-    300: '#17FFBD',
-    400: '#00EDA9',
-    500: '#00C48C',
-    600: '#008C64',
-    700: '#00543C',
-    800: '#001C14',
-    900: '#000000',
-  },
-  error: {
-    50: '#FFFFFF',
-    100: '#FFF0F0',
-    200: '#FFC7C8',
-    300: '#FF9FA0',
-    400: '#FF7677',
-    500: '#FF4D4F',
-    600: '#FF1518',
-    700: '#DC0002',
-    800: '#A40002',
-    900: '#6C0001',
-  },
-  warning: {
-    50: '#FFFCF8',
-    100: '#FFF2E3',
-    200: '#FFE0BA',
-    300: '#FFCE92',
-    400: '#FFBB69',
-    500: '#FFA940',
-    600: '#FF9008',
-    700: '#CF7200',
-    800: '#975300',
-    900: '#5F3400',
-  },
+  success: lime,
+  error: red,
+  warning: amber,
 }
 
 module.exports = colors

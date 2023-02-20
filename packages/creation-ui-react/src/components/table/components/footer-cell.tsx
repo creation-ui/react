@@ -1,24 +1,26 @@
 import { flexRender } from '@tanstack/react-table'
-import { useTable } from '../table.context'
+import { getCellWidth } from '../../../utils/get-cell-width'
 
 interface FooterCellProps {
   footer: any
 }
 
+const className =
+  'px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-200'
+
 export default function FooterCell({ footer }: FooterCellProps) {
-  const { table } = useTable()
+  const width = footer.column.getSize()
+
   return (
     <td
       colSpan={footer.colSpan}
       scope='col'
-      className='px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-200 capitalize tracking-wider'
+      {...getCellWidth(width, className)}
     >
       {footer.isPlaceholder ? null : (
-        <>
-          <div className={'flex items-center'}>
-            {flexRender(footer.column.columnDef.footer, footer.getContext())}
-          </div>
-        </>
+        <div className={'flex items-center'}>
+          {flexRender(footer.column.columnDef.footer, footer.getContext())}
+        </div>
       )}
     </td>
   )

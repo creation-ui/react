@@ -1,11 +1,10 @@
-import { flexRender, Table } from '@tanstack/react-table'
+import { flexRender } from '@tanstack/react-table'
 import { cva } from 'class-variance-authority'
-import clsx from 'clsx'
-import { useTable } from '../table.context'
+import { getCellWidth } from '../../../utils/get-cell-width'
 import { Icon } from '../../icon'
 import { sortIconClasses } from '../classes'
+import { useTable } from '../table.context'
 import Filter from './filter'
-import { getCellWidth } from '../../../utils/get-cell-width'
 
 interface HeaderCellProps {
   header: any
@@ -14,10 +13,7 @@ interface HeaderCellProps {
 const innerColumnClass = cva(['flex', 'items-center', 'select-none'], {
   variants: {
     sortable: {
-      true: [
-        //
-        'cursor-pointer',
-      ],
+      true: ['cursor-pointer'],
       false: [],
     },
   },
