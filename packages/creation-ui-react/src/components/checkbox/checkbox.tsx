@@ -19,9 +19,8 @@ const Checkbox = (props: CheckboxProps) => {
     error,
     ...rest
   } = props
-  const [isChecked, setChecked] = useState(checked)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked)
     onChange?.(e)
   }
 
@@ -52,7 +51,7 @@ const Checkbox = (props: CheckboxProps) => {
         type='checkbox'
         onChange={handleChange}
         className={checkbox({ size, className })}
-        checked={isChecked}
+        checked={checked}
         {...rest}
       />
       <label
