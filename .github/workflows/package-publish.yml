@@ -1,8 +1,7 @@
 name: Changesets
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [created]
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
@@ -21,8 +20,10 @@ jobs:
           node-version: 16
       - name: install pnpm
         run: npm i pnpm@latest -g
+      - name: enter package directory
+        run: cd packages/creation-react
       - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_AUTOMATION }}" > ./packages/creation-react/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_AUTOMATION }}" > .npmrc
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
       - name: install dependencies
