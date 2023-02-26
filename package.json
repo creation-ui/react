@@ -15,6 +15,7 @@
     "lint": "next lint",
     "nuke": "rm -rf node_modules yarn.lock pnpm-lock.yaml .next && pnpm install",
     "sitemap": "next-sitemap",
+    "package:version": "pnpm --filter ./packages/creation-ui-react ci:version",
     "package:build": "pnpm --filter ./packages/creation-ui-react build",
     "package:publish": "pnpm --filter ./packages/creation-ui-react _publish",
     "package": "pnpm package:build && pnpm package:publish",
