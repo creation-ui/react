@@ -1,6 +1,6 @@
 {
   "name": "@creation-ui/react",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -20,7 +20,8 @@
     "package:publish": "pnpm --filter ./packages/creation-ui-react _publish",
     "package": "pnpm package:build && pnpm package:publish",
     "export": "next export",
-    "ci:publish": "pnpm publish -r"
+    "ci:publish": "pnpm publish -r",
+    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)"
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",

@@ -1,7 +1,7 @@
 {
   "name": "@creation-ui/react",
   "homepage": "https://creation-ui.com",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "@creation-ui/react is an easy-to-use components library for ReactJS & Tailwind CSS.",
   "repository": "https://github.com/creativetimofficial/creation-ui",
   "license": "MIT",
@@ -26,7 +26,6 @@
     "build:rm": "rm -rf build",
     "ci:publish": "pnpm publish -r",
     "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)"
-
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
