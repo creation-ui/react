@@ -1,4 +1,8 @@
-import { ELEMENT_POSITION, ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
+import {
+  ELEMENT_POSITION,
+  ELEMENT_SIZES,
+  ELEMENT_STATUS,
+} from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
 
@@ -17,6 +21,12 @@ export const sizeProp: DocumentedProperty = {
 export const labelProp: DocumentedProperty = {
   description: 'Label',
   name: 'label',
+  type: 'React.ReactNode',
+}
+
+export const iconProp: DocumentedProperty = {
+  description: 'Icon provided to component as ReactNode',
+  name: 'icon',
   type: 'React.ReactNode',
 }
 

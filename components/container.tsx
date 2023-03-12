@@ -7,7 +7,7 @@ interface ContainerProps {
   variant?: ContainerVariants
 }
 
-type ContainerVariants = 'row' | 'column'
+export type ContainerVariants = 'row' | 'column'
 
 const classes: Record<ContainerVariants | 'base' | 'centered', string[]> = {
   base: ['flex', 'my-10'],

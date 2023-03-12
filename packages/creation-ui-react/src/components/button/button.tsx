@@ -4,6 +4,7 @@ import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { ButtonProps } from './button.types'
 import { button } from './classes'
+import { InteractiveContainer } from '..'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -25,25 +26,27 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const disabled = loading || props.disabled
 
     return (
-      <button
-        id={componentId}
-        ref={ref}
-        disabled={disabled}
-        {...props}
-        className={button({
-          size,
-          color,
-          circle,
-          variant,
-          disabled,
-          className: [theme.roundness, className],
-        })}
-      >
-        <>{loading ? <Loader size={size} white={isLoaderWhite} /> : null}</>
-        <>{iconLeft}</>
-        <span>{children}</span>
-        <>{iconRight}</>
-      </button>
+      <InteractiveContainer disabled={disabled} className={className}>
+        <button
+          id={componentId}
+          ref={ref}
+          disabled={disabled}
+          {...props}
+          className={button({
+            size,
+            color,
+            circle,
+            variant,
+            disabled,
+            className: [theme.roundness, className],
+          })}
+        >
+          <>{loading ? <Loader size={size} white={isLoaderWhite} /> : null}</>
+          <>{iconLeft}</>
+          <span>{children}</span>
+          <>{iconRight}</>
+        </button>
+      </InteractiveContainer>
     )
   }
 )

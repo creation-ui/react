@@ -1,13 +1,9 @@
-import type { ClassName, ElementSize } from '../../types'
+import type { BaseComponentProps } from '../../types'
 
-export interface LoaderProps {
+export interface LoaderProps
+  extends Pick<BaseComponentProps, 'size' | 'className'> {
   /**
    * Use white loader
    */
   white?: boolean
-  /**
-   * How large should the button be?
-   */
-  size?: ElementSize
-  className?: ClassName
 }

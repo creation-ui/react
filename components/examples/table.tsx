@@ -1,11 +1,13 @@
 import {
   Avatar,
+  Button,
   Checkbox,
+  ReadableError,
   StatusBadge,
   StatusBadgeProps,
   Table,
 } from '@creation-ui/react'
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 
 import {
   ColumnDef,
@@ -39,8 +41,11 @@ const formatMinutes = (minutes: number) => {
 }
 
 export const TableExample = () => {
-  const [rowSelection, setRowSelection] = React.useState({})
-  const columns = React.useMemo<ColumnDef<Person>[]>(
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<ReadableError | null>(null)
+
+  const [rowSelection, setRowSelection] = useState({})
+  const columns = useMemo<ColumnDef<Person>[]>(
     () => [
       {
         id: 'select',
@@ -122,22 +127,52 @@ export const TableExample = () => {
     getPaginationRowModel: getPaginationRowModel(),
   })
 
+  const toggleLoading = () => setLoading(!loading)
+  const toggleError = () =>
+    setError(
+      error
+        ? null
+        : {
+            title: 'Service unavailable',
+            message:
+              'An error occurred in your request. Please try again or change your query',
+          }
+    )
+
   return (
-    <Table
-      table={table}
-      height='50vh'
-      pagination={{
-        pageButtonsVariant: 'buttons',
-        pageSizes: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
-        showTotalCount: true,
-        totalInSizesSelector: true,
-        texts: {
-          total: '{resultsCount} wyników',
-          next: 'Dalej',
-          previous: 'Wstecz',
-          summary: 'Strona {currentPage} z {totalPages}',
-        },
-      }}
-    />
+    <div>
+      <h2>Playground</h2>
+      <div className='flex gap-3 mb-3'>
+        <Button onClick={toggleLoading}>
+          {loading ? 'Stop loading' : 'Start loading'}
+        </Button>
+        <Button onClick={toggleError}>
+          {error ? 'Stop error' : 'Start error'}
+        </Button>
+      </div>
+
+      <pre className='text-sm p-5 bg-yellow-200 text-gray-800 rounded w-fit mb-3'>
+        {JSON.stringify({ loading, error }, null, 2)}
+      </pre>
+
+      <Table
+        loading={loading}
+        error={error}
+        table={table}
+        height='50vh'
+        pagination={{
+          pageButtonsVariant: 'buttons',
+          pageSizes: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+          showTotalCount: true,
+          totalInSizesSelector: true,
+          texts: {
+            total: '{resultsCount} results',
+            next: 'Next',
+            previous: 'Previous',
+            summary: 'Page {currentPage} of {totalPages}',
+          },
+        }}
+      />
+    </div>
   )
 }

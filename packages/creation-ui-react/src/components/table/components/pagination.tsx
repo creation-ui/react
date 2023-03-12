@@ -3,6 +3,7 @@ import { Button, Select } from '../..'
 import { Icon } from '../../icon'
 import { paginationClasses } from '../classes'
 import { useTable } from '../table.context'
+import { getSortedSizes } from '../utils/get-sorted-sizes'
 
 interface PaginationBlockProps extends React.ComponentProps<'button'> {
   current?: boolean
@@ -132,9 +133,7 @@ const Pagination = () => {
   const totalPages = table.getPageCount()
   const resultsCount = table.getPrePaginationRowModel().rows.length
 
-  const sizes = pageSizes?.map(size => ({ value: size, id: size }))
-
-  totalInSizesSelector && sizes?.push({ value: resultsCount, id: resultsCount })
+  const sizes = getSortedSizes(pageSizes, totalInSizesSelector, resultsCount)
 
   return (
     <>

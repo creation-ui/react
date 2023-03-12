@@ -1,10 +1,10 @@
+import { useEffect, useRef } from 'react'
+import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import clsx from 'clsx'
-import { useEffect, useRef, useState } from 'react'
+import { InteractiveContainer } from '../interactive-container'
 import type { CheckboxProps } from './checkbox.types'
 import { checkbox } from './classes'
-import { label, text, input, shared, inputContainer } from '../../classes'
 
 const Checkbox = (props: CheckboxProps) => {
   const { size: defaultSize } = useTheme()
@@ -19,10 +19,6 @@ const Checkbox = (props: CheckboxProps) => {
     error,
     ...rest
   } = props
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e)
-  }
 
   const componentId = useId(id)
   const ref = useRef<HTMLInputElement>(null)
@@ -43,24 +39,26 @@ const Checkbox = (props: CheckboxProps) => {
   })
 
   return (
-    <div className={containerClasses}>
-      <input
-        ref={ref}
-        id={componentId}
-        disabled={disabled}
-        type='checkbox'
-        onChange={handleChange}
-        className={checkbox({ size, className })}
-        checked={checked}
-        {...rest}
-      />
-      <label
-        htmlFor={componentId}
-        className={label({ size, required: props.required, for: 'checkbox' })}
-        children={props.label}
-        aria-label={props.label?.toString()}
-      />
-    </div>
+    <InteractiveContainer disabled={disabled} className={className}>
+      <div className={containerClasses}>
+        <input
+          ref={ref}
+          id={componentId}
+          disabled={disabled}
+          type='checkbox'
+          onChange={onChange}
+          className={checkbox({ size, className })}
+          checked={checked}
+          {...rest}
+        />
+        <label
+          htmlFor={componentId}
+          className={label({ size, required: props.required, for: 'checkbox' })}
+          children={props.label}
+          aria-label={props.label?.toString()}
+        />
+      </div>
+    </InteractiveContainer>
   )
 }
 

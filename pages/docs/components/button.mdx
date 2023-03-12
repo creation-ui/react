@@ -1,6 +1,5 @@
 # Button
 
-
 import { Button } from '@creation-ui/react'
 import { Container } from '@components/container'
 import { properties } from '@components/examples/button'
@@ -8,11 +7,10 @@ import PropsTable from '@components/props-table'
 import { Icon } from '@mdi/react'
 import { mdiAccountCircle } from '@mdi/js'
 
-
 ```tsx copy
 import { Button } from '@creation-ui/react'
 
-<Button>Click me</Button>
+;<Button>Click me</Button>
 ```
 
 <Container>
@@ -58,7 +56,7 @@ Button can have icons set on both left and right ends as well as loading indicat
     Left icon
   </Button>
   <Button iconRight={<Icon size={0.9} path={mdiAccountCircle} />}>
-    Icon right
+    Right icon
   </Button>
 </Container>
 
@@ -68,11 +66,12 @@ Button can have icons set on both left and right ends as well as loading indicat
 
 ## Loading state
 
-Button can be in loading state, which will disable it and show loading indicator on right:
+Button can be in `loading` state, which will disable it and show loading indicator on right:
 
 ```tsx copy
 import { Button } from '@creation-ui/react'
-;<Button loading={true}>Loading</Button>
+
+<Button loading>Loading</Button>
 ```
 
 <Container>
@@ -86,6 +85,20 @@ import { Button } from '@creation-ui/react'
   >
     Loading
   </Button>
+</Container>
+
+## Disabled state
+
+Button can be in `disabled` state, which will disable it:
+
+```tsx copy
+import { Button } from '@creation-ui/react'
+
+<Button disabled>Loading</Button>
+```
+
+<Container>
+  <Button disabled>Disabled</Button>
 </Container>
 
 ## Component API

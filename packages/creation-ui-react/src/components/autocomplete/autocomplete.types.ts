@@ -1,35 +1,14 @@
+import type React from 'react'
 import type {
   AutocompleteOptionsType,
-  ClassName,
-  ElementSize,
+  BaseComponentProps
 } from '../../types'
-import type React from 'react'
 
-export interface AutocompleteProps {
-  /**
-   * Element id
-   */
-  id?: string
-  /**
-   * Placeholder
-   */
-  label?: React.ReactNode
-  /**
-   * Helper text
-   */
-  helperText?: string
-  /**
-   * Input error
-   */
-  error?: string
+export interface AutocompleteProps extends BaseComponentProps {
   /**
    * Placeholder
    */
   placeholder?: string
-  /**
-   * Class names
-   */
-  className?: ClassName
   /**
    * List options
    */
@@ -96,16 +75,12 @@ export interface AutocompleteProps {
    */
   limit?: number
   /**
+   * Should display Loader
+   */
+  loading?: boolean
+  /**
    * Format of count of multiple selected to be displayed in input
    */
   getLimitText?: (more: number) => string
-  /**
-   * Element size
-   */
-  size?: ElementSize
-
   onChange?: (value: AutocompleteOptionsType) => void
-
-  loading?: boolean
-  readOnly?: boolean
 }

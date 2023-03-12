@@ -21,7 +21,7 @@ export const ELEMENT_COLORS = [
   'zinc',
 ]
 export const COLORS = ['primary', 'success', 'error', 'warning'] as const
-export const ELEMENT_STATUS = ['active', 'error', 'warning', 'success'] as const
+export const ELEMENT_STATUS = ['active', 'error', 'warning', 'success', 'info'] as const
 export const ELEMENT_SIZES = ['sm', 'md', 'lg'] as const
 export const ELEMENT_THEMES = ['dark', 'light'] as const
 export const ELEMENT_VARIANTS = ['contained', 'outlined', 'text'] as const
@@ -120,7 +120,6 @@ export type TailwindShades = (typeof TAILWIND_SHADES)[number]
 export type TailwindColorSet = Record<TailwindShades, string>
 
 export const icons = [
-  //
   'chevron_left',
   'chevron_right',
   'chevron_down',
@@ -130,3 +129,47 @@ export const icons = [
 ] as const
 
 export type IconType = (typeof icons)[number]
+
+export interface BaseComponentProps {
+  className?: string
+  /**
+   * HTML id of element
+   */
+  id?: string
+  /**
+   * Is element required?
+   */
+  required?: boolean
+  /**
+   * Is element read-only?
+   */
+  readOnly?: boolean
+  /**
+   * element size
+   */
+  size?: ElementSize
+  /**
+   * Input label
+   */
+  label?: string
+  /**
+   * Is disabled?
+   */
+  disabled?: boolean
+  /**
+   * Error message
+   */
+  error?: React.ReactNode
+  /**
+   * Helper text
+   */
+  helperText?: React.ReactNode
+
+}
+
+
+export type ReadableError = {
+  message: React.ReactNode
+  title: React.ReactNode
+  code?: React.ReactNode
+}

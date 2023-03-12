@@ -1,0 +1,95 @@
+# Callout
+
+import { Callout } from '@creation-ui/react'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import {
+  ELEMENT_SIZES,
+  ELEMENT_STATUS,
+  ELEMENT_VARIANTS,
+} from '@creation-ui/react'
+import PropsTable from '@components/props-table'
+import {
+  properties,
+  CalloutExample,
+  CalloutVariantsExamples,
+} from '@components/examples/callout'
+import {
+  mdiPen,
+  mdiAlertCircleOutline,
+  mdiLightbulbAlertOutline,
+  statusExamples,
+} from '@mdi/js'
+import { Icon } from '@mdi/react'
+
+```tsx copy
+import { Callout } from '@creation-ui/react'
+
+const MyComponent = () => (
+  <Callout
+    status='success'
+    title='Action completed!'
+    description='You can now view your dashboard.'
+  />
+)
+```
+
+export const fn = () => alert('Close button clicked!')
+
+## Status
+
+This component supports `status` prop with values `success`, `warning`, `error`, `active`.
+Default style is applied when `status` prop is left not defined.
+
+<CalloutExample />
+
+## Variants
+
+This component can have different `variants`:
+
+<CalloutVariantsExamples />
+
+## With icon
+
+Callout can have an `icon`:
+
+<CalloutExample displayIcon />
+
+## With title
+
+Callout can have a `title`:
+
+<CalloutExample displayTitle />
+
+## With both title and icon
+
+<Container variant='column'>
+  <Callout
+    status='warning'
+    title='Information'
+    content='Here is a piece of information that you might want to know.'
+    icon={<Icon path={mdiLightbulbAlertOutline} size={1} />}
+  />
+</Container>
+
+## Clearable
+
+Close button can be added to the callout. It is visible when `onClose` callback is provided:
+
+<Container variant='column'>
+  <Callout
+    status='error'
+    title='Error'
+    content='There was an error while processing your request. You can close this prompt now.'
+    icon={<Icon path={mdiAlertCircleOutline} size={1} />}
+    onClose={fn}
+  />
+</Container>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Callout'
+  description='Callout component props.'
+/>

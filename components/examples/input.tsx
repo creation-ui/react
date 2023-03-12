@@ -3,6 +3,7 @@ import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
+import { iconProp } from './shared-props'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {
   debug?: boolean
@@ -53,15 +54,15 @@ export const properties: DocumentedProperty[] = [
   { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
   { name: 'loading', type: 'boolean', description: 'Show loading state' },
   {
+    ...iconProp,
     name: 'iconLeft',
-    type: 'React.ReactNode',
-    description: 'Icon to be displayed on the left side of the component',
+    description: 'Icon on the left side of the component',
     experimental: true,
   },
   {
+    ...iconProp,
     name: 'iconRight',
-    type: 'React.ReactNode',
-    description: 'Icon to be displayed on the right side of the component',
+    description: 'Icon on the right side of the component',
     experimental: true,
   },
   {

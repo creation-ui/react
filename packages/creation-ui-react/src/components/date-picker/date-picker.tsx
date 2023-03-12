@@ -1,12 +1,11 @@
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
-import { Icon } from '../icon'
+import { ErrorText, InteractiveContainer, Loader } from '..'
+import { inputContainer, label, shared, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import { Icon } from '../icon'
 import type { DatePickerProps } from './date-picker.types'
-import { ErrorText, Loader } from '..'
-import { input, inputContainer, label, shared, text } from '../../classes'
-import React from 'react'
 
 const iconClasses = 'w-5 h-5 text-gray-600 cursor-pointer'
 
@@ -33,21 +32,23 @@ const DatePicker = (props: DatePickerProps) => {
     text({ size })
   )
   return (
-    <div className={containerClasses}>
-      <label
-        htmlFor={componentId}
-        className={label({ size, required: props.required })}
-        children={props.label}
-        aria-label={props.label?.toString()}
-      />
-      <Loader className={clsx(shared.loaderInputPosition({ loading }))} />
-      <ReactDatePicker
-        {...rest}
-        id={componentId}
-        aria-readonly={!!props.readOnly}
-      />
-      <ErrorText error={error} />
-    </div>
+    <InteractiveContainer disabled={disabled} className={className}>
+      <div className={containerClasses}>
+        <label
+          htmlFor={componentId}
+          className={label({ size, required: props.required })}
+          children={props.label}
+          aria-label={props.label?.toString()}
+        />
+        <Loader className={clsx(shared.loaderInputPosition({ loading }))} />
+        <ReactDatePicker
+          {...rest}
+          id={componentId}
+          aria-readonly={!!props.readOnly}
+        />
+        <ErrorText error={error} />
+      </div>
+    </InteractiveContainer>
   )
 }
 

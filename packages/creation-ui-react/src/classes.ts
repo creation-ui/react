@@ -1,14 +1,20 @@
 import { cva } from 'class-variance-authority'
 
-export const sharedDisabledCVA = { true: ['opacity-50', 'cursor-not-allowed'] }
+export const sharedDisabledCVA = {
+  true: [
+    //
+    'opacity-50',
+    'pointer-events-none',
+  ],
+}
 
 const loaderClasses = cva(
   ['absolute', 'top-0', 'right-0', 'transition-opacity', 'duration-300'],
   {
     variants: {
       loading: {
-        true: ['opacity-100', 'pointer-events-auto'],
-        false: ['opacity-0', 'pointer-events-none'],
+        true: ['opacity-100', 'pointer-events-none'],
+        false: ['opacity-0', 'pointer-events-auto'],
       },
     },
     defaultVariants: {

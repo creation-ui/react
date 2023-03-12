@@ -1,11 +1,11 @@
-import { ErrorText } from '..'
-import { useTheme } from '../../theme'
-import { useId } from '../../hooks'
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import type { RadioProps } from './types'
-import { label, text, input, shared, inputContainer } from '../../classes'
+import { ErrorText, InteractiveContainer } from '..'
+import { inputContainer, label, text } from '../../classes'
+import { useId } from '../../hooks'
+import { useTheme } from '../../theme'
 import { radio } from './classes'
+import type { RadioProps } from './types'
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (props, ref: ForwardedRef<HTMLInputElement>) => {
@@ -28,24 +28,30 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     )
 
     return (
-      <div className={containerClasses}>
-        <input
-          ref={ref}
-          className={radio({ size, className })}
-          type='radio'
-          name={componentId}
-          id={componentId}
-          disabled={disabled}
-          {...rest}
-        />
-        <label
-          htmlFor={componentId}
-          className={label({ size, required: props.required, for: 'checkbox' })}
-          children={props.label}
-          aria-label={props.label?.toString()}
-        />
-        <ErrorText error={error} />
-      </div>
+      <InteractiveContainer disabled={disabled} className={className}>
+        <div className={containerClasses}>
+          <input
+            ref={ref}
+            className={radio({ size, className })}
+            type='radio'
+            name={componentId}
+            id={componentId}
+            disabled={disabled}
+            {...rest}
+          />
+          <label
+            htmlFor={componentId}
+            className={label({
+              size,
+              required: props.required,
+              for: 'checkbox',
+            })}
+            children={props.label}
+            aria-label={props.label?.toString()}
+          />
+          <ErrorText error={error} />
+        </div>
+      </InteractiveContainer>
     )
   }
 )
