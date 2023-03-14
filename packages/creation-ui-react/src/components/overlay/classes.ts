@@ -6,6 +6,7 @@ export const overlay = [
   // 'right-0',
   // 'h-full',
   // 'w-full',
+  'cursor-wait',
   'absolute',
   'inset-0',
   'bg-zinc-700/50',

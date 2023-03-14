@@ -1,17 +1,17 @@
 [
   {
     "firstName": "Abdul",
-    "lastName": "Huels",
+    "lastName": "H",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1064.jpg",
     "status": "error",
     "workTime": 475
   },
   {
     "firstName": "Tomasa",
-    "lastName": "Walker",
+    "lastName": "Walker-Kingsley",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/691.jpg",
-    "status": "error",
-    "workTime": 475
+    "status": "info",
+    "workTime": 421
   },
   {
     "firstName": "Kira",

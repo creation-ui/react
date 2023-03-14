@@ -1,5 +1,5 @@
 import { Cell as CellType, flexRender, Row } from '@tanstack/react-table'
-import { getCellWidth } from '../../../utils/get-cell-width'
+import { twMerge } from 'tailwind-merge'
 
 interface RowCellProps {
   row: Row<any>
@@ -23,10 +23,17 @@ interface CellProps {
 }
 
 const Cell = ({ cell }: CellProps) => {
-  const width = cell.column.getSize()
+  const column = cell.column
+  const width = column.getSize()
 
+  const { className = '', ...meta } = (cell.column.columnDef.meta as any) ?? {}
   return (
-    <td {...getCellWidth(width, 'py-2 px-4 whitespace-nowrap')}>
+    <td
+      className={twMerge('py-2', className)}
+      key={cell.id}
+      width={width}
+      {...meta}
+    >
       {flexRender(cell.column.columnDef.cell, cell.getContext())}
     </td>
   )

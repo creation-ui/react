@@ -1,5 +1,7 @@
 import { cva } from 'class-variance-authority'
 import { sharedDisabledCVA } from '../../classes'
+import { twMerge } from 'tailwind-merge'
+import clsx from 'clsx'
 
 export const sortIconClasses = cva(
   [
@@ -48,3 +50,46 @@ export const paginationClasses = cva(
     },
   }
 )
+
+export const sharedTableClasses = {
+  divide: 'divide-y divide-gray-200 dark:divide-gray-700',
+  border: 'border border-gray-200 dark:border-gray-700',
+  frame: '', //'bg-gray-50 dark:bg-gray-900',
+  fullwidth: 'inline-block w-full',
+}
+
+export const tableClasses = cva([
+  sharedTableClasses.divide,
+  sharedTableClasses.border,
+  '!text-sm',
+  'overflow-x-auto',
+  'w-full',
+  'min-h-full',
+  'h-full',
+  'relative',
+])
+
+export const headerClasses = twMerge(
+  sharedTableClasses.frame,
+  sharedTableClasses.fullwidth,
+  'sticky',
+  'top-0',
+  'pt-6',
+  'pb-3'
+)
+
+export const headerRowClasses = twMerge('flex', 'items-center')
+
+export const footerClasses = twMerge(
+  sharedTableClasses.frame,
+  sharedTableClasses.fullwidth,
+  'sticky',
+  'bottom-0'
+)
+
+export const bodyClasses = cva([
+  sharedTableClasses.divide,
+  sharedTableClasses.fullwidth,
+  'overflow-y-scroll',
+  'min-h-full',
+])
