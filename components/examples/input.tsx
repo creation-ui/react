@@ -1,9 +1,11 @@
-import { Input, InputProps } from '@creation-ui/react'
+import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
 import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { iconProp } from './shared-props'
+import { mdiEye, mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
+import { Icon } from '@mdi/react'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {
   debug?: boolean
@@ -23,6 +25,45 @@ export const InputExample = ({ debug, ...props }: InputExampleProps) => {
       <Input
         onChange={e => setValue(e.target.value)}
         value={value}
+        {...props}
+      />
+      {debug && (
+        <pre className='bg-red-100 rounded px-3 py-1 text-xs'>
+          {JSON.stringify({ value }, null, 2)}
+        </pre>
+      )}
+    </div>
+  )
+}
+
+export const PasswordExample = ({ debug, ...props }: InputExampleProps) => {
+  const [value, setValue] = useState('')
+  const [type, setType] = useState<HTMLInputType>('password')
+
+  useEffect(() => {
+    if (props.value) {
+      setValue(props.value as any)
+    }
+  }, [])
+
+  const onIconClick = () => {
+    setType(type === 'password' ? 'text' : 'password')
+  }
+
+  return (
+    <div className='flex flex-col gap-3 max-w-xs' key={props.key}>
+      <Input
+        onChange={e => setValue(e.target.value)}
+        value={value}
+        type={type}
+        iconRight={
+          <Icon
+            path={type === 'password' ? mdiEyeOutline : mdiEyeOffOutline}
+            size={1}
+            // @ts-expect-error
+            onClick={onIconClick}
+          />
+        }
         {...props}
       />
       {debug && (

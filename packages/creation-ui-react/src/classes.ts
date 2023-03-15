@@ -90,6 +90,8 @@ export const input = cva(
         md: ['h-10', 'px-3'],
         lg: ['h-12', 'px-4'],
       },
+      iconLeft: { true: 'pl-10', false: 'pl-3' },
+      iconRight: { true: 'pr-10', false: 'pr-3' },
     },
     defaultVariants: {
       size: 'md',
@@ -145,3 +147,22 @@ export const label = cva([...shared.label], {
     size: 'md',
   },
 })
+
+export const inputIcon = cva(
+  [
+    //
+    'absolute',
+    'bottom-1/2',
+    'transform',
+    'translate-y-1/2',
+  ],
+  {
+    variants: {
+      position: {
+        //
+        left: ['left-3'],
+        right: ['right-3'],
+      },
+    },
+  }
+)

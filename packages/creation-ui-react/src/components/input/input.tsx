@@ -1,7 +1,14 @@
-import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 import { ErrorText, InteractiveContainer, Loader } from '..'
-import { input, inputContainer, label, shared, text } from '../../classes'
+import {
+  input,
+  inputContainer,
+  inputIcon,
+  label,
+  shared,
+  text,
+} from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { InputProps } from './input.types'
@@ -16,13 +23,15 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
     type = 'text',
     className,
     id,
+    iconLeft,
+    iconRight,
     ...rest
   } = props
   const componentId = useId(id)
 
   const disabled = props.disabled || props.readOnly
 
-  const containerClasses = clsx(
+  const containerClasses = twMerge(
     inputContainer({ disabled, error: !!error }),
     text({ size })
   )
@@ -37,18 +46,32 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           aria-label={props.label?.toString()}
         />
         <Loader
-          className={clsx(shared.loaderInputPosition({ loading }))}
+          className={twMerge(shared.loaderInputPosition({ loading }))}
           size={size === 'lg' ? 'md' : 'sm'}
         />
-        <input
-          ref={ref}
-          id={componentId}
-          className={input({ size, variant: props.variant, className })}
-          aria-readonly={!!props.readOnly}
-          aria-invalid={!!error}
-          type={type}
-          {...rest}
-        />
+        <div className='relative max-h-min'>
+          {iconLeft && (
+            <div className={inputIcon({ position: 'left' })}>{iconLeft}</div>
+          )}
+          <input
+            ref={ref}
+            id={componentId}
+            className={input({
+              size,
+              variant: props.variant,
+              iconLeft: !!iconLeft,
+              iconRight: !!iconRight,
+              className: twMerge(className),
+            })}
+            aria-readonly={!!props.readOnly}
+            aria-invalid={!!error}
+            type={type}
+            {...rest}
+          />
+          {iconRight && (
+            <div className={inputIcon({ position: 'right' })}>{iconRight}</div>
+          )}
+        </div>
         <ErrorText error={error} />
       </div>
     </InteractiveContainer>

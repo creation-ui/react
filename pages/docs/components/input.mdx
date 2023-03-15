@@ -1,21 +1,23 @@
 # Input
 
-import { InputExample, properties } from '@components/examples/input'
+import {
+  InputExample,
+  properties,
+  PasswordExample,
+} from '@components/examples/input'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
+import { Icon } from '@mdi/react'
+import { mdiAccountOutline, mdiHelpCircle, mdiKeyVariant } from '@mdi/js'
 
 ```tsx copy
 export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
   const [value, setValue] = useState('')
 
   return (
-    <Input
-      onChange={e => setValue(e.target.value)}
-      value={value}
-      {...props}
-    />
+    <Input onChange={e => setValue(e.target.value)} value={value} {...props} />
   )
 }
 ```
@@ -23,6 +25,7 @@ export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
 <Container>
   <InputExample label='Input' debug />
 </Container>
+
 As you may observe in this example the longer the content inside the Input component
 the longer it gets. To fix that you would need to provide your own **width** constraints
 either by a **custom wrapper** or passing class to `className` e.g.
@@ -63,13 +66,92 @@ This component supports `size` prop with values `sm`, `md`, `lg`:
   />
 </Container>
 
-## Error text
+## Helper text
 
 <Container>
   <InputExample
     helperText='This field is required'
     label='With helper text'
     value='Hello world'
+  />
+</Container>
+
+## With icons
+
+<Container>
+  <InputExample
+    label='Email'
+    defaultValue='user@gmail.com'
+    size='sm'
+    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+  />
+  <InputExample
+    label='Password'
+    defaultValue='6465465'
+    type='password'
+    size='sm'
+    iconRight={<Icon path={mdiKeyVariant} size={1} />}
+  />
+  <InputExample
+    label='Email'
+    size='sm'
+    defaultValue='user@gmail.com'
+    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+    iconRight={<Icon path={mdiHelpCircle} size={1} />}
+  />
+</Container>
+<Container>
+  <InputExample
+    label='Email'
+    defaultValue='user@gmail.com'
+    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+/>
+
+<InputExample
+  label='Password'
+  defaultValue='6465465'
+  type='password'
+  iconRight={<Icon path={mdiKeyVariant} size={1} />}
+/>
+
+<InputExample
+  label='Email'
+  defaultValue='user@gmail.com'
+  iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+  iconRight={<Icon path={mdiHelpCircle} size={1} />}
+/>
+
+</Container>
+<Container>
+  <InputExample
+    label='Email'
+    size='lg'
+    defaultValue='user@gmail.com'
+    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+  />
+  <InputExample
+    label='Password'
+    defaultValue='6465465'
+    type='password'
+    iconRight={<Icon path={mdiKeyVariant} size={1} />}
+    size='lg'
+  />
+  <InputExample
+    label='Email'
+    defaultValue='user@gmail.com'
+    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+    iconRight={<Icon path={mdiHelpCircle} size={1} />}
+    size='lg'
+  />
+</Container>
+
+## Interactive icon
+
+<Container>
+  <PasswordExample
+    label='Password'
+    helperText='You can toggle my visibility'
+    value='this-is-my-password'
   />
 </Container>
 
@@ -85,4 +167,3 @@ This component supports `size` prop with values `sm`, `md`, `lg`:
     </>
   }
 />
-
