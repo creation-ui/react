@@ -1,8 +1,9 @@
 import { cva } from 'class-variance-authority'
-import { sharedDisabledCVA } from '../../classes'
+import { microInteractions, sharedDisabledCVA } from '../../classes'
 
 export const toggleGroup = {
   container: [
+    microInteractions,
     'bg-zinc-50',
     'w-fit',
     'rounded',
@@ -15,6 +16,7 @@ export const toggleGroup = {
   list: ['flex', 'flex-row', 'flex-nowrap'],
   option: cva(
     [
+      microInteractions,
       'p-2',
       'cursor-pointer',
       'focus:outline-none',

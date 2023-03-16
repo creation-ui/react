@@ -1,11 +1,15 @@
 import { createContext, useContext } from 'react'
-import theme from './theme.default'
+import defaultTheme from './theme.default'
 import type { ThemeProps, ThemeProviderProps } from './theme.types'
 
-export const ThemeCtx = createContext<ThemeProps>(theme)
+export const ThemeCtx = createContext<Partial<ThemeProps>>(defaultTheme)
 
-export const Theme = ({ children, theme }: ThemeProviderProps) => {
-  return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
+export const Theme = ({ children, theme = {} }: ThemeProviderProps) => {
+  return (
+    <ThemeCtx.Provider value={{ ...defaultTheme, ...theme }}>
+      {children}
+    </ThemeCtx.Provider>
+  )
 }
 
 export const useTheme = () => {

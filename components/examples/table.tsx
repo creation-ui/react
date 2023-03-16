@@ -1,25 +1,24 @@
 import {
   Avatar,
-  Button,
   Checkbox,
   ReadableError,
   StatusBadge,
   StatusBadgeProps,
   Switch,
-  Table,
+  Table
 } from '@creation-ui/react'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
+import { mdiPencil } from '@mdi/js'
+import Icon from '@mdi/react'
 import {
   ColumnDef,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import data from './table-data.json'
-import Icon from '@mdi/react'
-import { mdiPen, mdiPencil } from '@mdi/js'
 import clsx from 'clsx'
+import data from './table-data.json'
 
 type Person = {
   avatar: string

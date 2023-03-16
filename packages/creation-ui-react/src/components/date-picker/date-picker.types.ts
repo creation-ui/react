@@ -1,7 +1,7 @@
 import type DatePicker from 'react-datepicker'
 import type {
   BaseComponentProps,
-  ElementVariants
+  ElementVariant
 } from '../../types'
 
 export type DatePickerProps = DatePicker['props'] &
@@ -17,5 +17,5 @@ export type DatePickerProps = DatePicker['props'] &
     /**
      * What variant should button be ?
      */
-    variant?: ElementVariants
+    variant?: ElementVariant
   }

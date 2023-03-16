@@ -20,8 +20,15 @@ export const ELEMENT_COLORS = [
   'yellow',
   'zinc',
 ]
+
 export const COLORS = ['primary', 'success', 'error', 'warning'] as const
-export const ELEMENT_STATUS = ['active', 'error', 'warning', 'success', 'info'] as const
+export const ELEMENT_STATUS = [
+  'active',
+  'error',
+  'warning',
+  'success',
+  'info',
+] as const
 export const ELEMENT_SIZES = ['sm', 'md', 'lg'] as const
 export const ELEMENT_THEMES = ['dark', 'light'] as const
 export const ELEMENT_VARIANTS = ['contained', 'outlined', 'text'] as const
@@ -44,15 +51,23 @@ export const TYPOGRAPHY = [
 export const TAILWIND_SHADES = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
 ] as const
+export const ELEMENT_STATES = [
+  'hover',
+  'focus',
+  'active',
+  'disabled',
+  'default',
+] as const
 
 export type Colors = (typeof COLORS)[number]
 export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementStatus = (typeof ELEMENT_STATUS)[number]
+export type ElementState = (typeof ELEMENT_STATES)[number]
 export type ElementSize = (typeof ELEMENT_SIZES)[number]
 export type ElementColor = (typeof ELEMENT_COLORS)[number]
 export type ElementOrientation = (typeof ELEMENT_ORIENTATION)[number]
 export type ElementTheme = (typeof ELEMENT_THEMES)[number]
-export type ElementVariants = (typeof ELEMENT_VARIANTS)[number]
+export type ElementVariant = (typeof ELEMENT_VARIANTS)[number]
 export type ElementPlacementHorizontal =
   (typeof ELEMENT_PLACEMENT_HORIZONTAL)[number]
 export type ElementPlacementVertical =
@@ -164,9 +179,7 @@ export interface BaseComponentProps {
    * Helper text
    */
   helperText?: React.ReactNode
-
 }
-
 
 export type ReadableError = {
   message: React.ReactNode

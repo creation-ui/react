@@ -1,12 +1,12 @@
 import type { Table } from '@tanstack/table-core'
 import { createContext, useContext } from 'react'
-import type { ElementVariants, ReadableError } from 'src/types'
+import type { ElementVariant, ReadableError } from 'src/types'
 
 export interface TableContextValue<T = any> {
   table: Table<T>
   loading?: boolean
   error?: ReadableError
-  errorVariant?: ElementVariants
+  errorVariant?: ElementVariant
   height?: number | string
   pagination?: {
     pageSizes?: number[]

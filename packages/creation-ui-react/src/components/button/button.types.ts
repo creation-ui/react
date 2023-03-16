@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { Colors, ElementSize, ElementVariants } from '../../types'
+import type { Colors, ElementSize, ElementVariant } from '../../types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**
@@ -13,7 +13,7 @@ export type ButtonProps = React.ComponentProps<'button'> & {
   /**
    * What variant should button be ?
    */
-  variant?: ElementVariants
+  variant?: ElementVariant
   /**
    * How large should the button be?
    */

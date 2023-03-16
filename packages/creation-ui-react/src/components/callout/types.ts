@@ -1,11 +1,11 @@
-import type { ElementStatus, ElementVariants } from 'src/types'
+import type { ElementStatus, ElementVariant } from 'src/types'
 
 export interface CalloutProps {
   content: React.ReactNode
   title?: React.ReactNode
   icon?: React.ReactNode
   status?: ElementStatus
-  variant?: ElementVariants
+  variant?: ElementVariant
   onClose?: () => void
   className?: string
 }

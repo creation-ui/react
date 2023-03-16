@@ -2,7 +2,7 @@ import type React from 'react'
 import type {
   BaseComponentProps,
   ElementSize,
-  ElementVariants,
+  ElementVariant,
 } from '../../types'
 
 export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> &
@@ -19,7 +19,7 @@ export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> &
     /**
      * What variant should button be ?
      */
-    variant?: ElementVariants
+    variant?: ElementVariant
     /**
      * Icon to be displayed on the left side of the input
      */

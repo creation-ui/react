@@ -2,6 +2,7 @@ import { ForwardedRef, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { ErrorText, InteractiveContainer, Loader } from '..'
 import {
+  helperTextClasses,
   input,
   inputContainer,
   inputIcon,
@@ -49,6 +50,7 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           className={twMerge(shared.loaderInputPosition({ loading }))}
           size={size === 'lg' ? 'md' : 'sm'}
         />
+        <div className={helperTextClasses({ size })}>{helperText}</div>
         <div className='relative max-h-min'>
           {iconLeft && (
             <div className={inputIcon({ position: 'left' })}>{iconLeft}</div>

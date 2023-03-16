@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority'
+import clsx from 'clsx'
 
 export const sharedDisabledCVA = {
   true: [
@@ -8,20 +9,24 @@ export const sharedDisabledCVA = {
   ],
 }
 
-const loaderClasses = cva(
-  ['absolute', 'top-0', 'right-0', 'transition-opacity', 'duration-300'],
-  {
-    variants: {
-      loading: {
-        true: ['opacity-100', 'pointer-events-none'],
-        false: ['opacity-0', 'pointer-events-auto'],
-      },
-    },
-    defaultVariants: {
-      loading: false,
-    },
-  }
+export const microInteractions = clsx(
+  'transform',
+  'transition-all',
+  'duration-300',
+  'ease-in-out'
 )
+
+const loaderClasses = cva(['absolute', 'top-0', 'right-0', microInteractions], {
+  variants: {
+    loading: {
+      true: ['opacity-100', 'pointer-events-none'],
+      false: ['opacity-0', 'pointer-events-auto'],
+    },
+  },
+  defaultVariants: {
+    loading: false,
+  },
+})
 
 export const shared = {
   error: {
@@ -47,6 +52,7 @@ export const shared = {
   ],
   loaderInputPosition: loaderClasses,
   input: [
+    microInteractions,
     'border-zinc-400',
     'border',
     'dark:bg-zinc-900',
@@ -68,6 +74,7 @@ export const shared = {
     'rounded-md',
   ],
   checkable: [
+    microInteractions,
     'text-primary-500',
     'checked:border-none',
     'dark:checked:bg-primary-500',
@@ -100,7 +107,7 @@ export const input = cva(
   }
 )
 
-export const text = cva([], {
+export const text = cva([microInteractions], {
   variants: {
     size: {
       sm: ['sm:text-sm', 'text-base'],
@@ -113,7 +120,20 @@ export const text = cva([], {
   },
 })
 
-export const inputContainer = cva(['flex', 'relative'], {
+export const helperTextClasses = cva(
+  ['text-gray-500', 'dark:text-gray-300', 'my-1'],
+  {
+    variants: {
+      size: {
+        sm: ['text-xs'],
+        md: ['text-sm'],
+        lg: ['text-base'],
+      },
+    },
+  }
+)
+
+export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
   variants: {
     layout: {
       column: ['flex-col', 'gap-1'],
@@ -155,6 +175,7 @@ export const inputIcon = cva(
     'bottom-1/2',
     'transform',
     'translate-y-1/2',
+    microInteractions,
   ],
   {
     variants: {

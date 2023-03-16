@@ -39,7 +39,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               {...props}
             />
           </div>
-          {loading && <Loader className='form-element--loader' />}
+          {loading && <Loader />}
           <ErrorText error={error} />
         </div>
       </InteractiveContainer>

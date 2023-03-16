@@ -82,5 +82,5 @@ export type ThemeProps = {
 
 export interface ThemeProviderProps {
   children?: React.ReactNode
-  theme: ThemeProps
+  theme?: Partial<ThemeProps>
 }

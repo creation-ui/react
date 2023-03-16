@@ -4,6 +4,7 @@ import {
   InputExample,
   properties,
   PasswordExample,
+  InputPlayground,
 } from '@components/examples/input'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
@@ -11,6 +12,7 @@ import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 import { Icon } from '@mdi/react'
 import { mdiAccountOutline, mdiHelpCircle, mdiKeyVariant } from '@mdi/js'
+import { Playground } from '@components/playground'
 
 ```tsx copy
 export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
@@ -154,6 +156,21 @@ This component supports `size` prop with values `sm`, `md`, `lg`:
     value='this-is-my-password'
   />
 </Container>
+
+## Playground
+
+<Playground
+  config={{
+    size: true,
+    loading: true,
+    disabled: true,
+    error: true,
+    helperText: true,
+    clearable: true,
+  }}
+>
+  <InputPlayground label='Input' />
+</Playground>
 
 ## Component API
 

@@ -4,8 +4,9 @@ import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { iconProp } from './shared-props'
-import { mdiEye, mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
+import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
+import { usePlayground } from '@components/playground/context'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {
   debug?: boolean
@@ -34,6 +35,12 @@ export const InputExample = ({ debug, ...props }: InputExampleProps) => {
       )}
     </div>
   )
+}
+
+export const InputPlayground = ({ debug, ...props }: InputExampleProps) => {
+  const { state } = usePlayground()
+
+  return <Input {...props} {...state} defaultValue={state.content} />
 }
 
 export const PasswordExample = ({ debug, ...props }: InputExampleProps) => {

@@ -10,7 +10,6 @@
     ],
     "incremental": false,
     "isolatedModules": true,
-    "importsNotUsedAsValues": "error",
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",

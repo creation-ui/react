@@ -3,7 +3,7 @@ import { CalloutProps } from '@creation-ui/react/components/callout/types'
 import {
   Callout,
   ELEMENT_VARIANTS,
-  ElementVariants,
+  ElementVariant,
   Switch,
 } from '@creation-ui/react/index'
 import {
@@ -79,7 +79,7 @@ export const properties: DocumentedProperty[] = [
 interface CalloutExampleProps {
   displayTitle?: boolean
   displayIcon?: boolean
-  variant?: ElementVariants
+  variant?: ElementVariant
 }
 
 export const CalloutExample = ({

@@ -10,13 +10,7 @@ import { InteractiveContainer } from '../interactive-container'
 
 const Switch = ({ checked, ...props }: SwitchProps) => {
   const { size: defaultSize } = useTheme()
-  const {
-    size = defaultSize,
-    id,
-    required,
-    readOnly,
-    error,
-  } = props
+  const { size = defaultSize, id, required, readOnly, error } = props
   const componentId = useId(id)
 
   const disabled = props.disabled || readOnly

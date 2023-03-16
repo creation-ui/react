@@ -19,4 +19,5 @@ export type ToggleGroupProps = RadioGroupProps & {
   label?: string
   required?: boolean
   onChange?: HeadlessRadioGroupProps['onChange']
+  value?: ToggleGroupValue
 }
