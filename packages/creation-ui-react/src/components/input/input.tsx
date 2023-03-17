@@ -13,6 +13,7 @@ import {
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { InputProps } from './input.types'
+import { HelperText } from '../helper-text'
 
 const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
   const { size: defaultSize } = useTheme()
@@ -50,7 +51,7 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           className={twMerge(shared.loaderInputPosition({ loading }))}
           size={size === 'lg' ? 'md' : 'sm'}
         />
-        <div className={helperTextClasses({ size })}>{helperText}</div>
+        <HelperText size={size} helperText={helperText} />
         <div className='relative max-h-min'>
           {iconLeft && (
             <div className={inputIcon({ position: 'left' })}>{iconLeft}</div>

@@ -120,18 +120,15 @@ export const text = cva([microInteractions], {
   },
 })
 
-export const helperTextClasses = cva(
-  ['text-gray-500', 'dark:text-gray-300', 'my-1'],
-  {
-    variants: {
-      size: {
-        sm: ['text-xs'],
-        md: ['text-sm'],
-        lg: ['text-base'],
-      },
+export const helperTextClasses = cva(['text-gray-500', 'dark:text-gray-300'], {
+  variants: {
+    size: {
+      sm: ['text-xs', '-mt-1'],
+      md: ['text-sm', '-mt-1'],
+      lg: ['text-sm', '-mt-2'],
     },
-  }
-)
+  },
+})
 
 export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
   variants: {

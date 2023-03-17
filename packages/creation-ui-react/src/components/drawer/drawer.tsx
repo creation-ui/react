@@ -34,7 +34,7 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
           onClose={onClose}
           className={drawer({ className: [zIndex.modals], position })}
         >
-          <div className='h-screen flex'>
+          <div className='h-full flex'>
             <div className={clsx(child)}>{children}</div>
           </div>
         </Dialog>

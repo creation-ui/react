@@ -4,14 +4,12 @@ import { microInteractions, sharedDisabledCVA } from '../../classes'
 export const toggleGroup = {
   container: [
     microInteractions,
-    'bg-zinc-50',
     'w-fit',
-    'rounded',
     'relative',
-    'border',
-    'border-zinc-200',
     'flex',
     'select-none',
+    '!h-fit',
+    '!p-0',
   ],
   list: ['flex', 'flex-row', 'flex-nowrap'],
   option: cva(
@@ -19,9 +17,7 @@ export const toggleGroup = {
       microInteractions,
       'p-2',
       'cursor-pointer',
-      'focus:outline-none',
-      'text-zinc-900',
-      'hover:bg-zinc-100',
+      'border-inherit',
       'border-r',
       'last:border-r-transparent',
       'flex',
@@ -34,7 +30,10 @@ export const toggleGroup = {
     ],
     {
       variants: {
-        checked: { true: ['!bg-zinc-300'] },
+        checked: {
+          true: ['!bg-primary-500', 'text-white', 'font-bold'],
+          false: ['bg-zinc-50', 'text-zinc-900', 'hover:bg-zinc-100'],
+        },
         disabled: sharedDisabledCVA,
         size: {
           sm: ['h-7'],

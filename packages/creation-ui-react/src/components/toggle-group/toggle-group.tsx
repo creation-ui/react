@@ -1,10 +1,11 @@
 import { RadioGroup } from '@headlessui/react'
 import clsx from 'clsx'
-import { inputContainer, label, text } from '../../classes'
+import { input, inputContainer, label, text } from '../../classes'
 import { useTheme } from '../../theme'
 import { InteractiveContainer } from '../interactive-container'
 import { toggleGroup } from './classes'
 import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
+import { twMerge } from 'tailwind-merge'
 
 const ToggleGroup = (props: ToggleGroupProps) => {
   const { size: defaultSize } = useTheme()
@@ -17,7 +18,17 @@ const ToggleGroup = (props: ToggleGroupProps) => {
   } = props
   const disabled = props.disabled || props.readOnly
 
-  const containerClasses = clsx(inputContainer({ disabled }), text({ size }))
+  const containerClasses = clsx(
+    inputContainer({ disabled, className: [text({ size })] })
+  )
+
+  const inputClasses = twMerge(
+    input({
+      // variant,
+      size,
+      className: clsx(toggleGroup.container, className),
+    })
+  )
 
   return (
     <InteractiveContainer disabled={disabled} className={className}>
@@ -27,10 +38,7 @@ const ToggleGroup = (props: ToggleGroupProps) => {
           children={props.label}
           aria-label={props.label?.toString()}
         />
-        <RadioGroup
-          {...rest}
-          className={clsx(toggleGroup.container, className)}
-        >
+        <RadioGroup {...rest} className={inputClasses}>
           <div className={clsx(toggleGroup.list)}>
             {options.map(({ label, value, disabled }: ToggleGroupOption) => (
               <RadioGroup.Option
