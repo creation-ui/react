@@ -63,7 +63,7 @@ export const PasswordExample = ({ debug, ...props }: InputExampleProps) => {
         onChange={e => setValue(e.target.value)}
         value={value}
         type={type}
-        iconRight={
+        endAdornment={
           <Icon
             path={type === 'password' ? mdiEyeOutline : mdiEyeOffOutline}
             size={1}

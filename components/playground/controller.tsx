@@ -18,8 +18,8 @@ export const PlaygroundController: React.FC<PlaygroundControllerProps> = ({
     variant: 'contained',
     content: '',
     loading: false,
-    state: 'default',
     status: undefined,
+    helperText: 'This is helper text',
   })
 
   const handleChangeUpdate = (key: keyof PlaygroundContextValue['state']) => {

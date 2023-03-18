@@ -24,21 +24,21 @@ const COLORS: Array<{ value: string; label: ElementColor }> = [
 ]
 
 export const useControlComponents = () => {
+  const { state, config, handleChangeUpdate } = usePlayground()
   const {
-    state: {
-      loading,
-      size,
-      color,
-      helperText,
-      variant,
-      content,
-      status,
-      error,
-      disabled,
-    },
-    config,
-    handleChangeUpdate,
-  } = usePlayground()
+    loading,
+    size,
+    color,
+    helperText,
+    variant,
+    content,
+    status,
+    error,
+    disabled,
+    required,
+    clearable,
+    readOnly,
+  } = state
 
   const components: any[] = []
 
@@ -59,6 +59,41 @@ export const useControlComponents = () => {
         onChange={handleChangeUpdate('disabled')}
       />
     )
+  config.required &&
+    components.push(
+      <Switch
+        label='Required'
+        checked={required}
+        onChange={handleChangeUpdate('required')}
+      />
+    )
+  config.readOnly &&
+    components.push(
+      <Switch
+        label='Read only'
+        checked={readOnly}
+        onChange={handleChangeUpdate('readOnly')}
+      />
+    )
+  config.clearable &&
+    components.push(
+      <Switch
+        label='Clearable'
+        checked={clearable}
+        onChange={handleChangeUpdate('clearable')}
+      />
+    )
+
+  config.error &&
+    components.push(
+      <Switch
+        label='Error'
+        checked={error}
+        onChange={handleChangeUpdate('error')}
+      />
+    )
+
+  /** END OF BOOLEANS */
 
   config.size &&
     components.push(
@@ -92,20 +127,11 @@ export const useControlComponents = () => {
 
   config.status &&
     components.push(
-      <Select
+      <ToggleGroup
         label='Status'
         value={status}
-        onChange={handleChangeUpdate('status')}
         options={STATUSES}
-      />
-    )
-
-  config.error &&
-    components.push(
-      <Input
-        label='Error text'
-        value={error}
-        onChange={e => handleChangeUpdate('error')(e?.target.value)}
+        onChange={handleChangeUpdate('status') as any}
       />
     )
 

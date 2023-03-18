@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { ErrorText, InteractiveContainer, Loader } from '..'
+import { HelperText, InteractiveContainer, Loader } from '..'
 import { input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -40,7 +40,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             />
           </div>
           {loading && <Loader />}
-          <ErrorText error={error} />
+          <HelperText error helperText={error} size={size} />
         </div>
       </InteractiveContainer>
     )

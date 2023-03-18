@@ -1,0 +1,31 @@
+import { Container } from '@components/container'
+
+# HelperText
+
+Used in inputs to display helper text or an error message. When content is falsy then it won't be displayed at all.
+
+import InstallationGuide from '@components/shared/installation-guide.mdx'
+
+<InstallationGuide />
+
+## Usage
+
+```tsx copy
+import { HelperText } from '@creation-ui/react'
+
+<HelperText helperText={`The message`} error />
+```
+
+import { HelperTextExample, properties } from '@components/examples/helper-text'
+
+<HelperTextExample />
+
+## Component API
+
+import PropsTable from '@components/props-table'
+
+<PropsTable
+  properties={properties}
+  name='HelperText'
+  description={'HelperText component props'}
+/>

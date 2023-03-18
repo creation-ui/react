@@ -4,7 +4,7 @@ import type { StatusBadgeProps } from './status-badge.types'
 
 const StatusBadge = (props: StatusBadgeProps) => {
   const { size: defaultSize } = useTheme()
-  const { label, status = 'default', size = defaultSize, border } = props
+  const { label, status = 'info', size = defaultSize, border } = props
 
   return (
     <div

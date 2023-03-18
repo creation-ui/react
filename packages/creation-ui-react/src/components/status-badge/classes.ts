@@ -21,14 +21,14 @@ export const badge = cva(
         success: 'bg-success-500/20 text-success-600',
         error: 'bg-error-100 text-error-500',
         warning: 'bg-warning-100 text-warning-600',
-        default: 'bg-zinc-100 text-zinc-800',
+        info: 'bg-zinc-100 text-zinc-800',
       },
       border: {
         active: 'border border-primary-200',
         success: 'border border-success-400',
         error: 'border border-error-300',
         warning: 'border border-warning-300',
-        default: 'border border-zinc-400',
+        info: 'border border-zinc-400',
       },
       size: {
         sm: ['text-xs'],

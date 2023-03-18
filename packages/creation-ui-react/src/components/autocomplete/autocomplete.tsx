@@ -1,15 +1,20 @@
 import { Combobox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React, { ChangeEvent, Fragment, useState } from 'react'
-import { ClearButton, DropdownChevron, ErrorText, SelectOption } from '..'
+import {
+  ClearButton,
+  DropdownChevron,
+  HelperText,
+  SelectOption
+} from '..'
 import { input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import type { MultipleEllipsisFormatter } from '../../types'
 import { formatOptionValue } from '../../utils/format-option-value'
 import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { select } from '../select/classes'
-import type { MultipleEllipsisFormatter } from '../../types'
 import type { AutocompleteProps } from './autocomplete.types'
 
 export const Autocomplete = (props: AutocompleteProps) => {
@@ -160,7 +165,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           </div>
         )}
       </Combobox>
-      <ErrorText error={error} />
+      <HelperText error helperText={error} size={size} />
     </div>
   )
 }

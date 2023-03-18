@@ -23,11 +23,11 @@ export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> &
     /**
      * Icon to be displayed on the left side of the input
      */
-    iconLeft?: React.ReactNode
+    startAdornment?: React.ReactNode
     /**
      * Icon to be displayed on the right side of the input
      */
-    iconRight?: React.ReactNode
+    endAdornment?: React.ReactNode
     /**
      * Is button fullwidth?
      */

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { ErrorText, InteractiveContainer } from '..'
+import { HelperText, InteractiveContainer } from '..'
 import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -49,7 +49,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
             children={props.label}
             aria-label={props.label?.toString()}
           />
-          <ErrorText error={error} />
+          <HelperText error helperText={error} size={size} />
         </div>
       </InteractiveContainer>
     )

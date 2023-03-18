@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
-import { ErrorText, InteractiveContainer, Loader } from '..'
+import { HelperText, InteractiveContainer, Loader } from '..'
 import { inputContainer, label, shared, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -46,7 +46,7 @@ const DatePicker = (props: DatePickerProps) => {
           id={componentId}
           aria-readonly={!!props.readOnly}
         />
-        <ErrorText error={error} />
+        <HelperText error helperText={error} size={size} />
       </div>
     </InteractiveContainer>
   )

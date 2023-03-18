@@ -1,1 +1,1 @@
-export * from './error-text'
+export * from './helper-text'

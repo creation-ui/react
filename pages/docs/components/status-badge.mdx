@@ -5,67 +5,24 @@ import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
-import { properties } from '@components/examples/status-badge'
+import {
+  properties,
+  StatusBadgePlayground,
+} from '@components/examples/status-badge'
+import { Playground } from '@components/playground'
 
 ```tsx copy
 import { StatusBadge } from '@creation-ui/react'
-
-<StatusBadge status='success' />
+;<StatusBadge status='success' />
 ```
 
-<Container>
-  <StatusBadge status='success' />
-</Container>
+## Playground
 
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={StatusBadge}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  nameProp='label'
-  componentProps={{ status: 'info' }}
-/>
-
-## Bordered
-
-This component supports `border` flag:
-
-<UnfoldVariants
-  component={StatusBadge}
-  variants={[...ELEMENT_STATUS, 'undefined']}
-  prop='status'
-  nameProp='label'
-  componentProps={{ border: true }}
-/>
-
-## Status
-
-This component supports `status` prop with values `success`, `warning`, `error`, `active`.
-Default style is applied when `status` prop is left not defined.
-
-<UnfoldVariants
-  component={StatusBadge}
-  variants={[...ELEMENT_STATUS, 'undefined']}
-  prop='status'
-  nameProp='label'
-/>
-
-## Custom label
-
-This component supports `label` separate from `status` prop:
-
-```tsx copy
-import { StatusBadge } from '@creation-ui/status-badge'
-
-<StatusBadge status='success' label='Action completed!' />
-```
-
-<Container>
-  <StatusBadge status='success' label='Action completed!' />
-</Container>
+<Playground
+  config={{ size: true, status: true, variant: true, content: true }}
+>
+  <StatusBadgePlayground />
+</Playground>
 
 ## Component API
 

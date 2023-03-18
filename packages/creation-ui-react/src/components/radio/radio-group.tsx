@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ErrorText, InteractiveContainer } from '..'
+import { HelperText, InteractiveContainer } from '..'
 import { inputContainer, label, text } from '../../classes'
 import { useTheme } from '../../theme'
 import type { RadioGroupProps } from './types'
@@ -28,7 +28,7 @@ const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {
           aria-label={props.label?.toString()}
         />
         <div className={'flex flex-col gap-2'}>{children}</div>
-        <ErrorText error={error} />
+        <HelperText error helperText={error} size={size} />
       </div>
     </InteractiveContainer>
   )

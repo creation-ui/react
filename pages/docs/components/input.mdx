@@ -24,9 +24,21 @@ export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
 }
 ```
 
-<Container>
-  <InputExample label='Input' debug />
-</Container>
+## Playground
+
+<Playground
+  config={{
+    size: true,
+    loading: true,
+    disabled: true,
+    readOnly: true,
+    error: true,
+    helperText: true,
+    clearable: true,
+  }}
+>
+  <InputPlayground label='Input' />
+</Playground>
 
 As you may observe in this example the longer the content inside the Input component
 the longer it gets. To fix that you would need to provide your own **width** constraints
@@ -37,90 +49,49 @@ either by a **custom wrapper** or passing class to `className` e.g.
 <Input className='w-[200px]' />
 ```
 
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={InputExample}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  nameProp='label'
-/>
-
-## States
-
-<Container variant='column'>
-  <InputExample disabled label='Disabled' />
-  <InputExample required label='Required' />
-  <InputExample readOnly label='Read only' value="I'm read only" />
-  <InputExample loading label='Loading' value='Loading' />
-</Container>
-
-## Error text
-
-<Container>
-  <InputExample
-    error='This field is required'
-    label='Error'
-    value=''
-    required
-  />
-</Container>
-
-## Helper text
-
-<Container>
-  <InputExample
-    helperText='This field is required'
-    label='With helper text'
-    value='Hello world'
-  />
-</Container>
-
-## With icons
+## Input Adornments
 
 <Container>
   <InputExample
     label='Email'
     defaultValue='user@gmail.com'
     size='sm'
-    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+    startAdornment={<Icon path={mdiAccountOutline} size={1} />}
   />
   <InputExample
     label='Password'
     defaultValue='6465465'
     type='password'
     size='sm'
-    iconRight={<Icon path={mdiKeyVariant} size={1} />}
+    endAdornment={<Icon path={mdiKeyVariant} size={1} />}
   />
   <InputExample
     label='Email'
     size='sm'
     defaultValue='user@gmail.com'
-    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
-    iconRight={<Icon path={mdiHelpCircle} size={1} />}
+    startAdornment={<Icon path={mdiAccountOutline} size={1} />}
+    endAdornment={<Icon path={mdiHelpCircle} size={1} />}
   />
 </Container>
 <Container>
   <InputExample
     label='Email'
     defaultValue='user@gmail.com'
-    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+    startAdornment={<Icon path={mdiAccountOutline} size={1} />}
 />
 
 <InputExample
   label='Password'
   defaultValue='6465465'
   type='password'
-  iconRight={<Icon path={mdiKeyVariant} size={1} />}
+  endAdornment={<Icon path={mdiKeyVariant} size={1} />}
 />
 
 <InputExample
   label='Email'
   defaultValue='user@gmail.com'
-  iconLeft={<Icon path={mdiAccountOutline} size={1} />}
-  iconRight={<Icon path={mdiHelpCircle} size={1} />}
+  startAdornment={<Icon path={mdiAccountOutline} size={1} />}
+  endAdornment={<Icon path={mdiHelpCircle} size={1} />}
 />
 
 </Container>
@@ -129,20 +100,20 @@ This component supports `size` prop with values `sm`, `md`, `lg`:
     label='Email'
     size='lg'
     defaultValue='user@gmail.com'
-    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
+    startAdornment={<Icon path={mdiAccountOutline} size={1} />}
   />
   <InputExample
     label='Password'
     defaultValue='6465465'
     type='password'
-    iconRight={<Icon path={mdiKeyVariant} size={1} />}
+    endAdornment={<Icon path={mdiKeyVariant} size={1} />}
     size='lg'
   />
   <InputExample
     label='Email'
     defaultValue='user@gmail.com'
-    iconLeft={<Icon path={mdiAccountOutline} size={1} />}
-    iconRight={<Icon path={mdiHelpCircle} size={1} />}
+    startAdornment={<Icon path={mdiAccountOutline} size={1} />}
+    endAdornment={<Icon path={mdiHelpCircle} size={1} />}
     size='lg'
   />
 </Container>
@@ -156,21 +127,6 @@ This component supports `size` prop with values `sm`, `md`, `lg`:
     value='this-is-my-password'
   />
 </Container>
-
-## Playground
-
-<Playground
-  config={{
-    size: true,
-    loading: true,
-    disabled: true,
-    error: true,
-    helperText: true,
-    clearable: true,
-  }}
->
-  <InputPlayground label='Input' />
-</Playground>
 
 ## Component API
 

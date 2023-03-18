@@ -1,8 +1,7 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { ErrorText, InteractiveContainer, Loader } from '..'
+import { InteractiveContainer, Loader } from '..'
 import {
-  helperTextClasses,
   input,
   inputContainer,
   inputIcon,
@@ -13,7 +12,7 @@ import {
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { InputProps } from './input.types'
-import { HelperText } from '../helper-text'
+import { HelperText } from '../typography/helper-text'
 
 const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
   const { size: defaultSize } = useTheme()
@@ -25,8 +24,8 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
     type = 'text',
     className,
     id,
-    iconLeft,
-    iconRight,
+    startAdornment,
+    endAdornment,
     ...rest
   } = props
   const componentId = useId(id)
@@ -51,10 +50,11 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           className={twMerge(shared.loaderInputPosition({ loading }))}
           size={size === 'lg' ? 'md' : 'sm'}
         />
-        <HelperText size={size} helperText={helperText} />
         <div className='relative max-h-min'>
-          {iconLeft && (
-            <div className={inputIcon({ position: 'left' })}>{iconLeft}</div>
+          {startAdornment && (
+            <div className={inputIcon({ position: 'left' })}>
+              {startAdornment}
+            </div>
           )}
           <input
             ref={ref}
@@ -62,8 +62,8 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
             className={input({
               size,
               variant: props.variant,
-              iconLeft: !!iconLeft,
-              iconRight: !!iconRight,
+              iconLeft: !!startAdornment,
+              iconRight: !!endAdornment,
               className: twMerge(className),
             })}
             aria-readonly={!!props.readOnly}
@@ -71,11 +71,13 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
             type={type}
             {...rest}
           />
-          {iconRight && (
-            <div className={inputIcon({ position: 'right' })}>{iconRight}</div>
+          {endAdornment && (
+            <div className={inputIcon({ position: 'right' })}>
+              {endAdornment}
+            </div>
           )}
         </div>
-        <ErrorText error={error} />
+        <HelperText size={size} helperText={error || helperText} />
       </div>
     </InteractiveContainer>
   )

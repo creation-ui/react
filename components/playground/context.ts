@@ -14,12 +14,16 @@ export interface PlaygroundContextValue {
     content?: string
     status?: ElementStatus
     loading?: boolean
-    error?: string
+    error?: boolean
     helperText?: string
     disabled?: boolean
+    readOnly?: boolean
     clearable?: boolean
+    required?: boolean
   }
   config: {
+    readOnly?: boolean
+    required?: boolean
     disabled?: boolean
     size?: boolean
     color?: boolean

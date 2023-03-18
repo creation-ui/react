@@ -123,9 +123,13 @@ export const text = cva([microInteractions], {
 export const helperTextClasses = cva(['text-gray-500', 'dark:text-gray-300'], {
   variants: {
     size: {
-      sm: ['text-xs', '-mt-1'],
-      md: ['text-sm', '-mt-1'],
-      lg: ['text-sm', '-mt-2'],
+      sm: ['text-xs'],
+      md: ['text-sm'],
+      lg: ['text-sm'],
+    },
+    error: {
+      true: shared.error.text,
+      false: [],
     },
   },
 })
