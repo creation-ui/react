@@ -35,11 +35,16 @@ const Table = () => {
     <div className='overflow-hidden rounded-lg relative'>
       <LoadingOverlay active={loading} />
       <table
+        // @ts-ignore
         ref={tableRef}
         className={tableClasses()}
         style={{ height, maxHeight: height }}
       >
-        <thead ref={headRef} className={headerClasses}>
+        <thead
+          // @ts-ignore
+          ref={headRef}
+          className={headerClasses}
+        >
           {head.map(headerGroup => (
             <tr key={headerGroup.id} className={headerRowClasses}>
               {headerGroup.headers.map(column => (
@@ -85,7 +90,11 @@ const Table = () => {
           </tbody>
         )}
 
-        <tfoot className={footerClasses} ref={footRef}>
+        <tfoot
+          // @ts-ignore
+          ref={footRef}
+          className={footerClasses}
+        >
           {foot.map(group => (
             <tr key={group.id}>
               {group.headers.map(column => (

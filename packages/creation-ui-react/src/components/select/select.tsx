@@ -104,7 +104,7 @@ const Select = (props: SelectProps) => {
               <Listbox.Options
                 className={clsx(
                   select.list,
-                  zIndex.dropdowns,
+                  zIndex?.dropdowns,
                   showAbove ? 'mb-2 bottom-full' : 'mt-2 top-full'
                 )}
               >

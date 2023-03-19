@@ -1,4 +1,4 @@
-import type { ElementStatus, ElementVariant } from 'src/types'
+import type { ElementStatus, ElementVariant } from '../../types'
 
 export interface CalloutProps {
   content: React.ReactNode

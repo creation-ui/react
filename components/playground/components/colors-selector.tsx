@@ -49,9 +49,10 @@ export const ColorsSelector = ({
       <label
         htmlFor={componentId}
         className={labelClasses({ size, required: props.required })}
-        children={label}
         aria-label={label?.toString()}
-      />
+      >
+        {label}
+      </label>
       <div className='flex gap-3 w-fit' aria-required={required}>
         {options.map(o => (
           <div

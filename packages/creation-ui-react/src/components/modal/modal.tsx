@@ -56,7 +56,7 @@ const Modal = (props: ModalProps) => {
         <Dialog
           as='div'
           open={open}
-          className={clsx(modal.base, zIndex.modals, className)}
+          className={clsx(modal.base, zIndex?.modals, className)}
           onClose={onClose as any}
           {...rest}
         >

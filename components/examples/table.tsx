@@ -5,7 +5,7 @@ import {
   StatusBadge,
   StatusBadgeProps,
   Switch,
-  Table
+  Table,
 } from '@creation-ui/react'
 import { useMemo, useState } from 'react'
 
@@ -45,7 +45,7 @@ const formatMinutes = (minutes: number) => {
 
 export const TableExample = () => {
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<ReadableError | null>(null)
+  const [error, setError] = useState<ReadableError | undefined>(undefined)
 
   const [rowSelection, setRowSelection] = useState({})
   const columns = useMemo<ColumnDef<Person>[]>(
@@ -174,7 +174,7 @@ export const TableExample = () => {
   const toggleError = () =>
     setError(
       error
-        ? null
+        ? undefined
         : {
             title: 'Service unavailable',
             message:

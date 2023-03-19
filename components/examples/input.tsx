@@ -38,15 +38,7 @@ export const InputExample = ({ debug, ...props }: InputExampleProps) => {
 }
 
 export const InputPlayground = ({ debug, ...props }: InputExampleProps) => {
-  const { state } = usePlayground({
-    size: true,
-    loading: true,
-    disabled: true,
-    readOnly: true,
-    error: true,
-    helperText: true,
-    clearable: true,
-  })
+  const { state } = usePlayground()
 
   return <Input {...props} {...state} defaultValue={state.content} />
 }

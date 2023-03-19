@@ -12,7 +12,7 @@ export const LoadingOverlay = ({
   const { zIndex, size: defaultSize } = useTheme()
   const { size = defaultSize, white } = props
   return active ? (
-    <div {...props} className={clsx(overlay, zIndex.overlays, className)}>
+    <div {...props} className={clsx(overlay, zIndex?.overlays, className)}>
       <Loader size={size} white={white} />
     </div>
   ) : null

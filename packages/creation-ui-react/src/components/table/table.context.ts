@@ -1,6 +1,6 @@
 import type { Table } from '@tanstack/table-core'
 import { createContext, useContext } from 'react'
-import type { ElementVariant, ReadableError } from 'src/types'
+import type { ElementVariant, ReadableError } from '../../types'
 
 export interface TableContextValue<T = any> {
   table: Table<T>
@@ -22,7 +22,7 @@ export interface TableContextValue<T = any> {
   }
 }
 
-export const TableContext = createContext<TableContextValue>(null)
+export const TableContext = createContext<TableContextValue>({} as any)
 
 export const useTable = () => {
   const context = useContext(TableContext)

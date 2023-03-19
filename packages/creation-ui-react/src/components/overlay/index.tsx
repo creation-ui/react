@@ -8,7 +8,7 @@ export const Overlay = ({ active, onClick, className }: OverlayProps) => {
   return active ? (
     <div>
       <div
-        className={twMerge(overlay, zIndex.overlays, className)}
+        className={twMerge(overlay, zIndex?.overlays, className)}
         onClick={onClick}
       >
         &nbsp;

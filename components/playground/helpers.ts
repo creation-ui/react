@@ -17,7 +17,7 @@ export const createInitialState = (
     disabled: false,
     helperText: 'This is helper text',
     clearable: false,
-    capitalize: false,
+    uppercase: false,
     error: false,
     circle: false,
     readOnly: false,

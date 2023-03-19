@@ -9,7 +9,7 @@ export const StatusBadgePlayground = () => {
   return (
     <StatusBadge
       {...state}
-      label={!!state.content ? state.content : undefined}
+      label={state.content ? state.content : undefined}
     />
   )
 }

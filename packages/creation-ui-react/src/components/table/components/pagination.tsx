@@ -22,12 +22,10 @@ const PaginationBlock = ({
 )
 
 const PageSelectorButtons = () => {
-  const {
-    table,
-    pagination: {
-      texts: { next, previous },
-    },
-  } = useTable()
+  const { table, pagination } = useTable()
+
+  const texts = pagination?.texts
+
   return (
     <div className='flex gap-2'>
       <Button
@@ -35,14 +33,14 @@ const PageSelectorButtons = () => {
         onClick={() => table.previousPage()}
         disabled={!table.getCanPreviousPage()}
       >
-        {previous}
+        {texts?.previous}
       </Button>
       <Button
         variant='outlined'
         onClick={() => table.nextPage()}
         disabled={!table.getCanNextPage()}
       >
-        {next}
+        {texts?.next}
       </Button>
     </div>
   )
@@ -119,16 +117,16 @@ const PageSelector = () => {
 }
 
 const Pagination = () => {
+  const { table, pagination = {} } = useTable()
+
   const {
-    table,
-    pagination: {
-      pageSizes,
-      totalInSizesSelector,
-      showTotalCount,
-      texts,
-      pageButtonsVariant,
-    },
-  } = useTable()
+    pageSizes,
+    totalInSizesSelector,
+    showTotalCount,
+    texts,
+    pageButtonsVariant,
+  } = pagination
+
   const currentPageIdx = table.getState().pagination.pageIndex
   const totalPages = table.getPageCount()
   const resultsCount = table.getPrePaginationRowModel().rows.length

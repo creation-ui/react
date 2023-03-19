@@ -9,10 +9,10 @@ import type { DrawerProps } from './drawer.types'
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
   const {
-    size = drawers.size,
-    position = drawers.position,
+    //
+    size = drawers?.size,
+    position = drawers!.position,
     onClose,
-    ...rest
   } = props
 
   return (
@@ -32,7 +32,7 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
           unmount={false}
           // @ts-ignore
           onClose={onClose}
-          className={drawer({ className: [zIndex.modals], position })}
+          className={drawer({ className: [zIndex?.modals], position })}
         >
           <div className='h-full flex'>
             <div className={clsx(child)}>{children}</div>

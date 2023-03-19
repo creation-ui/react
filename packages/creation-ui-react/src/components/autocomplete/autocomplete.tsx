@@ -136,7 +136,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
               >
                 <Combobox.Options
                   static
-                  className={clsx(select.list, zIndex.dropdowns)}
+                  className={clsx(select.list, zIndex?.dropdowns)}
                 >
                   {!filteredOptions?.length ? (
                     <div className={clsx(select.notFound)}>

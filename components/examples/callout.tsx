@@ -31,7 +31,7 @@ export const statusExamples: CalloutProps[] = [
     title: 'Account Activated',
     content:
       'Your account has been successfully activated. You can now start using our platform.',
-    status: 'active',
+    status: 'primary',
   },
   {
     icon: <Icon path={mdiAlertCircle} size={1} />,
@@ -127,8 +127,8 @@ export const CalloutVariantsExamples = () => {
           checked={state.icon}
         />
       </div>
-      {withVariantExample.map(exampleSet => (
-        <Container variant='column'>
+      {withVariantExample.map((exampleSet, idx) => (
+        <Container variant='column' key={idx}>
           <h3 className='font-2xl font-bold uppercase my-2'>
             {exampleSet[0].variant}
           </h3>
