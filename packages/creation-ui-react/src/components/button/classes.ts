@@ -11,10 +11,16 @@ export const button = cva(
     'cursor-pointer',
     'select-none',
     'justify-center',
+    'overflow-hidden',
   ],
   {
     variants: {
       disabled: sharedDisabledCVA,
+      uppercase: {
+        //
+        true: ['uppercase'],
+        false: null,
+      },
       size: {
         //
         sm: ['px-3', 'py-1'],
@@ -26,11 +32,12 @@ export const button = cva(
         outlined: null,
         text: null,
       },
-      color: {
+      status: {
         primary: null,
         success: null,
         warning: null,
         error: null,
+        info: null,
       },
       circle: { true: ['rounded-full'], false: null },
     },
@@ -42,7 +49,7 @@ export const button = cva(
     compoundVariants: [
       {
         variant: 'contained',
-        color: 'primary',
+        status: 'primary',
         className: [
           'text-white',
           'bg-primary-500',
@@ -53,7 +60,7 @@ export const button = cva(
       },
       {
         variant: 'outlined',
-        color: 'primary',
+        status: 'primary',
         className: [
           'border',
           'border-primary-500',
@@ -64,19 +71,19 @@ export const button = cva(
       },
       {
         variant: 'text',
-        color: 'primary',
+        status: 'primary',
         className: [
           'bg-transparent',
           'text-primary-500',
           'focus:text-primary-600',
           'hover:text-primary-600',
-          'hover:bg-primary-50/10',
+          'hover:bg-primary-50/50',
           'active:text-primary-500',
         ],
       },
       {
         variant: 'contained',
-        color: 'success',
+        status: 'success',
         className: [
           'text-white',
           'bg-success-500',
@@ -87,7 +94,7 @@ export const button = cva(
       },
       {
         variant: 'outlined',
-        color: 'success',
+        status: 'success',
         className: [
           'border',
           'border-success-500',
@@ -98,19 +105,19 @@ export const button = cva(
       },
       {
         variant: 'text',
-        color: 'success',
+        status: 'success',
         className: [
           'bg-transparent',
           'text-success-500',
           'focus:text-success-600',
           'hover:text-success-600',
-          'hover:bg-success-50/10',
+          'hover:bg-success-50/50',
           'active:text-success-500',
         ],
       },
       {
         variant: 'contained',
-        color: 'warning',
+        status: 'warning',
         className: [
           'text-white',
           'bg-warning-500',
@@ -121,7 +128,7 @@ export const button = cva(
       },
       {
         variant: 'outlined',
-        color: 'warning',
+        status: 'warning',
         className: [
           'border',
           'border-warning-500',
@@ -132,19 +139,19 @@ export const button = cva(
       },
       {
         variant: 'text',
-        color: 'warning',
+        status: 'warning',
         className: [
           'bg-transparent',
           'text-warning-500',
           'focus:text-warning-600',
           'hover:text-warning-600',
-          'hover:bg-warning-50/10',
+          'hover:bg-warning-50/50',
           'active:text-warning-500',
         ],
       },
       {
         variant: 'contained',
-        color: 'error',
+        status: 'error',
         className: [
           'text-white',
           'bg-error-500',
@@ -155,7 +162,7 @@ export const button = cva(
       },
       {
         variant: 'outlined',
-        color: 'error',
+        status: 'error',
         className: [
           'border',
           'border-error-500',
@@ -166,31 +173,75 @@ export const button = cva(
       },
       {
         variant: 'text',
-        color: 'error',
+        status: 'error',
         className: [
           'bg-transparent',
           'text-error-500',
           'focus:text-error-600',
           'hover:text-error-600',
-          'hover:bg-error-50/10',
+          'hover:bg-error-50/50',
           'active:text-error-500',
+        ],
+      },
+      // INFO
+      {
+        variant: 'contained',
+        status: 'info',
+        className: [
+          'text-white',
+          'bg-info-500',
+          'hover:bg-info-600',
+          'focus:bg-info-600',
+          'active:bg-info-700',
+        ],
+      },
+      {
+        variant: 'outlined',
+        status: 'info',
+        className: [
+          'border',
+          'border-info-500',
+          'text-info-500',
+          'hover:bg-info-50',
+          'active:bg-info-100',
+        ],
+      },
+      {
+        variant: 'text',
+        status: 'info',
+        className: [
+          'bg-transparent',
+          'text-info-700',
+          'focus:text-info-900',
+          'hover:text-info-800',
+          'hover:bg-info-50',
+          'active:text-info-900',
         ],
       },
       {
         size: 'sm',
         circle: true,
-        className: ['px-3'],
+        className: ['px-1', 'h-12', 'w-12'],
       },
       {
         size: 'md',
         circle: true,
-        className: ['px-4'],
+        className: ['px-1', 'h-16', 'w-16'],
       },
       {
         size: 'lg',
         circle: true,
-        className: ['px-5'],
+        className: ['px-1', 'h-20', 'w-20'],
       },
     ],
   }
 )
+
+const c = [
+  'w-14',
+  'h-14',
+  'rounded-full',
+  'flex',
+  'items-center',
+  'justify-center',
+]

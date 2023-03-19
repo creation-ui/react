@@ -1,4 +1,8 @@
-import type { BaseComponentProps, ElementStatus } from '../../types'
+import type {
+  BaseComponentProps,
+  ElementStatus,
+  ElementVariant,
+} from '../../types'
 
 export interface StatusBadgeProps
   extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {
@@ -10,4 +14,8 @@ export interface StatusBadgeProps
    * Should have border?
    */
   border?: boolean
+  /**
+   * Variant
+   */
+  variant?: ElementVariant
 }

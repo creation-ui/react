@@ -1,9 +1,9 @@
 import { cva } from 'class-variance-authority'
 
 const size = {
-  sm: ['w-6', 'h-6'],
-  md: ['w-8', 'h-8'],
-  lg: ['w-10', 'h-10'],
+  sm: ['w-4', 'h-4'],
+  md: ['w-6', 'h-6'],
+  lg: ['w-8', 'h-8'],
 }
 
 export const loader = cva(
@@ -17,7 +17,7 @@ export const loader = cva(
     },
   }
 )
-export const loaderIcon = cva(['mr-2', 'animate-spin'], {
+export const loaderIcon = cva(['animate-spin'], {
   variants: {
     size,
     white: {

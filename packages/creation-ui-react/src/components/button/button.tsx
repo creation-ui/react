@@ -1,10 +1,11 @@
 import React from 'react'
-import { Loader } from '..'
+import { Loader, LoadingOverlay } from '..'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { ButtonProps } from './button.types'
 import { button } from './classes'
 import { InteractiveContainer } from '..'
+import { text } from '../../classes'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -14,16 +15,29 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const componentId = useId(id)
     const theme = useTheme()
 
-    // get the default values from theme
     const {
       circle,
       size = theme.size,
       variant = 'contained',
-      color = 'primary',
+      status = 'primary',
+      uppercase,
     } = props
 
     const isLoaderWhite = variant === 'contained'
     const disabled = loading || props.disabled
+
+    const classes = button({
+      size,
+      status,
+      circle,
+      variant,
+      disabled,
+      uppercase,
+      className: [theme.roundness, className, text({ size })],
+    })
+
+    const centerSpinner = loading && circle
+    const leftSpinner = loading && !circle
 
     return (
       <InteractiveContainer disabled={disabled} className={className}>
@@ -32,17 +46,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ref={ref}
           disabled={disabled}
           {...props}
-          className={button({
-            size,
-            color,
-            circle,
-            variant,
-            disabled,
-            className: [theme.roundness, className],
-          })}
+          className={classes}
         >
-          <>{loading ? <Loader size={size} white={isLoaderWhite} /> : null}</>
-          <>{iconLeft}</>
+          <LoadingOverlay active={centerSpinner} white={isLoaderWhite} />
+          <>
+            {leftSpinner ? (
+              <Loader size={'sm'} white={isLoaderWhite} />
+            ) : (
+              iconLeft
+            )}
+          </>
           <span>{children}</span>
           <>{iconRight}</>
         </button>

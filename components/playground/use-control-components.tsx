@@ -1,26 +1,51 @@
+import { Input, Switch, ToggleGroup } from '@creation-ui/react'
 import {
-  ELEMENT_SIZES,
-  ELEMENT_STATUS,
-  ELEMENT_VARIANTS,
-  ElementColor,
-  Input,
-  Select,
-  Switch,
-  ToggleGroup,
-} from '@creation-ui/react'
+  mdiAlphabetical,
+  mdiSizeL,
+  mdiSizeM,
+  mdiSizeS,
+  mdiSquareRounded,
+  mdiSquareRoundedOutline,
+  mdiSetRight,
+  mdiSetLeft,
+  mdiSetLeftRight,
+  mdiSetNone,
+} from '@mdi/js'
+import { Icon } from '@mdi/react'
+import { ColorDefinition, ColorsSelector } from './components/colors-selector'
 import { usePlayground } from './context'
-import { ColorsSelector } from './components/colors-selector'
 
-const mapEnum = (value: string) => ({ value: value, label: value })
+const SIZES = [
+  { value: 'sm', label: <Icon path={mdiSizeS} size={1} /> },
+  {
+    value: 'md',
+    label: <Icon path={mdiSizeM} size={1} />,
+  },
+  { value: 'lg', label: <Icon path={mdiSizeL} size={1} /> },
+]
 
-const SIZES = ELEMENT_SIZES.map(mapEnum)
-const VARIANTS = ELEMENT_VARIANTS.map(mapEnum)
-const STATUSES = ELEMENT_STATUS.map(mapEnum)
-const COLORS: Array<{ value: string; label: ElementColor }> = [
-  { value: 'bg-primary-500', label: 'primary' },
-  { value: 'bg-success-500', label: 'success' },
-  { value: 'bg-warning-500', label: 'warning' },
-  { value: 'bg-error-500', label: 'error' },
+const VARIANTS = [
+  { value: 'contained', label: <Icon path={mdiSquareRounded} size={1} /> },
+  {
+    value: 'outlined',
+    label: <Icon path={mdiSquareRoundedOutline} size={1} />,
+  },
+  { value: 'text', label: <Icon path={mdiAlphabetical} size={1} /> },
+]
+
+const COLORS: ColorDefinition[] = [
+  { value: 'primary', label: 'primary', className: 'bg-primary-500' },
+  { value: 'success', label: 'success', className: 'bg-success-500' },
+  { value: 'warning', label: 'warning', className: 'bg-warning-500' },
+  { value: 'error', label: 'error', className: 'bg-error-500' },
+  { value: 'info', label: 'info', className: 'bg-info-500' },
+]
+
+const ICON = [
+  { value: 'left', label: <Icon path={mdiSetLeft} size={1} /> },
+  { value: 'right', label: <Icon path={mdiSetRight} size={1} /> },
+  { value: 'both', label: <Icon path={mdiSetLeftRight} size={1} /> },
+  { value: 'none', label: <Icon path={mdiSetNone} size={1} /> },
 ]
 
 export const useControlComponents = () => {
@@ -28,7 +53,6 @@ export const useControlComponents = () => {
   const {
     loading,
     size,
-    color,
     helperText,
     variant,
     content,
@@ -38,6 +62,8 @@ export const useControlComponents = () => {
     required,
     clearable,
     readOnly,
+    uppercase,
+    circle
   } = state
 
   const components: any[] = []
@@ -67,6 +93,14 @@ export const useControlComponents = () => {
         onChange={handleChangeUpdate('required')}
       />
     )
+  config.circle &&
+    components.push(
+      <Switch
+        label='Circle'
+        checked={circle}
+        onChange={handleChangeUpdate('circle')}
+      />
+    )
   config.readOnly &&
     components.push(
       <Switch
@@ -92,6 +126,22 @@ export const useControlComponents = () => {
         onChange={handleChangeUpdate('error')}
       />
     )
+  config.uppercase &&
+    components.push(
+      <Switch
+        label='Uppercase'
+        checked={uppercase}
+        onChange={handleChangeUpdate('uppercase')}
+      />
+    )
+  config.fullWidth &&
+    components.push(
+      <Switch
+        label='Full width'
+        checked={state.fullWidth}
+        onChange={handleChangeUpdate('fullWidth')}
+      />
+    )
 
   /** END OF BOOLEANS */
 
@@ -105,16 +155,6 @@ export const useControlComponents = () => {
       />
     )
 
-  config.color &&
-    components.push(
-      <ColorsSelector
-        label='Color'
-        value={color}
-        onClick={handleChangeUpdate('color')}
-        options={COLORS}
-      />
-    )
-
   config.variant &&
     components.push(
       <ToggleGroup
@@ -124,14 +164,23 @@ export const useControlComponents = () => {
         options={VARIANTS}
       />
     )
+  config.icon &&
+    components.push(
+      <ToggleGroup
+        label='Icon'
+        value={state.icon}
+        onChange={handleChangeUpdate('icon') as any}
+        options={ICON}
+      />
+    )
 
   config.status &&
     components.push(
-      <ToggleGroup
+      <ColorsSelector
         label='Status'
         value={status}
-        options={STATUSES}
-        onChange={handleChangeUpdate('status') as any}
+        onClick={handleChangeUpdate('status')}
+        options={COLORS}
       />
     )
 

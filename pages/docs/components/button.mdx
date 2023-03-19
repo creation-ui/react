@@ -2,104 +2,19 @@
 
 import { Button } from '@creation-ui/react'
 import { Container } from '@components/container'
-import { properties } from '@components/examples/button'
+import { properties, ButtonPlayground } from '@components/examples/button'
 import PropsTable from '@components/props-table'
 import { Icon } from '@mdi/react'
 import { mdiAccountCircle } from '@mdi/js'
+
+
+<ButtonPlayground />
 
 ```tsx copy
 import { Button } from '@creation-ui/react'
 
 ;<Button>Click me</Button>
 ```
-
-<Container>
-  <Button>Click me</Button>
-</Container>
-
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<Container>
-  <Button size='lg'>Click me</Button>
-  <Button size='md'>Click me</Button>
-  <Button size='sm'>Click me</Button>
-</Container>
-
-## Variants
-
-Button can have different variants that will change their look:
-
-<br />
-
-<Container>
-  <Button children='Contained' variant='contained'>
-    Contained
-  </Button>
-  <Button children='Outlined' variant='outlined'>
-    Outlined
-  </Button>
-  <Button children='Text' variant='text'>
-    Text
-  </Button>
-</Container>
-
-## Icons
-
-Button can have icons set on both left and right ends as well as loading indicator on right (will override icon):
-
-<br />
-
-<Container>
-  <Button iconLeft={<Icon size={0.9} path={mdiAccountCircle} />}>
-    Left icon
-  </Button>
-  <Button iconRight={<Icon size={0.9} path={mdiAccountCircle} />}>
-    Right icon
-  </Button>
-</Container>
-
-<Container>
-  <Button className='w-full'>Wide</Button>
-</Container>
-
-## Loading state
-
-Button can be in `loading` state, which will disable it and show loading indicator on right:
-
-```tsx copy
-import { Button } from '@creation-ui/react'
-
-<Button loading>Loading</Button>
-```
-
-<Container>
-  <Button loading={true}>Loading</Button>
-  <Button loading={true} iconLeft={<Icon size={0.9} path={mdiAccountCircle} />}>
-    Loading
-  </Button>
-  <Button
-    loading={true}
-    iconRight={<Icon size={0.9} path={mdiAccountCircle} />}
-  >
-    Loading
-  </Button>
-</Container>
-
-## Disabled state
-
-Button can be in `disabled` state, which will disable it:
-
-```tsx copy
-import { Button } from '@creation-ui/react'
-
-<Button disabled>Loading</Button>
-```
-
-<Container>
-  <Button disabled>Disabled</Button>
-</Container>
 
 ## Component API
 

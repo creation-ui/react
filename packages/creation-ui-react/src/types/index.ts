@@ -1,29 +1,5 @@
-export const ELEMENT_COLORS = [
-  'amber',
-  'blue',
-  'cyan',
-  'fuchsia',
-  'gray',
-  'green',
-  'indigo',
-  'lime',
-  'neutral',
-  'orange',
-  'pink',
-  'purple',
-  'red',
-  'rose',
-  'sky',
-  'slate',
-  'stone',
-  'teal',
-  'yellow',
-  'zinc',
-]
-
-export const COLORS = ['primary', 'success', 'error', 'warning'] as const
 export const ELEMENT_STATUS = [
-  'active',
+  'primary',
   'error',
   'warning',
   'success',
@@ -59,12 +35,10 @@ export const ELEMENT_STATES = [
   'default',
 ] as const
 
-export type Colors = (typeof COLORS)[number]
 export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementStatus = (typeof ELEMENT_STATUS)[number]
 export type ElementState = (typeof ELEMENT_STATES)[number]
 export type ElementSize = (typeof ELEMENT_SIZES)[number]
-export type ElementColor = (typeof ELEMENT_COLORS)[number]
 export type ElementOrientation = (typeof ELEMENT_ORIENTATION)[number]
 export type ElementTheme = (typeof ELEMENT_THEMES)[number]
 export type ElementVariant = (typeof ELEMENT_VARIANTS)[number]

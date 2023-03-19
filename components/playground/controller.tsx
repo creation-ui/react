@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { PlaygroundContext, PlaygroundContextValue } from './context'
 import { PlaygroundView } from './view'
+import { createInitialState } from './helpers'
 
 export interface PlaygroundControllerProps {
   children?: React.ReactNode
@@ -12,15 +13,9 @@ export const PlaygroundController: React.FC<PlaygroundControllerProps> = ({
   children,
   config,
 }) => {
-  const [state, setState] = useState<PlaygroundContextValue['state']>({
-    color: 'primary',
-    size: 'md',
-    variant: 'contained',
-    content: '',
-    loading: false,
-    status: undefined,
-    helperText: 'This is helper text',
-  })
+  const [state, setState] = useState<PlaygroundContextValue['state']>(
+    createInitialState(config)
+  )
 
   const handleChangeUpdate = (key: keyof PlaygroundContextValue['state']) => {
     return (value: PlaygroundContextValue['state'][typeof key]) => {

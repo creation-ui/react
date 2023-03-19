@@ -5,14 +5,18 @@ import {
   label as labelClasses,
   text,
 } from '@creation-ui/react/classes'
-import { BaseComponentProps, ElementSize } from '@creation-ui/react/types'
+import {
+  BaseComponentProps,
+  ElementSize,
+  ElementStatus,
+} from '@creation-ui/react/types'
 import { useTheme } from '@creation-ui/react/theme'
 import { capitalize } from '@utils/list-or-types'
 
-type ColorDefinition = {
-  label: string
-  // tailwind color className
-  value: string
+export type ColorDefinition = {
+  label: ElementStatus
+  value: ElementStatus
+  className: string
 }
 
 interface ColorsSelectorProps extends BaseComponentProps {
@@ -57,8 +61,7 @@ export const ColorsSelector = ({
             className={clsx([
               'transform',
               'transition-transform',
-
-              o.value,
+              o.className,
               'h-6',
               'w-6',
               'rounded',

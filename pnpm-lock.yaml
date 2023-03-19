@@ -47,6 +47,7 @@ specifiers:
   eslint-plugin-react: ^7.32.1
   eslint-plugin-react-hooks: ^4.6.0
   framer-motion: ^8.0.2
+  lodash: ^4.17.21
   next: 13.1.6
   nextra: ^2.2.14
   nextra-theme-docs: ^2.2.14
@@ -100,6 +101,7 @@ dependencies:
   eslint: 8.29.0
   eslint-config-next: 13.0.6_s5ps7njkmjlaqajutnox5ntcla
   framer-motion: 8.5.5_biqbaboplfbrettd7655fr4n2y
+  lodash: 4.17.21
   next: 13.1.6_23e7ztf2chqi3ri6onem3l5mii
   nextra: 2.2.14_3vryta7zmbcsw4rrqf4axjqggm
   nextra-theme-docs: 2.2.14_u6qwm625rg3t7ll2t4ybomvrai
@@ -7837,6 +7839,10 @@ packages:
   /lodash.uniq/4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
     dev: true
+
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}

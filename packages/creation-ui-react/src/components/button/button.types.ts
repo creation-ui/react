@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { Colors, ElementSize, ElementVariant } from '../../types'
+import type { ElementSize, ElementStatus, ElementVariant } from '../../types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**
@@ -27,9 +27,13 @@ export type ButtonProps = React.ComponentProps<'button'> & {
    */
   iconRight?: React.ReactNode
   /**
-   * Color of the button
+   * Status of the button
    */
-  color?: Colors
+  status?: ElementStatus
+  /**
+   * Is button text to be uppercase
+   */
+  uppercase?: boolean
 }
 
 export type ButtonGroupProps = React.ComponentProps<'div'> & {}

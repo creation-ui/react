@@ -1,11 +1,11 @@
 import { RadioGroup } from '@headlessui/react'
 import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 import { input, inputContainer, label, text } from '../../classes'
 import { useTheme } from '../../theme'
 import { InteractiveContainer } from '../interactive-container'
 import { toggleGroup } from './classes'
 import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
-import { twMerge } from 'tailwind-merge'
 
 const ToggleGroup = (props: ToggleGroupProps) => {
   const { size: defaultSize } = useTheme()
@@ -44,6 +44,7 @@ const ToggleGroup = (props: ToggleGroupProps) => {
               <RadioGroup.Option
                 key={value}
                 value={value}
+                title={value}
                 disabled={disabled}
                 className={({ checked, disabled }) =>
                   toggleGroup.option({

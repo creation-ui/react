@@ -1,4 +1,4 @@
-const { lime, red, amber, white, black } = require('tailwindcss/colors')
+const { lime, red, amber, white, black, zinc, neutral, gray } = require('tailwindcss/colors')
 
 const colors = {
   inherit: 'inherit',
@@ -21,6 +21,7 @@ const colors = {
   success: lime,
   error: red,
   warning: amber,
+  info: gray,
 }
 
 module.exports = colors

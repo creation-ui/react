@@ -1,4 +1,13 @@
 import { cva } from 'class-variance-authority'
+import clsx from 'clsx'
+
+const bg = {
+  primary: 'bg-primary-50/50 dark:bg-primary-100',
+  success: 'bg-success-50/50 dark:bg-success-100',
+  error: 'bg-error-100',
+  warning: 'bg-warning-100',
+  info: 'bg-info-100',
+}
 
 export const badge = cva(
   [
@@ -17,27 +26,79 @@ export const badge = cva(
   {
     variants: {
       status: {
-        active: 'bg-primary-50/50 text-primary-500',
-        success: 'bg-success-500/20 text-success-600',
-        error: 'bg-error-100 text-error-500',
-        warning: 'bg-warning-100 text-warning-600',
-        info: 'bg-zinc-100 text-zinc-800',
-      },
-      border: {
-        active: 'border border-primary-200',
-        success: 'border border-success-400',
-        error: 'border border-error-300',
-        warning: 'border border-warning-300',
-        info: 'border border-zinc-400',
+        primary: 'text-primary-500',
+        success: 'text-success-600',
+        error: 'text-error-500',
+        warning: 'text-warning-600',
+        info: 'text-info-800',
       },
       size: {
         sm: ['text-xs'],
         md: ['text-sm'],
         lg: ['text-base'],
       },
+      variant: {
+        contained: [],
+        outlined: [],
+        text: [],
+      },
     },
     defaultVariants: {
       size: 'md',
     },
+    compoundVariants: [
+      // OUTLINED
+      {
+        status: 'primary',
+        variant: 'outlined',
+        className: clsx('border border-primary-200', bg.primary),
+      },
+      {
+        status: 'success',
+        variant: 'outlined',
+        className: clsx('border border-success-200', bg.success),
+      },
+      {
+        status: 'warning',
+        variant: 'outlined',
+        className: clsx('border border-warning-200', bg.warning),
+      },
+      {
+        status: 'error',
+        variant: 'outlined',
+        className: clsx('border border-error-200', bg.error),
+      },
+      {
+        status: 'info',
+        variant: 'outlined',
+        className: clsx('border border-info-200', bg.info),
+      },
+      // CONTAINED
+      {
+        status: 'primary',
+        variant: 'contained',
+        className: bg.primary,
+      },
+      {
+        status: 'success',
+        variant: 'contained',
+        className: bg.success,
+      },
+      {
+        status: 'warning',
+        variant: 'contained',
+        className: bg.warning,
+      },
+      {
+        status: 'error',
+        variant: 'contained',
+        className: bg.error,
+      },
+      {
+        status: 'info',
+        variant: 'contained',
+        className: bg.info,
+      },
+    ],
   }
 )
