@@ -20,7 +20,7 @@ const calloutClasses = cva(
   {
     variants: {
       status: {
-        active: [
+        primary: [
           'bg-primary-50',
           'text-primary-500',
           'border-primary-500',

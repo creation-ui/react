@@ -1,5 +1,10 @@
 import type React from 'react'
-import type { ClassName, Colors, ElementPlacement, ElementSize } from '../../types'
+import type {
+  ClassName,
+  ElementPlacement,
+  ElementSize,
+  ElementStatus,
+} from '../../types'
 
 export const AVATAR_VARIANTS = ['circle', 'rounded', 'square'] as const
 
@@ -26,7 +31,7 @@ export type Badge = {
   /**
    * Notifications color
    */
-   color?: Colors
+  color?: ElementStatus
 }
 
 type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
@@ -42,6 +47,5 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
    * Notification badge
    */
   badge?: Badge
-
 }
 export default AvatarProps
