@@ -1,4 +1,4 @@
-import type { Colors, TailwindColorSet } from '../types'
+import type { ElementStatus, TailwindColorSet } from '../types'
 
 type TailwindColorProp =
   | 'bg'
@@ -10,7 +10,7 @@ type TailwindColorProp =
   | 'text'
 
 export const getColor = (
-  color: Colors,
+  status: ElementStatus,
   prop: TailwindColorProp,
-  variant: keyof TailwindColorSet
-) => `${prop}-${color}-${variant}`
+  tone: keyof TailwindColorSet
+) => `${prop}-${status}-${tone}`

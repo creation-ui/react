@@ -76,6 +76,11 @@ export const avatar = {
             getColor('error', 'bg', 600),
             getColor('error', 'text', 100),
           ],
+          info: [
+            //
+            getColor('info', 'bg', 600),
+            getColor('info', 'text', 100),
+          ],
         },
       },
       defaultVariants: {
@@ -105,6 +110,7 @@ export const avatar = {
         warning: [getColor('warning', 'bg', 400)],
         success: [getColor('success', 'bg', 400)],
         error: [getColor('error', 'bg', 400)],
+        info: [getColor('info', 'bg', 400)],
       },
     },
     defaultVariants: {
