@@ -20,6 +20,7 @@ interface OptionElement {
 const OptionSingle = ({ selected, active, children: value }: OptionElement) => (
   <span className={selectOption({ selected, active })}>{value}</span>
 )
+
 const OptionMultiple = ({ selected, active, children }: OptionElement) => (
   <span className={selectOption({ selected, active, multiple: true })}>
     <Icon icon='check' className={selectOptionIcon({ selected, active })} />
@@ -27,10 +28,9 @@ const OptionMultiple = ({ selected, active, children }: OptionElement) => (
   </span>
 )
 
-const SelectOption = (props: SelectOptionProps) => {
+export const SelectOption: React.FC<SelectOptionProps> = props => {
   const { selected, active, option, multiple } = props
   const value = typeof option === 'object' ? option.value : option
-  console.log(value)
 
   return !multiple ? (
     <OptionSingle active={active} selected={selected}>
@@ -43,4 +43,4 @@ const SelectOption = (props: SelectOptionProps) => {
   )
 }
 
-export default SelectOption
+SelectOption.displayName = 'SelectOption'

@@ -1,5 +1,5 @@
 import { useTheme } from '../../theme'
-import { loader, loaderIcon } from './classes'
+import { loaderClasses, loaderIconClasses } from './classes'
 import type { LoaderProps } from './loader.types'
 
 export const Loader = (props: LoaderProps) => {
@@ -7,10 +7,10 @@ export const Loader = (props: LoaderProps) => {
   const { size = defaultSize, className, white } = props
 
   return (
-    <div className={loader({ size, className })}>
+    <div className={loaderClasses({ size, className })}>
       <svg
         aria-hidden='true'
-        className={loaderIcon({ size, white })}
+        className={loaderIconClasses({ size, white })}
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
@@ -27,3 +27,5 @@ export const Loader = (props: LoaderProps) => {
     </div>
   )
 }
+
+Loader.displayName = 'Loader'

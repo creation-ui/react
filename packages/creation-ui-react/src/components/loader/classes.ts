@@ -6,7 +6,7 @@ const size = {
   lg: ['w-8', 'h-8'],
 }
 
-export const loader = cva(
+export const loaderClasses = cva(
   ['flex', 'justify-center', 'items-center', 'select-none'],
   {
     variants: {
@@ -17,7 +17,7 @@ export const loader = cva(
     },
   }
 )
-export const loaderIcon = cva(['animate-spin'], {
+export const loaderIconClasses = cva(['animate-spin'], {
   variants: {
     size,
     white: {

@@ -12,7 +12,7 @@ import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { select } from './classes'
 import type { SelectProps } from './select.types'
 
-const Select = (props: SelectProps) => {
+export const Select = (props: SelectProps) => {
   const { size: defaultSize, zIndex } = useTheme()
   const {
     optionComponent = SelectOption,
@@ -137,4 +137,4 @@ Select.defaultProps = {
   selectedOptionFormatter: passThrough,
 }
 
-export default Select
+Select.displayName = 'Select'

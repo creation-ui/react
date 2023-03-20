@@ -1,9 +1,8 @@
-import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
 import { badge } from './classes'
 import type { StatusBadgeProps } from './status-badge.types'
 
-const StatusBadge = (props: StatusBadgeProps) => {
+export const StatusBadge = (props: StatusBadgeProps) => {
   const { size: defaultSize } = useTheme()
   const {
     //
@@ -26,4 +25,4 @@ const StatusBadge = (props: StatusBadgeProps) => {
   )
 }
 
-export default StatusBadge
+StatusBadge.displayName = 'StatusBadge'

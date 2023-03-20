@@ -26,3 +26,5 @@ export const InteractiveContainer = ({
     </div>
   )
 }
+
+InteractiveContainer.displayName = 'InteractiveContainer'
