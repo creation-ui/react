@@ -19,7 +19,7 @@ export const InputExample = ({ debug, ...props }: InputExampleProps) => {
     if (props.value) {
       setValue(props.value as any)
     }
-  }, [])
+  }, [props.value, setValue])
 
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>

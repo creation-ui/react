@@ -58,7 +58,7 @@ export const statusExamples: CalloutProps[] = [
 
 const withVariantExample: CalloutProps[][] = []
 
-ELEMENT_VARIANTS.forEach((variant, idx) => {
+ELEMENT_VARIANTS.forEach((variant) => {
   withVariantExample.push(
     statusExamples.map(example => ({ ...example, variant }))
   )

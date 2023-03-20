@@ -11,7 +11,7 @@ export const ProgressBarExample = ({ ...props }: ProgressBarProps) => {
   return <ProgressBar {...props} />
 }
 
-export const ProgressBarAnimatedExample = ({ ...props }: ProgressBarProps) => {
+export const ProgressBarAnimatedExample = () => {
   const [state, setState] = useState(0)
 
   const { isRunning, start, pause } = useStopwatch({
