@@ -2,7 +2,10 @@ import React, { useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useLocalStorage } from '../../hooks'
 import type { ElementTheme } from '../../types'
-import type { AnimationProperties, DarkModeToggleProps } from '.'
+import type {
+  AnimationProperties,
+  DarkModeToggleProps,
+} from './dark-mode-toggle.type'
 
 export const defaultProperties: AnimationProperties = {
   dark: {
@@ -40,7 +43,7 @@ export const defaultProperties: AnimationProperties = {
 
 let REACT_TOGGLE_DARK_MODE_GLOBAL_ID = 0
 
-const DarkModeToggle = ({
+export const DarkModeToggle = ({
   onChange,
   children,
   checked = false,
@@ -170,4 +173,3 @@ const DarkModeToggle = ({
     </animated.svg>
   )
 }
-export default DarkModeToggle

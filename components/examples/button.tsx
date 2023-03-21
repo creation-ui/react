@@ -13,7 +13,7 @@ import {
   mdiShieldCheck,
   mdiThermometerAlert,
 } from '@mdi/js'
-import Icon from '@mdi/react'
+import { Icon } from '@mdi/react'
 import { DocumentedProperty } from '@models/system'
 import { iconProp } from './shared-props'
 

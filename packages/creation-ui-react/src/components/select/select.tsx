@@ -1,7 +1,6 @@
 import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment } from 'react'
-import { ClearButton, DropdownChevron, HelperText, SelectOption } from '..'
 import { input, inputContainer, label, text } from '../../classes'
 import useId from '../../hooks/use-id'
 import { useTheme } from '../../theme'
@@ -9,8 +8,12 @@ import type { MultipleEllipsisFormatter } from '../../types'
 import { formatOptionValue } from '../../utils/format-option-value'
 import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
+import { SelectOption } from '../select-option'
+import { HelperText } from '../typography/helper-text'
 import { select } from './classes'
 import type { SelectProps } from './select.types'
+import { ClearButton } from '../clear-button'
+import { DropdownChevron } from '../dropdown-chevron'
 
 export const Select = (props: SelectProps) => {
   const { size: defaultSize, zIndex } = useTheme()

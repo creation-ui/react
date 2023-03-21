@@ -21,7 +21,8 @@
     "package": "pnpm package:version && pnpm package:build && pnpm package:publish",
     "export": "next export",
     "ci:publish": "pnpm publish -r",
-    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)"
+    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)",
+    "amend": "git commit --amend --no-edit"
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",

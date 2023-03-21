@@ -1,9 +1,10 @@
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { HelperText, InteractiveContainer } from '..'
 import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import { InteractiveContainer } from '../interactive-container'
+import { HelperText } from '../typography/helper-text'
 import { radio } from './classes'
 import type { RadioProps } from './types'
 

@@ -1,11 +1,12 @@
 import React from 'react'
-import { Loader, LoadingOverlay } from '..'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { ButtonProps } from './button.types'
 import { button } from './classes'
-import { InteractiveContainer } from '..'
 import { text } from '../../classes'
+import { InteractiveContainer } from '../interactive-container'
+import { LoadingOverlay } from '../loading-overlay'
+import { Loader } from '../loader'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (

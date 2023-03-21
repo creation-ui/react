@@ -10,7 +10,7 @@ import {
 import { useMemo, useState } from 'react'
 
 import { mdiPencil } from '@mdi/js'
-import Icon from '@mdi/react'
+import { Icon } from '@mdi/react'
 import {
   ColumnDef,
   getCoreRowModel,

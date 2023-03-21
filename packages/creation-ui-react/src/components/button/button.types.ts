@@ -38,9 +38,3 @@ export type ButtonProps = React.ComponentProps<'button'> & {
 
 export type ButtonGroupProps = React.ComponentProps<'div'> & {}
 
-export type ColorPower = {
-  default: number | string
-  hover: number | string
-  focus: number | string
-  active: number | string
-}

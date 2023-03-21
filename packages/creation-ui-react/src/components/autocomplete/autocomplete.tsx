@@ -1,12 +1,6 @@
 import { Combobox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import React, { ChangeEvent, Fragment, useState } from 'react'
-import {
-  ClearButton,
-  DropdownChevron,
-  HelperText,
-  SelectOption
-} from '..'
 import { input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -16,6 +10,10 @@ import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { select } from '../select/classes'
 import type { AutocompleteProps } from './autocomplete.types'
+import { SelectOption } from '../select-option'
+import { DropdownChevron } from '../dropdown-chevron'
+import { ClearButton } from '../clear-button'
+import { HelperText } from '../typography'
 
 export const Autocomplete = (props: AutocompleteProps) => {
   const { size: defaultSize, zIndex } = useTheme()

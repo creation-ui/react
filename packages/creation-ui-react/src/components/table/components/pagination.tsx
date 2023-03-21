@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
-import { Button, Select } from '../..'
 import { Icon } from '../../icon'
 import { paginationClasses } from '../classes'
 import { useTable } from '../table.context'
 import { getSortedSizes } from '../utils/get-sorted-sizes'
+import { Button } from '../../button'
+import { Select } from '../../select'
 
 interface PaginationBlockProps extends React.ComponentProps<'button'> {
   current?: boolean

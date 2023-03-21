@@ -1,9 +1,10 @@
-import { Overlay } from '..'
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment } from 'react'
 import type { ModalProps, ModalTitleProps } from './modal.types'
 import { useTheme } from '../../theme'
+import { Overlay } from '../overlay'
+
 
 const transitionProps = {
   modal: {

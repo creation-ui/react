@@ -1,6 +1,5 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { InteractiveContainer, Loader } from '..'
 import {
   input,
   inputContainer,
@@ -13,6 +12,8 @@ import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import type { InputProps } from './input.types'
 import { HelperText } from '../typography/helper-text'
+import { InteractiveContainer } from '../interactive-container'
+import { Loader } from '../loader'
 
 const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
   const { size: defaultSize } = useTheme()

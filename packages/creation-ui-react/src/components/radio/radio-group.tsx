@@ -1,7 +1,8 @@
 import clsx from 'clsx'
-import { HelperText, InteractiveContainer } from '..'
 import { inputContainer, label, text } from '../../classes'
 import { useTheme } from '../../theme'
+import { InteractiveContainer } from '../interactive-container'
+import { HelperText } from '../typography/helper-text'
 import type { RadioGroupProps } from './types'
 
 const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {

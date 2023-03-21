@@ -1,9 +1,11 @@
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
-import { HelperText, InteractiveContainer, Loader } from '..'
 import { input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import { InteractiveContainer } from '../interactive-container'
+import { Loader } from '../loader'
+import { HelperText } from '../typography/helper-text'
 import type { TextAreaProps } from './textarea.types'
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(

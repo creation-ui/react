@@ -1,10 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment } from 'react'
-import { Overlay } from '..'
 import { useTheme } from '../../theme'
 import { child, drawer, drawerAnimation } from './classes'
 import type { DrawerProps } from './drawer.types'
+import { Overlay } from '../overlay'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()

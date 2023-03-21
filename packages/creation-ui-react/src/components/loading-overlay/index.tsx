@@ -1,8 +1,8 @@
-import { Loader } from '..'
-import { useTheme } from '../../theme'
 import clsx from 'clsx'
-import type { LoadingOverlayProps } from './loading-overlay.types'
+import { useTheme } from '../../theme'
+import { Loader } from '../loader'
 import { overlay } from '../overlay/classes'
+import type { LoadingOverlayProps } from './loading-overlay.types'
 
 export const LoadingOverlay = ({
   active,

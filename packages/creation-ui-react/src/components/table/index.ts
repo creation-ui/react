@@ -4,8 +4,3 @@ export { default as HeaderCell } from './components/header-cell'
 export { default as Pagination } from './components/pagination'
 export { default as Rows } from './components/rows'
 export { default as Table } from './table.controller'
-export * from './components/header-cell'
-export * from './components/pagination'
-export * from './components/rows'
-
-export * from './table.view'

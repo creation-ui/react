@@ -1,2 +1,2 @@
-export { default as ToggleGroup } from './toggle-group'
-export * from './toggle-group.types'
+export { ToggleGroup } from './toggle-group'
+export type { ToggleGroupProps, ToggleGroupOption } from './toggle-group.types'
