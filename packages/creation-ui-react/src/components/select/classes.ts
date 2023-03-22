@@ -52,11 +52,11 @@ export const select = {
     'min-w-fit',
     'rounded-md',
     'bg-white',
-    'dark:bg-zinc-800',
+    'dark:bg-info-800',
     'text-base',
     'shadow-lg',
     'ring-1',
-    'ring-zinc-900',
+    'ring-info-900',
     'ring-opacity-5',
     'focus:outline-none',
     'w-full',
@@ -68,8 +68,8 @@ export const select = {
     'select-none',
     'py-2',
     'px-4',
-    'text-zinc-700',
-    'dark:text-zinc-300',
+    'text-info-700',
+    'dark:text-info-300',
   ],
 }
 
@@ -87,7 +87,7 @@ export const selectContainer = cva(['w-full'], {
 })
 
 export const selectChevron = cva(
-  ['text-zinc-400', 'ease-in-out', 'duration-300', 'hover:text-zinc-800'],
+  ['text-info-400', 'ease-in-out', 'duration-300', 'hover:text-info-800'],
   {
     variants: {
       open: {

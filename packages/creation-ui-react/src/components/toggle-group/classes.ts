@@ -32,7 +32,7 @@ export const toggleGroup = {
       variants: {
         checked: {
           true: ['!bg-primary-500', 'text-white', 'font-bold'],
-          false: ['bg-zinc-50', 'text-zinc-900', 'hover:bg-zinc-100'],
+          false: ['bg-info-50', 'text-info-900', 'hover:bg-info-100'],
         },
         disabled: sharedDisabledCVA,
         size: {

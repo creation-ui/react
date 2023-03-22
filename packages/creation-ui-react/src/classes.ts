@@ -2,11 +2,7 @@ import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 
 export const sharedDisabledCVA = {
-  true: [
-    //
-    'opacity-50',
-    'pointer-events-none',
-  ],
+  true: ['opacity-50', 'pointer-events-none'],
 }
 
 export const microInteractions = clsx(
@@ -30,33 +26,17 @@ const loaderClasses = cva(['absolute', 'top-0', 'right-0', microInteractions], {
 
 export const shared = {
   error: {
-    text: [
-      //
-      'dark:text-error-400',
-      'text-error-600',
-      'select-none',
-    ],
+    text: ['!dark:text-error-400', '!text-error-600', 'select-none'],
   },
-  required: [
-    //
-    "after:content-['*']",
-    'after:ml-0.5',
-    'after:text-error-500',
-  ],
-  label: [
-    // "peer-required:after:content-['*']",
-    // 'peer-required:after:ml-0.5',
-    // 'peer-required:after:text-error-500',
-    'select-none',
-    'block',
-  ],
+  required: ["after:content-['*']", 'after:ml-0.5', 'after:text-error-500'],
+  label: ['select-none', 'block'],
   loaderInputPosition: loaderClasses,
   input: [
     microInteractions,
-    'border-zinc-400',
+    'border-info-400',
     'border',
-    'dark:bg-zinc-900',
-    'dark:border-zinc-400',
+    'dark:bg-info-900',
+    'dark:border-info-400',
     'focus:ring-offset-0',
     'focus:border-primary-300',
     'focus:dark:border-primary-400',
@@ -120,19 +100,22 @@ export const text = cva([microInteractions], {
   },
 })
 
-export const helperTextClasses = cva(['text-gray-500', 'dark:text-gray-300'], {
-  variants: {
-    size: {
-      sm: ['text-xs'],
-      md: ['text-sm'],
-      lg: ['text-sm'],
+export const helperTextClasses = cva(
+  [microInteractions, 'text-gray-500', 'dark:text-gray-300'],
+  {
+    variants: {
+      size: {
+        sm: ['text-xs'],
+        md: ['text-sm'],
+        lg: ['text-sm'],
+      },
+      error: {
+        true: shared.error.text,
+        false: [],
+      },
     },
-    error: {
-      true: shared.error.text,
-      false: [],
-    },
-  },
-})
+  }
+)
 
 export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
   variants: {

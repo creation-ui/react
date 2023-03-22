@@ -29,7 +29,7 @@ type PlaygroundValue = {
   content?: string
   status?: ElementStatus
   loading?: boolean
-  error?: boolean
+  error?: React.ReactNode
   helperText?: string
   disabled?: boolean
   readOnly?: boolean

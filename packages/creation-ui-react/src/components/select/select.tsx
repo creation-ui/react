@@ -25,6 +25,7 @@ export const Select = (props: SelectProps) => {
     clearable,
     clearButtonText,
     showAbove,
+    helperText,
   } = props
 
   const limit = 2 //move to theme
@@ -130,7 +131,11 @@ export const Select = (props: SelectProps) => {
           </div>
         )}
       </Listbox>
-      <HelperText error helperText={error} size={size} />
+      <HelperText
+        size={size}
+        helperText={error || helperText}
+        error={Boolean(error)}
+      />
     </div>
   )
 }

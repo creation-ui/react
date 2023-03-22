@@ -9,7 +9,7 @@ export const overlay = [
   'cursor-wait',
   'absolute',
   'inset-0',
-  'bg-zinc-700/50',
+  'bg-info-700/50',
   'transition',
   'duration-200',
   'ease-in',

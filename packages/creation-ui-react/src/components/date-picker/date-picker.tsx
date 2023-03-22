@@ -48,7 +48,11 @@ const DatePicker = (props: DatePickerProps) => {
           id={componentId}
           aria-readonly={!!props.readOnly}
         />
-        <HelperText error helperText={error} size={size} />
+        <HelperText
+          size={size}
+          helperText={error || helperText}
+          error={Boolean(error)}
+        />
       </div>
     </InteractiveContainer>
   )

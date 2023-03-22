@@ -7,9 +7,9 @@ const box = cva([], {
       base: [
         'flex',
         'justify-center',
-        'bg-zinc-50',
-        'dark:bg-zinc-900',
-        'dark:text-zinc-50',
+        'bg-info-50',
+        'dark:bg-info-900',
+        'dark:text-info-50',
         'rounded-lg',
       ],
     },
@@ -25,7 +25,7 @@ const box = cva([], {
       ],
     },
     border: {
-      true: ['border', 'border-zinc-100', 'dark:border-zinc-800'],
+      true: ['border', 'border-info-100', 'dark:border-info-800'],
       false: [],
     },
   },

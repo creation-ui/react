@@ -7,7 +7,7 @@ import type { RadioGroupProps } from './types'
 
 const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {
   const { size: defaultSize } = useTheme()
-  const { error, size = defaultSize } = props
+  const { error, size = defaultSize, helperText } = props
 
   const disabled = props.disabled || props.readOnly
 
@@ -29,7 +29,11 @@ const RadioGroupComponent = ({ children, ...props }: RadioGroupProps) => {
           aria-label={props.label?.toString()}
         />
         <div className={'flex flex-col gap-2'}>{children}</div>
-        <HelperText error helperText={error} size={size} />
+        <HelperText
+          size={size}
+          helperText={error || helperText}
+          error={Boolean(error)}
+        />
       </div>
     </InteractiveContainer>
   )

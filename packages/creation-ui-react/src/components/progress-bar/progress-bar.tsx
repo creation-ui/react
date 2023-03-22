@@ -7,9 +7,9 @@ const classes = {
   container: [
     'text-xs',
     'w-full',
-    'bg-zinc-200',
+    'bg-info-200',
     'rounded-full',
-    'dark:bg-zinc-700',
+    'dark:bg-info-700',
     'relative',
   ],
   value: [

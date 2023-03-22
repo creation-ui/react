@@ -3,12 +3,12 @@ import { cva } from 'class-variance-authority'
 export const selectOption = cva(
   [
     'truncate',
-    'dark:text-zinc-100',
+    'dark:text-info-100',
     'font-normal',
     'relative',
     'cursor-pointer',
     'select-none',
-    'text-zinc-900',
+    'text-info-900',
     'flex',
     'w-full',
     'items-center',
@@ -25,7 +25,7 @@ export const selectOption = cva(
         false: [],
       },
       active: {
-        true: ['bg-primary-100', 'text-inherit', 'dark:text-zinc-900'],
+        true: ['bg-primary-100', 'text-inherit', 'dark:text-info-900'],
         false: [],
       },
 

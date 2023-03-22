@@ -10,8 +10,8 @@ import { Straight } from './straight'
 
 const classes = [
   //
-  'fill-zinc-500',
-  'dark:fill-zinc-100',
+  'fill-info-500',
+  'dark:fill-info-100',
   'hover:fill-primary-500',
   'dark:hover:fill-primary-500',
   'h-5',

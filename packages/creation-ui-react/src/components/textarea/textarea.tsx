@@ -11,7 +11,14 @@ import type { TextAreaProps } from './textarea.types'
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref: ForwardedRef<HTMLTextAreaElement>) => {
     const { size: defaultSize } = useTheme()
-    const { error, size = defaultSize, className, id, loading } = props
+    const {
+      error,
+      size = defaultSize,
+      className,
+      id,
+      loading,
+      helperText,
+    } = props
     const componentId = useId(id)
     const disabled = props.disabled || props.readOnly
 
@@ -42,7 +49,11 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             />
           </div>
           {loading && <Loader />}
-          <HelperText error helperText={error} size={size} />
+          <HelperText
+            size={size}
+            helperText={error || helperText}
+            error={Boolean(error)}
+          />
         </div>
       </InteractiveContainer>
     )

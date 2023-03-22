@@ -17,6 +17,7 @@ export type RadioGroupProps = Omit<React.ComponentProps<'div'>, 'size'> & {
   disabled?: boolean
   required?: boolean
   readOnly?: boolean
+  helperText?: React.ReactNode
 }
 
 export type RadioProps = Omit<React.ComponentProps<'input'>, 'size'> & {

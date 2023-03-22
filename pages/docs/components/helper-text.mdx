@@ -4,21 +4,30 @@ import { Container } from '@components/container'
 
 Used in inputs to display helper text or an error message. When content is falsy then it won't be displayed at all.
 
-import InstallationGuide from '@components/shared/installation-guide.mdx'
-
-<InstallationGuide />
-
 ## Usage
 
 ```tsx copy
 import { HelperText } from '@creation-ui/react'
 
-<HelperText helperText={`The message`} error />
+;<HelperText
+  size={size}
+  helperText={error || helperText}
+  error={Boolean(error)}
+/>
 ```
 
 import { HelperTextExample, properties } from '@components/examples/helper-text'
+import { Playground } from '@components/playground'
 
-<HelperTextExample />
+<Playground
+  config={{
+    error: true,
+    size: true,
+    helperText: true,
+  }}
+>
+  <HelperTextExample />
+</Playground>
 
 ## Component API
 

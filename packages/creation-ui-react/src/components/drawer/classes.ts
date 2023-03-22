@@ -18,7 +18,7 @@ export const drawerAnimation = {
 
 export const child = [
   'bg-white',
-  'dark:bg-zinc-900',
+  'dark:bg-info-900',
   'w-full',
   'overflow-hidden',
   'text-left',

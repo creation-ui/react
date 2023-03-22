@@ -62,7 +62,7 @@ export default {
     component: Footer,
   },
   nextThemes: {
-    defaultTheme: 'dark',
+    defaultTheme: 'light',
   },
   search: {
     placeholder: 'Search documentation…',

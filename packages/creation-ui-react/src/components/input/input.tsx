@@ -78,7 +78,11 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
             </div>
           )}
         </div>
-        <HelperText size={size} helperText={error || helperText} />
+        <HelperText
+          size={size}
+          helperText={error || helperText}
+          error={Boolean(error)}
+        />
       </div>
     </InteractiveContainer>
   )

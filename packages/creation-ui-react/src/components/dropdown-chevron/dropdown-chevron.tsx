@@ -6,7 +6,7 @@ interface DropdownChevronProps {
 }
 
 const chevron = cva(
-  ['text-zinc-400', 'ease-in-out', 'duration-300', 'hover:text-zinc-800'],
+  ['text-info-400', 'ease-in-out', 'duration-300', 'hover:text-info-800'],
   {
     variants: {
       open: {

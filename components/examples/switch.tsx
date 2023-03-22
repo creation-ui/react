@@ -1,10 +1,13 @@
+import { usePlayground } from '@components/playground/context'
 import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Switch, SwitchProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 
-export const SwitchExample = ({ ...props }: Omit<SwitchProps, 'onChange'>) => {
+interface SwitchExampleProps extends Omit<SwitchProps, 'onChange'> {}
+
+export const SwitchExample = ({ ...props }: SwitchExampleProps) => {
   const [checked, setChecked] = useState<boolean>(false)
 
   return (
@@ -15,6 +18,21 @@ export const SwitchExample = ({ ...props }: Omit<SwitchProps, 'onChange'>) => {
       checked={checked}
       size='md'
       {...props}
+    />
+  )
+}
+
+export const SwitchPlayground = ({ ...props }: SwitchExampleProps) => {
+  const { state } = usePlayground()
+  const [checked, setChecked] = useState<boolean>(false)
+
+  return (
+    <Switch
+      {...props}
+      {...state}
+      checked={checked}
+      onChange={setChecked}
+      label={state.content}
     />
   )
 }

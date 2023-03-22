@@ -1,38 +1,43 @@
 import { cva } from 'class-variance-authority'
-import { shared } from '../../classes'
+import { microInteractions, shared } from '../../classes'
 
 export const switchClasses = cva(
   [
     ...shared.input,
+    microInteractions,
+    'text-primary-500',
+    'checked:border-none',
+    'dark:checked:bg-primary-500',
     'cursor-pointer',
+    'peer',
     'relative',
     'inline-flex',
     'shrink-0',
-    'border-transparent',
-    '!bg-zinc-300',
-    '!dark:bg-zinc-700',
-    '!rounded-full',
     'border-2',
-    'transition-all',
-    'duration-300',
-    'ease-in-out',
+    '!bg-info-300',
+    '!dark:bg-info-700',
+    '!rounded-full',
   ],
   {
     variants: {
       size: {
-        sm: ['h-[22px]', 'w-[42px]'],
-        md: ['h-[25px]', 'w-[52px]'],
-        lg: ['h-[29px]', 'w-[57px]'],
+        sm: ['h-4', 'w-8'],
+        md: ['h-6', 'w-12'],
+        lg: ['h-8', 'w-16'],
       },
       checked: {
         true: ['!bg-primary-500', '!border-primary-500'],
-        false: [],
+        false: ['!border-transparent'],
       },
+    },
+    defaultVariants: {
+      size: 'md',
     },
   }
 )
 export const switchCircle = cva(
   [
+    microInteractions,
     'inline-block',
     'transform',
     'transition-all',
@@ -40,16 +45,13 @@ export const switchCircle = cva(
     'bg-white',
     'shadow-lg',
     'ring-0',
-    'transition',
-    'duration-300',
-    'ease-in-out',
   ],
   {
     variants: {
       size: {
-        sm: ['h-[18px]', 'w-[18px]'],
-        md: ['h-[21px]', 'w-[21px]'],
-        lg: ['h-[25px]', 'w-[25px]'],
+        sm: ['h-3', 'w-3'],
+        md: ['h-5', 'w-5'],
+        lg: ['h-7', 'w-7'],
       },
       checked: {
         true: ['translate-x-full'],
@@ -60,17 +62,17 @@ export const switchCircle = cva(
       {
         checked: true,
         size: 'sm',
-        className: ['translate-x-5'],
+        className: ['translate-x-[16px]'],
       },
       {
         checked: true,
         size: 'md',
-        className: ['translate-x-7'],
+        className: ['translate-x-[23px]'],
       },
       {
         checked: true,
         size: 'lg',
-        className: ['translate-x-7'],
+        className: ['translate-x-[31px]'],
       },
     ],
   }

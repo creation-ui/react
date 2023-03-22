@@ -53,8 +53,8 @@ export function Card({
       href={href}
       className={cn(
         styles.card,
-        'group flex flex-col justify-start overflow-hidden rounded-lg border border-gray-200 bg-transparent text-current no-underline shadow-sm shadow-gray-100 transition-all duration-200 dark:border-zinc-800 dark:shadow-none',
-        'hover:border-gray-300 hover:bg-zinc-50 hover:shadow-md hover:shadow-gray-100 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:hover:shadow-none'
+        'group flex flex-col justify-start overflow-hidden rounded-lg border border-gray-200 bg-transparent text-current no-underline shadow-sm shadow-gray-100 transition-all duration-200 dark:border-info-800 dark:shadow-none',
+        'hover:border-gray-300 hover:bg-info-50 hover:shadow-md hover:shadow-gray-100 dark:hover:border-info-700 dark:hover:bg-info-900 dark:hover:shadow-none'
       )}
       {...props}
     >
@@ -62,8 +62,8 @@ export function Card({
         className={cn(
           styles.title,
           'group',
-          'gap-2 p-4 text-gray-700 dark:text-zinc-200',
-          'hover:text-gray-900 dark:hover:text-zinc-50',
+          'gap-2 p-4 text-gray-700 dark:text-info-200',
+          'hover:text-gray-900 dark:hover:text-info-50',
           'items-center'
         )}
       >

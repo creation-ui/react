@@ -1,11 +1,25 @@
 # Switch
 
-import { SwitchExample } from '@components/examples/switch'
+import { SwitchPlayground } from '@components/examples/switch'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 import { properties } from '@components/examples/switch'
+import { Playground } from '@components/playground'
+
+<Playground
+  config={{
+    disabled: true,
+    size: true,
+    readOnly: true,
+    error: true,
+    helperText: true,
+    content: true,
+  }}
+>
+  <SwitchPlayground />
+</Playground>
 
 ```tsx copy
 import { Switch, SwitchProps } from '@creation-ui/react'
@@ -16,21 +30,6 @@ export const SwitchComponet = ({ ...props }: Omit<SwitchProps, 'onChange'>) => {
   return <Switch onChange={setChecked} checked={checked} {...props} />
 }
 ```
-
-<Container>
-  <SwitchExample />
-</Container>
-
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={SwitchExample}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  nameProp='label'
-/>
 
 ## Component API
 

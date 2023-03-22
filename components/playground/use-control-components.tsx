@@ -63,7 +63,7 @@ export const useControlComponents = () => {
     clearable,
     readOnly,
     uppercase,
-    circle
+    circle,
   } = state
 
   const components: any[] = []
@@ -122,8 +122,12 @@ export const useControlComponents = () => {
     components.push(
       <Switch
         label='Error'
-        checked={error}
-        onChange={handleChangeUpdate('error')}
+        checked={!!error}
+        onChange={value =>
+          value
+            ? handleChangeUpdate('error')('There was an error')
+            : handleChangeUpdate('error')('')
+        }
       />
     )
   config.uppercase &&

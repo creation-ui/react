@@ -1,21 +1,29 @@
 import { Switch as HSwitch } from '@headlessui/react'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { checkbox } from '../checkbox/classes'
+import { InteractiveContainer } from '../interactive-container'
+import { HelperText } from '../typography'
 import { switchCircle, switchClasses } from './classes'
 import type { SwitchProps } from './switch.types'
-import { InteractiveContainer } from '../interactive-container'
 
 const Switch = ({ checked, ...props }: SwitchProps) => {
   const { size: defaultSize } = useTheme()
-  const { size = defaultSize, id, required, readOnly, error } = props
+  const {
+    //
+    size = defaultSize,
+    id,
+    required,
+    readOnly,
+    error,
+    helperText,
+  } = props
   const componentId = useId(id)
 
   const disabled = props.disabled || readOnly
 
-  const containerClasses = clsx(
+  const containerClasses = twMerge(
     inputContainer({ disabled, error: !!error }),
     text({ size })
   )
@@ -32,7 +40,7 @@ const Switch = ({ checked, ...props }: SwitchProps) => {
         <HSwitch
           id={componentId}
           aria-required={required}
-          className={clsx(checkbox({ size }), switchClasses({ size, checked }))}
+          className={switchClasses({ size, checked })}
           {...props}
         >
           <span
@@ -40,6 +48,11 @@ const Switch = ({ checked, ...props }: SwitchProps) => {
             className={switchCircle({ size, checked })}
           />
         </HSwitch>
+        <HelperText
+          size={size}
+          helperText={error || helperText}
+          error={Boolean(error)}
+        />
       </div>
     </InteractiveContainer>
   )

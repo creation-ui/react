@@ -164,7 +164,11 @@ export const Autocomplete = (props: AutocompleteProps) => {
           </div>
         )}
       </Combobox>
-      <HelperText error helperText={error} size={size} />
+      <HelperText
+        size={size}
+        helperText={error || helperText}
+        error={Boolean(error)}
+      />
     </div>
   )
 }

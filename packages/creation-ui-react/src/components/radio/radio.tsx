@@ -50,7 +50,11 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
             children={props.label}
             aria-label={props.label?.toString()}
           />
-          <HelperText error helperText={error} size={size} />
+          <HelperText
+            size={size}
+            helperText={error || helperText}
+            error={Boolean(error)}
+          />
         </div>
       </InteractiveContainer>
     )

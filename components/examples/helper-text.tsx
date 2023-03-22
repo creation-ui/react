@@ -1,46 +1,20 @@
-import { Container } from '@components/container'
-import { Button, HelperText } from '@creation-ui/react'
+import { usePlayground } from '@components/playground/context'
+import { HelperText } from '@creation-ui/react/index'
 import { DocumentedProperty } from 'models/system'
-import { useState } from 'react'
-
-const errors = [
-  "There are errors in your input but we won't tell you what exactly",
-  'Did I stutter? Numbers only!',
-  'On the ground and give me 20 soldier!',
-  'Those are not the droids you are looking for',
-  'You are not authorized to do that',
-  "You're lucky you're cute",
-  'ERROR E000_201210 MALICIOUS INTENT DETECTED *Cyberpunk 2077 music intensifies*',
-]
+import { sizeProp } from './shared-props'
 
 export const HelperTextExample = () => {
-  const [idx, setIdx] = useState(0)
-  const [helperText, setHelperText] = useState(errors[idx])
+  const {
+    state: { error, helperText, size },
+  } = usePlayground()
 
-  const text = errors[idx]
-
-  const clear = () => setHelperText('')
-  const setErr = () => {
-    //set next idx
-    const nextIdx = idx + 1 >= errors.length ? 0 : idx + 1
-    setIdx(nextIdx)
-    setHelperText(text)
-  }
-
-  const buttonText = helperText !== '' ? 'Clear' : 'Set Error'
-  const fn = helperText !== '' ? clear : setErr
-
-  return (
-    <Container variant='column'>
-      <HelperText error helperText={helperText} />
-      <Button onClick={fn} size='sm'>
-        {buttonText}
-      </Button>
-      <pre className='text-xs'>
-        {JSON.stringify({ error: helperText }, null, 2)}
-      </pre>
-    </Container>
-  )
+  return helperText ? (
+    <HelperText
+      helperText={error || helperText}
+      error={Boolean(error)}
+      size={size}
+    />
+  ) : null
 }
 
 export const properties: DocumentedProperty[] = [
@@ -49,4 +23,10 @@ export const properties: DocumentedProperty[] = [
     description: 'The error message to display',
     type: 'React.ReactNode',
   },
+  {
+    name: 'helperText',
+    description: 'The helper text to display',
+    type: 'React.ReactNode',
+  },
+  sizeProp,
 ]
