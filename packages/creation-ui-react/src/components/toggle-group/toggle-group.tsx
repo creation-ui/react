@@ -14,6 +14,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
     options,
     className,
     label: title,
+    ref,
     ...rest
   } = props
   const disabled = props.disabled || props.readOnly
@@ -38,7 +39,12 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
           children={props.label}
           aria-label={props.label?.toString()}
         />
-        <RadioGroup {...rest} className={inputClasses}>
+        <RadioGroup
+          //
+          {...rest}
+          ref={ref as any}
+          className={inputClasses}
+        >
           <div className={clsx(toggleGroup.list)}>
             {options.map(({ label, value, disabled }: ToggleGroupOption) => (
               <RadioGroup.Option
