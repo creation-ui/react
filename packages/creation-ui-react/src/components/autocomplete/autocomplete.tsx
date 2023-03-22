@@ -103,6 +103,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           <div className={clsx(select.container.input)}>
             <Combobox.Input
               id={componentId}
+              // @ts-ignore
               disabled={rest.disabled}
               placeholder={placeholder}
               displayValue={formatter}
