@@ -32,6 +32,7 @@ specifiers:
   '@types/react-dom': 18.0.9
   '@typescript-eslint/eslint-plugin': ^5.56.0
   '@typescript-eslint/parser': ^5.56.0
+  '@vercel/analytics': ^0.1.11
   autoprefixer: ^10.4.14
   class-variance-authority: ^0.4.0
   clsx: ^1.2.1
@@ -95,6 +96,7 @@ dependencies:
   '@types/node': 18.11.10
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
+  '@vercel/analytics': 0.1.11_react@18.2.0
   class-variance-authority: 0.4.0_typescript@4.9.3
   clsx: 1.2.1
   downshift: 7.6.0_react@18.2.0
@@ -3108,13 +3110,13 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.21.3
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
     dev: true
 
   /@types/eslint/8.21.3:
     resolution: {integrity: sha512-fa7GkppZVEByMWGbTtE5MbmXWJTVbrjjaS8K6uQj+XtuuUv1fsuPAxhygfqLmsb/Ufb3CV8deFCpiMfAgi00Sw==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
     dev: true
 
@@ -3449,6 +3451,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.56.0
       eslint-visitor-keys: 3.3.0
+
+  /@vercel/analytics/0.1.11_react@18.2.0:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
