@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "next",
-    "build": "NODE_OPTIONS='--stack-trace-limit=10000' next build",
+    "build": "next build",
     "preview": "next start",
     "lint": "next lint",
     "nuke": "rm -rf node_modules yarn.lock pnpm-lock.yaml .next && pnpm install",

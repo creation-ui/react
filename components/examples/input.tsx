@@ -8,11 +8,9 @@ import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { usePlayground } from '@components/playground/context'
 
-interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {
-  debug?: boolean
-}
+interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 
-export const InputExample = ({ debug, ...props }: InputExampleProps) => {
+export const InputExample = ({ ...props }: InputExampleProps) => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
@@ -28,22 +26,17 @@ export const InputExample = ({ debug, ...props }: InputExampleProps) => {
         value={value}
         {...props}
       />
-      {debug && (
-        <pre className='bg-red-100 rounded px-3 py-1 text-xs'>
-          {JSON.stringify({ value }, null, 2)}
-        </pre>
-      )}
     </div>
   )
 }
 
-export const InputPlayground = ({ debug, ...props }: InputExampleProps) => {
+export const InputPlayground = ({ ...props }: InputExampleProps) => {
   const { state } = usePlayground()
 
   return <Input {...props} {...state} defaultValue={state.content} />
 }
 
-export const PasswordExample = ({ debug, ...props }: InputExampleProps) => {
+export const PasswordExample = ({ ...props }: InputExampleProps) => {
   const [value, setValue] = useState('')
   const [type, setType] = useState<HTMLInputType>('password')
 
@@ -73,11 +66,6 @@ export const PasswordExample = ({ debug, ...props }: InputExampleProps) => {
         }
         {...props}
       />
-      {debug && (
-        <pre className='bg-red-100 rounded px-3 py-1 text-xs'>
-          {JSON.stringify({ value }, null, 2)}
-        </pre>
-      )}
     </div>
   )
 }
