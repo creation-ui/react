@@ -5,7 +5,6 @@ import type { ModalProps, ModalTitleProps } from './modal.types'
 import { useTheme } from '../../theme'
 import { Overlay } from '../overlay'
 
-
 const transitionProps = {
   modal: {
     enter: 'ease-out duration-300',
@@ -49,7 +48,8 @@ const modal = {
 
 const Modal = (props: ModalProps) => {
   const { zIndex } = useTheme()
-  const { children, className, onClose, onOverlayClick, open, ...rest } = props
+  const { children, className, onClose, onOverlayClick, open, ref, ...rest } =
+    props
   return (
     <>
       <Overlay className={'fixed'} active={open} onClick={onOverlayClick} />
@@ -59,6 +59,7 @@ const Modal = (props: ModalProps) => {
           open={open}
           className={clsx(modal.base, zIndex?.modals, className)}
           onClose={onClose as any}
+          ref={ref as any}
           {...rest}
         >
           <div className={clsx(modal.layer[1])}>
