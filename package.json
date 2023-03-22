@@ -23,11 +23,9 @@
     "ci:publish": "pnpm publish -r",
     "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)",
     "amend": "git commit --amend --no-edit",
-    "import-check": "npx unimported",
-    "import-cycle-check": "npx cycle-import-check"
+    "import-check": "npx cycle-import-check"
   },
   "dependencies": {
-    "@faker-js/faker": "^7.6.0",
     "@headlessui/react": "^1.7.13",
     "@headlessui/tailwindcss": "^0.1.2",
     "@mdi/js": "^7.2.96",
