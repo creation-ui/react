@@ -1,5 +1,5 @@
 import { ElementSize, ElementStatus, ElementVariant } from '@creation-ui/react'
-import { createContext, useContext } from 'react'
+import { createContext, ReactNode, useContext } from 'react'
 
 export type IconConfig = 'left' | 'right' | 'none' | 'both'
 
@@ -29,7 +29,7 @@ type PlaygroundValue = {
   content?: string
   status?: ElementStatus
   loading?: boolean
-  error?: React.ReactNode
+  error?: ReactNode
   helperText?: string
   disabled?: boolean
   readOnly?: boolean
