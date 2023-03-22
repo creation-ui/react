@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "next",
-    "build": "pnpm import-cycle-check && next build",
+    "build": "pnpm import-check && next build",
     "preview": "next start",
     "lint": "next lint",
     "nuke": "rm -rf node_modules yarn.lock pnpm-lock.yaml .next && pnpm install",
