@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.0](https://github.com/creation-ui/react/compare/v0.2.1...v0.3.0) (2023-03-22)
+
+
+### Features
+
+* rename color zinc to info, fix switches ([34afeb3](https://github.com/creation-ui/react/commit/34afeb34b7bade52fb28a5df8c08f6976b828ad5))
+
+
+### Bug Fixes
+
+* add missing type ([5e7a26a](https://github.com/creation-ui/react/commit/5e7a26a957c72c886b2838ebb9108f7efec301f3))
+* clean up circular dependencies in the code ([56198d8](https://github.com/creation-ui/react/commit/56198d83f2be10f54a2bd488485a352f6be3bf0c))
+* script error ([d3d2c77](https://github.com/creation-ui/react/commit/d3d2c77b7270df633f298660a7cd61794904fe17))
+
 ## [0.2.1](https://github.com/creation-ui/react/compare/v0.2.0...v0.2.1) (2023-03-19)
 
 
