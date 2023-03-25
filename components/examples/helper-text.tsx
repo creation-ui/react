@@ -1,5 +1,5 @@
 import { usePlayground } from '@components/playground/context'
-import { HelperText } from '@creation-ui/react/index'
+import { HelperText } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { sizeProp } from './shared-props'
 

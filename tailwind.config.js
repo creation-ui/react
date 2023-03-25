@@ -8,6 +8,11 @@ module.exports = withTailwindConfig({
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './styles/*.css',
-    '!./node_modules/**/*',
+    '!node_modules',
   ],
+  extend: {
+    transitionDelay: {
+      0: '0ms',
+    },
+  },
 })

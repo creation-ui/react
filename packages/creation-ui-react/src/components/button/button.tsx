@@ -7,6 +7,7 @@ import { text } from '../../classes'
 import { InteractiveContainer } from '../interactive-container'
 import { LoadingOverlay } from '../loading-overlay'
 import { Loader } from '../loader'
+import { twMerge } from 'tailwind-merge'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -27,15 +28,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const isLoaderWhite = variant === 'contained'
     const disabled = loading || props.disabled
 
-    const classes = button({
-      size,
-      status,
-      circle,
-      variant,
-      disabled,
-      uppercase,
-      className: [theme.roundness, className, text({ size })],
-    })
+    const classes = twMerge(
+      button({
+        size,
+        status,
+        circle,
+        variant,
+        disabled,
+        uppercase,
+        className: [theme.roundness, className, text({ size })],
+      })
+    )
 
     const centerSpinner = loading && circle
     const leftSpinner = loading && !circle

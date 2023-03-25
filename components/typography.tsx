@@ -1,19 +1,24 @@
 import React, { ElementType } from 'react'
-
+import { twMerge } from 'tailwind-merge'
 interface HeaderProps {
   children: React.ReactNode
   as?: ElementType
   href?: string
   'aria-label'?: string
+  className?: string
 }
 
 export const Header = ({
   children,
   as: Tag = 'h1',
   href,
+  className,
   ...props
 }: HeaderProps) => (
-  <Tag className='heading group whitespace-pre-wrap mt-3' {...props}>
+  <Tag
+    className={twMerge('heading group whitespace-pre-wrap mt-3', className)}
+    {...props}
+  >
     <a
       href={href}
       className='after:hash absolute -ml-6 !text-[#a1a1aa] !no-underline opacity-0 !shadow-none focus-visible:opacity-100 group-hover:opacity-100'

@@ -81,7 +81,7 @@
     "**/*.ts",
     "**/*.tsx",
     "theme.config.tsx",
-    "pages/index.mdx",
+    "pages/index.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [

@@ -1,33 +1,17 @@
----
-title: 'Creation UI - React Tailwind CSS components'
----
+import { Hero } from '@components/pages/index/hero'
+import { Docs } from '@components/pages/index/docs'
+import { Playground } from '@components/pages/index/playground'
+import { Pallette } from '@components/pages/index/pallette/pallette'
+import { Advantages } from '@components/pages/index/advantages/advantages'
+import { Button } from '@creation-ui/react'
+import clsx from 'clsx'
 
-import Link from 'next/link'
-import cn from 'clsx'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-
-import { Features, Feature } from '../components/features'
-
-<div className="flex flex-col place-items-center h-[90vh]">
-  <div className="max-w-6xl">
-    <div className="content-container">
-      <h1 className="headline">Make beautiful websites <br className='sm:block hidden'/>with Creation UI</h1>
-      <p className="subtitle">Simple, powerful and flexible design system.</p>
-      <p className="subtitle"><Link href="/docs">Start →</Link></p>
-    </div>
-
-  <div className="features-container">
-    <div className="content-container">
-      <Features>
-        <Feature large centered id="docs-card">
-          <h3>
-            Unlock the potential of your digital products with Creation UI design system.
-          </h3>
-        </Feature>
-      </Features>
-    </div>
-
+<div className='flex flex-col place-items-center h-screen'>
+  <div className='max-w-6xl'>
+    <Hero />
+    <Playground />
+    <Pallette />
+    <Advantages />
+    <Docs />
   </div>
-</div>
 </div>

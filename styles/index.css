@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.content-container {
-  @apply px-4 sm:px-6 lg:px-8;
-}
-
-.features-container {
-  @apply mt-10;
+.debug {
+  @apply bg-red-200/50;
 }
