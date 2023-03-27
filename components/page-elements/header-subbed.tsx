@@ -14,7 +14,7 @@ export const HeaderSubbed = ({
   ariaLabel,
 }: HeaderSubbedProps) => {
   return (
-    <div className='text-center flex flex-col place-items-center gap-2 mb-24'>
+    <div className='text-center flex flex-col place-items-center gap-2 mb-24 sm:mt-10'>
       <Header
         aria-label={ariaLabel}
         as={'h1'}

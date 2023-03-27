@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export const Docs = () => {
   return (
-    <div className='max-h-screen w-full flex flex-col items-center pb-60'>
+    <div className='h-screen-nextra-last w-full flex flex-col items-center snap-start'>
       <HeaderSubbed
         href='#docs'
         title='The docs'
@@ -14,7 +14,7 @@ export const Docs = () => {
         subtitle='Here be dragons'
       />
 
-      <div className='sm:p-0 px-5 max-w-prose sm:max-w-md prose text-base leading-relaxed mb-20 dark:text-white'>
+      <div className='max-w-md prose text-base leading-relaxed dark:text-white'>
         <p>
           Unleash your creativity and bring your vision to life with this
           powerful tool. The possibilities are endless, allowing you to
@@ -32,11 +32,12 @@ export const Docs = () => {
 
       <Button
         size='lg'
-        className={clsx(gradient.bg, 'text-2xl hover:scale-110')}
+        className={clsx(gradient.bg, 'text-2xl hover:scale-110 mt-20')}
         status='info'
       >
         <Link href='/docs'>Ready? See the docs &rarr;</Link>
       </Button>
+      {/* <div className='h-full bg-red-500'>&nbsp;</div> */}
     </div>
   )
 }

@@ -75,10 +75,10 @@ export const advantages: AdvantageItem[] = [
 
 export const AdvantageList = () => {
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-3 gap-10 w-full max-h-[70vh] sm:max-h-screen overflow-auto'>
+    <div className='grid grid-cols-1 lg:grid-cols-3 gap-7 w-full mx-auto lg:max-w-4xl xl:max-w-full lg:pt-20 '>
       {advantages.map(({ description, icon, title }) => (
-        <div className='h-52 sm:m-0 mx-10 border rounded-lg px-5 py-4  border-purple-300'>
-          <div className='flex flex-col gap-3'>
+        <div className='h-42 border rounded-lg px-5 py-4  border-purple-300 snap-center'>
+          <div className='flex flex-col gap-1'>
             <span
               className={clsx(
                 'text-white h-10 w-10 rounded-full border flex flex-col items-center',
@@ -91,14 +91,13 @@ export const AdvantageList = () => {
               className={clsx(
                 gradient.text,
                 'font-bold',
-                'sm:text-xl',
+                'md:text-base',
                 'w-fit'
               )}
             >
               {title}
             </span>
-
-            <div className='sm:text-sm text-xs'>{description}</div>
+            <div className='mt-1 text-xs leading-normal'>{description}</div>
           </div>
         </div>
       ))}

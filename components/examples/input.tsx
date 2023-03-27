@@ -33,7 +33,14 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
 export const InputPlayground = ({ ...props }: InputExampleProps) => {
   const { state } = usePlayground()
 
-  return <Input {...props} {...state} defaultValue={state.content} />
+  return (
+    <Input
+      {...props}
+      {...state}
+      type={state.inputType}
+      defaultValue={state.content}
+    />
+  )
 }
 
 export const PasswordExample = ({ ...props }: InputExampleProps) => {

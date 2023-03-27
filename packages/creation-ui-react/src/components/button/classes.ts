@@ -39,7 +39,7 @@ export const button = cva(
         error: null,
         info: null,
       },
-      circle: { true: ['rounded-full'], false: null },
+      circle: { true: null, false: null },
     },
     defaultVariants: {
       variant: 'contained',
@@ -221,27 +221,18 @@ export const button = cva(
       {
         size: 'sm',
         circle: true,
-        className: ['px-1', 'h-12', 'w-12'],
+        className: ['px-1', 'h-12', 'w-12', '!rounded-full'],
       },
       {
         size: 'md',
         circle: true,
-        className: ['px-1', 'h-16', 'w-16'],
+        className: ['px-1', 'h-16', 'w-16', '!rounded-full'],
       },
       {
         size: 'lg',
         circle: true,
-        className: ['px-1', 'h-20', 'w-20'],
+        className: ['px-1', 'h-20', 'w-20', '!rounded-full'],
       },
     ],
   }
 )
-
-const c = [
-  'w-14',
-  'h-14',
-  'rounded-full',
-  'flex',
-  'items-center',
-  'justify-center',
-]

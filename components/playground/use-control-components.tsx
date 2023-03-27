@@ -1,4 +1,4 @@
-import { Input, Switch, ToggleGroup } from '@creation-ui/react'
+import { Input, Select, Switch, ToggleGroup } from '@creation-ui/react'
 import {
   mdiAlphabetical,
   mdiSizeL,
@@ -13,6 +13,7 @@ import {
 } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { ColorDefinition, ColorsSelector } from './components/colors-selector'
+import { INPUT_TYPES } from './constants'
 import { usePlayground } from './context'
 
 const SIZES = [
@@ -64,6 +65,7 @@ export const useControlComponents = () => {
     readOnly,
     uppercase,
     circle,
+    inputType,
   } = state
 
   const components: any[] = []
@@ -203,6 +205,15 @@ export const useControlComponents = () => {
         label='Content'
         value={content}
         onChange={e => handleChangeUpdate('content')(e.target.value)}
+      />
+    )
+  config.inputType &&
+    components.push(
+      <Select
+        label='Type'
+        value={inputType}
+        options={INPUT_TYPES}
+        onChange={e => handleChangeUpdate('inputType')(e)}
       />
     )
 

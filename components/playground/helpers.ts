@@ -23,6 +23,8 @@ export const createInitialState = (
     readOnly: false,
     required: false,
     icon: 'none',
+    fullWidth: false,
+    inputType: 'text',
   }
 
   return pick(initialStateTemplate, truthyKeys)

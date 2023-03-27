@@ -1,4 +1,9 @@
-import { ElementSize, ElementStatus, ElementVariant } from '@creation-ui/react'
+import {
+  ElementSize,
+  ElementStatus,
+  ElementVariant,
+  HTMLInputType,
+} from '@creation-ui/react'
 import { createContext, ReactNode, useContext } from 'react'
 
 export type IconConfig = 'left' | 'right' | 'none' | 'both'
@@ -19,6 +24,7 @@ type PlaygroundConfig = {
   fullWidth?: boolean
   icon?: boolean
   circle?: boolean
+  inputType?: boolean
 }
 
 type PlaygroundValue = {
@@ -36,6 +42,7 @@ type PlaygroundValue = {
   clearable?: boolean
   required?: boolean
   fullWidth?: boolean
+  inputType?: HTMLInputType
   icon?: IconConfig
 }
 

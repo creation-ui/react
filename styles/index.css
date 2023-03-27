@@ -5,3 +5,11 @@
 .debug {
   @apply bg-red-200/50;
 }
+
+.h-screen-nextra {
+  height: calc(100vh - var(--nextra-navbar-height)) !important;
+}
+
+.h-screen-nextra-last {
+  height: calc(100vh - var(--nextra-navbar-height) - theme('spacing.10'));
+}

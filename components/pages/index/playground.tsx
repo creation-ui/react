@@ -2,7 +2,7 @@ import { Header } from '@components/typography'
 
 export const Playground = () => {
   return (
-    <div className='h-screen'>
+    <div className='h-screen-nextra snap-start'>
       <div className='text-center flex flex-col place-items-center gap-2'>
         <Header
           aria-label={'The good stuff'}

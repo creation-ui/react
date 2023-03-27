@@ -5,7 +5,8 @@
     "display": "hidden",
     "theme": {
       "layout": "raw"
-    }
+    },
+    "footer": null
   },
   "docs": {
     "title": "Documentation",

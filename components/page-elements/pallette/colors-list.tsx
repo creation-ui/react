@@ -34,7 +34,8 @@ const ColorShade = ({ hex, value }: any) => {
       </span>
       <div
         className={twMerge(
-          'w-10 h-10 rounded-lg',
+          'w-5',
+          'lg:w-10 h-10 rounded-lg',
           'text-center',
           'flex',
           'flex-col',
@@ -53,7 +54,8 @@ const ColorShade = ({ hex, value }: any) => {
         className={twMerge(
           //
           'group-hover:opacity-100 opacity-0 text-center  uppercase absolute -bottom-12',
-          docsMicroInteractions, '!delay-0'
+          docsMicroInteractions,
+          '!delay-0'
         )}
       >
         {hex}

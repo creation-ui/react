@@ -26,12 +26,20 @@ const ring: Record<ElementStatus, any> = {
 
 export const ColorBox = ({ onClick, color, selected }: ColorBoxProps) => {
   return (
-    <div className={twMerge('group', docsMicroInteractions)}>
+    <div
+      className={twMerge(
+        'group',
+        docsMicroInteractions,
+        'flex flex-col items-center'
+      )}
+    >
       <div
         onClick={onClick}
         className={twMerge(
           //
-          'w-20 h-20 rounded-lg',
+          'w-10 h-10',
+          'md:w-16 md:h-16',
+          'lg:w-20 lg:h-20 rounded-lg',
           'cursor-pointer',
           'group-hover:scale-110',
           docsMicroInteractions,

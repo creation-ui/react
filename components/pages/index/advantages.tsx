@@ -3,7 +3,7 @@ import { HeaderSubbed } from '@components/page-elements/header-subbed'
 
 export const Advantages = () => {
   return (
-    <div className='h-screen w-full'>
+    <div className='h-full lg:h-[calc(100vh-var(--nextra-navbar-height))] w-full snap-start mb-36 lg:mb-0'>
       <HeaderSubbed
         href='#advantages'
         title='The why'

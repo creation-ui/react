@@ -6,17 +6,15 @@ import Link from 'next/link'
 import { CopyBlock, dracula } from 'react-code-blocks'
 
 const contentContainer = [
-  //
-  'pt-24',
-  'px-4',
-  'sm:px-6',
-  'lg:px-8',
   'flex',
   'flex-col',
   'place-items-center',
-  'h-screen',
-  'gap-24',
+  'h-screen-nextra',
+  'lg:gap-24',
+  'lg:justify-center',
+  'justify-evenly',
   'group',
+  'snap-start',
 ]
 
 const backLight = clsx([
@@ -43,41 +41,46 @@ export const Hero = () => {
   const installationScript = 'yarn add @creation-ui/react'
 
   return (
-    <div className={clsx(contentContainer)}>
-      <div className='relative mt-10'>
-        <Logo size='hero' />
-        <div className={backLight} />
-      </div>
-      <div className='flex flex-col place-items-center gap-5'>
-        <h1 className='text-5xl font-black text-center leading-snug'>
-          Make beautiful things <br className='sm:block hidden' /> with&nbsp;
-          <span className={gradient.text}>Creation UI</span>
-        </h1>
-        <p className='max-w-sm text-center font-thin'>
-          Streamlined components to accelerate your development process
-        </p>
-      </div>
-      <div className='flex place-items-center gap-3 sm:flex-row flex-col '>
-        <div className='sm:w-fit w-full'>
-          <Button
-            size='lg'
-            className={clsx(gradient.bg, 'w-full  hover:scale-110')}
-          >
-            <Link href='/docs'>Start &rarr;</Link>
-          </Button>
+    <div className='flex flex-col justify-center items-center'>
+      <div className={clsx(contentContainer)}>
+        <div className='relative '>
+          <Logo size='hero' />
+          <div className={backLight} />
         </div>
-        <CopyBlock
-          text={installationScript}
-          language={'bash'}
-          theme={dracula}
-          showLineNumbers={false}
-          wrapLongLines={false}
-          customStyle={{
-            fontSize: '0.875rem',
-            lineHeight: '1.25rem',
-            padding: '.75rem',
-          }}
-        />
+        <div className='flex flex-col place-items-center gap-5'>
+          <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-center leading-snug'>
+            Make beautiful things <br className='sm:block hidden' /> with&nbsp;
+            <span className={clsx(gradient.text, 'block sm:inline')}>
+              Creation UI
+            </span>
+          </h1>
+          <p className='max-w-sm text-center font-thin'>
+            Streamlined components to accelerate your development process
+          </p>
+        </div>
+        <div className='flex place-items-center gap-3 lg:flex-row flex-col w-full lg:w-fit'>
+          <div className='lg:w-52 w-full'>
+            <Button
+              size='lg'
+              className={clsx(gradient.bg, 'w-full  hover:scale-110')}
+            >
+              <Link href='/docs'>Start &rarr;</Link>
+            </Button>
+          </div>
+          <CopyBlock
+            text={installationScript}
+            language={'bash'}
+            theme={dracula}
+            showLineNumbers={false}
+            wrapLongLines={false}
+            customStyle={{
+              fontSize: '0.875rem',
+              lineHeight: '1.25rem',
+              padding: '.75rem',
+              width: '100%',
+            }}
+          />
+        </div>
       </div>
     </div>
   )
