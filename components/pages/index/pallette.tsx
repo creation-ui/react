@@ -56,7 +56,7 @@ export const Pallette = () => {
           You wanted different? No worries, just
           <a
             href='https://tailwindcss.com/docs/customizing-colors'
-            referrerPolicy='no-referrer'
+            rel='noreferrer'
             target={'_blank'}
             className='text-center flex items-center gap-1'
           >

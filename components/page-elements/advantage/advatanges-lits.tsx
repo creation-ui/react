@@ -36,7 +36,7 @@ export const advantages: AdvantageItem[] = [
     description: (
       <>
         Leverage the power of{' '}
-        <a href='https://tailwindcss.com/' target={'_blank'}>
+        <a href='https://tailwindcss.com/' target={'_blank'} rel="noreferrer">
           Tailwind CSS
         </a>
         , a utility-first CSS framework that enables rapid styling,
