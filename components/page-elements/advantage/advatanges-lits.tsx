@@ -36,7 +36,7 @@ export const advantages: AdvantageItem[] = [
     description: (
       <>
         Leverage the power of{' '}
-        <a href='https://tailwindcss.com/' target={'_blank'} rel="noreferrer">
+        <a href='https://tailwindcss.com/' target={'_blank'} rel='noreferrer'>
           Tailwind CSS
         </a>
         , a utility-first CSS framework that enables rapid styling,
@@ -77,7 +77,10 @@ export const AdvantageList = () => {
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-7 w-full mx-auto lg:max-w-4xl xl:max-w-full lg:pt-20 '>
       {advantages.map(({ description, icon, title }) => (
-        <div className='h-42 border rounded-lg px-5 py-4  border-purple-300 snap-center'>
+        <div
+          className='h-42 border rounded-lg px-5 py-4  border-purple-300 snap-center'
+          key={title?.toString()}
+        >
           <div className='flex flex-col gap-1'>
             <span
               className={clsx(

@@ -21,7 +21,7 @@ export const Docs = () => {
           transform ideas into reality.
         </p>
         <p>
-          Whether you're a seasoned developer or a newcomer to the field, our
+          Whether you&apos;re a seasoned developer or a newcomer to the field, our
           components are designed to help you create innovative solutions with
           ease. It is time to take the first step and embark on a journey and
           tell your own story.
