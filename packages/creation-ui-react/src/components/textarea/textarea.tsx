@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 import { input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -18,6 +19,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       id,
       loading,
       helperText,
+      ...rest
     } = props
     const componentId = useId(id)
     const disabled = props.disabled || props.readOnly
@@ -42,10 +44,10 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               className={input({
                 size,
                 variant: props.variant,
-                className: ['resize', className],
+                className: twMerge(['resize', className]),
               })}
               aria-readonly={!!props.readOnly}
-              {...props}
+              {...rest}
             />
           </div>
           {loading && <Loader />}

@@ -21,7 +21,7 @@ export const Index = () => {
   return (
     <div className={mainBodyClasses}>
       <Hero />
-      {/* <Playground /> */}
+      <Playground />
       <Pallette />
       <Advantages />
       <Docs />

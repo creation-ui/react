@@ -5,6 +5,7 @@ import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '../../types'
 import { validateEnumProp } from '../../utils/validate-props'
 import clsx from 'clsx'
 import { ClearButton } from '../clear-button'
+import { twMerge } from 'tailwind-merge'
 
 const calloutClasses = cva(
   [
@@ -16,6 +17,7 @@ const calloutClasses = cva(
     'px-6',
     'rounded-lg',
     'w-full',
+    'h-fit',
   ],
   {
     variants: {
@@ -76,11 +78,10 @@ export const Callout = (props: CalloutProps) => {
   const status = isStatusValid ? props.status : 'info'
   const variant = isVariantValid ? props.variant : 'contained'
 
+  const classes = calloutClasses({ status, variant })
+
   return (
-    <div
-      className={calloutClasses({ status, variant, className })}
-      role='alert'
-    >
+    <div className={twMerge(classes, className)} role='alert'>
       {icon}
       <div className={clsx('flex', 'flex-col', 'w-full')}>
         {title && (
