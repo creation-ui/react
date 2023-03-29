@@ -36,5 +36,16 @@ export type ButtonProps = React.ComponentProps<'button'> & {
   uppercase?: boolean
 }
 
-export type ButtonGroupProps = React.ComponentProps<'div'> & {}
+export type ButtonGroupProps = {
+  options: ButtonGroupOption[]
+  className?: string
+  size?: ElementSize
+  status?: ElementStatus
+}
 
+type ButtonGroupOption = {
+  label: string
+  disabled?: boolean
+  className?: string
+  onClick: () => void
+}

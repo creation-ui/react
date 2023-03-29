@@ -1,22 +1,24 @@
-import { Button, ButtonProps, ButtonGroup } from '@creation-ui/react'
+import {
+  PlaygroundContextValue,
+  usePlayground,
+} from '@components/playground/context'
+import { ButtonGroup } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 
-interface ButtonGroupExampleProps {
-  options?: string[]
-  variant?: ButtonProps['variant']
+export const ButtonGroupPlayground = () => {
+  const { state } = usePlayground()
+
+  const buttons = [
+    { label: 'Year', onClick: () => {} },
+    { label: 'Month', onClick: () => {} },
+    { label: 'Day', onClick: () => {} },
+  ]
+
+  return <ButtonGroup {...state} options={buttons} />
 }
 
-export const ButtonGroupExample = ({
-  options,
-  variant,
-}: ButtonGroupExampleProps) => {
-  return (
-    <ButtonGroup>
-      {options?.map(option => (
-        <Button variant={variant} key={option}>{option}</Button>
-      ))}
-    </ButtonGroup>
-  )
+export const playgroundConfig: PlaygroundContextValue['config'] = {
+  size: true,
 }
 
 export const properties: DocumentedProperty[] = [
