@@ -1,7 +1,18 @@
 import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { mdiAbacus, mdiAlarm, mdiBedQueenOutline } from '@mdi/js'
-import { Icon } from '@mdi/react'
+import {
+  mdiAbacus,
+  mdiAlarm,
+  mdiBedQueenOutline,
+  mdiFormatAlignCenter,
+  mdiFormatAlignLeft,
+  mdiFormatAlignRight,
+} from '@mdi/js'
+import Icon from '@components/icon'
+import {
+  PlaygroundContextValue,
+  usePlayground,
+} from '@components/playground/context'
 
 export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
   const options = [
@@ -11,6 +22,27 @@ export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
   ]
 
   return <ToggleGroup size={size} options={options} label='Select option' />
+}
+
+export const playgroundConfig: PlaygroundContextValue['config'] = {
+  size: true,
+}
+
+export const ToggleGroupPlayground = ({ ...props }: ToggleGroupProps) => {
+  const { state } = usePlayground()
+  const options = [
+    { value: '1', label: <Icon path={mdiFormatAlignLeft} size={1} /> },
+    { value: '2', label: <Icon path={mdiFormatAlignCenter} size={1} /> },
+    { value: '3', label: <Icon path={mdiFormatAlignRight} size={1} /> },
+  ]
+  return (
+    <ToggleGroup
+      //
+      {...props}
+      {...state}
+      options={options}
+    />
+  )
 }
 
 export const properties: DocumentedProperty[] = [

@@ -2,6 +2,8 @@
 
 import {
   ToggleGroupExample,
+  ToggleGroupPlayground,
+  playgroundConfig,
   properties,
   optionProps,
 } from '@components/examples/toggle-group'
@@ -9,6 +11,13 @@ import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
+import { Playground } from '@components/playground'
+
+## Playground
+
+<Playground config={playgroundConfig}>
+  <ToggleGroupPlayground />
+</Playground>
 
 ```tsx copy
 import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
@@ -26,22 +35,15 @@ export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
 }
 ```
 
-<Container>
-  <ToggleGroupExample label='Radio option' />
-</Container>
-
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={ToggleGroupExample}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  nameProp='label'
-/>
-
 ## Component API
 
-<PropsTable properties={properties} name='ToggleGroup' description={'Props of ToggleGroup component.'} />
-<PropsTable properties={optionProps} name='ToggleGroupOption' description={'Props of ToggleGroupOption component.'} />
+<PropsTable
+  properties={properties}
+  name='ToggleGroup'
+  description={'Props of ToggleGroup component.'}
+/>
+<PropsTable
+  properties={optionProps}
+  name='ToggleGroupOption'
+  description={'Props of ToggleGroupOption component.'}
+/>

@@ -14,7 +14,10 @@ export type ToggleGroupOption = HeadlessRadioGroupOptionProps & {
   disabled?: boolean
 }
 
-export type ToggleGroupProps = RadioGroupProps & {
+export type ToggleGroupProps = Omit<
+  RadioGroupProps,
+  'disabled' | 'readonly' | 'label' | 'required'
+> & {
   options: ToggleGroupOption[]
   label?: string
   required?: boolean

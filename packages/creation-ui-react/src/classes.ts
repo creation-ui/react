@@ -33,8 +33,8 @@ export const shared = {
   loaderInputPosition: loaderClasses,
   input: [
     microInteractions,
-    'border-info-400',
     'border',
+    'border-info-400',
     'dark:bg-info-900',
     'dark:border-info-400',
     'focus:ring-offset-0',
