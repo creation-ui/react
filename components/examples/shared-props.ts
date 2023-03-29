@@ -36,19 +36,16 @@ export const statusProp: DocumentedProperty = {
   type: ListOrTypes([...ELEMENT_STATUS, 'undefined']),
 }
 
-export const openProp: DocumentedProperty = {
+export const openProps: DocumentedProperty = {
   description: 'Is component visible',
   name: 'open',
   type: 'boolean',
   defaultValue: 'false',
 }
-
-//TODO: change to open and remove
-export const openPropAsActive: DocumentedProperty = {
-  description: 'Is component visible',
-  name: 'active',
+export const disabledProps: DocumentedProperty = {
+  description: 'Is component disabled',
+  name: 'disabled',
   type: 'boolean',
-  defaultValue: 'false',
 }
 
 export const elementTypeProp: DocumentedProperty = {

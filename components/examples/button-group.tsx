@@ -4,6 +4,14 @@ import {
 } from '@components/playground/context'
 import { ButtonGroup } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
+import {
+  classNameProps,
+  disabledProps,
+  labelProp,
+  onClickCallback,
+  sizeProp,
+  statusProp,
+} from './shared-props'
 
 export const ButtonGroupPlayground = () => {
   const { state } = usePlayground()
@@ -23,8 +31,18 @@ export const playgroundConfig: PlaygroundContextValue['config'] = {
 
 export const properties: DocumentedProperty[] = [
   {
-    name: 'children',
-    description: 'The content of the button group.',
-    type: 'React.ReactNode',
+    name: 'options',
+    description: 'Options of the button group.',
+    type: 'ButtonGroupOption[]',
   },
+  classNameProps,
+  sizeProp,
+  statusProp,
+]
+
+export const buttonGroupOptions: DocumentedProperty[] = [
+  classNameProps,
+  labelProp,
+  onClickCallback,
+  disabledProps,
 ]

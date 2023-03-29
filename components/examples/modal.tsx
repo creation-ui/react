@@ -1,5 +1,5 @@
 import { Button, Modal, ModalProps } from '@creation-ui/react'
-import { childrenProp, elementTypeProp, openProp } from '@components/examples/shared-props'
+import { childrenProp, elementTypeProp, openProps } from '@components/examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 
@@ -31,7 +31,7 @@ export const ModalExample = (props: ModalProps) => {
 }
 
 export const properties: DocumentedProperty[] = [
-  openProp,
+  openProps,
   {
     description: 'Callback function called when closing modal',
     name: 'onClose',
