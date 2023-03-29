@@ -1,26 +1,28 @@
-import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
-import { DocumentedProperty } from 'models/system'
-import {
-  mdiAbacus,
-  mdiAlarm,
-  mdiBedQueenOutline,
-  mdiFormatAlignCenter,
-  mdiFormatAlignLeft,
-  mdiFormatAlignRight,
-} from '@mdi/js'
 import Icon from '@components/icon'
 import {
   PlaygroundContextValue,
   usePlayground,
 } from '@components/playground/context'
+import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
+import {
+  mdiFormatAlignCenter,
+  mdiFormatAlignLeft,
+  mdiFormatAlignRight,
+} from '@mdi/js'
+import { DocumentedProperty } from 'models/system'
 
 export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
-  const options = [
-    { value: '1', label: <Icon path={mdiAbacus} size={0.9} /> },
-    { value: '2', label: <Icon path={mdiAlarm} size={0.9} /> },
-    { value: '3', label: <Icon path={mdiBedQueenOutline} size={0.9} /> },
-  ]
+  const iconSize = {
+    sm: 0.7,
+    md: 0.9,
+    lg: 1.1,
+  }[size || 'md']
 
+  const options = [
+    { value: '1', label: <Icon path={mdiFormatAlignLeft} size={iconSize} /> },
+    { value: '2', label: <Icon path={mdiFormatAlignCenter} size={iconSize} /> },
+    { value: '3', label: <Icon path={mdiFormatAlignRight} size={iconSize} /> },
+  ]
   return <ToggleGroup size={size} options={options} label='Select option' />
 }
 
@@ -30,10 +32,17 @@ export const playgroundConfig: PlaygroundContextValue['config'] = {
 
 export const ToggleGroupPlayground = ({ ...props }: ToggleGroupProps) => {
   const { state } = usePlayground()
+
+  const iconSize = {
+    sm: 0.7,
+    md: 0.9,
+    lg: 1.1,
+  }[state.size || 'md']
+
   const options = [
-    { value: '1', label: <Icon path={mdiFormatAlignLeft} size={1} /> },
-    { value: '2', label: <Icon path={mdiFormatAlignCenter} size={1} /> },
-    { value: '3', label: <Icon path={mdiFormatAlignRight} size={1} /> },
+    { value: '1', label: <Icon path={mdiFormatAlignLeft} size={iconSize} /> },
+    { value: '2', label: <Icon path={mdiFormatAlignCenter} size={iconSize} /> },
+    { value: '3', label: <Icon path={mdiFormatAlignRight} size={iconSize} /> },
   ]
   return (
     <ToggleGroup

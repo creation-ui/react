@@ -12,6 +12,12 @@ export const microInteractions = clsx(
   'ease-in-out'
 )
 
+export const sharedSizeClasses = {
+  sm: ['h-7', 'px-2', 'sm:text-sm', 'text-base'],
+  md: ['h-8', 'px-3', 'sm:text-base', 'text-lg'],
+  lg: ['h-10', 'px-4', 'sm:text-lg', 'text-xl'],
+}
+
 const loaderClasses = cva(['absolute', 'top-0', 'right-0', microInteractions], {
   variants: {
     loading: {
@@ -36,7 +42,7 @@ export const shared = {
     'border',
     'border-info-400',
     'dark:bg-info-900',
-    'dark:border-info-400',
+    'dark:border-info-700',
     'focus:ring-offset-0',
     'focus:border-primary-300',
     'focus:dark:border-primary-400',
@@ -72,11 +78,7 @@ export const input = cva(
         outlined: [],
         text: [],
       },
-      size: {
-        sm: ['h-8', 'px-2'],
-        md: ['h-10', 'px-3'],
-        lg: ['h-12', 'px-4'],
-      },
+      size: sharedSizeClasses,
       iconLeft: { true: 'pl-10', false: 'pl-3' },
       iconRight: { true: 'pr-10', false: 'pr-3' },
     },

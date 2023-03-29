@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions, sharedDisabledCVA } from '../../classes'
+import { microInteractions, sharedDisabledCVA, sharedSizeClasses } from '../../classes'
 
 export const toggleGroup = {
   container: [
@@ -17,7 +17,7 @@ export const toggleGroup = {
       'border-info-400',
       'border-y',
       'dark:bg-info-900',
-      'dark:border-info-400',
+      'dark:border-info-700',
       'dark:hover:bg-info-800',
       'dark:text-info-200',
       'focus:border-primary-300',
@@ -50,11 +50,7 @@ export const toggleGroup = {
           false: ['bg-info-50', 'text-info-900', 'hover:bg-info-100'],
         },
         disabled: sharedDisabledCVA,
-        size: {
-          sm: ['h-7', 'px-2'],
-          md: ['h-9', 'px-4'],
-          lg: ['h-11', 'px-4'],
-        },
+        size: sharedSizeClasses,
       },
     }
   ),
