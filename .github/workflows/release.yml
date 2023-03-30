@@ -24,6 +24,13 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
         if: ${{ steps.release.outputs.release_created }}
+      - name: Creating .npmrc
+        run: |
+          cat &lt;&lt; EOF &gt; "$HOME/packages/creation-ui-react/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN_AUTOMATION
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_AUTOMATION }}
       - name: Update version in package.json
         run: pnpm package:version
         if: ${{ steps.release.outputs.release_created }}
