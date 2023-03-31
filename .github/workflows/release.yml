@@ -1,9 +1,10 @@
+name: release-please
+
 on:
   push:
     branches:
       - master
 
-name: release-please
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -13,28 +14,3 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Setupt Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Install Dependencies
-        run: pnpm i
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Update version in package.json
-        run: pnpm package:version
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Update version in home package.json
-        run: pnpm ci:version
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Create a package and Publish to npm
-        run: pnpm package:build
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Publish package
-        run: package:publish
-        env:
-          NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
-        if: ${{ steps.release.outputs.release_created }}

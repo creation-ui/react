@@ -1,0 +1,29 @@
+name: on-release
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Setupt Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: pnpm i
+      - name: Update version in package.json
+        run: pnpm package:version
+      - name: Update version in home package.json
+        run: pnpm ci:version
+      - name: Create a package and Publish to npm
+        run: pnpm package:build
+      - name: Publish package
+        run: package:publish
+        env:
+          NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
