@@ -28,6 +28,7 @@ export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
 
 export const playgroundConfig: PlaygroundContextValue['config'] = {
   size: true,
+  name: 'ToggleGroup',
 }
 
 export const ToggleGroupPlayground = ({ ...props }: ToggleGroupProps) => {

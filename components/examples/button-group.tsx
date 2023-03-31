@@ -27,6 +27,7 @@ export const ButtonGroupPlayground = () => {
 
 export const playgroundConfig: PlaygroundContextValue['config'] = {
   size: true,
+  name: 'ButtonGroup',
 }
 
 export const properties: DocumentedProperty[] = [

@@ -25,6 +25,8 @@ type PlaygroundConfig = {
   icon?: boolean
   circle?: boolean
   inputType?: boolean
+  name: string
+  hasChildren?: boolean
 }
 
 type PlaygroundValue = {

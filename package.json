@@ -26,6 +26,7 @@
     "import-check": "npx cycle-import-check"
   },
   "dependencies": {
+    "@babel/parser": "^7.21.4",
     "@headlessui/react": "^1.7.13",
     "@headlessui/tailwindcss": "^0.1.2",
     "@mdi/js": "^7.2.96",
@@ -52,7 +53,7 @@
     "next": "13.2.4",
     "nextra": "^2.2.19",
     "nextra-theme-docs": "^2.2.19",
-    "prettier": "^2.8.6",
+    "prettier": "^2.8.7",
     "react": "18.2.0",
     "react-code-blocks": "0.0.9-0",
     "react-copy-to-clipboard": "^5.1.0",
@@ -97,7 +98,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.1.0",
-    "prettier": "^2.8.3",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "rollup": "^3.20.0",
     "rollup-plugin-babel": "^4.4.0",

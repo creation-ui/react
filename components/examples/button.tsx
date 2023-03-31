@@ -59,6 +59,8 @@ export const ButtonPlayground = () => {
   return (
     <Playground
       config={{
+        name: 'Button',
+        hasChildren: true,
         size: true,
         loading: true,
         variant: true,
