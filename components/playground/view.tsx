@@ -7,7 +7,7 @@ interface PlaygroundProps {
   children?: React.ReactNode
 }
 
-const borderColor = 'border-gray-200'
+const borderColor = 'border-info-200 dark:border-info-800'
 
 const classes = {
   container: [borderColor, 'grid', 'grid-cols-3', 'border', 'rounded-lg'],
