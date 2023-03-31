@@ -26,10 +26,7 @@ const creationUiConfig = {
   },
   plugins: [
     require('@headlessui/tailwindcss')({ prefix: 'ui' }),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms')({ prefix: 'forms' }),
   ],
 }
 

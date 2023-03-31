@@ -1,8 +1,9 @@
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 
-export const sharedDisabledCVA = {
+export const sharedDisabledObject = {
   true: ['opacity-50', 'pointer-events-none'],
+  false: null,
 }
 
 export const microInteractions = clsx(
@@ -12,7 +13,7 @@ export const microInteractions = clsx(
   'ease-in-out'
 )
 
-export const sharedSizeClasses = {
+export const sharedSizeClassesObject = {
   sm: ['h-7', 'px-2', 'sm:text-sm', 'text-base'],
   md: ['h-8', 'px-3', 'sm:text-base', 'text-lg'],
   lg: ['h-10', 'px-4', 'sm:text-lg', 'text-xl'],
@@ -31,41 +32,34 @@ const loaderClasses = cva(['absolute', 'top-0', 'right-0', microInteractions], {
 })
 
 export const invalid = {
-  text: [
-    'select-none',
-    'dark:invalid:text-error-400',
-    'invalid:text-error-600',
-  ],
+  text: ['dark:invalid:text-error-400', 'invalid:text-error-600'],
   ring: [
-    'dark:invalid:ring-error-200',
-    'focus:invalid:ring-error-200',
-    'invalid:ring-error-200',
+    '!dark:invalid:ring-error-200',
+    '!focus:invalid:ring-error-200',
+    '!invalid:ring-error-200',
   ],
   border: [
-    'dark:invalid:border-error-400',
-    'invalid:border-error-500',
-    'focus:invalid:border-error-500',
+    '!dark:invalid:border-error-400',
+    '!invalid:border-error-500',
+    '!focus:invalid:border-error-500',
   ],
 }
 export const error = {
-  text: ['select-none', 'dark:text-error-400', 'text-error-600'],
-  ring: ['dark:ring-error-200', 'focus:ring-error-200', 'ring-error-200'],
+  text: ['!dark:text-error-400', '!text-error-600'],
+  ring: ['!dark:ring-error-200', '!focus:ring-error-200', '!ring-error-200'],
   border: [
-    'dark:border-error-400',
-    'border-error-500',
-    'focus:border-error-500',
+    '!dark:border-error-400',
+    '!border-error-500',
+    '!focus:border-error-500',
   ],
 }
 
-export const shared = {
-  error: {
-    text: ['!dark:text-error-400', '!text-error-600', 'select-none'],
-  },
+export const classes = {
   required: ["after:content-['*']", 'after:ml-0.5', 'after:text-error-500'],
   label: ['select-none', 'block'],
   loaderInputPosition: loaderClasses,
   input: [
-    microInteractions,
+    // microInteractions,
     'border',
     'border-info-400',
     'dark:bg-info-900',
@@ -77,11 +71,11 @@ export const shared = {
     'focus:ring-opacity-50',
     'focus:ring-primary-200',
     'focus:ring',
+    'bg-white',
+    'rounded-md',
     invalid.ring,
     invalid.border,
     invalid.text,
-    'bg-white',
-    'rounded-md',
   ],
   checkable: [
     microInteractions,
@@ -94,7 +88,14 @@ export const shared = {
 }
 
 export const input = cva(
-  [shared.input, 'peer', 'block', 'w-full', 'disabled:pointer-events-none'],
+  [
+    //
+    classes.input,
+    'peer',
+    'block',
+    'w-full',
+    'disabled:pointer-events-none',
+  ],
   {
     variants: {
       variant: {
@@ -102,10 +103,17 @@ export const input = cva(
         outlined: [],
         text: [],
       },
-      size: sharedSizeClasses,
-      iconLeft: { true: 'pl-10', false: 'pl-3' },
-      iconRight: { true: 'pr-10', false: 'pr-3' },
-      error: { true: clsx(error.border, error.ring, error.text), false: null },
+      size: sharedSizeClassesObject,
+      iconLeft: { true: 'pl-10', false: null },
+      iconRight: { true: 'pr-10', false: null },
+      error: {
+        true: clsx(error.border, error.ring, error.text),
+        false: null,
+      },
+      fillContent: {
+        true: ['!p-0'],
+        false: ['!p-1'],
+      },
     },
     defaultVariants: {
       size: 'md',
@@ -137,7 +145,7 @@ export const helperTextClasses = cva(
         lg: ['text-sm'],
       },
       error: {
-        true: shared.error.text,
+        true: error.text,
         false: [],
       },
     },
@@ -150,9 +158,9 @@ export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
       column: ['flex-col', 'gap-1'],
       row: ['flex-row', 'gap-2', 'items-center'],
     },
-    disabled: sharedDisabledCVA,
+    disabled: sharedDisabledObject,
     error: {
-      true: shared.error.text,
+      true: error.text,
     },
   },
   defaultVariants: {
@@ -160,7 +168,7 @@ export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
   },
 })
 
-export const label = cva([...shared.label], {
+export const label = cva([...classes.label], {
   variants: {
     size: {
       sm: [],
@@ -168,7 +176,7 @@ export const label = cva([...shared.label], {
       lg: [],
     },
     required: {
-      true: shared.required,
+      true: classes.required,
     },
     for: {
       checkbox: ['inline-flex', 'items-center', 'cursor-pointer'],
@@ -180,18 +188,10 @@ export const label = cva([...shared.label], {
 })
 
 export const inputIcon = cva(
-  [
-    //
-    'absolute',
-    'bottom-1/2',
-    'transform',
-    'translate-y-1/2',
-    microInteractions,
-  ],
+  ['absolute', 'bottom-1/2', 'transform', 'translate-y-1/2', microInteractions],
   {
     variants: {
       position: {
-        //
         left: ['left-3'],
         right: ['right-3'],
       },

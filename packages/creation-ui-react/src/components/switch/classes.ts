@@ -1,9 +1,9 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions, shared } from '../../classes'
+import { microInteractions, classes } from '../../classes'
 
 export const switchClasses = cva(
   [
-    ...shared.input,
+    ...classes.input,
     microInteractions,
     'text-primary-500',
     'checked:border-none',

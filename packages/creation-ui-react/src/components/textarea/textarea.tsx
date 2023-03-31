@@ -42,7 +42,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               className={input({
                 size,
                 variant: props.variant,
-                className: ['resize', className],
+                className: ['resize', className, ],
               })}
               aria-readonly={!!props.readOnly}
               {...props}

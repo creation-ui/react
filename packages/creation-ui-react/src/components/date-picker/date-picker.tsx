@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import ReactDatePicker from 'react-datepicker'
-import { inputContainer, label, shared, text } from '../../classes'
+import { inputContainer, label, classes, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { Icon } from '../icon'
@@ -42,7 +42,7 @@ const DatePicker = (props: DatePickerProps) => {
           children={props.label}
           aria-label={props.label?.toString()}
         />
-        <Loader className={clsx(shared.loaderInputPosition({ loading }))} />
+        <Loader className={clsx(classes.loaderInputPosition({ loading }))} />
         <ReactDatePicker
           {...rest}
           id={componentId}

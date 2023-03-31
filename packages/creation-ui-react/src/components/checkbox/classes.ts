@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
-import { shared } from '../../classes'
+import { classes } from '../../classes'
 
-export const checkbox = cva([shared.input, shared.checkable], {
+export const checkbox = cva([classes.input, classes.checkable], {
   variants: {
     size: {
       sm: ['h-4', 'w-4', '!rounded'],

@@ -22,6 +22,7 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
     id,
     startAdornment,
     endAdornment,
+    variant,
     ...rest
   } = props
   const componentId = useId(id)
@@ -34,6 +35,21 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
     text({ size })
   )
 
+  const isColor = type === 'color'
+
+  const inputClasses = twMerge(
+    input({
+      size,
+      variant,
+      iconLeft: !!startAdornment,
+      iconRight: !!endAdornment,
+      className: twMerge(className),
+      error: !!error,
+      fillContent: isColor
+    })
+  )
+
+  console.log('inputClasses', inputClasses)
   return (
     <InteractiveContainer disabled={disabled} className={className}>
       <div className={containerClasses}>
@@ -60,16 +76,7 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           <input
             ref={ref}
             id={componentId}
-            className={twMerge(
-              input({
-                size,
-                variant: props.variant,
-                iconLeft: !!startAdornment,
-                iconRight: !!endAdornment,
-                className: twMerge(className),
-                error: !!error,
-              })
-            )}
+            className={inputClasses}
             aria-invalid={!!error}
             type={type}
             {...rest}

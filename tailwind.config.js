@@ -15,4 +15,8 @@ module.exports = withTailwindConfig({
       0: '0ms',
     },
   },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
 })

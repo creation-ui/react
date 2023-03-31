@@ -1,9 +1,9 @@
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
-import { shared } from '../../classes'
+import { classes } from '../../classes'
 
 export const radio = cva(
-  [twMerge([shared.input, shared.checkable, 'rounded-full'])],
+  [twMerge([classes.input, classes.checkable, 'rounded-full'])],
   {
     variants: {
       size: {
