@@ -30,6 +30,33 @@ const loaderClasses = cva(['absolute', 'top-0', 'right-0', microInteractions], {
   },
 })
 
+export const invalid = {
+  text: [
+    'select-none',
+    'dark:invalid:text-error-400',
+    'invalid:text-error-600',
+  ],
+  ring: [
+    'dark:invalid:ring-error-200',
+    'focus:invalid:ring-error-200',
+    'invalid:ring-error-200',
+  ],
+  border: [
+    'dark:invalid:border-error-400',
+    'invalid:border-error-500',
+    'focus:invalid:border-error-500',
+  ],
+}
+export const error = {
+  text: ['select-none', 'dark:text-error-400', 'text-error-600'],
+  ring: ['dark:ring-error-200', 'focus:ring-error-200', 'ring-error-200'],
+  border: [
+    'dark:border-error-400',
+    'border-error-500',
+    'focus:border-error-500',
+  ],
+}
+
 export const shared = {
   error: {
     text: ['!dark:text-error-400', '!text-error-600', 'select-none'],
@@ -47,15 +74,12 @@ export const shared = {
     'focus:border-primary-300',
     'focus:dark:border-primary-400',
     'focus:dark:ring-primary-300',
-    'focus:invalid:border-error-500',
-    'focus:invalid:ring-error-200',
     'focus:ring-opacity-50',
     'focus:ring-primary-200',
     'focus:ring',
-    'invalid:border-error-500',
-    'invalid:ring-error-200',
-    'dark:invalid:border-error-400',
-    'dark:invalid:ring-error-200',
+    invalid.ring,
+    invalid.border,
+    invalid.text,
     'bg-white',
     'rounded-md',
   ],
@@ -81,6 +105,7 @@ export const input = cva(
       size: sharedSizeClasses,
       iconLeft: { true: 'pl-10', false: 'pl-3' },
       iconRight: { true: 'pr-10', false: 'pr-3' },
+      error: { true: clsx(error.border, error.ring, error.text), false: null },
     },
     defaultVariants: {
       size: 'md',

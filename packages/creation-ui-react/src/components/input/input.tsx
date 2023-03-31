@@ -1,19 +1,14 @@
+import clsx from 'clsx'
 import { ForwardedRef, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import {
-  input,
-  inputContainer,
-  inputIcon,
-  label,
-  shared,
-  text,
-} from '../../classes'
+import { input, inputContainer, inputIcon, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import type { InputProps } from './input.types'
-import { HelperText } from '../typography/helper-text'
+import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
+import { HelperText } from '../typography/helper-text'
+import type { InputProps } from './input.types'
 
 const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
   const { size: defaultSize } = useTheme()
@@ -31,7 +26,8 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
   } = props
   const componentId = useId(id)
 
-  const disabled = props.disabled || props.readOnly
+  const disabled = props.disabled
+  const readOnly = props.readOnly || loading
 
   const containerClasses = twMerge(
     inputContainer({ disabled, error: !!error }),
@@ -47,10 +43,14 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           children={props.label}
           aria-label={props.label?.toString()}
         />
-        <Loader
-          className={twMerge(shared.loaderInputPosition({ loading }))}
-          size={size === 'lg' ? 'md' : 'sm'}
-        />
+
+        {props.readOnly && (
+          <Icon
+            icon='readonly'
+            title='Read only'
+            className={clsx('absolute', 'top-0', 'right-0')}
+          />
+        )}
         <div className='relative max-h-min'>
           {startAdornment && (
             <div className={inputIcon({ position: 'left' })}>
@@ -60,22 +60,33 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
           <input
             ref={ref}
             id={componentId}
-            className={input({
-              size,
-              variant: props.variant,
-              iconLeft: !!startAdornment,
-              iconRight: !!endAdornment,
-              className: twMerge(className),
-            })}
-            aria-readonly={!!props.readOnly}
+            className={twMerge(
+              input({
+                size,
+                variant: props.variant,
+                iconLeft: !!startAdornment,
+                iconRight: !!endAdornment,
+                className: twMerge(className),
+                error: !!error,
+              })
+            )}
             aria-invalid={!!error}
             type={type}
             {...rest}
+            aria-readonly={readOnly}
+            readOnly={readOnly}
           />
-          {endAdornment && (
+
+          {!loading && endAdornment && (
             <div className={inputIcon({ position: 'right' })}>
               {endAdornment}
             </div>
+          )}
+          {loading && (
+            <Loader
+              className={inputIcon({ position: 'right' })}
+              size={size === 'lg' ? 'md' : 'sm'}
+            />
           )}
         </div>
         <HelperText

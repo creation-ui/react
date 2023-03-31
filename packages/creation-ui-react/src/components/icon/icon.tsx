@@ -7,6 +7,7 @@ import { ChevronRight } from './chevron-right'
 import { Close } from './close'
 import type { IconProps } from './icon.type'
 import { Straight } from './straight'
+import { PencilOff } from './pencil-off'
 
 const classes = [
   //
@@ -26,6 +27,7 @@ const Icon = ({ icon, className }: IconProps) => {
     close: Close,
     check: Check,
     straight: Straight,
+    readonly: PencilOff,
   }
 
   const Component = map[icon]
