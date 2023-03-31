@@ -104,15 +104,15 @@ export const input = cva(
         text: [],
       },
       size: sharedSizeClassesObject,
-      iconLeft: { true: 'pl-10', false: null },
-      iconRight: { true: 'pr-10', false: null },
+      iconLeft: { true: 'pl-10', false: 'pl-3' },
+      iconRight: { true: 'pr-10', false: 'pr-3' },
       error: {
         true: clsx(error.border, error.ring, error.text),
         false: null,
       },
       fillContent: {
         true: ['!p-0'],
-        false: ['!p-1'],
+        false: null,
       },
     },
     defaultVariants: {
