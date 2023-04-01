@@ -14,37 +14,18 @@ import HeaderCell from './components/header-cell'
 import Pagination from './components/pagination'
 import Rows from './components/rows'
 import { useTable } from './table.context'
-import useMeasure from '../../hooks/use-measure'
-import { useMemo } from 'react'
 
 const Table = () => {
   const { table, height, pagination, loading, error, errorVariant } = useTable()
   const data = table.getRowModel()
   const head = table.getHeaderGroups()
   const foot = table.getFooterGroups()
-  const [tableRef, tableMeasure] = useMeasure()
-  const [headRef, headMeasure] = useMeasure()
-  const [footRef, footMeasure] = useMeasure()
-
-  const bodyHeight = useMemo(
-    () => tableMeasure.height - headMeasure.height - footMeasure.height,
-    [headMeasure, footMeasure]
-  )
 
   return (
     <div className='overflow-hidden rounded-lg relative'>
       <LoadingOverlay active={loading} />
-      <table
-        // @ts-ignore
-        ref={tableRef}
-        className={tableClasses()}
-        style={{ height, maxHeight: height }}
-      >
-        <thead
-          // @ts-ignore
-          ref={headRef}
-          className={headerClasses}
-        >
+      <table className={tableClasses()} style={{ height, maxHeight: height }}>
+        <thead className={headerClasses}>
           {head.map(headerGroup => (
             <tr key={headerGroup.id} className={headerRowClasses}>
               {headerGroup.headers.map(column => (
@@ -55,16 +36,11 @@ const Table = () => {
         </thead>
         {error ? (
           <div
-            style={{ height: bodyHeight }}
-            className={clsx(
-              //
-              sharedTableClasses.border,
-              'relative'
-            )}
+            className={clsx(sharedTableClasses.border, 'relative', 'w-full')}
+            style={{ height, maxHeight: height }}
           >
             <div
               className={clsx(
-                //
                 'absolute',
                 'left-1/2',
                 'transform',
@@ -83,18 +59,17 @@ const Table = () => {
             </div>
           </div>
         ) : (
-          <tbody className={bodyClasses()} style={{ height: bodyHeight }}>
+          <tbody
+            className={bodyClasses()}
+            style={{ height, maxHeight: height }}
+          >
             {data.rows.map(row => (
               <Rows key={row.id} row={row} />
             ))}
           </tbody>
         )}
 
-        <tfoot
-          // @ts-ignore
-          ref={footRef}
-          className={footerClasses}
-        >
+        <tfoot className={footerClasses}>
           {foot.map(group => (
             <tr key={group.id}>
               {group.headers.map(column => (
