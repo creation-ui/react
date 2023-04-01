@@ -63,17 +63,17 @@ export const switchCircle = cva(
       {
         checked: true,
         size: 'sm',
-        className: ['translate-x-4'],
+        className: ['translate-x-[16px]'],
       },
       {
         checked: true,
         size: 'md',
-        className: ['translate-x-6'],
+        className: ['translate-x-[24px]'],
       },
       {
         checked: true,
         size: 'lg',
-        className: ['translate-x-8'],
+        className: ['translate-x-[32px]'],
       },
     ],
   }
