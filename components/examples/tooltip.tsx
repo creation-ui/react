@@ -1,13 +1,37 @@
-import { Button, Tooltip, TooltipProps } from '@creation-ui/react'
-import { ELEMENT_POSITION } from '@creation-ui/react'
+import { Playground } from '@components/playground'
+import { usePlayground } from '@components/playground/context'
+import { getState } from '@components/playground/helpers'
+import { Button, ELEMENT_POSITION, Tooltip } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
 
-export const TooltipExample = ({ ...props }: TooltipProps) => {
+const config = {
+  position: true,
+  content: true,
+}
+
+export const TooltipExample = () => {
+  const playground = usePlayground()
+
+  const state = getState(playground.state, config)
+
   return (
-    <Tooltip {...props} content='This is important button'>
+    <Tooltip {...state}>
       <Button variant='contained'>Submit</Button>
     </Tooltip>
+  )
+}
+
+export const TooltipPlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Checkbox',
+        ...config,
+      }}
+    >
+      <TooltipExample />
+    </Playground>
   )
 }
 

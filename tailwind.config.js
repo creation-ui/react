@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
 const withTailwindConfig = require('./packages/creation-ui-react/src/utils/withTailwindConfig')
 
+/** @type {import('tailwindcss').Config} */
 module.exports = withTailwindConfig({
   content: [
     //

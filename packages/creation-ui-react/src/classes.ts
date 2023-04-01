@@ -1,7 +1,11 @@
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
+import { values } from 'lodash'
 
-export const sharedDisabledObject = {
+const getAllValuesFromObject = (obj: Record<string, string[] | string>) =>
+  clsx(values(obj))
+
+export const sharedDisabledCVA = {
   true: ['opacity-50', 'pointer-events-none'],
   false: null,
 }
@@ -13,10 +17,23 @@ export const microInteractions = clsx(
   'ease-in-out'
 )
 
-export const sharedSizeClassesObject = {
+export const roundness = {
+  input: 'rounded-md',
+}
+
+export const sharedSizeClassesCVA = {
   sm: ['h-7', 'px-2', 'sm:text-sm', 'text-base'],
   md: ['h-8', 'px-3', 'sm:text-base', 'text-lg'],
   lg: ['h-10', 'px-4', 'sm:text-lg', 'text-xl'],
+}
+export const sharedSizeSquareCVA = {
+  sm: ['h-4', 'w-4', 'sm:text-sm', 'text-base'],
+  md: ['h-5', 'w-5', 'sm:text-base', 'text-lg'],
+  lg: ['h-6', 'w-6', 'sm:text-lg', 'text-xl'],
+}
+export const sharedReadOnlyCVA = {
+  true: 'pointer-events-none',
+  false: 'pointer-events-auto',
 }
 
 const loaderClasses = cva(['absolute', 'top-0', 'right-0', microInteractions], {
@@ -54,6 +71,8 @@ export const error = {
   ],
 }
 
+export const sharedErrorClasses = getAllValuesFromObject(error)
+
 export const classes = {
   required: ["after:content-['*']", 'after:ml-0.5', 'after:text-error-500'],
   label: ['select-none', 'block'],
@@ -72,30 +91,23 @@ export const classes = {
     'focus:ring-primary-200',
     'focus:ring',
     'bg-white',
-    'rounded-md',
-    invalid.ring,
-    invalid.border,
-    invalid.text,
+    getAllValuesFromObject(roundness),
+    getAllValuesFromObject(invalid),
   ],
   checkable: [
     microInteractions,
     'text-primary-500',
     'checked:border-none',
     'dark:checked:bg-primary-500',
+    'checked:bg-primary-500',
+    'indeterminate:bg-primary-500',
     'cursor-pointer',
     'peer',
   ],
 }
 
 export const input = cva(
-  [
-    //
-    classes.input,
-    'peer',
-    'block',
-    'w-full',
-    'disabled:pointer-events-none',
-  ],
+  [classes.input, 'peer', 'block', 'w-full', 'disabled:pointer-events-none'],
   {
     variants: {
       variant: {
@@ -103,11 +115,11 @@ export const input = cva(
         outlined: [],
         text: [],
       },
-      size: sharedSizeClassesObject,
+      size: sharedSizeClassesCVA,
       iconLeft: { true: 'pl-10', false: 'pl-3' },
       iconRight: { true: 'pr-10', false: 'pr-3' },
       error: {
-        true: clsx(error.border, error.ring, error.text),
+        true: sharedErrorClasses,
         false: null,
       },
       fillContent: {
@@ -122,7 +134,7 @@ export const input = cva(
   }
 )
 
-export const text = cva([microInteractions], {
+export const text = cva(microInteractions, {
   variants: {
     size: {
       sm: ['sm:text-sm', 'text-base'],
@@ -158,7 +170,7 @@ export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
       column: ['flex-col', 'gap-1'],
       row: ['flex-row', 'gap-2', 'items-center'],
     },
-    disabled: sharedDisabledObject,
+    disabled: sharedDisabledCVA,
     error: {
       true: error.text,
     },
@@ -177,6 +189,7 @@ export const label = cva([...classes.label], {
     },
     required: {
       true: classes.required,
+      false: null,
     },
     for: {
       checkbox: ['inline-flex', 'items-center', 'cursor-pointer'],

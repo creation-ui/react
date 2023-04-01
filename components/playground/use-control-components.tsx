@@ -10,9 +10,14 @@ import {
   mdiSetLeft,
   mdiSetLeftRight,
   mdiSetNone,
+  mdiBorderBottomVariant,
+  mdiBorderTopVariant,
+  mdiBorderLeftVariant,
+  mdiBorderRightVariant,
 } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { ColorDefinition, ColorsSelector } from './components/colors-selector'
+import { ToolContainer } from './components/tool-container'
 import { INPUT_TYPES } from './constants'
 import { usePlayground } from './context'
 
@@ -47,6 +52,12 @@ const ICON = [
   { value: 'right', label: <Icon path={mdiSetRight} size={1} /> },
   { value: 'both', label: <Icon path={mdiSetLeftRight} size={1} /> },
   { value: 'none', label: <Icon path={mdiSetNone} size={1} /> },
+]
+const POSITION = [
+  { value: 'top', label: <Icon path={mdiBorderTopVariant} size={1} /> },
+  { value: 'left', label: <Icon path={mdiBorderLeftVariant} size={1} /> },
+  { value: 'right', label: <Icon path={mdiBorderRightVariant} size={1} /> },
+  { value: 'bottom', label: <Icon path={mdiBorderBottomVariant} size={1} /> },
 ]
 
 export const useControlComponents = () => {
@@ -153,31 +164,44 @@ export const useControlComponents = () => {
 
   config.size &&
     components.push(
-      <ToggleGroup
-        value={size}
-        options={SIZES}
-        label='Size'
-        onChange={handleChangeUpdate('size') as any}
-      />
+      <ToolContainer label='Size'>
+        <ToggleGroup
+          value={size}
+          options={SIZES}
+          onChange={handleChangeUpdate('size') as any}
+        />
+      </ToolContainer>
     )
 
   config.variant &&
     components.push(
-      <ToggleGroup
-        label='Variant'
-        value={variant}
-        onChange={handleChangeUpdate('variant') as any}
-        options={VARIANTS}
-      />
+      <ToolContainer label='Variant'>
+        <ToggleGroup
+          value={variant}
+          onChange={handleChangeUpdate('variant') as any}
+          options={VARIANTS}
+        />
+      </ToolContainer>
     )
   config.icon &&
     components.push(
-      <ToggleGroup
-        label='Icon'
-        value={state.icon}
-        onChange={handleChangeUpdate('icon') as any}
-        options={ICON}
-      />
+      <ToolContainer label='Icon'>
+        <ToggleGroup
+          value={state.icon}
+          onChange={handleChangeUpdate('icon') as any}
+          options={ICON}
+        />
+      </ToolContainer>
+    )
+  config.position &&
+    components.push(
+      <ToolContainer label='Position'>
+        <ToggleGroup
+          value={state.position}
+          onChange={handleChangeUpdate('position') as any}
+          options={POSITION}
+        />
+      </ToolContainer>
     )
 
   config.status &&

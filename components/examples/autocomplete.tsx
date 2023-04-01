@@ -1,3 +1,5 @@
+import { Playground } from '@components/playground'
+import { usePlayground } from '@components/playground/context'
 import {
   Autocomplete,
   AutocompleteProps,
@@ -7,18 +9,29 @@ import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
+import { pick } from 'lodash'
 
 type Option = (typeof options)[0]
 
 export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
   const [value, setValue] = useState<Option | never>(options[0])
 
+  const playground = usePlayground()
+
+  const state = pick(playground.state, [
+    'size',
+    'error',
+    'loading',
+    'disabled',
+    'readOnly',
+  ])
+
   return (
     <Autocomplete
       options={options}
-      label={props.label}
       value={value}
       onChange={setValue}
+      {...state}
       {...props}
     />
   )
@@ -34,6 +47,16 @@ export const AutocompleteMultipleExample = ({
     setValue(value ? value : [])
   }
 
+  const playground = usePlayground()
+
+  const state = pick(playground.state, [
+    'size',
+    'error',
+    'loading',
+    'disabled',
+    'readOnly',
+  ])
+
   return (
     <Autocomplete
       options={options}
@@ -41,8 +64,42 @@ export const AutocompleteMultipleExample = ({
       value={value}
       multiple
       onChange={handleChange}
+      {...state}
       {...props}
     />
+  )
+}
+
+export const AutocompletePlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Autocomplete',
+        size: true,
+        error: true,
+        loading: true,
+        disabled: true,
+        readOnly: true,
+      }}
+    >
+      <AutocompleteExample />
+    </Playground>
+  )
+}
+export const AutocompleteMultiPlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Autocomplete',
+        size: true,
+        error: true,
+        loading: true,
+        disabled: true,
+        readOnly: true,
+      }}
+    >
+      <AutocompleteMultipleExample />
+    </Playground>
   )
 }
 

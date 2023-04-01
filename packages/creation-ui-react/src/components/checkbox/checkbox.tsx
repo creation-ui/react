@@ -3,8 +3,9 @@ import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { InteractiveContainer } from '../interactive-container'
+import { HelperText } from '../typography'
 import type { CheckboxProps } from './checkbox.types'
-import { checkbox } from './classes'
+import { checkboxClasses } from './classes'
 
 const Checkbox = (props: CheckboxProps) => {
   const { size: defaultSize } = useTheme()
@@ -17,6 +18,9 @@ const Checkbox = (props: CheckboxProps) => {
     onChange,
     enableFocusRing,
     error,
+    readOnly,
+    helperText,
+    disabled,
     ...rest
   } = props
 
@@ -29,8 +33,6 @@ const Checkbox = (props: CheckboxProps) => {
     }
   }, [indeterminate])
 
-  const disabled = props.disabled || props.readOnly
-
   const containerClasses = inputContainer({
     disabled,
     error: !!error,
@@ -42,14 +44,20 @@ const Checkbox = (props: CheckboxProps) => {
     <InteractiveContainer disabled={disabled} className={className}>
       <div className={containerClasses}>
         <input
+          {...rest}
           ref={ref}
           id={componentId}
-          disabled={disabled}
           type='checkbox'
           onChange={onChange}
-          className={checkbox({ size, className })}
           checked={checked}
-          {...rest}
+          disabled={disabled}
+          readOnly={readOnly}
+          className={checkboxClasses({
+            size,
+            className,
+            error: !!error,
+            readOnly,
+          })}
         />
         <label
           htmlFor={componentId}
@@ -58,6 +66,11 @@ const Checkbox = (props: CheckboxProps) => {
           aria-label={props.label?.toString()}
         />
       </div>
+      <HelperText
+        size={size}
+        helperText={error || helperText}
+        error={Boolean(error)}
+      />
     </InteractiveContainer>
   )
 }

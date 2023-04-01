@@ -1,4 +1,5 @@
 import {
+  ElementPosition,
   ElementSize,
   ElementStatus,
   ElementVariant,
@@ -27,6 +28,7 @@ type PlaygroundConfig = {
   inputType?: boolean
   name: string
   hasChildren?: boolean
+  position?: boolean
 }
 
 type PlaygroundValue = {
@@ -46,6 +48,7 @@ type PlaygroundValue = {
   fullWidth?: boolean
   inputType?: HTMLInputType
   icon?: IconConfig
+  position?: ElementPosition
 }
 
 export interface PlaygroundContextValue {

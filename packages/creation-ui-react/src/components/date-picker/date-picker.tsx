@@ -27,7 +27,8 @@ const DatePicker = (props: DatePickerProps) => {
   } = props
   const componentId = useId(id)
 
-  const disabled = props.disabled || props.readOnly
+  const disabled = props.disabled
+  const readOnly = props.readOnly || loading
 
   const containerClasses = clsx(
     inputContainer({ disabled, error: !!error }),
@@ -46,6 +47,8 @@ const DatePicker = (props: DatePickerProps) => {
         <ReactDatePicker
           {...rest}
           id={componentId}
+          disabled={disabled}
+          readOnly={readOnly}
           aria-readonly={!!props.readOnly}
         />
         <HelperText

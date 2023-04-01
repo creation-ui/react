@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { sharedDisabledObject } from '../../classes'
+import { sharedDisabledCVA } from '../../classes'
 import { twMerge } from 'tailwind-merge'
 import clsx from 'clsx'
 
@@ -46,7 +46,7 @@ export const paginationClasses = cva(
         ],
         false: [],
       },
-      disabled: sharedDisabledObject,
+      disabled: sharedDisabledCVA,
     },
   }
 )

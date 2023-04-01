@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions, classes } from '../../classes'
+import { microInteractions, classes, sharedReadOnlyCVA } from '../../classes'
 
 export const switchClasses = cva(
   [
@@ -29,6 +29,7 @@ export const switchClasses = cva(
         true: ['!bg-primary-500', '!border-primary-500'],
         false: ['!border-transparent'],
       },
+      readOnly: sharedReadOnlyCVA,
     },
     defaultVariants: {
       size: 'md',
@@ -62,17 +63,17 @@ export const switchCircle = cva(
       {
         checked: true,
         size: 'sm',
-        className: ['translate-x-[16px]'],
+        className: ['translate-x-4'],
       },
       {
         checked: true,
         size: 'md',
-        className: ['translate-x-[23px]'],
+        className: ['translate-x-6'],
       },
       {
         checked: true,
         size: 'lg',
-        className: ['translate-x-[31px]'],
+        className: ['translate-x-8'],
       },
     ],
   }

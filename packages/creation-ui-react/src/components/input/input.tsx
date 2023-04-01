@@ -45,11 +45,10 @@ const Input = forwardRef<any, InputProps>((props, ref: ForwardedRef<any>) => {
       iconRight: !!endAdornment,
       className: twMerge(className),
       error: !!error,
-      fillContent: isColor
+      fillContent: isColor,
     })
   )
 
-  console.log('inputClasses', inputClasses)
   return (
     <InteractiveContainer disabled={disabled} className={className}>
       <div className={containerClasses}>

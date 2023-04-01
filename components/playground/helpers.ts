@@ -29,3 +29,8 @@ export const createInitialState = (
 
   return pick(initialStateTemplate, truthyKeys)
 }
+
+export const getState = (
+  state: PlaygroundContextValue['state'],
+  config: Partial<PlaygroundContextValue['config']>
+) => pick(state, keys(config))

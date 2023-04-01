@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { sharedDisabledObject, sharedSizeClassesObject } from '../../classes'
+import { sharedDisabledCVA, sharedSizeClassesCVA } from '../../classes'
 
 export const button = cva(
   [
@@ -15,16 +15,16 @@ export const button = cva(
   ],
   {
     variants: {
-      disabled: sharedDisabledObject,
+      disabled: sharedDisabledCVA,
       uppercase: {
         //
         true: ['uppercase'],
         false: null,
       },
       size: {
-        sm: [...sharedSizeClassesObject.sm, 'px-4'],
-        md: [...sharedSizeClassesObject.md, 'px-5'],
-        lg: [...sharedSizeClassesObject.lg, 'px-6'],
+        sm: [...sharedSizeClassesCVA.sm, 'px-4'],
+        md: [...sharedSizeClassesCVA.md, 'px-5'],
+        lg: [...sharedSizeClassesCVA.lg, 'px-6'],
       },
       variant: {
         contained: null,

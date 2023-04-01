@@ -1,33 +1,17 @@
 import { Tooltip } from '@creation-ui/react'
 import { Container } from '@components/container'
-import { properties, TooltipExample } from '@components/examples/tooltip'
+import {
+  properties,
+  TooltipExample,
+  TooltipPlayground,
+} from '@components/examples/tooltip'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 import { ListOrTypes } from 'utils/list-or-types'
 import { Callout } from 'nextra-theme-docs'
 
-export const list = ListOrTypes([...ELEMENT_POSITION])
-
-# Tooltip
-
-<Callout>Component is visible after hovering over the trigger element.</Callout>
-
-```tsx copy
-import { Button, Tooltip } from '@creation-ui/react'
-
-export const TooltipExample = ({ ...props }: TooltipProps) => {
-  return (
-    <Tooltip {...props} content='This is important button' position='bottom'>
-      <Button variant='contained'>Submit</Button>
-    </Tooltip>
-  )
-}
-```
-
-<Container>
-  <TooltipExample />
-</Container>
+<TooltipPlayground />
 
 ## Position
 

@@ -24,7 +24,13 @@ const classes = {
   ],
   controls: [borderColor, 'flex', 'flex-col', 'border-l', 'p-4', 'gap-2'],
   title: ['text-xl', 'font-semibold', 'leading-relaxed'],
-  code: ['col-span-3', 'border-t', borderColor],
+  code: [
+    borderColor,
+    'col-span-3',
+    'text-sm',
+    'w-full',
+    'font-mono',
+  ],
 }
 
 export const PlaygroundView = ({ children }: PlaygroundProps) => {
@@ -70,14 +76,13 @@ export const PlaygroundView = ({ children }: PlaygroundProps) => {
         <div className={clsx(classes.view)}>{children}</div>
         <div className={clsx(classes.controls)}>
           {controlComponents.map((component, index) => (
-            <React.Fragment key={index}>{component}</React.Fragment>
+            <div key={index}>{component}</div>
           ))}
         </div>
         <div className={clsx(classes.code)}>
           <CopyBlock
-            className='p-4 text-sm w-full'
             text={code}
-            language={'typescript'}
+            language={'jsx'}
             showLineNumbers={true}
             theme={vs2015}
             customStyle={{

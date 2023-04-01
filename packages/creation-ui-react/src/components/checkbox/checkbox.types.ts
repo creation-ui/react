@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import type { ElementSize } from '../../types'
 
 export interface CheckboxProps
@@ -22,5 +23,8 @@ export interface CheckboxProps
    * Element focus ring?
    */
   enableFocusRing?: boolean
-  error?: string
+  // TODO: handle <HelperText/>
+  error?: ReactNode
+  // TODO: handle <HelperText/>
+  helperText?: ReactNode
 }

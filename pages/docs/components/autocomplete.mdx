@@ -4,49 +4,24 @@ Autocomplete component is using `Combobox` component from
 [headless ui](https://headlessui.com/react/combobox) library.
 
 import {
-  AutocompleteExample,
   properties,
-  AutocompleteOptionType,
-  AutocompleteOptionComponent,
+  AutocompletePlayground,
   AutocompleteMultipleExample,
+  AutocompleteMultiPlayground,
+  AutocompleteOptionComponent,
+  AutocompleteOptionType
 } from '@components/examples/autocomplete'
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
 
-## Usage
-
-```tsx copy
-import { Autocomplete } from '@creation-ui/react'
-
-const [option, setOption] = useState<Option | never>()
-
-return (
-  <Autocomplete
-    size='sm'
-    options={options}
-    label={'Autocomplete'}
-    value={option}
-    onChange={setOption}
-  />
-)
-```
-
-<div className='flex flex-col gap-3'>
-  <AutocompleteExample size='sm' label='Small input' />
-  <AutocompleteExample size='md' label='Medium input' />
-  <AutocompleteExample size='lg' label='Large input' />
-</div>
+<AutocompletePlayground />
 
 ## Autocompleteing multiple options
 
 In this example, we are using the `multiple` prop to allow multiple options.
 
-<br />
-<AutocompleteMultipleExample
-  clearable
-  clearableButtonText='Clear Autocompleteion'
-/>
-<br />
+<AutocompleteMultiPlayground />
+
 Because of the usage of the Listbox component under the hood, the `value` and `onChange`
 props change the signature:{' '}
 
@@ -56,31 +31,6 @@ props change the signature:{' '}
 | onChange | `T => void` | `T[] => void` |
 
 For details see [properties table](#onChange)
-
-## Error state
-
-```js copy
-
-const [option, setOption] = useState<Option | never>()
-
-  return (
-    <Autocomplete
-      clearable
-      clearableButtonText="Clear"
-      options={options}
-      label={'With error'}
-      value={option}
-      onChange={setOption}
-      error={'You must Autocomplete an option'}
-    />
-  )
-
-```
-
-<AutocompleteExample
-  error='You must Autocomplete an option'
-  label='With error'
-/>
 
 ## Component API
 

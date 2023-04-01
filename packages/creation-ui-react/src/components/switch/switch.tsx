@@ -15,45 +15,47 @@ const Switch = ({ checked, ...props }: SwitchProps) => {
     size = defaultSize,
     id,
     required,
-    readOnly,
+    loading,
     error,
     helperText,
+    ...rest
   } = props
   const componentId = useId(id)
 
-  const disabled = props.disabled || readOnly
+  const disabled = props.disabled
+  const readOnly = props.readOnly || loading
 
   const containerClasses = twMerge(
-    inputContainer({ disabled, error: !!error }),
+    inputContainer({ disabled, error: !!error, layout: 'row' }),
     text({ size })
   )
 
   return (
     <InteractiveContainer disabled={disabled} className={props.className}>
       <div className={containerClasses}>
-        <label
-          htmlFor={componentId}
-          className={label({ size, required: props.required })}
-          children={props.label}
-          aria-label={props.label?.toString()}
-        />
         <HSwitch
+          {...rest}
           id={componentId}
           aria-required={required}
-          className={switchClasses({ size, checked })}
-          {...props}
+          className={switchClasses({ size, checked, readOnly })}
         >
           <span
             aria-hidden='true'
             className={switchCircle({ size, checked })}
           />
         </HSwitch>
-        <HelperText
-          size={size}
-          helperText={error || helperText}
-          error={Boolean(error)}
+        <label
+          htmlFor={componentId}
+          className={label({ size, required: props.required, for: 'checkbox' })}
+          children={props.label}
+          aria-label={props.label?.toString()}
         />
       </div>
+      <HelperText
+        size={size}
+        helperText={error || helperText}
+        error={Boolean(error)}
+      />
     </InteractiveContainer>
   )
 }

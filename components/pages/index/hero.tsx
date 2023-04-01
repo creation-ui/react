@@ -38,7 +38,7 @@ const backLight = clsx([
 ])
 
 export const Hero = () => {
-  const installationScript = 'yarn add @creation-ui/react'
+  const installationScript = 'npm i @creation-ui/react'
 
   return (
     <div className='flex flex-col justify-center items-center'>

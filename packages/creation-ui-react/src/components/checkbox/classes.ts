@@ -1,12 +1,27 @@
 import { cva } from 'class-variance-authority'
-import { classes } from '../../classes'
+import { twMerge } from 'tailwind-merge'
+import {
+  classes,
+  sharedErrorClasses,
+  sharedReadOnlyCVA,
+  sharedSizeSquareCVA,
+} from '../../classes'
 
-export const checkbox = cva([classes.input, classes.checkable], {
+const { input, checkable } = classes
+
+const base = twMerge(input, checkable)
+
+export const checkboxClasses = cva(base, {
   variants: {
-    size: {
-      sm: ['h-4', 'w-4', '!rounded'],
-      md: ['h-5', 'w-5'],
-      lg: ['h-6', 'w-6'],
+    size: sharedSizeSquareCVA,
+    error: {
+      true: [
+        //
+        sharedErrorClasses,
+        '!checked:bg-error-500',
+      ],
+      false: null,
     },
+    readOnly: sharedReadOnlyCVA,
   },
 })
