@@ -1,4 +1,4 @@
-import { ElementVariant } from 'src/types'
+import { ElementVariant } from '../../../types'
 import { Button } from '../../button'
 import { useCalendar } from '../calendar.context'
 import { calendarDaysViewClasses } from '../classes'
