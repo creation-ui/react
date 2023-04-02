@@ -37,13 +37,13 @@ jobs:
         if: steps.check_pr.outputs.pr_exists == '0'
         run: |
           sudo apt-get install -y gh
-          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+          echo ${{ secrets.CHANGELOG_RELEASE_TOKEN }} | gh auth login --with-token
 
       - name: Create PR from develop to master
         if: steps.check_pr.outputs.pr_exists == '0'
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CHANGELOG_RELEASE_TOKEN }}
           commit-message: 'chore: merge develop into master'
           branch: 'develop'
           base: 'master'
