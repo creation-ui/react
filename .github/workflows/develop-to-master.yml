@@ -21,11 +21,19 @@ jobs:
           ref: 'develop'
           fetch-depth: 0
 
+      - name: Install and configure gh CLI
+        if: steps.check_pr.outputs.pr_exists == '0'
+        run: |
+          sudo apt-get install -y gh
+          echo "${{ github.token }}" | gh auth login --with-token
+
       - name: Check for existing PR
         id: check_pr
         run: |
           PR_EXISTS=$(gh pr list --base master --head develop --state open --json number -q 'length(.[])')
           echo "::set-output name=pr_exists::$PR_EXISTS"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         if: steps.check_pr.outputs.pr_exists == '0'
@@ -33,11 +41,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install and configure gh CLI
-        if: steps.check_pr.outputs.pr_exists == '0'
-        run: |
-          sudo apt-get install -y gh
-          echo "${{ github.token }}" | gh auth login --with-token
 
       - name: Create PR from develop to master
         if: steps.check_pr.outputs.pr_exists == '0'
