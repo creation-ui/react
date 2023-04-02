@@ -15,11 +15,11 @@ const borderColor = 'border-info-200 dark:border-info-800'
 const classes = {
   container: [borderColor, 'grid', 'grid-cols-3', 'border', 'rounded-lg'],
   view: [
+    'p-10',
     'col-span-2',
     'flex',
     'items-center',
     'place-items-center',
-    'p-10',
     'justify-center',
   ],
   controls: [borderColor, 'flex', 'flex-col', 'border-l', 'p-4', 'gap-2'],
@@ -30,6 +30,7 @@ const classes = {
     'text-sm',
     'w-full',
     'font-mono',
+    'border-t',
   ],
 }
 
@@ -89,6 +90,8 @@ export const PlaygroundView = ({ children }: PlaygroundProps) => {
               fontSize: '0.875rem',
               lineHeight: '1.25rem',
               padding: '1rem',
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
             }}
           />
         </div>

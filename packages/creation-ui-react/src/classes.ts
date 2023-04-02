@@ -26,11 +26,13 @@ export const sharedSizeClassesCVA = {
   md: ['h-8', 'px-3', 'sm:text-base', 'text-lg'],
   lg: ['h-10', 'px-4', 'sm:text-lg', 'text-xl'],
 }
+
 export const sharedSizeSquareCVA = {
   sm: ['h-4', 'w-4', 'sm:text-sm', 'text-base'],
   md: ['h-5', 'w-5', 'sm:text-base', 'text-lg'],
   lg: ['h-6', 'w-6', 'sm:text-lg', 'text-xl'],
 }
+
 export const sharedReadOnlyCVA = {
   true: 'pointer-events-none',
   false: 'pointer-events-auto',

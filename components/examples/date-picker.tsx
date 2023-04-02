@@ -35,7 +35,7 @@ export const DatePickerExample = ({
 export const DatePickerPlayground = () => {
   return (
     <Playground config={{ name: 'DatePicker', ...config }}>
-      <DatePickerExample />
+      <DatePickerExample label="DatePicker"/>
     </Playground>
   )
 }
