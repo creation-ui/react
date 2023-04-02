@@ -27,10 +27,14 @@ jobs:
           sudo apt-get install -y gh
           echo "${{ github.token }}" | gh auth login --with-token
 
+      - name: Install jq
+        run: |
+          sudo apt-get install -y jq
+
       - name: Check for existing PR
         id: check_pr
         run: |
-          PR_EXISTS=$(gh pr list --base master --head develop --state open --json number -q 'length(.[])')
+          PR_EXISTS=$(gh pr list --base master --head develop --state open --json number | jq length)
           echo "::set-output name=pr_exists::$PR_EXISTS"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
