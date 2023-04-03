@@ -53,7 +53,10 @@ jobs:
         uses: octokit/request-action@v2.x
         id: create_pr
         with:
-           route: >-
-             POST /repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/pulls?title=chore%3A%20merge%20develop%20into%20master&body=This%20PR%20merges%20the%20latest%20changes%20from%20the%20develop%20branch%20into%20the%20master%20branch.&head=develop&base=master
+          request: |
+            POST /repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/pulls
+            Content-Type: application/json
+            Accept: application/vnd.github.shadow-cat-preview+json
+          body: '{"title": "chore: merge develop into master", "body": "This PR merges the latest changes from the develop branch into the master branch.", "head": "develop", "base": "master"}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
