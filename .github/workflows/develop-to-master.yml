@@ -21,33 +21,36 @@ jobs:
           ref: 'develop'
           fetch-depth: 0
 
+      - name: Install and configure gh CLI
+        if: steps.check_pr.outputs.pr_exists == '0'
+        run: |
+          sudo apt-get install -y gh
+          echo "${{ github.token }}" | gh auth login --with-token
+
+      - name: Install jq
+        run: |
+          sudo apt-get install -y jq
+
       - name: Check for existing PR
         id: check_pr
         run: |
-          PR_EXISTS=$(gh pr list --base master --head develop --state open --json number -q 'length(.[])')
+          PR_EXISTS=$(gh pr list --base master --head develop --state open --json number | jq length)
           echo "::set-output name=pr_exists::$PR_EXISTS"
 
       - name: Setup Node.js
         if: steps.check_pr.outputs.pr_exists == '0'
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
-      - name: Install and configure gh CLI
-        if: steps.check_pr.outputs.pr_exists == '0'
-        run: |
-          sudo apt-get install -y gh
-          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+      - name: Install Octokit
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
 
       - name: Create PR from develop to master
         if: steps.check_pr.outputs.pr_exists == '0'
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'chore: merge develop into master'
-          branch: 'develop'
-          base: 'master'
-          title: 'chore: merge develop into master'
-          body: 'This PR merges the latest changes from the develop branch into the master branch.'
-          labels: 'auto-merge'
-          draft: false
+        run: |
+          gh pr create --base master --head develop --title "chore: merge develop into master" --body "This PR merges the latest changes from the develop branch into the master branch." --repo ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
