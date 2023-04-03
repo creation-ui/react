@@ -26,7 +26,7 @@ export const TooltipPlayground = () => {
   return (
     <Playground
       config={{
-        name: 'Checkbox',
+        name: 'Tooltip',
         ...config,
       }}
     >
