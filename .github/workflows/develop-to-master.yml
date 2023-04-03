@@ -56,7 +56,7 @@ jobs:
           route: POST /repos/{owner}/{repo}/pulls
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          title: chore: merge develop into master
+          title: 'chore: merge develop into master'
           body: 'This PR merges the latest changes from the develop branch into the master branch.'
           head: develop
           base: master
