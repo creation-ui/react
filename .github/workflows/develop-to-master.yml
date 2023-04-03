@@ -36,25 +36,29 @@ jobs:
         run: |
           PR_EXISTS=$(gh pr list --base master --head develop --state open --json number | jq length)
           echo "::set-output name=pr_exists::$PR_EXISTS"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         if: steps.check_pr.outputs.pr_exists == '0'
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
+      - name: Install Octokit
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
 
       - name: Create PR from develop to master
         if: steps.check_pr.outputs.pr_exists == '0'
-        uses: peter-evans/create-pull-request@v3
+        uses: octokit/request-action@v2.x
+        id: create_pr
         with:
-          token: ${{ github.token }}
-          commit-message: 'chore: merge develop into master'
-          branch: 'develop'
-          base: 'master'
-          title: 'chore: merge develop into master'
+          route: POST /repos/{owner}/{repo}/pulls
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          title: chore: merge develop into master
           body: 'This PR merges the latest changes from the develop branch into the master branch.'
-          labels: 'auto-merge'
-          draft: false
+          head: develop
+          base: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
