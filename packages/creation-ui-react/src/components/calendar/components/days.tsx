@@ -1,4 +1,5 @@
-import { ElementVariant } from '../../../types'
+import type { ReactNode } from 'react'
+import type { ElementVariant } from '../../../types'
 import { Button } from '../../button'
 import { useCalendar } from '../calendar.context'
 import { calendarDaysViewClasses } from '../classes'
@@ -44,14 +45,14 @@ export const CalendarDaysView = () => {
 
     if (!button) return
 
-    const date = button.getAttribute('data-date')
+    const date: string | null = button.getAttribute('data-date')
+    if (!date) return
+
     const selectedDate = new Date(date)
     const m = selectedDate.getMonth()
 
     const isBeforeMonthStart = m < month
     const isAfterMonthEnd = m > month
-
-    console.log(monthStart)
 
     if (isBeforeMonthStart || isAfterMonthEnd) {
       setCurrentDate(selectedDate)
@@ -61,10 +62,10 @@ export const CalendarDaysView = () => {
   }
 
   let date = startDate
-  const rows = []
+  const rows: ReactNode[] = []
 
   while (date <= endDate) {
-    const days = []
+    const days: ReactNode[] = []
 
     for (let i = 0; i < 7; i++) {
       const cellDate = date.toDateString()
@@ -88,7 +89,6 @@ export const CalendarDaysView = () => {
         : 'text'
 
       const dynamicKey = `${rows.length}-${i}`
-      console.log(dynamicKey)
 
       days.push(
         <Button

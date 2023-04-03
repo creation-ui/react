@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Button } from '../../button'
 import { useCalendar } from '../calendar.context'
 
@@ -26,7 +27,7 @@ export const CalendarYearsView = () => {
     </Button>
   ))
 
-  const rows = []
+  const rows: ReactNode[] = []
   for (let i = 0; i < yearsGrid.length; i += 4) {
     rows.push(
       <div key={i} className='flex justify-between mb-2'>
@@ -35,9 +36,5 @@ export const CalendarYearsView = () => {
     )
   }
 
-  return (
-    <div className='flex flex-col justify-between'>
-      {rows}
-    </div>
-  )
+  return <div className='flex flex-col justify-between'>{rows}</div>
 }

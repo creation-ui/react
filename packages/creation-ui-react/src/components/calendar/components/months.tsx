@@ -1,14 +1,9 @@
 import { useCalendar } from '../calendar.context'
 import { Button } from '../../button'
+import type { ReactNode } from 'react'
 
 export const CalendarMonthsView = () => {
-  const {
-    currentDate,
-    setCurrentDate,
-    setView,
-    size,
-    locale,
-  } = useCalendar()
+  const { currentDate, setCurrentDate, setView, size, locale } = useCalendar()
 
   const effectiveLocale = locale || navigator.language
 
@@ -37,7 +32,7 @@ export const CalendarMonthsView = () => {
     </Button>
   ))
 
-  const rows = []
+  const rows: ReactNode[] = []
   for (let i = 0; i < months.length; i += 4) {
     rows.push(
       <div key={i} className='flex justify-between mb-2'>

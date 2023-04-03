@@ -3,14 +3,14 @@ import { ElementSize } from '../../types'
 import { CalendarView, WeekDayIndex } from './calendar.types'
 
 export interface CalendarContextValue {
-  currentDate: Date | null
+  currentDate: Date
   selectedDate: Date | null
-  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>
-  setCurrentDate: React.Dispatch<React.SetStateAction<Date>>
-  setView: React.Dispatch<React.SetStateAction<CalendarView>>
+  setSelectedDate: (value: Date | null) => void
+  setCurrentDate: (value: Date) => void
+  setView: (value: CalendarView) => void
   size: ElementSize
   locale?: string
-  weekStartsOn?: WeekDayIndex
+  weekStartsOn: WeekDayIndex
 }
 
 export const CalendarContext = createContext<CalendarContextValue>({} as any)

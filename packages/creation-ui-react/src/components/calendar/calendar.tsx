@@ -16,7 +16,7 @@ const Calendar: FC<CalendarProps> = props => {
   const theme = useTheme()
 
   const {
-    size = theme.size,
+    size = theme.size ?? 'md',
     className,
     id,
     onClick,
@@ -123,5 +123,10 @@ const Calendar: FC<CalendarProps> = props => {
 }
 
 Calendar.displayName = 'Calendar'
+
+Calendar.defaultProps = {
+  size: 'md',
+  weekStartsOn: 1,
+}
 
 export default Calendar

@@ -11,10 +11,6 @@ export const calendarClasses = {
       },
     },
   }),
-  year: '',
-  month: '',
-
-  grid: '',
 }
 
 export const calendarDaysViewClasses = {
@@ -52,5 +48,4 @@ export const calendarDaysViewClasses = {
       },
     ],
   }),
-  grid: '',
 }
