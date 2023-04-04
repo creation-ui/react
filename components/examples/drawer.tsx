@@ -2,8 +2,20 @@ import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { childrenProp, openProps } from '@components/examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
+import { Playground } from '@components/playground'
+import { getState } from '@components/playground/helpers'
+import { usePlayground } from '@components/playground/context'
+
+const config = {
+  position: true,
+  content: true,
+}
 
 export const DrawerExample = (props: DrawerProps) => {
+  const playground = usePlayground()
+
+  const state = getState(playground.state, config)
+
   const [open, setOpen] = useState(false)
 
   const onClose = () => setOpen(false)
@@ -12,7 +24,13 @@ export const DrawerExample = (props: DrawerProps) => {
   return (
     <>
       <Button onClick={onClick}>Open Drawer</Button>
-      <Drawer open={open} onClose={onClose} {...props}>
+      <Drawer
+        //
+        open={open}
+        onClose={onClose}
+        {...props}
+        {...state}
+      >
         <div className='p-5'>
           <h1>Payment successful</h1>
           <div className='mt-2'>
@@ -27,6 +45,20 @@ export const DrawerExample = (props: DrawerProps) => {
         </div>
       </Drawer>
     </>
+  )
+}
+
+export const DrawerPlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Drawer',
+        hasChildren: true,
+        ...config,
+      }}
+    >
+      <DrawerExample />
+    </Playground>
   )
 }
 
