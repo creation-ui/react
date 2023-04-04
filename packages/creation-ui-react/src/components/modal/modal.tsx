@@ -63,6 +63,7 @@ const Modal = (props: ModalProps) => {
         <Dialog
           as='div'
           className={clsx(modal.base, zIndex?.modals, className)}
+          // @ts-ignore
           onClose={onClose}
         >
           <Transition.Child as={Fragment} {...transitionProps.modal}>
