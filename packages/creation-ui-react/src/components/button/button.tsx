@@ -40,8 +40,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       })
     )
 
-    const centerSpinner = loading && circle
-    const leftSpinner = loading && !circle
+    const centerSpinner: boolean = Boolean(loading && circle)
+    const leftSpinner: boolean = Boolean(loading && !circle)
 
     return (
       <InteractiveContainer disabled={disabled} className={className}>
@@ -52,14 +52,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           {...props}
           className={classes}
         >
+          {leftSpinner && (
+            <Loader size={'sm'} active={leftSpinner} white={isLoaderWhite} />
+          )}
           <LoadingOverlay active={centerSpinner} white={isLoaderWhite} />
-          <>
-            {leftSpinner ? (
-              <Loader size={'sm'} white={isLoaderWhite} />
-            ) : (
-              iconLeft
-            )}
-          </>
+          <>{iconLeft}</>
           <span>{children}</span>
           <>{iconRight}</>
         </button>

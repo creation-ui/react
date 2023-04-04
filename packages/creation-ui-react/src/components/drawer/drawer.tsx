@@ -10,17 +10,17 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
   const {
     //
-    size = drawers?.size,
     position = drawers!.position,
     onClose,
   } = props
 
   return (
     <>
-      <Overlay active={open} onClick={onOverlayClick} />
+      <Overlay className={'fixed'} active={open} onClick={onOverlayClick} />
       <Transition
         show={open}
         as={Fragment}
+        unmount={false}
         enter={clsx(drawerAnimation.animation)}
         leave={clsx(drawerAnimation.animation)}
         enterFrom={clsx(drawerAnimation.enter[position])}
@@ -30,7 +30,6 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
       >
         <Dialog
           unmount={false}
-          // @ts-ignore
           onClose={onClose}
           className={drawer({ className: [zIndex?.modals], position })}
         >

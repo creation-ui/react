@@ -4,10 +4,10 @@ import type { LoaderProps } from './loader.types'
 
 export const Loader = (props: LoaderProps) => {
   const { size: defaultSize } = useTheme()
-  const { size = defaultSize, className, white } = props
+  const { size = defaultSize, className, white, active } = props
 
   return (
-    <div className={loaderClasses({ size, className })}>
+    <div className={loaderClasses({ size, className, active })}>
       <svg
         aria-hidden='true'
         className={loaderIconClasses({ size, white })}
