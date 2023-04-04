@@ -7,12 +7,12 @@ import { Overlay } from '../overlay'
 
 const transitionProps = {
   modal: {
-    enter: 'ease-out duration-300',
-    enterFrom: 'opacity-0 scale-95',
+    enter: 'ease-in-out duration-[350ms]',
+    enterFrom: 'opacity-0 scale-75',
     enterTo: 'opacity-100 scale-100',
-    leave: 'ease-in duration-200',
+    leave: 'ease-in-out duration-[350ms]',
     leaveFrom: 'opacity-100 scale-100',
-    leaveTo: 'opacity-0 scale-95',
+    leaveTo: 'opacity-0 scale-75',
   },
 }
 
@@ -48,29 +48,33 @@ const modal = {
 
 const Modal = (props: ModalProps) => {
   const { zIndex } = useTheme()
-  const { children, className, onClose, onOverlayClick, open, ref, ...rest } =
-    props
+  const {
+    //
+    children,
+    className,
+    onClose,
+    onOverlayClick,
+    open,
+  } = props
   return (
     <>
       <Overlay className={'fixed'} active={open} onClick={onOverlayClick} />
-      <Transition appear={true} show={open} as={Fragment}>
+      <Transition appear show={open} as={Fragment}>
         <Dialog
           as='div'
-          open={open}
           className={clsx(modal.base, zIndex?.modals, className)}
-          onClose={onClose as any}
-          ref={ref as any}
-          {...rest}
+          // @ts-ignore
+          onClose={onClose}
         >
-          <div className={clsx(modal.layer[1])}>
-            <div className={clsx(modal.layer[2])}>
-              <Transition.Child as={Fragment} {...transitionProps.modal}>
+          <Transition.Child as={Fragment} {...transitionProps.modal}>
+            <div className={clsx(modal.layer[1])}>
+              <div className={clsx(modal.layer[2])}>
                 <Dialog.Panel className={clsx(modal.panel)}>
                   {children}
                 </Dialog.Panel>
-              </Transition.Child>
+              </div>
             </div>
-          </div>
+          </Transition.Child>
         </Dialog>
       </Transition>
     </>
