@@ -55,7 +55,7 @@ export const switchCircle = cva(
         lg: ['h-7', 'w-7'],
       },
       checked: {
-        true: ['translate-x-full'],
+        true: null,
         false: ['translate-x-0'],
       },
     },
