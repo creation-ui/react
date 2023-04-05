@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/creation-ui/react/compare/v0.4.0...v0.4.1) (2023-04-05)
+
+
+### Bug Fixes
+
+* change spinner opacity to visible-hidden ([31c9ed8](https://github.com/creation-ui/react/commit/31c9ed8ec270cb22df13bb05abefb5417a496ad3))
+* remove faulty translate-x-full ([e657dd3](https://github.com/creation-ui/react/commit/e657dd3d87ab10c185e87b3bbe74c96d21d066c3))
+
 ## [0.4.0](https://github.com/creation-ui/react/compare/v0.3.0...v0.4.0) (2023-04-04)
 
 
