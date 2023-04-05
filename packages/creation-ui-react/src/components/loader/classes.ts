@@ -13,8 +13,8 @@ export const loaderClasses = cva(
     variants: {
       size,
       active: {
-        true: 'opacity-100',
-        false: 'opacity-0',
+        true: 'visible',
+        false: 'hidden',
       },
     },
     defaultVariants: {
@@ -33,6 +33,5 @@ export const loaderIconClasses = cva(['animate-spin'], {
   },
   defaultVariants: {
     white: false,
-    // size: 'md',
   },
 })
