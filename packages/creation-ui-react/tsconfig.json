@@ -31,6 +31,10 @@
   },
   "exclude": [
     "node_modules",
-    "build"
+    "build",
+    "**/tests",
+    "**/*.cy.tsx",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
   ]
 }

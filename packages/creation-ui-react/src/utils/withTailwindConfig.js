@@ -3,17 +3,18 @@
  */
 
 const { merge } = require('lodash')
-const colors = require('../theme/base/colors')
+const {
+  lightBlue,
+  warmGray,
+  trueGray,
+  coolGray,
+  blueGray,
+  ...colors
+} = require('../theme/base/colors')
 const typography = require('../theme/base/typography')
 const shadows = require('../theme/base/shadows')
 const breakpoints = require('../theme/base/breakpoints')
 const twColors = require('tailwindcss/colors')
-
-delete twColors['lightBlue']
-delete twColors['warmGray']
-delete twColors['trueGray']
-delete twColors['coolGray']
-delete twColors['blueGray']
 
 const creationUiConfig = {
   darkMode: 'class',

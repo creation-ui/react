@@ -1,4 +1,4 @@
-import deepmerge from 'deepmerge'
+import { merge } from 'lodash'
 import { TableContext, TableContextValue } from './table.context'
 import Table from './table.view'
 
@@ -16,9 +16,7 @@ export default function TableController(props: TableContextValue) {
   let value = { ...props }
 
   if (props.pagination) {
-    value.pagination = deepmerge(defaultPaginationConfig, {
-      ...props.pagination,
-    })
+    value.pagination = merge(defaultPaginationConfig, { ...props.pagination })
   }
 
   return (
