@@ -12,7 +12,7 @@ import {
 import FooterCell from './components/footer-cell'
 import HeaderCell from './components/header-cell'
 import Pagination from './components/pagination'
-import Rows from './components/rows'
+import Row from './components/row'
 import { useTable } from './table.context'
 
 const Table = () => {
@@ -64,7 +64,7 @@ const Table = () => {
             style={{ height, maxHeight: height }}
           >
             {data.rows.map(row => (
-              <Rows key={row.id} row={row} />
+              <Row key={row.id} row={row} />
             ))}
           </tbody>
         )}
