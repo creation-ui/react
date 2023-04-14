@@ -1,4 +1,4 @@
-import { merge } from 'lodash'
+import  merge  from 'lodash.merge'
 import { TableContext, TableContextValue } from './table.context'
 import Table from './table.view'
 

@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
-import { values } from 'lodash'
+import values from 'lodash.values'
 
 const getAllValuesFromObject = (obj: Record<string, string[] | string>) =>
   clsx(values(obj))
