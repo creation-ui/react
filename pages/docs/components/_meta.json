@@ -3,7 +3,6 @@
   "avatar": { "title": "Avatar" },
   "button": { "title": "Button" },
   "checkbox": { "title": "Checkbox" },
-  "date-picker": { "title": "Date picker" },
   "drawer": { "title": "Drawer" },
   "input": { "title": "Input" }
 }

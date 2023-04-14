@@ -41,7 +41,6 @@ To install Creation UI, run command below:
 - [x] [Avatar](/docs/components/avatar)
 - [x] [Button](/docs/components/button)
 - [x] [Checkbox](/docs/components/checkbox)
-- [x] [Date picker](/docs/components/date-picker) is just TW styled [react-datepicker](https://reactdatepicker.com/)
 - [x] [Drawer](/docs/components/drawer)
 - [x] [Input](/docs/components/input)
 - [x] [Box](/docs/components/box)
