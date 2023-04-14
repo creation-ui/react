@@ -45,7 +45,6 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-spring: ^9.7.1
-  react-stick: ^5.0.3
   rollup: ^3.20.0
   rollup-plugin-copy: ^3.4.0
   rollup-plugin-dts: ^5.3.0
@@ -77,7 +76,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-spring: 9.7.1_jik6p3lciwlvvidl2crbyhd5oy
-  react-stick: 5.0.3_biqbaboplfbrettd7655fr4n2y
   tailwind-merge: 1.10.0
   tailwindcss: 3.2.7_postcss@8.4.21
   uuid: 9.0.0
@@ -2599,10 +2597,6 @@ packages:
   /@types/http-cache-semantics/4.0.1:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
     dev: true
-
-  /@types/invariant/2.2.35:
-    resolution: {integrity: sha512-DxX1V9P8zdJPYQat1gHyY0xj3efl8gnMVjiM9iCY6y27lj+PoQWkgjt8jDqmovPqULkKVpKRg8J36iQiA+EtEg==}
-    dev: false
 
   /@types/istanbul-lib-coverage/2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -8209,21 +8203,6 @@ packages:
       - zdog
     dev: false
 
-  /react-stick/5.0.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-JuyLlJItIuf8QP0MLsNNSzg6+Ul5pTU/Pu7CFRj4QzOKL63USFLQtPJqvv/M3IGv+cbMsUOo2gg0XfF7POratw==}
-    engines: {node: '>=16.11', npm: '>=8.x'}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      '@types/invariant': 2.2.35
-      invariant: 2.2.4
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      requestidlecallback: 0.3.0
-      substyle: 9.4.1_react@18.2.0
-    dev: false
-
   /react-use-measure/2.1.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==}
     peerDependencies:
@@ -8417,10 +8396,6 @@ packages:
       tunnel-agent: 0.6.0
       uuid: 3.4.0
     dev: true
-
-  /requestidlecallback/0.3.0:
-    resolution: {integrity: sha512-TWHFkT7S9p7IxLC5A1hYmAYQx2Eb9w1skrXmQ+dS1URyvR8tenMLl4lHbqEOUnpEYxNKpkVMXUgknVpBZWXXfQ==}
-    dev: false
 
   /require-directory/2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -9169,16 +9144,6 @@ packages:
       postcss: 8.4.21
       postcss-selector-parser: 6.0.11
     dev: true
-
-  /substyle/9.4.1_react@18.2.0:
-    resolution: {integrity: sha512-VOngeq/W1/UkxiGzeqVvDbGDPM8XgUyJVWjrqeh+GgKqspEPiLYndK+XRcsKUHM5Muz/++1ctJ1QCF/OqRiKWA==}
-    peerDependencies:
-      react: '>=16.8.3'
-    dependencies:
-      '@babel/runtime': 7.21.0
-      invariant: 2.2.4
-      react: 18.2.0
-    dev: false
 
   /sudo-prompt/9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
