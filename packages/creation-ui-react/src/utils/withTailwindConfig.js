@@ -26,8 +26,10 @@ const creationUiConfig = {
     // boxShadow: shadows,
   },
   plugins: [
+    require('./forms')({
+      strategy: 'class', // only generate classes
+    }),
     require('@headlessui/tailwindcss')({ prefix: 'ui' }),
-    require('@tailwindcss/forms')({ prefix: 'forms' }),
   ],
 }
 

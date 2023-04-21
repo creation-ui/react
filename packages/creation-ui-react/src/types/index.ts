@@ -35,6 +35,27 @@ export const ELEMENT_STATES = [
   'default',
 ] as const
 
+export type HTMLInputType =
+  | 'text'
+  | 'password'
+  | 'submit'
+  | 'reset'
+  | 'radio'
+  | 'checkbox'
+  | 'button'
+  | 'file'
+  | 'image'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'url'
+  | 'week'
+  | 'search'
+  | 'tel'
+
 export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementStatus = (typeof ELEMENT_STATUS)[number]
 export type ElementState = (typeof ELEMENT_STATES)[number]
@@ -115,7 +136,7 @@ export const icons = [
   'close',
   'check',
   'straight',
-  'readonly'
+  'readonly',
 ] as const
 
 export type IconType = (typeof icons)[number]
@@ -154,6 +175,38 @@ export interface BaseComponentProps {
    * Helper text
    */
   helperText?: React.ReactNode
+}
+
+export interface InputBaseProps extends BaseComponentProps {
+  as?: any
+  /**
+   * Is button loading?
+   */
+  loading?: boolean
+  /**
+   * What variant should button be ?
+   */
+  variant?: ElementVariant
+  /**
+   * Icon to be displayed on the left side of the input
+   */
+  startAdornment?: React.ReactNode
+  /**
+   * Icon to be displayed on the right side of the input
+   */
+  endAdornment?: React.ReactNode
+  /**
+   * Is button fullwidth?
+   */
+  fullWidth?: boolean
+  /**
+   * Type of HTML input
+   */
+  type?: HTMLInputType
+  /**
+   * Children
+   */
+  children: React.ReactNode
 }
 
 export type ReadableError = {

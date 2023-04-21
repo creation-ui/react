@@ -19,7 +19,7 @@ const classes = [
   'w-auto',
 ]
 
-const Icon = ({ icon, className }: IconProps) => {
+const Icon = ({ icon, className, ...props }: IconProps) => {
   const map: Record<IconType, any> = {
     chevron_right: ChevronRight,
     chevron_left: ChevronLeft,
@@ -32,7 +32,7 @@ const Icon = ({ icon, className }: IconProps) => {
 
   const Component = map[icon]
 
-  return <Component className={twMerge(classes, className)} />
+  return <Component className={twMerge(classes, className)} {...props} />
 }
 
 export default Icon

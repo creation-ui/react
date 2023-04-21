@@ -13,8 +13,20 @@ import { pick } from 'lodash'
 
 type Option = (typeof options)[0]
 
+const data = [
+  { label: 'A', value: 'A', id: 1245 },
+  { label: 'B', value: 'B', id: 1312 },
+  { label: 'C', value: 'C', id: 1232 },
+  { label: 'D', value: 'D', id: 123 },
+  { label: 'E', value: 'E', id: 1565 },
+  { label: 'F', value: 'F', id: 665 },
+  { label: 'G', value: 'G', id: 6654 },
+  { label: 'H', value: 'H', id: 53535 },
+  { label: 'I', value: 'I', id: 5345 },
+]
+
 export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
-  const [value, setValue] = useState<Option | never>(options[0])
+  const [value, setValue] = useState<Option | never>(data[0])
 
   const playground = usePlayground()
 
