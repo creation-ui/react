@@ -1,6 +1,6 @@
 import type React from 'react'
 import type {
-  AutocompleteOptionsType,
+  SelectOptionsType,
   BaseComponentProps
 } from '../../types'
 
@@ -12,23 +12,23 @@ export interface AutocompleteProps extends BaseComponentProps {
   /**
    * List options
    */
-  options?: AutocompleteOptionsType[]
+  options?: SelectOptionsType[]
   /**
    * Component to display list options
    */
-  optionComponent?: (option: AutocompleteOptionsType) => React.ReactNode
+  optionComponent?: (option: SelectOptionsType) => React.ReactNode
   /**
    * Component to display selected option
    */
-  selectedOptionFormatter?: (option: AutocompleteOptionsType) => string
+  selectedOptionFormatter?: (option: SelectOptionsType) => string
   /**
    * Default value to display when component is not controlled
    */
-  defaultValue?: AutocompleteOptionsType
+  defaultValue?: SelectOptionsType
   /**
    * Current value to display
    */
-  value?: AutocompleteOptionsType
+  value?: SelectOptionsType
   /**
    * Close button tooltip text
    */
@@ -82,5 +82,5 @@ export interface AutocompleteProps extends BaseComponentProps {
    * Format of count of multiple selected to be displayed in input
    */
   getLimitText?: (more: number) => string
-  onChange?: (value: AutocompleteOptionsType) => void
+  onChange?: (value: SelectOptionsType) => void
 }

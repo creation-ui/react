@@ -1,17 +1,14 @@
-import clsx from 'clsx'
 import { useCombobox, useMultipleSelection } from 'downshift'
 import React, { ChangeEvent, useState } from 'react'
-import { inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import type { MultipleEllipsisFormatter } from '../../types'
+import type { MultipleEllipsisFormatter, SelectOptionsType } from '../../types'
 import { formatOptionValue } from '../../utils/format-option-value'
 import { passThrough } from '../../utils/functions'
 import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
 import { SelectOption } from '../select-option'
-import { HelperText } from '../typography'
 import type { AutocompleteProps } from './autocomplete.types'
 import { AutocompleteView } from './autocomplete.view'
 
@@ -37,8 +34,28 @@ export const Autocomplete = (props: AutocompleteProps) => {
     value,
   } = props
 
-  const [selectedItems, setSelectedItems] = useState([])
-  const [inputValue, setInputValue] = useState('')
+  function getFilteredItems(
+    selectedOptions: SelectOptionsType[],
+    inputValue: string
+  ) {
+    if (!selectedOptions) return []
+
+    const searchString = inputValue.toLowerCase()
+    const selectedValues = selectedOptions?.map(item => item?.label)
+
+    return options.filter(
+      option =>
+        !selectedValues?.includes(option.label) &&
+        option.label?.toLowerCase().startsWith(searchString)
+    )
+  }
+  const [inputValue, setInputValue] = React.useState('')
+  const [selectedItems, setSelectedItems] = React.useState([])
+
+  const items = React.useMemo(
+    () => getFilteredItems(selectedItems, inputValue),
+    [selectedItems, inputValue]
+  )
 
   const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
     useMultipleSelection({
@@ -50,46 +67,13 @@ export const Autocomplete = (props: AutocompleteProps) => {
           case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
           case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
           case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-            if (multiple) {
-              setSelectedItems([...selectedItems, newSelectedItems])
-            } else {
-              setSelectedItems([newSelectedItems])
-            }
-            break
-          case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-            console.log(selectedItem)
-            const newSelected = newSelectedItems.filter(
-              item => item.id !== selectedItems
-            )
-            setSelectedItems(newSelected)
+            setSelectedItems(newSelectedItems)
             break
           default:
             break
         }
       },
     })
-
-  const [query, setQuery] = useState<string>('')
-
-  /* Filtering the options based on the query. */
-  const filteredOptions =
-    query === ''
-      ? options
-      : options?.filter(option =>
-          option.value
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
-        )
-
-  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setQuery(e.target.value)
-  const resetSearch = (): void => setQuery('')
-  const clearSelection: React.MouseEventHandler<HTMLDivElement> = e => {
-    onChange?.(null)
-    resetSearch()
-  }
-
   const {
     isOpen,
     getToggleButtonProps,
@@ -98,13 +82,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
     getInputProps,
     highlightedIndex,
     getItemProps,
-    selectedItem,
   } = useCombobox({
-    items: value,
-    itemToString(item) {
-      return item ? item.title : ''
-    },
-    defaultHighlightedIndex: 0, // after selection, highlight the first item.
+    items,
+    inputValue,
     selectedItem: null,
     stateReducer(state, actionAndChanges) {
       const { changes, type } = actionAndChanges
@@ -112,10 +92,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.InputBlur:
           return {
             ...changes,
-            isOpen: true, // keep the menu open after selection.
-            highlightedIndex: 0, // with the first option highlighted.
+            ...(changes.selectedItem && { isOpen: true, highlightedIndex: 0 }),
           }
         default:
           return changes
@@ -129,13 +109,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
-        case useCombobox.stateChangeTypes.InputBlur:
-          if (newSelectedItem) {
-            const final = [...selectedItems, newSelectedItem].filter(Boolean)
-            setSelectedItems(final)
-          }
-          break
+          setSelectedItems([...selectedItems, newSelectedItem])
 
+          break
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(newInputValue)
           break
@@ -144,6 +120,27 @@ export const Autocomplete = (props: AutocompleteProps) => {
       }
     },
   })
+
+  const [query, setQuery] = useState<string>('')
+
+  /* Filtering the options based on the query. */
+  const filteredOptions =
+    query === ''
+      ? options
+      : options?.filter(option =>
+          option.label
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(query.toLowerCase().replace(/\s+/g, ''))
+        )
+
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setQuery(e.target.value)
+  const resetSearch = (): void => setQuery('')
+  const clearSelection: React.MouseEventHandler<HTMLDivElement> = e => {
+    onChange?.(null)
+    resetSearch()
+  }
 
   const formatter = (args: any) => {
     let displayValue: string = ''
@@ -164,13 +161,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const componentId = useId(id)
   const Option = optionComponent
   const disabled = props.disabled || props.loading || props.readOnly
-
-  // <label
-  //   htmlFor={componentId}
-  //   className={label({ size, required: props.required })}
-  //   children={props.label}
-  //   aria-label={props.label?.toString()}
-  // />
 
   return (
     <InputBase
@@ -193,13 +183,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
         getItemProps={getItemProps}
         highlightedIndex={highlightedIndex}
         isOpen={isOpen}
-        selectedItem={selectedItem}
         selectedItems={selectedItems}
         removeSelectedItem={removeSelectedItem}
         multiple={multiple}
         getDropdownProps={getDropdownProps}
         getSelectedItemProps={getSelectedItemProps}
-        options={options}
+        options={items}
       />
     </InputBase>
   )

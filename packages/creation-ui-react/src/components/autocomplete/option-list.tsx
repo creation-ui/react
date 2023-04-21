@@ -8,7 +8,7 @@ interface OptionListProps {
   menuProps: any
   options: any[]
   highlightedIndex: number
-  selectedItem: any
+  selectedItems: any
   getItemProps: (options: { item: any; index: number }) => any
 }
 
@@ -28,9 +28,10 @@ export const OptionList: FC<OptionListProps> = ({
   menuProps,
   options,
   highlightedIndex,
-  selectedItem,
+  selectedItems,
   getItemProps,
 }) => {
+  const selectedIds = selectedItems.map(item => item.id)
   return (
     <ul
       className={twMerge(
@@ -41,15 +42,23 @@ export const OptionList: FC<OptionListProps> = ({
       {...menuProps}
     >
       {open &&
-        options?.map?.((item, index) => (
-          <Option
-            item={item}
-            highlightedIndex={highlightedIndex}
-            index={index}
-            selectedItem={selectedItem}
-            getItemProps={getItemProps}
-            key={`${item.value}${index}`}
-          />
+        (options?.length ? (
+          options?.map?.((item, index) => (
+            <Option
+              item={item}
+              highlightedIndex={highlightedIndex}
+              index={index}
+              selected={selectedIds.includes(item.id)}
+              getItemProps={getItemProps}
+              key={item.id}
+            />
+          ))
+        ) : (
+          <li
+            className={'py-2 px-3 w-full  text-center'}
+          >
+            No results found
+          </li>
         ))}
     </ul>
   )

@@ -30,14 +30,17 @@ const SelectedItem = ({
   getSelectedItemProps,
   removeSelectedItem,
 }: SelectedItemProps) => {
-  const handleRemove = () => removeSelectedItem(item)
+  const handleRemove = e => {
+    e?.stopPropagation?.()
+    removeSelectedItem(item)
+  }
 
   return (
     <span
       className={twMerge(classes)}
       {...getSelectedItemProps({ selectedItem: item, index: idx })}
     >
-      {item.value}
+      {item.label}
       <ClearButton onClick={handleRemove} />
     </span>
   )

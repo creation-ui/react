@@ -3,7 +3,7 @@ import {
   GetPropsCommonOptions,
   UseComboboxGetInputPropsOptions,
   UseMultipleSelectionGetDropdownProps,
-  UseMultipleSelectionGetSelectedItemPropsOptions,
+  UseMultipleSelectionGetSelectedItemPropsOptions
 } from 'downshift'
 import { useInputBase } from '../input-base/input-base.context'
 import { OptionList } from './option-list'
@@ -22,7 +22,6 @@ interface AutocompleteViewProps {
   ) => any
   highlightedIndex: number | null
   isOpen: boolean
-  selectedItem: any
   selectedItems?: any[]
   removeSelectedItem?: (item: any) => void
   multiple?: boolean
@@ -42,7 +41,6 @@ export const AutocompleteView = ({
   options = [],
   highlightedIndex,
   selectedItems = [],
-  selectedItem,
   isOpen,
   removeSelectedItem,
   getSelectedItemProps,
@@ -58,7 +56,7 @@ export const AutocompleteView = ({
   } = useInputBase()
 
   return (
-    <div className={clsx(input, 'relative h-auto p-0.5')}>
+    <div className={clsx(input, 'relative h-auto py-1')}>
       <div className={clsx('flex flex-col gap-1')}>
         <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
           {selectedItems?.map((item, idx) => (
@@ -84,7 +82,7 @@ export const AutocompleteView = ({
         menuProps={getMenuProps()}
         open={isOpen}
         options={options}
-        selectedItem={selectedItem}
+        selectedItems={selectedItems}
       />
     </div>
   )

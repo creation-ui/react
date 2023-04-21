@@ -80,20 +80,11 @@ export type GetComponentProps<T> = T extends
   ? P
   : never
 
-export type AutocompleteOptionsType =
-  | { id: string | number; value: string | number | null }
-  | any
-  | null
-  | undefined
-
-export type SelectOptionsType =
-  | {
-      id: string | number
-      value: string | number | null
-      disabled?: boolean
-    }
-  | any
-  | null
+export type SelectOptionsType = {
+  id: string | number
+  label: string
+  disabled?: boolean
+}
 
 export type CommitInfo = {
   shortHash: string

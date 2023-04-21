@@ -6,7 +6,7 @@ interface OptionsProps {
   item: any
   highlightedIndex: number
   index: number
-  selectedItem: any
+  selected?: boolean
   getItemProps: (options: { item: any; index: number }) => any
 }
 
@@ -24,7 +24,7 @@ export const Option: FC<OptionsProps> = ({
   item,
   highlightedIndex,
   index,
-  selectedItem,
+  selected,
   getItemProps,
 }) => {
   return (
@@ -32,7 +32,7 @@ export const Option: FC<OptionsProps> = ({
       className={twMerge(
         classes({
           highlighted: highlightedIndex === index,
-          selected: selectedItem === item,
+          selected,
         })
       )}
       {...getItemProps({ item, index })}
