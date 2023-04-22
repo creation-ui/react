@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 import { Icon, IconProps } from '../icon'
 
-interface DropdownChevronProps extends IconProps {
+interface DropdownChevronProps extends Omit<IconProps, 'icon'> {
   open?: boolean
 }
 

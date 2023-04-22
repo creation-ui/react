@@ -1,9 +1,11 @@
 import { UseMultipleSelectionGetSelectedItemPropsOptions } from 'downshift'
-import { twMerge } from 'tailwind-merge'
+import { SelectOptionsType } from '../../types'
 import { ClearButton } from '../clear-button'
+import { useAutocomplete } from './autocomplete.context'
+import { selectedOptionClasses } from './classes'
 
 interface SelectedItemProps {
-  item: any
+  option: SelectOptionsType
   idx: number
   getSelectedItemProps: (
     options: UseMultipleSelectionGetSelectedItemPropsOptions<any>
@@ -11,36 +13,25 @@ interface SelectedItemProps {
   removeSelectedItem: (item: any) => void
 }
 
-const classes = [
-  'bg-info-100',
-  'rounded-md',
-  'p-0.5',
-  'focus:border-primary-200',
-  'border',
-  'border-transparent',
-  'inline-flex',
-  'gap-1',
-  'items-center',
-  'select-none',
-]
-
 const SelectedItem = ({
-  item,
+  option,
   idx,
   getSelectedItemProps,
   removeSelectedItem,
 }: SelectedItemProps) => {
+  const { handleRemoveSelected } = useAutocomplete()
+
   const handleRemove = e => {
     e?.stopPropagation?.()
-    removeSelectedItem(item)
+    handleRemoveSelected(option)
   }
 
   return (
     <span
-      className={twMerge(classes)}
-      {...getSelectedItemProps({ selectedItem: item, index: idx })}
+      className={selectedOptionClasses()}
+      {...getSelectedItemProps({ selectedItem: option, index: idx })}
     >
-      {item.label}
+      {option.label}
       <ClearButton onClick={handleRemove} />
     </span>
   )

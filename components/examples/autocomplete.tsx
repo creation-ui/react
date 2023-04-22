@@ -2,6 +2,7 @@ import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context'
 import {
   Autocomplete,
+  AutocompleteFloat,
   AutocompleteProps,
   ELEMENT_SIZES,
 } from '@creation-ui/react'
@@ -70,7 +71,7 @@ export const AutocompleteMultipleExample = ({
   ])
 
   return (
-    <Autocomplete
+    <AutocompleteFloat
       options={options}
       label={label}
       value={value}

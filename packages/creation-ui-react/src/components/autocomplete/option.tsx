@@ -1,6 +1,6 @@
-import { cva } from 'class-variance-authority'
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { optionClasses } from './classes'
 
 interface OptionsProps {
   item: any
@@ -9,16 +9,6 @@ interface OptionsProps {
   selected?: boolean
   getItemProps: (options: { item: any; index: number }) => any
 }
-
-const classes = cva(
-  ['py-2 px-3 shadow-sm flex flex-col w-full', 'cursor-pointer'],
-  {
-    variants: {
-      highlighted: { true: 'bg-primary-50' },
-      selected: { true: 'font-bold' },
-    },
-  }
-)
 
 export const Option: FC<OptionsProps> = ({
   item,
@@ -30,7 +20,7 @@ export const Option: FC<OptionsProps> = ({
   return (
     <li
       className={twMerge(
-        classes({
+        optionClasses({
           highlighted: highlightedIndex === index,
           selected,
         })

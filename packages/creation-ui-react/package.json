@@ -28,6 +28,8 @@
     "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.2.6",
+    "@floating-ui/react": "^0.23.1",
     "@headlessui/react": "^1.7.13",
     "@headlessui/tailwindcss": "^0.1.2",
     "@tanstack/match-sorter-utils": "^8.7.6",
@@ -39,7 +41,7 @@
     "lodash.merge": "^4.6.2",
     "lodash.values": "^4.3.0",
     "mini-svg-data-uri": "^1.4.4",
-    "react": "^18.2.0",
+    "react": "link:@types/@floating-ui/react",
     "react-dom": "^18.2.0",
     "react-spring": "^9.7.1",
     "tailwind-merge": "^1.10.0",

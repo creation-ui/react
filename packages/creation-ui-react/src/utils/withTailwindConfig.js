@@ -7,14 +7,15 @@ const themeColors = require('../theme/base/colors')
 const typography = require('../theme/base/typography')
 // const shadows = require('../theme/base/shadows')
 const breakpoints = require('../theme/base/breakpoints')
-const {
-  lightBlue,
-  warmGray,
-  trueGray,
-  coolGray,
-  blueGray,
-  ...twColors
-} = require('tailwindcss/colors')
+const twColors = require('tailwindcss/colors')
+
+const deprecated = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
+
+Object.keys(twColors).forEach(key => {
+  if (deprecated.includes(key)) {
+    delete twColors[key]
+  }
+})
 
 const creationUiConfig = {
   darkMode: 'class',

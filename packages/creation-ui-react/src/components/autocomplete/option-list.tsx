@@ -1,6 +1,6 @@
-import { cva } from 'class-variance-authority'
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { optionListClasses } from './classes'
 import { Option } from './option'
 
 interface OptionListProps {
@@ -11,17 +11,6 @@ interface OptionListProps {
   selectedItems: any
   getItemProps: (options: { item: any; index: number }) => any
 }
-
-const classes = cva(
-  [
-    'absolute bg-white shadow-md w-full max-h-80 overflow-y-auto p-0 border rounded-md left-0 top-8',
-  ],
-  {
-    variants: {
-      open: { true: 'block', false: 'hidden' },
-    },
-  }
-)
 
 export const OptionList: FC<OptionListProps> = ({
   open,
@@ -35,7 +24,7 @@ export const OptionList: FC<OptionListProps> = ({
   return (
     <ul
       className={twMerge(
-        classes({
+        optionListClasses({
           open,
         })
       )}
@@ -54,11 +43,7 @@ export const OptionList: FC<OptionListProps> = ({
             />
           ))
         ) : (
-          <li
-            className={'py-2 px-3 w-full  text-center'}
-          >
-            No results found
-          </li>
+          <li className={'py-2 px-3 w-full  text-center'}>No results found</li>
         ))}
     </ul>
   )

@@ -8,6 +8,7 @@ import {
 import { useInputBase } from '../input-base/input-base.context'
 import { OptionList } from './option-list'
 import SelectedItem from './selected-item'
+
 interface AutocompleteViewProps {
   getLabelProps: () => any
   getToggleButtonProps: () => any
@@ -62,7 +63,7 @@ export const AutocompleteView = ({
           {selectedItems?.map((item, idx) => (
             <SelectedItem
               key={item.id}
-              item={item}
+              option={item}
               idx={idx}
               getSelectedItemProps={getSelectedItemProps}
               removeSelectedItem={removeSelectedItem}

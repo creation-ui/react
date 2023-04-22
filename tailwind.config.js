@@ -21,5 +21,4 @@ const config = withTailwindConfig({
   ],
 })
 
-console.log(config.plugins)
 module.exports = config
