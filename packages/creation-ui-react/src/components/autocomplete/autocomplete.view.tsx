@@ -1,90 +1,115 @@
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import clsx from 'clsx'
-import {
-  GetPropsCommonOptions,
-  UseComboboxGetInputPropsOptions,
-  UseMultipleSelectionGetDropdownProps,
-  UseMultipleSelectionGetSelectedItemPropsOptions
-} from 'downshift'
+import React, { forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 import { useInputBase } from '../input-base/input-base.context'
-import { OptionList } from './option-list'
+import { useAutocomplete } from './context'
+import { optionClasses, optionListClasses } from './classes'
 import SelectedItem from './selected-item'
 
-interface AutocompleteViewProps {
-  getLabelProps: () => any
-  getToggleButtonProps: () => any
-  getMenuProps: () => any
-  getInputProps: (
-    options?: UseComboboxGetInputPropsOptions,
-    otherOptions?: GetPropsCommonOptions
-  ) => any
-  getItemProps: (options: { item: any; index: number }) => any
-  getSelectedItemProps: (
-    options: UseMultipleSelectionGetSelectedItemPropsOptions<any>
-  ) => any
-  highlightedIndex: number | null
-  isOpen: boolean
-  selectedItems?: any[]
-  removeSelectedItem?: (item: any) => void
-  multiple?: boolean
-  options?: any[]
-  getDropdownProps: (
-    options?: UseMultipleSelectionGetDropdownProps,
-    extraOptions?: GetPropsCommonOptions
-  ) => any
+interface ItemProps {
+  children: React.ReactNode
+  active: boolean
 }
 
-export const AutocompleteView = ({
-  getLabelProps,
-  getToggleButtonProps,
-  getMenuProps,
-  getInputProps,
-  getItemProps,
-  options = [],
-  highlightedIndex,
-  selectedItems = [],
-  isOpen,
-  removeSelectedItem,
-  getSelectedItemProps,
-  getDropdownProps,
-  multiple,
-  ...props
-}: AutocompleteViewProps) => {
+const Item = forwardRef<
+  HTMLLIElement,
+  ItemProps & React.HTMLProps<HTMLLIElement>
+>(
+  (
+    {
+      //
+      children,
+      active,
+      ...rest
+    },
+    ref
+  ) => {
+    return (
+      <li
+        className={optionClasses({
+          highlighted: active,
+          selected: false,
+        })}
+        ref={ref}
+        role='option'
+        aria-selected={active}
+        {...rest}
+      >
+        {children}
+      </li>
+    )
+  }
+)
+
+export const AutocompleteView = forwardRef((props, ref) => {
+  const { classes, componentId, disabled, readOnly } = useInputBase()
+
   const {
-    classes: { input },
-    componentId,
-    disabled,
-    readOnly,
-  } = useInputBase()
+    activeIndex,
+    floatingContext,
+    props: { input, option, list },
+    text,
+    clearable,
+    multiple,
+    options,
+    limit,
+    open,
+    selected,
+    handleRemoveSelected,
+  } = useAutocomplete()
+
+  const hideInput = !multiple && !!selected.length
 
   return (
-    <div className={clsx(input, 'relative h-auto py-1')}>
-      <div className={clsx('flex flex-col gap-1')}>
-        <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
-          {selectedItems?.map((item, idx) => (
-            <SelectedItem
-              key={item.id}
-              option={item}
-              idx={idx}
-              getSelectedItemProps={getSelectedItemProps}
-              removeSelectedItem={removeSelectedItem}
-            />
-          ))}
-          <input
-            id={componentId}
-            className='reset-input h-fit'
-            placeholder='Best book ever'
-            {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
-          />
+    <>
+      <div
+        className={clsx(classes.input, 'relative h-auto py-1')}
+        ref={ref as any}
+        {...props}
+      >
+        <div className={clsx('flex flex-col gap-1')}>
+          <div className='inline-flex gap-2 options-center flex-wrap h-fit'>
+            {selected?.map((item, idx) => (
+              <SelectedItem key={item.id} option={item} idx={idx} />
+            ))}
+            {hideInput ? null : (
+              <input
+                //
+                id={componentId}
+                className='reset-input h-fit'
+                {...input}
+              />
+            )}
+          </div>
         </div>
+        <FloatingPortal>
+          {open && (
+            <FloatingFocusManager
+              context={floatingContext}
+              initialFocus={-1}
+              visuallyHiddenDismiss
+            >
+              <ul {...list} className={optionListClasses({ open: true })}>
+                {options.length ? (
+                  options.map((item, index) => (
+                    <Item
+                      active={activeIndex === index}
+                      {...option(item, index)}
+                    >
+                      {item.label}
+                    </Item>
+                  ))
+                ) : (
+                  <li className={'py-2 px-3 w-full text-center'}>
+                    {text.notFound}
+                  </li>
+                )}
+              </ul>
+            </FloatingFocusManager>
+          )}
+        </FloatingPortal>
       </div>
-      <OptionList
-        getItemProps={getItemProps}
-        highlightedIndex={highlightedIndex}
-        menuProps={getMenuProps()}
-        open={isOpen}
-        options={options}
-        selectedItems={selectedItems}
-      />
-    </div>
+    </>
   )
-}
+})

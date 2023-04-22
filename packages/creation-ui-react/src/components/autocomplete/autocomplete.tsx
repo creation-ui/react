@@ -1,8 +1,6 @@
 import {
   autoUpdate,
   flip,
-  FloatingFocusManager,
-  FloatingPortal,
   size,
   useDismiss,
   useFloating,
@@ -10,54 +8,20 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
-import React, { forwardRef, useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
+import { formatOptionValue } from '../../utils/format-option-value'
+import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { useTheme } from '../../theme'
-import { SelectOptionsType } from '../../types'
+import { MultipleEllipsisFormatter, SelectOptionsType } from '../../types'
 import { passThrough } from '../../utils/functions'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
 import { SelectOption } from '../select-option'
-import { AutocompleteView } from './autocomplete-float.view'
-import { AutocompleteContext } from './autocomplete.context'
-import type { AutocompleteProps } from './autocomplete.types'
-import { optionClasses, optionListClasses } from './classes'
+import { AutocompleteView } from './autocomplete.view'
+import { AutocompleteContext } from './context'
+import type { AutocompleteProps } from './types'
 
-interface ItemProps {
-  children: React.ReactNode
-  active: boolean
-}
-
-const Item = forwardRef<
-  HTMLLIElement,
-  ItemProps & React.HTMLProps<HTMLLIElement>
->(
-  (
-    {
-      //
-      children,
-      active,
-      ...rest
-    },
-    ref
-  ) => {
-    return (
-      <li
-        className={optionClasses({
-          highlighted: active,
-          selected: false,
-        })}
-        ref={ref}
-        role='option'
-        aria-selected={active}
-        {...rest}
-      >
-        {children}
-      </li>
-    )
-  }
-)
-
-export function AutocompleteFloat(props: AutocompleteProps) {
+export function Autocomplete(props: AutocompleteProps) {
   const { size: defaultSize, zIndex } = useTheme()
   const {
     loadingText = 'Loading...',
@@ -66,7 +30,7 @@ export function AutocompleteFloat(props: AutocompleteProps) {
     clearable = true,
     multiple,
     optionComponent = SelectOption,
-    options,
+    options = [],
     placeholder = 'Select option',
     id,
     helperText,
@@ -162,8 +126,10 @@ export function AutocompleteFloat(props: AutocompleteProps) {
 
   const handleSelect = (option: SelectOptionsType) => {
     setQuery('')
-    setSelected(o => [...(multiple && o), option])
-    if (!multiple) {
+    if (multiple) {
+      setSelected(o => [...o, option])
+    } else {
+      setSelected([option])
       setActiveIdx(null)
       setOpen(false)
     }
@@ -221,6 +187,7 @@ export function AutocompleteFloat(props: AutocompleteProps) {
 
   return (
     <InputBase
+      id={id}
       disabled={disabled}
       error={error}
       size={componentSize}
@@ -229,6 +196,7 @@ export function AutocompleteFloat(props: AutocompleteProps) {
       label={props.label}
       required={props.required}
       endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
+      helperText={helperText}
     >
       <AutocompleteContext.Provider
         value={{

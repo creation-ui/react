@@ -1,3 +1,2 @@
-export * from './autocomplete.controller'
-export * from './autocomplete-float'
-export * from './autocomplete.types'
+export * from './autocomplete'
+export * from './types'

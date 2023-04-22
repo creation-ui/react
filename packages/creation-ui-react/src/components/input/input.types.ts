@@ -1,9 +1,5 @@
 import type React from 'react'
-import type {
-  BaseComponentProps,
-  ElementSize,
-  ElementVariant,
-} from '../../types'
+import type { BaseComponentProps, ElementVariant } from '../../types'
 
 export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> &
   BaseComponentProps & {
@@ -33,24 +29,3 @@ export type InputProps = Omit<React.ComponentProps<'input'>, 'size'> &
      */
     fullWidth?: boolean
   }
-
-export type HTMLInputType =
-  | 'text'
-  | 'password'
-  | 'submit'
-  | 'reset'
-  | 'radio'
-  | 'checkbox'
-  | 'button'
-  | 'file'
-  | 'image'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'month'
-  | 'number'
-  | 'url'
-  | 'week'
-  | 'search'
-  | 'tel'

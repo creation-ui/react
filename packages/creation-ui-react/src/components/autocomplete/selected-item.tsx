@@ -1,24 +1,14 @@
-import { UseMultipleSelectionGetSelectedItemPropsOptions } from 'downshift'
 import { SelectOptionsType } from '../../types'
 import { ClearButton } from '../clear-button'
-import { useAutocomplete } from './autocomplete.context'
 import { selectedOptionClasses } from './classes'
+import { useAutocomplete } from './context'
 
 interface SelectedItemProps {
   option: SelectOptionsType
   idx: number
-  getSelectedItemProps: (
-    options: UseMultipleSelectionGetSelectedItemPropsOptions<any>
-  ) => any
-  removeSelectedItem: (item: any) => void
 }
 
-const SelectedItem = ({
-  option,
-  idx,
-  getSelectedItemProps,
-  removeSelectedItem,
-}: SelectedItemProps) => {
+const SelectedItem = ({ option, idx }: SelectedItemProps) => {
   const { handleRemoveSelected } = useAutocomplete()
 
   const handleRemove = e => {
@@ -27,10 +17,7 @@ const SelectedItem = ({
   }
 
   return (
-    <span
-      className={selectedOptionClasses()}
-      {...getSelectedItemProps({ selectedItem: option, index: idx })}
-    >
+    <span className={selectedOptionClasses()}>
       {option.label}
       <ClearButton onClick={handleRemove} />
     </span>

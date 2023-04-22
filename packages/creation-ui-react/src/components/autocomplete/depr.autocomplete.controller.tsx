@@ -9,8 +9,8 @@ import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
 import { SelectOption } from '../select-option'
-import type { AutocompleteProps } from './autocomplete.types'
-import { AutocompleteView } from './autocomplete.view'
+import type { AutocompleteProps } from './types'
+import { AutocompleteView } from './depr.autocomplete.view'
 
 export const Autocomplete = (props: AutocompleteProps) => {
   const { size: defaultSize, zIndex } = useTheme()
@@ -136,7 +136,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) =>
     setQuery(e.target.value)
+
   const resetSearch = (): void => setQuery('')
+
   const clearSelection: React.MouseEventHandler<HTMLDivElement> = e => {
     onChange?.(null)
     resetSearch()
