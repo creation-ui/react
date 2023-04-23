@@ -42,7 +42,6 @@ export function Autocomplete(props: AutocompleteProps) {
     limit = 3,
     onChange,
     getLimitText = passThrough,
-    selectedOptionFormatter = passThrough,
     optionComponent = SelectOption,
   } = props
 
@@ -122,7 +121,7 @@ export function Autocomplete(props: AutocompleteProps) {
   const Option = optionComponent
 
   const disabled = props.disabled || props.loading || props.readOnly
-  const clearable = !disabled && props.clearable && !isEmpty
+  const clearable = !disabled && props.clearable && (!isEmpty || isQuery)
 
   const toggleOpen = () => setOpen(!open)
 

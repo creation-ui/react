@@ -15,10 +15,6 @@ export interface AutocompleteProps extends BaseComponentProps {
    */
   optionComponent?: (option: SelectOptionsType) => React.ReactNode
   /**
-   * Component to display selected option
-   */
-  selectedOptionFormatter?: (option: SelectOptionsType) => string
-  /**
    * Default value to display when component is not controlled
    */
   defaultValue?: SelectOptionsType
