@@ -53,6 +53,7 @@
     "eslint-config-next": "13.0.6",
     "framer-motion": "^10.8.4",
     "lodash": "^4.17.21",
+    "lodash.values": "^4.3.0",
     "next": "13.2.4",
     "nextra": "^2.2.19",
     "nextra-theme-docs": "^2.2.19",
