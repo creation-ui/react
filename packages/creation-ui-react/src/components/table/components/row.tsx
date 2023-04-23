@@ -1,11 +1,11 @@
-import { Cell as CellType, flexRender, Row } from '@tanstack/react-table'
+import { Cell as CellType, flexRender, Row as RowProps } from '@tanstack/react-table'
 import { twMerge } from 'tailwind-merge'
 
 interface RowCellProps {
-  row: Row<any>
+  row: RowProps<any>
 }
 
-const Rows = ({ row }: RowCellProps) => {
+const Row = ({ row }: RowCellProps) => {
   const cells = row.getVisibleCells()
   return (
     <tr className='hover:bg-gray-100 dark:hover:bg-gray-800 inline-block w-full'>
@@ -16,7 +16,7 @@ const Rows = ({ row }: RowCellProps) => {
   )
 }
 
-export default Rows
+export default Row
 
 interface CellProps {
   cell: CellType<any, unknown>

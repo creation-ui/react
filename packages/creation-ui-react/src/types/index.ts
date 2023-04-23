@@ -1,3 +1,5 @@
+import type React from 'react'
+
 export const ELEMENT_STATUS = [
   'primary',
   'error',
@@ -35,6 +37,8 @@ export const ELEMENT_STATES = [
   'default',
 ] as const
 
+export type HTMLInputType = React.InputHTMLAttributes<HTMLInputElement>['type']
+
 export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementStatus = (typeof ELEMENT_STATUS)[number]
 export type ElementState = (typeof ELEMENT_STATES)[number]
@@ -59,20 +63,11 @@ export type GetComponentProps<T> = T extends
   ? P
   : never
 
-export type AutocompleteOptionsType =
-  | { id: string | number; value: string | number | null }
-  | any
-  | null
-  | undefined
-
-export type SelectOptionsType =
-  | {
-      id: string | number
-      value: string | number | null
-      disabled?: boolean
-    }
-  | any
-  | null
+export type DropdownOption = {
+  id: string | number
+  label: string
+  disabled?: boolean
+}
 
 export type CommitInfo = {
   shortHash: string
@@ -115,7 +110,7 @@ export const icons = [
   'close',
   'check',
   'straight',
-  'readonly'
+  'readonly',
 ] as const
 
 export type IconType = (typeof icons)[number]
@@ -156,8 +151,131 @@ export interface BaseComponentProps {
   helperText?: React.ReactNode
 }
 
+export interface InputBaseProps extends BaseComponentProps {
+  as?: any
+  /**
+   * Is button loading?
+   */
+  loading?: boolean
+  /**
+   * What variant should button be ?
+   */
+  variant?: ElementVariant
+  /**
+   * Icon to be displayed on the left side of the input
+   */
+  startAdornment?: React.ReactNode
+  /**
+   * Icon to be displayed on the right side of the input
+   */
+  endAdornment?: React.ReactNode
+  /**
+   * Is button fullwidth?
+   */
+  fullWidth?: boolean
+  /**
+   * Type of HTML input
+   */
+  type?: HTMLInputType
+  /**
+   * Children
+   */
+  children: React.ReactNode
+  /**
+   * clearable icon
+   */
+  clearable?: boolean
+  /**
+   * Callback for clear input icon.
+   */
+  onClear?: () => void
+}
+
 export type ReadableError = {
   message: React.ReactNode
   title: React.ReactNode
   code?: React.ReactNode
+}
+
+
+export interface DropdownProps extends BaseComponentProps {
+  /**
+   * Placeholder
+   */
+  placeholder?: string
+  /**
+   * List options
+   */
+  options?: DropdownOption[]
+  /**
+   * Component to display list options
+   */
+  optionComponent?: (option: DropdownOption) => React.ReactNode
+  /**
+   * Default value to display when component is not controlled
+   */
+  defaultValue?: DropdownOption
+  /**
+   * Current value to display
+   */
+  value?: DropdownOption[]
+  /**
+   * Close button tooltip text
+   */
+  emptyText?: React.ReactNode
+  /**
+   * Not found text
+   */
+  notFoundText?: React.ReactNode
+  /**
+   * Loading icon tooltip text
+   */
+  loadingText?: React.ReactNode
+  /**
+   * Clear button tooltip text
+   */
+  clearText?: string
+  /**
+   * Close button tooltip text
+   */
+  closeText?: React.ReactNode
+  // flags
+  /**
+   * Should display clear value button
+   */
+  clearable?: boolean
+  /**
+   * Is field required
+   */
+  required?: boolean
+  /**
+   * Is disabled
+   */
+  disabled?: boolean
+  /**
+   * Allow selection of multiple value
+   */
+  multiple?: boolean
+  /**
+   * Should highlight matched text TODO: not implemented
+   */
+  highlightSearch?: boolean
+  /**
+   * Limit of multiple selected to be displayed in input
+   */
+  limit?: number
+  /**
+   * Should display Loader
+   */
+  loading?: boolean
+  /**
+   * Format of count of multiple selected to be displayed in input
+   */
+  getLimitText?: (more: number) => string
+  /**
+   * onChange callback. Will return array of selected values. If !multiple, will return array with one value.
+   * @param value
+   * @returns
+   */
+  onChange?: (value: DropdownOption[]) => void
 }

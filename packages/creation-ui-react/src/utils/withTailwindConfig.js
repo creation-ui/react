@@ -3,30 +3,34 @@
  */
 
 const { merge } = require('lodash')
-const colors = require('../theme/base/colors')
+const themeColors = require('../theme/base/colors')
 const typography = require('../theme/base/typography')
-const shadows = require('../theme/base/shadows')
+// const shadows = require('../theme/base/shadows')
 const breakpoints = require('../theme/base/breakpoints')
 const twColors = require('tailwindcss/colors')
 
-delete twColors['lightBlue']
-delete twColors['warmGray']
-delete twColors['trueGray']
-delete twColors['coolGray']
-delete twColors['blueGray']
+const deprecated = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
+
+Object.keys(twColors).forEach(key => {
+  if (deprecated.includes(key)) {
+    delete twColors[key]
+  }
+})
 
 const creationUiConfig = {
   darkMode: 'class',
   content: ['node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    colors: { ...twColors, ...colors },
+    colors: { ...twColors, ...themeColors },
     fontFamily: typography,
     screens: breakpoints,
     // boxShadow: shadows,
   },
   plugins: [
+    require('./forms')({
+      strategy: 'class', // only generate classes
+    }),
     require('@headlessui/tailwindcss')({ prefix: 'ui' }),
-    require('@tailwindcss/forms')({ prefix: 'forms' }),
   ],
 }
 

@@ -45,7 +45,6 @@ const theme: ThemeProps = {
   },
   helpers: {
     getLimitText: more => `+${more}`,
-    optionFormatter: option => (option?.value ? `${option.value}` : ''),
   },
 }
 

@@ -73,7 +73,7 @@ export const PlaygroundView = ({ children }: PlaygroundProps) => {
 
   return (
     <Theme theme={{ size: 'sm' }}>
-      <div className={clsx(classes.container)}>
+      <div className={clsx(classes.container, 'z-0')}>
         <div className={clsx(classes.view)}>{children}</div>
         <div className={clsx(classes.controls)}>
           {controlComponents.map((component, index) => (

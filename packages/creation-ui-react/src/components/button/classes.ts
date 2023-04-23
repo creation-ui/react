@@ -41,6 +41,7 @@ export const button = cva(
       circle: { true: null, false: null },
     },
     defaultVariants: {
+      status: 'primary',
       variant: 'contained',
       size: 'md',
       circle: false,

@@ -1,4 +1,6 @@
-import type { SelectOptionsType } from '../types'
+import type { DropdownOption } from '../types'
 
-export const formatOptionValue = (value: SelectOptionsType | string | null) =>
-  value && typeof value === 'object' ? value.value : value
+export const formatOptionValue = (
+  value: DropdownOption | string | null
+): string =>
+  value && typeof value === 'object' ? value.label : (value as string)

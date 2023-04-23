@@ -1,14 +1,14 @@
 const withTailwindConfig = require('./packages/creation-ui-react/src/utils/withTailwindConfig')
 
 /** @type {import('tailwindcss').Config} */
-module.exports = withTailwindConfig({
+const config = withTailwindConfig({
   content: [
     //
     './packages/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './styles/*.css',
     '!node_modules',
+    './**/*.css',
   ],
   extend: {
     transitionDelay: {
@@ -20,3 +20,5 @@ module.exports = withTailwindConfig({
     require('@tailwindcss/line-clamp'),
   ],
 })
+
+module.exports = config

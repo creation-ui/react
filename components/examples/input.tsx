@@ -1,4 +1,9 @@
-import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
+import {
+  DropdownOption,
+  HTMLInputType,
+  Input,
+  InputProps,
+} from '@creation-ui/react'
 import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
@@ -24,6 +29,7 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
       <Input
         onChange={e => setValue(e.target.value)}
         value={value}
+        placeholder='Placeholder'
         {...props}
       />
     </div>
@@ -31,21 +37,26 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
 }
 
 export const InputPlayground = ({ ...props }: InputExampleProps) => {
-  const { state } = usePlayground()
+  const {
+    state: { inputType, ...state },
+  } = usePlayground()
 
   return (
     <Input
       {...props}
       {...state}
-      type={state.inputType}
+      type={inputType?.[0].id as HTMLInputType}
       defaultValue={state.content}
     />
   )
 }
 
 export const PasswordExample = ({ ...props }: InputExampleProps) => {
+  const pass = { id: 'password', label: 'Password' }
+  const text = { id: 'text', label: 'text' }
+
   const [value, setValue] = useState('')
-  const [type, setType] = useState<HTMLInputType>('password')
+  const [type, setType] = useState<DropdownOption[]>([pass])
 
   useEffect(() => {
     if (props.value) {
@@ -54,18 +65,18 @@ export const PasswordExample = ({ ...props }: InputExampleProps) => {
   }, [])
 
   const onIconClick = () => {
-    setType(type === 'password' ? 'text' : 'password')
+    setType([type[0].id === pass.id ? text : pass])
   }
-
+  const htmlType = type[0].id as HTMLInputType
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>
       <Input
         onChange={e => setValue(e.target.value)}
         value={value}
-        type={type}
+        type={htmlType}
         endAdornment={
           <Icon
-            path={type === 'password' ? mdiEyeOutline : mdiEyeOffOutline}
+            path={htmlType === 'password' ? mdiEyeOutline : mdiEyeOffOutline}
             size={1}
             // @ts-expect-error
             onClick={onIconClick}

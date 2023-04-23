@@ -1,14 +1,12 @@
 import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Select, SelectProps } from '@creation-ui/react'
+import { Select, DropdownProps, DropdownOption } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
 
-type Option = typeof options[0]
-
-export const SelectExample = ({ ...props }: SelectProps) => {
-  const [selection, setSelection] = useState<Option | never>(options[0])
+export const SelectExample = ({ ...props }: DropdownProps) => {
+  const [selection, setSelection] = useState<DropdownOption[]>([options[0]])
 
   return (
     <Select
@@ -23,8 +21,8 @@ export const SelectExample = ({ ...props }: SelectProps) => {
 export const SelectMultipleExample = ({
   label = 'Select multiple',
   ...props
-}: SelectProps) => {
-  const [selection, setSelection] = useState<Option[] | never>([
+}: DropdownProps) => {
+  const [selection, setSelection] = useState<DropdownOption[]>([
     options[0],
     options[3],
   ])
@@ -40,12 +38,6 @@ export const SelectMultipleExample = ({
     />
   )
 }
-
-const multipleWarning = (
-  <>
-    If multiple is set, the type of <code>value</code> will be <code>T[]</code>
-  </>
-)
 
 export const properties: DocumentedProperty[] = [
   { description: 'Element id', name: 'id', type: 'string' },
@@ -73,30 +65,28 @@ export const properties: DocumentedProperty[] = [
   {
     description: 'List available options',
     name: 'options',
-    type: 'SelectOptionsType[]',
+    type: 'DropdownOption[]',
     defaultValue: '[]',
   },
   {
     description: 'Functional component returning ReactNode to display option',
     name: 'optionComponent',
-    type: '((option: any) => React.ReactNode) | ((props: SelectOptionProps) => JSX.Element)',
+    type: '((option: any) => React.ReactNode) | ((props: DropdownOption) => JSX.Element)',
   },
   {
     description: 'Default value to display when component is not controlled',
     name: 'defaultValue',
-    type: 'SelectOptionsType',
+    type: 'DropdownOption',
   },
   {
     description: 'Current value of component',
     name: 'value',
-    type: 'SelectOptionsType',
-    note: multipleWarning,
+    type: 'DropdownOption',
   },
   {
     name: 'onChange',
-    type: '(value: SelectOptionsType | SelectOptionsType[]) => void',
+    type: '(value: DropdownOption[]) => void',
     description: 'Change event callback',
-    note: multipleWarning,
   },
   {
     description: 'Disabled',
@@ -129,7 +119,7 @@ export const selectOptionComponent: DocumentedProperty[] = [
   {
     description: 'Option value',
     name: 'option',
-    type: 'SelectOptionsType',
+    type: 'DropdownOption',
   },
   {
     description: 'Is option selected?',

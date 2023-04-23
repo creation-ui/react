@@ -8,6 +8,8 @@ const classes = [
   'cursor-pointer',
   'select-none',
   'z-0',
+  'h-4',
+  'w-4',
 ]
 
 const ClearButton = ({
