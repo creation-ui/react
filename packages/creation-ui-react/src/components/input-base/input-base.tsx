@@ -63,8 +63,10 @@ const InputBase: FC<InputBaseProps> = props => {
             input: inputClasses,
             container: containerClasses,
           },
-          disabled: disabled,
-          readOnly: readOnly,
+          disabled,
+          readOnly,
+          error: !!error,
+          type,
         }}
       >
         <div className={containerClasses}>

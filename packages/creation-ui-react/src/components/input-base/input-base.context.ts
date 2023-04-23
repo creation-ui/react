@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react'
+import { HTMLInputType } from '../../types'
 
 interface InputBaseContextValue {
   componentId: string
@@ -8,6 +9,8 @@ interface InputBaseContextValue {
   }
   disabled: boolean
   readOnly: boolean
+  type: HTMLInputType
+  error: boolean
 }
 
 const InputBaseContext = createContext<InputBaseContextValue>({} as any)

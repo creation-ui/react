@@ -1,3 +1,5 @@
+import type React from 'react'
+
 export const ELEMENT_STATUS = [
   'primary',
   'error',
@@ -35,26 +37,7 @@ export const ELEMENT_STATES = [
   'default',
 ] as const
 
-export type HTMLInputType =
-  | 'text'
-  | 'password'
-  | 'submit'
-  | 'reset'
-  | 'radio'
-  | 'checkbox'
-  | 'button'
-  | 'file'
-  | 'image'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'month'
-  | 'number'
-  | 'url'
-  | 'week'
-  | 'search'
-  | 'tel'
+export type HTMLInputType = React.InputHTMLAttributes<HTMLInputElement>['type']
 
 export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementStatus = (typeof ELEMENT_STATUS)[number]
@@ -200,12 +183,12 @@ export interface InputBaseProps extends BaseComponentProps {
   children: React.ReactNode
   /**
    * clearable icon
-  */
- clearable?: boolean
- /**
-  * Callback for clear input icon.
-  */
- onClear?: () => void
+   */
+  clearable?: boolean
+  /**
+   * Callback for clear input icon.
+   */
+  onClear?: () => void
 }
 
 export type ReadableError = {

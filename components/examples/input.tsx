@@ -24,6 +24,7 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
       <Input
         onChange={e => setValue(e.target.value)}
         value={value}
+        placeholder='Placeholder'
         {...props}
       />
     </div>
