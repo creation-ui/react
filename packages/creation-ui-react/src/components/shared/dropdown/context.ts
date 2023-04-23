@@ -2,12 +2,12 @@ import { createContext, ReactNode, useContext } from 'react'
 import { DropdownOption } from '../../../types'
 
 interface DropdownContextValue {
-  open: boolean
-  multiple: boolean
-  clearable: boolean
+  open?: boolean
+  multiple?: boolean
+  clearable?: boolean
   floatingContext: any
   options: DropdownOption[]
-  activeIndex?: number
+  activeIndex: number | null
   limit?: number
   selected?: DropdownOption[]
   props: {
@@ -19,6 +19,7 @@ interface DropdownContextValue {
     loading?: ReactNode
     empty?: ReactNode
     notFound?: ReactNode
+    placeholder?: ReactNode
   }
   handleRemoveSelected: (item: DropdownOption) => void
   setOpen: (value: boolean) => void

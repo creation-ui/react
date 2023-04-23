@@ -1,11 +1,19 @@
+import { DropdownOption } from '../../../types'
+
 export function getSortedSizes(
-  pageSizes: number[] | undefined,
+  pageSizes: number[] = [],
   totalInSizesSelector: boolean | undefined,
   resultsCount: number
-) {
-  const sizes = pageSizes?.map(size => ({ value: size, id: size }))
+): DropdownOption[] {
+  const sizes = pageSizes
+    ?.map(size => ({
+      label: size.toString(),
+      id: size.toString(),
+    }))
+    .sort()
 
-  totalInSizesSelector && sizes?.push({ value: resultsCount, id: resultsCount })
+  totalInSizesSelector &&
+    sizes?.push({ label: resultsCount.toString(), id: resultsCount.toString() })
 
-  return sizes?.sort((a, b) => a.value - b.value)
+  return sizes
 }

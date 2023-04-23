@@ -29,8 +29,8 @@ export function Select(props: DropdownProps) {
     emptyText = 'Data is empty',
     notFoundText = 'Nothing found',
     placeholder = 'Select option',
-    multiple,
-    value,
+    multiple = false,
+    value = [],
     options = [],
     helperText,
     error,
@@ -49,7 +49,7 @@ export function Select(props: DropdownProps) {
   const listRef = useRef<Array<HTMLElement | null>>([])
 
   const clearableCallback = () => {
-    onChange([])
+    onChange?.([])
   }
 
   const { x, y, strategy, refs, context } = useFloating<HTMLInputElement>({
@@ -84,7 +84,7 @@ export function Select(props: DropdownProps) {
     [role, dismiss, listNav]
   )
 
-  const isEmpty = !value.length
+  const isEmpty = !value?.length
   // const Component = optionComponent
 
   const disabled = props.disabled || props.loading || props.readOnly
@@ -98,15 +98,15 @@ export function Select(props: DropdownProps) {
 
   const handleSelect = (option: DropdownOption) => {
     if (multiple) {
-      onChange([...value, option])
+      onChange?.([...value ?? [], option])
     } else {
-      onChange([option])
+      onChange?.([option])
       handleClose()
     }
   }
 
   const handleRemoveSelected = (option: DropdownOption) => {
-    onChange(value.filter(o => o.id !== option.id))
+    onChange?.(value?.filter(o => o.id !== option.id))
   }
 
   const containerProps = getReferenceProps({
@@ -177,6 +177,7 @@ export function Select(props: DropdownProps) {
             loading: loadingText,
             empty: emptyText,
             notFound: notFoundText,
+            placeholder
           },
           open,
           setOpen,

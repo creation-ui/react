@@ -1,4 +1,4 @@
-import { DropdownOption } from 'src/types'
+import { DropdownOption } from '../types'
 
 export const isSelected = (
   { id }: DropdownOption,

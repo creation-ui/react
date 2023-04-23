@@ -6,7 +6,13 @@ import { OptionsList, useDropdown, SelectedOption } from '../shared/dropdown'
 export const SelectView = forwardRef((props, ref) => {
   const { classes, componentId } = useInputBase()
 
-  const { multiple, limit, selected, setOpen } = useDropdown()
+  const {
+    multiple,
+    limit = 0,
+    selected = [],
+    setOpen,
+    text: { placeholder },
+  } = useDropdown()
 
   const limitedOptions = selected.slice(0, limit)
   const rest = selected.length - limit
@@ -34,7 +40,7 @@ export const SelectView = forwardRef((props, ref) => {
               {rest > 0 && <span>+{rest}</span>}
             </>
           ) : (
-            selected?.[0]?.label
+            selected?.[0]?.label ?? placeholder
           )}
           <>&nbsp;</>
         </div>

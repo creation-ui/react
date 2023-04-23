@@ -1,8 +1,8 @@
-import { Cell as CellType, flexRender, Row } from '@tanstack/react-table'
+import { Cell as CellType, flexRender, Row as RowProps } from '@tanstack/react-table'
 import { twMerge } from 'tailwind-merge'
 
 interface RowCellProps {
-  row: Row<any>
+  row: RowProps<any>
 }
 
 const Row = ({ row }: RowCellProps) => {

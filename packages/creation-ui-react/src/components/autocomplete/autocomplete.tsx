@@ -29,13 +29,13 @@ export function Autocomplete(props: DropdownProps) {
     emptyText = 'Data is empty',
     notFoundText = 'Nothing found',
     placeholder = 'Select option',
-    multiple,
-    value,
+    multiple = false,
+    value = [],
     options = [],
     helperText,
     error,
     limit = 3,
-    onChange,
+    onChange = passThrough,
     getLimitText = passThrough,
     // optionComponent = Option,
   } = props
@@ -51,7 +51,7 @@ export function Autocomplete(props: DropdownProps) {
 
   const clearInput = () => setQuery('')
   const clearableCallback = () => {
-    onChange([])
+    onChange?.([])
     clearInput()
   }
 
@@ -112,7 +112,7 @@ export function Autocomplete(props: DropdownProps) {
         )
 
   const isQuery = !!query.trim()
-  const isEmpty = !value.length
+  const isEmpty = !value?.length
   // const Component = optionComponent
 
   const disabled = props.disabled || props.loading || props.readOnly
@@ -123,9 +123,9 @@ export function Autocomplete(props: DropdownProps) {
   const handleSelect = (option: DropdownOption) => {
     if (multiple) {
       clearInput()
-      onChange([...value, option])
+      onChange?.([...(value ?? []), option])
     } else {
-      onChange([option])
+      onChange?.([option])
       setActiveIdx(null)
       setOpen(false)
       setQuery(option.label)
@@ -133,7 +133,7 @@ export function Autocomplete(props: DropdownProps) {
   }
 
   const handleRemoveSelected = (option: DropdownOption) => {
-    onChange(value.filter(o => o.id !== option.id))
+    onChange?.((value ?? []).filter(o => o.id !== option.id))
   }
 
   const containerProps = getReferenceProps({
@@ -223,7 +223,7 @@ export function Autocomplete(props: DropdownProps) {
             notFound: notFoundText,
           },
           open,
-          setOpen
+          setOpen,
         }}
       >
         <AutocompleteView {...containerProps} />

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { forwardRef } from 'react'
 import { useInputBase } from '../input-base/input-base.context'
-import { OptionsList,useDropdown, SelectedOption } from '../shared/dropdown'
+import { OptionsList, useDropdown, SelectedOption } from '../shared/dropdown'
 
 export const AutocompleteView = forwardRef((props, ref) => {
   const { classes, componentId } = useInputBase()
@@ -9,8 +9,8 @@ export const AutocompleteView = forwardRef((props, ref) => {
   const {
     props: { input },
     multiple,
-    limit,
-    selected,
+    limit = 0,
+    selected = [],
   } = useDropdown()
 
   const limitedOptions = selected.slice(0, limit)

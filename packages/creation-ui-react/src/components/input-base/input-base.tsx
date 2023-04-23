@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import type { FC } from 'react'
-import { InputBaseProps } from 'src/types'
+import { InputBaseProps } from '../../types'
 import { twMerge } from 'tailwind-merge'
 import { input, inputContainer, inputIcon, label, text } from '../../classes'
 import { useId } from '../../hooks'

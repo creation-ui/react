@@ -3,14 +3,14 @@ import { HTMLInputType } from '../../types'
 
 interface InputBaseContextValue {
   componentId: string
+  type: HTMLInputType
   classes: {
     input: string
     container: string
   }
-  disabled: boolean
-  readOnly: boolean
-  type: HTMLInputType
-  error: boolean
+  disabled?: boolean
+  readOnly?: boolean
+  error?: boolean
 }
 
 const InputBaseContext = createContext<InputBaseContextValue>({} as any)

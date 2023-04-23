@@ -24,7 +24,7 @@ export const createInitialState = (
     required: false,
     icon: 'none',
     fullWidth: false,
-    inputType: 'text',
+    inputType: [{ id: 'text', label: 'text' }],
   }
 
   return pick(initialStateTemplate, truthyKeys)

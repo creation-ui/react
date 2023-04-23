@@ -60,6 +60,11 @@ const POSITION = [
   { value: 'bottom', label: <Icon path={mdiBorderBottomVariant} size={1} /> },
 ]
 
+const INPUT_TYPES_DROPDOWN = INPUT_TYPES.map(type => ({
+  id: type,
+  label: type,
+}))
+
 export const useControlComponents = () => {
   const { state, config, handleChangeUpdate } = usePlayground()
   const {
@@ -235,9 +240,9 @@ export const useControlComponents = () => {
     components.push(
       <Select
         label='Type'
-        value={inputType}
-        options={INPUT_TYPES}
-        onChange={e => handleChangeUpdate('inputType')(e)}
+        value={inputType as any}
+        options={INPUT_TYPES_DROPDOWN as any}
+        onChange={e => handleChangeUpdate('inputType')(e as any)}
       />
     )
 
