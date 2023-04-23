@@ -9,10 +9,8 @@ import {
   useRole,
 } from '@floating-ui/react'
 import React, { useMemo, useRef, useState } from 'react'
-import { formatOptionValue } from '../../utils/format-option-value'
-import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
 import { useTheme } from '../../theme'
-import { MultipleEllipsisFormatter, SelectOptionsType } from '../../types'
+import { SelectOptionsType } from '../../types'
 import { passThrough } from '../../utils/functions'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
@@ -37,7 +35,7 @@ export function Autocomplete(props: AutocompleteProps) {
     // size = defaultSize,
     error,
     limit = 3,
-    // onChange,
+    onChange,
     getLimitText = passThrough,
     selectedOptionFormatter = passThrough,
     value,
@@ -47,7 +45,6 @@ export function Autocomplete(props: AutocompleteProps) {
 
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const [selected, setSelected] = useState<SelectOptionsType[]>([])
 
   const [activeIndex, setActiveIdx] = useState<number | null>(null)
 
@@ -85,7 +82,7 @@ export function Autocomplete(props: AutocompleteProps) {
     [role, dismiss, listNav]
   )
 
-  function onChange({
+  function onInputChange({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) {
     const text = value
@@ -101,10 +98,8 @@ export function Autocomplete(props: AutocompleteProps) {
 
   const leftOptions = useMemo(
     () =>
-      options.filter(
-        option => selected.findIndex(o => o.id === option.id) === -1
-      ),
-    [options, selected]
+      options.filter(option => value.findIndex(o => o.id === option.id) === -1),
+    [options, value]
   )
 
   const queryMatchingOptions =
@@ -127,16 +122,16 @@ export function Autocomplete(props: AutocompleteProps) {
   const handleSelect = (option: SelectOptionsType) => {
     setQuery('')
     if (multiple) {
-      setSelected(o => [...o, option])
+      onChange([...value, option])
     } else {
-      setSelected([option])
+      onChange([option])
       setActiveIdx(null)
       setOpen(false)
     }
   }
 
   const handleRemoveSelected = (option: SelectOptionsType) => {
-    setSelected(o => o.filter(o => o.id !== option.id))
+    onChange(value.filter(o => o.id !== option.id))
   }
 
   const containerProps = getReferenceProps({
@@ -144,7 +139,7 @@ export function Autocomplete(props: AutocompleteProps) {
   })
 
   const inputProps = {
-    onChange,
+    onChange: onInputChange,
     value: query,
     placeholder,
     'aria-autocomplete': 'list',
@@ -206,7 +201,7 @@ export function Autocomplete(props: AutocompleteProps) {
           options: queryMatchingOptions,
           activeIndex: activeIndex,
           limit,
-          selected,
+          selected: value,
           handleRemoveSelected,
           props: {
             input: inputProps,

@@ -1,8 +1,5 @@
 import type React from 'react'
-import type {
-  SelectOptionsType,
-  BaseComponentProps
-} from '../../types'
+import type { SelectOptionsType, BaseComponentProps } from '../../types'
 
 export interface AutocompleteProps extends BaseComponentProps {
   /**
@@ -28,7 +25,7 @@ export interface AutocompleteProps extends BaseComponentProps {
   /**
    * Current value to display
    */
-  value?: SelectOptionsType
+  value?: SelectOptionsType[]
   /**
    * Close button tooltip text
    */
@@ -82,5 +79,5 @@ export interface AutocompleteProps extends BaseComponentProps {
    * Format of count of multiple selected to be displayed in input
    */
   getLimitText?: (more: number) => string
-  onChange?: (value: SelectOptionsType) => void
+  onChange?: (value: SelectOptionsType[]) => void
 }
