@@ -1,50 +1,38 @@
-import type { FC } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import { optionListClasses } from './classes'
+import { useAutocomplete } from './context'
 import { Option } from './option'
 
-interface OptionListProps {
-  open: boolean
-  menuProps: any
-  options: any[]
-  highlightedIndex: number
-  selectedItems: any
-  getItemProps: (options: { item: any; index: number }) => any
-}
+export const OptionsList = () => {
+  const {
+    floatingContext,
+    props: { option, list },
+    text,
+    options,
+    open,
+  } = useAutocomplete()
 
-export const OptionList: FC<OptionListProps> = ({
-  open,
-  menuProps,
-  options,
-  highlightedIndex,
-  selectedItems,
-  getItemProps,
-}) => {
-  const selectedIds = selectedItems.map(item => item.id)
   return (
-    <ul
-      className={twMerge(
-        optionListClasses({
-          open,
-        })
+    <FloatingPortal>
+      {open && (
+        <FloatingFocusManager
+          context={floatingContext}
+          initialFocus={-1}
+          visuallyHiddenDismiss
+        >
+          <ul {...list} className={optionListClasses({ open: true })}>
+            {options.length ? (
+              options.map((item, index) => (
+                <Option {...option(item, index)} option={item} />
+              ))
+            ) : (
+              <li className={'py-2 px-3 w-full text-center'}>
+                {text.notFound}
+              </li>
+            )}
+          </ul>
+        </FloatingFocusManager>
       )}
-      {...menuProps}
-    >
-      {open &&
-        (options?.length ? (
-          options?.map?.((item, index) => (
-            <Option
-              item={item}
-              highlightedIndex={highlightedIndex}
-              index={index}
-              selected={selectedIds.includes(item.id)}
-              getItemProps={getItemProps}
-              key={item.id}
-            />
-          ))
-        ) : (
-          <li className={'py-2 px-3 w-full  text-center'}>No results found</li>
-        ))}
-    </ul>
+    </FloatingPortal>
   )
 }

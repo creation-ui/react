@@ -170,6 +170,7 @@ export function Autocomplete(props: AutocompleteProps) {
   const getOptionProps = (option: SelectOptionsType, index: number) =>
     getItemProps({
       key: option.id,
+      multiple,
       // @ts-expect-error
       active: activeIndex === index,
       selected: isSelected(option, value),

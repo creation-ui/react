@@ -1,34 +1,35 @@
-import type { FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { optionClasses } from './classes'
+import React, { forwardRef } from 'react'
+import type { SelectOptionsType } from '../../types'
+import { Icon } from '../icon'
+import { selectOption, selectOptionIcon } from './classes'
 
-interface OptionsProps {
-  item: any
-  highlightedIndex: number
-  index: number
+interface OptionProps {
+  active: boolean
   selected?: boolean
-  getItemProps: (options: { item: any; index: number }) => any
+  option: SelectOptionsType
+  multiple?: boolean
 }
 
-export const Option: FC<OptionsProps> = ({
-  item,
-  highlightedIndex,
-  index,
-  selected,
-  getItemProps,
-}) => {
+export const Option = forwardRef<
+  HTMLLIElement,
+  OptionProps & React.HTMLProps<HTMLLIElement>
+>(({ option, multiple, active, selected, ...rest }, ref) => {
   return (
     <li
-      className={twMerge(
-        optionClasses({
-          highlighted: highlightedIndex === index,
-          selected,
-        })
-      )}
-      {...getItemProps({ item, index })}
+      className={selectOption({
+        active,
+        selected,
+        multiple,
+      })}
+      ref={ref}
+      role='option'
+      aria-selected={selected}
+      {...rest}
     >
-      <span>{item.label}</span>
-      <span className='text-sm text-gray-700'>{item.value}</span>
+      {multiple && (
+        <Icon icon='check' className={selectOptionIcon({ selected, active })} />
+      )}
+      {option.label}
     </li>
   )
-}
+})

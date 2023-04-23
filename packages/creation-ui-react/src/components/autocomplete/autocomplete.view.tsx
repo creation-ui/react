@@ -1,52 +1,18 @@
-import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import clsx from 'clsx'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { useInputBase } from '../input-base/input-base.context'
-import { optionClasses, optionListClasses } from './classes'
 import { useAutocomplete } from './context'
+import { OptionsList } from './option-list'
 import SelectedItem from './selected-item'
 
-interface ItemProps {
-  children: React.ReactNode
-  active: boolean
-  selected?: boolean
-}
-
-const Item = forwardRef<
-  HTMLLIElement,
-  ItemProps & React.HTMLProps<HTMLLIElement>
->(({ children, active, selected, ...rest }, ref) => {
-  return (
-    <li
-      className={optionClasses({
-        highlighted: active,
-        selected,
-      })}
-      ref={ref}
-      role='option'
-      aria-selected={selected}
-      {...rest}
-    >
-      {children}
-    </li>
-  )
-})
-
 export const AutocompleteView = forwardRef((props, ref) => {
-  const { classes, componentId, disabled, readOnly } = useInputBase()
+  const { classes, componentId } = useInputBase()
 
   const {
-    activeIndex,
-    floatingContext,
-    props: { input, option, list },
-    text,
-    clearable,
+    props: { input },
     multiple,
-    options,
     limit,
-    open,
     selected,
-    handleRemoveSelected,
   } = useAutocomplete()
 
   const limitedOptions = selected.slice(0, limit)
@@ -78,27 +44,7 @@ export const AutocompleteView = forwardRef((props, ref) => {
             />
           </div>
         </div>
-        <FloatingPortal>
-          {open && (
-            <FloatingFocusManager
-              context={floatingContext}
-              initialFocus={-1}
-              visuallyHiddenDismiss
-            >
-              <ul {...list} className={optionListClasses({ open: true })}>
-                {options.length ? (
-                  options.map((item, index) => (
-                    <Item {...option(item, index)}>{item.label}</Item>
-                  ))
-                ) : (
-                  <li className={'py-2 px-3 w-full text-center'}>
-                    {text.notFound}
-                  </li>
-                )}
-              </ul>
-            </FloatingFocusManager>
-          )}
-        </FloatingPortal>
+        <OptionsList />
       </div>
     </>
   )

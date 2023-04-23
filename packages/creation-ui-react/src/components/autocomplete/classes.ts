@@ -7,33 +7,16 @@ export const optionListClasses = cva(
     'w-fit',
     'max-h-80',
     'overflow-y-auto',
-    'p-0',
     'border',
     'rounded-md',
-    'mt-2',
+    'flex',
+    'flex-col',
+    'mt-1',
+    'p-1',
   ],
   {
     variants: {
       open: { true: 'block', false: 'hidden' },
-    },
-  }
-)
-
-export const optionClasses = cva(
-  [
-    //
-    'py-2',
-    'px-3',
-    'shadow-sm',
-    'flex',
-    'flex-col',
-    'w-full',
-    'cursor-pointer',
-  ],
-  {
-    variants: {
-      highlighted: { true: 'bg-primary-50' },
-      selected: { true: 'font-bold' },
     },
   }
 )
@@ -57,3 +40,46 @@ export const selectedOptionClasses = cva(
     variants: {},
   }
 )
+
+export const selectOption = cva(
+  [
+    'truncate',
+    'dark:text-info-100',
+    'font-normal',
+    'relative',
+    'cursor-pointer',
+    'select-none',
+    'text-info-800',
+    'flex',
+    'w-full',
+    'items-center',
+    'rounded-md',
+    'px-2',
+    'py-0.5',
+    'mb-1',
+    'group',
+  ],
+  {
+    variants: {
+      selected: {
+        true: [],
+        false: [],
+      },
+      active: {
+        true: ['bg-primary-100/50', 'dark:text-info-900'],
+        false: [],
+      },
+      multiple: { true: ['flex', 'gap-2'], false: [] },
+    },
+  }
+)
+
+export const selectOptionIcon = cva(['font-extrabold', 'text-xl'], {
+  variants: {
+    selected: {
+      true: ['opacity-100', '!text-primary-500', '!fill-primary-500'],
+      false: ['opacity-0'],
+    },
+    active: { true: ['opacity-50'] },
+  },
+})
