@@ -8,7 +8,7 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useTheme } from '../../theme'
 import { SelectOptionsType } from '../../types'
 import { passThrough } from '../../utils/functions'
@@ -27,7 +27,7 @@ const isSelected = (
 }
 
 export function Autocomplete(props: AutocompleteProps) {
-  const { size: defaultSize, zIndex } = useTheme()
+  const { size: defaultSize } = useTheme()
   const {
     id,
     loadingText = 'Loading...',
@@ -107,16 +107,10 @@ export function Autocomplete(props: AutocompleteProps) {
     }
   }
 
-  const leftOptions = useMemo(
-    () =>
-      options.filter(option => value.findIndex(o => o.id === option.id) === -1),
-    [options, value]
-  )
-
   const queryMatchingOptions =
     query === ''
-      ? leftOptions
-      : leftOptions?.filter(option =>
+      ? options
+      : options?.filter(option =>
           option.label
             .toLowerCase()
             .replace(/\s+/g, '')
@@ -175,16 +169,17 @@ export function Autocomplete(props: AutocompleteProps) {
 
   const getOptionProps = (option: SelectOptionsType, index: number) =>
     getItemProps({
+      key: option.id,
       // @ts-expect-error
       active: activeIndex === index,
-      key: option.id,
+      selected: isSelected(option, value),
+      onClick(e: any) {
+        const selected = e.target.getAttribute('aria-selected') === 'true'
+        selected ? handleRemoveSelected(option) : handleSelect(option)
+        refs.domReference.current?.focus()
+      },
       ref(node) {
         listRef.current[index] = node
-      },
-      onClick() {
-        // is selected?
-        false ? handleRemoveSelected(option) : handleSelect(option)
-        refs.domReference.current?.focus()
       },
     })
 

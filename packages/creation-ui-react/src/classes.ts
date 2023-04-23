@@ -210,6 +210,7 @@ export const inputIcon = cva(
     'translate-y-1/2',
     microInteractions,
     'inline-flex',
+    'items-center',
   ],
   {
     variants: {

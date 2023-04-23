@@ -40,7 +40,7 @@ export const optionClasses = cva(
 
 export const selectedOptionClasses = cva(
   [
-    'rounded-md',
+    'rounded-full',
     'text-info-800',
     'py-0.5',
     'px-1',
