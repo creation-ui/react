@@ -19,7 +19,6 @@ specifiers:
   '@swc/core': ^1.3.42
   '@swc/css': ^0.0.20
   '@tailwindcss/aspect-ratio': ^0.4.2
-  '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.9
   '@tanstack/match-sorter-utils': ^8.7.6
@@ -49,6 +48,7 @@ specifiers:
   eslint-plugin-react-hooks: ^4.6.0
   framer-motion: ^10.8.4
   lodash: ^4.17.21
+  lodash.values: ^4.3.0
   next: 13.2.4
   nextra: ^2.2.19
   nextra-theme-docs: ^2.2.19
@@ -89,7 +89,6 @@ dependencies:
   '@mdi/js': 7.2.96
   '@mdi/react': 1.6.1
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.7
-  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.7
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
   '@tanstack/match-sorter-utils': 8.7.6
@@ -108,6 +107,7 @@ dependencies:
   eslint-config-next: 13.0.6_s5ps7njkmjlaqajutnox5ntcla
   framer-motion: 10.8.4_biqbaboplfbrettd7655fr4n2y
   lodash: 4.17.21
+  lodash.values: 4.3.0
   next: 13.2.4_l4i6tgmfppzwb2u4w42uz3wi4m
   nextra: 2.2.19_ld2jel3hspngo3u5lti2kgl2sq
   nextra-theme-docs: 2.2.19_i765vautotixoofbdi6dinfkwe
@@ -3085,15 +3085,6 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.7_postcss@8.4.21
-    dev: false
-
-  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.7:
-    resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
-    dependencies:
-      mini-svg-data-uri: 1.4.4
       tailwindcss: 3.2.7_postcss@8.4.21
     dev: false
 
@@ -8257,6 +8248,10 @@ packages:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
     dev: true
 
+  /lodash.values/4.3.0:
+    resolution: {integrity: sha512-r0RwvdCv8id9TUblb/O7rYPwVy6lerCbcawrfdo9iC/1t1wsNMJknO79WNBgwkH0hIeJ08jmvvESbFpNb4jH0Q==}
+    dev: false
+
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: false
@@ -9384,11 +9379,6 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
     dev: true
-
-  /mini-svg-data-uri/1.4.4:
-    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
-    hasBin: true
-    dev: false
 
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}

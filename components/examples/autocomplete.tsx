@@ -1,10 +1,6 @@
 import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context'
-import {
-  Autocomplete,
-  AutocompleteProps,
-  ELEMENT_SIZES,
-} from '@creation-ui/react'
+import { Autocomplete, DropdownProps, ELEMENT_SIZES } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
@@ -13,8 +9,8 @@ import { pick } from 'lodash'
 
 type Option = (typeof options)[0]
 
-export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
-  const [value, setValue] = useState<Option | never>(options[0])
+export const AutocompleteExample = ({ ...props }: DropdownProps) => {
+  const [value, setValue] = useState<Option[]>([options[0]])
 
   const playground = usePlayground()
 
@@ -24,6 +20,7 @@ export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
     'loading',
     'disabled',
     'readOnly',
+    'clearable',
   ])
 
   return (
@@ -40,7 +37,7 @@ export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
 export const AutocompleteMultipleExample = ({
   label = 'Autocomplete multiple',
   ...props
-}: AutocompleteProps) => {
+}: DropdownProps) => {
   const [value, setValue] = useState<Option[]>([options[0], options[3]])
 
   const handleChange = (value: Option[]) => {
@@ -55,6 +52,7 @@ export const AutocompleteMultipleExample = ({
     'loading',
     'disabled',
     'readOnly',
+    'clearable',
   ])
 
   return (
@@ -80,6 +78,7 @@ export const AutocompletePlayground = () => {
         loading: true,
         disabled: true,
         readOnly: true,
+        clearable: true,
       }}
     >
       <AutocompleteExample />
@@ -96,6 +95,7 @@ export const AutocompleteMultiPlayground = () => {
         loading: true,
         disabled: true,
         readOnly: true,
+        clearable: true,
       }}
     >
       <AutocompleteMultipleExample />

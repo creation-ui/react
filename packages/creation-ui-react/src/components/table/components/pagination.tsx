@@ -133,6 +133,10 @@ const Pagination = () => {
   const resultsCount = table.getPrePaginationRowModel().rows.length
 
   const sizes = getSortedSizes(pageSizes, totalInSizesSelector, resultsCount)
+  const currentSize =
+    sizes.find(
+      ({ id }) => id === table.getState().pagination.pageSize.toString()
+    ) ?? sizes[0]
 
   return (
     <>
@@ -162,11 +166,12 @@ const Pagination = () => {
           <div className='flex flex-col'>
             {pageSizes && (
               <Select
-                showAbove
                 size='sm'
                 options={sizes}
-                value={table.getState().pagination.pageSize}
-                onChange={({ value }: any) => table.setPageSize(value)}
+                value={[currentSize]}
+                onChange={([first]) =>
+                  table.setPageSize(parseInt(first?.label))
+                }
               />
             )}
             {showTotalCount && (

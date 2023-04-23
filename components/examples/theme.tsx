@@ -194,12 +194,6 @@ export const helpersProps: DocumentedProperty[] = [
     defaultValue: 'getLimitText: more => `+${more}`',
     description: 'Get autocomplete select limit text function',
   },
-  {
-    name: 'optionFormatter',
-    type: 'function',
-    defaultValue: "option => (option?.value ? `${option.value}` : '')",
-    description: 'Autocomplete and Select selected option formatter',
-  },
 ]
 
 export const textsProps: DocumentedProperty[] = [

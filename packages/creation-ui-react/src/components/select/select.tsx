@@ -1,148 +1,190 @@
-import { Listbox, Transition } from '@headlessui/react'
-import clsx from 'clsx'
-import { Fragment } from 'react'
-import { input, inputContainer, label, text } from '../../classes'
-import useId from '../../hooks/use-id'
+import {
+  autoUpdate,
+  flip,
+  size,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useListNavigation,
+  useRole,
+} from '@floating-ui/react'
+import React, { useRef, useState } from 'react'
 import { useTheme } from '../../theme'
-import type { MultipleEllipsisFormatter } from '../../types'
-import { formatOptionValue } from '../../utils/format-option-value'
+import { DropdownProps, DropdownOption } from '../../types'
 import { passThrough } from '../../utils/functions'
-import { getTruncatedMultipleValues } from '../../utils/get-truncated-values'
-import { SelectOption } from '../select-option'
-import { HelperText } from '../typography/helper-text'
-import { select } from './classes'
-import type { SelectProps } from './select.types'
-import { ClearButton } from '../clear-button'
+import { isSelected } from '../../utils/is-selected'
 import { DropdownChevron } from '../dropdown-chevron'
+import { InputBase } from '../input-base'
+import {
+  DropdownContext,
+  // Option
+} from '../shared/dropdown'
+import { SelectView } from './select.view'
 
-export const Select = (props: SelectProps) => {
-  const { size: defaultSize, zIndex } = useTheme()
+export function Select(props: DropdownProps) {
+  const { size: defaultSize } = useTheme()
   const {
-    optionComponent = SelectOption,
-    error,
-    size = defaultSize,
-    multiple,
-    clearable,
-    clearButtonText,
-    showAbove,
+    id,
+    loadingText = 'Loading...',
+    emptyText = 'Data is empty',
+    notFoundText = 'Nothing found',
+    placeholder = 'Select option',
+    multiple = false,
+    value = [],
+    options = [],
     helperText,
+    error,
+    limit = 3,
+    onChange,
+    getLimitText = passThrough,
+    // optionComponent = Option,
   } = props
 
-  const limit = 2 //move to theme
+  const componentSize = props.size || defaultSize
 
-  const componentId = useId(props.id)
+  const [open, setOpen] = useState(false)
 
-  const Option = optionComponent
+  const [activeIndex, setActiveIdx] = useState<number | null>(null)
 
-  let value: string = ''
-  let truncated: MultipleEllipsisFormatter
+  const listRef = useRef<Array<HTMLElement | null>>([])
 
-  if (multiple) {
-    truncated = getTruncatedMultipleValues(props.value, limit)
-    value = truncated!.value
-  } else {
-    value = formatOptionValue(props.value)
+  const clearableCallback = () => {
+    onChange?.([])
   }
 
-  const onClear = (e: any) => {
-    e.preventDefault?.()
-    e.stopPropagation?.()
-    props.onChange?.(multiple ? [] : undefined)
-  }
+  const { x, y, strategy, refs, context } = useFloating<HTMLInputElement>({
+    whileElementsMounted: autoUpdate,
+    onOpenChange: setOpen,
+    open,
+    middleware: [
+      flip({ padding: 10 }),
+      size({
+        apply({ rects, availableHeight, elements }) {
+          Object.assign(elements.floating.style, {
+            width: `${rects.reference.width}px`,
+            maxHeight: `${availableHeight}px`,
+          })
+        },
+        padding: 10,
+      }),
+    ],
+  })
+
+  const role = useRole(context, { role: 'listbox' })
+  const dismiss = useDismiss(context)
+  const listNav = useListNavigation(context, {
+    listRef,
+    activeIndex: activeIndex,
+    onNavigate: setActiveIdx,
+    virtual: true,
+    loop: true,
+  })
+
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
+    [role, dismiss, listNav]
+  )
+
+  const isEmpty = !value?.length
+  // const Component = optionComponent
+
   const disabled = props.disabled || props.loading || props.readOnly
+  const clearable = !disabled && props.clearable && !isEmpty
+
+  const toggleOpen = () => setOpen(!open)
+  const handleClose = () => {
+    setActiveIdx(null)
+    setOpen(false)
+  }
+
+  const handleSelect = (option: DropdownOption) => {
+    if (multiple) {
+      onChange?.([...value ?? [], option])
+    } else {
+      onChange?.([option])
+      handleClose()
+    }
+  }
+
+  const handleRemoveSelected = (option: DropdownOption) => {
+    onChange?.(value?.filter(o => o.id !== option.id))
+  }
+
+  const containerProps = getReferenceProps({
+    ref: refs.setReference,
+  })
+
+  const getOptionProps = (option: DropdownOption, index: number) =>
+    getItemProps({
+      key: option.id,
+      multiple,
+      // @ts-expect-error
+      active: activeIndex === index,
+      selected: isSelected(option, value),
+      onClick(e: any) {
+        const selected = e.target.getAttribute('aria-selected') === 'true'
+        if (!selected) {
+          handleSelect(option)
+        } else {
+          handleClose()
+        }
+        refs.domReference.current?.focus()
+      },
+      ref(node) {
+        listRef.current[index] = node
+      },
+    })
+
+  const listProps = getFloatingProps({
+    ref: refs.setFloating,
+    style: {
+      position: strategy,
+      left: x ?? 0,
+      top: y ?? 0,
+    },
+  })
 
   return (
-    <div
-      className={clsx(
-        inputContainer({ disabled, error: !!error }),
-        text({ size })
-      )}
-      id={componentId}
+    <InputBase
+      id={id}
+      disabled={disabled}
+      error={error}
+      size={componentSize}
+      loading={props.loading}
+      readOnly={props.readOnly}
+      label={props.label}
+      required={props.required}
+      endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
+      helperText={helperText}
+      clearable={clearable}
+      onClear={clearableCallback}
     >
-      <Listbox
-        value={props.value}
-        onChange={props.onChange}
-        disabled={props.disabled}
-        multiple={props.multiple}
+      <DropdownContext.Provider
+        value={{
+          multiple,
+          clearable,
+          floatingContext: context,
+          options,
+          activeIndex: activeIndex,
+          limit,
+          selected: value,
+          handleRemoveSelected,
+          props: {
+            input: {},
+            option: getOptionProps,
+            list: listProps,
+          },
+          text: {
+            loading: loadingText,
+            empty: emptyText,
+            notFound: notFoundText,
+            placeholder
+          },
+          open,
+          setOpen,
+        }}
       >
-        {({ open }) => (
-          <div className={clsx(select.container.input)}>
-            {props.label && (
-              <Listbox.Label
-                className={label({ size, required: props.required })}
-                children={props.label}
-                aria-label={props.label?.toString()}
-              />
-            )}
-            <Listbox.Button className={clsx(input({ size }), select.input)}>
-              <span className={clsx(select.value)}>
-                {value}&nbsp;
-                {multiple && truncated.hidden > 0 && (
-                  <span className={clsx(select.hiddenCount)}>
-                    +{truncated.hidden}
-                  </span>
-                )}
-              </span>
-              <span
-                title={clearButtonText}
-                onClick={onClear}
-                className={clsx(
-                  clearable && !!value ? 'block' : 'hidden',
-                  clsx(select.buttons.base, select.buttons.clear)
-                )}
-              >
-                <ClearButton />
-              </span>
-              <span
-                className={clsx(select.buttons.base, select.buttons.chevron)}
-              >
-                <DropdownChevron open={open} />
-              </span>
-            </Listbox.Button>
-            <Transition
-              as={Fragment}
-              leave='transition ease-in duration-100'
-              leaveFrom='opacity-100'
-              leaveTo='opacity-0'
-            >
-              <Listbox.Options
-                className={clsx(
-                  select.list,
-                  zIndex?.dropdowns,
-                  showAbove ? 'mb-2 bottom-full' : 'mt-2 top-full'
-                )}
-              >
-                {props.options?.map(option => (
-                  <Listbox.Option key={option.id} value={option}>
-                    {({ selected, active, disabled }) => (
-                      // @ts-ignore
-                      <Option
-                        option={option}
-                        selected={selected}
-                        active={active}
-                        disabled={disabled}
-                        multiple={props.multiple}
-                      />
-                    )}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
-          </div>
-        )}
-      </Listbox>
-      <HelperText
-        size={size}
-        helperText={error || helperText}
-        error={Boolean(error)}
-      />
-    </div>
+        <SelectView {...containerProps} />
+      </DropdownContext.Provider>
+    </InputBase>
   )
 }
-
-Select.defaultProps = {
-  placeholder: 'Select',
-  selectedOptionFormatter: passThrough,
-}
-
-Select.displayName = 'Select'

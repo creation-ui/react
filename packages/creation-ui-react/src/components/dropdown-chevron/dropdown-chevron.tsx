@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
-import { Icon } from '../icon'
+import { Icon, IconProps } from '../icon'
 
-interface DropdownChevronProps {
+interface DropdownChevronProps extends Omit<IconProps, 'icon'> {
   open?: boolean
 }
 
@@ -16,8 +16,13 @@ const chevron = cva(
   }
 )
 
-const DropdownChevron = ({ open }: DropdownChevronProps) => (
-  <Icon icon='chevron_down' className={chevron({ open })} aria-hidden='true' />
+const DropdownChevron = ({ open, ...props }: DropdownChevronProps) => (
+  <Icon
+    icon='chevron_down'
+    className={chevron({ open })}
+    aria-hidden='true'
+    {...props}
+  />
 )
 
 export default DropdownChevron

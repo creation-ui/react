@@ -4,3 +4,21 @@
 * {
   @apply scroll-smooth;
 }
+
+.reset-input, .reset-input:focus-visible {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  box-shadow: none;
+  border-radius: 0;
+}

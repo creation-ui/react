@@ -1,42 +1,4 @@
-import { Button, SelectOption } from '@creation-ui/react'
-import { SelectOptionsType } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { useState } from 'react'
-
-interface OptionExampleProps {
-  option: SelectOptionsType
-}
-
-export const option: SelectOptionsType = {
-  id: '1',
-  value: 'Option',
-  disabled: false,
-}
-
-export const OptionExample = ({ option }: OptionExampleProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <div className='flex flex-col w-fit mx-auto'>
-      <div className='mx-auto'>
-        <SelectOption option={option} />
-      </div>
-      <Button size='sm' variant='text' onClick={() => setIsOpen(!isOpen)}>
-        Toggle
-      </Button>
-    </div>
-  )
-}
-
-export const OptionListingExample = ({ option }: OptionExampleProps) => (
-  <SelectOption option={option} />
-)
-
-// option: SelectOptionsType | AutocompleteOptionsType
-//   selected?: boolean
-//   disabled?: boolean
-//   active?: boolean
-//   multiple?: boolean
 
 export const properties: DocumentedProperty[] = [
   {

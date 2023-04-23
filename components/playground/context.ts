@@ -46,7 +46,7 @@ type PlaygroundValue = {
   clearable?: boolean
   required?: boolean
   fullWidth?: boolean
-  inputType?: HTMLInputType
+  inputType?: [{ label: HTMLInputType; id: HTMLInputType }]
   icon?: IconConfig
   position?: ElementPosition
 }

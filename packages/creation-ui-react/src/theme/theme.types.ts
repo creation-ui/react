@@ -1,5 +1,4 @@
 import type {
-  AutocompleteOptionsType,
   ElementPosition,
   ElementSize,
   ElementTheme,
@@ -59,7 +58,6 @@ type ThemeZIndex = {
 
 type ThemeHelpers = {
   getLimitText: (more: number) => string
-  optionFormatter: (option?: AutocompleteOptionsType) => string
 }
 
 type ThemeDisplayDirection = 'ltr' | 'rtl'
