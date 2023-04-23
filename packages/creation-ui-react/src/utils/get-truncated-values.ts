@@ -1,8 +1,8 @@
-import type { MultipleEllipsisFormatter, SelectOptionsType } from '../types'
+import type { MultipleEllipsisFormatter, DropdownOption } from '../types'
 import { formatOptionValue } from './format-option-value'
 
 export const getTruncatedMultipleValues = (
-  values: SelectOptionsType[],
+  values: DropdownOption[],
   limit: number
 ): MultipleEllipsisFormatter => {
   if (!values) return { value: '', hidden: 0, total: 0 }

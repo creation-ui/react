@@ -1,9 +1,7 @@
 import clsx from 'clsx'
 import { forwardRef } from 'react'
 import { useInputBase } from '../input-base/input-base.context'
-import { useAutocomplete } from './context'
-import { OptionsList } from './option-list'
-import SelectedItem from './selected-item'
+import { OptionsList,useDropdown, SelectedOption } from '../shared/dropdown'
 
 export const AutocompleteView = forwardRef((props, ref) => {
   const { classes, componentId } = useInputBase()
@@ -13,7 +11,7 @@ export const AutocompleteView = forwardRef((props, ref) => {
     multiple,
     limit,
     selected,
-  } = useAutocomplete()
+  } = useDropdown()
 
   const limitedOptions = selected.slice(0, limit)
   const rest = selected.length - limit
@@ -30,7 +28,7 @@ export const AutocompleteView = forwardRef((props, ref) => {
             {multiple && (
               <>
                 {limitedOptions?.map((item, idx) => (
-                  <SelectedItem key={item.id} option={item} idx={idx} />
+                  <SelectedOption key={item.id} option={item} idx={idx} />
                 ))}
                 {rest > 0 && <span>+{rest}</span>}
               </>

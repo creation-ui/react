@@ -10,23 +10,18 @@ import {
 } from '@floating-ui/react'
 import React, { useRef, useState } from 'react'
 import { useTheme } from '../../theme'
-import { SelectOptionsType } from '../../types'
+import { DropdownProps, DropdownOption } from '../../types'
 import { passThrough } from '../../utils/functions'
+import { isSelected } from '../../utils/is-selected'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import { SelectOption } from '../select-option'
+import {
+  DropdownContext,
+  // Option
+} from '../shared/dropdown'
 import { AutocompleteView } from './autocomplete.view'
-import { AutocompleteContext } from './context'
-import type { AutocompleteProps } from './types'
 
-const isSelected = (
-  { id }: SelectOptionsType,
-  selected: SelectOptionsType[]
-) => {
-  return selected.some(o => o.id === id)
-}
-
-export function Autocomplete(props: AutocompleteProps) {
+export function Autocomplete(props: DropdownProps) {
   const { size: defaultSize } = useTheme()
   const {
     id,
@@ -42,7 +37,7 @@ export function Autocomplete(props: AutocompleteProps) {
     limit = 3,
     onChange,
     getLimitText = passThrough,
-    optionComponent = SelectOption,
+    // optionComponent = Option,
   } = props
 
   const componentSize = props.size || defaultSize
@@ -118,14 +113,14 @@ export function Autocomplete(props: AutocompleteProps) {
 
   const isQuery = !!query.trim()
   const isEmpty = !value.length
-  const Option = optionComponent
+  // const Component = optionComponent
 
   const disabled = props.disabled || props.loading || props.readOnly
   const clearable = !disabled && props.clearable && (!isEmpty || isQuery)
 
   const toggleOpen = () => setOpen(!open)
 
-  const handleSelect = (option: SelectOptionsType) => {
+  const handleSelect = (option: DropdownOption) => {
     if (multiple) {
       clearInput()
       onChange([...value, option])
@@ -137,7 +132,7 @@ export function Autocomplete(props: AutocompleteProps) {
     }
   }
 
-  const handleRemoveSelected = (option: SelectOptionsType) => {
+  const handleRemoveSelected = (option: DropdownOption) => {
     onChange(value.filter(o => o.id !== option.id))
   }
 
@@ -166,7 +161,7 @@ export function Autocomplete(props: AutocompleteProps) {
     },
   }
 
-  const getOptionProps = (option: SelectOptionsType, index: number) =>
+  const getOptionProps = (option: DropdownOption, index: number) =>
     getItemProps({
       key: option.id,
       multiple,
@@ -207,7 +202,7 @@ export function Autocomplete(props: AutocompleteProps) {
       clearable={clearable}
       onClear={clearableCallback}
     >
-      <AutocompleteContext.Provider
+      <DropdownContext.Provider
         value={{
           multiple,
           clearable,
@@ -228,10 +223,11 @@ export function Autocomplete(props: AutocompleteProps) {
             notFound: notFoundText,
           },
           open,
+          setOpen
         }}
       >
         <AutocompleteView {...containerProps} />
-      </AutocompleteContext.Provider>
+      </DropdownContext.Provider>
     </InputBase>
   )
 }

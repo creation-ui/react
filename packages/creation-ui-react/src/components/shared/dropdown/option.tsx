@@ -1,12 +1,12 @@
 import React, { forwardRef } from 'react'
-import type { SelectOptionsType } from '../../types'
-import { Icon } from '../icon'
-import { selectOption, selectOptionIcon } from './classes'
+import type { DropdownOption } from '../../../types'
+import { Icon } from '../../icon'
+import { selectOption, selectOptionIcon } from '../../../classes'
 
 interface OptionProps {
   active: boolean
   selected?: boolean
-  option: SelectOptionsType
+  option: DropdownOption
   multiple?: boolean
 }
 

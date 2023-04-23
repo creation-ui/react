@@ -1,6 +1,6 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
-import { optionListClasses } from './classes'
-import { useAutocomplete } from './context'
+import { optionListClasses } from '../../../classes'
+import { useDropdown } from './context'
 import { Option } from './option'
 
 export const OptionsList = () => {
@@ -10,7 +10,7 @@ export const OptionsList = () => {
     text,
     options,
     open,
-  } = useAutocomplete()
+  } = useDropdown()
 
   return (
     <FloatingPortal>

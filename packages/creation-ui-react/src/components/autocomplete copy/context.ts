@@ -1,18 +1,18 @@
 import { createContext, ReactNode, useContext } from 'react'
-import { SelectOptionsType } from '../../types'
+import { DropdownOption } from '../../types'
 
 interface AutocompleteContextValue {
   open: boolean
   multiple: boolean
   clearable: boolean
   floatingContext: any
-  options: SelectOptionsType[]
+  options: DropdownOption[]
   activeIndex?: number
   limit?: number
-  selected?: SelectOptionsType[]
+  selected?: DropdownOption[]
   props: {
     input: any
-    option: (item: SelectOptionsType, index: number) => any
+    option: (item: DropdownOption, index: number) => any
     list: any
   }
   text: {
@@ -20,7 +20,7 @@ interface AutocompleteContextValue {
     empty?: ReactNode
     notFound?: ReactNode
   }
-  handleRemoveSelected: (item: SelectOptionsType) => void
+  handleRemoveSelected: (item: DropdownOption) => void
 }
 
 const AutocompleteContext = createContext<AutocompleteContextValue>({} as any)
