@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.5.0](https://github.com/creation-ui/react/compare/v0.4.2...v0.5.0) (2023-04-23)
+
+
+### Features
+
+* add floating ui-autocomplete ([1d77e67](https://github.com/creation-ui/react/commit/1d77e67502641bde6e77e4e8558b5cd9954cb32e))
+* clearable input-base ([6f4a9f6](https://github.com/creation-ui/react/commit/6f4a9f6fb30a94541fad252c05416f029cbbd53d))
+* restore to original example ([726be29](https://github.com/creation-ui/react/commit/726be29e3278cb0da045407593f5a057df9b89bf))
+
+
+### Bug Fixes
+
+* build errors ([d9ffe54](https://github.com/creation-ui/react/commit/d9ffe549c03fc6b6151e13ae2c099f4a0831bf85))
+
 ## [0.4.2](https://github.com/creation-ui/react/compare/v0.4.1...v0.4.2) (2023-04-05)
 
 
