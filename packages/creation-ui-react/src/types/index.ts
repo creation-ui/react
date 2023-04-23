@@ -198,6 +198,14 @@ export interface InputBaseProps extends BaseComponentProps {
    * Children
    */
   children: React.ReactNode
+  /**
+   * clearable icon
+  */
+ clearable?: boolean
+ /**
+  * Callback for clear input icon.
+  */
+ onClear?: () => void
 }
 
 export type ReadableError = {

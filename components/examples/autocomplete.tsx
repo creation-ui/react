@@ -24,6 +24,7 @@ export const AutocompleteExample = ({ ...props }: AutocompleteProps) => {
     'loading',
     'disabled',
     'readOnly',
+    'clearable',
   ])
 
   return (
@@ -55,6 +56,7 @@ export const AutocompleteMultipleExample = ({
     'loading',
     'disabled',
     'readOnly',
+    'clearable',
   ])
 
   return (
@@ -80,6 +82,7 @@ export const AutocompletePlayground = () => {
         loading: true,
         disabled: true,
         readOnly: true,
+        clearable: true,
       }}
     >
       <AutocompleteExample />
@@ -96,6 +99,7 @@ export const AutocompleteMultiPlayground = () => {
         loading: true,
         disabled: true,
         readOnly: true,
+        clearable: true,
       }}
     >
       <AutocompleteMultipleExample />

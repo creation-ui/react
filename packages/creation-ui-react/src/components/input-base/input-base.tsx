@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge'
 import { input, inputContainer, inputIcon, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import { ClearButton } from '../clear-button'
 import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
@@ -25,6 +26,8 @@ const InputBase: FC<InputBaseProps> = props => {
     startAdornment,
     endAdornment,
     variant,
+    clearable,
+    onClear,
     ...rest
   } = props
   const componentId = useId(id)
@@ -86,16 +89,16 @@ const InputBase: FC<InputBaseProps> = props => {
               </div>
             )}
             {children}
-            {!loading && endAdornment && (
-              <div className={inputIcon({ position: 'right' })}>
-                {endAdornment}
-              </div>
-            )}
-            {loading && (
+            {loading ? (
               <Loader
                 className={inputIcon({ position: 'right' })}
                 size={size === 'lg' ? 'md' : 'sm'}
               />
+            ) : (
+              <div className={inputIcon({ position: 'right' })}>
+                {clearable && <ClearButton onClick={onClear} />}
+                {endAdornment}
+              </div>
             )}
           </div>
           <HelperText

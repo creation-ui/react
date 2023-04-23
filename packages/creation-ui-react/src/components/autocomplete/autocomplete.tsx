@@ -19,26 +19,31 @@ import { AutocompleteView } from './autocomplete.view'
 import { AutocompleteContext } from './context'
 import type { AutocompleteProps } from './types'
 
+const isSelected = (
+  { id }: SelectOptionsType,
+  selected: SelectOptionsType[]
+) => {
+  return selected.some(o => o.id === id)
+}
+
 export function Autocomplete(props: AutocompleteProps) {
   const { size: defaultSize, zIndex } = useTheme()
   const {
+    id,
     loadingText = 'Loading...',
     emptyText = 'Data is empty',
     notFoundText = 'Nothing found',
-    clearable = true,
-    multiple,
-    optionComponent = SelectOption,
-    options = [],
     placeholder = 'Select option',
-    id,
+    multiple,
+    value,
+    options = [],
     helperText,
-    // size = defaultSize,
     error,
     limit = 3,
     onChange,
     getLimitText = passThrough,
     selectedOptionFormatter = passThrough,
-    value,
+    optionComponent = SelectOption,
   } = props
 
   const componentSize = props.size || defaultSize
@@ -49,6 +54,12 @@ export function Autocomplete(props: AutocompleteProps) {
   const [activeIndex, setActiveIdx] = useState<number | null>(null)
 
   const listRef = useRef<Array<HTMLElement | null>>([])
+
+  const clearInput = () => setQuery('')
+  const clearableCallback = () => {
+    onChange([])
+    clearInput()
+  }
 
   const { x, y, strategy, refs, context } = useFloating<HTMLInputElement>({
     whileElementsMounted: autoUpdate,
@@ -112,21 +123,24 @@ export function Autocomplete(props: AutocompleteProps) {
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         )
 
-  const isQuery = query.length > 0
-  const isSelected = !!props.value
+  const isQuery = !!query.trim()
+  const isEmpty = !value.length
   const Option = optionComponent
+
   const disabled = props.disabled || props.loading || props.readOnly
+  const clearable = !disabled && props.clearable && !isEmpty
 
   const toggleOpen = () => setOpen(!open)
 
   const handleSelect = (option: SelectOptionsType) => {
-    setQuery('')
     if (multiple) {
+      clearInput()
       onChange([...value, option])
     } else {
       onChange([option])
       setActiveIdx(null)
       setOpen(false)
+      setQuery(option.label)
     }
   }
 
@@ -161,12 +175,15 @@ export function Autocomplete(props: AutocompleteProps) {
 
   const getOptionProps = (option: SelectOptionsType, index: number) =>
     getItemProps({
+      // @ts-expect-error
+      active: activeIndex === index,
       key: option.id,
       ref(node) {
         listRef.current[index] = node
       },
       onClick() {
-        handleSelect(option)
+        // is selected?
+        false ? handleRemoveSelected(option) : handleSelect(option)
         refs.domReference.current?.focus()
       },
     })
@@ -192,6 +209,8 @@ export function Autocomplete(props: AutocompleteProps) {
       required={props.required}
       endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
       helperText={helperText}
+      clearable={clearable}
+      onClear={clearableCallback}
     >
       <AutocompleteContext.Provider
         value={{

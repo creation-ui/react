@@ -203,7 +203,14 @@ export const label = cva([...classes.label], {
 })
 
 export const inputIcon = cva(
-  ['absolute', 'bottom-1/2', 'transform', 'translate-y-1/2', microInteractions],
+  [
+    'absolute',
+    'bottom-1/2',
+    'transform',
+    'translate-y-1/2',
+    microInteractions,
+    'inline-flex',
+  ],
   {
     variants: {
       position: {

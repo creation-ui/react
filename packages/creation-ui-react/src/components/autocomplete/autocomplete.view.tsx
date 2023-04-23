@@ -59,8 +59,6 @@ export const AutocompleteView = forwardRef((props, ref) => {
     handleRemoveSelected,
   } = useAutocomplete()
 
-  const hideInput = !multiple && !!selected.length
-
   return (
     <>
       <div
@@ -70,17 +68,16 @@ export const AutocompleteView = forwardRef((props, ref) => {
       >
         <div className={clsx('flex flex-col gap-1')}>
           <div className='inline-flex gap-2 options-center flex-wrap h-fit'>
-            {selected?.map((item, idx) => (
-              <SelectedItem key={item.id} option={item} idx={idx} />
-            ))}
-            {hideInput ? null : (
-              <input
-                //
-                id={componentId}
-                className='reset-input h-fit'
-                {...input}
-              />
-            )}
+            {multiple &&
+              selected?.map((item, idx) => (
+                <SelectedItem key={item.id} option={item} idx={idx} />
+              ))}
+            <input
+              //
+              id={componentId}
+              className='reset-input h-fit'
+              {...input}
+            />
           </div>
         </div>
         <FloatingPortal>
@@ -93,12 +90,7 @@ export const AutocompleteView = forwardRef((props, ref) => {
               <ul {...list} className={optionListClasses({ open: true })}>
                 {options.length ? (
                   options.map((item, index) => (
-                    <Item
-                      active={activeIndex === index}
-                      {...option(item, index)}
-                    >
-                      {item.label}
-                    </Item>
+                    <Item {...option(item, index)}>{item.label}</Item>
                   ))
                 ) : (
                   <li className={'py-2 px-3 w-full text-center'}>
