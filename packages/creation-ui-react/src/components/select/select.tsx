@@ -12,6 +12,11 @@ import { useRef, useState } from 'react'
 import { useTheme } from '../../theme'
 import { DropdownOption, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
+import {
+  getFlatOptions,
+  normalizeOptions,
+  normalizeValue,
+} from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
 import { DropdownContext, dropdownInitialProps } from '../shared/dropdown'
@@ -26,8 +31,6 @@ export function Select(props: DropdownProps) {
     notFoundText,
     placeholder,
     multiple,
-    value,
-    options,
     helperText,
     error,
     limit,
@@ -37,7 +40,9 @@ export function Select(props: DropdownProps) {
     selectedOptionComponent,
     size = defaultSize,
   } = props
-
+  const isDataFlat = typeof props.options?.[0] === 'string'
+  const options = normalizeOptions(props.options)
+  const value = normalizeValue(props.value)
   const [open, setOpen] = useState(false)
 
   const [activeIndex, setActiveIdx] = useState<number | null>(null)
@@ -80,8 +85,7 @@ export function Select(props: DropdownProps) {
     [role, dismiss, listNav]
   )
 
-  const isEmpty = !value?.length
-  // const Component = optionComponent
+  const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
 
   const disabled = props.disabled || props.loading || props.readOnly
   const clearable = !disabled && props.clearable && !isEmpty
@@ -94,14 +98,19 @@ export function Select(props: DropdownProps) {
 
   const handleSelect = (option: DropdownOption) => {
     if (multiple) {
-      onChange?.([...(value ?? []), option])
+      // @ts-expect-error
+      const newValue = (isEmpty ? [] : value).concat(option)
+      onChange?.(isDataFlat ? getFlatOptions(newValue) : newValue)
     } else {
-      onChange?.([option])
-      handleClose()
+      onChange?.(isDataFlat ? getFlatOptions(option) : option)
+      setActiveIdx(null)
+      setOpen(false)
     }
   }
 
   const handleRemoveSelected = (option: DropdownOption) => {
+    // always multiple
+    // @ts-ignore
     onChange?.(value?.filter(o => o.id !== option.id))
   }
 

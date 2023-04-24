@@ -11,7 +11,7 @@ interface DropdownContextValue {
   options: DropdownOption[]
   activeIndex: number | null
   limit?: number
-  selected?: DropdownOption[]
+  selected?: DropdownOption | DropdownOption[]
   props: {
     input: any
     option: (item: DropdownOption, index: number) => any
