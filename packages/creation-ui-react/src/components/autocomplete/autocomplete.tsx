@@ -1,7 +1,7 @@
 import {
   autoUpdate,
   flip,
-  size,
+  size as floatingSize,
   useDismiss,
   useFloating,
   useInteractions,
@@ -19,28 +19,29 @@ import {
   DropdownContext,
   // Option
 } from '../shared/dropdown'
+import { dropdownInitialProps } from '../shared/dropdown/constants'
 import { AutocompleteView } from './autocomplete.view'
 
 export function Autocomplete(props: DropdownProps) {
   const { size: defaultSize } = useTheme()
   const {
     id,
-    loadingText = 'Loading...',
-    emptyText = 'Data is empty',
-    notFoundText = 'Nothing found',
-    placeholder = 'Select option',
-    multiple = false,
-    value = [],
-    options = [],
+    loadingText,
+    emptyText,
+    notFoundText,
+    placeholder,
+    multiple,
+    value,
+    options,
     helperText,
     error,
-    limit = 3,
-    onChange = passThrough,
-    getLimitText = passThrough,
-    // optionComponent = Option,
+    limit,
+    onChange,
+    getLimitText,
+    optionComponent,
+    selectedOptionComponent,
+    size = defaultSize,
   } = props
-
-  const componentSize = props.size || defaultSize
 
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -61,7 +62,7 @@ export function Autocomplete(props: DropdownProps) {
     open,
     middleware: [
       flip({ padding: 10 }),
-      size({
+      floatingSize({
         apply({ rects, availableHeight, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
@@ -192,7 +193,7 @@ export function Autocomplete(props: DropdownProps) {
       id={id}
       disabled={disabled}
       error={error}
-      size={componentSize}
+      size={size}
       loading={props.loading}
       readOnly={props.readOnly}
       label={props.label}
@@ -224,6 +225,8 @@ export function Autocomplete(props: DropdownProps) {
           },
           open,
           setOpen,
+          optionComponent,
+          selectedOptionComponent,
         }}
       >
         <AutocompleteView {...containerProps} />
@@ -231,3 +234,5 @@ export function Autocomplete(props: DropdownProps) {
     </InputBase>
   )
 }
+
+Autocomplete.defaultProps = dropdownInitialProps

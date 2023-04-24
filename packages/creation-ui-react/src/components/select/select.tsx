@@ -1,46 +1,42 @@
 import {
   autoUpdate,
   flip,
-  size,
+  size as floatingSize,
   useDismiss,
   useFloating,
   useInteractions,
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useTheme } from '../../theme'
-import { DropdownProps, DropdownOption } from '../../types'
-import { passThrough } from '../../utils/functions'
+import { DropdownOption, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import {
-  DropdownContext,
-  // Option
-} from '../shared/dropdown'
+import { DropdownContext, dropdownInitialProps } from '../shared/dropdown'
 import { SelectView } from './select.view'
 
 export function Select(props: DropdownProps) {
   const { size: defaultSize } = useTheme()
   const {
     id,
-    loadingText = 'Loading...',
-    emptyText = 'Data is empty',
-    notFoundText = 'Nothing found',
-    placeholder = 'Select option',
-    multiple = false,
-    value = [],
-    options = [],
+    loadingText,
+    emptyText,
+    notFoundText,
+    placeholder,
+    multiple,
+    value,
+    options,
     helperText,
     error,
-    limit = 3,
+    limit,
     onChange,
-    getLimitText = passThrough,
-    // optionComponent = Option,
+    getLimitText,
+    optionComponent,
+    selectedOptionComponent,
+    size = defaultSize,
   } = props
-
-  const componentSize = props.size || defaultSize
 
   const [open, setOpen] = useState(false)
 
@@ -58,7 +54,7 @@ export function Select(props: DropdownProps) {
     open,
     middleware: [
       flip({ padding: 10 }),
-      size({
+      floatingSize({
         apply({ rects, availableHeight, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
@@ -98,7 +94,7 @@ export function Select(props: DropdownProps) {
 
   const handleSelect = (option: DropdownOption) => {
     if (multiple) {
-      onChange?.([...value ?? [], option])
+      onChange?.([...(value ?? []), option])
     } else {
       onChange?.([option])
       handleClose()
@@ -148,7 +144,7 @@ export function Select(props: DropdownProps) {
       id={id}
       disabled={disabled}
       error={error}
-      size={componentSize}
+      size={size}
       loading={props.loading}
       readOnly={props.readOnly}
       label={props.label}
@@ -177,10 +173,12 @@ export function Select(props: DropdownProps) {
             loading: loadingText,
             empty: emptyText,
             notFound: notFoundText,
-            placeholder
+            placeholder,
           },
           open,
           setOpen,
+          optionComponent,
+          selectedOptionComponent,
         }}
       >
         <SelectView {...containerProps} />
@@ -188,3 +186,5 @@ export function Select(props: DropdownProps) {
     </InputBase>
   )
 }
+
+Select.defaultProps = dropdownInitialProps
