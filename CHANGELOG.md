@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/creation-ui/react/compare/v0.5.2...v0.5.3) (2023-04-25)
+
+
+### Bug Fixes
+
+* flat selection in dropdowns broken ([3ca26e5](https://github.com/creation-ui/react/commit/3ca26e5247098d1736f208e0462fdd17cbd4777b))
+
 ## [0.5.2](https://github.com/creation-ui/react/compare/v0.5.1...v0.5.2) (2023-04-25)
 
 
