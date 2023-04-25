@@ -133,11 +133,7 @@ const Pagination = () => {
   const resultsCount = table.getPrePaginationRowModel().rows.length
 
   const sizes = getSortedSizes(pageSizes, totalInSizesSelector, resultsCount)
-  const currentSize =
-    sizes.find(
-      ({ id }) => id === table.getState().pagination.pageSize.toString()
-    ) ?? sizes[0]
-
+  const currentSize = table.getState().pagination.pageSize.toString()
   return (
     <>
       <div className='px-4 py-3 flex items-center justify-between sm:px-6'>
@@ -168,10 +164,8 @@ const Pagination = () => {
               <Select
                 size='sm'
                 options={sizes}
-                value={[currentSize]}
-                onChange={([first]) =>
-                  table.setPageSize(parseInt(first?.label))
-                }
+                value={currentSize}
+                onChange={value => table.setPageSize(Number(value))}
               />
             )}
             {showTotalCount && (

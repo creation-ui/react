@@ -68,7 +68,7 @@ export type GetComponentProps<T> = T extends
   : never
 
 export type DropdownOption = {
-  id: string | number
+  id: string
   label: string
   disabled?: boolean
 }
