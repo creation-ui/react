@@ -9,5 +9,7 @@ export function getSortedSizes(
     sizes.add(resultsCount)
   }
 
-  return Array.from(sizes).sort().map(String)
+  return Array.from(sizes)
+    .sort((a, b) => a - b)
+    .map(String)
 }

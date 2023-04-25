@@ -6,16 +6,15 @@ import {
   useFloating,
   useInteractions,
   useListNavigation,
-  useRole,
+  useRole
 } from '@floating-ui/react'
 import React, { useRef, useState } from 'react'
+import { useNormalizedOptions } from '../../hooks/use-normalized-options'
 import { useTheme } from '../../theme'
 import { DropdownOption, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
 import {
-  getFlatOptions,
-  normalizeOptions,
-  normalizeValue,
+  getFlatOptions
 } from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
@@ -41,9 +40,10 @@ export function Autocomplete(props: DropdownProps) {
     selectedOptionComponent,
     size = defaultSize,
   } = props
-  const isDataFlat = typeof props.options?.[0] === 'string'
-  const options = normalizeOptions(props.options)
-  const value = normalizeValue(props.value)
+  const { isDataFlat, options, value } = useNormalizedOptions({
+    value: props.value,
+    options: props.options,
+  })
 
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -130,7 +130,7 @@ export function Autocomplete(props: DropdownProps) {
       const newValue = (isEmpty ? [] : value).concat(option)
       onChange?.(isDataFlat ? getFlatOptions(newValue) : newValue)
     } else {
-      onChange?.(isDataFlat ? getFlatOptions(option) : option)
+      onChange?.(isDataFlat ? option.id : option)
       setActiveIdx(null)
       setOpen(false)
       setQuery(option.label)
@@ -138,9 +138,11 @@ export function Autocomplete(props: DropdownProps) {
   }
 
   const handleRemoveSelected = (option: DropdownOption) => {
-    // always multiple
-    // @ts-ignore
-    onChange?.((value ?? []).filter(o => o.id !== option.id))
+    if (multiple) {
+      // @ts-expect-error
+      const newValue = value?.filter((o: any) => o.id !== option.id)
+      onChange?.(isDataFlat ? getFlatOptions(newValue) : newValue)
+    }
   }
 
   const containerProps = getReferenceProps({
@@ -177,7 +179,9 @@ export function Autocomplete(props: DropdownProps) {
       selected: isSelected(option, value),
       onClick(e: any) {
         const selected = e.target.getAttribute('aria-selected') === 'true'
-        selected && multiple ? handleRemoveSelected(option) : handleSelect(option)
+        selected && multiple
+          ? handleRemoveSelected(option)
+          : handleSelect(option)
         refs.domReference.current?.focus()
       },
       ref(node) {
