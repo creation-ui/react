@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/creation-ui/react/compare/v0.5.1...v0.5.2) (2023-04-25)
+
+
+### Bug Fixes
+
+* spelling ([cea0a1f](https://github.com/creation-ui/react/commit/cea0a1ffb4744e14c6a98a88883414ff4f24a966))
+
 ## [0.5.1](https://github.com/creation-ui/react/compare/v0.5.0...v0.5.1) (2023-04-25)
 
 
