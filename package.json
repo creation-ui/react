@@ -26,7 +26,8 @@
     "import-check": "npx cycle-import-check",
     "rm:build": "rm -rf ./packages/creation-ui-react/build",
     "e2e": "pnpm package:build && cypress run",
-    "e2e:dev": "pnpm package:build && cypress open"
+    "e2e:dev": "pnpm package:build && cypress open",
+    "version":"sh ./override-version.sh"
   },
   "dependencies": {
     "@babel/parser": "^7.21.4",
