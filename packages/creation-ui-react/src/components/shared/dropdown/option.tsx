@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react'
+import { selectOptionClasses } from '../../../classes'
 import type { DropdownOption, ElementSize } from '../../../types'
-import { Icon } from '../../icon'
-import { selectOptionClasses, selectOptionIconClasses } from '../../../classes'
 
 interface OptionProps {
   active: boolean
@@ -28,9 +27,6 @@ export const Option = forwardRef<
       aria-selected={selected}
       {...rest}
     >
-      {/* {multiple && (
-        <Icon icon='check' className={selectOptionIconClasses({ selected, active })} />
-      )} */}
       {option.label}
     </li>
   )

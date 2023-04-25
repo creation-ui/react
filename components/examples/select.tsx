@@ -13,7 +13,9 @@ export const SelectExample = ({ ...props }: DropdownProps) => {
       options={options}
       label={props.label}
       value={selection}
-      onChange={setSelection}
+      clearable
+      placeholder='Select value'
+      onChange={setSelection as any}
       {...props}
     />
   )
@@ -22,7 +24,7 @@ export const SelectMultipleExample = ({
   label = 'Select multiple',
   ...props
 }: DropdownProps) => {
-  const [selection, setSelection] = useState<DropdownOption[]>([
+  const [selection, setSelection] = useState<DropdownOption[] | null>([
     options[0],
     options[3],
   ])
@@ -33,7 +35,8 @@ export const SelectMultipleExample = ({
       label={label}
       value={selection}
       multiple
-      onChange={setSelection}
+      placeholder='Select multiple'
+      onChange={setSelection as any}
       {...props}
     />
   )

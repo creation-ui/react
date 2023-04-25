@@ -43,7 +43,9 @@ export const SelectView = forwardRef((props, ref) => {
     text: { placeholder },
   } = useDropdown()
 
-  const flat = getFlatOptions(selected)
+  const flat: string[] = getFlatOptions(selected)
+  const isEmpty = !flat.length
+  const isPlaceholder = isEmpty || multiple
 
   return (
     <div
@@ -60,7 +62,10 @@ export const SelectView = forwardRef((props, ref) => {
         }}
       >
         <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
-          {multiple ? <SelectedView /> : flat ?? placeholder}
+          {multiple ? <SelectedView /> : flat}
+          {isPlaceholder && (
+            <span className='text-gray-400'>{placeholder}</span>
+          )}
           <>&nbsp;</>
         </div>
       </div>

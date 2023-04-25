@@ -236,6 +236,8 @@ export const optionListClasses = cva(
     'gap-1',
     'mt-1',
     'p-1',
+    'dark:bg-gray-800',
+    'dark:border-gray-700',
   ],
   {
     variants: {
@@ -248,11 +250,11 @@ export const selectedOptionClasses = cva(
   [
     'rounded-full',
     'text-info-800',
-    'py-0.5',
-    'px-1',
-    'border',
     'bg-info-100',
-    'border-info-200',
+    'dark:text-info-300',
+    'dark:bg-info-700',
+    'px-1.5',
+    'text-sm',
     'inline-flex',
     'gap-1',
     'items-center',
@@ -281,11 +283,16 @@ export const selectOptionClasses = cva(
   {
     variants: {
       selected: {
-        true: ['bg-primary-100/60', 'hover:bg-primary-100'],
+        true: [
+          'bg-primary-100/60',
+          'dark:bg-primary-100/50',
+          'hover:bg-primary-100',
+          'hover:dark:bg-primary-100/60',
+        ],
         false: [],
       },
       active: {
-        true: ['bg-info-100', 'dark:text-info-900'],
+        true: ['hover:bg-info-100', 'hover:dark:bg-primary-100/25'],
         false: [],
       },
       multiple: { true: ['flex', 'gap-2'], false: [] },

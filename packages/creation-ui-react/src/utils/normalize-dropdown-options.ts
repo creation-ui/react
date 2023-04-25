@@ -39,10 +39,10 @@ export const normalizeValue = (
 
 export const getFlatOptions = (
   options: DropdownOption[] | DropdownOption
-): string[] | string => {
+): string[] => {
   if (Array.isArray(options)) {
     return options.map((option: DropdownOption) => option.label)
   } else {
-    return (options as DropdownOption).label
+    return [(options as DropdownOption).label]
   }
 }

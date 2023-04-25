@@ -32,11 +32,9 @@ const SelectedView = () => {
 
 export const AutocompleteView = forwardRef((props, ref) => {
   const { classes, componentId } = useInputBase()
-
   const {
     props: { input },
     multiple,
-    selectedOptionComponent: SelectedOption,
   } = useDropdown()
 
   return (
