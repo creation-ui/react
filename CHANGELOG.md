@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.1](https://github.com/creation-ui/react/compare/v0.5.0...v0.5.1) (2023-04-25)
+
+
+### Features
+
+* add option for flat values ([34fa67f](https://github.com/creation-ui/react/commit/34fa67f38bc69647a2d931c00b4f233fa7c0cde8))
+* provide components from props to select and autocomplete ([e44a16d](https://github.com/creation-ui/react/commit/e44a16df14c21d41bec54776209cc8ffcc9898bc))
+
+
+### Miscellaneous Chores
+
+* release 0.5.1 ([38b928e](https://github.com/creation-ui/react/commit/38b928e3bd3377e8e5b3845572806db8154dedce))
+
 ## [0.5.0](https://github.com/creation-ui/react/compare/v0.4.2...v0.5.0) (2023-04-23)
 
 
