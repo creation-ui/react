@@ -124,6 +124,7 @@ export function Select(props: DropdownProps) {
       key: option.id,
       multiple,
       // @ts-expect-error
+      size,
       active: activeIndex === index,
       selected: isSelected(option, value),
       onClick(e: any) {

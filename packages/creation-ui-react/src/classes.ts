@@ -222,7 +222,6 @@ export const inputIcon = cva(
   }
 )
 
-
 export const optionListClasses = cva(
   [
     'bg-white',
@@ -234,6 +233,7 @@ export const optionListClasses = cva(
     'rounded-md',
     'flex',
     'flex-col',
+    'gap-1',
     'mt-1',
     'p-1',
   ],
@@ -258,7 +258,6 @@ export const selectedOptionClasses = cva(
     'items-center',
     'select-none',
   ],
-
   {
     variants: {},
   }
@@ -277,22 +276,20 @@ export const selectOptionClasses = cva(
     'w-full',
     'items-center',
     'rounded-md',
-    'px-2',
-    'py-0.5',
-    'mb-1',
     'group',
   ],
   {
     variants: {
       selected: {
-        true: [],
+        true: ['bg-primary-100/60', 'hover:bg-primary-100'],
         false: [],
       },
       active: {
-        true: ['bg-primary-100/50', 'dark:text-info-900'],
+        true: ['bg-info-100', 'dark:text-info-900'],
         false: [],
       },
       multiple: { true: ['flex', 'gap-2'], false: [] },
+      size: sharedSizeClassesCVA,
     },
   }
 )

@@ -6,16 +6,14 @@ import {
   useFloating,
   useInteractions,
   useListNavigation,
-  useRole
+  useRole,
 } from '@floating-ui/react'
 import React, { useRef, useState } from 'react'
 import { useNormalizedOptions } from '../../hooks/use-normalized-options'
 import { useTheme } from '../../theme'
 import { DropdownOption, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
-import {
-  getFlatOptions
-} from '../../utils/normalize-dropdown-options'
+import { getFlatOptions } from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
 import { DropdownContext } from '../shared/dropdown'
@@ -175,6 +173,7 @@ export function Autocomplete(props: DropdownProps) {
       key: option.id,
       multiple,
       // @ts-expect-error
+      size,
       active: activeIndex === index,
       selected: isSelected(option, value),
       onClick(e: any) {
