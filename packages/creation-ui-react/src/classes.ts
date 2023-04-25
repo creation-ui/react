@@ -264,7 +264,7 @@ export const selectedOptionClasses = cva(
   }
 )
 
-export const selectOption = cva(
+export const selectOptionClasses = cva(
   [
     'truncate',
     'dark:text-info-100',
@@ -297,7 +297,7 @@ export const selectOption = cva(
   }
 )
 
-export const selectOptionIcon = cva(['font-extrabold', 'text-xl'], {
+export const selectOptionIconClasses = cva(['font-extrabold', 'text-xl'], {
   variants: {
     selected: {
       true: ['opacity-100', '!text-primary-500', '!fill-primary-500'],

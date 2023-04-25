@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import type { DropdownOption } from '../../../types'
 import { Icon } from '../../icon'
-import { selectOption, selectOptionIcon } from '../../../classes'
+import { selectOptionClasses, selectOptionIconClasses } from '../../../classes'
 
 interface OptionProps {
   active: boolean
@@ -16,7 +16,7 @@ export const Option = forwardRef<
 >(({ option, multiple, active, selected, ...rest }, ref) => {
   return (
     <li
-      className={selectOption({
+      className={selectOptionClasses({
         active,
         selected,
         multiple,
@@ -27,9 +27,11 @@ export const Option = forwardRef<
       {...rest}
     >
       {multiple && (
-        <Icon icon='check' className={selectOptionIcon({ selected, active })} />
+        <Icon icon='check' className={selectOptionIconClasses({ selected, active })} />
       )}
       {option.label}
     </li>
   )
 })
+
+export type OptionComponentType = typeof Option

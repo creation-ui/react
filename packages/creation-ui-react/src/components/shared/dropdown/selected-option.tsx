@@ -23,3 +23,5 @@ export const SelectedOption = ({ option }: SelectedOptionProps) => {
     </span>
   )
 }
+
+export type SelectedOptionType = typeof SelectedOption

@@ -1,7 +1,6 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import { optionListClasses } from '../../../classes'
 import { useDropdown } from './context'
-import { Option } from './option'
 
 export const OptionsList = () => {
   const {
@@ -10,6 +9,7 @@ export const OptionsList = () => {
     text,
     options,
     open,
+    optionComponent: Option,
   } = useDropdown()
 
   return (

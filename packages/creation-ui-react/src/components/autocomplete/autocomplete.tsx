@@ -1,7 +1,7 @@
 import {
   autoUpdate,
   flip,
-  size,
+  size as floatingSize,
   useDismiss,
   useFloating,
   useInteractions,
@@ -10,37 +10,40 @@ import {
 } from '@floating-ui/react'
 import React, { useRef, useState } from 'react'
 import { useTheme } from '../../theme'
-import { DropdownProps, DropdownOption } from '../../types'
-import { passThrough } from '../../utils/functions'
+import { DropdownOption, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
+import {
+  getFlatOptions,
+  normalizeOptions,
+  normalizeValue,
+} from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import {
-  DropdownContext,
-  // Option
-} from '../shared/dropdown'
+import { DropdownContext } from '../shared/dropdown'
+import { dropdownInitialProps } from '../shared/dropdown/constants'
 import { AutocompleteView } from './autocomplete.view'
 
 export function Autocomplete(props: DropdownProps) {
   const { size: defaultSize } = useTheme()
   const {
     id,
-    loadingText = 'Loading...',
-    emptyText = 'Data is empty',
-    notFoundText = 'Nothing found',
-    placeholder = 'Select option',
-    multiple = false,
-    value = [],
-    options = [],
+    loadingText,
+    emptyText,
+    notFoundText,
+    placeholder,
+    multiple,
     helperText,
     error,
-    limit = 3,
-    onChange = passThrough,
-    getLimitText = passThrough,
-    // optionComponent = Option,
+    limit,
+    onChange,
+    getLimitText,
+    optionComponent,
+    selectedOptionComponent,
+    size = defaultSize,
   } = props
-
-  const componentSize = props.size || defaultSize
+  const isDataFlat = typeof props.options?.[0] === 'string'
+  const options = normalizeOptions(props.options)
+  const value = normalizeValue(props.value)
 
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -50,8 +53,9 @@ export function Autocomplete(props: DropdownProps) {
   const listRef = useRef<Array<HTMLElement | null>>([])
 
   const clearInput = () => setQuery('')
+
   const clearableCallback = () => {
-    onChange?.([])
+    onChange?.(null)
     clearInput()
   }
 
@@ -61,7 +65,7 @@ export function Autocomplete(props: DropdownProps) {
     open,
     middleware: [
       flip({ padding: 10 }),
-      size({
+      floatingSize({
         apply({ rects, availableHeight, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
@@ -112,8 +116,7 @@ export function Autocomplete(props: DropdownProps) {
         )
 
   const isQuery = !!query.trim()
-  const isEmpty = !value?.length
-  // const Component = optionComponent
+  const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
 
   const disabled = props.disabled || props.loading || props.readOnly
   const clearable = !disabled && props.clearable && (!isEmpty || isQuery)
@@ -123,9 +126,11 @@ export function Autocomplete(props: DropdownProps) {
   const handleSelect = (option: DropdownOption) => {
     if (multiple) {
       clearInput()
-      onChange?.([...(value ?? []), option])
+      // @ts-expect-error
+      const newValue = (isEmpty ? [] : value).concat(option)
+      onChange?.(isDataFlat ? getFlatOptions(newValue) : newValue)
     } else {
-      onChange?.([option])
+      onChange?.(isDataFlat ? getFlatOptions(option) : option)
       setActiveIdx(null)
       setOpen(false)
       setQuery(option.label)
@@ -133,6 +138,8 @@ export function Autocomplete(props: DropdownProps) {
   }
 
   const handleRemoveSelected = (option: DropdownOption) => {
+    // always multiple
+    // @ts-ignore
     onChange?.((value ?? []).filter(o => o.id !== option.id))
   }
 
@@ -170,7 +177,7 @@ export function Autocomplete(props: DropdownProps) {
       selected: isSelected(option, value),
       onClick(e: any) {
         const selected = e.target.getAttribute('aria-selected') === 'true'
-        selected ? handleRemoveSelected(option) : handleSelect(option)
+        selected && multiple ? handleRemoveSelected(option) : handleSelect(option)
         refs.domReference.current?.focus()
       },
       ref(node) {
@@ -192,7 +199,7 @@ export function Autocomplete(props: DropdownProps) {
       id={id}
       disabled={disabled}
       error={error}
-      size={componentSize}
+      size={size}
       loading={props.loading}
       readOnly={props.readOnly}
       label={props.label}
@@ -224,6 +231,8 @@ export function Autocomplete(props: DropdownProps) {
           },
           open,
           setOpen,
+          optionComponent,
+          selectedOptionComponent,
         }}
       >
         <AutocompleteView {...containerProps} />
@@ -231,3 +240,5 @@ export function Autocomplete(props: DropdownProps) {
     </InputBase>
   )
 }
+
+Autocomplete.defaultProps = dropdownInitialProps

@@ -1,4 +1,8 @@
 import type React from 'react'
+import {
+  OptionComponentType,
+  SelectedOptionType,
+} from '../components/shared/dropdown'
 
 export const ELEMENT_STATUS = [
   'primary',
@@ -197,7 +201,12 @@ export type ReadableError = {
   code?: React.ReactNode
 }
 
-
+export type DropdownValueType =
+  | DropdownOption
+  | DropdownOption[]
+  | string
+  | string[]
+  | null
 export interface DropdownProps extends BaseComponentProps {
   /**
    * Placeholder
@@ -206,19 +215,23 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * List options
    */
-  options?: DropdownOption[]
+  options?: DropdownOption[] | string[]
   /**
    * Component to display list options
    */
-  optionComponent?: (option: DropdownOption) => React.ReactNode
+  optionComponent?: OptionComponentType
+  /**
+   * Component to display list options
+   */
+  selectedOptionComponent?: SelectedOptionType
   /**
    * Default value to display when component is not controlled
    */
-  defaultValue?: DropdownOption
+  defaultValue?: DropdownOption | string
   /**
    * Current value to display
    */
-  value?: DropdownOption[]
+  value?: DropdownValueType
   /**
    * Close button tooltip text
    */
@@ -277,5 +290,5 @@ export interface DropdownProps extends BaseComponentProps {
    * @param value
    * @returns
    */
-  onChange?: (value: DropdownOption[]) => void
+  onChange?: (value: DropdownValueType) => void
 }
