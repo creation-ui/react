@@ -1,16 +1,15 @@
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
-import babel from 'rollup-plugin-babel'
 import filesize from 'rollup-plugin-filesize'
 import external from 'rollup-plugin-peer-deps-external'
 import progress from 'rollup-plugin-progress'
-import { terser } from 'rollup-plugin-terser'
+import babel from '@rollup/plugin-babel'
+import { terser } from '@rollup/plugin-terser'
 import { visualizer } from 'rollup-plugin-visualizer'
 import dts from 'rollup-plugin-dts'
 import copy from 'rollup-plugin-copy'
 import postcss from 'rollup-plugin-postcss'
-
 const OUT = 'build'
 
 const asPath = (...args) => args.join('/')
