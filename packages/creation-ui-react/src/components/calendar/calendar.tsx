@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { FC, useState } from 'react'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -6,7 +7,7 @@ import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
 import { CalendarContext } from './calendar.context'
 import { CalendarProps, CalendarView } from './calendar.types'
-import { calendarClasses } from './classes'
+import { calendarClasses, headerClasses } from './classes'
 import { CalendarDaysView } from './components/days'
 import { CalendarMonthsView } from './components/months'
 import { CalendarYearsView } from './components/years'
@@ -69,14 +70,14 @@ const Calendar: FC<CalendarProps> = props => {
           <div className='flex items-center justify-between mb-2'>
             <div className='flex items-center gap-1'>
               <button
-                className='!text-lg font-semibold capitalize text-info-900'
+                className={clsx(headerClasses)}
                 onClick={setView.bind(null, 'months')}
               >
                 {isMonthName &&
                   currentDate.toLocaleDateString(undefined, { month: 'long' })}
               </button>
               <button
-                className='!text-lg font-semibold text-info-900'
+                className={clsx(headerClasses)}
                 onClick={setView.bind(null, 'years')}
               >
                 {isYearName && currentDate.getFullYear()}
