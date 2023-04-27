@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import { forwardRef } from 'react'
 import { useInputBase } from '../input-base/input-base.context'
-import { OptionsList, useDropdown } from '../shared/dropdown'
+import { OptionsList, SelectedOption, useDropdown } from '../shared/dropdown'
 
 const SelectedView = () => {
   const {
     multiple,
     limit = 0,
     selected = [],
-    selectedOptionComponent: SelectedOption,
+    selectedOptionComponent: SelectedOptionComponent = SelectedOption,
   } = useDropdown()
 
   if (!multiple || !selected) return null
@@ -21,7 +21,7 @@ const SelectedView = () => {
       {multiple && (
         <>
           {limitedOptions?.map((item, idx) => (
-            <SelectedOption key={item.id} option={item} idx={idx} />
+            <SelectedOptionComponent key={item.id} option={item} idx={idx} />
           ))}
           {rest > 0 && <span>+{rest}</span>}
         </>

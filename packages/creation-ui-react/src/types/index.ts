@@ -226,7 +226,7 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * Component to display list options
    */
-  selectedOptionComponent?: ({ option }: SelectedOptionProps) => JSX.Element
+  selectedOptionComponent?: React.FC<SelectedOptionProps>
   /**
    * Default value to display when component is not controlled
    */

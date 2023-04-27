@@ -16,7 +16,7 @@ import { isSelected } from '../../utils/is-selected'
 import { getFlatOptions } from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import { DropdownContext } from '../shared/dropdown'
+import { DropdownContext, Option, SelectedOption } from '../shared/dropdown'
 import { dropdownInitialProps } from '../shared/dropdown/constants'
 import { AutocompleteView } from './autocomplete.view'
 
@@ -34,13 +34,13 @@ export function Autocomplete(props: DropdownProps) {
     limit,
     onChange,
     getLimitText,
-    optionComponent,
-    selectedOptionComponent,
+    optionComponent = Option,
+    selectedOptionComponent = SelectedOption,
     size = defaultSize,
   } = props
   const { isDataFlat, options, value } = useNormalizedOptions({
     value: props.value,
-    options: props.options,
+    options: props.options ?? [],
   })
 
   const [open, setOpen] = useState(false)

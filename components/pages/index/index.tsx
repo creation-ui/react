@@ -2,7 +2,7 @@ import { Advantages } from '@components/pages/index/advantages'
 import { Docs } from '@components/pages/index/docs'
 import { Hero } from '@components/pages/index/hero'
 import { Pallette } from '@components/pages/index/pallette'
-import { Playground } from '@components/pages/index/playground'
+// import { Playground } from '@components/pages/index/playground'
 import clsx from 'clsx'
 
 const mainBodyClasses = clsx([

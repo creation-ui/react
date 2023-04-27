@@ -28,7 +28,7 @@ export const ProgressBarAnimatedExample = () => {
     } else {
       pause()
     }
-  }, [isRunning, state])
+  }, [isRunning, state, pause])
 
   return (
     <Container>

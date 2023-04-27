@@ -16,7 +16,12 @@ import { isSelected } from '../../utils/is-selected'
 import { getFlatOptions } from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import { DropdownContext, dropdownInitialProps } from '../shared/dropdown'
+import {
+  DropdownContext,
+  dropdownInitialProps,
+  Option,
+  SelectedOption,
+} from '../shared/dropdown'
 import { SelectView } from './select.view'
 
 export function Select(props: DropdownProps) {
@@ -33,13 +38,13 @@ export function Select(props: DropdownProps) {
     limit,
     onChange,
     getLimitText,
-    optionComponent,
-    selectedOptionComponent,
+    optionComponent = Option,
+    selectedOptionComponent = SelectedOption,
     size = defaultSize,
   } = props
   const { isDataFlat, options, value } = useNormalizedOptions({
     value: props.value,
-    options: props.options,
+    options: props.options ?? [],
   })
 
   const [open, setOpen] = useState(false)

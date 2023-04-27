@@ -1,48 +1,50 @@
 import { DropdownOption, DropdownValueType } from '../types'
 
 export const normalizeOptions = (
-  options: string[] | DropdownOption[]
+  options: string[] | DropdownOption[] | null
 ): DropdownOption[] => {
-  if (Array.isArray(options) && typeof options[0] === 'string') {
-    return (options as string[]).map((option: string) => ({
-      id: option,
-      label: option,
-    }))
+  switch (Array.isArray(options) && typeof options[0] === 'string') {
+    case true:
+      return (options as string[]).map((option: string) => ({
+        id: option,
+        label: option,
+      }))
+    default:
+      return (options as DropdownOption[]) ?? []
   }
-
-  return options as DropdownOption[]
 }
+
 export const normalizeValue = (
-  value: DropdownValueType
+  value?: DropdownValueType | null
 ): DropdownOption | DropdownOption[] | null => {
-  // empty
   if (!value) return null
 
-  // multiple string[]
-  if (Array.isArray(value) && typeof value[0] === 'string') {
-    return (value as string[]).map((option: string) => ({
-      id: option,
-      label: option,
-    }))
+  switch (true) {
+    case Array.isArray(value) && typeof value[0] === 'string':
+      return (value as string[]).map((option: string) => ({
+        id: option,
+        label: option,
+      }))
+    case typeof value === 'string':
+      return {
+        id: value as string,
+        label: value as string,
+      }
+    default:
+      return value as DropdownOption | DropdownOption[]
   }
-  // single string
-  if (typeof value === 'string') {
-    return {
-      id: value,
-      label: value,
-    }
-  }
-
-  // multiple or single DropdownOption
-  return value as DropdownOption | DropdownOption[]
 }
 
 export const getFlatOptions = (
-  options: DropdownOption[] | DropdownOption
+  options: DropdownOption[] | DropdownOption | null
 ): string[] => {
-  if (Array.isArray(options)) {
-    return options.map((option: DropdownOption) => option.label)
-  } else {
-    return [(options as DropdownOption).label]
+  switch (Array.isArray(options)) {
+    case true:
+      // @ts-expect-error
+      return options.map((option: DropdownOption) => option.label)
+    case false:
+      return [(options as DropdownOption).label]
+    default:
+      return []
   }
 }

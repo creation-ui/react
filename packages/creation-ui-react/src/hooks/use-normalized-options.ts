@@ -7,12 +7,12 @@ import {
 interface UseNormalizedOptions {
   isDataFlat: boolean
   options: DropdownOption[]
-  value: DropdownOption | DropdownOption[]
+  value: null | DropdownOption | DropdownOption[]
 }
 
 interface UseNormalizedOptionsArgs {
   options: string[] | DropdownOption[]
-  value: DropdownValueType
+  value?: DropdownValueType
 }
 
 export function useNormalizedOptions(

@@ -45,18 +45,15 @@ export const InputPlayground = ({ ...props }: InputExampleProps) => {
     <Input
       {...props}
       {...state}
-      type={inputType?.[0].id as HTMLInputType}
+      type={inputType as HTMLInputType}
       defaultValue={state.content}
     />
   )
 }
 
 export const PasswordExample = ({ ...props }: InputExampleProps) => {
-  const pass = { id: 'password', label: 'Password' }
-  const text = { id: 'text', label: 'text' }
-
   const [value, setValue] = useState('')
-  const [type, setType] = useState<DropdownOption[]>([pass])
+  const [type, setType] = useState<string>('password')
 
   useEffect(() => {
     if (props.value) {
@@ -65,9 +62,10 @@ export const PasswordExample = ({ ...props }: InputExampleProps) => {
   }, [])
 
   const onIconClick = () => {
-    setType([type[0].id === pass.id ? text : pass])
+    setType(type === 'password' ? 'text' : 'password')
   }
-  const htmlType = type[0].id as HTMLInputType
+  const htmlType = type as HTMLInputType
+
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>
       <Input

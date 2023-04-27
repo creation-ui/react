@@ -60,10 +60,7 @@ const POSITION = [
   { value: 'bottom', label: <Icon path={mdiBorderBottomVariant} size={1} /> },
 ]
 
-const INPUT_TYPES_DROPDOWN = INPUT_TYPES.map(type => ({
-  id: type,
-  label: type,
-}))
+const INPUT_TYPES_DROPDOWN = INPUT_TYPES
 
 export const useControlComponents = () => {
   const { state, config, handleChangeUpdate } = usePlayground()
