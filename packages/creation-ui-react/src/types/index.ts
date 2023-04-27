@@ -1,8 +1,4 @@
 import type React from 'react'
-import {
-  OptionComponentType,
-  SelectedOptionType,
-} from '../components/shared/dropdown'
 
 export const ELEMENT_STATUS = [
   'primary',
@@ -207,6 +203,13 @@ export type DropdownValueType =
   | string
   | string[]
   | null
+
+type OptionComponentType =
+  | React.ForwardRefExoticComponent<
+      Omit<OptionProps & React.HTMLProps<HTMLLIElement>, 'ref'> &
+        React.RefAttributes<HTMLLIElement>
+    >
+  | React.FC<OptionProps & React.HTMLProps<HTMLLIElement>>
 export interface DropdownProps extends BaseComponentProps {
   /**
    * Placeholder
@@ -223,7 +226,7 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * Component to display list options
    */
-  selectedOptionComponent?: SelectedOptionType
+  selectedOptionComponent?: ({ option }: SelectedOptionProps) => JSX.Element
   /**
    * Default value to display when component is not controlled
    */
@@ -291,4 +294,17 @@ export interface DropdownProps extends BaseComponentProps {
    * @returns
    */
   onChange?: (value: DropdownValueType) => void
+}
+
+export interface OptionProps {
+  active: boolean
+  selected?: boolean
+  option: DropdownOption
+  multiple?: boolean
+  size?: ElementSize
+}
+
+export interface SelectedOptionProps {
+  option: DropdownOption
+  idx: number
 }

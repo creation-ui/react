@@ -1,7 +1,5 @@
 import { createContext, ReactNode, useContext } from 'react'
-import { DropdownOption } from '../../../types'
-import { OptionComponentType } from './option'
-import { SelectedOptionType } from './selected-option'
+import { DropdownOption, DropdownProps } from '../../../types'
 
 interface DropdownContextValue {
   open?: boolean
@@ -25,8 +23,8 @@ interface DropdownContextValue {
   }
   handleRemoveSelected: (item: DropdownOption) => void
   setOpen: (value: boolean) => void
-  optionComponent: OptionComponentType
-  selectedOptionComponent: SelectedOptionType
+  optionComponent: DropdownProps['optionComponent']
+  selectedOptionComponent: DropdownProps['selectedOptionComponent']
 }
 
 export const DropdownContext = createContext<DropdownContextValue>({} as any)

@@ -1,14 +1,6 @@
 import React, { forwardRef } from 'react'
+import { OptionProps } from '../../../types'
 import { selectOptionClasses } from '../../../classes'
-import type { DropdownOption, ElementSize } from '../../../types'
-
-interface OptionProps {
-  active: boolean
-  selected?: boolean
-  option: DropdownOption
-  multiple?: boolean
-  size?: ElementSize
-}
 
 export const Option = forwardRef<
   HTMLLIElement,
@@ -31,5 +23,3 @@ export const Option = forwardRef<
     </li>
   )
 })
-
-export type OptionComponentType = typeof Option
