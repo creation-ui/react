@@ -41,7 +41,6 @@ specifiers:
   css-loader: ^6.7.3
   cypress: ^12.9.0
   deep-merge: ^1.0.0
-  downshift: ^7.6.0
   eslint: 8.29.0
   eslint-config-next: 13.0.6
   eslint-config-prettier: ^8.8.0
@@ -51,6 +50,7 @@ specifiers:
   eslint-plugin-react-hooks: ^4.6.0
   framer-motion: ^10.8.4
   lodash: ^4.17.21
+  lodash.merge: ^4.6.2
   lodash.values: ^4.3.0
   next: 13.3.1
   nextra: ^2.4.2
@@ -104,11 +104,11 @@ dependencies:
   class-variance-authority: 0.4.0_typescript@4.9.3
   clsx: 1.2.1
   cypress: 12.9.0
-  downshift: 7.6.0_react@18.2.0
   eslint: 8.29.0
   eslint-config-next: 13.0.6_s5ps7njkmjlaqajutnox5ntcla
   framer-motion: 10.8.4_biqbaboplfbrettd7655fr4n2y
   lodash: 4.17.21
+  lodash.merge: 4.6.2
   lodash.values: 4.3.0
   next: 13.3.1_l4i6tgmfppzwb2u4w42uz3wi4m
   nextra: 2.4.2_ivamjty3az7dj3hhadhjniqtwe
@@ -4889,10 +4889,6 @@ packages:
       - supports-color
     dev: false
 
-  /compute-scroll-into-view/2.0.4:
-    resolution: {integrity: sha512-y/ZA3BGnxoM/QHHQ2Uy49CLtnWPbt4tTPpEEZiEmmiWBFKjej7nEyH8Ryz54jH0MLXflUYA3Er2zUxPSJu5R+g==}
-    dev: false
-
   /compute-scroll-into-view/3.0.0:
     resolution: {integrity: sha512-Yk1An4qzo5++Cu6peT9PsmRKIU8tALpmdoE09n//AfGQFcPfx21/tMGMsmKYmLJWaBJrGOJ5Jz5hoU+7cZZUWQ==}
     dev: false
@@ -5517,19 +5513,6 @@ packages:
       domelementtype: 2.3.0
       domhandler: 4.3.1
     dev: true
-
-  /downshift/7.6.0_react@18.2.0:
-    resolution: {integrity: sha512-VSoTVynTAsabou/hbZ6HJHUVhtBiVOjQoBsCPcQq5eAROIGP+9XKMp9asAKQ3cEcUP4oe0fFdD2pziUjhFY33Q==}
-    peerDependencies:
-      react: '>=16.12.0'
-    dependencies:
-      '@babel/runtime': 7.21.0
-      compute-scroll-into-view: 2.0.4
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-is: 17.0.2
-      tslib: 2.5.0
-    dev: false
 
   /duplexer/0.1.1:
     resolution: {integrity: sha512-sxNZ+ljy+RA1maXoUReeqBBpBC6RLKmg5ewzV+x+mSETmWNoKdZN6vcQjpFROemza23hGFskJtFNoUWUaQ+R4Q==}
