@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.5.4](https://github.com/creation-ui/react/compare/v0.5.3...v0.5.4) (2023-04-27)
+
+
+### Features
+
+* add card component ([a18f2f3](https://github.com/creation-ui/react/commit/a18f2f3ab4b2e3ee3004ffe0fb2139350b7aff24))
+* add dark mode classes for calendar ([42def0f](https://github.com/creation-ui/react/commit/42def0ffe2949609dcb52016e13d11720c8eb06b))
+
+
+### Bug Fixes
+
+* circular dependency imports detected, card docs name ([9f5f2db](https://github.com/creation-ui/react/commit/9f5f2db34542cc37887865bb272e74facd069585))
+* clean up type errors and build errors ([620df10](https://github.com/creation-ui/react/commit/620df10ea6f9186bc98a4d658b71704e9097eda8))
+
+
+### Miscellaneous Chores
+
+* release 0.5.4 ([ac847be](https://github.com/creation-ui/react/commit/ac847be6862372fe71723f2479407e02c88a7517))
+
 ## [0.5.3](https://github.com/creation-ui/react/compare/v0.5.2...v0.5.3) (2023-04-25)
 
 
