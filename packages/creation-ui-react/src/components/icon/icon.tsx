@@ -8,6 +8,9 @@ import { Close } from './close'
 import type { IconProps } from './icon.type'
 import { Straight } from './straight'
 import { PencilOff } from './pencil-off'
+import { Dot } from './dot'
+import { Slash } from './slash'
+import { Home } from './home'
 
 const classes = [
   //
@@ -28,6 +31,9 @@ const Icon = ({ icon, className, ...props }: IconProps) => {
     check: Check,
     straight: Straight,
     readonly: PencilOff,
+    dot: Dot,
+    slash: Slash,
+    home: Home,
   }
 
   const Component = map[icon]

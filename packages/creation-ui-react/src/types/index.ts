@@ -104,13 +104,16 @@ export type TailwindShades = (typeof TAILWIND_SHADES)[number]
 export type TailwindColorSet = Record<TailwindShades, string>
 
 export const icons = [
+  'check',
+  'chevron_down',
   'chevron_left',
   'chevron_right',
-  'chevron_down',
   'close',
-  'check',
-  'straight',
+  'dot',
+  'home',
   'readonly',
+  'slash',
+  'straight',
 ] as const
 
 export type IconType = (typeof icons)[number]
@@ -307,4 +310,10 @@ export interface OptionProps {
 export interface SelectedOptionProps {
   option: DropdownOption
   idx: number
+}
+
+export type BreadcrumbLink = {
+  href: string
+  label: string
+  disabled?: boolean
 }

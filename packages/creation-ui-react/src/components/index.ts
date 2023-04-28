@@ -1,6 +1,7 @@
 export * from './autocomplete'
 export * from './avatar'
 export * from './box'
+export * from './breadcrumbs'
 export * from './button'
 export * from './buggy'
 export * from './checkbox'
@@ -29,4 +30,3 @@ export * from './tooltip'
 export * from './transfer-list'
 export * from './typography'
 export * from './version'
-
