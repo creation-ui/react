@@ -2,6 +2,31 @@ import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 import values from 'lodash.values'
 
+export const formClassesMap = {
+  // https://github.com/tailwindlabs/tailwindcss-forms
+  // input type
+  text: 'form-input',
+  email: 'form-input',
+  url: 'form-input',
+  password: 'form-input',
+  number: 'form-input',
+  date: 'form-input',
+  datetime: 'form-input',
+  month: 'form-input',
+  search: 'form-input',
+  tel: 'form-input',
+  time: 'form-input',
+  week: 'form-input',
+  checkbox: 'form-checkbox',
+  radio: 'form-radio',
+  // other
+  textarea: 'form-textarea',
+  select: 'form-select',
+  multiselect: 'form-multiselect',
+  // cva fallback
+  false: null,
+}
+
 const getAllValuesFromObject = (obj: Record<string, string[] | string>) =>
   clsx(values(obj))
 
@@ -98,6 +123,7 @@ export const classes = {
   ],
   checkable: [
     microInteractions,
+    formClassesMap.checkbox,
     'text-primary-500',
     'checked:border-none',
     'dark:checked:bg-primary-500',
@@ -128,6 +154,7 @@ export const input = cva(
         true: ['!p-0'],
         false: null,
       },
+      type: formClassesMap,
     },
     defaultVariants: {
       size: 'md',

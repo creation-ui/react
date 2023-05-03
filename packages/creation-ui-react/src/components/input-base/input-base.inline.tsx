@@ -12,7 +12,7 @@ import { Loader } from '../loader'
 import { HelperText } from '../typography/helper-text'
 import { InputBaseContext } from './input-base.context'
 
-const InputBase: FC<InputBaseProps> = props => {
+const InputBaseInline: FC<InputBaseProps> = props => {
   const { size: defaultSize } = useTheme()
   const {
     loading,
@@ -23,13 +23,9 @@ const InputBase: FC<InputBaseProps> = props => {
     className,
     id,
     children,
-    startAdornment,
-    endAdornment,
     variant,
-    clearable,
-    layout = 'column',
+    layout = 'row',
     onClear,
-    ...rest
   } = props
   const componentId = useId(id)
 
@@ -41,17 +37,12 @@ const InputBase: FC<InputBaseProps> = props => {
     text({ size })
   )
 
-  const isColor = type === 'color'
-
   const inputClasses = twMerge(
     input({
       size,
       variant,
-      iconLeft: !!startAdornment,
-      iconRight: !!endAdornment,
       className: twMerge(className),
       error: !!error,
-      fillContent: isColor,
     })
   )
 
@@ -70,38 +61,19 @@ const InputBase: FC<InputBaseProps> = props => {
           type,
         }}
       >
-        <div className={containerClasses}>
-          <label
-            htmlFor={componentId}
-            className={label({ size, required: props.required })}
-            children={props.label}
-            aria-label={props.label?.toString()}
-          />
-
-          {props.readOnly && (
-            <Icon
-              icon='readonly'
-              title='Read only'
-              className={clsx('absolute', 'top-0', 'right-0')}
-            />
-          )}
-          <div className='relative max-h-min'>
-            {startAdornment && (
-              <div className={inputIcon({ position: 'left' })}>
-                {startAdornment}
-              </div>
-            )}
+        <div>
+          <div className={containerClasses}>
             {children}
+            <label
+              htmlFor={componentId}
+              className={label({ size, required: props.required })}
+              children={props.label}
+              aria-label={props.label?.toString()}
+            />
             {loading ? (
-              <Loader
-                className={inputIcon({ position: 'right' })}
-                size={size === 'lg' ? 'md' : 'sm'}
-              />
+              <Loader size={size === 'lg' ? 'md' : 'sm'} />
             ) : (
-              <div className={inputIcon({ position: 'right' })}>
-                {clearable && <ClearButton onClick={onClear} />}
-                {endAdornment}
-              </div>
+              readOnly && <Icon icon='readonly' title='Read only' />
             )}
           </div>
           <HelperText
@@ -115,4 +87,4 @@ const InputBase: FC<InputBaseProps> = props => {
   )
 }
 
-export default InputBase
+export default InputBaseInline

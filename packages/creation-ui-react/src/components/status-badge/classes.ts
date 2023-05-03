@@ -33,9 +33,9 @@ export const badge = cva(
         info: 'text-info-800',
       },
       size: {
-        sm: ['text-xs'],
-        md: ['text-sm'],
-        lg: ['text-base'],
+        sm: ['!text-xs'],
+        md: ['!text-sm'],
+        lg: ['!text-base'],
       },
       variant: {
         contained: [],

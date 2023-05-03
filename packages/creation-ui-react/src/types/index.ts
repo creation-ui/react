@@ -192,6 +192,10 @@ export interface InputBaseProps extends BaseComponentProps {
    * Callback for clear input icon.
    */
   onClear?: () => void
+  /**
+   * Layout of elements
+   */
+  layout?: 'column' | 'row'
 }
 
 export type ReadableError = {
