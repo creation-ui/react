@@ -196,7 +196,7 @@ export const helperTextClasses = cva(
 export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
   variants: {
     layout: {
-      column: ['flex-col', 'gap-1'],
+      column: ['flex-col', 'gap-1', 'items-start'],
       row: ['flex-row', 'gap-2', 'items-center'],
     },
     disabled: sharedDisabledCVA,
