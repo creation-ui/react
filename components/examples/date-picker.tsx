@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { DateInput } from '@creation-ui/react'
+import { DatePicker } from '@creation-ui/react'
 
-export const DateInputExample: React.FC = () => {
+export const DatePickerExample: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
   const handleDateChange = (date: Date | null) => {
@@ -10,7 +10,7 @@ export const DateInputExample: React.FC = () => {
 
   return (
     <div className='flex flex-col gap-2'>
-      <DateInput
+      <DatePicker
         value={selectedDate}
         onChange={handleDateChange}
         inputProps={{

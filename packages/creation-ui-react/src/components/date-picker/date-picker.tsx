@@ -3,9 +3,9 @@ import { useTheme } from '../../theme'
 import { Calendar } from '../calendar'
 import { Input } from '../input'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover'
-import { DateInputProps } from './types'
+import { DatePickerProps } from './types'
 
-export const DateInput: FC<DateInputProps> = props => {
+export const DatePicker: FC<DatePickerProps> = props => {
   const { size: defaultSize } = useTheme()
   const {
     size = defaultSize,
@@ -17,6 +17,7 @@ export const DateInput: FC<DateInputProps> = props => {
 
   const [popoverVisible, setPopoverVisible] = useState(false)
   const ref = useRef(null)
+
   const handleDateSelect = (date: Date | null) => {
     onChange?.(date)
     setPopoverVisible(false)
@@ -25,6 +26,7 @@ export const DateInput: FC<DateInputProps> = props => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value
     const parsedDate = new Date(inputValue)
+    setPopoverVisible(false)
 
     if (!isNaN(parsedDate.valueOf())) {
       onChange?.(parsedDate)
@@ -33,35 +35,27 @@ export const DateInput: FC<DateInputProps> = props => {
     }
   }
 
-  const handleInputFocus = () => {
-    setPopoverVisible(true)
-  }
-
-  const handlePopoverClose = () => {
-    setPopoverVisible(false)
-  }
+  const handleClick = () => setPopoverVisible(true)
 
   return (
-    <>
-      <Popover
-        open={popoverVisible}
-        onOpenChange={setPopoverVisible}
-        placement='bottom-start'
-      >
-        <PopoverTrigger>
-          <Input
-            {...inputProps}
-            ref={ref}
-            size={size}
-            value={value ? value.toLocaleDateString() : ''}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-          />
-        </PopoverTrigger>
-        <PopoverContent>
-          <Calendar {...calendarProps} onClick={handleDateSelect} />
-        </PopoverContent>
-      </Popover>
-    </>
+    <Popover
+      open={popoverVisible}
+      onOpenChange={setPopoverVisible}
+      placement='bottom-start'
+    >
+      <PopoverTrigger>
+        <Input
+          {...inputProps}
+          ref={ref}
+          size={size}
+          value={value ? value.toLocaleDateString() : ''}
+          onChange={handleInputChange}
+          onClick={handleClick}
+        />
+      </PopoverTrigger>
+      <PopoverContent>
+        <Calendar {...calendarProps} onClick={handleDateSelect} />
+      </PopoverContent>
+    </Popover>
   )
 }
