@@ -46,7 +46,9 @@ const Calendar: FC<CalendarProps> = props => {
   }
 
   const onTodayClick = () => {
-    setCurrentDate(new Date())
+    const today = new Date()
+    setCurrentDate(today)
+    handleDayClick(today)
     setView('days')
   }
 

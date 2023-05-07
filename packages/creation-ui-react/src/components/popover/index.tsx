@@ -178,7 +178,6 @@ export const PopoverContent = forwardRef<
   if (!floatingContext.open) return null
 
   const style = {
-    // @ts-expect-error
     ...context.floatingStyles,
     ...props.style,
   }
