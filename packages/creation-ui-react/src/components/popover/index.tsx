@@ -182,8 +182,6 @@ export const PopoverContent = forwardRef<
     ...props.style,
   }
 
-  console.log(style)
-
   return (
     <FloatingPortal>
       <FloatingFocusManager context={floatingContext} modal={context.modal}>

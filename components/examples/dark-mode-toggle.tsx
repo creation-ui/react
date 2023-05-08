@@ -7,7 +7,6 @@ export const DarkModeToggleExample = () => {
   const [dark, setDark] = useState(false)
 
   const onChange = (checked: boolean) => {
-    console.log('isDarkTheme', checked)
     setDark(checked)
   }
 

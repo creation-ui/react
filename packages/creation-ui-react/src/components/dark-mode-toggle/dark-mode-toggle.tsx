@@ -114,7 +114,6 @@ export const DarkModeToggle = ({
   }, [checked, theme])
 
   useEffect(() => {
-    console.log(checked, theme)
     if (!theme) {
       toggle()
     }

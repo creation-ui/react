@@ -33,6 +33,5 @@ export const changeCalendarView = (
       break
   }
 
-  console.log('month', month)
   return month
 }

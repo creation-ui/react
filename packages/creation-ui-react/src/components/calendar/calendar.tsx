@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { Button } from '../button'
@@ -22,14 +22,15 @@ const Calendar: FC<CalendarProps> = props => {
     id,
     onClick,
     weekStartsOn = 1,
+    value,
     ...rest
   } = props
   const componentId = useId(id)
 
   const [view, setView] = useState<CalendarView>('days')
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  const [currentDate, setCurrentDate] = useState<Date>(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value)
+  const [currentDate, setCurrentDate] = useState<Date>(value || new Date())
 
   const handleDayClick = (date: Date | null) => {
     onClick?.(date)
@@ -54,7 +55,7 @@ const Calendar: FC<CalendarProps> = props => {
 
   const isMonthName = view === 'days'
   const isYearName = view === 'days' || view === 'months'
-
+  console.log('Calendar', { currentDate, selectedDate, view, size })
   return (
     <CalendarContext.Provider
       value={{

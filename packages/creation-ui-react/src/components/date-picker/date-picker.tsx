@@ -18,6 +18,8 @@ export const DatePicker: FC<DatePickerProps> = props => {
   const [popoverVisible, setPopoverVisible] = useState(false)
   const ref = useRef(null)
 
+  const closeCalendar = () => setPopoverVisible(false)
+
   const handleDateSelect = (date: Date | null) => {
     onChange?.(date)
     setPopoverVisible(false)
@@ -26,13 +28,18 @@ export const DatePicker: FC<DatePickerProps> = props => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value
     const parsedDate = new Date(inputValue)
-    setPopoverVisible(false)
+    closeCalendar()
 
     if (!isNaN(parsedDate.valueOf())) {
       onChange?.(parsedDate)
     } else {
       onChange?.(null)
     }
+  }
+
+  const clearValue = () => {
+    onChange?.(null)
+    closeCalendar()
   }
 
   const handleClick = () => setPopoverVisible(true)
@@ -48,13 +55,14 @@ export const DatePicker: FC<DatePickerProps> = props => {
           {...inputProps}
           ref={ref}
           size={size}
+          onClear={clearValue}
           value={value ? value.toLocaleDateString() : ''}
           onChange={handleInputChange}
           onClick={handleClick}
         />
       </PopoverTrigger>
       <PopoverContent>
-        <Calendar {...calendarProps} onClick={handleDateSelect} />
+        <Calendar {...calendarProps} onClick={handleDateSelect} value={value} />
       </PopoverContent>
     </Popover>
   )
