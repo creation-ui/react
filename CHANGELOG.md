@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.5.5](https://github.com/creation-ui/react/compare/v0.5.4...v0.5.5) (2023-05-08)
+
+
+### Features
+
+* add breadcrumbs ([256f0e2](https://github.com/creation-ui/react/commit/256f0e2c23dd0e3a6fae5c8f6a9836fc7c3f0bfe))
+* add DateInput and Popover components ([44ff3df](https://github.com/creation-ui/react/commit/44ff3df67144805f14ce29af17bd88aaa1384852))
+* add inline version of InputBase, refactor Checkbox, fix size in StatusBadge ([b373a95](https://github.com/creation-ui/react/commit/b373a95a2897a7c448a96fb1a14f44eeebfd7790))
+
+
+### Bug Fixes
+
+* calendar -  today click behavior ([afb0df6](https://github.com/creation-ui/react/commit/afb0df6085f9dac4bcd720f297a925d50eefdfe6))
+* items-start in input column layout ([11d6ba7](https://github.com/creation-ui/react/commit/11d6ba7552ff4b5d9e5e3424e36e042365b46f48))
+
+
+### Miscellaneous Chores
+
+* release 0.5.5 ([0a1a3a2](https://github.com/creation-ui/react/commit/0a1a3a2dffef70707461533d85672a482ac653ab))
+
 ## [0.5.4](https://github.com/creation-ui/react/compare/v0.5.3...v0.5.4) (2023-04-27)
 
 
