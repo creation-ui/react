@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
 import { ElementSize } from '../../types'
-import { CalendarView, WeekDayIndex } from './calendar.types'
+import { CalendarDateValue, CalendarView, WeekDayIndex } from './calendar.types'
 
 export interface CalendarContextValue {
   currentDate: Date
-  selectedDate: Date | null
-  setSelectedDate: (value: Date | null) => void
+  selectedDate: CalendarDateValue
+  setSelectedDate: (value: CalendarDateValue) => void
   setCurrentDate: (value: Date) => void
   setView: (value: CalendarView) => void
   size: ElementSize

@@ -1,5 +1,7 @@
 import type { BaseComponentProps } from '../../types'
 
+export type CalendarDateValue = Date | null | undefined
+
 export type CalendarProps = Omit<
   BaseComponentProps,
   | 'label'
@@ -13,9 +15,9 @@ export type CalendarProps = Omit<
   /**
    * How large should the button be?
    */
-  onClick: (date: Date | null) => void
+  onClick: (date: CalendarDateValue) => void
   weekStartsOn?: WeekDayIndex
-  value?: Date | null
+  value: CalendarDateValue
 }
 
 export type CalendarView = 'days' | 'months' | 'years'

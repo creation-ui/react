@@ -4,7 +4,7 @@ import { DatePicker } from '@creation-ui/react'
 export const DatePickerExample: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
-  const handleDateChange = (date: Date | null) => {
+  const handleDateChange = (date: any) => {
     setSelectedDate(date)
   }
 

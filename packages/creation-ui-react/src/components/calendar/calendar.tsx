@@ -6,7 +6,11 @@ import { Button } from '../button'
 import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
 import { CalendarContext } from './calendar.context'
-import { CalendarProps, CalendarView } from './calendar.types'
+import {
+  CalendarDateValue,
+  CalendarProps,
+  CalendarView,
+} from './calendar.types'
 import { calendarClasses, headerClasses } from './classes'
 import { CalendarDaysView } from './components/days'
 import { CalendarMonthsView } from './components/months'
@@ -23,16 +27,15 @@ const Calendar: FC<CalendarProps> = props => {
     onClick,
     weekStartsOn = 1,
     value,
-    ...rest
   } = props
   const componentId = useId(id)
 
   const [view, setView] = useState<CalendarView>('days')
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(value)
+  const [selectedDate, setSelectedDate] = useState<CalendarDateValue>(value)
   const [currentDate, setCurrentDate] = useState<Date>(value || new Date())
 
-  const handleDayClick = (date: Date | null) => {
+  const handleDayClick = (date: CalendarDateValue) => {
     onClick?.(date)
     setSelectedDate(date)
   }

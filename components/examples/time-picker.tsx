@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { TimePicker } from '@creation-ui/react'
+import { TimePickerValue } from '@creation-ui/react/components/time-picker/types'
 
 export const TimePickerExample: React.FC = () => {
-  const [selectedTime, setSelectedTime] = useState<Date | null>(null)
+  const [selectedTime, setSelectedTime] = useState<TimePickerValue>(null)
 
-  const handleTimeChange = (date: Date | null) => {
+  const handleTimeChange = (date: TimePickerValue) => {
     setSelectedTime(date)
   }
 

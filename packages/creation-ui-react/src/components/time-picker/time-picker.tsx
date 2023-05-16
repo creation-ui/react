@@ -3,7 +3,7 @@ import { useTheme } from '../../theme'
 import { Input } from '../input'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover'
 import { TimeSelector } from '../time-selector'
-import { TimePickerProps } from './types'
+import { TimePickerProps, TimePickerValue } from './types'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -12,7 +12,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
-  const handleTimeSelect = (date: Date | null) => {
+  const handleTimeSelect = (date: TimePickerValue) => {
     onChange?.(date)
   }
 

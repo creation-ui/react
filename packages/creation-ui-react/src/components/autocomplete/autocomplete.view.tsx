@@ -13,9 +13,9 @@ const SelectedView = () => {
 
   if (!multiple || !selected) return null
   // @ts-ignore
-  const limitedOptions = selected.slice(0, limit)
+  const limitedOptions = selected?.slice(0, limit)
   // @ts-ignore
-  const rest = selected.length - limit
+  const rest = selected?.length - limit
   return (
     <>
       {multiple && (

@@ -1,6 +1,8 @@
+import { TimePickerValue } from "../time-picker/types"
+
 export interface TimeSelectorProps {
-  value?: Date
-  onSelect: (date: Date) => void
+  value: TimePickerValue
+  onSelect: (date: TimePickerValue) => void
   format?: 12 | 24
 }
 

@@ -3,8 +3,6 @@ import clsx from 'clsx'
 import { FC, useCallback, useEffect, useRef } from 'react'
 import { OnTimeSliderSelectArgs, TimeSelectorProps } from './types'
 
-
-
 const cellClasses = cva(
   ['cursor-pointer', 'px-2', 'py-1', 'hover:bg-primary-50/50'],
   {
@@ -80,7 +78,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       <div className={columnClasses}>
         {hours.map(hour => (
           <div
-            ref={el => (hourRef.current[hour] = el)}
+            ref={el => ((hourRef as any).current[hour] = el)}
             key={hour}
             onClick={() => handleSelect({ hour })}
             className={cellClasses({
@@ -94,7 +92,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       <div className={columnClasses}>
         {minutes.map(minute => (
           <div
-            ref={el => (minuteRef.current[minute] = el)}
+            ref={el => ((minuteRef as any).current[minute] = el)}
             key={minute}
             onClick={() => handleSelect({ minute })}
             className={cellClasses({
@@ -108,7 +106,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       <div className={columnClasses}>
         {seconds.map(second => (
           <div
-            ref={el => (secondRef.current[second] = el)}
+            ref={el => ((secondRef as any).current[second] = el)}
             key={second}
             onClick={() => handleSelect({ second })}
             className={cellClasses({

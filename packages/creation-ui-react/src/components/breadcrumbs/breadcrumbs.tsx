@@ -53,9 +53,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   return (
     <nav className='flex' {...props}>
       <ol className={listClasses({ spacing })}>
-        {normalizedLinks.map((link, idx, array) => (
+        {normalizedLinks?.map((link, idx, array) => (
           <BreadcrumbItem
-            count={array.length}
+            count={array?.length}
             index={idx}
             link={link}
             separator={
