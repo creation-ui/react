@@ -1,6 +1,13 @@
 import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context'
-import { Autocomplete, DropdownProps, ELEMENT_SIZES } from '@creation-ui/react'
+import {
+  Autocomplete,
+  Avatar,
+  DropdownProps,
+  ELEMENT_SIZES,
+  Option,
+  SelectedOption,
+} from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
@@ -9,6 +16,102 @@ import { pick } from 'lodash'
 
 type Option = (typeof options)[0]
 
+const users = [
+  {
+    birth: '31.5 BBY , Kamino',
+    description:
+      "Boba Fett was a Mandalorian warrior and bounty hunter. He was the only unaltered clone of the famed Jango Fett, created in 32 BBY as unit A0050, one of the first of many Fett replicas designed to become part of the Grand Army of the Republic, and was raised as Jango's son. Jango taught Boba much, training him to become a skilled bounty hunter as was his father-figure before him. In 22 BBY, Jango was killed at the Battle of Geonosis, which opened the Clone Wars.",
+    gender: 'Male',
+    height: '1.83 meters',
+    image:
+      'http://img2.wikia.nocookie.net/__cb20130920001614/starwars/images/5/58/BobaFettMain2.jpg',
+    name: 'Boba Fett',
+    planet: 'Kamino',
+    species: 'Human',
+  },
+  {
+    birth: '200 BBY, Kashyyyk',
+    description:
+      'Chewbacca (or "Chewie", as he was known by his friends) was a legendary Wookiee from Kashyyyk and co-pilot of Han Solo\'s ship, the Millennium Falcon. He was the son of Attichitcuk, the husband of Mallatobuck, and the father of Lumpawaroo. Chewbacca carried with him the name of an ancient Wookiee hero, the great Bacca, first of the great chieftains of Kashyyyk, and the creator of a sword that denoted leadership among the Wookiees. This name placed Chewbacca in a noble lineage.',
+    gender: 'Male',
+    height: '2.28 meters',
+    image:
+      'http://img4.wikia.nocookie.net/__cb20080815045819/starwars/images/thumb/7/73/Chewbaccaheadshot.jpg/500px-Chewbaccaheadshot.jpg',
+    name: 'Chewbacca',
+    planet: 'Kashyyyk',
+    species: 'Wookiee',
+  },
+  {
+    birth: '600 BBY, Nal Hutta',
+    description:
+      'Jabba Desilijic Tiure, better known as Jabba the Hutt and often called the "Bloated One," though never to his face, was one of the most notorious Hutt crime lords in the galaxy, who governed a large criminal empire located in the Outer Rim Territories from his desert palace on Tatooine. At the height of his power, Jabba was one of the most powerful crime lords in the galaxy, even having contact with Prince Xizor, the head of the Black Sun Syndicate.',
+    gender: 'Hermaphrodite',
+    height: '3.9 meters long\n1.75 meters tall',
+    image:
+      'http://img1.wikia.nocookie.net/__cb20080409144511/starwars/images/e/e5/Jabba_Boonta_Eve.jpg',
+    name: 'Jabba the Hutt',
+    planet: 'Nal Hutta',
+    species: 'Hutt',
+  },
+]
+
+const CustomOption = ({ option, ...props }: any) => {
+  return (
+    <Option {...props} {...option} className='!h-fit py-2'>
+      <div className='flex gap-2 items-center'>
+        <Avatar size='sm' src={option.image} />
+        <div className='flex flex-col'>
+          <span className='font-medium'>{option.name}</span>
+          <span className='text-info-500 text-xs'>{option.species}</span>
+        </div>
+      </div>
+    </Option>
+  )
+}
+const CustomSelectedOption = ({ option, ...props }: any) => {
+  return (
+    <SelectedOption {...props} {...option} className='!h-fit py-2'>
+      <div className='flex gap-2 items-center'>
+        <Avatar size='sm' src={option.image} />
+        <div className='flex flex-col'>
+          <span className='font-medium'>{option.name}</span>
+          <span className='text-info-500 text-xs'>{option.species} {option.height}</span>
+        </div>
+      </div>
+    </SelectedOption>
+  )
+}
+
+export const AutocompleteExampleCustomOptions = ({
+  ...props
+}: DropdownProps) => {
+  const [value, setValue] = useState<Option[]>([options[0]])
+
+  const playground = usePlayground()
+
+  const state = pick(playground.state, [
+    'size',
+    'error',
+    'loading',
+    'disabled',
+    'readOnly',
+    'clearable',
+  ])
+
+  return (
+    <Autocomplete
+      optionComponent={CustomOption}
+      selectedOptionComponent={CustomSelectedOption}
+      options={users}
+      value={value}
+      onChange={setValue}
+      searchKey='name'
+      clearable
+      {...state}
+      {...props}
+    />
+  )
+}
 export const AutocompleteExample = ({ ...props }: DropdownProps) => {
   const [value, setValue] = useState<Option[]>([options[0]])
 

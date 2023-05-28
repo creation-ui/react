@@ -11,12 +11,17 @@ import {
 import React, { useRef, useState } from 'react'
 import { useNormalizedOptions } from '../../hooks/use-normalized-options'
 import { useTheme } from '../../theme'
-import { DropdownOption, DropdownProps } from '../../types'
+import { DropdownOptionType, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
 import { getFlatOptions } from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import { DropdownContext, Option, SelectedOption } from '../shared/dropdown'
+import {
+  DropdownContext,
+  getDropdownHeight,
+  Option,
+  SelectedOption,
+} from '../shared/dropdown'
 import { dropdownInitialProps } from '../shared/dropdown/constants'
 import { AutocompleteView } from './autocomplete.view'
 
@@ -32,11 +37,13 @@ export function Autocomplete(props: DropdownProps) {
     helperText,
     error,
     limit,
+    maxHeight,
     onChange,
     getLimitText,
     optionComponent = Option,
     selectedOptionComponent = SelectedOption,
     size = defaultSize,
+    searchKey = 'label',
   } = props
   const { isDataFlat, options, value } = useNormalizedOptions({
     value: props.value,
@@ -62,15 +69,15 @@ export function Autocomplete(props: DropdownProps) {
     onOpenChange: setOpen,
     open,
     middleware: [
-      flip({ padding: 10 }),
+      flip(),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
-            maxHeight: `${availableHeight}px`,
+            maxHeight: getDropdownHeight(maxHeight, availableHeight),
+            overflowY: 'auto',
           })
         },
-        padding: 10,
       }),
     ],
   })
@@ -107,13 +114,13 @@ export function Autocomplete(props: DropdownProps) {
     query === ''
       ? options
       : options?.filter(option =>
-          option.label
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
+          option[searchKey]
+            ?.toLowerCase()
+            ?.replace(/\s+/g, '')
+            ?.includes(query?.toLowerCase()?.replace(/\s+/g, ''))
         )
 
-  const isQuery = !!query.trim()
+  const isQuery = !!query?.trim()
   const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
 
   const disabled = props.disabled || props.loading || props.readOnly
@@ -121,7 +128,7 @@ export function Autocomplete(props: DropdownProps) {
 
   const toggleOpen = () => setOpen(!open)
 
-  const handleSelect = (option: DropdownOption) => {
+  const handleSelect = (option: DropdownOptionType) => {
     if (multiple) {
       clearInput()
       // @ts-expect-error
@@ -135,7 +142,7 @@ export function Autocomplete(props: DropdownProps) {
     }
   }
 
-  const handleRemoveSelected = (option: DropdownOption) => {
+  const handleRemoveSelected = (option: DropdownOptionType) => {
     if (multiple) {
       // @ts-expect-error
       const newValue = value?.filter((o: any) => o.id !== option.id)
@@ -168,7 +175,7 @@ export function Autocomplete(props: DropdownProps) {
     },
   }
 
-  const getOptionProps = (option: DropdownOption, index: number) =>
+  const getOptionProps = (option: DropdownOptionType, index: number) =>
     getItemProps({
       key: option.id,
       multiple,

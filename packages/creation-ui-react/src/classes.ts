@@ -252,10 +252,9 @@ export const inputIcon = cva(
 export const optionListClasses = cva(
   [
     'bg-white',
+    'block',
     'shadow-md',
     'w-fit',
-    'max-h-80',
-    'overflow-y-auto',
     'border',
     'rounded-md',
     'flex',
@@ -265,6 +264,7 @@ export const optionListClasses = cva(
     'p-1',
     'dark:bg-gray-800',
     'dark:border-gray-700',
+    'overflow-y-auto',
   ],
   {
     variants: {
@@ -306,6 +306,7 @@ export const selectOptionClasses = cva(
     'items-center',
     'rounded-md',
     'group',
+    'flex-shrink-0',
   ],
   {
     variants: {

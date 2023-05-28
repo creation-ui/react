@@ -1,12 +1,12 @@
 import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Select, DropdownProps, DropdownOption } from '@creation-ui/react'
+import { Select, DropdownProps, DropdownOptionType } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
 
 export const SelectExample = ({ ...props }: DropdownProps) => {
-  const [selection, setSelection] = useState<DropdownOption[]>([options[0]])
+  const [selection, setSelection] = useState<DropdownOptionType[]>([options[0]])
 
   return (
     <Select
@@ -24,7 +24,7 @@ export const SelectMultipleExample = ({
   label = 'Select multiple',
   ...props
 }: DropdownProps) => {
-  const [selection, setSelection] = useState<DropdownOption[] | null>([
+  const [selection, setSelection] = useState<DropdownOptionType[] | null>([
     options[0],
     options[3],
   ])

@@ -21,7 +21,7 @@ export const OptionsList = () => {
           initialFocus={-1}
           visuallyHiddenDismiss
         >
-          <ul {...list} className={optionListClasses({ open: true })}>
+          <ul {...list} className={optionListClasses({ open })}>
             {options.length ? (
               options.map((item, index) => (
                 <OptionComponent {...option(item, index)} option={item} />

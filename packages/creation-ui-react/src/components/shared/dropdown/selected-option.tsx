@@ -3,7 +3,7 @@ import { SelectedOptionProps } from '../../../types'
 import { ClearButton } from '../../clear-button'
 import { useDropdown } from './context'
 
-export const SelectedOption = ({ option }: SelectedOptionProps) => {
+export const SelectedOption = ({ option, children }: SelectedOptionProps) => {
   const { handleRemoveSelected } = useDropdown()
 
   const handleRemove = e => {
@@ -13,7 +13,7 @@ export const SelectedOption = ({ option }: SelectedOptionProps) => {
 
   return (
     <span className={selectedOptionClasses()}>
-      {option.label}
+      {children ? children : option.label}
       <ClearButton onClick={handleRemove} />
     </span>
   )

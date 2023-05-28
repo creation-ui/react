@@ -1,8 +1,8 @@
-import { DropdownOption } from '../types'
+import { DropdownOptionType } from '../types'
 
 export const isSelected = (
-  value: DropdownOption | null,
-  selected: null | DropdownOption | DropdownOption[]
+  value: DropdownOptionType | null,
+  selected: null | DropdownOptionType | DropdownOptionType[]
 ) => {
   switch (Array.isArray(selected)) {
     case true:

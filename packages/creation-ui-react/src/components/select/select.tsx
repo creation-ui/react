@@ -11,7 +11,7 @@ import {
 import { useRef, useState } from 'react'
 import { useNormalizedOptions } from '../../hooks/use-normalized-options'
 import { useTheme } from '../../theme'
-import { DropdownOption, DropdownProps } from '../../types'
+import { DropdownOptionType, DropdownProps } from '../../types'
 import { isSelected } from '../../utils/is-selected'
 import { getFlatOptions } from '../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../dropdown-chevron'
@@ -19,6 +19,7 @@ import { InputBase } from '../input-base'
 import {
   DropdownContext,
   dropdownInitialProps,
+  getDropdownHeight,
   Option,
   SelectedOption,
 } from '../shared/dropdown'
@@ -38,6 +39,7 @@ export function Select(props: DropdownProps) {
     limit,
     onChange,
     getLimitText,
+    maxHeight,
     optionComponent = Option,
     selectedOptionComponent = SelectedOption,
     size = defaultSize,
@@ -62,15 +64,15 @@ export function Select(props: DropdownProps) {
     onOpenChange: setOpen,
     open,
     middleware: [
-      flip({ padding: 10 }),
+      flip(),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
-            maxHeight: `${availableHeight}px`,
+            maxHeight: getDropdownHeight(maxHeight, availableHeight),
+            overflowY: 'auto',
           })
         },
-        padding: 10,
       }),
     ],
   })
@@ -100,7 +102,7 @@ export function Select(props: DropdownProps) {
     setOpen(false)
   }
 
-  const handleSelect = (option: DropdownOption) => {
+  const handleSelect = (option: DropdownOptionType) => {
     if (multiple) {
       // @ts-expect-error
       const newValue = (isEmpty ? [] : value).concat(option)
@@ -112,7 +114,7 @@ export function Select(props: DropdownProps) {
     }
   }
 
-  const handleRemoveSelected = (option: DropdownOption) => {
+  const handleRemoveSelected = (option: DropdownOptionType) => {
     if (multiple) {
       // @ts-expect-error
       const newValue = value?.filter((o: any) => o.id !== option.id)
@@ -124,7 +126,7 @@ export function Select(props: DropdownProps) {
     ref: refs.setReference,
   })
 
-  const getOptionProps = (option: DropdownOption, index: number) =>
+  const getOptionProps = (option: DropdownOptionType, index: number) =>
     getItemProps({
       key: option.id,
       multiple,

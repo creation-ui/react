@@ -1,4 +1,4 @@
-import { DropdownOption, DropdownValueType } from '../types'
+import { DropdownOptionType, DropdownValueType } from '../types'
 import {
   normalizeOptions,
   normalizeValue,
@@ -6,12 +6,12 @@ import {
 
 interface UseNormalizedOptions {
   isDataFlat: boolean
-  options: DropdownOption[]
-  value: null | DropdownOption | DropdownOption[]
+  options: DropdownOptionType[]
+  value: null | DropdownOptionType | DropdownOptionType[]
 }
 
 interface UseNormalizedOptionsArgs {
-  options: string[] | DropdownOption[]
+  options: string[] | DropdownOptionType[]
   value?: DropdownValueType
 }
 

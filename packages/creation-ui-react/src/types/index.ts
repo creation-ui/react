@@ -63,7 +63,7 @@ export type GetComponentProps<T> = T extends
   ? P
   : never
 
-export type DropdownOption = {
+export type DropdownOptionType = {
   id: string
   label: string
   disabled?: boolean
@@ -205,8 +205,8 @@ export type ReadableError = {
 }
 
 export type DropdownValueType =
-  | DropdownOption
-  | DropdownOption[]
+  | DropdownOptionType
+  | DropdownOptionType[]
   | string
   | string[]
   | null
@@ -217,6 +217,9 @@ type OptionComponentType =
         React.RefAttributes<HTMLLIElement>
     >
   | React.FC<OptionProps & React.HTMLProps<HTMLLIElement>>
+
+export type DropdownMaxHeight = number | string | 'available'
+
 export interface DropdownProps extends BaseComponentProps {
   /**
    * Placeholder
@@ -225,7 +228,7 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * List options
    */
-  options?: DropdownOption[] | string[]
+  options?: DropdownOptionType[] | string[]
   /**
    * Component to display list options
    */
@@ -237,7 +240,7 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * Default value to display when component is not controlled
    */
-  defaultValue?: DropdownOption | string
+  defaultValue?: DropdownOptionType | string
   /**
    * Current value to display
    */
@@ -301,18 +304,31 @@ export interface DropdownProps extends BaseComponentProps {
    * @returns
    */
   onChange?: (value: DropdownValueType) => void
+  /**
+   * @default 500
+   * either provide a number of pixels or a string like 1rem, 20vh, etc.
+   * 'availableHeight': will set the max height of the dropdown to the available height of the screen
+   */
+  maxHeight?: DropdownMaxHeight
+  /**
+   * @default "label"
+   * Search key to filter options
+   */
+  searchKey?: string
 }
 
 export interface OptionProps {
   active: boolean
   selected?: boolean
-  option: DropdownOption
+  option: DropdownOptionType
   multiple?: boolean
   size?: ElementSize
+  children?: React.ReactNode
 }
 
 export interface SelectedOptionProps {
-  option: DropdownOption
+  option: DropdownOptionType
+  children?: React.ReactNode
   idx: number
 }
 

@@ -1,5 +1,5 @@
 import {
-  DropdownOption,
+  DropdownOptionType,
   HTMLInputType,
   Input,
   InputProps,
