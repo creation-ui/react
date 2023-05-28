@@ -8,7 +8,7 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { useNormalizedOptions } from '../../hooks/use-normalized-options'
 import { useTheme } from '../../theme'
 import { DropdownOptionType, DropdownProps } from '../../types'
@@ -23,6 +23,7 @@ import {
   SelectedOption,
 } from '../shared/dropdown'
 import { dropdownInitialProps } from '../shared/dropdown/constants'
+import { filterOptionsDefault } from '../shared/dropdown/filter-options'
 import { AutocompleteView } from './autocomplete.view'
 
 export function Autocomplete(props: DropdownProps) {
@@ -40,10 +41,10 @@ export function Autocomplete(props: DropdownProps) {
     maxHeight,
     onChange,
     getLimitText,
+    filterOptions = filterOptionsDefault,
     optionComponent = Option,
     selectedOptionComponent = SelectedOption,
     size = defaultSize,
-    searchKey = 'label',
   } = props
   const { isDataFlat, options, value } = useNormalizedOptions({
     value: props.value,
@@ -110,15 +111,10 @@ export function Autocomplete(props: DropdownProps) {
     }
   }
 
+  const filterFn = useCallback(() => filterOptions(query), [query])
+
   const queryMatchingOptions =
-    query === ''
-      ? options
-      : options?.filter(option =>
-          option[searchKey]
-            ?.toLowerCase()
-            ?.replace(/\s+/g, '')
-            ?.includes(query?.toLowerCase()?.replace(/\s+/g, ''))
-        )
+    query === '' ? options : options?.filter(filterFn)
 
   const isQuery = !!query?.trim()
   const isEmpty = value === null || (Array.isArray(value) && value.length === 0)

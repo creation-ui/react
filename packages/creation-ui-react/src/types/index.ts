@@ -299,6 +299,12 @@ export interface DropdownProps extends BaseComponentProps {
    */
   getLimitText?: (more: number) => string
   /**
+   * Filter options function
+   */
+  filterOptions?: (
+    query?: string
+  ) => (option: DropdownOptionType | any) => string
+  /**
    * onChange callback. Will return array of selected values. If !multiple, will return array with one value.
    * @param value
    * @returns
@@ -310,11 +316,6 @@ export interface DropdownProps extends BaseComponentProps {
    * 'availableHeight': will set the max height of the dropdown to the available height of the screen
    */
   maxHeight?: DropdownMaxHeight
-  /**
-   * @default "label"
-   * Search key to filter options
-   */
-  searchKey?: string
 }
 
 export interface OptionProps {

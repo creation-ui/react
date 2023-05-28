@@ -26,6 +26,7 @@ const users = [
     image:
       'http://img2.wikia.nocookie.net/__cb20130920001614/starwars/images/5/58/BobaFettMain2.jpg',
     name: 'Boba Fett',
+    id: 'Boba Fett',
     planet: 'Kamino',
     species: 'Human',
   },
@@ -38,6 +39,7 @@ const users = [
     image:
       'http://img4.wikia.nocookie.net/__cb20080815045819/starwars/images/thumb/7/73/Chewbaccaheadshot.jpg/500px-Chewbaccaheadshot.jpg',
     name: 'Chewbacca',
+    id: 'Chewbacca',
     planet: 'Kashyyyk',
     species: 'Wookiee',
   },
@@ -50,6 +52,7 @@ const users = [
     image:
       'http://img1.wikia.nocookie.net/__cb20080409144511/starwars/images/e/e5/Jabba_Boonta_Eve.jpg',
     name: 'Jabba the Hutt',
+    id: 'Jabba the Hutt',
     planet: 'Nal Hutta',
     species: 'Hutt',
   },
@@ -75,17 +78,21 @@ const CustomSelectedOption = ({ option, ...props }: any) => {
         <Avatar size='sm' src={option.image} />
         <div className='flex flex-col'>
           <span className='font-medium'>{option.name}</span>
-          <span className='text-info-500 text-xs'>{option.species} {option.height}</span>
+          <span className='text-info-500 text-xs'>
+            {option.species} {option.height}
+          </span>
         </div>
       </div>
     </SelectedOption>
   )
 }
 
+type User = (typeof users)[0]
+
 export const AutocompleteExampleCustomOptions = ({
   ...props
 }: DropdownProps) => {
-  const [value, setValue] = useState<Option[]>([options[0]])
+  const [value, setValue] = useState<User>(users[0])
 
   const playground = usePlayground()
 
@@ -98,13 +105,21 @@ export const AutocompleteExampleCustomOptions = ({
     'clearable',
   ])
 
+  const filterOptions = (query: string) => (option: User) =>
+    option.name
+      ?.toLowerCase()
+      ?.replace(/\s+/g, '')
+      ?.includes(query?.toLowerCase()?.replace(/\s+/g, ''))
+
   return (
     <Autocomplete
       optionComponent={CustomOption}
       selectedOptionComponent={CustomSelectedOption}
       options={users}
       value={value}
+      multiple={false}
       onChange={setValue}
+      filterOptions={filterOptions}
       searchKey='name'
       clearable
       {...state}
