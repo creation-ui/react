@@ -25,7 +25,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
     children,
     variant,
     layout = 'row',
-    onClear,
+    // onClear,
   } = props
   const componentId = useId(id)
 
@@ -70,11 +70,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
               children={props.label}
               aria-label={props.label?.toString()}
             />
-            {loading ? (
-              <Loader size={size === 'lg' ? 'md' : 'sm'} />
-            ) : (
-              readOnly && <Icon icon='readonly' title='Read only' />
-            )}
+            {loading && <Loader size={size === 'lg' ? 'md' : 'sm'} />}
           </div>
           <HelperText
             size={size}

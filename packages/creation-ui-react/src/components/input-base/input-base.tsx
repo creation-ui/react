@@ -77,14 +77,6 @@ const InputBase: FC<InputBaseProps> = props => {
             children={props.label}
             aria-label={props.label?.toString()}
           />
-
-          {props.readOnly && (
-            <Icon
-              icon='readonly'
-              title='Read only'
-              className={clsx('absolute', 'top-0', 'right-0')}
-            />
-          )}
           <div className='relative max-h-min'>
             {startAdornment && (
               <div className={inputIcon({ position: 'left' })}>
