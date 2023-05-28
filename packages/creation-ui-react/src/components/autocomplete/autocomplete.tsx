@@ -188,6 +188,7 @@ export function Autocomplete(props: DropdownProps) {
         selected && multiple
           ? handleRemoveSelected(option)
           : handleSelect(option)
+
         refs.domReference.current?.focus()
       },
       ref(node) {
@@ -225,7 +226,7 @@ export function Autocomplete(props: DropdownProps) {
           clearable,
           floatingContext: context,
           options: queryMatchingOptions,
-          activeIndex: activeIndex,
+          activeIndex,
           limit,
           selected: value,
           handleRemoveSelected,

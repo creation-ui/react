@@ -178,7 +178,7 @@ export function Select(props: DropdownProps) {
           clearable,
           floatingContext: context,
           options,
-          activeIndex: activeIndex,
+          activeIndex,
           limit,
           selected: value,
           handleRemoveSelected,

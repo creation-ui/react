@@ -17,8 +17,8 @@ export const OptionsList = () => {
     <FloatingPortal>
       {open && (
         <FloatingFocusManager
-          context={floatingContext}
           initialFocus={-1}
+          context={floatingContext}
           visuallyHiddenDismiss
         >
           <ul {...list} className={optionListClasses({ open })}>

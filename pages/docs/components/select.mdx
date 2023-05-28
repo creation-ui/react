@@ -1,80 +1,36 @@
 # Select
 
-Select component is using Listbox component from
-[headless ui](https://headlessui.com/react/listbox) library.
-
-## Basic usage example
-
-```js copy
-
-const [selection, setSelection] = useState<Option | never>()
-
-  return (
-    <Select
-      size='sm'
-      options={options}
-      label={'Select'}
-      value={selection}
-      onChange={setSelection}
-    />
-  )
-
-```
-
 import {
   SelectExample,
   properties,
   selectOptionType,
   selectOptionComponent,
-  SelectMultipleExample,
+  SelectMultiplePlayground,
+  SelectPlayground,
 } from '@components/examples/select'
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
 
-<div className='flex flex-col gap-3'>
-  <SelectExample size='sm' label='Small input' />
-  <SelectExample size='md' label='Medium input' />
-  <SelectExample size='lg' label='Large input' />
-</div>
+The Select component allows users to choose one or more options from a list. It is perfect for scenarios where a user is presented with multiple choices. This user-friendly and highly customizable component is versatile and can be used in a myriad of applications, from simple forms to complex interactive designs. Try out the examples below to see it in action!
+
+<SelectPlayground />
 
 ## Selecting multiple options
 
-In this example, we are using the `multiple` prop to allow selecting multiple options.
+The multiple prop enhances the Select component's functionality, enabling the selection of multiple options simultaneously. This is especially useful when there is a need to provide an option for multi-choice answers or preferences.
+
 
 <br />
-<SelectMultipleExample clearable clearableButtonText='Clear selection' />
+<SelectMultiplePlayground />
 <br />
-Because of the usage of the Listbox component under the hood, the `value` and `onChange`
-props change the signature:{' '}
+When the multiple prop is active, the `value` and `onChange` props adjust their signature as follows:
 
 | Property | `!multiple` | `multiple`    |
 | -------- | ----------- | ------------- |
 | value    | `T`         | `T[]`         |
 | onChange | `T => void` | `T[] => void` |
 
-For details see [properties table](#onChange)
-
-## Error state
-
-```js copy
-
-const [selection, setSelection] = useState<Option | never>()
-
-  return (
-    <Select
-      clearable
-      clearableButtonText="Clear selection"
-      options={options}
-      label={'With error'}
-      value={selection}
-      onChange={setSelection}
-      error={'You must select an option'}
-    />
-  )
-
-```
-
-<SelectExample error='You must select an option' label='With error' />
+You can explore further details in the [properties table.](#onChange)
 
 ## Component API
 

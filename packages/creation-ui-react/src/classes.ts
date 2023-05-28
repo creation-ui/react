@@ -320,12 +320,19 @@ export const selectOptionClasses = cva(
         false: [],
       },
       active: {
-        true: ['hover:bg-info-100', 'hover:dark:bg-primary-100/25'],
+        true: ['bg-info-100', 'dark:bg-primary-100/25'],
         false: [],
       },
       multiple: { true: ['flex', 'gap-2'], false: [] },
       size: sharedSizeClassesCVA,
     },
+    compoundVariants: [
+      {
+        selected: true,
+        active: true,
+        className: ['!bg-primary-100', '!dark:bg-primary-100/60'],
+      },
+    ],
   }
 )
 

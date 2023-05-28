@@ -1,25 +1,59 @@
+import { Playground } from '@components/playground'
+import { usePlayground } from '@components/playground/context'
 import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Select, DropdownProps, DropdownOptionType } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import React, { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
+import { pick } from 'lodash'
 
 export const SelectExample = ({ ...props }: DropdownProps) => {
   const [selection, setSelection] = useState<DropdownOptionType[]>([options[0]])
 
+  const playground = usePlayground()
+
+  const state = pick(playground.state, [
+    'size',
+    'error',
+    'loading',
+    'disabled',
+    'readOnly',
+    'clearable',
+  ])
+
   return (
     <Select
       options={options}
-      label={props.label}
+      label={'Select component'}
       value={selection}
       clearable
       placeholder='Select value'
       onChange={setSelection as any}
+      {...state}
       {...props}
     />
   )
 }
+
+export const SelectPlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Select',
+        size: true,
+        error: true,
+        loading: true,
+        disabled: true,
+        readOnly: true,
+        clearable: true,
+      }}
+    >
+      <SelectExample />
+    </Playground>
+  )
+}
+
 export const SelectMultipleExample = ({
   label = 'Select multiple',
   ...props
@@ -29,6 +63,17 @@ export const SelectMultipleExample = ({
     options[3],
   ])
 
+  const playground = usePlayground()
+
+  const state = pick(playground.state, [
+    'size',
+    'error',
+    'loading',
+    'disabled',
+    'readOnly',
+    'clearable',
+  ])
+
   return (
     <Select
       options={options}
@@ -36,9 +81,29 @@ export const SelectMultipleExample = ({
       value={selection}
       multiple
       placeholder='Select multiple'
+      clearableButtonText='Clear selection'
       onChange={setSelection as any}
+      {...state}
       {...props}
     />
+  )
+}
+
+export const SelectMultiplePlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Select',
+        size: true,
+        error: true,
+        loading: true,
+        disabled: true,
+        readOnly: true,
+        clearable: true,
+      }}
+    >
+      <SelectMultipleExample />
+    </Playground>
   )
 }
 
