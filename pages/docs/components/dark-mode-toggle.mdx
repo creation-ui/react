@@ -2,16 +2,15 @@ import { Container } from '@components/container'
 
 # DarkModeToggle
 
-Toggle for changing the theme of the application
-
-import InstallationGuide from '@components/shared/installation-guide.mdx'
-
-<InstallationGuide />
+The DarkModeToggle is a user-friendly switch allowing users to easily flip between light and dark themes within the application. It provides a convenient way to support users' preference for their viewing mode and can help enhance readability and visual comfort.
 
 ## Usage
 
+Here's how you can incorporate the DarkModeToggle component into your application:
+
 ```tsx copy
 import { DarkModeToggle } from '@creation-ui/react'
+
 ;<DarkModeToggle />
 ```
 
@@ -24,46 +23,10 @@ import { DarkModeToggleExample } from '@components/examples/dark-mode-toggle'
 import { properties } from '@components/examples/dark-mode-toggle'
 import PropsTable from '@components/props-table'
 
+For detailed information about the DarkModeToggle component's properties, refer to the following:
+
 <PropsTable
   properties={properties}
   name='DarkModeToggle'
   description={'DarkModeToggle component props'}
 />
-
-## AnimationProperties
-
-```tsx copy
-const defaultProperties: AnimationProperties = {
-  dark: {
-    circle: {
-      r: 9,
-    },
-    mask: {
-      cx: '50%',
-      cy: '23%',
-    },
-    svg: {
-      transform: 'rotate(40deg)',
-    },
-    lines: {
-      opacity: 0,
-    },
-  },
-  light: {
-    circle: {
-      r: 5,
-    },
-    mask: {
-      cx: '100%',
-      cy: '0%',
-    },
-    svg: {
-      transform: 'rotate(90deg)',
-    },
-    lines: {
-      opacity: 1,
-    },
-  },
-  springConfig: { mass: 4, tension: 250, friction: 35 },
-}
-```

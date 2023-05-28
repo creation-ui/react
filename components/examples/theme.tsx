@@ -24,13 +24,13 @@ export const properties: DocumentedProperty[] = [
     type: 'ThemeColors',
     description: 'Default theme colors',
   },
-  {
-    name: 'dir',
-    defaultValue: 'ltr',
-    type: 'ltr | rtl',
-    description: 'The direction in which content is displayed',
-    experimental: true,
-  },
+  // {
+  //   name: 'dir',
+  //   defaultValue: 'ltr',
+  //   type: 'ltr | rtl',
+  //   description: 'The direction in which content is displayed',
+  //   experimental: true,
+  // },
   {
     name: 'drawers',
     type: 'ThemeDrawers',

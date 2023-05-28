@@ -2,18 +2,16 @@ import { Container } from '@components/container'
 
 # Clear button
 
-Used in dropdowns to clear input content.
-
-import InstallationGuide from '@components/shared/installation-guide.mdx'
-
-<InstallationGuide />
+The Clear Button is a compact, handy component used primarily within dropdowns to swiftly erase input content. This button serves to provide a seamless user experience by allowing for quick edits and corrections, minimizing the time and effort required for manual clearing.
 
 ## Usage
+
+You can import the Clear Button component as shown below:
 
 ```tsx copy
 import { ClearButton } from '@creation-ui/react'
 
-<ClearButton />
+;<ClearButton />
 ```
 
 ### Props definition
@@ -27,9 +25,8 @@ interface ClearButtonProps {
 import { ClearButton } from '@creation-ui/react'
 
 <Container>
-  <ClearButton onClick={()=>console.log('Close me')}/>
+  <ClearButton onClick={() => alert('Close me')} />
 </Container>
-
 
 ## Component API
 

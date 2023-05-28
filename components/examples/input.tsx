@@ -1,17 +1,17 @@
+import { usePlayground } from '@components/playground/context'
 import {
-  DropdownOptionType,
+  ELEMENT_SIZES,
+  ELEMENT_VARIANTS,
   HTMLInputType,
   Input,
   InputProps,
 } from '@creation-ui/react'
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
+import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
+import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { iconProp } from './shared-props'
-import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
-import { Icon } from '@mdi/react'
-import { usePlayground } from '@components/playground/context'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 
@@ -93,13 +93,13 @@ export const properties: DocumentedProperty[] = [
     defaultValue: 'md',
     description: 'Size of the element',
   },
-  {
-    name: 'variant',
-    type: ListOrTypes([...ELEMENT_VARIANTS]),
-    defaultValue: 'outline',
-    description: 'Size of the element',
-    experimental: true,
-  },
+  // {
+  //   name: 'variant',
+  //   type: ListOrTypes([...ELEMENT_VARIANTS]),
+  //   defaultValue: 'outline',
+  //   description: 'Size of the element',
+  //   experimental: true,
+  // },
   { name: 'required', type: 'boolean', description: 'Is element required?' },
   { name: 'readOnly', type: 'boolean', description: 'Is element read-only?' },
   { name: 'label', type: 'string', description: 'Input label' },
@@ -107,15 +107,13 @@ export const properties: DocumentedProperty[] = [
   { name: 'loading', type: 'boolean', description: 'Show loading state' },
   {
     ...iconProp,
-    name: 'iconLeft',
+    name: 'startAdornment',
     description: 'Icon on the left side of the component',
-    experimental: true,
   },
   {
     ...iconProp,
-    name: 'iconRight',
+    name: 'endAdornment',
     description: 'Icon on the right side of the component',
-    experimental: true,
   },
   {
     name: 'fullWidth',
@@ -126,12 +124,10 @@ export const properties: DocumentedProperty[] = [
     name: 'helperText',
     type: 'boolean',
     description: 'Additional information for display with component',
-    experimental: true,
   },
   {
     name: 'error',
     type: 'boolean',
     description: 'Text to be displayed when input is invalid',
-    experimental: true,
   },
 ]

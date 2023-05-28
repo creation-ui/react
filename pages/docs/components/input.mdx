@@ -1,5 +1,7 @@
 # Input
 
+The Input component is a fundamental piece of UI that allows users to input text into your application. It supports a variety of types including text, password, email, etc. Additionally, it provides customizable options such as adornments, size, loading state, error state, and more.
+
 import {
   InputExample,
   properties,
@@ -14,21 +16,13 @@ import { Icon } from '@mdi/react'
 import { mdiAccountOutline, mdiHelpCircle, mdiKeyVariant } from '@mdi/js'
 import { Playground } from '@components/playground'
 
-```tsx copy
-export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
-  const [value, setValue] = useState('')
-
-  return (
-    <Input onChange={e => setValue(e.target.value)} value={value} {...props} />
-  )
-}
-```
-
 ## Playground
+
+Use the playground below to explore the different options available for the Input component:
 
 <Playground
   config={{
-    name:'Input',
+    name: 'Input',
     size: true,
     loading: true,
     disabled: true,
@@ -41,9 +35,7 @@ export const InputExample = (props: Omit<InputProps, 'onChange' | 'ref'>) => {
   <InputPlayground label='Input' />
 </Playground>
 
-As you may observe in this example the longer the content inside the Input component
-the longer it gets. To fix that you would need to provide your own **width** constraints
-either by a **custom wrapper** or passing class to `className` e.g.
+Please note that the `Input` component dynamically adjusts its width based on the length of its content. To set a fixed width, you can provide your own width constraints via a custom wrapper or by passing a class to the `className` prop:
 
 ```tsx copy
 //example with tailwindcss custom width
@@ -51,6 +43,8 @@ either by a **custom wrapper** or passing class to `className` e.g.
 ```
 
 ## Input Adornments
+
+Adornments are icons or other elements that can be added to the start or end of the Input component for additional interactivity or visual feedback:
 
 <Container>
   <InputExample
@@ -74,6 +68,7 @@ either by a **custom wrapper** or passing class to `className` e.g.
     endAdornment={<Icon path={mdiHelpCircle} size={1} />}
   />
 </Container>
+
 <Container>
   <InputExample
     label='Email'
@@ -121,6 +116,8 @@ either by a **custom wrapper** or passing class to `className` e.g.
 
 ## Interactive icon
 
+You can also use an interactive icon with the Input component, such as a visibility toggle for password fields:
+
 <Container>
   <PasswordExample
     label='Password'
@@ -130,6 +127,8 @@ either by a **custom wrapper** or passing class to `className` e.g.
 </Container>
 
 ## Component API
+
+Refer to the props table below for a detailed list of all properties that you can use to customize the Input component. In addition to these, it accepts all properties applicable to the native input HTML element:
 
 <PropsTable
   properties={properties}

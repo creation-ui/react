@@ -14,13 +14,10 @@ import {
 
 # Theme
 
-Theme Provider
-
-import InstallationGuide from '@components/shared/installation-guide.mdx'
-
-<InstallationGuide />
+The Theme Provider is a versatile and essential component that sets the overall aesthetic of your application. It allows you to apply a consistent design across your application and customize the look and feel to match your specific requirements.
 
 ## Usage
+Use the Theme Provider component by creating a ThemeProps object with your theme options and supplying it to the Theme component:
 
 ```tsx copy
 import { Theme, ThemeProps } from '@creation-ui/react'
@@ -39,6 +36,8 @@ export const App = () => {
 ```
 
 ## Default theme values
+
+The Theme Provider component comes with a robust set of default values that provide a solid starting point for your application's design:
 
 ```
 {
@@ -95,6 +94,8 @@ export const App = () => {
 
 ## Component API
 
+For a detailed explanation of each prop that you can use to customize your theme, see the following sections:
+
 <PropsTable
   properties={properties}
   name='Theme'
@@ -124,7 +125,7 @@ export const App = () => {
   description='Theme Heading Config properties.'
 />
 
-#### Default headings settings
+Below are the default settings for various heading styles:
 
 | Heading | `fontSize` | `leading`      | `fontWeight` |
 | ------- | ---------- | -------------- | ------------ |
