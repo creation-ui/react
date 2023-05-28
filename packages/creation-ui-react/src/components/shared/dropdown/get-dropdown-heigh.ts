@@ -10,10 +10,9 @@ export const getDropdownHeight = (
     case 'number':
       return maxHeight + 'px'
     case 'string':
+    default:
       return maxHeight === 'available'
         ? availableHeight + 'px'
         : (maxHeight as string)
-    default:
-      return undefined
   }
 }

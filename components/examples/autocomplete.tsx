@@ -14,7 +14,7 @@ import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
 import { pick } from 'lodash'
 
-type Option = (typeof options)[0]
+type OptionType = (typeof options)[0]
 
 const users = [
   {
@@ -128,7 +128,7 @@ export const AutocompleteExampleCustomOptions = ({
   )
 }
 export const AutocompleteExample = ({ ...props }: DropdownProps) => {
-  const [value, setValue] = useState<Option[]>([options[0]])
+  const [value, setValue] = useState<OptionType[]>([options[0]])
 
   const playground = usePlayground()
 
@@ -156,9 +156,9 @@ export const AutocompleteMultipleExample = ({
   label = 'Autocomplete multiple',
   ...props
 }: DropdownProps) => {
-  const [value, setValue] = useState<Option[]>([options[0], options[3]])
+  const [value, setValue] = useState<OptionType[]>([options[0], options[3]])
 
-  const handleChange = (value: Option[]) => {
+  const handleChange = (value: OptionType[]) => {
     setValue(value ? value : [])
   }
 
