@@ -29,12 +29,17 @@ export const ShowExample = () => {
 
 <ShowExample />
 
-In the above code:
+The `when` prop determines which content to display. The fallback pecifies what to display if `when` is `false`. In this case, it's a "Log in" button. If `when` is `true` the "Log out" button will be displayed.
 
-`when={loggedIn}`: This prop determines which content to display. If `loggedIn` is `true`, the `Show` component will display its `children`. If `loggedIn` is `false`, it will display the `fallback` component.
-`fallback={<Button onClick={login}>Log in</Button>}`: This prop specifies what to display if `when` is false. In this case, it's a "Log in" button.
-The children of the `Show` component `<Button onClick={logout} variant={'outlined'}> Log out</Button>`: This is what will be displayed if `when` is true. In this case, it's a "Log out" button.
-The `Show` component uses animations from `framer-motion` to smoothly transition between the `children` and `fallback` components when the value of `when` changes.
+```tsx
+<Show when={loggedIn} fallback={<Button onClick={login}>Log in</Button>}>
+  <Button onClick={logout} variant={'outlined'}>
+    Log out
+  </Button>
+</Show>
+```
+
+The Show component uses animations from `framer-motion` to smoothly transition between the `children` and `fallback` components when the value of `when` changes.
 
 ## Component API
 
