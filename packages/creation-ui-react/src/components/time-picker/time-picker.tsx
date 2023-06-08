@@ -1,7 +1,7 @@
 import { FC, useRef, useState } from 'react'
 import { useTheme } from '../../theme'
 import { Input } from '../input'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.description'
 import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
 

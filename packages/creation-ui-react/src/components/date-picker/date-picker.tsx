@@ -2,7 +2,7 @@ import { FC, useRef, useState } from 'react'
 import { useTheme } from '../../theme'
 import { Calendar, CalendarDateValue } from '../calendar'
 import { Input } from '../input'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.description'
 import { DatePickerProps } from './types'
 
 export const DatePicker: FC<DatePickerProps> = props => {
