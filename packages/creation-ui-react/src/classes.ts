@@ -46,16 +46,34 @@ export const roundness = {
   input: 'rounded-md',
 }
 
+export const sharedTextSizesBase = {
+  sm: ['text-sm', 'sm:text-base'],
+  md: ['text-base', 'sm:text-lg'],
+  lg: ['text-lg', 'sm:text-xl'],
+}
+
+export const sharedTextSizesHeading = {
+  sm: ['text-base', 'sm:text-lg'],
+  md: ['text-lg', 'sm:text-xl'],
+  lg: ['text-xl', 'sm:text-xl'],
+}
+
+export const sharedTextSizesDescription = {
+  sm: ['text-[13px]', 'sm:text-xs'],
+  md: ['text-xs', 'sm:text-sm'],
+  lg: ['text-sm', 'sm:text-base'],
+}
+
 export const sharedSizeClassesCVA = {
-  sm: ['h-7', 'px-2', 'sm:text-sm', 'text-base'],
-  md: ['h-8', 'px-3', 'sm:text-base', 'text-lg'],
-  lg: ['h-10', 'px-4', 'sm:text-lg', 'text-xl'],
+  sm: ['h-7', 'px-2', ...sharedTextSizesBase.sm],
+  md: ['h-8', 'px-3', ...sharedTextSizesBase.md],
+  lg: ['h-10', 'px-4', ...sharedTextSizesBase.lg],
 }
 
 export const sharedSizeSquareCVA = {
-  sm: ['h-4', 'w-4', 'sm:text-sm', 'text-base'],
-  md: ['h-5', 'w-5', 'sm:text-base', 'text-lg'],
-  lg: ['h-6', 'w-6', 'sm:text-lg', 'text-xl'],
+  sm: ['h-4', 'w-4', ...sharedTextSizesBase.sm],
+  md: ['h-5', 'w-5', ...sharedTextSizesBase.md],
+  lg: ['h-6', 'w-6', ...sharedTextSizesBase.lg],
 }
 
 export const sharedReadOnlyCVA = {

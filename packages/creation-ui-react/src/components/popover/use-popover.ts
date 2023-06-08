@@ -54,7 +54,6 @@ export function usePopover({
   const role = useRole(context)
 
   const interactions = useInteractions([click, dismiss, role])
-
   return useMemo(
     () => ({
       open,

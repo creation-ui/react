@@ -5,35 +5,44 @@ import {
 } from '@floating-ui/react'
 import type { HTMLProps } from 'react'
 import { forwardRef } from 'react'
+import { ElementSize } from '../../types'
+import { popoverContentClasses } from './classes'
 import { usePopoverContext } from './context'
+import { usePopover } from './use-popover'
 
-export const PopoverContent = forwardRef<
-  HTMLDivElement,
-  HTMLProps<HTMLDivElement>
->(function PopoverContent(props, propRef) {
-  const { context: floatingContext, ...context } = usePopoverContext()
-  const ref = useMergeRefs([context.refs.setFloating, propRef])
+interface PopoverContentProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
+  size?: ElementSize
+}
 
-  if (!floatingContext.open) return null
+export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
+  function PopoverContent({ size, className, ...props }, propRef) {
+    const { context: floatingContext, ...ctx } = usePopoverContext()
+    const ref = useMergeRefs([ctx.refs.setFloating, propRef])
 
-  const style = {
-    ...context.floatingStyles,
-    ...props.style,
+    const finalSize = size ?? ctx.size
+
+    if (!floatingContext.open) return null
+
+    const style = {
+      ...ctx.floatingStyles,
+      ...props.style,
+    }
+
+    return (
+      <FloatingPortal>
+        <FloatingFocusManager context={floatingContext} modal={ctx.modal}>
+          <div
+            ref={ref}
+            style={style}
+            className={popoverContentClasses({ size: finalSize, className })}
+            aria-labelledby={ctx.labelId}
+            aria-describedby={ctx.descriptionId}
+            {...ctx.getFloatingProps(props)}
+          >
+            {props.children}
+          </div>
+        </FloatingFocusManager>
+      </FloatingPortal>
+    )
   }
-
-  return (
-    <FloatingPortal>
-      <FloatingFocusManager context={floatingContext} modal={context.modal}>
-        <div
-          ref={ref}
-          style={style}
-          aria-labelledby={context.labelId}
-          aria-describedby={context.descriptionId}
-          {...context.getFloatingProps(props)}
-        >
-          {props.children}
-        </div>
-      </FloatingFocusManager>
-    </FloatingPortal>
-  )
-})
+)

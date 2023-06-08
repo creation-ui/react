@@ -1,12 +1,33 @@
-# Popover
-
-import { PopoverExampleControlled,PopoverExampleUncontrolled, properties } from '@components/examples/popover'
+import {
+  PopoverPlaygroundControlled,
+  PopoverPlaygroundUncontrolled,
+  properties,
+} from '@components/examples/popover'
 import PropsTable from '@components/props-table'
 
-<PopoverExampleControlled />
+# Popover
 
-<PopoverExampleUncontrolled />
+The Popover component is a flexible UI element that can be used to display additional information or actions without taking the user away from the current context. It is commonly used for tooltips, dropdowns, and context menus.
+Uses [@floating/ui](https://floating-ui.com/docs/popover).
+
+## Playground
+
+Explore and experiment with the Popover component using the uncontrolled and controlled playgrounds below:
+
+### Uncontrolled Popover
+
+In the uncontrolled variant, the open and close behavior of the Popover is managed internally:
+
+<PopoverPlaygroundUncontrolled />
+
+### Controlled Popover
+
+In the controlled variant, you can manage the open and close behavior of the Popover externally through props:
+
+<PopoverPlaygroundControlled />
 
 ## Component API
+
+For detailed configuration options, refer to the Popover API in the props table below:
 
 <PropsTable properties={properties} name='Popover' />
