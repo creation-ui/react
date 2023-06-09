@@ -20,7 +20,7 @@ export const PopoverDescription = forwardRef<
   const id = useId()
 
   const finalSize: ElementSize =
-    typeof size === 'number' ? 'md' : size ?? ctx.size
+    !size || typeof size === 'number' ? 'md' : size ?? ctx.size
 
   // Only sets `aria-describedby` on the Popover root element
   // if this component is mounted inside it.

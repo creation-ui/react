@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { PopoverContextType } from './types'
+import { PopoverContextType } from './use-popover'
 
 export const PopoverContext = createContext<PopoverContextType>(null)
 
@@ -12,4 +12,3 @@ export const usePopoverContext = () => {
 
   return context
 }
-
