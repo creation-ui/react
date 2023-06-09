@@ -1,69 +1,17 @@
+import { usePlayground } from '@components/playground/context'
 import { TextArea, TextAreaProps } from '@creation-ui/react'
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { useEffect, useState } from 'react'
-import { ListOrTypes } from 'utils/list-or-types'
+import { inputBaseProperties } from './input-base-properties'
 
-interface TextAreaExampleProps extends Omit<TextAreaProps, 'onChange' | 'ref'> {
-  debug?: boolean
+interface TextAreaExampleProps
+  extends Omit<TextAreaProps, 'onChange' | 'ref'> {}
+
+export const TextAreaPlayground = ({ ...props }: TextAreaExampleProps) => {
+  const {
+    state: { inputType, ...state },
+  } = usePlayground()
+
+  return <TextArea {...props} {...state} defaultValue={state.content} />
 }
 
-export const TextAreaExample = (props: TextAreaExampleProps) => {
-  const [value, setValue] = useState('')
-
-  useEffect(() => {
-    if (props.value) {
-      setValue(props.value as any)
-    }
-  }, [props.value])
-
-  return (
-    <div
-      key={props.key}
-      className='
-      flex
-      flex-col
-      gap-5
-      max-w-md
-      items-center'
-    >
-      <TextArea
-        onChange={e => setValue(e.target.value)}
-        value={value}
-        {...props}
-      />
-    </div>
-  )
-}
-
-export const properties: DocumentedProperty[] = [
-  {
-    name: 'size',
-    type: ListOrTypes([...ELEMENT_SIZES]),
-    defaultValue: 'md',
-    description: 'Size of the element',
-  },
-  {
-    name: 'variant',
-    type: ListOrTypes([...ELEMENT_VARIANTS]),
-    defaultValue: 'outline',
-    description: 'Size of the element',
-    experimental: true,
-  },
-  { name: 'required', type: 'boolean', description: 'Is element required?' },
-  { name: 'readOnly', type: 'boolean', description: 'Is element read-only?' },
-  { name: 'label', type: 'string', description: 'TextArea label' },
-  { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
-  { name: 'loading', type: 'boolean', description: 'Show loading state' },
-  {
-    name: 'fullWidth',
-    type: 'boolean',
-    description: 'Should button take up all available width?',
-  },
-  {
-    name: 'helperText',
-    type: 'boolean',
-    description: 'Additional information for display with component',
-    experimental: true,
-  },
-]
+export const properties: DocumentedProperty[] = inputBaseProperties

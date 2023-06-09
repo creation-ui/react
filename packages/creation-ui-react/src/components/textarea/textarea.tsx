@@ -1,61 +1,19 @@
-import clsx from 'clsx'
-import { ForwardedRef, forwardRef } from 'react'
-import { input, inputContainer, label, text } from '../../classes'
-import { useId } from '../../hooks'
+import type { Ref } from 'react'
+import { forwardRef } from 'react'
 import { useTheme } from '../../theme'
-import { InteractiveContainer } from '../interactive-container'
-import { Loader } from '../loader'
-import { HelperText } from '../typography/helper-text'
+import { InputBase } from '../input-base'
 import type { TextAreaProps } from './textarea.types'
+import { TextAreaView } from './textarea.view'
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  (props, ref: ForwardedRef<HTMLTextAreaElement>) => {
+  (props, ref: Ref<HTMLTextAreaElement>) => {
     const { size: defaultSize } = useTheme()
-    const {
-      error,
-      size = defaultSize,
-      className,
-      id,
-      loading,
-      helperText,
-    } = props
-    const componentId = useId(id)
-    const disabled = props.disabled || props.readOnly
+    const { size = defaultSize, ...rest } = props
 
-    const containerClasses = clsx(
-      inputContainer({ disabled, error: !!error }),
-      text({ size })
-    )
     return (
-      <InteractiveContainer disabled={disabled} className={className}>
-        <div className={containerClasses}>
-          <label
-            htmlFor={componentId}
-            className={label({ size, required: props.required })}
-            children={props.label}
-            aria-label={props.label?.toString()}
-          />
-          <div className='mt-1'>
-            <textarea
-              ref={ref}
-              id={componentId}
-              className={input({
-                size,
-                variant: props.variant,
-                className: ['resize', className, ],
-              })}
-              aria-readonly={!!props.readOnly}
-              {...props}
-            />
-          </div>
-          {loading && <Loader />}
-          <HelperText
-            size={size}
-            helperText={error || helperText}
-            error={Boolean(error)}
-          />
-        </div>
-      </InteractiveContainer>
+      <InputBase {...rest} size={size} type={'text'}>
+        <TextAreaView {...rest} ref={ref} />
+      </InputBase>
     )
   }
 )

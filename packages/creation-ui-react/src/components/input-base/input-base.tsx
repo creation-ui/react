@@ -1,12 +1,10 @@
-import clsx from 'clsx'
 import type { FC } from 'react'
-import { InputBaseProps } from '../../types'
 import { twMerge } from 'tailwind-merge'
 import { input, inputContainer, inputIcon, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import { InputBaseProps } from '../../types'
 import { ClearButton } from '../clear-button'
-import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { HelperText } from '../typography/helper-text'
@@ -29,7 +27,6 @@ const InputBase: FC<InputBaseProps> = props => {
     clearable,
     layout = 'column',
     onClear,
-    ...rest
   } = props
   const componentId = useId(id)
 

@@ -173,10 +173,6 @@ export interface InputBaseProps extends BaseComponentProps {
    */
   endAdornment?: React.ReactNode
   /**
-   * Is button fullwidth?
-   */
-  fullWidth?: boolean
-  /**
    * Type of HTML input
    */
   type?: HTMLInputType

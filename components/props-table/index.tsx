@@ -51,9 +51,7 @@ const TableRow = ({
         )}
         {experimental && (
           <p className='text-red-500'>
-            <em>
-              This feature is <b>experimental</b> and might not work correctly!
-            </em>
+            <em>This feature is experimental and might not work correctly.</em>
           </p>
         )}
       </div>

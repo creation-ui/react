@@ -1,17 +1,10 @@
 import { usePlayground } from '@components/playground/context'
-import {
-  ELEMENT_SIZES,
-  ELEMENT_VARIANTS,
-  HTMLInputType,
-  Input,
-  InputProps,
-} from '@creation-ui/react'
+import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
 import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
-import { ListOrTypes } from 'utils/list-or-types'
-import { iconProp } from './shared-props'
+import { inputBaseProperties } from './input-base-properties'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 
@@ -86,48 +79,4 @@ export const PasswordExample = ({ ...props }: InputExampleProps) => {
   )
 }
 
-export const properties: DocumentedProperty[] = [
-  {
-    name: 'size',
-    type: ListOrTypes([...ELEMENT_SIZES]),
-    defaultValue: 'md',
-    description: 'Size of the element',
-  },
-  // {
-  //   name: 'variant',
-  //   type: ListOrTypes([...ELEMENT_VARIANTS]),
-  //   defaultValue: 'outline',
-  //   description: 'Size of the element',
-  //   experimental: true,
-  // },
-  { name: 'required', type: 'boolean', description: 'Is element required?' },
-  { name: 'readOnly', type: 'boolean', description: 'Is element read-only?' },
-  { name: 'label', type: 'string', description: 'Input label' },
-  { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
-  { name: 'loading', type: 'boolean', description: 'Show loading state' },
-  {
-    ...iconProp,
-    name: 'startAdornment',
-    description: 'Icon on the left side of the component',
-  },
-  {
-    ...iconProp,
-    name: 'endAdornment',
-    description: 'Icon on the right side of the component',
-  },
-  {
-    name: 'fullWidth',
-    type: 'boolean',
-    description: 'Should button take up all available width?',
-  },
-  {
-    name: 'helperText',
-    type: 'boolean',
-    description: 'Additional information for display with component',
-  },
-  {
-    name: 'error',
-    type: 'boolean',
-    description: 'Text to be displayed when input is invalid',
-  },
-]
+export const properties: DocumentedProperty[] = inputBaseProperties
