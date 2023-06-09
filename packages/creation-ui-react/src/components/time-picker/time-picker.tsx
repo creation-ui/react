@@ -1,13 +1,25 @@
 import { FC, useRef, useState } from 'react'
 import { useTheme } from '../../theme'
 import { Input } from '../input'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.description'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover'
 import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
-  const { size = defaultSize, value, onChange, format, ...rest } = props
+  const {
+    //
+    size = defaultSize,
+    value,
+    onChange,
+    format,
+    clearable = true,
+    onClear = () => {
+      onChange?.(null)
+      setOpen(false)
+    },
+    ...rest
+  } = props
 
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
@@ -23,14 +35,16 @@ export const TimePicker: FC<TimePickerProps> = props => {
       <PopoverTrigger>
         <Input
           {...rest}
+          clearable={clearable}
           ref={ref}
           size={size}
           readOnly
           value={value ? value.toLocaleTimeString() : ''}
           onClick={handleClick}
+          onClear={onClear}
         />
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className='!p-0 !bg-transparent'>
         {open && (
           <TimeSelector
             value={value}

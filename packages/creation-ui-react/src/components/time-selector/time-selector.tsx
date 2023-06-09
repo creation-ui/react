@@ -7,7 +7,16 @@ const cellClasses = cva(
   ['cursor-pointer', 'px-2', 'py-1', 'hover:bg-primary-50/50'],
   {
     variants: {
-      selected: { true: 'bg-primary-100', false: '' },
+      selected: {
+        true: [
+          //
+          'bg-primary-100',
+          'dark:bg-primary-100',
+          'dark:text-info-700',
+
+        ],
+        false: '',
+      },
     },
   }
 )
