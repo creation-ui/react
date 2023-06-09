@@ -17,7 +17,7 @@ const UNSTYLED_TYPES: HTMLInputType[] = [
   'range',
   'submit',
   'reset',
-  'button'
+  'button',
 ]
 
 const InputBase: FC<InputBaseProps> = props => {
@@ -57,11 +57,11 @@ const InputBase: FC<InputBaseProps> = props => {
       variant: isUnstyled ? 'unstyled' : variant,
       iconLeft: !!startAdornment,
       iconRight: !!endAdornment,
-      className: twMerge(className),
       error: !!error,
       fillContent: isColor,
       // @ts-expect-error
       type: props.type,
+      className,
     })
   )
 
