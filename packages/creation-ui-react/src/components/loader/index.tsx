@@ -27,5 +27,3 @@ export const Loader = (props: LoaderProps) => {
     </div>
   )
 }
-
-Loader.displayName = 'Loader'

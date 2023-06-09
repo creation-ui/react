@@ -17,7 +17,7 @@ export const overlay = cva(
   {
     variants: {
       visible: {
-        true: ['opacity-75' , 'dark:opacity-50', 'inset-0', 'h-full', 'w-full'],
+        true: ['opacity-50' , 'dark:opacity-50', 'inset-0', 'h-full', 'w-full'],
         false: ['!opacity-0', 'top-0', 'left-0', 'h-0', 'w-0'],
       },
       cursorWait: {
