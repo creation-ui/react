@@ -6,7 +6,7 @@ import {
   useFloating,
 } from '@floating-ui/react'
 import { useState } from 'react'
-import { PopoverOptions } from './types'
+import { PopoverOptions, UsePopoverReturns } from './types'
 
 import {
   useClick,
@@ -22,7 +22,8 @@ export function usePopover({
   modal,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-}: PopoverOptions = {}) {
+}: PopoverOptions = {}): // this return type is risky and only needed in ./types
+UsePopoverReturns {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
   const [labelId, setLabelId] = useState<string | undefined>()
   const [descriptionId, setDescriptionId] = useState<string | undefined>()
