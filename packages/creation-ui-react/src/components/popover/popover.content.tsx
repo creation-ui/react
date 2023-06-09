@@ -24,6 +24,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
     if (!floatingContext.open) return null
 
     const style = {
+      // @ts-ignore
       ...ctx.floatingStyles,
       ...props.style,
     }
