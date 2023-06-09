@@ -5,7 +5,8 @@
   @apply scroll-smooth;
 }
 
-.reset-input, .reset-input:focus-visible {
+.reset-input,
+.reset-input:focus-visible {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -21,4 +22,21 @@
   width: auto;
   box-shadow: none;
   border-radius: 0;
+}
+
+.form-color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  /* border: none; */
+  cursor: pointer;
+}
+.form-color::-webkit-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+.form-color::-moz-color-swatch {
+  @apply rounded-md;
+  border: none;
 }

@@ -1,3 +1,4 @@
+import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context'
 import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
 import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
@@ -29,18 +30,45 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
   )
 }
 
-export const InputPlayground = ({ ...props }: InputExampleProps) => {
+export const InputPlaygroundView = ({ ...props }: InputExampleProps) => {
   const {
     state: { inputType, ...state },
   } = usePlayground()
-
+  const [inputValue, setInputValue] = useState<string>('')
+  const onClear = () => {
+    setInputValue('')
+  }
   return (
     <Input
       {...props}
       {...state}
+      value={inputValue}
+      onChange={e => setInputValue(e.target.value)}
+      onClear={onClear}
       type={inputType as HTMLInputType}
       defaultValue={state.content}
     />
+  )
+}
+
+export const InputPlayground = () => {
+  return (
+    <Playground
+      config={{
+        name: 'Input',
+        size: true,
+        loading: true,
+        disabled: true,
+        readOnly: true,
+        error: true,
+        helperText: true,
+        inputType: true,
+        variant: true,
+        clearable: true,
+      }}
+    >
+      <InputPlaygroundView label='Input' />
+    </Playground>
   )
 }
 

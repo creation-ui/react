@@ -3,12 +3,22 @@ import { twMerge } from 'tailwind-merge'
 import { input, inputContainer, inputIcon, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { InputBaseProps } from '../../types'
+import { HTMLInputType, InputBaseProps } from '../../types'
 import { ClearButton } from '../clear-button'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { HelperText } from '../typography/helper-text'
 import { InputBaseContext } from './input-base.context'
+
+const UNSTYLED_TYPES: HTMLInputType[] = [
+  //
+  // 'color',
+  'file',
+  'range',
+  'submit',
+  'reset',
+  'button'
+]
 
 const InputBase: FC<InputBaseProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -39,16 +49,19 @@ const InputBase: FC<InputBaseProps> = props => {
   )
 
   const isColor = type === 'color'
+  const isUnstyled = UNSTYLED_TYPES.includes(type)
 
   const inputClasses = twMerge(
     input({
       size,
-      variant,
+      variant: isUnstyled ? 'unstyled' : variant,
       iconLeft: !!startAdornment,
       iconRight: !!endAdornment,
       className: twMerge(className),
       error: !!error,
       fillContent: isColor,
+      // @ts-expect-error
+      type: props.type,
     })
   )
 

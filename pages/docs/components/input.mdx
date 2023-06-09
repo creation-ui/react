@@ -20,20 +20,7 @@ import { Playground } from '@components/playground'
 
 Use the playground below to explore the different options available for the Input component:
 
-<Playground
-  config={{
-    name: 'Input',
-    size: true,
-    loading: true,
-    disabled: true,
-    readOnly: true,
-    error: true,
-    helperText: true,
-    inputType: true,
-  }}
->
-  <InputPlayground label='Input' />
-</Playground>
+<InputPlayground/>
 
 Please note that the `Input` component dynamically adjusts its width based on the length of its content. To set a fixed width, you can provide your own width constraints via a custom wrapper or by passing a class to the `className` prop:
 

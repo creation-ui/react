@@ -23,6 +23,7 @@ export const formClassesMap = {
   textarea: 'form-textarea',
   select: 'form-select',
   multiselect: 'form-multiselect',
+  color: 'form-color',
   // cva fallback
   false: null,
 }
@@ -153,13 +154,35 @@ export const classes = {
 }
 
 export const input = cva(
-  [classes.input, 'peer', 'block', 'w-full', 'disabled:pointer-events-none'],
+  [
+    getAllValuesFromObject(roundness),
+    'peer',
+    'block',
+    'w-full',
+    'disabled:pointer-events-none',
+  ],
   {
     variants: {
       variant: {
-        contained: [],
-        outlined: [],
-        text: [],
+        contained: [
+          classes.input,
+          'bg-info-100',
+          'border-transparent',
+          // 'focus:border-info-500',
+          'focus:bg-info-50',
+          // 'focus:ring-0',
+        ],
+        outlined: [classes.input],
+        text: [
+          classes.input,
+          'border-0',
+          'border-b',
+          'rounded-none',
+          'border-gray-200',
+          'focus:ring-0',
+          // 'focus:border-black',
+        ],
+        unstyled: [],
       },
       size: sharedSizeClassesCVA,
       iconLeft: { true: 'pl-10', false: 'pl-3' },
@@ -172,12 +195,34 @@ export const input = cva(
         true: ['!p-0'],
         false: null,
       },
-      type: formClassesMap,
+      type: {
+        ...formClassesMap,
+        file: ['!h-8', '!p-0'],
+        color: [formClassesMap.color, '!p-0'],
+        checkbox: [formClassesMap.checkbox, '!px-0'],
+      },
     },
     defaultVariants: {
       size: 'md',
-      variant: 'contained',
+      variant: 'outlined',
     },
+    compoundVariants: [
+      {
+        type: 'color',
+        size: 'sm',
+        className: ['!h-7', '!w-7'],
+      },
+      {
+        type: 'color',
+        size: 'md',
+        className: ['!h-8', '!w-8'],
+      },
+      {
+        type: 'color',
+        size: 'lg',
+        className: ['!h-10', '!w-10'],
+      },
+    ],
   }
 )
 
@@ -195,7 +240,7 @@ export const text = cva(microInteractions, {
 })
 
 export const helperTextClasses = cva(
-  [microInteractions, 'text-gray-500', 'dark:text-gray-300'],
+  [microInteractions, 'text-info-500', 'dark:text-info-300'],
   {
     variants: {
       size: {
@@ -280,8 +325,8 @@ export const optionListClasses = cva(
     'gap-1',
     'mt-1',
     'p-1',
-    'dark:bg-gray-800',
-    'dark:border-gray-700',
+    'dark:bg-info-800',
+    'dark:border-info-700',
     'overflow-y-auto',
   ],
   {
