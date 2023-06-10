@@ -29,13 +29,14 @@
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
-  /* border: none; */
   cursor: pointer;
 }
+
 .form-color::-webkit-color-swatch {
   @apply rounded-md;
   border: none;
 }
+
 .form-color::-moz-color-swatch {
   @apply rounded-md;
   border: none;

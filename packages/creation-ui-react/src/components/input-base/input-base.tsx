@@ -48,9 +48,7 @@ const InputBase: FC<InputBaseProps> = props => {
     text({ size })
   )
 
-  const isColor = type === 'color'
   const isUnstyled = UNSTYLED_TYPES.includes(type)
-
   const inputClasses = twMerge(
     input({
       size,
@@ -58,9 +56,9 @@ const InputBase: FC<InputBaseProps> = props => {
       iconLeft: !!startAdornment,
       iconRight: !!endAdornment,
       error: !!error,
-      fillContent: isColor,
       // @ts-expect-error
-      type: props.type,
+      type,
+      // @ts-ignore
       className,
     })
   )

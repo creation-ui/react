@@ -191,10 +191,6 @@ export const input = cva(
         true: sharedErrorClasses,
         false: null,
       },
-      fillContent: {
-        true: ['!p-0'],
-        false: null,
-      },
       type: {
         ...formClassesMap,
         file: ['!h-8', '!p-0'],
