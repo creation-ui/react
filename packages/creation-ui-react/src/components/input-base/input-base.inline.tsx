@@ -1,12 +1,12 @@
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { input, inputContainer, label, text } from '../../classes'
+import { errorClasses, input, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { InputBaseProps } from '../../types'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
-import { HelperText } from '../typography/helper-text'
+import { Description } from '../typography'
 import { InputBaseContext } from './input-base.context'
 
 const InputBaseInline: FC<InputBaseProps> = props => {
@@ -69,11 +69,13 @@ const InputBaseInline: FC<InputBaseProps> = props => {
             />
             {loading && <Loader size={size === 'lg' ? 'md' : 'sm'} />}
           </div>
-          <HelperText
+          <Description
             size={size}
-            helperText={error || helperText}
-            error={Boolean(error)}
-          />
+            error={!!error}
+            className={error ? errorClasses.text : ''}
+          >
+            {error || helperText}
+          </Description>
         </div>
       </InputBaseContext.Provider>
     </InteractiveContainer>

@@ -1,10 +1,10 @@
 import { Switch as HSwitch } from '@headlessui/react'
 import { twMerge } from 'tailwind-merge'
-import { inputContainer, label, text } from '../../classes'
+import { errorClasses, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { InteractiveContainer } from '../interactive-container'
-import { HelperText } from '../typography'
+import { Description } from '../typography'
 import { switchCircle, switchClasses } from './classes'
 import type { SwitchProps } from './switch.types'
 
@@ -51,11 +51,13 @@ const Switch = ({ checked, ...props }: SwitchProps) => {
           aria-label={props.label?.toString()}
         />
       </div>
-      <HelperText
+      <Description
         size={size}
-        helperText={error || helperText}
-        error={Boolean(error)}
-      />
+        error={!!error}
+        className={error ? errorClasses.text : ''}
+      >
+        {error || helperText}
+      </Description>
     </InteractiveContainer>
   )
 }

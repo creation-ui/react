@@ -8,6 +8,7 @@ import { usePlayground } from './context'
 import { useControlComponents } from './use-control-components'
 interface PlaygroundProps {
   children?: React.ReactNode
+  code: boolean
 }
 
 const borderColor = 'border-info-200 dark:border-info-800'
@@ -34,7 +35,7 @@ const classes = {
   ],
 }
 
-export const PlaygroundView = ({ children }: PlaygroundProps) => {
+export const PlaygroundView = ({ code, children }: PlaygroundProps) => {
   const controlComponents = useControlComponents()
   const {
     state: { content, ...state },
@@ -52,7 +53,7 @@ export const PlaygroundView = ({ children }: PlaygroundProps) => {
     })
     .join('\n')
 
-  const code = formatCode(`
+  const text = formatCode(`
     import React from 'react'
     import { ${name} } from '@creation-ui/react'
 
@@ -80,21 +81,23 @@ export const PlaygroundView = ({ children }: PlaygroundProps) => {
             <div key={index}>{component}</div>
           ))}
         </div>
-        <div className={clsx(classes.code)}>
-          <CopyBlock
-            text={code}
-            language={'jsx'}
-            showLineNumbers={true}
-            theme={vs2015}
-            customStyle={{
-              fontSize: '0.875rem',
-              lineHeight: '1.25rem',
-              padding: '1rem',
-              borderTopLeftRadius: 0,
-              borderTopRightRadius: 0,
-            }}
-          />
-        </div>
+        {code && (
+          <div className={clsx(classes.code)}>
+            <CopyBlock
+              text={text}
+              language={'jsx'}
+              showLineNumbers={true}
+              theme={vs2015}
+              customStyle={{
+                fontSize: '0.875rem',
+                lineHeight: '1.25rem',
+                padding: '1rem',
+                borderTopLeftRadius: 0,
+                borderTopRightRadius: 0,
+              }}
+            />
+          </div>
+        )}
       </div>
     </Theme>
   )

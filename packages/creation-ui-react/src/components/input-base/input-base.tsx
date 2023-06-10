@@ -1,13 +1,20 @@
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { input, inputContainer, inputIcon, label, text } from '../../classes'
+import {
+  errorClasses,
+  input,
+  inputContainer,
+  inputIcon,
+  label,
+  text,
+} from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { HTMLInputType, InputBaseProps } from '../../types'
 import { ClearButton } from '../clear-button'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
-import { HelperText } from '../typography/helper-text'
+import { Description } from '../typography'
 import { InputBaseContext } from './input-base.context'
 
 const UNSTYLED_TYPES: HTMLInputType[] = [
@@ -104,11 +111,13 @@ const InputBase: FC<InputBaseProps> = props => {
               </div>
             )}
           </div>
-          <HelperText
+          <Description
             size={size}
-            helperText={error || helperText}
-            error={Boolean(error)}
-          />
+            error={!!error}
+            className={error ? errorClasses.text : ''}
+          >
+            {error || helperText}
+          </Description>
         </div>
       </InputBaseContext.Provider>
     </InteractiveContainer>

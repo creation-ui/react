@@ -7,11 +7,13 @@ import { createInitialState } from './helpers'
 export interface PlaygroundControllerProps {
   children?: React.ReactNode
   config: PlaygroundContextValue['config']
+  code?: boolean
 }
 
 export const PlaygroundController: React.FC<PlaygroundControllerProps> = ({
   children,
   config,
+  code = true,
 }) => {
   const [state, setState] = useState<PlaygroundContextValue['state']>(
     createInitialState(config)
@@ -34,7 +36,7 @@ export const PlaygroundController: React.FC<PlaygroundControllerProps> = ({
         handleChangeUpdate,
       }}
     >
-      <PlaygroundView>{children}</PlaygroundView>
+      <PlaygroundView code={code}>{children}</PlaygroundView>
     </PlaygroundContext.Provider>
   )
 }

@@ -1,5 +1,5 @@
-import type { ThemeProps } from './theme.types'
 import colors from './base/colors'
+import type { ThemeProps } from './theme.types'
 
 const theme: ThemeProps = {
   theme: 'light',
@@ -12,24 +12,101 @@ const theme: ThemeProps = {
     leading: 'leading-normal',
     fontFamily: 'Plus Jakarta Sans, sans-serif',
     fontFamilyMonospace: 'font-mono',
-    fontWeight: 'font-bold',
   },
   respectReducedMotion: true,
   drawers: {
     size: '50vw',
     position: 'right',
   },
-  headings: {
-    //TODO: use in component
-    fontFamily: 'font-sans',
-    fontWeight: 'font-bold',
-    sizes: {
-      h1: { fontSize: 'text-6xl', leading: 'leading-snug' },
-      h2: { fontSize: 'text-5xl', leading: 'leading-5' },
-      h3: { fontSize: 'text-4xl', leading: 'leading-6' },
-      h4: { fontSize: 'text-3xl', leading: 'leading-6' },
-      h5: { fontSize: 'text-2xl', leading: 'leading-normal' },
-      h6: { fontSize: 'text-xl', leading: 'leading-normal' },
+  typography: {
+    h1: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-4xl',
+        md: 'text-5xl',
+        lg: 'text-6xl',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    h2: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-3xl',
+        md: 'text-4xl',
+        lg: 'text-5xl',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    h3: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-2xl',
+        md: 'text-3xl',
+        lg: 'text-4xl',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    h4: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-xl',
+        md: 'text-2xl',
+        lg: 'text-3xl',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    h5: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-lg',
+        md: 'text-xl',
+        lg: 'text-2xl',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    h6: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-lg',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    content: {
+      display: 'block',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-lg',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
+    },
+    description: {
+      color: 'text-info-500 dark:text-info-300',
+      display: 'inline',
+      fontFamily: 'font-sans',
+      fontSize: {
+        sm: 'text-xs',
+        md: 'text-sm',
+        lg: 'text-sm',
+      },
+      fontWeight: 'font-light',
+      lineHeight: 'leading-normal',
     },
   },
   texts: {

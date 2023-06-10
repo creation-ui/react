@@ -22,9 +22,8 @@ export const TYPOGRAPHY = [
   'h4',
   'h5',
   'h6',
-  'lead',
-  'paragraph',
-  'small',
+  'content',
+  'description',
 ] as const
 export const TAILWIND_SHADES = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,

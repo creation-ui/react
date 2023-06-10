@@ -1,0 +1,26 @@
+import {
+  properties,
+  TypographyPlayground,
+} from '@components/examples/typography'
+import PropsTable from '@components/props-table'
+
+# Typography
+
+## Playground
+
+<TypographyPlayground />
+
+## Component API
+
+The typography components have several props available for customization, outlined in the props table below. In addition, it accepts all native props that are applicable to the HTML typography element:
+
+<PropsTable
+  properties={properties}
+  name='typography'
+  description={
+    <>
+      The rest of the props are the same as for the native{' '}
+      <code>h1,...,h6, p, span</code> component.
+    </>
+  }
+/>

@@ -107,7 +107,7 @@ export const invalid = {
     '!focus:invalid:border-error-500',
   ],
 }
-export const error = {
+export const errorClasses = {
   text: ['!dark:text-error-400', '!text-error-600'],
   ring: ['!dark:ring-error-200', '!focus:ring-error-200', '!ring-error-200'],
   border: [
@@ -117,7 +117,7 @@ export const error = {
   ],
 }
 
-export const sharedErrorClasses = getAllValuesFromObject(error)
+export const sharedErrorClasses = getAllValuesFromObject(errorClasses)
 
 export const classes = {
   required: ["after:content-['*']", 'after:ml-0.5', 'after:text-error-500'],
@@ -235,23 +235,6 @@ export const text = cva(microInteractions, {
   },
 })
 
-export const helperTextClasses = cva(
-  [microInteractions, 'text-info-500', 'dark:text-info-300'],
-  {
-    variants: {
-      size: {
-        sm: ['text-xs'],
-        md: ['text-sm'],
-        lg: ['text-sm'],
-      },
-      error: {
-        true: error.text,
-        false: [],
-      },
-    },
-  }
-)
-
 export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
   variants: {
     layout: {
@@ -260,7 +243,7 @@ export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
     },
     disabled: sharedDisabledCVA,
     error: {
-      true: error.text,
+      true: errorClasses.text,
     },
   },
   defaultVariants: {

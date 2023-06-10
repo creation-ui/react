@@ -2,6 +2,7 @@ import type {
   ElementPosition,
   ElementSize,
   ElementTheme,
+  ElementTypography,
   TailwindColorSet,
 } from '../types'
 
@@ -26,22 +27,18 @@ type ThemeFont = {
   leading: string
   fontFamily: string
   fontFamilyMonospace: string
-  fontWeight: string
 }
 
-export type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-
-export type HeadingConfig = {
-  fontSize: string
-  leading: string
-  fontWeight?: string
-}
-
-type ThemeHeading = {
+export type TypographyConfig = {
+  color?: string
+  display: string
   fontFamily: string
+  fontSize: Record<ElementSize, string>
   fontWeight: string
-  sizes: Record<Headings, HeadingConfig>
+  lineHeight: string
 }
+
+export type ThemeTypography = Record<ElementTypography, TypographyConfig>
 
 type ThemeTexts = {
   invalidInput: string
@@ -68,7 +65,7 @@ export type ThemeProps = {
   drawers: ThemeDrawers
   focusRing: boolean
   font: ThemeFont
-  headings: ThemeHeading
+  typography: ThemeTypography
   helpers: ThemeHelpers
   respectReducedMotion: boolean
   roundness: string
