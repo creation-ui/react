@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.5.6](https://github.com/creation-ui/react/compare/v0.5.5...v0.5.6) (2023-06-10)
+
+
+### Features
+
+* add Show component ([a8a6f4b](https://github.com/creation-ui/react/commit/a8a6f4bfb264cdd5b82fc53071a1875f4135d277))
+* add time-picker ([806683f](https://github.com/creation-ui/react/commit/806683fb1ffc48d7bb35ceb79dedb6a4d381090f))
+* add variant styles for input ([bc2b8a9](https://github.com/creation-ui/react/commit/bc2b8a936dd69ef05811873f0709eab31d39a064))
+* refactor TextArea to use InputBase, refactor TextArea docs ([740aede](https://github.com/creation-ui/react/commit/740aede879fe3bad7c5a2a2f30e2f55ec5bde2c6))
+
+
+### Bug Fixes
+
+* build error ([e811ff0](https://github.com/creation-ui/react/commit/e811ff0a40ce9a8822dd9efc24f298033eaf3119))
+* build errors ([ac39c14](https://github.com/creation-ui/react/commit/ac39c140f17f31190b07ca0bfbf2eac1b49dbf9e))
+* build preventing errors ([16bdc15](https://github.com/creation-ui/react/commit/16bdc1541c754428688c5782261552a83ca88d14))
+* cycle-import-check failing for popover ([bf14f9b](https://github.com/creation-ui/react/commit/bf14f9b6bc55c8430a7677520d0a6140d2807799))
+* loader pages not loading ([06edb3a](https://github.com/creation-ui/react/commit/06edb3ae3fc96b2d1a09320a5a46d4c5ca5da717))
+* Popover refactor broke TimePicker ([d64a039](https://github.com/creation-ui/react/commit/d64a039e3b29d9ec28331ae8229935bb7bea0be0))
+* ts errors ([b1883b9](https://github.com/creation-ui/react/commit/b1883b9c372f30dc4c997bd3e997154ec554586a))
+* type error ([10da063](https://github.com/creation-ui/react/commit/10da063459082b24477cf1243cd892353ac691be))
+* type error ([83fd0ac](https://github.com/creation-ui/react/commit/83fd0acd227a7f98435c64810ab10f0ee79c893b))
+
+
+### Miscellaneous Chores
+
+* release 0.5.6 ([c26e947](https://github.com/creation-ui/react/commit/c26e947c99ee1968edf60bdb1fe35bb5dbd3d3d8))
+
 ## [0.5.5](https://github.com/creation-ui/react/compare/v0.5.4...v0.5.5) (2023-05-08)
 
 
