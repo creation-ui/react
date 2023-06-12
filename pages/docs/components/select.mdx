@@ -3,9 +3,6 @@
 import {
   SelectExample,
   properties,
-  selectOptionType,
-  selectOptionComponent,
-  SelectMultiplePlayground,
   SelectPlayground,
 } from '@components/examples/select'
 import PropsTable from '@components/props-table'
@@ -15,38 +12,10 @@ The Select component allows users to choose one or more options from a list. It 
 
 <SelectPlayground />
 
-## Selecting multiple options
-
-The multiple prop enhances the Select component's functionality, enabling the selection of multiple options simultaneously. This is especially useful when there is a need to provide an option for multi-choice answers or preferences.
-
-
-<br />
-<SelectMultiplePlayground />
-<br />
-When the multiple prop is active, the `value` and `onChange` props adjust their signature as follows:
-
-| Property | `!multiple` | `multiple`    |
-| -------- | ----------- | ------------- |
-| value    | `T`         | `T[]`         |
-| onChange | `T => void` | `T[] => void` |
-
-You can explore further details in the [properties table.](#onChange)
-
 ## Component API
 
 <PropsTable
   properties={properties}
   name='Select'
-  description='The main Select component.'
-/>
-
-<PropsTable
-  properties={selectOptionComponent}
-  name='SelectOption'
-  description='The default select option component.'
-/>
-<PropsTable
-  properties={selectOptionType}
-  name='SelectOptionsType'
-  description='Default shape of options. Might be ignored in favor of `any`'
+  description='Native Select component.'
 />

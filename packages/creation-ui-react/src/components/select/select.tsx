@@ -1,161 +1,27 @@
-import {
-  autoUpdate,
-  flip,
-  size as floatingSize,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useListNavigation,
-  useRole,
-} from '@floating-ui/react'
-import { useRef, useState } from 'react'
-import { useNormalizedOptions } from '../../hooks/use-normalized-options'
 import { useTheme } from '../../theme'
-import { DropdownOptionType, DropdownProps } from '../../types'
-import { isSelected } from '../../utils/is-selected'
-import { getFlatOptions } from '../../utils/normalize-dropdown-options'
-import { DropdownChevron } from '../dropdown-chevron'
 import { InputBase } from '../input-base'
-import {
-  DropdownContext,
-  dropdownInitialProps,
-  getDropdownHeight,
-  Option,
-  SelectedOption,
-} from '../shared/dropdown'
 import { SelectView } from './select.view'
+import { SelectProps } from './types'
 
-export function Select(props: DropdownProps) {
+export const Select = (props: SelectProps) => {
+  const clearableCallback = () => {
+    props.onChange?.(null)
+  }
+
   const { size: defaultSize } = useTheme()
   const {
     id,
-    loadingText,
-    emptyText,
-    notFoundText,
-    placeholder,
-    multiple,
     helperText,
     error,
-    limit,
-    onChange,
-    getLimitText,
-    maxHeight,
-    optionComponent = Option,
-    selectedOptionComponent = SelectedOption,
     size = defaultSize,
+    children,
+    onClear = clearableCallback,
+    ...rest
   } = props
-  const { isDataFlat, options, value } = useNormalizedOptions({
-    value: props.value,
-    options: props.options ?? [],
-  })
 
-  const [open, setOpen] = useState(false)
-
-  const [activeIndex, setActiveIdx] = useState<number | null>(null)
-
-  const listRef = useRef<Array<HTMLElement | null>>([])
-
-  const clearableCallback = () => {
-    onChange?.([])
-  }
-
-  const { x, y, strategy, refs, context } = useFloating<HTMLInputElement>({
-    whileElementsMounted: autoUpdate,
-    onOpenChange: setOpen,
-    open,
-    middleware: [
-      flip(),
-      floatingSize({
-        apply({ rects, availableHeight, elements }) {
-          Object.assign(elements.floating.style, {
-            width: `${rects.reference.width}px`,
-            maxHeight: getDropdownHeight(maxHeight, availableHeight),
-            overflowY: 'auto',
-          })
-        },
-      }),
-    ],
-  })
-
-  const role = useRole(context, { role: 'listbox' })
-  const dismiss = useDismiss(context)
-  const listNav = useListNavigation(context, {
-    listRef,
-    activeIndex: activeIndex,
-    onNavigate: setActiveIdx,
-    virtual: true,
-    loop: true,
-  })
-
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [role, dismiss, listNav]
-  )
-
-  const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
-
+  const isEmpty = !props.value
   const disabled = props.disabled || props.loading || props.readOnly
   const clearable = !disabled && props.clearable && !isEmpty
-
-  const toggleOpen = () => setOpen(!open)
-  const handleClose = () => {
-    setActiveIdx(null)
-    setOpen(false)
-  }
-
-  const handleSelect = (option: DropdownOptionType) => {
-    if (multiple) {
-      // @ts-expect-error
-      const newValue = (isEmpty ? [] : value).concat(option)
-      onChange?.(isDataFlat ? getFlatOptions(newValue) : newValue)
-    } else {
-      onChange?.(isDataFlat ? option.id : option)
-      setActiveIdx(null)
-      setOpen(false)
-    }
-  }
-
-  const handleRemoveSelected = (option: DropdownOptionType) => {
-    if (multiple) {
-      // @ts-expect-error
-      const newValue = value?.filter((o: any) => o.id !== option.id)
-      onChange?.(isDataFlat ? getFlatOptions(newValue) : newValue)
-    }
-  }
-
-  const containerProps = getReferenceProps({
-    ref: refs.setReference,
-  })
-
-  const getOptionProps = (option: DropdownOptionType, index: number) =>
-    getItemProps({
-      key: option.id,
-      multiple,
-      // @ts-expect-error
-      size,
-      active: activeIndex === index,
-      selected: isSelected(option, value),
-      onClick(e: any) {
-        const selected = e.target.getAttribute('aria-selected') === 'true'
-        if (!selected) {
-          handleSelect(option)
-        } else {
-          handleClose()
-        }
-        refs.domReference.current?.focus()
-      },
-      ref(node) {
-        listRef.current[index] = node
-      },
-    })
-
-  const listProps = getFloatingProps({
-    ref: refs.setFloating,
-    style: {
-      position: strategy,
-      left: x ?? 0,
-      top: y ?? 0,
-    },
-  })
 
   return (
     <InputBase
@@ -167,42 +33,12 @@ export function Select(props: DropdownProps) {
       readOnly={props.readOnly}
       label={props.label}
       required={props.required}
-      endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
       helperText={helperText}
       clearable={clearable}
-      onClear={clearableCallback}
+      onClear={onClear}
+      type='select'
     >
-      <DropdownContext.Provider
-        value={{
-          multiple,
-          clearable,
-          floatingContext: context,
-          options,
-          activeIndex,
-          limit,
-          selected: value,
-          handleRemoveSelected,
-          props: {
-            input: {},
-            option: getOptionProps,
-            list: listProps,
-          },
-          text: {
-            loading: loadingText,
-            empty: emptyText,
-            notFound: notFoundText,
-            placeholder,
-          },
-          open,
-          setOpen,
-          optionComponent,
-          selectedOptionComponent,
-        }}
-      >
-        <SelectView {...containerProps} />
-      </DropdownContext.Provider>
+      <SelectView {...rest}>{children}</SelectView>
     </InputBase>
   )
 }
-
-Select.defaultProps = dropdownInitialProps

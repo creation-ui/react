@@ -193,6 +193,7 @@ export const input = cva(
       },
       type: {
         ...formClassesMap,
+        select: [formClassesMap.select, 'outline-none'],
         file: ['!h-8', '!p-0'],
         color: [formClassesMap.color, '!p-0'],
         checkbox: [formClassesMap.checkbox, '!px-0'],
@@ -292,13 +293,13 @@ export const inputIcon = cva(
         false: [],
       },
     },
-    compoundVariants:[
+    compoundVariants: [
       {
         type: 'select',
         position: 'right',
         className: ['right-5'],
-      }
-    ]
+      },
+    ],
   }
 )
 
