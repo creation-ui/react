@@ -287,7 +287,18 @@ export const inputIcon = cva(
         left: ['left-3'],
         right: ['right-3'],
       },
+      type: {
+        select: [],
+        false: [],
+      },
     },
+    compoundVariants:[
+      {
+        type: 'select',
+        position: 'right',
+        className: ['right-5'],
+      }
+    ]
   }
 )
 

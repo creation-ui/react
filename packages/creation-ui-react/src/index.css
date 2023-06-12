@@ -41,3 +41,9 @@
   @apply rounded-md;
   border: none;
 }
+
+.reset-select select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}

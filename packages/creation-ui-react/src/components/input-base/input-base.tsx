@@ -94,18 +94,34 @@ const InputBase: FC<InputBaseProps> = props => {
           />
           <div className='relative max-h-min'>
             {startAdornment && (
-              <div className={inputIcon({ position: 'left' })}>
+              <div
+                className={inputIcon({
+                  position: 'left',
+                  // @ts-expect-error
+                  type,
+                })}
+              >
                 {startAdornment}
               </div>
             )}
             {children}
             {loading ? (
               <Loader
-                className={inputIcon({ position: 'right' })}
+                className={inputIcon({
+                  position: 'right',
+                  // @ts-expect-error
+                  type,
+                })}
                 size={size === 'lg' ? 'md' : 'sm'}
               />
             ) : (
-              <div className={inputIcon({ position: 'right' })}>
+              <div
+                className={inputIcon({
+                  position: 'right',
+                  // @ts-expect-error
+                  type,
+                })}
+              >
                 {clearable && <ClearButton onClick={onClear} />}
                 {endAdornment}
               </div>
