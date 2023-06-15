@@ -1,5 +1,5 @@
 import { pick, flow, pickBy, keys } from 'lodash'
-import { PlaygroundContextValue } from './context'
+import { PlaygroundContextValue } from '../context/context'
 
 export const getTruthyKeys = flow(pickBy, keys)
 

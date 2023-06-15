@@ -2,7 +2,7 @@ import Icon from '@components/icon'
 import {
   PlaygroundContextValue,
   usePlayground,
-} from '@components/playground/context'
+} from '@components/playground/context/context'
 import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
 import {
   mdiFormatAlignCenter,

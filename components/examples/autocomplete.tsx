@@ -1,5 +1,5 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context'
+import { usePlayground } from '@components/playground/context/context'
 import {
   Autocomplete,
   Avatar,

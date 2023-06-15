@@ -11,6 +11,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
 
   return (
     <RadioGroup {...rest} className={twMerge(toggleGroup.container, className)}>
+      {/* <RadioGroup.Label>{rest.label}</RadioGroup.Label> */}
       {options.map(
         ({ label, value, disabled }: ToggleGroupOption, index, array) => (
           <RadioGroup.Option

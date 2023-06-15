@@ -1,5 +1,5 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context'
+import { usePlayground } from '@components/playground/context/context'
 import {
   Content,
   Description,
@@ -40,7 +40,7 @@ export const TypographyExample = () => {
 
 export const TypographyPlayground = () => {
   return (
-    <Playground config={{ name: 'Component', size: true }} code={false}>
+    <Playground config={{ name: 'Component', size: true }} showCode={false}>
       <TypographyExample />
     </Playground>
   )

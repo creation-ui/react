@@ -16,9 +16,9 @@ import {
   mdiBorderRightVariant,
 } from '@mdi/js'
 import { Icon } from '@mdi/react'
-import { ColorDefinition, ColorsSelector } from './components/colors-selector'
-import { ToolContainer } from './components/tool-container'
-import { INPUT_TYPES } from './constants'
+import { ColorDefinition, ColorsSelector } from '../components/colors-selector'
+import { ToolContainer } from '../components/tool-container'
+import { INPUT_TYPES } from '../constants'
 import { usePlayground } from './context'
 
 const SIZES = [

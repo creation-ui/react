@@ -1,7 +1,7 @@
 import {
   PlaygroundContextValue,
   usePlayground,
-} from '@components/playground/context'
+} from '@components/playground/context/context'
 import { ButtonGroup } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import {

@@ -1,4 +1,4 @@
-import { usePlayground } from '@components/playground/context'
+import { usePlayground } from '@components/playground/context/context'
 import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Switch, SwitchProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'

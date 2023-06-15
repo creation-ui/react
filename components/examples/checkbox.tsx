@@ -1,6 +1,6 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context'
-import { getState } from '@components/playground/helpers'
+import { usePlayground } from '@components/playground/context/context'
+import { getState } from '@components/playground/utils/helpers'
 import { Checkbox, CheckboxProps, ELEMENT_SIZES } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'

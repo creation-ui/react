@@ -1,4 +1,4 @@
-import { usePlayground } from '@components/playground/context'
+import { usePlayground } from '@components/playground/context/context'
 import { TextArea, TextAreaProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { inputBaseProperties } from './input-base-properties'
