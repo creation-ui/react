@@ -3,7 +3,8 @@ import clsx from 'clsx'
 import { CopyBlock, vs2015 } from 'react-code-blocks'
 import { classes } from './classes'
 import { usePlayground } from './context/context'
-import { getComponentCode, objectToPropsText } from './utils/helpers'
+import { getComponentCode } from './utils/get-component-code'
+import { objectToPropsText } from './utils/object-to-props-text'
 
 export const PlaygroundCode = ({ visible }) => {
   const {

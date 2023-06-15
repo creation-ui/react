@@ -3,7 +3,7 @@ import { childrenProp, openProps } from '@components/examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { Playground } from '@components/playground'
-import { getState } from '@components/playground/utils/helpers'
+import { getState } from '@components/playground/utils/object-to-props-text'
 import { usePlayground } from '@components/playground/context/context'
 
 const config = {

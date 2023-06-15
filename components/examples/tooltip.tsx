@@ -1,6 +1,6 @@
 import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context/context'
-import { getState } from '@components/playground/utils/helpers'
+import { getState } from '@components/playground/utils/object-to-props-text'
 import { Button, ELEMENT_POSITION, Tooltip } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
