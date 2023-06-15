@@ -1,6 +1,6 @@
 import { ColorDefinition } from '@components/playground/components/colors-selector'
 import { INPUT_TYPES } from '@components/playground/constants'
-import { PlaygroundProperty } from '@components/playground/types'
+import { PlaygroundControl } from '@components/playground/types'
 import {
   mdiAlphabetical,
   mdiBorderBottomVariant,
@@ -58,79 +58,102 @@ const POSITION = [
   { value: 'bottom', label: <Icon path={mdiBorderBottomVariant} size={1} /> },
 ]
 
+const POSITION_HORIZONTAL = [
+  { value: 'left', label: <Icon path={mdiBorderLeftVariant} size={1} /> },
+  { value: 'right', label: <Icon path={mdiBorderRightVariant} size={1} /> },
+]
+const POSITION_VERTICAL = [
+  { value: 'top', label: <Icon path={mdiBorderTopVariant} size={1} /> },
+  { value: 'bottom', label: <Icon path={mdiBorderBottomVariant} size={1} /> },
+]
+
 const INPUT_TYPES_DROPDOWN = INPUT_TYPES
 
-export const childrenControl: PlaygroundProperty = {
+export const childrenControl: PlaygroundControl = {
   name: 'children',
   type: 'string',
   defaultValue: 'Button',
 }
 
-export const sizeControl: PlaygroundProperty = {
+export const sizeControl: PlaygroundControl = {
   name: 'size',
   type: 'array',
   defaultValue: 'md',
   values: SIZES,
 }
 
-export const positionControl: PlaygroundProperty = {
+export const positionControl: PlaygroundControl = {
   name: 'position',
   type: 'array',
   defaultValue: 'right',
   values: POSITION,
 }
+export const positionHorizontalControl: PlaygroundControl = {
+  name: 'horizontal',
+  label: 'Position Horizontal',
+  type: 'array',
+  defaultValue: 'right',
+  values: POSITION_HORIZONTAL,
+}
+export const positionVerticalControl: PlaygroundControl = {
+  name: 'vertical',
+  label: 'Position Vertical',
+  type: 'array',
+  defaultValue: 'top',
+  values: POSITION_VERTICAL,
+}
 
-export const loadingControl: PlaygroundProperty = {
+export const loadingControl: PlaygroundControl = {
   name: 'loading',
   type: 'boolean',
 }
 
-export const variantControl: PlaygroundProperty = {
+export const variantControl: PlaygroundControl = {
   name: 'variant',
   type: 'array',
   defaultValue: 'contained',
   values: VARIANTS,
 }
 
-export const statusControl: PlaygroundProperty = {
+export const statusControl: PlaygroundControl = {
   name: 'status',
   type: 'array',
   defaultValue: 'primary',
-  controls: 'colors',
+  component: 'colors',
   values: COLORS,
 }
 
-export const disabledControl: PlaygroundProperty = {
+export const disabledControl: PlaygroundControl = {
   name: 'disabled',
   type: 'boolean',
 }
-export const readOnlyControl: PlaygroundProperty = {
+export const readOnlyControl: PlaygroundControl = {
   name: 'readOnly',
   type: 'boolean',
 }
 
-export const fullWidthControl: PlaygroundProperty = {
+export const fullWidthControl: PlaygroundControl = {
   name: 'fullWidth',
   label: 'Full Width',
   type: 'boolean',
 }
-export const clearableControl: PlaygroundProperty = {
+export const clearableControl: PlaygroundControl = {
   name: 'clearable',
   type: 'boolean',
 }
-export const errorControl: PlaygroundProperty = {
+export const errorControl: PlaygroundControl = {
   name: 'error',
   type: 'boolean',
 }
 
-export const helperTextControl: PlaygroundProperty = {
+export const helperTextControl: PlaygroundControl = {
   name: 'helperText',
   type: 'string',
   label: 'Helper Text',
   defaultValue: 'This is helper text',
 }
 
-export const labelControl: PlaygroundProperty = {
+export const labelControl: PlaygroundControl = {
   name: 'label',
   type: 'string',
   defaultValue: 'Label',

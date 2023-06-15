@@ -29,4 +29,5 @@ export const DEFAULT_CONTROLS: Record<PlaygroundValueType, PlaygroundControls> =
     array: 'toggle-group',
     string: 'input:text',
     number: 'input:number',
+    object: 'nested',
   }

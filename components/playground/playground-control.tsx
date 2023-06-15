@@ -1,18 +1,27 @@
 import { Input, Switch, ToggleGroup } from '@creation-ui/react'
 import { capitalize } from '@utils/list-or-types'
+import clsx from 'clsx'
 import type { FC } from 'react'
+import { classes } from './classes'
 import { ColorsSelector } from './components/colors-selector'
 import { DEFAULT_CONTROLS } from './constants'
 import { usePlayground } from './context/context'
-import { PlaygroundProperty } from './types'
+import { PlaygroundControl } from './types'
+import { get } from 'lodash'
 
 interface PlaygroundControlProps {
-  property: PlaygroundProperty
+  property: PlaygroundControl
+  parentKey?: string
 }
 
-export const PlaygroundControl: FC<PlaygroundControlProps> = ({ property }) => {
+export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
+  property,
+  parentKey,
+}) => {
   const { state, handleChange } = usePlayground()
-  const { name, type, values, controls } = property
+  const { name: n, type, values, component: controls } = property
+
+  const name = parentKey ? `${parentKey}.${n}` : n
 
   const label = property.label ?? capitalize(name)
 
@@ -24,8 +33,11 @@ export const PlaygroundControl: FC<PlaygroundControlProps> = ({ property }) => {
   const handlePlainChange = value => {
     handleChange(name, value)
   }
+  const onClear = () => {
+    handleChange(name, '')
+  }
 
-  const value = state[name]
+  const value = get(state, name)
 
   const arrayValue = values?.find(v => v.value === value)
 
@@ -65,6 +77,21 @@ export const PlaygroundControl: FC<PlaygroundControlProps> = ({ property }) => {
           onChange={handlePlainChange}
         />
       )
+    case 'nested':
+      return (
+        <div
+          className={clsx(classes.controls, '!pl-0', '!pt-0', '!border-none')}
+        >
+          <div className='font-semibold'>{label}</div>
+          {property.controls!.map(childProperty => (
+            <PlaygroundControlComponent
+              property={childProperty}
+              key={childProperty.name}
+              parentKey={name}
+            />
+          ))}
+        </div>
+      )
     case 'input:text':
     default:
       return (
@@ -73,6 +100,8 @@ export const PlaygroundControl: FC<PlaygroundControlProps> = ({ property }) => {
           label={label}
           type={'text'}
           value={value as string}
+          onClear={onClear}
+          clearable={!!value}
         />
       )
   }

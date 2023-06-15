@@ -9,12 +9,8 @@ import {
   properties,
   badgeProperties,
   placementProperties,
+  AvatarPlayground,
 } from '@components/examples/avatar'
-
-```tsx copy
-import { Avatar } from '@creation-ui/react'
-;<Avatar src='...' alt='John Doe' />
-```
 
 export const defaultProps = {
   variant: 'circle',
@@ -23,20 +19,9 @@ export const defaultProps = {
   alt: 'avatar',
 }
 
-# Avatar
+<AvatarPlayground />
 
-<Avatar {...defaultProps} />
 
-## Sizes
-
-This component supports 3 different sizes `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={Avatar}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  componentProps={defaultProps}
-/>
 
 ## Notifications badges
 

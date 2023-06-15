@@ -17,7 +17,7 @@ export const ButtonPlayground = () => {
     <Playground
       component={Button}
       name='Button'
-      properties={[
+      controls={[
         childrenControl,
         sizeControl,
         variantControl,

@@ -1,4 +1,9 @@
-export type PlaygroundValueType = 'string' | 'boolean' | 'number' | 'array'
+export type PlaygroundValueType =
+  | 'string'
+  | 'boolean'
+  | 'number'
+  | 'array'
+  | 'object'
 export type PlaygroundValues = string | boolean | number
 export type PlaygroundControls =
   | 'input:text'
@@ -6,20 +11,22 @@ export type PlaygroundControls =
   | 'colors'
   | 'switch'
   | 'toggle-group'
+  | 'nested'
 
-export type PlaygroundProperty = {
+export type PlaygroundControl = {
   name: string
   type: PlaygroundValueType
   label?: string
-  controls?: PlaygroundControls
+  component?: PlaygroundControls
   defaultValue?: PlaygroundValues
   values?: any[]
+  controls?: PlaygroundControl[]
 }
 
 export interface PlaygroundControllerProps {
   name: string
   component: React.FC<any>
-  properties: PlaygroundProperty[]
+  controls: PlaygroundControl[]
   showCode?: boolean
   componentProps?: any
 }

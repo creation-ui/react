@@ -1,36 +1,48 @@
-import { pick, flow, pickBy, keys } from 'lodash'
-import { PlaygroundContextValue } from '../context/context'
+import { flow, keys, pickBy } from 'lodash'
+import { PlaygroundControl, PlaygroundState, PlaygroundValues } from '../types'
 
 export const getTruthyKeys = flow(pickBy, keys)
 
-export const createInitialState = (
-  config: PlaygroundContextValue['config']
-): PlaygroundContextValue['state'] => {
-  const truthyKeys = getTruthyKeys(config)
+export const controlsMapper = (
+  obj: PlaygroundControl[],
+  state: PlaygroundState
+): any =>
+  obj.reduce((acc: any, { controls, name }) => {
+    if (!state[name]) return acc
 
-  const initialStateTemplate: PlaygroundContextValue['state'] = {
-    status: 'primary',
-    size: 'md',
-    variant: 'contained',
-    content: 'Content',
-    loading: false,
-    disabled: false,
-    helperText: 'This is helper text',
-    clearable: false,
-    uppercase: false,
-    error: false,
-    circle: false,
-    readOnly: false,
-    required: false,
-    icon: 'none',
-    fullWidth: false,
-    inputType: [{ id: 'text', label: 'text' }],
+    if (controls) {
+      acc[name] = controlsMapper(controls, state)
+    } else {
+      acc[name] = state[name]
+    }
+    return acc
+  }, {})
+
+export const objectToPropsText = (state: any): string[] =>
+  Object.entries(state).flatMap(([key, value]) => {
+    if (typeof value === 'boolean') {
+      return value ? `${key}` : `${key}={${value}}`
+    } else {
+      return `${key}={${JSON.stringify(value)}}`
+    }
+  })
+
+export const getComponentCode = (
+  name: string,
+  stateAsProps: string,
+  children?: PlaygroundValues
+): string => {
+  return `
+    import React from 'react';
+    import { ${name} } from '@creation-ui/react';
+
+    export const Example = () =>
+      <${name} ${stateAsProps}${
+    children
+      ? `>
+            ${children}
+          </${name}>`
+      : ' />'
   }
-
-  return pick(initialStateTemplate, truthyKeys)
+  `
 }
-
-export const getState = (
-  state: PlaygroundContextValue['state'],
-  config: Partial<PlaygroundContextValue['config']>
-) => pick(state, keys(config))

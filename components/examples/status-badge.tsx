@@ -14,7 +14,7 @@ export const StatusBadgePlayground = () => {
     <Playground
       component={StatusBadge}
       name='StatusBadge'
-      properties={[
+      controls={[
         //
         labelControl,
         variantControl,

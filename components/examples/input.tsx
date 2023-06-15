@@ -53,7 +53,7 @@ export const InputPlayground = ({ ...props }: InputExampleProps) => {
         value: inputValue,
         onChange: e => setInputValue(e.target.value),
       }}
-      properties={[
+      controls={[
         { ...variantControl, defaultValue: 'outlined' },
         sizeControl,
         loadingControl,
