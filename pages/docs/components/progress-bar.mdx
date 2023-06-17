@@ -2,8 +2,8 @@ import { ProgressBar } from '@creation-ui/react'
 import { Container } from '@components/container'
 import {
   properties,
-  ProgressBarExample,
   ProgressBarAnimatedExample,
+  ProgressBarPlayground,
 } from '@components/examples/progress-bar'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/react'
@@ -14,43 +14,7 @@ export const list = ListOrTypes([...ELEMENT_POSITION])
 
 # ProgressBar
 
-```tsx copy
-import { ProgressBar } from '@creation-ui/react'
-
-export const ProgressBarExample = ({ ...props }: ProgressBarProps) => {
-  return <ProgressBar {...props} />
-}
-```
-
-<Container>
-  <ProgressBarExample value={50} />
-</Container>
-
-## Size
-
-This component supports the `size` prop with values `sm`, `md`, `lg`.
-
-<UnfoldVariants
-  component={ProgressBarExample}
-  variants={[...ELEMENT_SIZES]}
-  prop='size'
-  nameProp='key'
-  componentProps={{
-    value: 50,
-  }}
-/>
-
-## Showing value
-
-Value can be displayed passing `showValue` prop
-
-```tsx copy
-<ProgressBar value={65} showValue />
-```
-
-<Container>
-  <ProgressBar value={65} showValue />
-</Container>
+<ProgressBarPlayground />
 
 ## Formatting value
 
@@ -66,7 +30,7 @@ Value can be custom formatted with your own function that takes `value` and retu
 ```
 
 <Container>
-  <ProgressBarExample
+  <ProgressBar
     value={65}
     formatDisplayValue={value => `Preparing for lunch: ${value}%`}
     showValue

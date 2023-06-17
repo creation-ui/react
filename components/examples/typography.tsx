@@ -1,5 +1,4 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context/context'
 import {
   Content,
   Description,
@@ -11,15 +10,13 @@ import {
   H6,
 } from '@creation-ui/react'
 import { microInteractions } from '@creation-ui/react/classes'
-import clsx from 'clsx'
-import { pick } from 'lodash'
 import { DocumentedProperty } from 'models/system'
+import { sizeControl } from './shared-playground-controls'
 import { childrenProp, sizeProp } from './shared-props'
 
-export const TypographyExample = () => {
-  const playground = usePlayground()
+export const TypographyExample = ({ ...props }) => {
   const state = {
-    ...pick(playground.state, ['size']),
+    ...props,
     className: microInteractions,
   }
 
@@ -40,9 +37,12 @@ export const TypographyExample = () => {
 
 export const TypographyPlayground = () => {
   return (
-    <Playground config={{ name: 'Component', size: true }} showCode={false}>
-      <TypographyExample />
-    </Playground>
+    <Playground
+      controls={[sizeControl]}
+      name='Component'
+      component={TypographyExample}
+      showCode={false}
+    />
   )
 }
 

@@ -1,19 +1,15 @@
 # Date Picker
 
-import { properties, DatePickerExample } from '@components/examples/date-picker'
+import {
+  properties,
+  DatePickerPlayground,
+} from '@components/examples/date-picker'
 import PropsTable from '@components/props-table'
 
-<DatePickerExample />
+<DatePickerPlayground />
 
 ## Component API
 
-<PropsTable
-  properties={properties}
-  name='Date Picker'
-  description={
-    <>
-      Rest of the props are the same as for the native <code>input</code>{' '}
-      component.
-    </>
-  }
-/>
+<PropsTable properties={properties} name='DatePicker' />
+
+Rest of the props is the same as in [Input props](/docs/components/Input) and controls the `Input` element.

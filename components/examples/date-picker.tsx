@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import { Playground } from '@components/playground'
 import { DatePicker } from '@creation-ui/react'
+import { DocumentedProperty } from '@models/system'
+import React, { useState } from 'react'
+import { inputControlsSet } from './shared-playground-controls'
 
-export const DatePickerExample: React.FC = () => {
+export const DatePickerPlayground: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
   const handleDateChange = (date: any) => {
@@ -9,15 +12,14 @@ export const DatePickerExample: React.FC = () => {
   }
 
   return (
-    <div className='flex flex-col gap-2'>
-      <DatePicker
-        value={selectedDate}
-        onChange={handleDateChange}
-        inputProps={{
-          placeholder: 'Select date',
-          label: 'Date',
-          clearable: true,
-          onClear: () => setSelectedDate(null),
+    <div>
+      <Playground
+        component={DatePicker}
+        name='DatePicker'
+        controls={inputControlsSet}
+        componentProps={{
+          value: selectedDate,
+          onChange: handleDateChange,
         }}
       />
       {selectedDate && (
@@ -27,4 +29,15 @@ export const DatePickerExample: React.FC = () => {
   )
 }
 
-export const properties = []
+export const properties: DocumentedProperty[] = [
+  {
+    name: 'value',
+    description: 'Date selected in calendar',
+    type: 'Date | null | undefined',
+  },
+  {
+    name: 'onChange',
+    description: 'Callback function when date is selected',
+    type: '(date: Date | null | undefined) => void',
+  },
+]

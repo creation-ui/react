@@ -1,33 +1,32 @@
-import {
-  PlaygroundContextValue,
-  usePlayground,
-} from '@components/playground/context/context'
+import { Playground } from '@components/playground'
 import { ButtonGroup } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
+import { sizeControl, statusControl } from './shared-playground-controls'
 import {
   classNameProps,
   disabledProps,
   labelProp,
   onClickCallback,
   sizeProp,
-  statusProp,
 } from './shared-props'
 
 export const ButtonGroupPlayground = () => {
-  const { state } = usePlayground()
-
   const buttons = [
     { label: 'Year', onClick: () => {} },
     { label: 'Month', onClick: () => {} },
     { label: 'Day', onClick: () => {} },
   ]
 
-  return <ButtonGroup {...state} options={buttons} />
-}
-
-export const playgroundConfig: PlaygroundContextValue['config'] = {
-  size: true,
-  name: 'ButtonGroup',
+  return (
+    <Playground
+      component={ButtonGroup}
+      name='ButtonGroup'
+      componentProps={{
+        options: buttons,
+      }}
+      controls={[sizeControl, statusControl]}
+    />
+  )
 }
 
 export const properties: DocumentedProperty[] = [
@@ -38,7 +37,6 @@ export const properties: DocumentedProperty[] = [
   },
   classNameProps,
   sizeProp,
-  statusProp,
 ]
 
 export const buttonGroupOptions: DocumentedProperty[] = [

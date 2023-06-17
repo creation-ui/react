@@ -7,13 +7,7 @@ import { DatePickerProps } from './types'
 
 export const DatePicker: FC<DatePickerProps> = props => {
   const { size: defaultSize } = useTheme()
-  const {
-    size = defaultSize,
-    value,
-    onChange,
-    inputProps,
-    ...calendarProps
-  } = props
+  const { size = defaultSize, value, onChange, ...inputProps } = props
 
   const [popoverVisible, setPopoverVisible] = useState(false)
   const ref = useRef(null)
@@ -62,7 +56,7 @@ export const DatePicker: FC<DatePickerProps> = props => {
         />
       </PopoverTrigger>
       <PopoverContent className='!p-0 !bg-transparent'>
-        <Calendar {...calendarProps} onClick={handleDateSelect} value={value} />
+        <Calendar size={size} onClick={handleDateSelect} value={value} />
       </PopoverContent>
     </Popover>
   )

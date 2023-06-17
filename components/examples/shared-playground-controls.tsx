@@ -158,3 +158,15 @@ export const labelControl: PlaygroundControl = {
   type: 'string',
   defaultValue: 'Label',
 }
+
+export const inputControlsSet: PlaygroundControl[] = [
+  { ...variantControl, defaultValue: 'outlined' },
+  sizeControl,
+  loadingControl,
+  readOnlyControl,
+  errorControl,
+  clearableControl,
+  helperTextControl,
+  labelControl,
+  { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
+]

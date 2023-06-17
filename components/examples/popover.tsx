@@ -10,8 +10,16 @@ import {
   PopoverTrigger,
   Switch,
 } from '@creation-ui/react'
+import { DocumentedProperty } from '@models/system'
 import { pick } from 'lodash'
 import { useState } from 'react'
+import { sizeControl } from './shared-playground-controls'
+import {
+  childrenProp,
+  classNameProps,
+  onClickCallback,
+  sizeProp,
+} from './shared-props'
 
 export const PopoverExampleUncontrolled = () => {
   const playground = usePlayground()
@@ -67,27 +75,57 @@ export const PopoverExampleControlled = () => {
   )
 }
 
-export const PopoverPlaygroundUncontrolled = ({ ...props }: any) => {
+export const PopoverPlaygroundUncontrolled = () => {
   return (
     <Playground
-      config={{
-        name: 'Popover',
-        size: true,
-      }}
-    >
-      <PopoverExampleUncontrolled />
-    </Playground>
+      name='Popover'
+      component={PopoverExampleUncontrolled}
+      controls={[sizeControl]}
+    />
   )
 }
-export const PopoverPlaygroundControlled = ({ ...props }: any) => (
+export const PopoverPlaygroundControlled = () => (
   <Playground
-    config={{
-      name: 'Popover',
-      size: true,
-    }}
-  >
-    <PopoverExampleControlled />
-  </Playground>
+    name='Popover'
+    component={PopoverExampleControlled}
+    controls={[sizeControl]}
+  />
 )
 
-export const properties = []
+export const commonProperties: DocumentedProperty[] = [
+  childrenProp,
+  sizeProp,
+  classNameProps,
+]
+
+export const properties = [
+  ...commonProperties,
+  {
+    name: 'initialOpen',
+    type: 'boolean',
+    description: 'Initial open state',
+    defaultValue: 'false',
+  },
+  {
+    name: 'placement',
+    type: 'Placement',
+    description: 'Placement of the popover relative to the trigger element',
+  },
+  {
+    name: 'modal',
+    type: 'boolean',
+    description: 'Whether the popover should be modal',
+  },
+  { name: 'open', type: 'boolean', description: 'State of popover' },
+  { name: 'onOpenChange', type: '(open: boolean) => void', description: '' },
+]
+
+export const popoverTriggerProperties: DocumentedProperty[] = [
+  onClickCallback,
+  {
+    name: 'asChild',
+    type: `boolean`,
+    description: 'Allows the user to pass any element as the anchor',
+  },
+  ...commonProperties,
+]

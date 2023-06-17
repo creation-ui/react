@@ -11,6 +11,11 @@ export const positionProp: DocumentedProperty = {
   type: ListOrTypes([...ELEMENT_POSITION]),
   description: 'Position of the element',
 }
+export const idProp: DocumentedProperty = {
+  name: 'id',
+  type: 'string',
+  description: 'ID of the element',
+}
 export const sizeProp: DocumentedProperty = {
   name: 'size',
   type: ListOrTypes([...ELEMENT_SIZES]),
