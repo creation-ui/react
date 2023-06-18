@@ -5,6 +5,7 @@ import { SelectProps } from './types'
 
 export const Select = (props: SelectProps) => {
   const clearableCallback = () => {
+    // @ts-ignore
     props.onChange?.(null)
   }
 
