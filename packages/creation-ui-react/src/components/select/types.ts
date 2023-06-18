@@ -1,8 +1,7 @@
-import { DropdownOptionType, ElementSize } from '../../types'
+import { ElementSize } from '../../types'
 
 export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
-  options?: DropdownOptionType[]
   size?: ElementSize
   clearable?: boolean
   error?: React.ReactNode

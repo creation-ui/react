@@ -1,7 +1,3 @@
-# Autocomplete
-
-The Autocomplete component dynamically suggests options as users type into an input field. This enhances user experience by making data entry faster and more accurate, particularly when dealing with large data sets. With multiple selection and customization capabilities, it offers high versatility for a wide range of applications.
-
 import {
   properties,
   AutocompletePlayground,
@@ -13,6 +9,11 @@ import {
 } from '@components/examples/autocomplete'
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
+import { Container } from '@components/container'
+
+# Autocomplete
+
+The Autocomplete component dynamically suggests options as users type into an input field. This enhances user experience by making data entry faster and more accurate, particularly when dealing with large data sets. With multiple selection and customization capabilities, it offers high versatility for a wide range of applications.
 
 Let's dive in and see the Autocomplete component in action:
 
@@ -37,7 +38,9 @@ For more details, please refer to the [properties table.](#onChange)
 
 Enhance your Autocomplete experience by using custom Option and SelectedOption components. This provides the flexibility to design and style options according to your application's needs and aesthetics.
 
-<AutocompleteExampleCustomOptions />
+<Container>
+  <AutocompleteExampleCustomOptions />
+</Container>
 
 ## Component API
 

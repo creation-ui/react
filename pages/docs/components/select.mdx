@@ -8,9 +8,47 @@ import {
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
 
-The Select component allows users to choose one or more options from a list. It is perfect for scenarios where a user is presented with multiple choices. This user-friendly and highly customizable component is versatile and can be used in a myriad of applications, from simple forms to complex interactive designs. Try out the examples below to see it in action!
+This component uses native `<select>` HTML tag underneath. This allows passing `<option>` as children.
 
 <SelectPlayground />
+
+## Code example
+
+```tsx copy
+import { DropdownProps, Select } from '@creation-ui/react'
+import { useState } from 'react'
+
+export const options = [
+  { id: '1', label: 'Wade Cooper' },
+  { id: '2', label: 'Arlene Mccoy' },
+  { id: '3', label: 'Devon Webb' },
+  { id: '4', label: 'Tom Cook' },
+  { id: '5', label: 'Tanya Fox' },
+  { id: '6', label: 'Hellen Schmidt' },
+  { id: '7', label: 'Another option' },
+]
+
+export const SelectExample = ({ ...props }: DropdownProps) => {
+  const [value, setValue] = useState<string | undefined>(undefined)
+
+  return (
+    <Select
+      label={'Person'}
+      value={value}
+      placeholder='Select value'
+      onChange={e => setValue(e.target.value)}
+      onClear={() => setValue('')}
+    >
+      <option value={undefined} />
+      {options?.map(({ id, label, disabled }) => (
+        <option value={label} key={id} disabled={disabled}>
+          {label}
+        </option>
+      ))}
+    </Select>
+  )
+}
+```
 
 ## Component API
 

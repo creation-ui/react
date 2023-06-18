@@ -15,23 +15,31 @@ import { Playground } from '@components/playground'
 
 ## Playground
 
-<Playground config={playgroundConfig}>
-  <ToggleGroupPlayground />
-</Playground>
+<ToggleGroupPlayground />
 
 ```tsx copy
 import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
 import { mdiAbacus, mdiAlarm, mdiBedQueenOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 
-export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
-  const options = [
-    { value: '1', label: <Icon path={mdiAbacus} size={0.9} /> },
-    { value: '2', label: <Icon path={mdiAlarm} size={0.9} /> },
-    { value: '3', label: <Icon path={mdiBedQueenOutline} size={0.9} /> },
-  ]
+const options = [
+  { value: '1', label: <Icon path={mdiAbacus} /> },
+  { value: '2', label: <Icon path={mdiAlarm} /> },
+  { value: '3', label: <Icon path={mdiBedQueenOutline} /> },
+]
 
-  return <ToggleGroup size={size} options={options} label='Select option' />
+export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
+  const [value, setValue] = useState<string>('1')
+
+  return (
+    <ToggleGroup
+      label='Select option'
+      size={'sm'}
+      options={options}
+      value={value}
+      onChange={setValue}
+    />
+  )
 }
 ```
 

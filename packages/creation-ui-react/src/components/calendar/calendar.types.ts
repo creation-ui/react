@@ -15,9 +15,9 @@ export type CalendarProps = Omit<
   /**
    * How large should the button be?
    */
-  onClick: (date: CalendarDateValue) => void
+  onClick?: (date: CalendarDateValue) => void
   weekStartsOn?: WeekDayIndex
-  value: CalendarDateValue
+  value?: CalendarDateValue
 }
 
 export type CalendarView = 'days' | 'months' | 'years'

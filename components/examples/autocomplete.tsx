@@ -1,18 +1,25 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context'
 import {
   Autocomplete,
   Avatar,
-  DropdownProps,
   ELEMENT_SIZES,
   Option,
   SelectedOption,
 } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
-import { pick } from 'lodash'
+import {
+  clearableControl,
+  disabledControl,
+  errorControl,
+  helperTextControl,
+  loadingControl,
+  readOnlyControl,
+  sizeControl,
+  variantControl,
+} from './shared-playground-controls'
 
 type OptionType = (typeof options)[0]
 
@@ -89,21 +96,8 @@ const CustomSelectedOption = ({ option, ...props }: any) => {
 
 type User = (typeof users)[0]
 
-export const AutocompleteExampleCustomOptions = ({
-  ...props
-}: DropdownProps) => {
+export const AutocompleteExampleCustomOptions = () => {
   const [value, setValue] = useState<User>(users[0])
-
-  const playground = usePlayground()
-
-  const state = pick(playground.state, [
-    'size',
-    'error',
-    'loading',
-    'disabled',
-    'readOnly',
-    'clearable',
-  ])
 
   const filterOptions = (query: string) => (option: User) =>
     option.name
@@ -115,109 +109,75 @@ export const AutocompleteExampleCustomOptions = ({
     <Autocomplete
       optionComponent={CustomOption}
       selectedOptionComponent={CustomSelectedOption}
-      options={users}
-      value={value}
-      multiple={false}
-      onChange={setValue}
-      filterOptions={filterOptions}
+      label={'Autocomplete - custom'}
       searchKey='name'
       clearable
-      {...state}
-      {...props}
-    />
-  )
-}
-export const AutocompleteExample = ({ ...props }: DropdownProps) => {
-  const [value, setValue] = useState<OptionType[]>([options[0]])
-
-  const playground = usePlayground()
-
-  const state = pick(playground.state, [
-    'size',
-    'error',
-    'loading',
-    'disabled',
-    'readOnly',
-    'clearable',
-  ])
-
-  return (
-    <Autocomplete
-      options={options}
+      // @ts-expect-error
       value={value}
+      // @ts-expect-error
+      options={users}
+      // @ts-expect-error
       onChange={setValue}
-      {...state}
-      {...props}
+      // @ts-expect-error
+      filterOptions={filterOptions}
     />
   )
 }
 
-export const AutocompleteMultipleExample = ({
-  label = 'Autocomplete multiple',
-  ...props
-}: DropdownProps) => {
+export const AutocompletePlayground = () => {
+  const [value, setValue] = useState<OptionType[]>([options[0]])
+  return (
+    <Playground
+      name='Autocomplete'
+      component={Autocomplete}
+      componentProps={{
+        label: 'Autocomplete',
+        value,
+        onChange: setValue,
+        options,
+      }}
+      controls={[
+        variantControl,
+        sizeControl,
+        errorControl,
+        loadingControl,
+        disabledControl,
+        readOnlyControl,
+        clearableControl,
+        helperTextControl,
+      ]}
+    />
+  )
+}
+export const AutocompleteMultiPlayground = () => {
   const [value, setValue] = useState<OptionType[]>([options[0], options[3]])
 
   const handleChange = (value: OptionType[]) => {
     setValue(value ? value : [])
   }
 
-  const playground = usePlayground()
-
-  const state = pick(playground.state, [
-    'size',
-    'error',
-    'loading',
-    'disabled',
-    'readOnly',
-    'clearable',
-  ])
-
   return (
-    <Autocomplete
-      options={options}
-      label={label}
-      value={value}
-      multiple
-      onChange={handleChange}
-      {...state}
-      {...props}
+    <Playground
+      name='Autocomplete'
+      component={Autocomplete}
+      componentProps={{
+        multiple: true,
+        label: 'Autocomplete - multiple',
+        onChange: handleChange,
+        value,
+        options,
+      }}
+      controls={[
+        variantControl,
+        sizeControl,
+        errorControl,
+        loadingControl,
+        disabledControl,
+        readOnlyControl,
+        clearableControl,
+        helperTextControl,
+      ]}
     />
-  )
-}
-
-export const AutocompletePlayground = () => {
-  return (
-    <Playground
-      config={{
-        name: 'Autocomplete',
-        size: true,
-        error: true,
-        loading: true,
-        disabled: true,
-        readOnly: true,
-        clearable: true,
-      }}
-    >
-      <AutocompleteExample />
-    </Playground>
-  )
-}
-export const AutocompleteMultiPlayground = () => {
-  return (
-    <Playground
-      config={{
-        name: 'Autocomplete',
-        size: true,
-        error: true,
-        loading: true,
-        disabled: true,
-        readOnly: true,
-        clearable: true,
-      }}
-    >
-      <AutocompleteMultipleExample />
-    </Playground>
   )
 }
 
@@ -285,18 +245,18 @@ export const properties: DocumentedProperty[] = [
     defaultValue: 'false',
   },
   {
-    description: 'Allow Autocompleteion of multiple values',
+    description: 'Allow autocompletion of multiple values',
     name: 'multiple',
     type: 'boolean',
     defaultValue: 'false',
   },
-  {
-    name: 'highlightSearch',
-    type: 'boolean',
-    defaultValue: 'false',
-    description: 'Highlight search in options',
-    experimental: true,
-  },
+  // {
+  //   name: 'highlightSearch',
+  //   type: 'boolean',
+  //   defaultValue: 'false',
+  //   description: 'Highlight search in options',
+  //   experimental: true,
+  // },
   {
     description: 'Error text displayed under the component.',
     name: 'error',

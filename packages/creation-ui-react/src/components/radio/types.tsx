@@ -14,12 +14,24 @@ export type RadioGroupProps = Omit<
    */
   label?: React.ReactNode
   /**
-   * Text to be displayed when input is invalid #TODO
+   * Text to be displayed when input is invalid
    */
   error?: React.ReactNode
+  /**
+   * Is disabled?
+   */
   disabled?: boolean
+  /**
+   * Is required?
+   */
   required?: boolean
+  /**
+   * Is read only?
+   */
   readOnly?: boolean
+  /**
+   * Helper text
+   */
   helperText?: React.ReactNode
 }
 
@@ -33,11 +45,11 @@ export type RadioProps = Omit<React.ComponentProps<'input'>, 'size'> & {
    */
   label?: React.ReactNode
   /**
-   * Helper text #TODO
+   * Helper text
    */
   helperText?: React.ReactNode
   /**
-   * Text to be displayed when input is invalid #TODO
+   * Text to be displayed when input is invalid
    */
   error?: React.ReactNode
 }

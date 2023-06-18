@@ -1,35 +1,46 @@
-import { DocumentedProperty } from 'models/system'
-import { childrenProp, labelProp, sizeProp } from './shared-props'
+import { Playground } from '@components/playground'
 import { Radio, RadioGroup, RadioGroupProps } from '@creation-ui/react'
+import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
+import { createRadioControls } from './shared-playground-controls'
+import { childrenProp, labelProp, sizeProp } from './shared-props'
 
-export const RadioGroupExample = ({ size }: RadioGroupProps) => {
-  const [selected, setSelected] = useState<string>('music')
+export const RadioGroupExample = (props: RadioGroupProps) => {
+  const [selected, setSelected] = useState<string | undefined>()
 
   const options = [
-    { label: 'Music', value: 'music' },
-    { label: 'Games', value: 'games' },
-    { label: 'Sports', value: 'sports' },
-    { label: 'Eating', value: 'eating' },
-    { label: 'Coding', value: 'coding' },
-    { label: 'Sleeping', value: 'sleeping' },
+    { label: 'Yes', value: 'yes' },
+    { label: 'No', value: 'no' },
+    { label: 'Maybe', value: 'maybe' },
   ]
 
   const handleClick = e => setSelected(e.target.value)
 
   return (
-    <RadioGroup size={size} label='Select your favorite activities'>
+    <RadioGroup {...props}>
       {options.map(option => (
         <Radio
-          key={size}
-          size={size}
+          key={option.value}
           label={option.label}
           onClick={handleClick}
           value={option.value}
           checked={selected === option.value}
+          size={props.size}
         />
       ))}
     </RadioGroup>
+  )
+}
+
+export const radioControlsSet = createRadioControls('Radio Group')
+
+export const RadioGroupPlayground = () => {
+  return (
+    <Playground
+      name='Radio'
+      component={RadioGroupExample}
+      controls={radioControlsSet}
+    />
   )
 }
 

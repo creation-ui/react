@@ -1,11 +1,22 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context'
+import { usePlayground } from '@components/playground/context/context'
 import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
 import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'
+import {
+  clearableControl,
+  createInputControls,
+  errorControl,
+  helperTextControl,
+  labelControl,
+  loadingControl,
+  readOnlyControl,
+  sizeControl,
+  variantControl,
+} from './shared-playground-controls'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 
@@ -30,45 +41,24 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
   )
 }
 
-export const InputPlaygroundView = ({ ...props }: InputExampleProps) => {
-  const {
-    state: { inputType, ...state },
-  } = usePlayground()
+const controls = createInputControls('Input')
+
+export const InputPlayground = ({ ...props }: InputExampleProps) => {
   const [inputValue, setInputValue] = useState<string>('')
   const onClear = () => {
     setInputValue('')
   }
   return (
-    <Input
-      {...props}
-      {...state}
-      value={inputValue}
-      onChange={e => setInputValue(e.target.value)}
-      onClear={onClear}
-      type={inputType as HTMLInputType}
-      defaultValue={state.content}
-    />
-  )
-}
-
-export const InputPlayground = () => {
-  return (
     <Playground
-      config={{
-        name: 'Input',
-        size: true,
-        loading: true,
-        disabled: true,
-        readOnly: true,
-        error: true,
-        helperText: true,
-        inputType: true,
-        variant: true,
-        clearable: true,
+      component={Input}
+      componentProps={{
+        onClear,
+        value: inputValue,
+        onChange: e => setInputValue(e.target.value),
       }}
-    >
-      <InputPlaygroundView label='Input' />
-    </Playground>
+      controls={controls}
+      name='Input'
+    />
   )
 }
 

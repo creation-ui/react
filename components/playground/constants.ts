@@ -1,4 +1,5 @@
 import { HTMLInputType } from '@creation-ui/react/index'
+import { PlaygroundControls, PlaygroundValueType } from './types'
 
 export const INPUT_TYPES: HTMLInputType[] = [
   'text',
@@ -21,3 +22,12 @@ export const INPUT_TYPES: HTMLInputType[] = [
   'search',
   'tel',
 ]
+
+export const DEFAULT_CONTROLS: Record<PlaygroundValueType, PlaygroundControls> =
+  {
+    boolean: 'switch',
+    array: 'toggle-group',
+    string: 'input:text',
+    number: 'input:number',
+    object: 'nested',
+  }

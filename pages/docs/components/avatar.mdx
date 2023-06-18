@@ -9,12 +9,8 @@ import {
   properties,
   badgeProperties,
   placementProperties,
+  AvatarPlayground,
 } from '@components/examples/avatar'
-
-```tsx copy
-import { Avatar } from '@creation-ui/react'
-;<Avatar src='...' alt='John Doe' />
-```
 
 export const defaultProps = {
   variant: 'circle',
@@ -23,84 +19,7 @@ export const defaultProps = {
   alt: 'avatar',
 }
 
-# Avatar
-
-<Avatar {...defaultProps} />
-
-## Sizes
-
-This component supports 3 different sizes `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={Avatar}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  componentProps={defaultProps}
-/>
-
-## Notifications badges
-
-### Static dot only
-
-<UnfoldVariants
-  component={Avatar}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  componentProps={{
-    ...defaultProps,
-    badge: { type: 'dot', placement: { horizontal: 'right', vertical: 'top' } },
-  }}
-/>
-
-### With 5 notifications
-
-<UnfoldVariants
-  component={Avatar}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  componentProps={{
-    ...defaultProps,
-    badge: {
-      type: 'count',
-      pulse: true,
-      placement: { horizontal: 'right', vertical: 'top' },
-      count: 5,
-    },
-  }}
-/>
-
-### With 99 notifications
-
-<UnfoldVariants
-  component={Avatar}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  componentProps={{
-    ...defaultProps,
-    badge: {
-      type: 'count',
-      placement: { horizontal: 'right', vertical: 'top' },
-      count: 99,
-    },
-  }}
-/>
-
-### Circle with notification pulsing
-
-<UnfoldVariants
-  component={Avatar}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  componentProps={{
-    ...defaultProps,
-    badge: {
-      color: 'primary',
-      type: 'dot',
-      pulse: true,
-      placement: { horizontal: 'right', vertical: 'top' },
-    },
-  }}
-/>
+<AvatarPlayground />
 
 ## Component API
 

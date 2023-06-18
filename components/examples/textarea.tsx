@@ -1,17 +1,19 @@
-import { usePlayground } from '@components/playground/context'
-import { TextArea, TextAreaProps } from '@creation-ui/react'
+import { Playground } from '@components/playground'
+import { TextArea } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { inputBaseProperties } from './input-base-properties'
+import { createInputControls } from './shared-playground-controls'
 
-interface TextAreaExampleProps
-  extends Omit<TextAreaProps, 'onChange' | 'ref'> {}
+const controls = createInputControls('TextArea')
 
-export const TextAreaPlayground = ({ ...props }: TextAreaExampleProps) => {
-  const {
-    state: { inputType, ...state },
-  } = usePlayground()
-
-  return <TextArea {...props} {...state} defaultValue={state.content} />
+export const TextAreaPlayground = () => {
+  return (
+    <Playground
+      name='TextArea'
+      component={TextArea}
+      controls={controls}
+    />
+  )
 }
 
 export const properties: DocumentedProperty[] = inputBaseProperties

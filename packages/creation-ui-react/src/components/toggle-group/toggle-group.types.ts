@@ -21,6 +21,6 @@ export type ToggleGroupProps = Omit<
   options: ToggleGroupOption[]
   label?: string
   required?: boolean
-  onChange?: HeadlessRadioGroupProps['onChange']
   value?: ToggleGroupValue
+  onChange?: HeadlessRadioGroupProps['onChange']
 }

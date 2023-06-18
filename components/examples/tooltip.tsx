@@ -1,22 +1,12 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context'
-import { getState } from '@components/playground/helpers'
 import { Button, ELEMENT_POSITION, Tooltip } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
+import { positionControl } from './shared-playground-controls'
 
-const config = {
-  position: true,
-  content: true,
-}
-
-export const TooltipExample = () => {
-  const playground = usePlayground()
-
-  const state = getState(playground.state, config)
-
+export const TooltipExample = props => {
   return (
-    <Tooltip {...state}>
+    <Tooltip {...props}>
       <Button variant='contained'>Submit</Button>
     </Tooltip>
   )
@@ -25,13 +15,18 @@ export const TooltipExample = () => {
 export const TooltipPlayground = () => {
   return (
     <Playground
-      config={{
-        name: 'Tooltip',
-        ...config,
-      }}
-    >
-      <TooltipExample />
-    </Playground>
+      controls={[
+        {
+          name: 'content',
+          type: 'string',
+          defaultValue: 'Tooltip content',
+        },
+        positionControl,
+      ]}
+      name='Tooltip'
+      component={TooltipExample}
+      showCode={false}
+    />
   )
 }
 

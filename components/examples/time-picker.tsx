@@ -1,27 +1,45 @@
-import React, { useState } from 'react'
+import { Playground } from '@components/playground'
 import { TimePicker } from '@creation-ui/react'
-import { TimePickerValue } from '@creation-ui/react/components/time-picker/types'
+import { DocumentedProperty } from '@models/system'
+import React, { useState } from 'react'
+import { createInputControls } from './shared-playground-controls'
+
+const controls = createInputControls('TimePicker')
 
 export const TimePickerExample: React.FC = () => {
-  const [selectedTime, setSelectedTime] = useState<TimePickerValue>(null)
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
-  const handleTimeChange = (date: TimePickerValue) => {
-    setSelectedTime(date)
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date)
   }
 
   return (
-    <div className='flex flex-col gap-2'>
-      <TimePicker
-        value={selectedTime}
-        onChange={handleTimeChange}
-        placeholder='Select time'
-        label='Time'
+    <div>
+      <Playground
+        component={TimePicker}
+        name='TimePicker'
+        controls={controls}
+        componentProps={{
+          value: selectedDate,
+          onChange: handleDateChange,
+        }}
       />
-      {selectedTime && (
-        <p>Selected time: {selectedTime.toLocaleTimeString()}</p>
+      {selectedDate && (
+        <p>Selected date: {selectedDate.toLocaleDateString()}</p>
       )}
     </div>
   )
 }
 
-export const properties = []
+export const properties: DocumentedProperty[] = [
+  {
+    name: 'value',
+    description: 'Time selected in input',
+    type: 'Date | null | undefined',
+  },
+  {
+    name: 'onChange',
+    description: 'Callback function when time is selected',
+    type: '(date: Date | null | undefined) => void',
+  },
+]

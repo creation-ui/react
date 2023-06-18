@@ -2,16 +2,16 @@ import { cva } from 'class-variance-authority'
 import merge from 'lodash.merge'
 import values from 'lodash.values'
 import { ElementType } from 'react'
-import { ClassName, ElementTypography } from 'src/types'
+import { ClassName, ElementTypography } from '../../types'
 import { twMerge } from 'tailwind-merge'
 import { ThemeTypography, TypographyConfig } from '../../theme'
 import { getElementType } from './get-element-type'
 
 interface GetDetailsArgs {
-  typography: ThemeTypography
-  as: ElementType
+  typography?: ThemeTypography
+  as?: ElementType
   className: ClassName
-  config: Partial<TypographyConfig>
+  config?: Partial<TypographyConfig>
   variant: ElementTypography
 }
 
@@ -23,7 +23,7 @@ export const useTypography = ({
   as,
 }: GetDetailsArgs) => {
   const { fontSize, ...textClasses } = merge(
-    typography[variant],
+    typography?.[variant],
     config?.[variant]
   )
 

@@ -1,5 +1,4 @@
 import { cva } from 'class-variance-authority'
-import { getColor } from '../../utils/get-color'
 
 export const avatar = {
   img: cva(
@@ -59,28 +58,11 @@ export const avatar = {
           dot: [],
         },
         color: {
-          primary: [
-            getColor('primary', 'bg', 600),
-            getColor('primary', 'text', 100),
-          ],
-          warning: [
-            getColor('warning', 'bg', 600),
-            getColor('warning', 'text', 100),
-          ],
-          success: [
-            getColor('success', 'bg', 600),
-            getColor('success', 'text', 100),
-          ],
-          error: [
-            //
-            getColor('error', 'bg', 600),
-            getColor('error', 'text', 100),
-          ],
-          info: [
-            //
-            getColor('info', 'bg', 600),
-            getColor('info', 'text', 100),
-          ],
+          primary: ['bg-primary-600', 'text-primary-100'],
+          warning: ['bg-warning-600', 'text-warning-100'],
+          success: ['bg-success-600', 'text-success-100'],
+          error: ['bg-error-600', 'text-error-100'],
+          info: ['bg-info-600', 'text-info-100'],
         },
       },
       defaultVariants: {
@@ -106,11 +88,11 @@ export const avatar = {
         lg: ['w-6', 'h-6'],
       },
       color: {
-        primary: [getColor('primary', 'bg', 400)],
-        warning: [getColor('warning', 'bg', 400)],
-        success: [getColor('success', 'bg', 400)],
-        error: [getColor('error', 'bg', 400)],
-        info: [getColor('info', 'bg', 400)],
+        primary: ['bg-primary-400'],
+        warning: ['bg-warning-400'],
+        success: ['bg-success-400'],
+        error: ['bg-error-400'],
+        info: ['bg-info-400'],
       },
     },
     defaultVariants: {

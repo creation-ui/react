@@ -1,56 +1,35 @@
 import Icon from '@components/icon'
-import {
-  PlaygroundContextValue,
-  usePlayground,
-} from '@components/playground/context'
-import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
+import { Playground } from '@components/playground'
+
+import { ToggleGroup } from '@creation-ui/react'
 import {
   mdiFormatAlignCenter,
   mdiFormatAlignLeft,
   mdiFormatAlignRight,
 } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
+import { useState } from 'react'
+import { labelControl, sizeControl } from './shared-playground-controls'
 
-export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
-  const iconSize = {
-    sm: 0.7,
-    md: 0.9,
-    lg: 1.1,
-  }[size || 'md']
+const options = [
+  { value: '1', label: <Icon path={mdiFormatAlignLeft} /> },
+  { value: '2', label: <Icon path={mdiFormatAlignCenter} /> },
+  { value: '3', label: <Icon path={mdiFormatAlignRight} /> },
+]
 
-  const options = [
-    { value: '1', label: <Icon path={mdiFormatAlignLeft} size={iconSize} /> },
-    { value: '2', label: <Icon path={mdiFormatAlignCenter} size={iconSize} /> },
-    { value: '3', label: <Icon path={mdiFormatAlignRight} size={iconSize} /> },
-  ]
-  return <ToggleGroup size={size} options={options} label='Select option' />
-}
+export const ToggleGroupPlayground = () => {
+  const [value, setValue] = useState<string>('1')
 
-export const playgroundConfig: PlaygroundContextValue['config'] = {
-  size: true,
-  name: 'ToggleGroup',
-}
-
-export const ToggleGroupPlayground = ({ ...props }: ToggleGroupProps) => {
-  const { state } = usePlayground()
-
-  const iconSize = {
-    sm: 0.7,
-    md: 0.9,
-    lg: 1.1,
-  }[state.size || 'md']
-
-  const options = [
-    { value: '1', label: <Icon path={mdiFormatAlignLeft} size={iconSize} /> },
-    { value: '2', label: <Icon path={mdiFormatAlignCenter} size={iconSize} /> },
-    { value: '3', label: <Icon path={mdiFormatAlignRight} size={iconSize} /> },
-  ]
   return (
-    <ToggleGroup
-      //
-      {...props}
-      {...state}
-      options={options}
+    <Playground
+      name='ToggleGroup'
+      component={ToggleGroup}
+      controls={[
+        sizeControl,
+        { ...labelControl, defaultValue: 'Text alignment' },
+      ]}
+      componentProps={{ options, value, onChange: setValue }}
+      showCode={false}
     />
   )
 }
