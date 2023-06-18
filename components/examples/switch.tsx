@@ -1,39 +1,26 @@
-import { usePlayground } from '@components/playground/context/context'
-import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Switch, SwitchProps } from '@creation-ui/react'
+import { Playground } from '@components/playground'
+import { ELEMENT_SIZES, Switch, SwitchProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
+import {
+  createInputControls
+} from './shared-playground-controls'
+
+const controls = createInputControls('Switch')
 
 interface SwitchExampleProps extends Omit<SwitchProps, 'onChange'> {}
 
 export const SwitchExample = ({ ...props }: SwitchExampleProps) => {
   const [checked, setChecked] = useState<boolean>(false)
 
-  return (
-    <Switch
-      onChange={e => {
-        setChecked(e)
-      }}
-      checked={checked}
-      size='md'
-      {...props}
-    />
-  )
+  return <Switch onChange={setChecked} checked={checked} size='md' {...props} />
 }
 
-export const SwitchPlayground = ({ ...props }: SwitchExampleProps) => {
-  const { state } = usePlayground()
-  const [checked, setChecked] = useState<boolean>(false)
 
+export const SwitchPlayground = () => {
   return (
-    <Switch
-      {...props}
-      {...state}
-      checked={checked}
-      onChange={setChecked}
-      label={state.content}
-    />
+    <Playground name='Switch' component={SwitchExample} controls={controls} />
   )
 }
 

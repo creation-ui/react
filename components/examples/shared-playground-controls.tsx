@@ -159,14 +159,24 @@ export const labelControl: PlaygroundControl = {
   defaultValue: 'Label',
 }
 
-export const inputControlsSet: PlaygroundControl[] = [
-  { ...variantControl, defaultValue: 'outlined' },
-  sizeControl,
-  loadingControl,
-  readOnlyControl,
-  errorControl,
-  clearableControl,
-  helperTextControl,
-  labelControl,
-  { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
-]
+export const createInputControls = (
+  labelFieldDefaultValue = 'Input'
+): PlaygroundControl[] => {
+  let base: PlaygroundControl[] = [
+    sizeControl,
+    loadingControl,
+    readOnlyControl,
+    disabledControl,
+    errorControl,
+    { ...clearableControl, defaultValue: true },
+    helperTextControl,
+    { ...labelControl, defaultValue: labelFieldDefaultValue },
+    { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
+  ]
+
+  if (labelFieldDefaultValue !== 'Switch') {
+    base = [{ ...variantControl, defaultValue: 'outlined' }, ...base]
+  }
+
+  return base
+}

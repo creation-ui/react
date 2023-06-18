@@ -2,7 +2,9 @@ import { Playground } from '@components/playground'
 import { TimePicker } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
 import React, { useState } from 'react'
-import { inputControlsSet } from './shared-playground-controls'
+import { createInputControls } from './shared-playground-controls'
+
+const controls = createInputControls('TimePicker')
 
 export const TimePickerExample: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
@@ -16,7 +18,7 @@ export const TimePickerExample: React.FC = () => {
       <Playground
         component={TimePicker}
         name='TimePicker'
-        controls={inputControlsSet}
+        controls={controls}
         componentProps={{
           value: selectedDate,
           onChange: handleDateChange,
