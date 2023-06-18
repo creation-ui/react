@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/creation-ui/react/compare/v0.5.6...v0.6.0) (2023-06-18)
+
+
+### Features
+
+* handle native select ([74d35aa](https://github.com/creation-ui/react/commit/74d35aab9296dd0786b7b525f1c31c5b06001fab))
+* refactor Typography ([cc97393](https://github.com/creation-ui/react/commit/cc97393a306eddc3899f900eae0c0a41fd4d0b50))
+* replace select with native select ([88eb2bc](https://github.com/creation-ui/react/commit/88eb2bcf219d5d7355c1fa3af43c87be68178c10))
+
+
+### Bug Fixes
+
+* ts errors ([4aa3dd3](https://github.com/creation-ui/react/commit/4aa3dd3cdf54d9a66698fdf757ba55ec0c5129c9))
+
 ## [0.5.6](https://github.com/creation-ui/react/compare/v0.5.5...v0.5.6) (2023-06-10)
 
 
