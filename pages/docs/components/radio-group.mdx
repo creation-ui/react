@@ -1,61 +1,53 @@
-# Radio Group
+# RadioGroup
 
-import { RadioGroupExample, properties } from '@components/examples/radio-group'
+import {
+  RadioGroupPlayground,
+  properties,
+} from '@components/examples/radio-group'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 
-Simple container for list of single-choice options
+Container for list of `Radio` options
+
+<RadioGroupPlayground />
+
+## Code example
+
+Notice that `size` is passed from wrapper props to `Radio` component
 
 ```tsx copy
 import { useState } from 'react'
 import { Radio, RadioGroup, RadioGroupProps } from '@creation-ui/react'
 
-export const RadioGroupExample = ({ size }: RadioGroupProps) => {
-  const [selected, setSelected] = useState<string>('music')
+export const RadioGroupExample = (props: RadioGroupProps) => {
+  const [selected, setSelected] = useState<string | undefined>()
 
   const options = [
-    { label: 'Music', value: 'music' },
-    { label: 'Games', value: 'games' },
-    { label: 'Sports', value: 'sports' },
-    { label: 'Eating', value: 'eating' },
-    { label: 'Coding', value: 'coding' },
-    { label: 'Sleeping', value: 'sleeping' },
+    { label: 'Yes', value: 'yes' },
+    { label: 'No', value: 'no' },
+    { label: 'Maybe', value: 'maybe' },
   ]
 
   const handleClick = e => setSelected(e.target.value)
 
   return (
-    <RadioGroup size={size} label='Select your favorite activities'>
+    <RadioGroup {...props}>
       {options.map(option => (
         <Radio
-          size={size}
+          key={option.value}
           label={option.label}
           onClick={handleClick}
           value={option.value}
           checked={selected === option.value}
+          size={props.size}
         />
       ))}
     </RadioGroup>
   )
 }
 ```
-
-<Container>
-  <RadioGroupExample label='Radio option' />
-</Container>
-
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<UnfoldVariants
-  component={RadioGroupExample}
-  variants={ELEMENT_SIZES}
-  prop='size'
-  nameProp='label'
-/>
 
 ## Component API
 

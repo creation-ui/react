@@ -1,8 +1,9 @@
-import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Radio, RadioProps } from '@creation-ui/react'
+import { Playground } from '@components/playground'
+import { ELEMENT_SIZES, Radio, RadioProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
+import { createRadioControls } from './shared-playground-controls'
 
 export const RadioExample = ({
   ...props
@@ -14,6 +15,18 @@ export const RadioExample = ({
       onChange={e => setChecked(e.target.checked)}
       checked={checked}
       {...props}
+    />
+  )
+}
+
+export const radioControlsSet = createRadioControls()
+
+export const RadioPlayground = () => {
+  return (
+    <Playground
+      name='Radio'
+      component={RadioExample}
+      controls={radioControlsSet}
     />
   )
 }

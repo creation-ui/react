@@ -132,6 +132,11 @@ export const readOnlyControl: PlaygroundControl = {
   type: 'boolean',
 }
 
+export const requiredControl: PlaygroundControl = {
+  name: 'required',
+  type: 'boolean',
+}
+
 export const fullWidthControl: PlaygroundControl = {
   name: 'fullWidth',
   label: 'Full Width',
@@ -164,14 +169,15 @@ export const createInputControls = (
 ): PlaygroundControl[] => {
   let base: PlaygroundControl[] = [
     sizeControl,
+    requiredControl,
     loadingControl,
     readOnlyControl,
     disabledControl,
     errorControl,
     { ...clearableControl, defaultValue: true },
-    helperTextControl,
     { ...labelControl, defaultValue: labelFieldDefaultValue },
     { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
+    helperTextControl,
   ]
 
   if (labelFieldDefaultValue !== 'Switch') {
@@ -180,3 +186,15 @@ export const createInputControls = (
 
   return base
 }
+
+export const createRadioControls = (
+  labelFieldDefaultValue = 'Radio'
+): PlaygroundControl[] => [
+  sizeControl,
+  requiredControl,
+  disabledControl,
+  readOnlyControl,
+  errorControl,
+  { ...labelControl, defaultValue: labelFieldDefaultValue },
+  helperTextControl,
+]

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'
 import {
   clearableControl,
+  createInputControls,
   errorControl,
   helperTextControl,
   labelControl,
@@ -40,6 +41,8 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
   )
 }
 
+const controls = createInputControls('Input')
+
 export const InputPlayground = ({ ...props }: InputExampleProps) => {
   const [inputValue, setInputValue] = useState<string>('')
   const onClear = () => {
@@ -53,17 +56,7 @@ export const InputPlayground = ({ ...props }: InputExampleProps) => {
         value: inputValue,
         onChange: e => setInputValue(e.target.value),
       }}
-      controls={[
-        { ...variantControl, defaultValue: 'outlined' },
-        sizeControl,
-        loadingControl,
-        readOnlyControl,
-        errorControl,
-        clearableControl,
-        helperTextControl,
-        labelControl,
-        { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
-      ]}
+      controls={controls}
       name='Input'
     />
   )
