@@ -1,10 +1,10 @@
 import { Theme } from '@creation-ui/react'
 import clsx from 'clsx'
-import { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { classes } from './classes'
 
 interface PlaygroundViewProps {
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 export const PlaygroundView: FC<PlaygroundViewProps> = ({ children }) => (

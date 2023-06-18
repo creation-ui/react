@@ -1,10 +1,10 @@
 import clsx from 'clsx'
-import { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { classes } from './classes'
 import { usePlayground } from './context/context'
 
 interface PlaygroundComponentProps {
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 export const PlaygroundComponent: FC<PlaygroundComponentProps> = () => {

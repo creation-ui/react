@@ -1,3 +1,5 @@
+import type { FC } from 'react'
+
 export type PlaygroundValueType =
   | 'string'
   | 'boolean'
@@ -25,7 +27,7 @@ export type PlaygroundControl = {
 
 export interface PlaygroundControllerProps {
   name: string
-  component: React.FC<any>
+  component: FC<any>
   controls: PlaygroundControl[]
   showCode?: boolean
   componentProps?: any
