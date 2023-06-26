@@ -63,8 +63,8 @@ const POSITION_HORIZONTAL = [
   { value: 'right', label: <Icon path={mdiBorderRightVariant} size={1} /> },
 ]
 const POSITION_VERTICAL = [
-  { value: 'top', label: <Icon path={mdiBorderTopVariant} size={1} /> },
   { value: 'bottom', label: <Icon path={mdiBorderBottomVariant} size={1} /> },
+  { value: 'top', label: <Icon path={mdiBorderTopVariant} size={1} /> },
 ]
 
 const INPUT_TYPES_DROPDOWN = INPUT_TYPES
@@ -90,14 +90,14 @@ export const positionControl: PlaygroundControl = {
 }
 export const positionHorizontalControl: PlaygroundControl = {
   name: 'horizontal',
-  label: 'Position Horizontal',
+  label: 'Horizontal',
   type: 'array',
   defaultValue: 'right',
   values: POSITION_HORIZONTAL,
 }
 export const positionVerticalControl: PlaygroundControl = {
   name: 'vertical',
-  label: 'Position Vertical',
+  label: 'Vertical',
   type: 'array',
   defaultValue: 'top',
   values: POSITION_VERTICAL,

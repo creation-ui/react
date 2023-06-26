@@ -7,7 +7,6 @@ export const avatar = {
       'inline-block',
       'ring-2',
       'ring-white',
-      'rounded-full',
     ],
     {
       variants: {
@@ -16,6 +15,15 @@ export const avatar = {
           md: ['h-16 w-16'],
           lg: ['h-20 w-20'],
         },
+        variant: {
+          circle: ['rounded-full'],
+          rounded: ['rounded-md'],
+          square: ['rounded-none'],
+        },
+      },
+      defaultVariants: {
+        size: 'md',
+        variant: 'circle',
       },
     }
   ),
@@ -31,9 +39,9 @@ export const avatar = {
       'outline-white',
       'text-sm',
       'inline-flex',
-      'transform',
-      'translate-x-1/2',
-      '-translate-y-1/2',
+      // 'transform',
+      // 'translate-x-1/2',
+      // 'translate-y-1/2',
       'items-center',
       'justify-center',
       'leading-none',
@@ -46,12 +54,12 @@ export const avatar = {
           lg: ['w-5', 'h-5'],
         },
         horizontal: {
-          right: ['right-[13%]'],
-          left: ['left-[13%]'],
+          right: ['right-0'],
+          left: ['left-0'],
         },
         vertical: {
-          top: ['top-[13%]'],
-          bottom: ['bottom-[13%]'],
+          top: ['top-0'],
+          bottom: ['bottom-0'],
         },
         type: {
           count: ['!w-6', '!h-6'],

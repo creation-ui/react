@@ -19,19 +19,14 @@ export type Badge = {
    * Notification badge pulsing?
    */
   pulse?: boolean
-} & {
-  /**
-   * Badge type
-   */
-  type: 'dot' | 'count'
-  /**
-   * Badge notifications count
-   */
-  count?: number
   /**
    * Notifications color
    */
   color?: ElementStatus
+  /**
+   * Badge notifications count
+   */
+  count?: number
 }
 
 type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
@@ -47,5 +42,9 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
    * Notification badge
    */
   badge?: Badge
+  /**
+   * Variant of Avatar
+   */
+  variant?: AvatarVariant
 }
 export default AvatarProps

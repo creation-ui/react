@@ -35,11 +35,6 @@ const avatarVariants = [
   },
 ]
 
-const avatarBadgeType = [
-  { value: 'dot', label: 'Dot' },
-  { value: 'count', label: 'Count' },
-]
-
 export const AvatarPlayground = () => (
   <Playground
     component={Avatar}
@@ -75,14 +70,9 @@ export const AvatarPlayground = () => (
             controls: [positionHorizontalControl, positionVerticalControl],
           },
           {
-            name: 'type',
-            label: 'Type',
-            type: 'array',
-            values: avatarBadgeType,
-          },
-          {
             name: 'pulse',
             type: 'boolean',
+            label: 'Pulse',
           },
           {
             name: 'count',
@@ -92,6 +82,7 @@ export const AvatarPlayground = () => (
           {
             ...statusControl,
             name: 'color',
+            label: 'Color',
           },
         ],
       },

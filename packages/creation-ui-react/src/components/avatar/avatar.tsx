@@ -4,18 +4,20 @@ import type AvatarProps from './avatar.types'
 import { avatar } from './classes'
 
 const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { size, badge } = props
+  const { size, badge, variant } = props
+
+  const badgeType = badge?.count ? 'count' : 'dot'
 
   return (
     <div ref={ref} className={clsx(avatar.container)}>
-      <img {...props} className={avatar.img({ size })} />
+      <img {...props} className={avatar.img({ size, variant })} />
       {props.badge && (
         <>
           <div
             className={avatar.notifications({
               horizontal: badge?.placement?.horizontal,
               vertical: badge?.placement?.vertical,
-              type: badge?.type,
+              type: badgeType,
               color: badge?.color,
               size,
             })}
