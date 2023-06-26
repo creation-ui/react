@@ -1,22 +1,11 @@
 import { Playground } from '@components/playground'
-import { usePlayground } from '@components/playground/context/context'
 import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
 import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'
-import {
-  clearableControl,
-  createInputControls,
-  errorControl,
-  helperTextControl,
-  labelControl,
-  loadingControl,
-  readOnlyControl,
-  sizeControl,
-  variantControl,
-} from './shared-playground-controls'
+import { createInputControls } from './shared-playground-controls'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 

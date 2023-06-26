@@ -148,7 +148,8 @@ export const clearableControl: PlaygroundControl = {
 }
 export const errorControl: PlaygroundControl = {
   name: 'error',
-  type: 'boolean',
+  type: 'string',
+  helperText: 'Overrides helper text',
 }
 
 export const helperTextControl: PlaygroundControl = {

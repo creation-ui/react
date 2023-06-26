@@ -23,6 +23,7 @@ export type PlaygroundControl = {
   defaultValue?: PlaygroundValues
   values?: any[]
   controls?: PlaygroundControl[]
+  helperText?: string
 }
 
 export interface PlaygroundControllerProps {

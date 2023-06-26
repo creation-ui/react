@@ -19,7 +19,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
   parentKey,
 }) => {
   const { state, handleChange } = usePlayground()
-  const { name: n, type, values, component: controls } = property
+  const { name: n, type, values, component: controls, helperText } = property
 
   const name = parentKey ? `${parentKey}.${n}` : n
 
@@ -49,6 +49,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           onChange={handleInputChange}
           label={label}
           type={'number'}
+          helperText={helperText}
         />
       )
     case 'colors':
@@ -58,6 +59,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           value={arrayValue}
           options={(values ?? []) as any}
           onClick={handlePlainChange}
+          helperText={helperText}
         />
       )
     case 'switch':
@@ -66,6 +68,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           label={label}
           checked={value as boolean}
           onChange={handlePlainChange}
+          helperText={helperText}
         />
       )
     case 'toggle-group':
@@ -75,6 +78,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           options={(values ?? []) as any}
           value={value as any}
           onChange={handlePlainChange}
+          helperText={helperText}
         />
       )
     case 'nested':
@@ -102,6 +106,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           value={value as string}
           onClear={onClear}
           clearable={!!value}
+          helperText={helperText}
         />
       )
   }
