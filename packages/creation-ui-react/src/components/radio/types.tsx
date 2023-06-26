@@ -12,11 +12,11 @@ export type RadioGroupProps = Omit<
   /**
    * Label
    */
-  label?: React.ReactNode
+  label?: string
   /**
    * Text to be displayed when input is invalid
    */
-  error?: React.ReactNode
+  error?: string
   /**
    * Is disabled?
    */
@@ -43,13 +43,9 @@ export type RadioProps = Omit<React.ComponentProps<'input'>, 'size'> & {
   /**
    * Label
    */
-  label?: React.ReactNode
+  label?: string
   /**
-   * Helper text
+   * Is invalid?
    */
-  helperText?: React.ReactNode
-  /**
-   * Text to be displayed when input is invalid
-   */
-  error?: React.ReactNode
+  error?: boolean
 }

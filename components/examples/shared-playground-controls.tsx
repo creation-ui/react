@@ -190,12 +190,29 @@ export const createInputControls = (
 
 export const createRadioControls = (
   labelFieldDefaultValue = 'Radio'
-): PlaygroundControl[] => [
-  sizeControl,
-  requiredControl,
-  disabledControl,
-  readOnlyControl,
-  errorControl,
-  { ...labelControl, defaultValue: labelFieldDefaultValue },
-  helperTextControl,
-]
+): PlaygroundControl[] => {
+  const isRadio = labelFieldDefaultValue === 'Radio'
+
+  const customErrorControl: PlaygroundControl = isRadio
+    ? {
+        type: 'boolean',
+        defaultValue: false,
+        name: 'error',
+      }
+    : errorControl
+
+  const base = [
+    sizeControl,
+    requiredControl,
+    disabledControl,
+    readOnlyControl,
+    customErrorControl,
+    { ...labelControl, defaultValue: labelFieldDefaultValue },
+  ]
+
+  if (!isRadio) {
+    base.push(helperTextControl)
+  }
+
+  return base
+}
