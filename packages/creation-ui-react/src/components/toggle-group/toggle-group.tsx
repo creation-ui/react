@@ -1,37 +1,15 @@
-import { RadioGroup } from '@headlessui/react'
-import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
-import { getElementPosition } from '../../utils/get-element-position'
-import { toggleGroup } from './classes'
-import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
+import { InputBase } from '../input-base'
+import type { ToggleGroupProps } from './toggle-group.types'
+import { ToggleGroupView } from './toggle-group.view'
 
 export const ToggleGroup = (props: ToggleGroupProps) => {
   const { size: defaultSize } = useTheme()
-  const { size = defaultSize, options, className, ...rest } = props
+  const { size = defaultSize, ...rest } = props
 
   return (
-    <RadioGroup {...rest} className={twMerge(toggleGroup.container, className)}>
-      {/* <RadioGroup.Label>{rest.label}</RadioGroup.Label> */}
-      {options.map(
-        ({ label, value, disabled }: ToggleGroupOption, index, array) => (
-          <RadioGroup.Option
-            key={value}
-            value={value}
-            title={value}
-            disabled={disabled}
-            className={({ checked, disabled }) =>
-              toggleGroup.button({
-                checked,
-                disabled,
-                size,
-                element: getElementPosition(array, index),
-              })
-            }
-          >
-            <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
-          </RadioGroup.Option>
-        )
-      )}
-    </RadioGroup>
+    <InputBase {...rest} size={size} >
+      <ToggleGroupView {...rest} size={size} />
+    </InputBase>
   )
 }

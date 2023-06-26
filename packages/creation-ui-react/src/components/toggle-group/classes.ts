@@ -6,6 +6,7 @@ export const toggleGroup = {
     microInteractions,
     'relative',
     'inline-flex',
+
     'shadow-sm',
     'rounded-md',
   ],
