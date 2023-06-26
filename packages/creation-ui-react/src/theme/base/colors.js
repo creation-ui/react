@@ -17,6 +17,7 @@ const colors = {
     700: '#00468F',
     800: '#002A57',
     900: '#000F1F',
+    950: '#00050A',
   },
   success: lime,
   error: red,
