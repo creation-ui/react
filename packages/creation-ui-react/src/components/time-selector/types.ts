@@ -1,4 +1,4 @@
-import { TimePickerValue } from "../time-picker/types"
+import { TimePickerValue } from '../time-picker/types'
 
 export interface TimeSelectorProps {
   value: TimePickerValue
@@ -9,5 +9,4 @@ export interface TimeSelectorProps {
 export interface OnTimeSliderSelectArgs {
   hour?: number
   minute?: number
-  second?: number
 }

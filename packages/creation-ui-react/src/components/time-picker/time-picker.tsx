@@ -5,6 +5,17 @@ import { Popover, PopoverContent, PopoverTrigger } from '../popover'
 import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
 
+const formatTime = (date?: Date) => {
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+
+  // Pad the hours and minutes with leading zeros if necessary
+  const h = hours < 10 ? '0' + hours : hours
+  const min = minutes < 10 ? '0' + minutes : minutes
+
+  return `${h}:${min}`
+}
+
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
   const {
@@ -39,7 +50,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
           ref={ref}
           size={size}
           readOnly
-          value={value ? value.toLocaleTimeString() : ''}
+          value={value ? formatTime(value) : ''}
           onClick={handleClick}
           onClear={onClear}
         />

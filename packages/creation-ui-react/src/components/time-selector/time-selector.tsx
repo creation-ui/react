@@ -13,7 +13,6 @@ const cellClasses = cva(
           'bg-primary-100',
           'dark:bg-primary-100',
           'dark:text-info-700',
-
         ],
         false: '',
       },
@@ -30,38 +29,30 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
 }) => {
   const hours = Array.from({ length: format }, (_, i) => i)
   const minutes = Array.from({ length: 60 }, (_, i) => i)
-  const seconds = Array.from({ length: 60 }, (_, i) => i)
 
-  const currentDate = value ? new Date(value) : new Date()
+  const currentDate = value ? new Date(value) : undefined
+
   const handleSelect = useCallback(
-    ({ hour, minute, second }: OnTimeSliderSelectArgs) => {
-      const newDate = new Date(currentDate)
-
-      if (hour) {
-        newDate.setHours(hour)
+    ({ hour, minute }: OnTimeSliderSelectArgs) => {
+      const newDate = currentDate ? new Date(currentDate) : new Date()
+      if (!currentDate) {
+        newDate.setHours(0, 0, 0, 0)
       }
 
-      if (minute) {
-        newDate.setMinutes(minute)
-      }
-
-      if (second) {
-        newDate.setSeconds(second)
-      }
+      if (hour) newDate.setHours(hour)
+      if (minute) newDate.setMinutes(minute)
 
       onSelect(newDate)
     },
-    [value, onSelect]
+    [onSelect]
   )
 
   const hourRef = useRef<HTMLDivElement[]>([])
   const minuteRef = useRef<HTMLDivElement[]>([])
-  const secondRef = useRef<HTMLDivElement[]>([])
 
   useEffect(() => {
-    const h = currentDate.getHours()
-    const m = currentDate.getMinutes()
-    const s = currentDate.getSeconds()
+    const h = currentDate?.getHours()
+    const m = currentDate?.getMinutes()
 
     hourRef.current[h]?.scrollIntoView({
       block: 'nearest',
@@ -71,17 +62,13 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       block: 'nearest',
       behavior: 'smooth',
     })
-    secondRef.current[s]?.scrollIntoView({
-      block: 'nearest',
-      behavior: 'smooth',
-    })
   }, [value])
 
   return (
     <div
       className={clsx(
         'bg-white dark:bg-info-800 dark:border-info-700 border rounded-md',
-        'grid grid-cols-3 gap-2'
+        'grid grid-cols-2 gap-2'
       )}
     >
       <div className={columnClasses}>
@@ -91,7 +78,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
             key={hour}
             onClick={() => handleSelect({ hour })}
             className={cellClasses({
-              selected: currentDate.getHours() === hour,
+              selected: currentDate?.getHours() === hour,
             })}
           >
             {hour.toString().padStart(2, '0')}
@@ -105,24 +92,10 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
             key={minute}
             onClick={() => handleSelect({ minute })}
             className={cellClasses({
-              selected: currentDate.getMinutes() === minute,
+              selected: currentDate?.getMinutes() === minute,
             })}
           >
             {minute.toString().padStart(2, '0')}
-          </div>
-        ))}
-      </div>
-      <div className={columnClasses}>
-        {seconds.map(second => (
-          <div
-            ref={el => ((secondRef as any).current[second] = el)}
-            key={second}
-            onClick={() => handleSelect({ second })}
-            className={cellClasses({
-              selected: currentDate.getSeconds() === second,
-            })}
-          >
-            {second.toString().padStart(2, '0')}
           </div>
         ))}
       </div>
