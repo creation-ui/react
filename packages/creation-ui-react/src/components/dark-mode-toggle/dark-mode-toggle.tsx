@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useSpring, animated } from 'react-spring'
+import { useEffect, useMemo, useState } from 'react'
+import { animated, useSpring } from 'react-spring'
 import { useLocalStorage } from '../../hooks'
 import type { ElementTheme } from '../../types'
 import type {
@@ -43,6 +43,19 @@ export const defaultProperties: AnimationProperties = {
 
 let REACT_TOGGLE_DARK_MODE_GLOBAL_ID = 0
 
+const isDarkThemeSet = () => {
+  return (
+    document.documentElement.classList.contains('dark') ||
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  )
+}
+
+const updateDocumentClasses = (theme: ElementTheme) => {
+  theme === 'dark'
+    ? document.documentElement.classList.add('dark')
+    : document.documentElement.classList.remove('dark')
+}
+
 export const DarkModeToggle = ({
   onChange,
   children,
@@ -54,19 +67,18 @@ export const DarkModeToggle = ({
   style,
   ...rest
 }: DarkModeToggleProps) => {
-  const [id, setId] = React.useState(0)
+  const [id, setId] = useState(0)
   const [theme, setTheme, _clearLS] = useLocalStorage<ElementTheme>('theme')
 
-  React.useEffect(() => {
+  useEffect(() => {
     REACT_TOGGLE_DARK_MODE_GLOBAL_ID += 1
     setId(REACT_TOGGLE_DARK_MODE_GLOBAL_ID)
   }, [setId])
 
-  const properties = React.useMemo(() => {
+  const properties = useMemo(() => {
     if (animationProperties !== defaultProperties) {
       return Object.assign(defaultProperties, animationProperties)
     }
-
     return animationProperties
   }, [animationProperties])
 
@@ -89,45 +101,29 @@ export const DarkModeToggle = ({
     config: animationProperties.springConfig,
   })
 
-  const handleThemeChange = (theme: 'dark' | 'light') => {
-    theme === 'dark'
-      ? document.documentElement.classList.add('dark')
-      : document.documentElement.classList.remove('dark')
+  const handleThemeChange = (theme: ElementTheme) => {
+    updateDocumentClasses(theme)
     setTheme(theme)
+    onChange?.(theme === 'dark' ? true : false)
   }
 
-  const toggle = () => {
-    // checked = dark
-    // !checked = light
-    const nextValue = checked ? 'light' : 'dark'
-    handleThemeChange(nextValue)
-    onChange?.(!checked)
-  }
-
-  useEffect(() => {
-    if (
-      theme === 'dark' ||
-      (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      handleThemeChange('dark')
-    }
-  }, [checked, theme])
+  const toggle = () => handleThemeChange(theme === 'dark' ? 'light' : 'dark')
 
   useEffect(() => {
     if (!theme) {
-      toggle()
+      handleThemeChange(isDarkThemeSet() ? 'dark' : 'light')
     }
-  }, [])
+  }, [theme])
 
   const uniqueMaskId = `circle-mask-${id}`
-
+  const color = theme === 'dark' ? moonColor : sunColor
   return (
     <animated.svg
       xmlns='http://www.w3.org/2000/svg'
       width={size}
       height={size}
       viewBox='0 0 24 24'
-      color={checked ? moonColor : sunColor}
+      color={color}
       fill='none'
       strokeWidth='2'
       strokeLinecap='round'
@@ -154,7 +150,7 @@ export const DarkModeToggle = ({
       <animated.circle
         cx='12'
         cy='12'
-        fill={checked ? moonColor : sunColor}
+        fill={color}
         // @ts-ignore
         style={centerCircleProps}
         mask={`url(#${uniqueMaskId})`}
