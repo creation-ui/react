@@ -35,12 +35,12 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
   const handleSelect = useCallback(
     ({ hour, minute }: OnTimeSliderSelectArgs) => {
       const newDate = currentDate ? new Date(currentDate) : new Date()
-      if (!currentDate) {
-        newDate.setHours(0, 0, 0, 0)
-      }
+      if (!currentDate) newDate.setHours(0, 0, 0, 0)
 
-      if (hour) newDate.setHours(hour)
-      if (minute) newDate.setMinutes(minute)
+      const h = hour ?? newDate.getHours()
+      const min = minute ?? newDate.getMinutes()
+
+      newDate.setHours(h, min)
 
       onSelect(newDate)
     },
