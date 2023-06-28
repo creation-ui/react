@@ -1,113 +1,49 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { animated, useSpring } from 'react-spring'
+import colors from '../../theme/base/colors'
 import { useLocalStorage } from '../../hooks'
 import type { ElementTheme } from '../../types'
-import type {
-  AnimationProperties,
-  DarkModeToggleProps,
-} from './dark-mode-toggle.type'
-
-export const defaultProperties: AnimationProperties = {
-  dark: {
-    circle: {
-      r: 9,
-    },
-    mask: {
-      cx: '50%',
-      cy: '23%',
-    },
-    svg: {
-      transform: 'rotate(40deg)',
-    },
-    lines: {
-      opacity: 0,
-    },
-  },
-  light: {
-    circle: {
-      r: 5,
-    },
-    mask: {
-      cx: '100%',
-      cy: '0%',
-    },
-    svg: {
-      transform: 'rotate(90deg)',
-    },
-    lines: {
-      opacity: 1,
-    },
-  },
-  springConfig: { mass: 4, tension: 250, friction: 35 },
-}
-
-let REACT_TOGGLE_DARK_MODE_GLOBAL_ID = 0
-
-const isDarkThemeSet = () => {
-  return (
-    document.documentElement.classList.contains('dark') ||
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  )
-}
-
-const updateDocumentClasses = (theme: ElementTheme) => {
-  theme === 'dark'
-    ? document.documentElement.classList.add('dark')
-    : document.documentElement.classList.remove('dark')
-}
+import { darkModeToggleDefaultProperties } from './constants'
+import type { DarkModeToggleProps } from './dark-mode-toggle.type'
+import { isDarkThemeSet, updateDocumentClasses } from './utils'
 
 export const DarkModeToggle = ({
   onChange,
   children,
   checked = false,
   size = 24,
-  animationProperties = defaultProperties,
+  animationProperties = darkModeToggleDefaultProperties,
   moonColor = 'white',
   sunColor = 'black',
   style,
   ...rest
 }: DarkModeToggleProps) => {
-  const [id, setId] = useState(0)
   const [theme, setTheme, _clearLS] = useLocalStorage<ElementTheme>('theme')
-
-  useEffect(() => {
-    REACT_TOGGLE_DARK_MODE_GLOBAL_ID += 1
-    setId(REACT_TOGGLE_DARK_MODE_GLOBAL_ID)
-  }, [setId])
-
   const properties = useMemo(() => {
-    if (animationProperties !== defaultProperties) {
-      return Object.assign(defaultProperties, animationProperties)
+    if (animationProperties !== darkModeToggleDefaultProperties) {
+      return Object.assign(darkModeToggleDefaultProperties, animationProperties)
     }
     return animationProperties
   }, [animationProperties])
 
+  const isDarkTheme = theme === 'dark'
+
   const { circle, svg, lines, mask } = properties[checked ? 'dark' : 'light']
 
-  const svgContainerProps = useSpring({
-    ...svg,
-    config: animationProperties.springConfig,
-  })
-  const centerCircleProps = useSpring({
-    ...circle,
-    config: animationProperties.springConfig,
-  })
-  const maskedCircleProps = useSpring({
-    ...mask,
-    config: animationProperties.springConfig,
-  })
-  const linesProps = useSpring({
-    ...lines,
-    config: animationProperties.springConfig,
-  })
+  const { springConfig } = animationProperties
+
+  const svgContainerProps = useSpring({ ...svg, config: springConfig })
+  const centerCircleProps = useSpring({ ...circle, config: springConfig })
+  const maskedCircleProps = useSpring({ ...mask, config: springConfig })
+  const linesProps = useSpring({ ...lines, config: springConfig })
 
   const handleThemeChange = (theme: ElementTheme) => {
     updateDocumentClasses(theme)
     setTheme(theme)
-    onChange?.(theme === 'dark' ? true : false)
+    onChange?.(isDarkTheme ? true : false)
   }
 
-  const toggle = () => handleThemeChange(theme === 'dark' ? 'light' : 'dark')
+  const toggle = () => handleThemeChange(isDarkTheme ? 'light' : 'dark')
 
   useEffect(() => {
     if (!theme) {
@@ -115,8 +51,8 @@ export const DarkModeToggle = ({
     }
   }, [theme])
 
-  const uniqueMaskId = `circle-mask-${id}`
-  const color = theme === 'dark' ? moonColor : sunColor
+  const uniqueMaskId = `circle-mask-${theme}`
+  const color = isDarkTheme ? moonColor : sunColor
   return (
     <animated.svg
       xmlns='http://www.w3.org/2000/svg'
