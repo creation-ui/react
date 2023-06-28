@@ -54,14 +54,17 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
     const h = currentDate?.getHours()
     const m = currentDate?.getMinutes()
 
-    hourRef.current[h]?.scrollIntoView({
-      block: 'nearest',
-      behavior: 'smooth',
-    })
-    minuteRef.current[m]?.scrollIntoView({
-      block: 'nearest',
-      behavior: 'smooth',
-    })
+    h &&
+      hourRef.current[h]?.scrollIntoView({
+        block: 'nearest',
+        behavior: 'smooth',
+      })
+
+    m &&
+      minuteRef.current[m]?.scrollIntoView({
+        block: 'nearest',
+        behavior: 'smooth',
+      })
   }, [value])
 
   return (
