@@ -2,6 +2,7 @@ import {
   ELEMENT_POSITION,
   ELEMENT_SIZES,
   ELEMENT_STATUS,
+  ELEMENT_VARIANTS,
 } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
@@ -21,6 +22,12 @@ export const sizeProp: DocumentedProperty = {
   type: ListOrTypes([...ELEMENT_SIZES]),
   defaultValue: 'md',
   description: 'Size of the element',
+}
+export const variantProp: DocumentedProperty = {
+  name: 'variant',
+  type: ListOrTypes([...ELEMENT_VARIANTS]),
+  defaultValue: 'contained',
+  description: 'Variant of the element',
 }
 
 export const labelProp: DocumentedProperty = {

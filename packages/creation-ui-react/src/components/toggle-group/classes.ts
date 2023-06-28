@@ -38,6 +38,7 @@ export const toggleGroup = {
       'relative',
       'text-info-700',
       'text-sm',
+      'cursor-pointer',
     ],
     {
       variants: {

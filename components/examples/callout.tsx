@@ -1,14 +1,25 @@
 import { Playground } from '@components/playground'
-import { Callout, ElementVariant } from '@creation-ui/react/index'
+import { Callout } from '@creation-ui/react/index'
 import { mdiCheckCircle, mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
-import {
-  sizeControl,
-  statusControl,
-  variantControl,
-} from './shared-playground-controls'
-import { iconProp, labelProp, sizeProp, statusProp } from './shared-props'
+import { statusControl, variantControl } from './shared-playground-controls'
+import { iconProp, labelProp, statusProp, variantProp } from './shared-props'
+
+export const Example = () => {
+  return (
+    <>
+      <Callout
+        variant={'outlined'}
+        status={'success'}
+        title='Action completed'
+        content='Your request has been processed successfully.'
+        icon={<Icon path={mdiCheckCircle} size={1} />}
+        onClose={() => alert('Callout closed')}
+      />
+    </>
+  )
+}
 
 const ICON_OPTIONS = [
   {
@@ -19,13 +30,8 @@ const ICON_OPTIONS = [
 ]
 
 const CALLBACK_OPTIONS = [
-  {
-    label: 'Closable',
-    value: () => {
-      alert('Callout closed')
-    },
-  },
-  { label: 'Without callback', value: null },
+  { label: 'No', value: null },
+  { label: 'Yes', value: () => alert('Callout closed') },
 ]
 
 export const CalloutPlayground = () => {
@@ -33,9 +39,8 @@ export const CalloutPlayground = () => {
     <Playground
       component={Callout}
       name='Callout'
+      showCode={false}
       controls={[
-        //
-        sizeControl,
         statusControl,
         variantControl,
         {
@@ -44,7 +49,7 @@ export const CalloutPlayground = () => {
           defaultValue: 'Action completed',
         },
         {
-          name: 'description',
+          name: 'content',
           type: 'string',
           defaultValue: 'Your request has been processed successfully.',
         },
@@ -52,9 +57,10 @@ export const CalloutPlayground = () => {
           name: 'icon',
           type: 'array',
           values: ICON_OPTIONS,
+          defaultValue: undefined,
         },
         {
-          label:"Close Callback",
+          label: 'Close Callback',
           name: 'onClose',
           type: 'array',
           values: CALLBACK_OPTIONS,
@@ -66,18 +72,8 @@ export const CalloutPlayground = () => {
 
 export const properties: DocumentedProperty[] = [
   { ...labelProp, name: 'title', description: 'Title of the callout' },
-  {
-    ...labelProp,
-    name: 'content',
-    description: 'Content of the callout',
-  },
-  statusProp,
-  sizeProp,
+  { ...labelProp, name: 'content', description: 'Content of the callout' },
   iconProp,
+  statusProp,
+  variantProp,
 ]
-
-interface CalloutExampleProps {
-  displayTitle?: boolean
-  displayIcon?: boolean
-  variant?: ElementVariant
-}

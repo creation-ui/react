@@ -1,7 +1,7 @@
-import { ELEMENT_SIZES, ELEMENT_VARIANTS } from '@creation-ui/react'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
-import { iconProp } from './shared-props'
+import { iconProp, variantProp } from './shared-props'
 
 export const inputBaseProperties: DocumentedProperty[] = [
   {
@@ -10,13 +10,7 @@ export const inputBaseProperties: DocumentedProperty[] = [
     defaultValue: 'md',
     description: 'Size of the element',
   },
-  {
-    name: 'variant',
-    type: ListOrTypes([...ELEMENT_VARIANTS]),
-    defaultValue: 'outline',
-    description: 'Size of the element',
-    experimental: true,
-  },
+  { ...variantProp, defaultValue: 'outlined' },
   { name: 'required', type: 'boolean', description: 'Is element required?' },
   { name: 'readOnly', type: 'boolean', description: 'Is element read-only?' },
   { name: 'label', type: 'string', description: 'Input label' },
