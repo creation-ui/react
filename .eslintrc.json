@@ -24,6 +24,11 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/no-import-only-type-exports": "error",
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
     "react/jsx-filename-extension": [
       1,
       {
