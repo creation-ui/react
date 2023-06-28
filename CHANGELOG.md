@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.1](https://github.com/creation-ui/react/compare/v0.6.0...v0.6.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* callout docs ([c85f9b4](https://github.com/creation-ui/react/commit/c85f9b4ef28e7f08a157c1e7558f1c0f8a7f145e))
+* can't set 00:00 in time picker ([58bd408](https://github.com/creation-ui/react/commit/58bd408ff02bd96c1f2830ede4f5847b0b945054))
+* DarkModeToggle ([f28d481](https://github.com/creation-ui/react/commit/f28d481096d05fc190d95dfadb0dc25a664dcf77))
+* tsc issues ([f435ec2](https://github.com/creation-ui/react/commit/f435ec20bc2ec643e3e5f9784447021517027e18))
+
 ## [0.6.0](https://github.com/creation-ui/react/compare/v0.5.6...v0.6.0) (2023-06-18)
 
 
