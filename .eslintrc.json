@@ -24,10 +24,6 @@
     "prettier"
   ],
   "rules": {
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
     "react/jsx-filename-extension": [
       1,
       {
