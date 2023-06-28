@@ -3,9 +3,9 @@ import { PlaygroundValues } from '../types'
 export const getComponentCode = (
   name: string,
   stateAsProps: string,
-  children?: PlaygroundValues
-): string => {
-  return `
+  children?: PlaygroundValues,
+): string =>
+  `
     import React from 'react';
     import { ${name} } from '@creation-ui/react';
 
@@ -18,4 +18,3 @@ export const getComponentCode = (
       : ' />'
   }
   `
-}

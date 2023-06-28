@@ -46,15 +46,13 @@ export const SelectExample = ({ ...props }: DropdownProps) => {
   )
 }
 
-export const SelectPlayground = () => {
-  return (
+export const SelectPlayground = () =>
     <Playground
       name='Select'
       component={SelectExample}
       controls={createInputControls('Select')}
       showCode={false}
     />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = []

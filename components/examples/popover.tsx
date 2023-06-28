@@ -75,15 +75,13 @@ export const PopoverExampleControlled = () => {
   )
 }
 
-export const PopoverPlaygroundUncontrolled = () => {
-  return (
+export const PopoverPlaygroundUncontrolled = () =>
     <Playground
       name='Popover'
       component={PopoverExampleUncontrolled}
       controls={[sizeControl]}
     />
-  )
-}
+
 export const PopoverPlaygroundControlled = () => (
   <Playground
     name='Popover'

@@ -2,8 +2,7 @@ import { Button, Card } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { childrenProp, classNameProps } from './shared-props'
 
-export const CardExample = () => {
-  return (
+export const CardExample = () =>
     <div className='mx-auto w-fit'>
       <Card className='items-center !w-80'>
         <div className='-mx-4 -mt-4'>
@@ -27,7 +26,6 @@ export const CardExample = () => {
         </Card.Footer>
       </Card>
     </div>
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [childrenProp, classNameProps]

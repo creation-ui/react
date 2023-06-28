@@ -23,8 +23,7 @@ export const Show = ({
   children,
   fallback = null,
   animationProps = defaultAnimationProps,
-}: ShowProps) => {
-  return (
+}: ShowProps) =>
     <AnimatePresence>
       {when ? (
         <motion.div key='true' {...animationProps}>
@@ -36,5 +35,4 @@ export const Show = ({
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
+

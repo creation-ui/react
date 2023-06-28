@@ -17,14 +17,12 @@ const mainBodyClasses = clsx([
   'max-w-xs',
 ])
 
-export const Index = () => {
-  return (
-    <div className={mainBodyClasses}>
-      <Hero />
-      {/* <Playground /> */}
-      <Pallette />
-      <Advantages />
-      <Docs />
-    </div>
-  )
-}
+export const Index = () => (
+  <div className={mainBodyClasses}>
+    <Hero />
+    {/* <Playground /> */}
+    <Pallette />
+    <Advantages />
+    <Docs />
+  </div>
+)

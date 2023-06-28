@@ -24,44 +24,42 @@ const ring: Record<ElementStatus, any> = {
   info: 'ring-info-500',
 }
 
-export const ColorBox = ({ onClick, color, selected }: ColorBoxProps) => {
-  return (
+export const ColorBox = ({ onClick, color, selected }: ColorBoxProps) => (
+  <div
+    className={twMerge(
+      'group',
+      docsMicroInteractions,
+      'flex flex-col items-center',
+    )}
+  >
     <div
+      onClick={onClick}
       className={twMerge(
-        'group',
+        //
+        'w-10 h-10',
+        'md:w-16 md:h-16',
+        'lg:w-20 lg:h-20 rounded-lg',
+        'cursor-pointer',
+        'group-hover:scale-110',
         docsMicroInteractions,
-        'flex flex-col items-center'
+        bg[color],
+        selected && 'ring-2',
+        selected && 'scale-110',
+        selected && ring[color],
       )}
     >
-      <div
-        onClick={onClick}
-        className={twMerge(
-          //
-          'w-10 h-10',
-          'md:w-16 md:h-16',
-          'lg:w-20 lg:h-20 rounded-lg',
-          'cursor-pointer',
-          'group-hover:scale-110',
-          docsMicroInteractions,
-          bg[color],
-          selected && 'ring-2',
-          selected && 'scale-110',
-          selected && ring[color]
-        )}
-      >
-        &nbsp;
-      </div>
-      <div
-        className={twMerge(
-          //
-          'group-hover:opacity-100 opacity-0 text-center mt-4',
-          'capitalize',
-          // selected && 'opacity-100 ',
-          docsMicroInteractions
-        )}
-      >
-        {color}
-      </div>
+      &nbsp;
     </div>
-  )
-}
+    <div
+      className={twMerge(
+        //
+        'group-hover:opacity-100 opacity-0 text-center mt-4',
+        'capitalize',
+        // selected && 'opacity-100 ',
+        docsMicroInteractions,
+      )}
+    >
+      {color}
+    </div>
+  </div>
+)

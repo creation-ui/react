@@ -48,7 +48,7 @@ export const PlaygroundController: React.FC<
   useEffect(() => {
     const initialState = prepareInitialState(controls)
     setState(initialState)
-  }, [])
+  }, [controls])
 
   return (
     <PlaygroundContext.Provider value={{ ...props, state, handleChange }}>

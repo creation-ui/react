@@ -18,11 +18,9 @@ export const SwitchExample = ({ ...props }: SwitchExampleProps) => {
 }
 
 
-export const SwitchPlayground = () => {
-  return (
+export const SwitchPlayground = () =>
     <Playground name='Switch' component={SwitchExample} controls={controls} />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [
   {

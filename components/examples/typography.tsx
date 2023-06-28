@@ -35,16 +35,14 @@ export const TypographyExample = ({ ...props }) => {
   )
 }
 
-export const TypographyPlayground = () => {
-  return (
-    <Playground
-      controls={[sizeControl]}
-      name='Component'
-      component={TypographyExample}
-      showCode={false}
-    />
-  )
-}
+export const TypographyPlayground = () => (
+  <Playground
+    controls={[sizeControl]}
+    name='Component'
+    component={TypographyExample}
+    showCode={false}
+  />
+)
 
 export const properties: DocumentedProperty[] = [
   //

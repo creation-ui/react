@@ -65,34 +65,31 @@ const users = [
   },
 ]
 
-const CustomOption = ({ option, ...props }: any) => {
-  return (
-    <Option {...props} {...option} className='!h-fit py-2'>
-      <div className='flex gap-2 items-center'>
-        <Avatar size='sm' src={option.image} />
-        <div className='flex flex-col'>
-          <span className='font-medium'>{option.name}</span>
-          <span className='text-info-500 text-xs'>{option.species}</span>
-        </div>
+const CustomOption = ({ option, ...props }: any) => (
+  <Option {...props} {...option} className='!h-fit py-2'>
+    <div className='flex gap-2 items-center'>
+      <Avatar size='sm' src={option.image} />
+      <div className='flex flex-col'>
+        <span className='font-medium'>{option.name}</span>
+        <span className='text-info-500 text-xs'>{option.species}</span>
       </div>
-    </Option>
-  )
-}
-const CustomSelectedOption = ({ option, ...props }: any) => {
-  return (
-    <SelectedOption {...props} {...option} className='!h-fit py-2'>
-      <div className='flex gap-2 items-center'>
-        <Avatar size='sm' src={option.image} />
-        <div className='flex flex-col'>
-          <span className='font-medium'>{option.name}</span>
-          <span className='text-info-500 text-xs'>
-            {option.species} {option.height}
-          </span>
-        </div>
+    </div>
+  </Option>
+)
+
+const CustomSelectedOption = ({ option, ...props }: any) => (
+  <SelectedOption {...props} {...option} className='!h-fit py-2'>
+    <div className='flex gap-2 items-center'>
+      <Avatar size='sm' src={option.image} />
+      <div className='flex flex-col'>
+        <span className='font-medium'>{option.name}</span>
+        <span className='text-info-500 text-xs'>
+          {option.species} {option.height}
+        </span>
       </div>
-    </SelectedOption>
-  )
-}
+    </div>
+  </SelectedOption>
+)
 
 type User = (typeof users)[0]
 

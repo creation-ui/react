@@ -65,34 +65,32 @@ interface PropsTableProps {
   description: string
 }
 
-const PropsTable = ({ properties, name, description }: PropsTableProps) => {
-  return (
-    <>
-      <Description>
-        <Header aria-label={name} as={'h3'} href='#listbox'>
-          {name}
-        </Header>
-        <p>{description}</p>
-      </Description>
+const PropsTable = ({ properties, name, description }: PropsTableProps) => (
+  <>
+    <Description>
+      <Header aria-label={name} as={'h3'} href='#listbox'>
+        {name}
+      </Header>
+      <p>{description}</p>
+    </Description>
 
-      <div className='mt-6 mb-12'>
-        <div className='-mx-4 overflow-x-auto sm:mx-0'>
-          <div className='inline-block min-w-full'>
-            <table className='w- w-full min-w-[540px] border-b border-gray-700 text-left sm:min-w-full'>
-              <tbody className='divide-y divide-gray-700'>
-                <TableHeader />
-                <>
-                  {properties?.map?.(prop => (
-                    <TableRow property={prop} key={prop.name?.toString()} />
-                  ))}
-                </>
-              </tbody>
-            </table>
-          </div>
+    <div className='mt-6 mb-12'>
+      <div className='-mx-4 overflow-x-auto sm:mx-0'>
+        <div className='inline-block min-w-full'>
+          <table className='w- w-full min-w-[540px] border-b border-gray-700 text-left sm:min-w-full'>
+            <tbody className='divide-y divide-gray-700'>
+              <TableHeader />
+              <>
+                {properties?.map?.(prop => (
+                  <TableRow property={prop} key={prop.name?.toString()} />
+                ))}
+              </>
+            </tbody>
+          </table>
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  </>
+)
 
 export default PropsTable

@@ -34,15 +34,13 @@ export const RadioGroupExample = (props: RadioGroupProps) => {
 
 export const radioControlsSet = createRadioControls('Radio Group')
 
-export const RadioGroupPlayground = () => {
-  return (
+export const RadioGroupPlayground = () =>
     <Playground
       name='Radio'
       component={RadioGroupExample}
       controls={radioControlsSet}
     />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [
   sizeProp,

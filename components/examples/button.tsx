@@ -12,8 +12,7 @@ import {
 } from './shared-playground-controls'
 import { iconProp } from './shared-props'
 
-export const ButtonPlayground = () => {
-  return (
+export const ButtonPlayground = () =>
     <Playground
       component={Button}
       name='Button'
@@ -35,8 +34,7 @@ export const ButtonPlayground = () => {
         },
       ]}
     />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [
   {

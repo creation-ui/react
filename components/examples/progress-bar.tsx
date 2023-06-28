@@ -45,8 +45,7 @@ export const ProgressBarAnimatedExample = props => {
   )
 }
 
-export const ProgressBarPlayground = () => {
-  return (
+export const ProgressBarPlayground = () =>
     <Playground
       name='ProgressBar'
       component={ProgressBar}
@@ -56,8 +55,7 @@ export const ProgressBarPlayground = () => {
         { name: 'showValue', type: 'boolean', defaultValue: true },
       ]}
     />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [
   {

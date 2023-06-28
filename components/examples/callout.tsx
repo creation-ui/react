@@ -6,8 +6,7 @@ import { DocumentedProperty } from 'models/system'
 import { statusControl, variantControl } from './shared-playground-controls'
 import { iconProp, labelProp, statusProp, variantProp } from './shared-props'
 
-export const Example = () => {
-  return (
+export const Example = () =>
     <>
       <Callout
         variant={'outlined'}
@@ -18,8 +17,7 @@ export const Example = () => {
         onClose={() => alert('Callout closed')}
       />
     </>
-  )
-}
+
 
 const ICON_OPTIONS = [
   {
@@ -34,8 +32,7 @@ const CALLBACK_OPTIONS = [
   { label: 'Yes', value: () => alert('Callout closed') },
 ]
 
-export const CalloutPlayground = () => {
-  return (
+export const CalloutPlayground = () =>
     <Playground
       component={Callout}
       name='Callout'
@@ -67,8 +64,7 @@ export const CalloutPlayground = () => {
         },
       ]}
     />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [
   { ...labelProp, name: 'title', description: 'Title of the callout' },

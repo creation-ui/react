@@ -32,16 +32,14 @@ export const DrawerExample = (props: DrawerProps) => {
   )
 }
 
-export const DrawerPlayground = () => {
-  return (
-    <Playground
-      name='Drawer'
-      component={DrawerExample}
-      controls={[positionControl]}
-      showCode={false}
-    />
-  )
-}
+export const DrawerPlayground = () => (
+  <Playground
+    name='Drawer'
+    component={DrawerExample}
+    controls={[positionControl]}
+    showCode={false}
+  />
+)
 
 export const properties: DocumentedProperty[] = [
   openProps,

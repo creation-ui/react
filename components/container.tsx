@@ -21,12 +21,8 @@ export const Container = ({
   className,
   variant = 'row',
   ...props
-}: ContainerProps) => {
-  // const count = Children.count(children)
-  // const v = count > 1 ? variant : 'centered'
-  return (
-    <div className={clsx(classes.base, classes[variant], className)} {...props}>
-      {children}
-    </div>
-  )
-}
+}: ContainerProps) => (
+  <div className={clsx(classes.base, classes[variant], className)} {...props}>
+    {children}
+  </div>
+)

@@ -80,16 +80,14 @@ interface VersionBodyProps {
   branch: string
 }
 
-const VersionBody = ({ date, version, hash, branch }: VersionBodyProps) => {
-  return (
-    <div>
-      <div>Version: {version}</div>
-      <dl>
-        <dt>Build details</dt>
-        <dd>Build: {date}</dd>
-        <dd>Branch: {branch}</dd>
-        <dd>Commit Hash: {hash}</dd>
-      </dl>
-    </div>
-  )
-}
+const VersionBody = ({ date, version, hash, branch }: VersionBodyProps) => (
+  <div>
+    <div>Version: {version}</div>
+    <dl>
+      <dt>Build details</dt>
+      <dd>Build: {date}</dd>
+      <dd>Branch: {branch}</dd>
+      <dd>Commit Hash: {hash}</dd>
+    </dl>
+  </div>
+)

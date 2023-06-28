@@ -9,8 +9,7 @@ import {
 } from './shared-playground-controls'
 import { labelProp, sizeProp, statusProp } from './shared-props'
 
-export const StatusBadgePlayground = () => {
-  return (
+export const StatusBadgePlayground = () =>
     <Playground
       component={StatusBadge}
       name='StatusBadge'
@@ -22,8 +21,7 @@ export const StatusBadgePlayground = () => {
         statusControl,
       ]}
     />
-  )
-}
+
 
 export const properties: DocumentedProperty[] = [
   labelProp,
