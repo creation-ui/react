@@ -16,6 +16,7 @@ export const Select = (props: SelectProps) => {
     error,
     size = defaultSize,
     children,
+    variant,
     onClear = clearableCallback,
     ...rest
   } = props
@@ -36,6 +37,7 @@ export const Select = (props: SelectProps) => {
       required={props.required}
       helperText={helperText}
       clearable={clearable}
+      variant={variant}
       onClear={onClear}
       type='select'
     >

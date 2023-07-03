@@ -39,6 +39,7 @@ export function Autocomplete(props: DropdownProps) {
     error,
     limit,
     maxHeight,
+    variant,
     onChange,
     getLimitText,
     filterOptions = filterOptionsDefault,
@@ -211,6 +212,7 @@ export function Autocomplete(props: DropdownProps) {
       readOnly={props.readOnly}
       label={props.label}
       required={props.required}
+      variant={variant}
       endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
       helperText={helperText}
       clearable={clearable}

@@ -311,6 +311,10 @@ export interface DropdownProps extends BaseComponentProps {
    * 'availableHeight': will set the max height of the dropdown to the available height of the screen
    */
   maxHeight?: DropdownMaxHeight
+  /**
+   * Variant of the input
+   */
+  variant?:ElementVariant
 }
 
 export interface OptionProps {
