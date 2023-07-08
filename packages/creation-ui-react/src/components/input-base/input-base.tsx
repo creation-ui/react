@@ -74,6 +74,7 @@ const InputBase: FC<InputBaseProps> = props => {
       iconLeft: hasStartAdornment,
       iconRight: hasEndAdornment,
       error: hasError,
+      // @ts-ignore
       className: cx?.input,
       // @ts-expect-error
       type,
@@ -81,7 +82,7 @@ const InputBase: FC<InputBaseProps> = props => {
   )
 
   return (
-    <InteractiveContainer disabled={disabled} className={cx?.container?.outer}>
+    <InteractiveContainer disabled={disabled}>
       <InputBaseContext.Provider
         value={{
           componentId,

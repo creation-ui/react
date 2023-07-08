@@ -11,6 +11,7 @@ export const OptionsList = () => {
     options,
     open,
     optionComponent: OptionComponent = Option,
+    zIndex,
   } = useDropdown()
 
   return (
@@ -21,7 +22,11 @@ export const OptionsList = () => {
           context={floatingContext}
           visuallyHiddenDismiss
         >
-          <ul {...list} className={optionListClasses({ open })}>
+          <ul
+            {...list}
+            className={optionListClasses({ open })}
+            style={{ zIndex: zIndex?.list }}
+          >
             {options.length ? (
               options.map((item, index) => (
                 <OptionComponent {...option(item, index)} option={item} />

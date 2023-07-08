@@ -328,6 +328,10 @@ export interface DropdownProps extends BaseComponentProps {
    * Variant of the input
    */
   variant?: ElementVariant
+  /**
+   * z-index configuration
+   */
+  zIndex?: { list?: number }
 }
 
 export interface OptionProps {

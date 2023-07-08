@@ -46,6 +46,7 @@ export function Autocomplete(props: DropdownProps) {
     optionComponent = Option,
     selectedOptionComponent = SelectedOption,
     size = defaultSize,
+    zIndex,
   } = props
   const { isDataFlat, options, value } = useNormalizedOptions({
     value: props.value,
@@ -242,6 +243,7 @@ export function Autocomplete(props: DropdownProps) {
           setOpen,
           optionComponent,
           selectedOptionComponent,
+          zIndex,
         }}
       >
         <AutocompleteView {...containerProps} />

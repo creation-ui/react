@@ -17,7 +17,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
     error,
     size = defaultSize,
     type = 'text',
-    className,
+    cx,
     id,
     children,
     variant,
@@ -29,28 +29,30 @@ const InputBaseInline: FC<InputBaseProps> = props => {
   const disabled = props.disabled
   const readOnly = props.readOnly || loading
 
-  const containerClasses = twMerge(
+  const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
-    text({ size })
+    text({ size }),
+    cx?.container?.inner
   )
 
   const inputClasses = twMerge(
     input({
       size,
       variant,
-      className: twMerge(className),
+      // @ts-ignore
+      className: cx?.input,
       error: !!error,
     })
   )
 
   return (
-    <InteractiveContainer disabled={disabled} className={className}>
+    <InteractiveContainer disabled={disabled}>
       <InputBaseContext.Provider
         value={{
           componentId,
           classes: {
             input: inputClasses,
-            container: containerClasses,
+            container: outerContainerClasses,
           },
           disabled,
           readOnly,
@@ -58,12 +60,16 @@ const InputBaseInline: FC<InputBaseProps> = props => {
           type,
         }}
       >
-        <div>
-          <div className={containerClasses}>
+        <div className={cx?.container?.outer}>
+          <div className={outerContainerClasses}>
             {children}
             <label
               htmlFor={componentId}
-              className={label({ size, required: props.required })}
+              className={label({
+                size,
+                required: props.required,
+                className: cx?.label,
+              })}
               children={props.label}
               aria-label={props.label?.toString()}
             />

@@ -25,6 +25,7 @@ interface DropdownContextValue {
   setOpen: (value: boolean) => void
   optionComponent: DropdownProps['optionComponent']
   selectedOptionComponent: DropdownProps['selectedOptionComponent']
+  zIndex?: { list?: number }
 }
 
 export const DropdownContext = createContext<DropdownContextValue>({} as any)
