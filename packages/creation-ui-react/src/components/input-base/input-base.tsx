@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import {
@@ -15,6 +16,9 @@ import { ClearButton } from '../clear-button'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { Description } from '../typography'
+import { getWidthClasses } from '../utils'
+import { Adornment } from './adornment'
+import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
 
 const UNSTYLED_TYPES: HTMLInputType[] = [
@@ -35,13 +39,13 @@ const InputBase: FC<InputBaseProps> = props => {
     error,
     size = defaultSize,
     type = 'text',
-    className,
+    cx,
     id,
     children,
     startAdornment,
     endAdornment,
-    variant,
     clearable,
+    variant = 'outlined',
     layout = 'column',
     onClear,
   } = props
@@ -50,60 +54,57 @@ const InputBase: FC<InputBaseProps> = props => {
   const disabled = props.disabled
   const readOnly = props.readOnly || loading
 
-  const containerClasses = twMerge(
+  const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
-    text({ size })
+    text({ size }),
+    cx?.container?.outer
   )
 
   const isUnstyled = UNSTYLED_TYPES.includes(type)
+  const hasError = Boolean(error)
+  const hasStartAdornment = Boolean(startAdornment)
+  const hasEndAdornment = Boolean(endAdornment)
+
+  const finalVariant = isUnstyled ? 'unstyled' : variant
+
   const inputClasses = twMerge(
     input({
       size,
-      variant: isUnstyled ? 'unstyled' : variant,
-      iconLeft: !!startAdornment,
-      iconRight: !!endAdornment,
-      error: !!error,
+      variant: finalVariant,
+      iconLeft: hasStartAdornment,
+      iconRight: hasEndAdornment,
+      error: hasError,
+      className: cx?.input,
       // @ts-expect-error
       type,
-      // @ts-ignore
-      className,
     })
   )
 
   return (
-    <InteractiveContainer disabled={disabled} className={className}>
+    <InteractiveContainer disabled={disabled} className={cx?.container?.outer}>
       <InputBaseContext.Provider
         value={{
           componentId,
-          classes: {
-            input: inputClasses,
-            container: containerClasses,
-          },
+          classes: { input: inputClasses, container: outerContainerClasses },
           disabled,
           readOnly,
           error: !!error,
           type,
         }}
       >
-        <div className={containerClasses}>
+        <div className={outerContainerClasses}>
           <label
             htmlFor={componentId}
-            className={label({ size, required: props.required })}
+            className={label({
+              size,
+              required: props.required,
+              className: cx?.label,
+            })}
             children={props.label}
             aria-label={props.label?.toString()}
           />
-          <div className='relative max-h-min'>
-            {startAdornment && (
-              <div
-                className={inputIcon({
-                  position: 'left',
-                  // @ts-expect-error
-                  type,
-                })}
-              >
-                {startAdornment}
-              </div>
-            )}
+          <InputBaseContainerInner className={cx?.container?.inner}>
+            <Adornment position='left' type={type} adornment={startAdornment} />
             {children}
             {loading ? (
               <Loader
@@ -115,22 +116,22 @@ const InputBase: FC<InputBaseProps> = props => {
                 size={size === 'lg' ? 'md' : 'sm'}
               />
             ) : (
-              <div
-                className={inputIcon({
-                  position: 'right',
-                  // @ts-expect-error
-                  type,
-                })}
-              >
-                {clearable && <ClearButton onClick={onClear} />}
-                {endAdornment}
-              </div>
+              <Adornment
+                position='right'
+                type={type}
+                adornment={
+                  <>
+                    {clearable && <ClearButton onClick={onClear} />}
+                    {endAdornment}
+                  </>
+                }
+              />
             )}
-          </div>
+          </InputBaseContainerInner>
           <Description
             size={size}
-            error={!!error}
-            className={error ? errorClasses.text : ''}
+            error={hasError}
+            className={clsx(hasError && errorClasses.text)}
           >
             {error || helperText}
           </Description>

@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { getWidthClasses } from '../utils'
 import { interactiveContainerClasses } from './classes'
 
 interface InteractiveContainerProps {
@@ -9,20 +10,20 @@ interface InteractiveContainerProps {
 
 export const InteractiveContainer = ({
   className,
-  ...props
+  disabled,
+  children,
 }: InteractiveContainerProps) => {
   const classes = clsx(className)?.split(' ')
-  // pick only tailwind width classes
-  const widthClasses = classes?.filter(c => /^w-[\w-[\]]+$/.test(c))
+  const widthClasses = getWidthClasses(classes)
 
   return (
     <div
       className={interactiveContainerClasses({
-        ...props,
-        className: widthClasses,
+        disabled,
+        className: [widthClasses],
       })}
     >
-      {props.children}
+      {children}
     </div>
   )
 }

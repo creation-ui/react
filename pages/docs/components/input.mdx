@@ -7,6 +7,7 @@ import {
   properties,
   PasswordExample,
   InputPlayground,
+  InputWidthsExample,
 } from '@components/examples/input'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
@@ -20,7 +21,9 @@ import { Playground } from '@components/playground'
 
 Use the playground below to explore the different options available for the Input component:
 
-<InputPlayground/>
+<InputPlayground />
+
+### Width
 
 Please note that the `Input` component dynamically adjusts its width based on the length of its content. To set a fixed width, you can provide your own width constraints via a custom wrapper or by passing a class to the `className` prop:
 
@@ -28,6 +31,8 @@ Please note that the `Input` component dynamically adjusts its width based on th
 //example with tailwindcss custom width
 <Input className='w-[200px]' />
 ```
+<InputWidthsExample/>
+
 
 ## Input Adornments
 

@@ -5,15 +5,8 @@ import { InputProps } from './input.types'
 
 export const InputView = forwardRef(
   (props: Omit<InputProps, 'size'>, ref: Ref<HTMLInputElement>) => {
-    const {
-      //
-      componentId,
-      classes,
-      readOnly,
-      error,
-      type,
-      disabled,
-    } = useInputBase()
+    const { componentId, classes, readOnly, error, type, disabled } =
+      useInputBase()
 
     return (
       <input

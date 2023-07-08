@@ -1,3 +1,4 @@
+import { Container } from '@components/container'
 import { Playground } from '@components/playground'
 import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
 import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
@@ -82,6 +83,23 @@ export const PasswordExample = ({ ...props }: InputExampleProps) => {
         }
         {...props}
       />
+    </div>
+  )
+}
+
+export const InputWidthsExample = ({ ...props }: InputExampleProps) => {
+  const test = ['w-[200px]', 'w-96', 'w-2/3', 'w-full']
+
+  return (
+    <div className='flex flex-col gap-10 my-10 w-full'>
+      {test.map(width => (
+        <Input
+          cx={{ container: { inner: width } }}
+          label={width}
+          placeholder='Placeholder'
+          clearable
+        />
+      ))}
     </div>
   )
 }

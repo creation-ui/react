@@ -83,7 +83,7 @@
     "theme.config.tsx",
     "pages/index.tsx",
     ".next/types/**/*.ts"
-, "pages/_app.msx"  ],
+, "pages/_app.msx", "scripts/generate-docs.js"  ],
   "exclude": [
     "node_modules",
     "**/build",

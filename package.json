@@ -27,7 +27,8 @@
     "rm:build": "rm -rf ./packages/creation-ui-react/build",
     "e2e": "pnpm package:build && cypress run",
     "e2e:dev": "pnpm package:build && cypress open",
-    "override-version": "sh ./override-version.sh"
+    "override-version": "sh ./override-version.sh",
+    "generate:docs":"node ./scripts/generate-docs.js"
   },
   "dependencies": {
     "@babel/parser": "^7.21.4",
@@ -72,6 +73,7 @@
     "sass": "^1.59.3",
     "tailwind-merge": "^1.10.0",
     "tailwindcss-debug-screens": "^2.2.1",
+    "ts-json-schema-generator": "^1.2.0",
     "typescript": "4.9.3",
     "uuid": "^9.0.0"
   },

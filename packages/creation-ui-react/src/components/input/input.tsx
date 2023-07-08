@@ -8,11 +8,16 @@ import { InputView } from './input.view'
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (props, ref: Ref<HTMLInputElement>) => {
     const { size: defaultSize } = useTheme()
-    const { size = defaultSize, type = 'text', ...rest } = props
+    const {
+      size = defaultSize,
+      type = 'text',
+      variant = 'outlined',
+      ...rest
+    } = props
 
     return (
-      <InputBase {...rest} size={size} type={type}>
-        <InputView {...rest} ref={ref} />
+      <InputBase {...rest} size={size} type={type} variant={variant}>
+        <InputView {...rest} ref={ref} variant={variant} />
       </InputBase>
     )
   }

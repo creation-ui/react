@@ -236,7 +236,7 @@ export const text = cva(microInteractions, {
   },
 })
 
-export const inputContainer = cva([microInteractions, 'flex', 'relative'], {
+export const inputContainer = cva([microInteractions, 'flex'], {
   variants: {
     layout: {
       column: ['flex-col', 'gap-1', 'items-start'],
@@ -274,13 +274,14 @@ export const label = cva([...classes.label], {
 
 export const inputIcon = cva(
   [
+    microInteractions,
     'absolute',
     'bottom-1/2',
     'transform',
     'translate-y-1/2',
-    microInteractions,
     'inline-flex',
     'items-center',
+    'w-fit',
   ],
   {
     variants: {

@@ -36,4 +36,18 @@ export const inputBaseProperties: DocumentedProperty[] = [
     type: 'boolean',
     description: 'Text to be displayed when input is invalid',
   },
+  {
+    name: 'cx',
+    type: `{
+        input?: 'string',
+        label?: 'string',
+        container?: {
+          inner?: 'string',
+          outer?: 'string',
+        }
+      }`,
+
+    description:
+      'Class names manipulation API. Each property ("input", "label", etc.) is assigned to different Input component',
+  },
 ]

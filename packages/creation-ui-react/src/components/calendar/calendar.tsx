@@ -58,7 +58,6 @@ const Calendar: FC<CalendarProps> = props => {
 
   const isMonthName = view === 'days'
   const isYearName = view === 'days' || view === 'months'
-  console.log('Calendar', { currentDate, selectedDate, view, size })
   return (
     <CalendarContext.Provider
       value={{

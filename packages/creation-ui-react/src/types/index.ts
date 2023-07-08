@@ -153,7 +153,7 @@ export interface BaseComponentProps {
   helperText?: React.ReactNode
 }
 
-export interface InputBaseProps extends BaseComponentProps {
+export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
   as?: any
   /**
    * Is button loading?
@@ -191,6 +191,19 @@ export interface InputBaseProps extends BaseComponentProps {
    * Layout of elements
    */
   layout?: 'column' | 'row'
+  /**
+   * CSS classes API
+   */
+  cx?: InputClassNamesAPI
+}
+
+export type InputClassNamesAPI = {
+  container?: {
+    outer?: string
+    inner?: string
+  }
+  label?: string
+  input?: string
 }
 
 export type ReadableError = {
@@ -314,7 +327,7 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * Variant of the input
    */
-  variant?:ElementVariant
+  variant?: ElementVariant
 }
 
 export interface OptionProps {

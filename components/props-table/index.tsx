@@ -15,6 +15,9 @@ const TableHeader = () => (
   </tr>
 )
 
+
+
+
 interface TableRowProps {
   property: DocumentedProperty
   key?: string | number
@@ -22,7 +25,7 @@ interface TableRowProps {
 
 const TableRow = ({
   property: { name, type, defaultValue, description, note, experimental },
-}: TableRowProps) => (
+}: TableRowProps) => {return(
   <tr className=''>
     <td className='prose dark:prose-invert prose-sm py-3 pl-4 align-baseline sm:pl-0 '>
       <code>{name}</code>
@@ -57,7 +60,7 @@ const TableRow = ({
       </div>
     </td>
   </tr>
-)
+)}
 
 interface PropsTableProps {
   properties?: DocumentedProperty[]
