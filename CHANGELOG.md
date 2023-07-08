@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0](https://github.com/creation-ui/react/compare/v0.6.1...v0.7.0) (2023-07-08)
+
+
+### Features
+
+* add variant for Autocomplete and Select inputs ([da3a532](https://github.com/creation-ui/react/commit/da3a53280c91023ed096e46585c2591634d8fcbc))
+* fix input widths, abstract some code to components ([d7113f1](https://github.com/creation-ui/react/commit/d7113f19dc3e076f3256204ea6df301892cf8f6c))
+
+
+### Bug Fixes
+
+* add zIndex prop to autocomplete ([59e3443](https://github.com/creation-ui/react/commit/59e3443382e84af7a21ae8e0dbb9575b4733efe6))
+
 ## [0.6.1](https://github.com/creation-ui/react/compare/v0.6.0...v0.6.1) (2023-06-28)
 
 

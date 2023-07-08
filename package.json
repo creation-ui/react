@@ -1,6 +1,6 @@
 {
   "name": "@creation-ui/react",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -28,7 +28,7 @@
     "e2e": "pnpm package:build && cypress run",
     "e2e:dev": "pnpm package:build && cypress open",
     "override-version": "sh ./override-version.sh",
-    "generate:docs":"node ./scripts/generate-docs.js"
+    "generate:docs": "node ./scripts/generate-docs.js"
   },
   "dependencies": {
     "@babel/parser": "^7.21.4",
