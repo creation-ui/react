@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/creation-ui/react/compare/v0.7.0...v0.7.1) (2023-07-10)
+
+
+### Bug Fixes
+
+* floating-ui styles overwrite by zIndex on options list ([dff4fa9](https://github.com/creation-ui/react/commit/dff4fa941b79857fa156254d004989a9c34bec15))
+
 ## [0.7.0](https://github.com/creation-ui/react/compare/v0.6.1...v0.7.0) (2023-07-08)
 
 
