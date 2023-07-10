@@ -200,6 +200,7 @@ export function Autocomplete(props: DropdownProps) {
       position: strategy,
       left: x ?? 0,
       top: y ?? 0,
+      zIndex: zIndex?.list,
     },
   })
 

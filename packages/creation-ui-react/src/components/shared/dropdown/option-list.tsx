@@ -25,7 +25,6 @@ export const OptionsList = () => {
           <ul
             {...list}
             className={optionListClasses({ open })}
-            style={{ zIndex: zIndex?.list }}
           >
             {options.length ? (
               options.map((item, index) => (
