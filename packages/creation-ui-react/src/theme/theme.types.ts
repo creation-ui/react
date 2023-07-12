@@ -60,7 +60,6 @@ type ThemeHelpers = {
 type ThemeDisplayDirection = 'ltr' | 'rtl'
 
 export type ThemeProps = {
-  colors: ThemeColors
   dir: ThemeDisplayDirection
   drawers: ThemeDrawers
   focusRing: boolean

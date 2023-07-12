@@ -307,7 +307,6 @@ export const inputIcon = cva(
 export const optionListClasses = cva(
   [
     'bg-white',
-    'block',
     'shadow-md',
     'w-fit',
     'border',
@@ -315,15 +314,17 @@ export const optionListClasses = cva(
     'flex',
     'flex-col',
     'gap-1',
-    'mt-1',
     'p-1',
     'dark:bg-info-800',
     'dark:border-info-700',
-    'overflow-y-auto',
   ],
   {
     variants: {
       open: { true: 'block', false: 'hidden' },
+      placement: {
+        top: ['!mb-1'],
+        bottom: ['mt-1'],
+      },
     },
   }
 )
@@ -400,3 +401,30 @@ export const selectOptionIconClasses = cva(['font-extrabold', 'text-xl'], {
     active: { true: ['opacity-50'] },
   },
 })
+
+import type { VariantProps } from 'class-variance-authority'
+
+const debugClassesCVA = cva(['ring-1'], {
+  variants: {
+    color: {
+      red: 'ring-red-500',
+      green: 'ring-green-500',
+      blue: 'ring-blue-500',
+      yellow: 'ring-yellow-500',
+      purple: 'ring-purple-500',
+      pink: 'ring-pink-500',
+      indigo: 'ring-indigo-500',
+      gray: 'ring-gray-500',
+      black: 'ring-black',
+      white: 'ring-white',
+    },
+  },
+  defaultVariants: {
+    color: 'red',
+  },
+})
+
+type ClassesArgs = VariantProps<typeof debugClassesCVA>
+
+export const debugClasses = (color?: ClassesArgs['color']) =>
+  debugClassesCVA({ color })

@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import type { FC } from 'react'
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import {
   errorClasses,
@@ -11,27 +11,17 @@ import {
 } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { HTMLInputType, InputBaseProps } from '../../types'
+import { InputBaseProps } from '../../types'
 import { ClearButton } from '../clear-button'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { Description } from '../typography'
-import { getWidthClasses } from '../utils'
 import { Adornment } from './adornment'
+import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
 
-const UNSTYLED_TYPES: HTMLInputType[] = [
-  //
-  // 'color',
-  'file',
-  'range',
-  'submit',
-  'reset',
-  'button',
-]
-
-const InputBase: FC<InputBaseProps> = props => {
+const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize } = useTheme()
   const {
     loading,
@@ -104,7 +94,7 @@ const InputBase: FC<InputBaseProps> = props => {
             children={props.label}
             aria-label={props.label?.toString()}
           />
-          <InputBaseContainerInner className={cx?.container?.inner}>
+          <InputBaseContainerInner className={cx?.container?.inner} ref={ref}>
             <Adornment position='left' type={type} adornment={startAdornment} />
             {children}
             {loading ? (
@@ -140,6 +130,6 @@ const InputBase: FC<InputBaseProps> = props => {
       </InputBaseContext.Provider>
     </InteractiveContainer>
   )
-}
+})
 
 export default InputBase

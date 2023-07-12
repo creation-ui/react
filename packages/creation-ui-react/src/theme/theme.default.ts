@@ -1,11 +1,9 @@
-import colors from './base/colors'
 import type { ThemeProps } from './theme.types'
 
 const theme: ThemeProps = {
   theme: 'light',
   dir: 'ltr',
   focusRing: true,
-  colors,
   roundness: 'rounded-md',
   size: 'md',
   font: {

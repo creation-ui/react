@@ -38,18 +38,16 @@ export const AutocompleteView = forwardRef((props, ref) => {
   } = useDropdown()
 
   return (
-    <div
-      className={clsx(classes.input, 'relative h-auto py-1')}
-      ref={ref as any}
-      {...props}
-    >
-      <div className={clsx('flex flex-col gap-1')}>
-        <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
-          {multiple && <SelectedView />}
-          <input id={componentId} className='reset-input h-fit' {...input} />
+    <>
+      <div className={clsx(classes.input, 'relative h-auto py-1')}>
+        <div className={clsx('flex flex-col gap-1')}>
+          <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
+            {multiple && <SelectedView />}
+            <input id={componentId} className='reset-input h-fit' {...input} />
+          </div>
         </div>
+        <OptionsList />
       </div>
-      <OptionsList />
-    </div>
+    </>
   )
 })

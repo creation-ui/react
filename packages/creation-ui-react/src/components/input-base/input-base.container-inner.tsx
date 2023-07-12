@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface InputBaseContainerInnerProps {
@@ -7,9 +8,11 @@ interface InputBaseContainerInnerProps {
 
 const classes = ['relative', 'max-h-min']
 
-export const InputBaseContainerInner = ({
-  children,
-  className,
-}: InputBaseContainerInnerProps) => (
-  <div className={twMerge(classes, className)}>{children}</div>
-)
+export const InputBaseContainerInner = forwardRef<
+  HTMLDivElement,
+  InputBaseContainerInnerProps
+>(({ children, className }, ref) => (
+  <div className={twMerge(classes, className)} ref={ref}>
+    {children}
+  </div>
+))

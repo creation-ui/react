@@ -25,6 +25,8 @@ import {
 import { dropdownInitialProps } from '../shared/dropdown/constants'
 import { filterOptionsDefault } from '../shared/dropdown/filter-options'
 import { AutocompleteView } from './autocomplete.view'
+import { DROPDOWN_MARGIN } from './constants'
+import { getTop } from './utils'
 
 export function Autocomplete(props: DropdownProps) {
   const { size: defaultSize } = useTheme()
@@ -72,15 +74,17 @@ export function Autocomplete(props: DropdownProps) {
     onOpenChange: setOpen,
     open,
     middleware: [
-      flip(),
+      flip({ padding: 10 + DROPDOWN_MARGIN }),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
+          const height = getDropdownHeight(maxHeight, availableHeight)
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
-            maxHeight: getDropdownHeight(maxHeight, availableHeight),
+            maxHeight: height,
             overflowY: 'auto',
           })
         },
+        padding: 10 + DROPDOWN_MARGIN,
       }),
     ],
   })
@@ -199,7 +203,7 @@ export function Autocomplete(props: DropdownProps) {
     style: {
       position: strategy,
       left: x ?? 0,
-      top: y ?? 0,
+      top: getTop(context),
       zIndex: zIndex?.list,
     },
   })
@@ -219,6 +223,7 @@ export function Autocomplete(props: DropdownProps) {
       helperText={helperText}
       clearable={clearable}
       onClear={clearableCallback}
+      {...containerProps}
     >
       <DropdownContext.Provider
         value={{
@@ -244,10 +249,9 @@ export function Autocomplete(props: DropdownProps) {
           setOpen,
           optionComponent,
           selectedOptionComponent,
-          zIndex,
         }}
       >
-        <AutocompleteView {...containerProps} />
+        <AutocompleteView />
       </DropdownContext.Provider>
     </InputBase>
   )
