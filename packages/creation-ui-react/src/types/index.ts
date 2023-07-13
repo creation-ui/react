@@ -230,9 +230,13 @@ export type DropdownMaxHeight = number | string | 'available'
 
 export interface DropdownProps extends BaseComponentProps {
   /**
+   * CSS classes API
+   */
+  cx?: InputBaseProps['cx']
+  /**
    * Placeholder
    */
-  placeholder?: string
+  placeholder?: string | null
   /**
    * List options
    */
@@ -256,23 +260,23 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * Close button tooltip text
    */
-  emptyText?: React.ReactNode
+  emptyText?: string | null
   /**
    * Not found text
    */
-  notFoundText?: React.ReactNode
+  notFoundText?: string | null
   /**
    * Loading icon tooltip text
    */
-  loadingText?: React.ReactNode
+  loadingText?: string | null
   /**
    * Clear button tooltip text
    */
-  clearText?: string
+  clearText?: string | null
   /**
    * Close button tooltip text
    */
-  closeText?: React.ReactNode
+  closeText?: string | null
   // flags
   /**
    * Should display clear value button

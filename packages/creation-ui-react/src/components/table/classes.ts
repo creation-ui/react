@@ -1,7 +1,8 @@
 import { cva } from 'class-variance-authority'
 import { sharedDisabledCVA } from '../../classes'
 import { twMerge } from 'tailwind-merge'
-import clsx from 'clsx'
+
+export const rowGridClasses = ['grid', 'grid-flow-col']
 
 export const sortIconClasses = cva(
   [
@@ -78,7 +79,7 @@ export const headerClasses = twMerge(
   'pb-3'
 )
 
-export const headerRowClasses = twMerge('flex', 'items-center')
+export const headerRowClasses = twMerge([rowGridClasses, 'align-middle'])
 
 export const footerClasses = twMerge(
   sharedTableClasses.frame,

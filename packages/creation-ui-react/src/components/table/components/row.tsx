@@ -1,5 +1,7 @@
-import { Cell as CellType, flexRender, Row as RowProps } from '@tanstack/react-table'
-import { twMerge } from 'tailwind-merge'
+import { Row as RowProps } from '@tanstack/react-table'
+import clsx from 'clsx'
+import { rowGridClasses } from '../classes'
+import { Cell } from './cell'
 
 interface RowCellProps {
   row: RowProps<any>
@@ -7,8 +9,14 @@ interface RowCellProps {
 
 const Row = ({ row }: RowCellProps) => {
   const cells = row.getVisibleCells()
+
   return (
-    <tr className='hover:bg-gray-100 dark:hover:bg-gray-800 inline-block w-full'>
+    <tr
+      className={clsx(
+        'hover:bg-gray-100 dark:hover:bg-gray-800 w-full',
+        rowGridClasses
+      )}
+    >
       {cells.map(cell => (
         <Cell key={cell.id} cell={cell} />
       ))}
@@ -17,24 +25,3 @@ const Row = ({ row }: RowCellProps) => {
 }
 
 export default Row
-
-interface CellProps {
-  cell: CellType<any, unknown>
-}
-
-const Cell = ({ cell }: CellProps) => {
-  const column = cell.column
-  const width = column.getSize()
-
-  const { className = '', ...meta } = (cell.column.columnDef.meta as any) ?? {}
-  return (
-    <td
-      className={twMerge('py-2', className)}
-      key={cell.id}
-      width={width}
-      {...meta}
-    >
-      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-    </td>
-  )
-}

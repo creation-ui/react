@@ -49,6 +49,7 @@ export function Autocomplete(props: DropdownProps) {
     selectedOptionComponent = SelectedOption,
     size = defaultSize,
     zIndex,
+    cx,
   } = props
   const { isDataFlat, options, value } = useNormalizedOptions({
     value: props.value,
@@ -223,6 +224,7 @@ export function Autocomplete(props: DropdownProps) {
       helperText={helperText}
       clearable={clearable}
       onClear={clearableCallback}
+      cx={cx}
       {...containerProps}
     >
       <DropdownContext.Provider
