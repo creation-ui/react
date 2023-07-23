@@ -32,7 +32,7 @@ export const DropdownContext = createContext<DropdownContextValue>({} as any)
 export const useDropdown = () => {
   const context = useContext(DropdownContext)
   if (!context) {
-    throw new Error('useDropdown must be used within an AutocompleteProvider')
+    throw new Error('useDropdown must be used within an DropdownProvider')
   }
   return context
 }

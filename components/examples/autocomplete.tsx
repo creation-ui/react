@@ -65,8 +65,8 @@ const users = [
   },
 ]
 
-const CustomOption = ({ option, ...props }: any) => (
-  <Option {...props} {...option} className='!h-fit py-2'>
+const renderOption = (props, option) => (
+  <Option {...props} {...option} className='!h-fit p-2'>
     <div className='flex gap-2 items-center'>
       <Avatar size='sm' src={option.image} />
       <div className='flex flex-col'>
@@ -77,8 +77,8 @@ const CustomOption = ({ option, ...props }: any) => (
   </Option>
 )
 
-const CustomSelectedOption = ({ option, ...props }: any) => (
-  <SelectedOption {...props} {...option} className='!h-fit py-2'>
+const renderSelection = option => (
+  <div {...option} className='!h-fit py-2'>
     <div className='flex gap-2 items-center'>
       <Avatar size='sm' src={option.image} />
       <div className='flex flex-col'>
@@ -88,41 +88,32 @@ const CustomSelectedOption = ({ option, ...props }: any) => (
         </span>
       </div>
     </div>
-  </SelectedOption>
+  </div>
 )
 
-type User = (typeof users)[0]
+type Character = (typeof users)[0]
 
 export const AutocompleteExampleCustomOptions = () => {
-  const [value, setValue] = useState<User>(users[0])
-
-  const filterOptions = (query: string) => (option: User) =>
-    option.name
-      ?.toLowerCase()
-      ?.replace(/\s+/g, '')
-      ?.includes(query?.toLowerCase()?.replace(/\s+/g, ''))
+  const [value, setValue] = useState<Character | null>(users[0])
 
   return (
-    <Autocomplete
-      optionComponent={CustomOption}
-      selectedOptionComponent={CustomSelectedOption}
+    <Autocomplete<Character>
+      renderOption={renderOption}
+      renderSelection={renderSelection}
       label={'Autocomplete - custom'}
-      searchKey='name'
       clearable
-      // @ts-expect-error
       value={value}
-      // @ts-expect-error
       options={users}
-      // @ts-expect-error
       onChange={setValue}
-      // @ts-expect-error
-      filterOptions={filterOptions}
+      isOptionEqualToValue={(a, b) => a?.id === b?.id}
+      getOptionLabel={({ name }) => name}
     />
   )
 }
 
 export const AutocompletePlayground = () => {
   const [value, setValue] = useState<OptionType[]>([options[0]])
+
   return (
     <Playground
       name='Autocomplete'
@@ -130,8 +121,9 @@ export const AutocompletePlayground = () => {
       componentProps={{
         label: 'Autocomplete',
         value,
-        onChange: setValue,
         options,
+        onChange: setValue,
+        getOptionLabel: (option: OptionType) => option?.label,
       }}
       controls={[
         variantControl,
@@ -147,10 +139,13 @@ export const AutocompletePlayground = () => {
   )
 }
 export const AutocompleteMultiPlayground = () => {
-  const [value, setValue] = useState<OptionType[]>([options[0], options[3]])
+  const [value, setValue] = useState<OptionType[] | null>([
+    options[0],
+    options[3],
+  ])
 
-  const handleChange = (value: OptionType[]) => {
-    setValue(value ? value : [])
+  const handleChange = (value: OptionType[] | null) => {
+    setValue(value)
   }
 
   return (
@@ -160,9 +155,9 @@ export const AutocompleteMultiPlayground = () => {
       componentProps={{
         multiple: true,
         label: 'Autocomplete - multiple',
-        onChange: handleChange,
         value,
         options,
+        onChange: handleChange,
       }}
       controls={[
         variantControl,

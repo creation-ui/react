@@ -52,7 +52,7 @@ const Modal = (props: ModalProps) => {
     //
     children,
     className,
-    onClose,
+    onClose = () => {},
     onOverlayClick,
     open,
   } = props
