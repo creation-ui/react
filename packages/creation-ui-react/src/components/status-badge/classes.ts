@@ -9,7 +9,7 @@ const bg = {
   info: 'bg-info-100',
 }
 
-export const badge = cva(
+export const chipClasses = cva(
   [
     'px-2',
     'inline-flex',
@@ -17,7 +17,6 @@ export const badge = cva(
     'leading-5',
     'rounded-full',
     'font-semibold',
-    'uppercase',
     'w-fit',
     'select-none',
     'justify-center',
@@ -41,6 +40,10 @@ export const badge = cva(
         contained: [],
         outlined: [],
         text: [],
+      },
+      uppercase: {
+        true: ['uppercase'],
+        false: [],
       },
     },
     defaultVariants: {

@@ -5,6 +5,7 @@ const theme: ThemeProps = {
   dir: 'ltr',
   focusRing: true,
   roundness: 'rounded-md',
+  variant: 'outlined',
   size: 'md',
   font: {
     leading: 'leading-normal',

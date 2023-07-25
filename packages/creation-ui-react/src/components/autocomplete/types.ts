@@ -1,6 +1,7 @@
 import {
   BaseComponentProps,
   DropdownMaxHeight,
+  ElementStatus,
   ElementVariant,
   InputBaseProps,
 } from '../../types'
@@ -13,6 +14,13 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
    * Custom function to compare option and value
    */
   isOptionEqualToValue?: (option: T, value: T) => boolean
+  /**
+   * Getter for option disabled state
+   */
+  getOptionDisabled?: (option: T) => boolean
+  /**
+   * Getter for option label
+   */
   getOptionLabel?: (option: T) => string
   /**
    * Component to display list options
@@ -23,7 +31,7 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
    */
   renderSelection?: (option: T) => React.ReactNode
   /**
-   *
+   * Component to display selection in `multiple` mode
    */
   renderTags?: (selected: T[]) => React.ReactNode
   /**
@@ -51,11 +59,11 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
   /**
    * List options
    */
-  options?: T[] | string[]
+  options?: T[]
   /**
    * Default value to display when component is not controlled
    */
-  defaultValue?: T | string
+  defaultValue?: T
   /**
    * Current value to display
    */
@@ -126,6 +134,14 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
    */
   variant?: ElementVariant
   /**
+   * Variant of the default Tags
+   */
+  defaultTagVariant?: ElementVariant
+  /**
+   * Status of the default Tags
+   */
+  defaultTagStatus?: ElementStatus
+  /**
    * z-index configuration
    */
   zIndex?: { list?: number }
@@ -144,7 +160,7 @@ export interface AutocompleteFilterOptionsConfig<T = AutocompleteOptionType> {
   trim?: boolean
 }
 
-export interface AutocompleteFilterOptions<T = AutocompleteOptionType> {
+export interface AutocompleteFilterOptions<T = any> {
   query: string
   getOptionLabel: (option: T) => string
 }

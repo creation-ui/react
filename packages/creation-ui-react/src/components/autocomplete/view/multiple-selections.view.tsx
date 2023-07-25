@@ -1,4 +1,4 @@
-import { Chip } from '../../../components/chip'
+import { StatusBadge } from '../../../components/status-badge'
 import { useAutocomplete } from '../context'
 import { AutocompleteOptionType } from '../types'
 
@@ -6,16 +6,24 @@ export const MultipleSelections = () => {
   const {
     limit = 0,
     selected = [],
+    defaultTagVariant = 'outlined',
+    defaultTagStatus = 'info',
     getOptionLabel,
     handleRemoveSelected,
     renderTags = (selected: AutocompleteOptionType[]) =>
-      selected?.map(option => (
-        <Chip
-          option={option}
-          getOptionLabel={getOptionLabel}
-          handleRemoveSelected={handleRemoveSelected}
-        />
-      )),
+      selected?.map(option => {
+        const label = getOptionLabel(option)
+        const onDelete = () => handleRemoveSelected(option)
+        return (
+          <StatusBadge
+            key={label}
+            label={label}
+            onDelete={onDelete}
+            variant={defaultTagVariant}
+            status={defaultTagStatus}
+          />
+        )
+      }),
     getLimitTagsText,
   } = useAutocomplete()
 

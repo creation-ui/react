@@ -3,6 +3,7 @@ import type {
   ElementSize,
   ElementTheme,
   ElementTypography,
+  ElementVariant,
   TailwindColorSet,
 } from '../types'
 
@@ -69,6 +70,7 @@ export type ThemeProps = {
   respectReducedMotion: boolean
   roundness: string
   size: ElementSize
+  variant: ElementVariant
   texts: ThemeTexts
   theme: ElementTheme
   zIndex: ThemeZIndex

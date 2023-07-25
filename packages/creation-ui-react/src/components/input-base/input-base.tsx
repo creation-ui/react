@@ -22,7 +22,7 @@ import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
   const {
     loading,
     helperText,
@@ -35,7 +35,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     startAdornment,
     endAdornment,
     clearable,
-    variant = 'outlined',
+    variant = defaultVariant,
     layout = 'column',
     onClear,
   } = props

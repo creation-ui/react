@@ -21,6 +21,8 @@ interface AutocompleteContextValue
     | 'textLoading'
     | 'textEmpty'
     | 'textNotFound'
+    | 'defaultTagStatus'
+    | 'defaultTagVariant'
   > {
   open?: boolean
   floatingContext: any
@@ -33,10 +35,6 @@ interface AutocompleteContextValue
     option: AutocompleteOptionType,
     index: number
   ) => AutocompleteOptionProps
-  /** TEXTS **/
-  textLoading?: ReactNode
-  textEmpty?: ReactNode
-  textNotFound?: ReactNode
   /** CONTROLS **/
   setOpen: (value: boolean) => void
   handleRemoveSelected: (option: AutocompleteOptionType) => void

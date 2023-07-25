@@ -7,6 +7,7 @@ import { useAutocomplete } from '../context'
 import { AutocompleteOptionType } from '../types'
 import { renderOptionInternalContainer } from '../utils/render-option'
 import { MultipleSelections } from './multiple-selections.view'
+import Highlighter from "react-highlight-words";
 
 export const AutocompleteView: FC = () => {
   const { classes, componentId } = useInputBase()
@@ -36,9 +37,9 @@ export const AutocompleteView: FC = () => {
               <>{renderSelection(selected as AutocompleteOptionType)}</>
             ) : (
               <input
-                id={componentId}
-                className='reset-input h-fit'
                 {...propsInput}
+                id={componentId}
+                className={clsx('reset-input h-fit', propsInput.className)}
               />
             )}
           </div>
@@ -54,7 +55,6 @@ export const AutocompleteView: FC = () => {
                 {hasOptions ? (
                   options?.map(renderOptionInternalContainer)
                 ) : (
-                  // TODO: add loading and empty states
                   <li className={'py-2 px-3 w-full text-center'}>
                     {textNotFound}
                   </li>

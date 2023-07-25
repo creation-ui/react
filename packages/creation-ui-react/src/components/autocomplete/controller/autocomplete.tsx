@@ -10,8 +10,7 @@ import {
 } from '@floating-ui/react'
 import React, { useRef, useState } from 'react'
 import { selectOptionClasses } from '../../../classes'
-import { useTheme } from '../../../theme'
-import { DropdownOptionType } from '../../../types'
+import { Theme, useTheme } from '../../../theme'
 import { getFlatOptions } from '../../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../../dropdown-chevron'
 import { InputBase } from '../../input-base'
@@ -24,21 +23,19 @@ import {
   AutocompleteProps,
   GetItemPropsReturnType,
 } from '../types'
+import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
 import { _renderOption } from '../utils/render-option'
-import { _renderSelection } from '../utils/render-selection'
 import { createFilterOptions, getTop } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
-
-const _filterOptions = createFilterOptions()
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()
   const {
     id,
-    textLoading,
-    textEmpty,
-    textNotFound,
-    placeholder,
+    textLoading = 'Loading...',
+    textEmpty = 'No options',
+    textNotFound = 'No results found',
+    placeholder = 'Select...',
     multiple,
     helperText,
     error,
@@ -50,19 +47,19 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     cx,
     value,
     defaultValue,
-    options,
-    filterSelectedOptions,
+    options = [],
+    filterSelectedOptions = false,
+    defaultTagStatus,
+    defaultTagVariant,
     onChange,
-    filterOptions = _filterOptions,
+    filterOptions = createFilterOptions<T>(),
     getLimitTagsText = (more: number) => `+${more}`,
     renderOption = _renderOption,
     renderSelection,
-    getOptionLabel: getOptionLabelProp = (option: T) =>
-      typeof option === 'string'
-        ? option
-        : // @ts-expect-error
-          option.label,
-    isOptionEqualToValue = (a: T, b: T) => a === b,
+    getOptionLabel: getOptionLabelProp = (option: T): string =>
+      typeof option === 'string' ? option : option.label,
+    isOptionEqualToValue = _isOptionEqualToValue,
+    getOptionDisabled = (option: T) => option.disabled,
   } = props
 
   let getOptionLabel = getOptionLabelProp
@@ -155,24 +152,21 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     }
   }
 
-  const filteredOptions: T[] = open
-    ? filterOptions(
-        options.filter(option => {
-          if (
-            filterSelectedOptions &&
-            ((multiple ? value : [value]) as T[]).some(
-              value2 => value2 !== null && isOptionEqualToValue(option, value2)
-            )
-          ) {
-            return false
-          }
-          return true
-        }),
-        // we use the empty string to manipulate `filterOptions` to not filter any options
-        // i.e. the filter predicate always returns true
+  const initiallyFiltered = filterSelectedOptions
+    ? options.filter(option => {
+        if (
+          ((multiple ? value : [value]) as T[]).some(v =>
+            isOptionEqualToValue(option, v)
+          )
+        ) {
+          return false
+        }
+        return true
+      })
+    : options
 
-        { query, getOptionLabel }
-      )
+  const filteredOptions: T[] = open
+    ? filterOptions(initiallyFiltered, { query, getOptionLabel })
     : []
 
   const toggleOpen = () => setOpen(!open)
@@ -180,10 +174,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const handleSelect = option => {
     if (multiple) {
       clearSearch()
-
-      if ((value as T[]).find(v => isOptionEqualToValue(v, option))) {
-        return
-      }
 
       const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
       onChange?.(newValue)
@@ -207,6 +197,16 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     ref: refs.setReference,
   })
 
+  const retainInputValue = () => {
+    if (value && !multiple) {
+      const label = getOptionLabel(value)
+
+      if (!open && label !== query) {
+        setQuery(getOptionLabel(value))
+      }
+    }
+  }
+
   const inputProps = {
     onChange: onInputChange,
     value: query,
@@ -217,6 +217,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         setOpen(true)
       }
     },
+    onBlur() {
+      retainInputValue()
+    },
     onKeyDown(event) {
       if (
         event.key === 'Enter' &&
@@ -224,6 +227,14 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         filteredOptions[activeIndex]
       ) {
         handleSelect(filteredOptions[activeIndex])
+      }
+
+      if (event.key === 'Escape') {
+        setOpen(false)
+      }
+
+      if (event.key === 'ArrowDown') {
+        setOpen(true)
       }
     },
   }
@@ -234,13 +245,18 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   ): AutocompleteOptionProps => {
     const active = activeIndex === index
     const selected = isOptionEqualToValue(option, value)
-    const disabled = !!option.disabled
+    const disabled = getOptionDisabled(option)
     const label = getOptionLabel(option)
 
     const itemProps = getItemProps({
       key: label,
       multiple,
       selected: isOptionEqualToValue(option, value),
+      onKeyDown(event) {
+        if (event.key === 'Enter') {
+          handleSelect(option)
+        }
+      },
       onClick(e: React.MouseEvent<HTMLLIElement>) {
         const isDisabled =
           (e.target as any).getAttribute?.('aria-disabled') === 'true'
@@ -250,10 +266,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         const wasSelected =
           (e.target as any).getAttribute?.('aria-selected') === 'true'
 
-        // TODO: fix and why this is not working?
-        // if (selected && multiple) {
-        //   handleRemoveSelected(option)
-        // }
+        if (selected && multiple) {
+          handleRemoveSelected(option)
+        }
 
         if (!wasSelected) {
           handleSelect(option)
@@ -263,22 +278,33 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       ref(node) {
         listRef.current[index] = node
       },
+      tabIndex: active ? 0 : -1,
       'aria-label': label,
       'aria-selected': selected,
       'aria-disabled': disabled,
       role: 'option',
     }) as unknown as GetItemPropsReturnType
+    if (selected) {
+      console.table({
+        label,
+        active,
+        selected,
+        multiple,
+        size,
+      })
+    }
 
     return {
       className: selectOptionClasses({
         active,
-        selected: selected as boolean,
+        selected,
         multiple,
         size,
       }),
       index,
       query,
       active,
+      query,
       ...itemProps,
     }
   }
@@ -294,50 +320,53 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   })
 
   return (
-    <InputBase
-      id={id}
-      disabled={disabled}
-      error={error}
-      size={size}
-      loading={props.loading}
-      readOnly={props.readOnly}
-      label={props.label}
-      required={props.required}
-      variant={variant}
-      endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
-      helperText={helperText}
-      clearable={clearable}
-      onClear={clearableCallback}
-      cx={cx}
-      {...containerProps}
-    >
-      <AutocompleteContext.Provider
-        value={{
-          handleRemoveSelected,
-          setOpen,
-          multiple,
-          clearable,
-          floatingContext: context,
-          options: filteredOptions,
-          activeIndex,
-          limit,
-          selected: value,
-          propsList: listProps,
-          propsInput: inputProps,
-          textEmpty,
-          textLoading,
-          textNotFound,
-          open,
-          renderOption,
-          renderSelection,
-          getOptionLabel,
-          getOptionProps,
-          getLimitTagsText,
-        }}
+    <Theme theme={{ size }}>
+      <InputBase
+        id={id}
+        variant={variant}
+        disabled={disabled}
+        error={error}
+        loading={props.loading}
+        readOnly={props.readOnly}
+        label={props.label}
+        required={props.required}
+        endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
+        helperText={helperText}
+        clearable={clearable}
+        onClear={clearableCallback}
+        cx={cx}
+        {...containerProps}
       >
-        <AutocompleteView />
-      </AutocompleteContext.Provider>
-    </InputBase>
+        <AutocompleteContext.Provider
+          value={{
+            handleRemoveSelected,
+            setOpen,
+            multiple,
+            clearable,
+            floatingContext: context,
+            options: filteredOptions,
+            activeIndex,
+            limit,
+            selected: value,
+            propsList: listProps,
+            propsInput: inputProps,
+            textEmpty,
+            textLoading,
+            textNotFound,
+            open,
+            defaultTagStatus,
+            defaultTagVariant,
+            renderOption,
+            renderSelection,
+            getOptionLabel,
+            getOptionProps,
+            getLimitTagsText,
+          }}
+        >
+          <AutocompleteView />
+        </AutocompleteContext.Provider>
+      </InputBase>
+    </Theme>
   )
 }
 

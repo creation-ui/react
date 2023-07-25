@@ -1,26 +1,38 @@
 import { useTheme } from '../../theme'
-import { badge } from './classes'
+import { ClearButton } from '../clear-button'
+import { chipClasses } from './classes'
 import type { StatusBadgeProps } from './status-badge.types'
 
 export const StatusBadge = (props: StatusBadgeProps) => {
-  const { size: defaultSize } = useTheme()
+  const {
+    //
+    size: defaultSize,
+    variant: defaultVariant = 'contained',
+  } = useTheme()
+
   const {
     //
     label,
     status = 'info',
     size = defaultSize,
-    variant = 'contained',
+    variant = defaultVariant,
+    onDelete,
+    startAdornment = null,
+    uppercase,
   } = props
 
   return (
     <div
-      className={badge({
+      className={chipClasses({
         size,
         status,
         variant,
+        uppercase,
       })}
     >
+      {startAdornment}
       {label ?? status}
+      {onDelete && <ClearButton onClick={onDelete} />}
     </div>
   )
 }

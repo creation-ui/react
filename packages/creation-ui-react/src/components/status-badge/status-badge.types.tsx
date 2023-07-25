@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import type {
   BaseComponentProps,
   ElementStatus,
@@ -6,6 +7,10 @@ import type {
 
 export interface StatusBadgeProps
   extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {
+  /**
+   * Should be uppercase?
+   */
+  uppercase?: boolean
   /**
    * Status of the element
    */
@@ -18,4 +23,12 @@ export interface StatusBadgeProps
    * Variant
    */
   variant?: ElementVariant
+  /**
+   * Callback when delete button is clicked
+   */
+  startAdornment?: ReactNode
+  /**
+   * Callback when delete button is clicked
+   */
+  onDelete?: () => void
 }
