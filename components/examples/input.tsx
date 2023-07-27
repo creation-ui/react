@@ -98,6 +98,7 @@ export const InputWidthsExample = ({ ...props }: InputExampleProps) => {
           label={width}
           placeholder='Placeholder'
           clearable
+          key={width}
         />
       ))}
     </div>
