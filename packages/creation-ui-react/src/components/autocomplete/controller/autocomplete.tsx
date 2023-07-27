@@ -49,8 +49,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     defaultValue,
     options = [],
     filterSelectedOptions = false,
-    defaultTagStatus,
-    defaultTagVariant,
+    defaultTagProps,
     autoHighlight = false,
     onChange,
     filterOptions = createFilterOptions<T>(),
@@ -59,7 +58,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     renderSelection,
     getOptionLabel: getOptionLabelProp = (option: T): string =>
       typeof option === 'string' ? option : (option as any).label,
-    isOptionEqualToValue = _isOptionEqualToValue,
+    isOptionEqualToValue = _isOptionEqualToValue<T>,
     getOptionDisabled = (option: T) => (option as any).disabled,
   } = props
 
@@ -181,7 +180,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       onChange?.(option)
       setActiveIdx(null)
       setOpen(false)
-      setQuery(getOptionLabel(option))
+      setQuery(getOptionLabel?.(option))
     }
   }
 
@@ -199,7 +198,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const retainInputValue = () => {
     if (value && !multiple) {
-      const label = getOptionLabel(value) || ''
+      const label = getOptionLabel?.(value) || ''
 
       if (typeof label !== 'string' || typeof query !== 'string') {
         clearSearch()
@@ -254,7 +253,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     const active = activeIndex === index
     const selected = isOptionEqualToValue(option, value)
     const disabled = getOptionDisabled(option)
-    const label = getOptionLabel(option)
+    const label = getOptionLabel?.(option)
 
     const itemProps = getItemProps({
       key: label,
@@ -362,8 +361,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
             textLoading,
             textNotFound,
             open,
-            defaultTagStatus,
-            defaultTagVariant,
+            defaultTagProps,
             renderOption,
             renderSelection,
             getOptionLabel,

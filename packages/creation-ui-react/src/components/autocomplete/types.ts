@@ -1,10 +1,12 @@
 import {
   BaseComponentProps,
   DropdownMaxHeight,
+  ElementBaseVariant,
   ElementStatus,
   ElementVariant,
   InputBaseProps,
 } from '../../types'
+import { ChipProps } from '../chip'
 
 export type AutocompleteOptionType = string | { label: string }
 
@@ -13,7 +15,7 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
   /**
    * Custom function to compare option and value
    */
-  isOptionEqualToValue?: (option: T, value: T) => boolean
+  isOptionEqualToValue?: (option: T, value?: T | null) => boolean
   /**
    * Getter for option disabled state
    */
@@ -67,7 +69,7 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
   /**
    * Current value to display
    */
-  value?: T
+  value?: T | null
   /**
    * Close button tooltip text
    */
@@ -122,7 +124,7 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
    * @param value
    * @returns
    */
-  onChange?: (value: T | T[]) => void
+  onChange?: (value: T | T[] | null) => void
   /**
    * @default 500
    * either provide a number of pixels or a string like 1rem, 20vh, etc.
@@ -136,11 +138,7 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
   /**
    * Variant of the default Tags
    */
-  defaultTagVariant?: ElementVariant
-  /**
-   * Status of the default Tags
-   */
-  defaultTagStatus?: ElementStatus
+  defaultTagProps?: ChipProps
   /**
    * z-index configuration
    */

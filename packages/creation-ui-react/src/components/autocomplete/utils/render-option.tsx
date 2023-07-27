@@ -8,7 +8,7 @@ export const renderOptionInternalContainer = (
 ) => {
   const { renderOption, getOptionProps } = useAutocomplete()
   const props = getOptionProps(option, index)
-  return renderOption(props, option)
+  return renderOption?.(props, option)
 }
 
 export const _renderOption: AutocompleteProps['renderOption'] = (
@@ -16,7 +16,7 @@ export const _renderOption: AutocompleteProps['renderOption'] = (
   option
 ) => {
   const { getOptionLabel, autoHighlight } = useAutocomplete()
-  const label = getOptionLabel(option)
+  const label = getOptionLabel!(option)
 
   return (
     <li {...props}>

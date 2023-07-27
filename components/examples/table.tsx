@@ -2,8 +2,8 @@ import {
   Avatar,
   Checkbox,
   ReadableError,
-  StatusBadge,
-  StatusBadgeProps,
+  Chip,
+  ChipProps,
   Switch,
   Table,
 } from '@creation-ui/react'
@@ -24,7 +24,7 @@ type Person = {
   avatar: string
   firstName: string
   lastName: string
-  status: StatusBadgeProps['status']
+  status: ChipProps['status']
   workTime: number
 }
 
@@ -137,7 +137,7 @@ export const TableExample = () => {
         header: () => <div className='mx-auto'>Status</div>,
         id: 'status',
         cell: info => (
-          <StatusBadge status={info.getValue() as Person['status']} size='sm' />
+          <Chip status={info.getValue() as Person['status']} size='sm' />
         ),
         enableColumnFilter: false,
         meta: {

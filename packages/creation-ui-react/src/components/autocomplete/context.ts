@@ -1,11 +1,11 @@
-import { createContext, ReactNode, useContext } from 'react'
+import { createContext, useContext } from 'react'
 import {
   AutocompleteOptionProps,
   AutocompleteOptionType,
   AutocompleteProps,
 } from './types'
 
-interface AutocompleteContextValue<T>
+interface AutocompleteContextValue<T = any>
   extends Pick<
     AutocompleteProps<T>,
     | 'renderOption'
@@ -21,8 +21,7 @@ interface AutocompleteContextValue<T>
     | 'textLoading'
     | 'textEmpty'
     | 'textNotFound'
-    | 'defaultTagStatus'
-    | 'defaultTagVariant'
+    | 'defaultTagProps'
     | 'autoHighlight'
   > {
   open?: boolean
@@ -40,11 +39,10 @@ interface AutocompleteContextValue<T>
   setOpen: (value: boolean) => void
   handleRemoveSelected: (option: AutocompleteOptionType) => void
 }
-
-export const AutocompleteContext = createContext({})
+export const AutocompleteContext = createContext<any>(null)
 
 export const useAutocomplete = () => {
-  const context = useContext(AutocompleteContext)
+  const context = useContext<AutocompleteContextValue>(AutocompleteContext)
   if (!context) {
     throw new Error(
       'useAutocomplete must be used within an AutocompleteProvider'

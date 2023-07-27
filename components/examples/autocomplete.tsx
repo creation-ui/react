@@ -99,9 +99,9 @@ type Character = {
 }
 
 export const AutocompleteExampleCustomOptions = () => {
-  const [value, setValue] = useState<Character | undefined>(users[0])
+  const [value, setValue] = useState<Character | undefined | null>(users[0])
 
-  const onChange = (value: Character | Character[] | undefined) => {
+  const onChange = (value: Character | Character[] | null) => {
     // @ts-expect-error
     setValue(value)
   }
@@ -252,13 +252,12 @@ export const properties: DocumentedProperty[] = [
     type: 'boolean',
     defaultValue: 'false',
   },
-  // {
-  //   name: 'highlightSearch',
-  //   type: 'boolean',
-  //   defaultValue: 'false',
-  //   description: 'Highlight search in options',
-  //   experimental: true,
-  // },
+  {
+    name: 'autoHighlight',
+    type: 'boolean',
+    defaultValue: 'false',
+    description: 'Highlight search in options',
+  },
   {
     description: 'Error text displayed under the component.',
     name: 'error',

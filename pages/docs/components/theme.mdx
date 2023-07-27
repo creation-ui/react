@@ -1,7 +1,6 @@
 import PropsTable from '@components/props-table'
 import {
   properties,
-  colorsProps,
   fontProps,
   drawersProps,
   headingsProps,
@@ -17,6 +16,7 @@ import {
 The Theme Provider is a versatile and essential component that sets the overall aesthetic of your application. It allows you to apply a consistent design across your application and customize the look and feel to match your specific requirements.
 
 ## Usage
+
 Use the Theme Provider component by creating a ThemeProps object with your theme options and supplying it to the Theme component:
 
 ```tsx copy
@@ -44,12 +44,6 @@ The Theme Provider component comes with a robust set of default values that prov
   theme: 'light',
   dir: 'ltr',
   focusRing: true,
-  colors: {
-    primary: '#007DFF',
-    success: '#00C48C',
-    warning: '#FFA940',
-    error: '#FF4D4F',
-  },
   roundness: 'rounded-md',
   size: 'md',
   font: {
@@ -101,11 +95,7 @@ For a detailed explanation of each prop that you can use to customize your theme
   name='Theme'
   description='Theme properties for configuration.'
 />
-<PropsTable
-  properties={colorsProps}
-  name='Colors'
-  description='Theme colors.'
-/>
+
 <PropsTable
   properties={drawersProps}
   name='Drawers'

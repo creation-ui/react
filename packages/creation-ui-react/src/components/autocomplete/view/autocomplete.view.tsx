@@ -7,7 +7,6 @@ import { useAutocomplete } from '../context'
 import { AutocompleteOptionType } from '../types'
 import { renderOptionInternalContainer } from '../utils/render-option'
 import { MultipleSelections } from './multiple-selections.view'
-import Highlighter from "react-highlight-words";
 
 export const AutocompleteView: FC = () => {
   const { classes, componentId } = useInputBase()
@@ -39,7 +38,10 @@ export const AutocompleteView: FC = () => {
               <input
                 {...propsInput}
                 id={componentId}
-                className={clsx('reset-input h-fit', propsInput.className)}
+                className={clsx(
+                  'reset-input h-fit',
+                  propsInput.className as string
+                )}
               />
             )}
           </div>

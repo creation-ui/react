@@ -1,4 +1,4 @@
-import { Theme, ThemeProps, defaultTheme as theme } from '@creation-ui/react'
+import { Theme, ThemeProps } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
 import { positionProp, sizeProp } from './shared-props'
 
@@ -87,32 +87,6 @@ export const properties: DocumentedProperty[] = [
   },
 ]
 
-export const colorsProps: DocumentedProperty[] = [
-  {
-    name: 'primary',
-    type: 'string',
-    description: 'Primary color',
-    defaultValue: theme.colors.primary['500'],
-  },
-  {
-    name: 'success',
-    type: 'string',
-    description: 'Success info color.',
-    defaultValue: theme.colors.success['500'],
-  },
-  {
-    name: 'warning',
-    type: 'string',
-    description: 'Warning info color.',
-    defaultValue: theme.colors.warning['500'],
-  },
-  {
-    name: 'error',
-    type: 'string',
-    description: 'Error info color.',
-    defaultValue: theme.colors.error['500'],
-  },
-]
 export const drawersProps: DocumentedProperty[] = [
   {
     name: 'size',

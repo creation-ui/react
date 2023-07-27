@@ -6,21 +6,19 @@ export const MultipleSelections = () => {
   const {
     limit = 0,
     selected = [],
-    defaultTagVariant = 'outlined',
-    defaultTagStatus = 'info',
+    defaultTagProps = { variant: 'outlined', status: 'info' },
     getOptionLabel,
     handleRemoveSelected,
     renderTags = (selected: AutocompleteOptionType[]) =>
       selected?.map(option => {
-        const label = getOptionLabel(option)
+        const label = getOptionLabel!(option)
         const onDelete = () => handleRemoveSelected(option)
         return (
           <Chip
+          {...defaultTagProps}
             key={label}
             label={label}
             onDelete={onDelete}
-            variant={defaultTagVariant}
-            status={defaultTagStatus}
           />
         )
       }),
@@ -36,7 +34,7 @@ export const MultipleSelections = () => {
   return (
     <>
       {renderTags(limitedOptions)}
-      {more > 0 && <span>{getLimitTagsText(more)}</span>}
+      {more > 0 && <span>{getLimitTagsText!(more)}</span>}
     </>
   )
 }
