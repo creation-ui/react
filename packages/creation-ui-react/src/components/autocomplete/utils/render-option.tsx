@@ -1,6 +1,6 @@
 import { useAutocomplete } from '../context'
 import { AutocompleteOptionType, AutocompleteProps } from '../types'
-import Highlighter from "react-highlight-words";
+import Highlighter from 'react-highlight-words'
 
 export const renderOptionInternalContainer = (
   option: AutocompleteOptionType,
@@ -15,16 +15,20 @@ export const _renderOption: AutocompleteProps['renderOption'] = (
   props,
   option
 ) => {
-  const { getOptionLabel } = useAutocomplete()
+  const { getOptionLabel, autoHighlight } = useAutocomplete()
   const label = getOptionLabel(option)
 
   return (
     <li {...props}>
-      <Highlighter
-        searchWords={[props.query]}
-        autoEscape={true}
-        textToHighlight={label}
-      />
+      {autoHighlight ? (
+        <Highlighter
+          searchWords={[props.query]}
+          autoEscape={true}
+          textToHighlight={label}
+        />
+      ) : (
+        label
+      )}
     </li>
   )
 }

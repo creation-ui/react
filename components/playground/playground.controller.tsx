@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { set, cloneDeep } from 'lodash'
+import { cloneDeep, set } from 'lodash'
+import React, { useState } from 'react'
 import { PlaygroundContext } from './context/context'
 import { PlaygroundCode } from './playground.code'
 import { PlaygroundComponent } from './playground.component'
 import { PlaygroundControls } from './playground.controls'
 import { PlaygroundView } from './playground.view'
 import {
-  PlaygroundState,
-  PlaygroundControllerProps,
   PlaygroundControl,
+  PlaygroundControllerProps,
+  PlaygroundState,
 } from './types'
 
 const prepareInitialState = (controls: PlaygroundControl[]) =>
@@ -36,7 +36,9 @@ export const PlaygroundController: React.FC<
 > = props => {
   const { showCode = true, controls } = props
 
-  const [state, setState] = useState<PlaygroundState>({})
+  const [state, setState] = useState<PlaygroundState>(
+    prepareInitialState(controls),
+  )
 
   const handleChange = (name: string, value: any) => {
     setState(state => {
@@ -44,11 +46,6 @@ export const PlaygroundController: React.FC<
       return newState
     })
   }
-
-  useEffect(() => {
-    const initialState = prepareInitialState(controls)
-    setState(initialState)
-  }, [controls])
 
   return (
     <PlaygroundContext.Provider value={{ ...props, state, handleChange }}>

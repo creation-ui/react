@@ -1,11 +1,7 @@
 import { Playground } from '@components/playground'
-import {
-  Autocomplete,
-  Avatar,
-  ELEMENT_SIZES,
-  Option,
-  SelectedOption,
-} from '@creation-ui/react'
+import { Autocomplete, Avatar, ELEMENT_SIZES } from '@creation-ui/react'
+import { AutocompleteOptionProps } from '@creation-ui/react/components/autocomplete/types'
+import clsx from 'clsx'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
@@ -65,8 +61,9 @@ const users = [
   },
 ]
 
-const renderOption = (props, option) => (
-  <Option {...props} {...option} className='!h-fit p-2'>
+const renderOption = (props: AutocompleteOptionProps, option: Character) => (
+  // @ts-expect-error
+  <div {...props} className={clsx(props.className, 'h-fit w-fit p-2')}>
     <div className='flex gap-2 items-center'>
       <Avatar size='sm' src={option.image} />
       <div className='flex flex-col'>
@@ -74,27 +71,40 @@ const renderOption = (props, option) => (
         <span className='text-info-500 text-xs'>{option.species}</span>
       </div>
     </div>
-  </Option>
+  </div>
 )
 
-const renderSelection = option => (
-  <div {...option} className='!h-fit py-2'>
+const renderSelection = (option: Character) => (
+  <div className='h-fit w-fit p-2 mr-2'>
     <div className='flex gap-2 items-center'>
       <Avatar size='sm' src={option.image} />
       <div className='flex flex-col'>
         <span className='font-medium'>{option.name}</span>
-        <span className='text-info-500 text-xs'>
-          {option.species} {option.height}
-        </span>
+        <span className='text-info-500 text-xs'>{option.species}</span>
       </div>
     </div>
   </div>
 )
 
-type Character = (typeof users)[0]
+type Character = {
+  birth: string
+  description: string
+  gender: string
+  height: string
+  image: string
+  name: string
+  id: string
+  planet: string
+  species: string
+}
 
 export const AutocompleteExampleCustomOptions = () => {
-  const [value, setValue] = useState<Character | null>(users[0])
+  const [value, setValue] = useState<Character | undefined>(users[0])
+
+  const onChange = (value: Character | Character[] | undefined) => {
+    // @ts-expect-error
+    setValue(value)
+  }
 
   return (
     <Autocomplete<Character>
@@ -104,15 +114,15 @@ export const AutocompleteExampleCustomOptions = () => {
       clearable
       value={value}
       options={users}
-      onChange={setValue}
+      onChange={onChange}
       isOptionEqualToValue={(a, b) => a?.id === b?.id}
-      getOptionLabel={({ name }) => name}
+      getOptionLabel={({ name }: Character) => name}
     />
   )
 }
 
 export const AutocompletePlayground = () => {
-  const [value, setValue] = useState<OptionType[]>([options[0]])
+  const [value, setValue] = useState<OptionType>(options[0])
 
   return (
     <Playground

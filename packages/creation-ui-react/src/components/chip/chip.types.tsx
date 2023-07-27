@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 import type {
   BaseComponentProps,
+  ElementBaseVariant,
   ElementStatus,
-  ElementVariant,
 } from '../../types'
 
-export interface StatusBadgeProps
+export interface ChipProps
   extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {
   /**
    * Should be uppercase?
@@ -22,13 +22,18 @@ export interface StatusBadgeProps
   /**
    * Variant
    */
-  variant?: ElementVariant
+  variant?: ElementBaseVariant
   /**
-   * Callback when delete button is clicked
+   * Start adornment
    */
   startAdornment?: ReactNode
   /**
    * Callback when delete button is clicked
    */
   onDelete?: () => void
+  /**
+   *
+   * Callback when chip is clicked
+   */
+  onClick?: () => void
 }

@@ -36,6 +36,13 @@ const VARIANTS = [
   },
   { value: 'text', label: <Icon path={mdiAlphabetical} size={1} /> },
 ]
+const VARIANTS_BASE = [
+  { value: 'contained', label: <Icon path={mdiSquareRounded} size={1} /> },
+  {
+    value: 'outlined',
+    label: <Icon path={mdiSquareRoundedOutline} size={1} />,
+  },
+]
 
 const COLORS: ColorDefinition[] = [
   { value: 'primary', label: 'primary', className: 'bg-primary-500' },
@@ -115,6 +122,13 @@ export const variantControl: PlaygroundControl = {
   values: VARIANTS,
 }
 
+export const variantBaseControl: PlaygroundControl = {
+  name: 'variant',
+  type: 'array',
+  defaultValue: 'contained',
+  values: VARIANTS_BASE,
+}
+
 export const statusControl: PlaygroundControl = {
   name: 'status',
   type: 'array',
@@ -166,7 +180,7 @@ export const labelControl: PlaygroundControl = {
 }
 
 export const createInputControls = (
-  labelFieldDefaultValue = 'Input'
+  labelFieldDefaultValue = 'Input',
 ): PlaygroundControl[] => {
   let base: PlaygroundControl[] = [
     sizeControl,
@@ -189,7 +203,7 @@ export const createInputControls = (
 }
 
 export const createRadioControls = (
-  labelFieldDefaultValue = 'Radio'
+  labelFieldDefaultValue = 'Radio',
 ): PlaygroundControl[] => {
   const isRadio = labelFieldDefaultValue === 'Radio'
 

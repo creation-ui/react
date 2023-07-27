@@ -105,9 +105,9 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
    */
   multiple?: boolean
   /**
-   * Should highlight matched text TODO: not implemented
+   * Should highlight matched text
    */
-  highlightSearch?: boolean
+  autoHighlight?: boolean
   /**
    * Limit of multiple selected to be displayed in input
    */

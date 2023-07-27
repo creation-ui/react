@@ -1,4 +1,4 @@
-import { StatusBadge } from '../../../components/status-badge'
+import { Chip } from '../../chip'
 import { useAutocomplete } from '../context'
 import { AutocompleteOptionType } from '../types'
 
@@ -15,7 +15,7 @@ export const MultipleSelections = () => {
         const label = getOptionLabel(option)
         const onDelete = () => handleRemoveSelected(option)
         return (
-          <StatusBadge
+          <Chip
             key={label}
             label={label}
             onDelete={onDelete}

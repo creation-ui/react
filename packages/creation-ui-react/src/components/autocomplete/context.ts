@@ -5,9 +5,9 @@ import {
   AutocompleteProps,
 } from './types'
 
-interface AutocompleteContextValue
+interface AutocompleteContextValue<T>
   extends Pick<
-    AutocompleteProps,
+    AutocompleteProps<T>,
     | 'renderOption'
     | 'renderSelection'
     | 'getOptionLabel'
@@ -23,6 +23,7 @@ interface AutocompleteContextValue
     | 'textNotFound'
     | 'defaultTagStatus'
     | 'defaultTagVariant'
+    | 'autoHighlight'
   > {
   open?: boolean
   floatingContext: any
@@ -40,9 +41,7 @@ interface AutocompleteContextValue
   handleRemoveSelected: (option: AutocompleteOptionType) => void
 }
 
-export const AutocompleteContext = createContext<AutocompleteContextValue>(
-  {} as any
-)
+export const AutocompleteContext = createContext({})
 
 export const useAutocomplete = () => {
   const context = useContext(AutocompleteContext)

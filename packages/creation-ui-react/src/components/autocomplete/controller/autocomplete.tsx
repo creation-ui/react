@@ -8,7 +8,7 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { selectOptionClasses } from '../../../classes'
 import { Theme, useTheme } from '../../../theme'
 import { getFlatOptions } from '../../../utils/normalize-dropdown-options'
@@ -51,19 +51,19 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     filterSelectedOptions = false,
     defaultTagStatus,
     defaultTagVariant,
+    autoHighlight = false,
     onChange,
     filterOptions = createFilterOptions<T>(),
     getLimitTagsText = (more: number) => `+${more}`,
     renderOption = _renderOption,
     renderSelection,
     getOptionLabel: getOptionLabelProp = (option: T): string =>
-      typeof option === 'string' ? option : option.label,
+      typeof option === 'string' ? option : (option as any).label,
     isOptionEqualToValue = _isOptionEqualToValue,
-    getOptionDisabled = (option: T) => option.disabled,
+    getOptionDisabled = (option: T) => (option as any).disabled,
   } = props
 
   let getOptionLabel = getOptionLabelProp
-
   getOptionLabel = (option: T) => {
     const optionLabel = getOptionLabelProp(option)
     if (typeof optionLabel !== 'string') {
@@ -199,13 +199,21 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const retainInputValue = () => {
     if (value && !multiple) {
-      const label = getOptionLabel(value)
+      const label = getOptionLabel(value) || ''
+
+      if (typeof label !== 'string' || typeof query !== 'string') {
+        clearSearch()
+      }
 
       if (!open && label !== query) {
-        setQuery(getOptionLabel(value))
+        setQuery(label)
       }
     }
   }
+
+  useEffect(() => {
+    retainInputValue()
+  }, [])
 
   const inputProps = {
     onChange: onInputChange,
@@ -304,7 +312,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       index,
       query,
       active,
-      query,
       ...itemProps,
     }
   }
@@ -342,6 +349,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
             handleRemoveSelected,
             setOpen,
             multiple,
+            autoHighlight,
             clearable,
             floatingContext: context,
             options: filteredOptions,
