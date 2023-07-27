@@ -4,7 +4,7 @@ import {
   AutocompleteFilterOptionsConfig,
 } from '../types'
 
-export const getTop = ({ placement, y = 0 }) => {
+export const getTop = ({ placement, y = 0 }: any) => {
   switch (placement) {
     case 'top':
       return y - DROPDOWN_MARGIN
