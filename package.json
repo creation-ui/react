@@ -68,6 +68,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-datepicker": "^4.10.0",
     "react-dom": "18.2.0",
+    "react-highlight-words": "^0.20.0",
     "react-spring": "^9.7.1",
     "react-stick": "^5.0.3",
     "react-timer-hook": "^3.0.5",
