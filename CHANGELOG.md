@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.8.0](https://github.com/creation-ui/react/compare/v0.7.1...v0.8.0) (2023-07-28)
+
+
+### Features
+
+* add StatusBadge as tag element, highlight search ([5b7e85a](https://github.com/creation-ui/react/commit/5b7e85a1334ea7a338175c31ffd8af9bf19e5ef9))
+
+
+### Bug Fixes
+
+* add types for react-highlight-words ([1bbe7bc](https://github.com/creation-ui/react/commit/1bbe7bc91d12f90588db8f0e88257fecb2017148))
+* build errors ([24b91e4](https://github.com/creation-ui/react/commit/24b91e4b8db9e33259e9a534d1069ace66cbd27d))
+* positioning of autocomplete dropdown ([b254b48](https://github.com/creation-ui/react/commit/b254b4841f436a6ac40eb565e1952466d7061b98))
+* type errors ([27cdc8c](https://github.com/creation-ui/react/commit/27cdc8c6ed3fd793aa18a4a08686cd883c79167c))
+* vercel build error ([7b79ae5](https://github.com/creation-ui/react/commit/7b79ae5d5710cf2ec99657bb31d7108e2607aa07))
+
 ## [0.7.1](https://github.com/creation-ui/react/compare/v0.7.0...v0.7.1) (2023-07-10)
 
 
