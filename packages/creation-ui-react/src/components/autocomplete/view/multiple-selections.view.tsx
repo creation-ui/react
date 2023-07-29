@@ -1,6 +1,6 @@
 import { Chip } from '../../chip'
 import { useAutocomplete } from '../context'
-import { AutocompleteOptionType } from '../types'
+import { AutocompleteOptionDefault } from '../types'
 
 export const MultipleSelections = () => {
   const {
@@ -9,7 +9,7 @@ export const MultipleSelections = () => {
     defaultTagProps = { variant: 'outlined', status: 'info' },
     getOptionLabel,
     handleRemoveSelected,
-    renderTags = (selected: AutocompleteOptionType[]) =>
+    renderTags = (selected: AutocompleteOptionDefault[]) =>
       selected?.map(option => {
         const label = getOptionLabel!(option)
         const onDelete = () => handleRemoveSelected(option)

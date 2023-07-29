@@ -193,7 +193,7 @@ export const input = cva(
       },
       type: {
         ...formClassesMap,
-        select: [formClassesMap.select, 'outline-none'],
+        select: [formClassesMap.select],
         file: ['!h-8', '!p-0'],
         color: [formClassesMap.color, '!p-0'],
         checkbox: [formClassesMap.checkbox, '!px-0'],
@@ -350,19 +350,15 @@ export const selectedOptionClasses = cva(
 
 export const selectOptionClasses = cva(
   [
-    'truncate',
     'dark:text-info-100',
     'font-normal',
     'relative',
     'cursor-pointer',
     'select-none',
     'text-info-800',
-    'flex',
-    'w-full',
-    'items-center',
     'rounded-md',
     'group',
-    'flex-shrink-0',
+    'w-full',
   ],
   {
     variants: {
@@ -379,8 +375,15 @@ export const selectOptionClasses = cva(
         true: ['bg-info-100', 'dark:bg-primary-100/25'],
         false: [],
       },
+      disabled: {
+        true: ['!opacity-50', 'cursor-not-allowed'],
+        false: [],
+      },
       multiple: { true: ['flex', 'gap-2'], false: [] },
       size: sharedSizeClassesCVA,
+      truncate: {
+        true: ['truncate', 'whitespace-nowrap'],
+      },
     },
     compoundVariants: [
       {

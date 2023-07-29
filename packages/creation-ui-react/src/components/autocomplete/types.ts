@@ -1,16 +1,16 @@
 import {
   BaseComponentProps,
   DropdownMaxHeight,
-  ElementBaseVariant,
-  ElementStatus,
   ElementVariant,
   InputBaseProps,
 } from '../../types'
 import { ChipProps } from '../chip'
 
-export type AutocompleteOptionType = string | { label: string }
+export type AutocompleteOptionDefault =
+  | string
+  | { label: string; disabled?: boolean }
 
-export interface AutocompleteProps<T = AutocompleteOptionType>
+export interface AutocompleteProps<T = AutocompleteOptionDefault>
   extends BaseComponentProps {
   /**
    * Custom function to compare option and value
@@ -118,13 +118,12 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
    * Should display Loader
    */
   loading?: boolean
-
   /**
-   * onChange callback. Will return array of selected values. If !multiple, will return array with one value.
-   * @param value
-   * @returns
+   * Callback function that is called when the value changes.
+   * @param { T | T[] | null } value - The new value(s). Returns an array of selected values. If !multiple, will return an array with one value.
    */
   onChange?: (value: T | T[] | null) => void
+
   /**
    * @default 500
    * either provide a number of pixels or a string like 1rem, 20vh, etc.
@@ -149,7 +148,9 @@ export interface AutocompleteProps<T = AutocompleteOptionType>
   filterSelectedOptions?: boolean
 }
 
-export interface AutocompleteFilterOptionsConfig<T = AutocompleteOptionType> {
+export interface AutocompleteFilterOptionsConfig<
+  T = AutocompleteOptionDefault
+> {
   ignoreAccents?: boolean
   ignoreCase?: boolean
   limit?: number

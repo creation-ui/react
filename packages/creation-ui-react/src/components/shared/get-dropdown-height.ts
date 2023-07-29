@@ -1,4 +1,4 @@
-import { DropdownMaxHeight } from '../../../types'
+import { DropdownMaxHeight } from '../../types'
 
 const asPx = (value: number | string): string => `${value}px`
 

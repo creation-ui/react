@@ -1,10 +1,10 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import clsx from 'clsx'
 import { FC } from 'react'
-import { optionListClasses } from '../../../classes'
 import { useInputBase } from '../../input-base/input-base.context'
+import { DropdownMenu } from '../../shared/dropdown-menu'
 import { useAutocomplete } from '../context'
-import { AutocompleteOptionType } from '../types'
+import { AutocompleteOptionDefault } from '../types'
 import { renderOptionInternalContainer } from '../utils/render-option'
 import { MultipleSelections } from './multiple-selections.view'
 
@@ -33,7 +33,7 @@ export const AutocompleteView: FC = () => {
           <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
             {multiple && <MultipleSelections />}
             {customRenderValue ? (
-              <>{renderSelection(selected as AutocompleteOptionType)}</>
+              <>{renderSelection(selected as AutocompleteOptionDefault)}</>
             ) : (
               <input
                 {...propsInput}
@@ -46,14 +46,14 @@ export const AutocompleteView: FC = () => {
             )}
           </div>
         </div>
-        <FloatingPortal>
-          {open && (
+        {open && (
+          <FloatingPortal>
             <FloatingFocusManager
               initialFocus={-1}
               context={floatingContext}
               visuallyHiddenDismiss
             >
-              <ul {...propsList} className={optionListClasses({ open })}>
+              <DropdownMenu {...propsList} open={open}>
                 {hasOptions ? (
                   options?.map(renderOptionInternalContainer)
                 ) : (
@@ -61,10 +61,10 @@ export const AutocompleteView: FC = () => {
                     {textNotFound}
                   </li>
                 )}
-              </ul>
+              </DropdownMenu>
             </FloatingFocusManager>
-          )}
-        </FloatingPortal>
+          </FloatingPortal>
+        )}
       </div>
     </>
   )

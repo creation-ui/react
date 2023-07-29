@@ -14,9 +14,9 @@ import { Theme, useTheme } from '../../../theme'
 import { getFlatOptions } from '../../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../../dropdown-chevron'
 import { InputBase } from '../../input-base'
-import { getDropdownHeight } from '../../shared/dropdown'
-import { dropdownInitialProps } from '../../shared/dropdown/constants'
-import { DROPDOWN_MARGIN } from '../constants'
+import { getDropdownHeight } from '../../shared'
+import { dropdownInitialProps } from '../../select/constants'
+import { AUTOCOMPLETE_MARGIN } from '../constants'
 import { AutocompleteContext } from '../context'
 import {
   AutocompleteOptionProps,
@@ -54,7 +54,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     onChange,
     filterOptions = createFilterOptions<T>(),
     getLimitTagsText = (more: number) => `+${more}`,
-    renderOption = _renderOption,
+    renderOption,
     renderSelection,
     getOptionLabel: getOptionLabelProp = (option: T): string =>
       typeof option === 'string' ? option : (option as any).label,
@@ -88,6 +88,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const [open, setOpen] = useState<boolean>(false)
   const [query, setQuery] = useState<string>('')
   const [activeIndex, setActiveIdx] = useState<number | null>(null)
+  const [width, setWidth] = useState<number | undefined>(undefined)
 
   const isQuery = !!query?.trim()
   const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
@@ -104,21 +105,25 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   }
 
   const { x, strategy, refs, context } = useFloating<HTMLInputElement>({
+    placement: 'bottom-start',
     whileElementsMounted: autoUpdate,
     onOpenChange: setOpen,
     open,
     middleware: [
-      flip({ padding: 10 + DROPDOWN_MARGIN }),
+      flip({ padding: 10 + AUTOCOMPLETE_MARGIN }),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
           const height = getDropdownHeight(maxHeight, availableHeight)
+
+          setWidth(Number(rects.reference.width?.toFixed(0)))
+
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
             maxHeight: height,
             overflowY: 'auto',
           })
         },
-        padding: 10 + DROPDOWN_MARGIN,
+        padding: 10 + AUTOCOMPLETE_MARGIN,
       }),
     ],
   })
@@ -282,35 +287,30 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         }
         refs.domReference.current?.focus()
       },
-      ref(node) {
-        listRef.current[index] = node
-      },
-      tabIndex: active ? 0 : -1,
-      'aria-label': label,
-      'aria-selected': selected,
-      'aria-disabled': disabled,
-      role: 'option',
     }) as unknown as GetItemPropsReturnType
-    if (selected) {
-      console.table({
-        label,
-        active,
-        selected,
-        multiple,
-        size,
-      })
-    }
+
+    const truncate = typeof renderOption !== 'function'
 
     return {
       className: selectOptionClasses({
         active,
         selected,
-        multiple,
         size,
+        disabled,
+        truncate,
+        className: [truncate && `!w-[${width}px]`],
       }),
       index,
       query,
       active,
+      tabIndex: active ? 0 : -1,
+      'aria-label': label,
+      'aria-selected': selected,
+      'aria-disabled': disabled,
+      role: 'option',
+      ref(node) {
+        listRef.current[index] = node
+      },
       ...itemProps,
     }
   }
@@ -324,7 +324,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       zIndex: zIndex?.list,
     },
   })
-
+  const handleChevronClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    toggleOpen()
+  }
   return (
     <Theme theme={{ size }}>
       <InputBase
@@ -336,7 +339,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         readOnly={props.readOnly}
         label={props.label}
         required={props.required}
-        endAdornment={<DropdownChevron open={open} onClick={toggleOpen} />}
+        endAdornment={
+          <DropdownChevron open={open} onClick={handleChevronClick} />
+        }
         helperText={helperText}
         clearable={clearable}
         onClear={clearableCallback}

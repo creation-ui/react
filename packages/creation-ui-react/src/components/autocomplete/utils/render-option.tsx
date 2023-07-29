@@ -1,12 +1,12 @@
 import { useAutocomplete } from '../context'
-import { AutocompleteOptionType, AutocompleteProps } from '../types'
+import { AutocompleteOptionDefault, AutocompleteProps } from '../types'
 import Highlighter from 'react-highlight-words'
 
 export const renderOptionInternalContainer = (
-  option: AutocompleteOptionType,
+  option: AutocompleteOptionDefault,
   index: number
 ) => {
-  const { renderOption, getOptionProps } = useAutocomplete()
+  const { renderOption = _renderOption, getOptionProps } = useAutocomplete()
   const props = getOptionProps(option, index)
   return renderOption?.(props, option)
 }

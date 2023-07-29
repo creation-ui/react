@@ -1,7 +1,9 @@
-import { passThrough } from '../../../utils/functions'
-import { DropdownProps } from '../../../types'
+import { passThrough } from '../../utils/functions'
+import { DropdownProps } from '../../types'
 import { Option } from './option'
 import { SelectedOption } from './selected-option'
+
+export const DROPDOWN_MARGIN = 4
 
 export const dropdownInitialProps: Partial<DropdownProps> = {
   loadingText: 'Loading...',

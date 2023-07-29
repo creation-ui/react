@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 import {
   AutocompleteOptionProps,
-  AutocompleteOptionType,
+  AutocompleteOptionDefault,
   AutocompleteProps,
 } from './types'
 
@@ -27,17 +27,17 @@ interface AutocompleteContextValue<T = any>
   open?: boolean
   floatingContext: any
   activeIndex: number | null
-  selected?: AutocompleteOptionType | AutocompleteOptionType[] | null
+  selected?: AutocompleteOptionDefault | AutocompleteOptionDefault[] | null
   /** PROPS **/
   propsInput: Record<string, unknown>
   propsList: Record<string, unknown>
   getOptionProps: (
-    option: AutocompleteOptionType,
+    option: AutocompleteOptionDefault,
     index: number
   ) => AutocompleteOptionProps
   /** CONTROLS **/
   setOpen: (value: boolean) => void
-  handleRemoveSelected: (option: AutocompleteOptionType) => void
+  handleRemoveSelected: (option: AutocompleteOptionDefault) => void
 }
 export const AutocompleteContext = createContext<any>(null)
 

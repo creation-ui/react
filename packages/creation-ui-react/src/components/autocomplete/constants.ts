@@ -1,1 +1,1 @@
-export const DROPDOWN_MARGIN = 4
+export const AUTOCOMPLETE_MARGIN = 4

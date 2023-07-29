@@ -1,4 +1,4 @@
-import { DropdownOptionType } from '../../../types'
+import { DropdownOptionType } from '../../types'
 
 export const filterOptionsDefault = (query: string) => (option: DropdownOptionType) =>
   option.label

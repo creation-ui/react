@@ -32,6 +32,7 @@ specifiers:
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-react: ^7.32.2
   eslint-plugin-react-hooks: ^4.6.0
+  keyboard-key: ^1.1.0
   lodash.merge: ^4.6.2
   lodash.values: ^4.3.0
   mini-svg-data-uri: ^1.4.4
@@ -64,6 +65,7 @@ dependencies:
   '@tanstack/table-core': 8.7.9
   class-variance-authority: 0.4.0_typescript@4.9.5
   clsx: 1.2.1
+  keyboard-key: 1.1.0
   lodash.merge: 4.6.2
   lodash.values: 4.3.0
   mini-svg-data-uri: 1.4.4
@@ -6075,6 +6077,10 @@ packages:
       array-includes: 3.1.6
       object.assign: 4.1.4
     dev: true
+
+  /keyboard-key/1.1.0:
+    resolution: {integrity: sha512-qkBzPTi3rlAKvX7k0/ub44sqOfXeLc/jcnGGmj5c7BJpU8eDrEVPyhCvNYAaoubbsLm9uGWwQJO1ytQK1a9/dQ==}
+    dev: false
 
   /keyv/4.5.2:
     resolution: {integrity: sha512-5MHbFaKn8cNSmVW7BYnijeAVlE4cYA/SVkifVgrh7yotnfhKmjuXpDKjrABLnT0SfHWV21P8ow07OGfRrNDg8g==}

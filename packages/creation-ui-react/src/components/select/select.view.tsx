@@ -1,22 +1,45 @@
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import { twMerge } from 'tailwind-merge'
 import { useInputBase } from '../input-base/input-base.context'
-import { SelectViewProps } from './types'
+import { DropdownMenu } from '../shared/dropdown-menu'
+import { useSelect } from './context'
+import { renderOptionInternalContainer } from './render-option'
 
-export const SelectView = ({
-  children,
-  className,
-  clearable,
-  ...rest
-}: SelectViewProps) => {
+export const SelectView = () => {
   const { classes, componentId } = useInputBase()
+  const {
+    propsContainer,
+    floatingContext,
+    propsList,
+    open,
+    options,
+    value,
+    textEmpty,
+    renderSelection,
+  } = useSelect()
 
   return (
-    <select
-      id={componentId}
-      className={twMerge(classes.input, clearable && 'mr-3', className)}
-      {...rest}
-    >
-      {children}
-    </select>
+    <>
+      <div
+        id={componentId}
+        {...propsContainer}
+        className={twMerge(classes.input, 'cursor-default')}
+      >
+        {renderSelection(value)}
+      </div>
+      {open && (
+        <FloatingPortal>
+          <FloatingFocusManager context={floatingContext} modal={false}>
+            <DropdownMenu {...propsList} open={open}>
+              {options?.length ? (
+                options?.map(renderOptionInternalContainer)
+              ) : (
+                <li className={'py-2 px-3 w-full text-center'}>{textEmpty}</li>
+              )}
+            </DropdownMenu>
+          </FloatingFocusManager>
+        </FloatingPortal>
+      )}
+    </>
   )
 }

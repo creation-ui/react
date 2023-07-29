@@ -1,10 +1,10 @@
-import { selectedOptionClasses } from '../../../classes'
-import { SelectedOptionProps } from '../../../types'
-import { ClearButton } from '../../clear-button'
-import { useDropdown } from './context'
+import { selectedOptionClasses } from '../../classes'
+import { SelectedOptionProps } from '../../types'
+import { ClearButton } from '../clear-button'
+import { useSelect } from './context'
 
 export const SelectedOption = ({ option, children }: SelectedOptionProps) => {
-  const { handleRemoveSelected } = useDropdown()
+  const { handleRemoveSelected } = useSelect()
 
   const handleRemove = e => {
     e?.stopPropagation?.()

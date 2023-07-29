@@ -8,7 +8,7 @@ import { options } from './data'
 import { createInputControls } from './shared-playground-controls'
 
 export const SelectExample = ({ ...props }: DropdownProps) => {
-  const [value, setValue] = useState<string | undefined>(undefined)
+  const [value, setValue] = useState<(typeof options)[0] | null>(null)
 
   const playground = usePlayground()
 
@@ -20,39 +20,28 @@ export const SelectExample = ({ ...props }: DropdownProps) => {
     'readOnly',
     'clearable',
   ])
-
+  const onClear = () => setValue(null)
   return (
     <Select
+      {...state}
+      {...props}
       label={'Person'}
       value={value}
       placeholder='Select value'
-      onChange={e => setValue(e.target.value)}
-      onClear={() => setValue('')}
-      {...state}
-      {...props}
-    >
-      <option value={undefined}></option>
-      {options?.map(item => (
-        <option
-          value={item.label}
-          key={item.id}
-          disabled={false}
-          className='w-full'
-        >
-          {item.label}
-        </option>
-      ))}
-    </Select>
+      onChange={setValue}
+      onClear={onClear}
+      options={options}
+    />
   )
 }
 
-export const SelectPlayground = () =>
-    <Playground
-      name='Select'
-      component={SelectExample}
-      controls={createInputControls('Select')}
-      showCode={false}
-    />
-
+export const SelectPlayground = () => (
+  <Playground
+    name='Select'
+    component={SelectExample}
+    controls={createInputControls('Select')}
+    showCode={false}
+  />
+)
 
 export const properties: DocumentedProperty[] = []

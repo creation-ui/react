@@ -1,4 +1,4 @@
-import { DROPDOWN_MARGIN } from '../constants'
+import { AUTOCOMPLETE_MARGIN } from '../constants'
 import {
   AutocompleteFilterOptions,
   AutocompleteFilterOptionsConfig,
@@ -7,10 +7,10 @@ import {
 export const getTop = ({ placement, y = 0 }: any) => {
   switch (placement) {
     case 'top':
-      return y - DROPDOWN_MARGIN
+      return y - AUTOCOMPLETE_MARGIN
     default:
     case 'bottom':
-      return y + DROPDOWN_MARGIN
+      return y + AUTOCOMPLETE_MARGIN
   }
 }
 

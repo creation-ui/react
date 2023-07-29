@@ -36,6 +36,7 @@
     "@tanstack/table-core": "^8.7.9",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
+    "keyboard-key": "^1.1.0",
     "lodash.merge": "^4.6.2",
     "lodash.values": "^4.3.0",
     "mini-svg-data-uri": "^1.4.4",
