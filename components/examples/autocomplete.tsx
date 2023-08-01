@@ -6,16 +6,7 @@ import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
-import {
-  clearableControl,
-  disabledControl,
-  errorControl,
-  helperTextControl,
-  loadingControl,
-  readOnlyControl,
-  sizeControl,
-  variantControl,
-} from './shared-playground-controls'
+import { createInputControls } from './shared-playground-controls'
 
 type OptionType = (typeof options)[0]
 
@@ -98,6 +89,11 @@ type Character = {
   species: string
 }
 
+const autocompleteControls = createInputControls('Autocomplete')
+const autocompleteControlsMultiple = createInputControls(
+  'Autocomplete - multiple',
+)
+
 export const AutocompleteExampleCustomOptions = () => {
   const [value, setValue] = useState<Character | undefined | null>(users[0])
 
@@ -135,16 +131,7 @@ export const AutocompletePlayground = () => {
         onChange: setValue,
         getOptionLabel: (option: OptionType) => option?.label,
       }}
-      controls={[
-        variantControl,
-        sizeControl,
-        errorControl,
-        loadingControl,
-        disabledControl,
-        readOnlyControl,
-        clearableControl,
-        helperTextControl,
-      ]}
+      controls={autocompleteControls}
     />
   )
 }
@@ -169,16 +156,7 @@ export const AutocompleteMultiPlayground = () => {
         options,
         onChange: handleChange,
       }}
-      controls={[
-        variantControl,
-        sizeControl,
-        errorControl,
-        loadingControl,
-        disabledControl,
-        readOnlyControl,
-        clearableControl,
-        helperTextControl,
-      ]}
+      controls={autocompleteControlsMultiple}
     />
   )
 }
@@ -253,10 +231,10 @@ export const properties: DocumentedProperty[] = [
     defaultValue: 'false',
   },
   {
-    name: 'autoHighlight',
+    name: 'highlight',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Highlight search in options',
+    description: 'Highlight search text fragment in options',
   },
   {
     description: 'Error text displayed under the component.',
@@ -271,11 +249,6 @@ export const AutocompleteOptionComponent: DocumentedProperty[] = [
     description: 'Option value',
     name: 'option',
     type: 'AutocompleteOptionsType',
-  },
-  {
-    description: 'Is option Autocompleteed?',
-    name: 'Autocompleteed',
-    type: 'boolean',
   },
   {
     description: 'Is option active?',

@@ -163,6 +163,10 @@ export const input = cva(
   ],
   {
     variants: {
+      interactionsDisabled: {
+        true: ['pointer-events-none'],
+        false: null,
+      },
       variant: {
         contained: [
           classes.input,

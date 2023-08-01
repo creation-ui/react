@@ -1,7 +1,7 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import { twMerge } from 'tailwind-merge'
 import { useInputBase } from '../input-base/input-base.context'
-import { DropdownMenu } from '../shared/dropdown-menu'
+import { DropdownMenu } from '../shared/DropdownMenu'
 import { useSelect } from './context'
 import { renderOptionInternalContainer } from './render-option'
 

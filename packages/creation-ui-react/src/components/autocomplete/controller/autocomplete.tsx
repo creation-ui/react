@@ -1,3 +1,4 @@
+import Keyboard from 'keyboard-key'
 import {
   autoUpdate,
   flip,
@@ -92,8 +93,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const isQuery = !!query?.trim()
   const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
-  const disabled = props.disabled || props.loading || props.readOnly
-  const clearable = !disabled && props.clearable && (!isEmpty || isQuery)
+  const interactionsDisabled = props.disabled || props.loading || props.readOnly
+  const clearable = props.clearable && (!isEmpty || isQuery)
 
   const listRef = useRef<Array<HTMLElement | null>>([])
 
@@ -107,7 +108,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { x, strategy, refs, context } = useFloating<HTMLInputElement>({
     placement: 'bottom-start',
     whileElementsMounted: autoUpdate,
-    onOpenChange: setOpen,
+    onOpenChange: open => {
+      if (interactionsDisabled) return
+      setOpen(open)
+    },
     open,
     middleware: [
       flip({ padding: 10 + AUTOCOMPLETE_MARGIN }),
@@ -145,6 +149,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   function onInputChange({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) {
+    if(interactionsDisabled) return
     const text = value
     setQuery(text)
 
@@ -259,21 +264,32 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     const selected = isOptionEqualToValue(option, value)
     const disabled = getOptionDisabled(option)
     const label = getOptionLabel?.(option)
+    const truncate = typeof renderOption !== 'function'
 
     const itemProps = getItemProps({
-      key: label,
-      multiple,
-      selected: isOptionEqualToValue(option, value),
-      onKeyDown(event) {
-        if (event.key === 'Enter') {
-          handleSelect(option)
+      onKeyDown(e) {
+        if (disabled) return
+
+        const code = Keyboard.getCode(e)
+
+        if (([Keyboard.Enter, Keyboard.Spacebar] as number[]).includes(code)) {
+          e.preventDefault()
+          const wasSelected =
+            (e.target as any).getAttribute?.('aria-selected') === 'true'
+
+          if (selected && multiple) {
+            handleRemoveSelected(option)
+          }
+
+          if (!wasSelected) {
+            handleSelect(option)
+          }
+
+          refs.domReference.current?.focus()
         }
       },
       onClick(e: React.MouseEvent<HTMLLIElement>) {
-        const isDisabled =
-          (e.target as any).getAttribute?.('aria-disabled') === 'true'
-
-        if (isDisabled || disabled) return
+        if (disabled) return
 
         const wasSelected =
           (e.target as any).getAttribute?.('aria-selected') === 'true'
@@ -289,9 +305,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       },
     }) as unknown as GetItemPropsReturnType
 
-    const truncate = typeof renderOption !== 'function'
-
     return {
+      key: label,
+      multiple,
+      selected,
       className: selectOptionClasses({
         active,
         selected,
@@ -308,7 +325,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       'aria-selected': selected,
       'aria-disabled': disabled,
       role: 'option',
-      ref(node) {
+      ref: node => {
         listRef.current[index] = node
       },
       ...itemProps,
@@ -324,19 +341,22 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       zIndex: zIndex?.list,
     },
   })
+
   const handleChevronClick = (e: React.MouseEvent) => {
     e.stopPropagation()
+    if(interactionsDisabled) return
     toggleOpen()
   }
+
   return (
     <Theme theme={{ size }}>
       <InputBase
         id={id}
         variant={variant}
-        disabled={disabled}
         error={error}
         loading={props.loading}
         readOnly={props.readOnly}
+        disabled={props.disabled}
         label={props.label}
         required={props.required}
         endAdornment={
@@ -346,6 +366,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         clearable={clearable}
         onClear={clearableCallback}
         cx={cx}
+        interactionsDisabled={interactionsDisabled}
         {...containerProps}
       >
         <AutocompleteContext.Provider

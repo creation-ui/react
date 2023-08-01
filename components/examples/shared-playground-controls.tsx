@@ -159,6 +159,7 @@ export const fullWidthControl: PlaygroundControl = {
 export const clearableControl: PlaygroundControl = {
   name: 'clearable',
   type: 'boolean',
+  defaultValue: true,
 }
 export const errorControl: PlaygroundControl = {
   name: 'error',

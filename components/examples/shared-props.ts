@@ -17,6 +17,11 @@ export const idProp: DocumentedProperty = {
   type: 'string',
   description: 'ID of the element',
 }
+export const descriptionProp: DocumentedProperty = {
+  name: 'description',
+  type: 'string',
+  description: 'Description of field',
+}
 export const sizeProp: DocumentedProperty = {
   name: 'size',
   type: ListOrTypes([...ELEMENT_SIZES]),

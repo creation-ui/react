@@ -37,12 +37,14 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     clearable,
     variant = defaultVariant,
     layout = 'column',
+    interactionsDisabled,
     onClear,
   } = props
   const componentId = useId(id)
 
   const disabled = props.disabled
   const readOnly = props.readOnly || loading
+  const disableInteractions = disabled || readOnly || loading
 
   const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
@@ -54,7 +56,6 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const hasError = Boolean(error)
   const hasStartAdornment = Boolean(startAdornment)
   const hasEndAdornment = Boolean(endAdornment)
-
   const finalVariant = isUnstyled ? 'unstyled' : variant
 
   const inputClasses = twMerge(
@@ -64,6 +65,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
       iconLeft: hasStartAdornment,
       iconRight: hasEndAdornment,
       error: hasError,
+      interactionsDisabled,
       // @ts-ignore
       className: cx?.input,
       // @ts-expect-error
@@ -112,7 +114,9 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
                 type={type}
                 adornment={
                   <>
-                    {clearable && <ClearButton onClick={onClear} />}
+                    {clearable && !disableInteractions && (
+                      <ClearButton onClick={onClear} />
+                    )}
                     {endAdornment}
                   </>
                 }

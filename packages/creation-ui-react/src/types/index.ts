@@ -197,6 +197,10 @@ export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
    * CSS classes API
    */
   cx?: InputClassNamesAPI
+  /**
+   * Disable interactions e.g. while loading, readOnly, disabled. This will prevent interactions with the input by "pointer-events-none".
+   */
+  interactionsDisabled?: boolean
 }
 
 export type InputClassNamesAPI = {

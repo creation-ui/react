@@ -76,10 +76,9 @@ export function Select<T>(props: SelectProps<T>) {
 
     return optionLabel
   }
-
   const isEmpty = !props.value
-  const disabled = props.disabled || props.loading || props.readOnly
-  const clearable = !disabled && props.clearable && !isEmpty
+  const interactionsDisabled = props.disabled || props.loading || props.readOnly
+  const clearable = props.clearable && !isEmpty
 
   const [open, setOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -89,7 +88,10 @@ export function Select<T>(props: SelectProps<T>) {
   const { refs, floatingStyles, context } = useFloating({
     placement: 'bottom-start',
     open: open,
-    onOpenChange: setOpen,
+    onOpenChange: (open: boolean) => {
+      if (interactionsDisabled) return
+      setOpen(open)
+    },
     whileElementsMounted: autoUpdate,
     middleware: [
       offset(5),
@@ -185,11 +187,15 @@ export function Select<T>(props: SelectProps<T>) {
 
     return {
       key: label,
-      tabIndex: idx === activeIndex ? 0 : -1,
-      'aria-selected': idx === selectedIndex && idx === activeIndex,
+      tabIndex: active ? 0 : -1,
+      'aria-selected': idx === selectedIndex && active,
       'aria-disabled': disabled,
       'aria-label': label,
       role: 'option',
+      active,
+      selected,
+      disabled,
+      label,
       className: selectOptionClasses({
         active,
         selected,
@@ -201,15 +207,16 @@ export function Select<T>(props: SelectProps<T>) {
       ref: node => {
         listRef.current[idx] = node
       },
-      style: {},
       ...optionProps,
     }
   }
 
   const toggleOpen = () => setOpen(o => !o)
-
   const handleChevronClick = (e: React.MouseEvent) => {
     e.stopPropagation()
+
+    if (interactionsDisabled) return
+
     toggleOpen()
   }
 
@@ -218,13 +225,14 @@ export function Select<T>(props: SelectProps<T>) {
       <InputBase
         id={id}
         variant={variant}
-        disabled={disabled}
         size={size}
         error={error}
         loading={props.loading}
         readOnly={props.readOnly}
         label={props.label}
         required={props.required}
+        disabled={props.disabled}
+        interactionsDisabled={interactionsDisabled}
         endAdornment={
           <DropdownChevron open={open} onClick={handleChevronClick} />
         }

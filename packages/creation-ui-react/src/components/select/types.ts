@@ -156,4 +156,17 @@ export interface SelectProps<T = SelectOptionDefault>
 
 export interface SelectViewProps extends Omit<SelectProps, 'size'> {}
 
-export interface RenderOptionProps {}
+export interface RenderOptionProps {
+  key: string
+  tabIndex: number
+  'aria-selected': boolean
+  'aria-disabled': boolean
+  'aria-label': string
+  role: string
+  className: string
+  ref: (node: any) => void
+  active: boolean
+  selected: boolean
+  disabled: boolean
+  label: string
+}
