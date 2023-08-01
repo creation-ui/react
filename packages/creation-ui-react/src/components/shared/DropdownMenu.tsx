@@ -18,8 +18,7 @@ export const dropdownMenuClasses = cva(
     'p-1',
     'dark:bg-info-800',
     'dark:border-info-700',
-    '!outline-none',
-    '!ring-none'
+    'remove-ring',
   ],
   {
     variants: {

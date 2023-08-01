@@ -64,6 +64,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
       variant: finalVariant,
       iconLeft: hasStartAdornment,
       iconRight: hasEndAdornment,
+      clearable,
       error: hasError,
       interactionsDisabled,
       // @ts-ignore

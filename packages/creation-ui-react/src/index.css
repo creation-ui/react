@@ -47,3 +47,7 @@
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
 }
+
+.remove-ring[tabindex]:not([tabindex='-1']):focus-visible {
+  box-shadow: none !important;
+}

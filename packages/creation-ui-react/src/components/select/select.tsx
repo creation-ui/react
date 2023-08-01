@@ -26,6 +26,7 @@ import { getDropdownHeight } from '../shared'
 import { Placeholder } from '../shared/Placeholder'
 import { SelectContext } from './context'
 import { SelectView } from './select.view'
+import clsx from 'clsx'
 
 export function Select<T>(props: SelectProps<T>) {
   const { size: defaultSize } = useTheme()
@@ -202,7 +203,7 @@ export function Select<T>(props: SelectProps<T>) {
         size,
         disabled,
         truncate,
-        className: [truncate && `!w-[${width}px]`],
+        className: [truncate && `!w-[${width}px]`, 'remove-ring'],
       }),
       ref: node => {
         listRef.current[idx] = node

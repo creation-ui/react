@@ -163,6 +163,7 @@ export const input = cva(
   ],
   {
     variants: {
+      clearable: { true: 'pl-10', false: [] },
       interactionsDisabled: {
         true: ['pointer-events-none'],
         false: null,
@@ -208,6 +209,11 @@ export const input = cva(
       variant: 'outlined',
     },
     compoundVariants: [
+      {
+        clearable: true,
+        iconRight: true,
+        className:['pr-16']
+      },
       {
         type: 'color',
         size: 'sm',
