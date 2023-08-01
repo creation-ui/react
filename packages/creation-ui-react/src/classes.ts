@@ -153,7 +153,7 @@ export const classes = {
   ],
 }
 
-export const input = cva(
+export const inputClassesCVA = cva(
   [
     getAllValuesFromObject(roundness),
     'peer',
@@ -190,8 +190,8 @@ export const input = cva(
         unstyled: [],
       },
       size: sharedSizeClassesCVA,
-      iconLeft: { true: 'pl-10', false: 'pl-3' },
-      iconRight: { true: 'pr-10', false: 'pr-3' },
+      startAdornment: { true: 'pl-10', false: 'pl-3' },
+      endAdornment: { true: 'pr-10', false: 'pr-3' },
       error: {
         true: sharedErrorClasses,
         false: null,
@@ -211,7 +211,7 @@ export const input = cva(
     compoundVariants: [
       {
         clearable: true,
-        iconRight: true,
+        endAdornment: true,
         className:['pr-16']
       },
       {
@@ -369,6 +369,8 @@ export const selectOptionClasses = cva(
     'rounded-md',
     'group',
     'w-full',
+    'flex',
+    'items-center',
   ],
   {
     variants: {

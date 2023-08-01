@@ -26,7 +26,6 @@ import { getDropdownHeight } from '../shared'
 import { Placeholder } from '../shared/Placeholder'
 import { SelectContext } from './context'
 import { SelectView } from './select.view'
-import clsx from 'clsx'
 
 export function Select<T>(props: SelectProps<T>) {
   const { size: defaultSize } = useTheme()

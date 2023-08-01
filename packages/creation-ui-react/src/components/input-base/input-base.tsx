@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import {
   errorClasses,
-  input,
+  inputClassesCVA,
   inputContainer,
   inputIcon,
   label,
@@ -59,11 +59,11 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const finalVariant = isUnstyled ? 'unstyled' : variant
 
   const inputClasses = twMerge(
-    input({
+    inputClassesCVA({
       size,
       variant: finalVariant,
-      iconLeft: hasStartAdornment,
-      iconRight: hasEndAdornment,
+      startAdornment: hasStartAdornment,
+      endAdornment: hasEndAdornment,
       clearable,
       error: hasError,
       interactionsDisabled,

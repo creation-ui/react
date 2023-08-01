@@ -23,7 +23,7 @@ export const SelectView = () => {
       <div
         id={componentId}
         {...propsContainer}
-        className={twMerge(classes.input, 'cursor-default')}
+        className={twMerge(classes.input, 'cursor-default flex items-center')}
       >
         {renderSelection(value)}
       </div>

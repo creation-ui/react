@@ -1,7 +1,5 @@
 import { passThrough } from '../../utils/functions'
 import { DropdownProps } from '../../types'
-import { Option } from './option'
-import { SelectedOption } from './selected-option'
 
 export const DROPDOWN_MARGIN = 4
 
@@ -11,11 +9,9 @@ export const dropdownInitialProps: Partial<DropdownProps> = {
   notFoundText: 'Nothing found',
   placeholder: 'Select option',
   multiple: false,
-  value: [],
+  value: null,
   options: [],
   limit: 3,
   onChange: passThrough,
   getLimitText: passThrough,
-  optionComponent: Option,
-  selectedOptionComponent: SelectedOption,
 }
