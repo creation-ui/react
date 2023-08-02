@@ -50,6 +50,7 @@ specifiers:
   eslint-plugin-react: ^7.32.2
   eslint-plugin-react-hooks: ^4.6.0
   framer-motion: ^10.8.4
+  keyboard-key: ^1.1.0
   lodash: ^4.17.21
   lodash.merge: ^4.6.2
   lodash.values: ^4.3.0
@@ -112,6 +113,7 @@ dependencies:
   eslint: 8.29.0
   eslint-config-next: 13.0.6_s5ps7njkmjlaqajutnox5ntcla
   framer-motion: 10.8.4_biqbaboplfbrettd7655fr4n2y
+  keyboard-key: 1.1.0
   lodash: 4.17.21
   lodash.merge: 4.6.2
   lodash.values: 4.3.0
@@ -8092,6 +8094,10 @@ packages:
     hasBin: true
     dependencies:
       commander: 8.3.0
+    dev: false
+
+  /keyboard-key/1.1.0:
+    resolution: {integrity: sha512-qkBzPTi3rlAKvX7k0/ub44sqOfXeLc/jcnGGmj5c7BJpU8eDrEVPyhCvNYAaoubbsLm9uGWwQJO1ytQK1a9/dQ==}
     dev: false
 
   /keyv/4.5.2:
