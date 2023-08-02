@@ -3,6 +3,7 @@ import {
   autoUpdate,
   flip,
   size as floatingSize,
+  offset,
   useDismiss,
   useFloating,
   useInteractions,
@@ -104,33 +105,35 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     onChange?.(null)
     clearSearch()
   }
+  // @ts-ignore
+  const { x, strategy, refs, context, floatingStyles } =
+    useFloating<HTMLInputElement>({
+      placement: 'bottom',
+      whileElementsMounted: autoUpdate,
+      onOpenChange: open => {
+        if (interactionsDisabled) return
+        setOpen(open)
+      },
+      open,
+      middleware: [
+        flip({ padding: AUTOCOMPLETE_MARGIN }),
+        offset(5),
+        floatingSize({
+          apply({ rects, availableHeight, elements }) {
+            const height = getDropdownHeight(maxHeight, availableHeight)
 
-  const { x, strategy, refs, context } = useFloating<HTMLInputElement>({
-    placement: 'bottom-start',
-    whileElementsMounted: autoUpdate,
-    onOpenChange: open => {
-      if (interactionsDisabled) return
-      setOpen(open)
-    },
-    open,
-    middleware: [
-      flip({ padding: 10 + AUTOCOMPLETE_MARGIN }),
-      floatingSize({
-        apply({ rects, availableHeight, elements }) {
-          const height = getDropdownHeight(maxHeight, availableHeight)
+            setWidth(Number(rects.reference.width?.toFixed(0)))
 
-          setWidth(Number(rects.reference.width?.toFixed(0)))
-
-          Object.assign(elements.floating.style, {
-            width: `${rects.reference.width}px`,
-            maxHeight: height,
-            overflowY: 'auto',
-          })
-        },
-        padding: 10 + AUTOCOMPLETE_MARGIN,
-      }),
-    ],
-  })
+            Object.assign(elements.floating.style, {
+              width: `${rects.reference.width}px`,
+              maxHeight: height,
+              overflowY: 'auto',
+            })
+          },
+          padding: AUTOCOMPLETE_MARGIN,
+        }),
+      ],
+    })
 
   const role = useRole(context, { role: 'listbox' })
   const dismiss = useDismiss(context)
@@ -335,15 +338,15 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     }
   }
 
-  const listProps = getFloatingProps({
+  const listProps = {
     ref: refs.setFloating,
+    placement: context.placement,
     style: {
-      position: strategy,
-      left: x ?? 0,
-      top: getTop(context),
+      ...floatingStyles,
       zIndex: zIndex?.list,
     },
-  })
+    ...getFloatingProps(),
+  }
 
   const handleChevronClick = (e: React.MouseEvent) => {
     e.stopPropagation()

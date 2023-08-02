@@ -26,6 +26,7 @@ import { getDropdownHeight } from '../shared'
 import { Placeholder } from '../shared/Placeholder'
 import { SelectContext } from './context'
 import { SelectView } from './select.view'
+import { getTop } from '../autocomplete/utils/utils'
 
 export function Select<T>(props: SelectProps<T>) {
   const { size: defaultSize } = useTheme()
@@ -85,8 +86,9 @@ export function Select<T>(props: SelectProps<T>) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const [width, setWidth] = useState<number | undefined>(undefined)
 
+  // @ts-ignore
   const { refs, floatingStyles, context } = useFloating({
-    placement: 'bottom-start',
+    placement: 'bottom',
     open: open,
     onOpenChange: (open: boolean) => {
       if (interactionsDisabled) return
@@ -94,8 +96,8 @@ export function Select<T>(props: SelectProps<T>) {
     },
     whileElementsMounted: autoUpdate,
     middleware: [
+      flip({ padding: AUTOCOMPLETE_MARGIN,  }),
       offset(5),
-      flip({ padding: 10 + AUTOCOMPLETE_MARGIN }),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
           const height = getDropdownHeight(maxHeight, availableHeight)
@@ -108,7 +110,7 @@ export function Select<T>(props: SelectProps<T>) {
             overflowY: 'auto',
           })
         },
-        padding: 10 + AUTOCOMPLETE_MARGIN,
+        padding: AUTOCOMPLETE_MARGIN,
       }),
     ],
   })
@@ -152,6 +154,7 @@ export function Select<T>(props: SelectProps<T>) {
   const listProps = {
     ref: refs.setFloating,
     style: { ...floatingStyles, zIndex: zIndex?.list },
+    placement: context.placement,
     ...getFloatingProps(),
   }
 

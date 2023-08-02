@@ -38,7 +38,7 @@
     "firstName": "Kiel",
     "lastName": "Flatley",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/443.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -80,14 +80,14 @@
     "firstName": "Andy",
     "lastName": "Lemke",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/861.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Lia",
     "lastName": "Bergstrom",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/261.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -164,7 +164,7 @@
     "firstName": "Maxime",
     "lastName": "Sawayn",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/647.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -192,14 +192,14 @@
     "firstName": "Bettie",
     "lastName": "Krajcik",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/436.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Lorena",
     "lastName": "Pfannerstill",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1086.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -213,14 +213,14 @@
     "firstName": "Maximus",
     "lastName": "Schuppe",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/317.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Maryse",
     "lastName": "Pfeffer",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/499.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -234,7 +234,7 @@
     "firstName": "Breana",
     "lastName": "Shanahan",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/892.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -304,7 +304,7 @@
     "firstName": "Leanne",
     "lastName": "McGlynn",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/63.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -339,7 +339,7 @@
     "firstName": "Sophie",
     "lastName": "Kovacek",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/399.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -360,7 +360,7 @@
     "firstName": "Armani",
     "lastName": "Schulist",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/665.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -402,14 +402,14 @@
     "firstName": "Andre",
     "lastName": "Schultz",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/436.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Holly",
     "lastName": "Hoeger",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/842.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -423,7 +423,7 @@
     "firstName": "Oleta",
     "lastName": "Klocko",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/760.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -437,7 +437,7 @@
     "firstName": "Arnulfo",
     "lastName": "Sawayn",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1081.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -500,7 +500,7 @@
     "firstName": "Al",
     "lastName": "Fisher",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/151.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -535,7 +535,7 @@
     "firstName": "Tracy",
     "lastName": "Hansen",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1173.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -549,7 +549,7 @@
     "firstName": "Savannah",
     "lastName": "Nikolaus",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1245.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -577,28 +577,28 @@
     "firstName": "Laisha",
     "lastName": "Crooks",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1194.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Delia",
     "lastName": "Toy",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/186.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Isobel",
     "lastName": "Ziemann",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/599.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Colin",
     "lastName": "Ferry",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/127.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -633,14 +633,14 @@
     "firstName": "Magdalena",
     "lastName": "Little",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/53.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
     "firstName": "Leopold",
     "lastName": "Johnston",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1012.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -668,7 +668,7 @@
     "firstName": "Ayla",
     "lastName": "Gibson",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/489.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {
@@ -689,7 +689,7 @@
     "firstName": "Ana",
     "lastName": "Boyle",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/949.jpg",
-    "status": "active",
+    "status": "primary",
     "workTime": 475
   },
   {

@@ -166,6 +166,7 @@ const Pagination = () => {
                 value={currentSize}
                 onChange={value => value && table.setPageSize(Number(value))}
                 options={sizes}
+                getOptionLabel={value => value.toString()}
               />
             )}
             {showTotalCount && (

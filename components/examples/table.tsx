@@ -127,7 +127,7 @@ export const TableExample = () => {
             .getFilteredRowModel()
             .rows.reduce(
               (total, row) => total + (row as any).getValue('workTime'),
-              0
+              0,
             )
           return formatMinutes(value)
         },
@@ -136,9 +136,20 @@ export const TableExample = () => {
         accessorKey: 'status',
         header: () => <div className='mx-auto'>Status</div>,
         id: 'status',
-        cell: info => (
-          <Chip status={info.getValue() as Person['status']} size='sm' />
-        ),
+        cell: info => {
+          const status = info.getValue() as string
+
+          const label = status === 'primary' ? 'Active' : status
+
+          return (
+            <Chip
+              status={status as Person['status']}
+              size='sm'
+              uppercase
+              label={label}
+            />
+          )
+        },
         enableColumnFilter: false,
         meta: {
           align: 'center',
@@ -157,7 +168,7 @@ export const TableExample = () => {
         enableColumnFilter: false,
       },
     ],
-    []
+    [],
   )
 
   const table = useReactTable({
@@ -179,7 +190,7 @@ export const TableExample = () => {
             title: 'Service unavailable',
             message:
               'An error occurred in your request. Please try again or change your query',
-          }
+          },
     )
 
   return (

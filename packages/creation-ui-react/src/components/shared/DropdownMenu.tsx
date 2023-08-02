@@ -3,6 +3,7 @@ import { forwardRef } from 'react'
 
 interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
   open?: boolean
+  placement?: 'top' | 'bottom'
 }
 
 export const dropdownMenuClasses = cva(
@@ -25,19 +26,19 @@ export const dropdownMenuClasses = cva(
       open: { true: 'block', false: 'hidden' },
       placement: {
         top: ['!mb-1'],
-        bottom: ['mt-1'],
+        bottom: ['!mt-0'],
       },
     },
   }
 )
 
 export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
-  ({ children, open, className, ...props }, ref) => {
+  ({ children, open, className, placement, ...props }, ref) => {
     return (
       <ul
         ref={ref}
         {...props}
-        className={dropdownMenuClasses({ open, className })}
+        className={dropdownMenuClasses({ open, className, placement })}
       >
         {children}
       </ul>

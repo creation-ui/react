@@ -1,1 +1,1 @@
-export const AUTOCOMPLETE_MARGIN = 4
+export const AUTOCOMPLETE_MARGIN = 6
