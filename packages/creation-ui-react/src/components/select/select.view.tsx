@@ -25,7 +25,7 @@ export const SelectView = () => {
         {...propsContainer}
         className={twMerge(classes.input, 'cursor-default flex items-center')}
       >
-        {renderSelection(value)}
+        {renderSelection?.(value)}
       </div>
       {open && (
         <FloatingPortal>

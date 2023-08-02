@@ -37,7 +37,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     textEmpty = 'No options',
     textNotFound = 'No results found',
     placeholder = 'Select...',
-    multiple,
+    multiple = false,
     helperText,
     error,
     limit,
@@ -149,7 +149,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   function onInputChange({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) {
-    if(interactionsDisabled) return
+    if (interactionsDisabled) return
     const text = value
     setQuery(text)
 
@@ -267,12 +267,18 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     const truncate = typeof renderOption !== 'function'
 
     const itemProps = getItemProps({
+      ref: node => {
+        listRef.current[index] = node
+      },
       onKeyDown(e) {
         if (disabled) return
 
         const code = Keyboard.getCode(e)
 
-        if (([Keyboard.Enter, Keyboard.Spacebar] as number[]).includes(code)) {
+        const isEnter = code === Keyboard.Enter
+        const isSpace = code === Keyboard.Spacebar
+
+        if (isEnter || isSpace) {
           e.preventDefault()
           const wasSelected =
             (e.target as any).getAttribute?.('aria-selected') === 'true'
@@ -306,6 +312,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     }) as unknown as GetItemPropsReturnType
 
     return {
+      ...itemProps,
       key: label,
       multiple,
       selected,
@@ -315,7 +322,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         size,
         disabled,
         truncate,
-        className: [truncate && `!w-[${width}px]`],
+        className: [truncate ? `!w-[${width}px]` : ''],
       }),
       index,
       query,
@@ -325,10 +332,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       'aria-selected': selected,
       'aria-disabled': disabled,
       role: 'option',
-      ref: node => {
-        listRef.current[index] = node
-      },
-      ...itemProps,
     }
   }
 
@@ -344,7 +347,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const handleChevronClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    if(interactionsDisabled) return
+    if (interactionsDisabled) return
     toggleOpen()
   }
 

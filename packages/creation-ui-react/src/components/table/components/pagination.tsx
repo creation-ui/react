@@ -161,17 +161,12 @@ const Pagination = () => {
           </div>
           <div className='flex flex-col'>
             {pageSizes && (
-              <Select
+              <Select<number>
                 size='sm'
                 value={currentSize}
-                onChange={e => table.setPageSize(Number(e.target.value))}
-              >
-                {sizes.map(size => (
-                  <option value={size} key={size}>
-                    {size}
-                  </option>
-                ))}
-              </Select>
+                onChange={value => value && table.setPageSize(Number(value))}
+                options={sizes}
+              />
             )}
             {showTotalCount && (
               <p className='text-xs text-gray-700 dark:text-gray-400'>

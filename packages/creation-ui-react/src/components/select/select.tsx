@@ -178,7 +178,11 @@ export function Select<T>(props: SelectProps<T>) {
       onKeyDown(e) {
         if (isTypingRef.current || disabled) return
         const code = Keyboard.getCode(e)
-        if (([Keyboard.Enter, Keyboard.Spacebar] as number[]).includes(code)) {
+
+        const isEnter = code === Keyboard.Enter
+        const isSpace = code === Keyboard.Spacebar
+
+        if (isEnter || isSpace) {
           e.preventDefault()
           handleSelect(idx)
         }
@@ -186,6 +190,7 @@ export function Select<T>(props: SelectProps<T>) {
     })
 
     return {
+      ...optionProps,
       key: label,
       tabIndex: active ? 0 : -1,
       'aria-selected': idx === selectedIndex && active,
@@ -202,12 +207,11 @@ export function Select<T>(props: SelectProps<T>) {
         size,
         disabled,
         truncate,
-        className: [truncate && `!w-[${width}px]`, 'remove-ring'],
+        className: [truncate ? `!w-[${width}px]` : '', 'remove-ring'],
       }),
       ref: node => {
         listRef.current[idx] = node
       },
-      ...optionProps,
     }
   }
 
