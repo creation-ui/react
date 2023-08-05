@@ -13,6 +13,7 @@ import {
   labelProp,
   sizeProp,
 } from './shared-props'
+import { createDocsLink } from './utils'
 
 export const SelectExample = ({ ...props }: DropdownProps) => {
   const [value, setValue] = useState<(typeof options)[0] | null>(null)
@@ -75,5 +76,46 @@ export const properties: DocumentedProperty[] = [
     type: '(value: T | T[]) => void',
     description: 'Change event callback',
   },
+  {
+    name: 'getOptionLabel',
+    type: ' (option: T) => string',
+    defaultValue: 'option => option.label ?? option',
+    description: 'Getter for option label.',
+  },
+  {
+    name: 'getOptionDisabled',
+    type: ' (option: T) => boolean',
+    defaultValue: 'option => option.disabled',
+    description: 'Getter for option disabled state.',
+  },
+  {
+    name: 'isOptionEqualToValue',
+    type: '(option: T, value?: T | null) => boolean',
+    defaultValue: '_isOptionEqualToValue',
+    description: `Function to compare option and value.`,
+  },
+  {
+    name: 'renderOption',
+    type: '(props: RenderOptionProps, option: T) => ReactNode',
+    defaultValue: '_renderOption',
+    description: `Function rendering option in dropdown.
+      ${createDocsLink({
+        label: 'Docs',
+        component: 'render-option',
+        parent: 'select',
+      })}
+      `,
+  },
+  {
+    name: 'renderSelection',
+    type: '(option: T) => ReactNode',
+    defaultValue: '_renderSelection',
+    description: `Function rendering single selection. ${createDocsLink({
+      label: 'Docs',
+      component: 'render-selection',
+      parent: 'select',
+    })}
+    `,
+  },
+  // renderSelection = (value: T) => value ? getOptionLabel(value) : <Placeholder>{placeholder}</Placeholder>,
 ]
-

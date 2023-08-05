@@ -1,6 +1,8 @@
 import React, { ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
+
 interface HeaderProps {
+  id?: string
   children: React.ReactNode
   as?: ElementType
   href?: string
@@ -28,6 +30,6 @@ export const Header = ({
   </Tag>
 )
 
-export const Description = ({ children }: { children: React.ReactNode }) => (
-  <div className='prose dark:prose-invert '>{children}</div>
+export const Description = ({ children, id}: { children: React.ReactNode, id?:string }) => (
+  <div className='prose dark:prose-invert' id={id} >{children}</div>
 )

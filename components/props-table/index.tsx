@@ -92,9 +92,9 @@ const PropsTable = ({ properties, name, description }: PropsTableProps) => {
     // Initial highlight check
     handleHashChange()
 
-    // setTimeout(() => {
-    //   setHighlightedName(null)
-    // }, 3000)
+    setTimeout(() => {
+      setHighlightedName(null)
+    }, 3000)
 
     // Cleanup after component unmounts
     return () => {
@@ -105,7 +105,7 @@ const PropsTable = ({ properties, name, description }: PropsTableProps) => {
   return (
     <>
       <Description>
-        <Header aria-label={name} as={'h3'} href={`#${name}`}>
+        <Header aria-label={name} as={'h3'} id={name}>
           {name}
         </Header>
         {description && <p dangerouslySetInnerHTML={{ __html: description }} />}

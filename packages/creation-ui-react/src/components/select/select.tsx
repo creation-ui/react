@@ -26,7 +26,6 @@ import { getDropdownHeight } from '../shared'
 import { Placeholder } from '../shared/Placeholder'
 import { SelectContext } from './context'
 import { SelectView } from './select.view'
-import { getTop } from '../autocomplete/utils/utils'
 
 export function Select<T>(props: SelectProps<T>) {
   const { size: defaultSize } = useTheme()
@@ -96,7 +95,7 @@ export function Select<T>(props: SelectProps<T>) {
     },
     whileElementsMounted: autoUpdate,
     middleware: [
-      flip({ padding: AUTOCOMPLETE_MARGIN,  }),
+      flip({ padding: AUTOCOMPLETE_MARGIN }),
       offset(5),
       floatingSize({
         apply({ rects, availableHeight, elements }) {

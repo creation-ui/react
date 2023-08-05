@@ -1,4 +1,4 @@
 {
   "render-option": { "title": "renderOption" },
-  "custom": { "title": "Customizing option" }
+  "render-selection": { "title": "renderSelection" }
 }

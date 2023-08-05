@@ -252,12 +252,7 @@ export const properties: DocumentedProperty[] = [
     name: 'isOptionEqualToValue',
     type: '(option: T, value?: T | null) => boolean',
     defaultValue: '_isOptionEqualToValue',
-    description: `Function to compare option and value.
-      ${createDocsLink({
-        label: 'Docs',
-        component: 'is-option-equal-to-value',
-        parent: 'autocomplete',
-      })}`,
+    description: `Function to compare option and value.`,
   },
   {
     name: 'getOptionDisabled',

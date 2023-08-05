@@ -6,6 +6,7 @@ import {
 } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
+import { createDocsLink } from './utils'
 
 export const positionProp: DocumentedProperty = {
   name: 'position',
@@ -207,7 +208,6 @@ export const defaultOptionType: DocumentedProperty[] = [
   },
 ]
 
-
 export const renderOptionProps: DocumentedProperty[] = [
   {
     description: 'Key of the option',
@@ -266,8 +266,12 @@ export const renderOptionProps: DocumentedProperty[] = [
     type: 'boolean',
   },
   {
-    description: 'Label of the option. Result of <code>getOptionLabel</code',
     name: 'label',
     type: 'string',
+    // description: 'Label of the option. Result of <code>getOptionLabel</code',
+    description: `Label of the option. Result of ${createDocsLink({
+      label: '<code>getOptionLabel</code> docs.',
+      component: 'select#getOptionLabel',
+    })}`,
   },
 ]
