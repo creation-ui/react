@@ -5,7 +5,7 @@ export const docsMicroInteractions = clsx(
   'transition-all',
   'duration-500',
   'delay-100',
-  'ease-in-out'
+  'ease-in-out',
 )
 
 export const gradient = {

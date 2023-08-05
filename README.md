@@ -22,7 +22,6 @@ Creation UI is working with your app's Tailwind CSS and you need to have Tailwin
 
 To install Creation UI, run the command below:
 
-
     ```bash copy
      yarn add @creation-ui/react
      ```
@@ -91,8 +90,8 @@ module.exports = withTailwindConfig({
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 Import the library's CSS file into your app.
-   If you're using the standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-   If you're using the standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
+If you're using the standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
+If you're using the standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
 import '@creation-ui/react/index.css'

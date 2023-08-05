@@ -38,7 +38,7 @@ export const drawer = cva(
     'overflow-hidden',
     'w-full',
     'h-full',
-    'shadow-lg'
+    'shadow-lg',
   ],
   {
     variants: {

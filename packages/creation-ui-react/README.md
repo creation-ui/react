@@ -22,7 +22,6 @@ Creation UI is working with your app's Tailwind CSS and you need to have Tailwin
 
 To install Creation UI, run command below:
 
-
     ```bash copy
      yarn add @creation-ui/react
      ```

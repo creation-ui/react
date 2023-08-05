@@ -3,9 +3,7 @@ import { ELEMENT_SIZES, Switch, SwitchProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
-import {
-  createInputControls
-} from './shared-playground-controls'
+import { createInputControls } from './shared-playground-controls'
 
 const controls = createInputControls('Switch')
 
@@ -17,10 +15,9 @@ export const SwitchExample = ({ ...props }: SwitchExampleProps) => {
   return <Switch onChange={setChecked} checked={checked} size='md' {...props} />
 }
 
-
-export const SwitchPlayground = () =>
-    <Playground name='Switch' component={SwitchExample} controls={controls} />
-
+export const SwitchPlayground = () => (
+  <Playground name='Switch' component={SwitchExample} controls={controls} />
+)
 
 export const properties: DocumentedProperty[] = [
   {
@@ -34,11 +31,7 @@ export const properties: DocumentedProperty[] = [
   {
     name: 'checked',
     type: 'boolean',
-    description: (
-      <>
-        <code>checked</code> state
-      </>
-    ),
+    description: '<code>checked</code> state',
   },
   {
     name: 'defaultChecked',

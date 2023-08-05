@@ -1,6 +1,12 @@
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { errorClasses, inputClassesCVA, inputContainer, label, text } from '../../classes'
+import {
+  errorClasses,
+  inputClassesCVA,
+  inputContainer,
+  label,
+  text,
+} from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { InputBaseProps } from '../../types'

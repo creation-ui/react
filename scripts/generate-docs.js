@@ -9,7 +9,10 @@ const baseConfig = {
 
 const configurations = [
   {
-    config: { ...baseConfig, path: './packages/creation-ui-react/src/types/index.ts' },
+    config: {
+      ...baseConfig,
+      path: './packages/creation-ui-react/src/types/index.ts',
+    },
     output: './docs/types.json',
   },
 ]
@@ -21,8 +24,8 @@ const generateDocumentation = ({ config, output }) => {
   const schema = generator.createSchema(config.type)
   const schemaString = JSON.stringify(schema, null, 2)
 
-  const path = require('path');
-  const outputDirectory = path.dirname(output);
+  const path = require('path')
+  const outputDirectory = path.dirname(output)
 
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true })

@@ -29,7 +29,7 @@ export function Card({
         className={cn(
           styles.card,
           'group flex flex-col justify-start overflow-hidden rounded-lg border border-gray-200 bg-gray-100 text-current no-underline shadow shadow-gray-100 transition-all duration-200',
-          'hover:border-gray-300 hover:shadow-lg hover:shadow-gray-100'
+          'hover:border-gray-300 hover:shadow-lg hover:shadow-gray-100',
         )}
         {...props}
       >
@@ -38,7 +38,7 @@ export function Card({
           className={cn(
             styles.title,
             'gap-2 p-4 text-gray-700',
-            'hover:text-gray-900'
+            'hover:text-gray-900',
           )}
         >
           {icon}
@@ -54,7 +54,7 @@ export function Card({
       className={cn(
         styles.card,
         'group flex flex-col justify-start overflow-hidden rounded-lg border border-gray-200 bg-transparent text-current no-underline shadow-sm shadow-gray-100 transition-all duration-200 dark:border-info-800 dark:shadow-none',
-        'hover:border-gray-300 hover:bg-info-50 hover:shadow-md hover:shadow-gray-100 dark:hover:border-info-700 dark:hover:bg-info-900 dark:hover:shadow-none'
+        'hover:border-gray-300 hover:bg-info-50 hover:shadow-md hover:shadow-gray-100 dark:hover:border-info-700 dark:hover:bg-info-900 dark:hover:shadow-none',
       )}
       {...props}
     >
@@ -64,10 +64,12 @@ export function Card({
           'group',
           'gap-2 p-4 text-gray-700 dark:text-info-200',
           'hover:text-gray-900 dark:hover:text-info-50',
-          'items-center'
+          'items-center',
         )}
       >
-        <span className='group-hover:-rotate-[360deg] ease-in-out duration-1000'>{icon}</span>
+        <span className='group-hover:-rotate-[360deg] ease-in-out duration-1000'>
+          {icon}
+        </span>
         {title}
       </span>
     </Link>

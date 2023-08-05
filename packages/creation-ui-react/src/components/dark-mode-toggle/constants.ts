@@ -1,4 +1,4 @@
-import { AnimationProperties } from "./dark-mode-toggle.type";
+import { AnimationProperties } from './dark-mode-toggle.type'
 
 export const darkModeToggleDefaultProperties: AnimationProperties = {
   dark: {

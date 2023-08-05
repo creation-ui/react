@@ -18,7 +18,7 @@ export function Popover({
   const popover = usePopover({ modal, ...restOptions })
 
   return (
-    <PopoverContext.Provider value={{ ...popover, size}}>
+    <PopoverContext.Provider value={{ ...popover, size }}>
       <div className={className}>{children}</div>
     </PopoverContext.Provider>
   )

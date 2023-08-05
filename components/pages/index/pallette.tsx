@@ -26,7 +26,7 @@ export const Pallette = () => {
           className={twMerge(
             'flex',
             'justify-evenly w-full',
-            docsMicroInteractions
+            docsMicroInteractions,
           )}
         >
           {colors.map(color => (
@@ -42,7 +42,7 @@ export const Pallette = () => {
         <div
           className={clsx(
             state ? 'capitalize' : 'dark:text-gray-500 text-gray-200',
-            'font-bold text-3xl text-center '
+            'font-bold text-3xl text-center ',
           )}
         >
           {state ? state : 'Pick a color'}

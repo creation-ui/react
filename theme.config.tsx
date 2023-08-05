@@ -7,7 +7,7 @@ import React from 'react'
 
 export default {
   toc: {
-    extraContent: <React.Fragment/>,
+    extraContent: <React.Fragment />,
   },
   logo: <Logo size='lg' />,
   project: {

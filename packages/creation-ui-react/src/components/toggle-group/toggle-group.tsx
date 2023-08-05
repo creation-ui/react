@@ -8,7 +8,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
   const { size = defaultSize, ...rest } = props
 
   return (
-    <InputBase {...rest} size={size} >
+    <InputBase {...rest} size={size}>
       <ToggleGroupView {...rest} size={size} />
     </InputBase>
   )

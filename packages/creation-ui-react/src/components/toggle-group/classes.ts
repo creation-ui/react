@@ -1,5 +1,9 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions, sharedDisabledCVA, sharedSizeClassesCVA } from '../../classes'
+import {
+  microInteractions,
+  sharedDisabledCVA,
+  sharedSizeClassesCVA,
+} from '../../classes'
 
 export const toggleGroup = {
   container: [

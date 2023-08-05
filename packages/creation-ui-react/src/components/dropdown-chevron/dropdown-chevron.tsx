@@ -6,7 +6,13 @@ interface DropdownChevronProps extends Omit<IconProps, 'icon'> {
 }
 
 const chevron = cva(
-  ['text-info-400', 'ease-in-out', 'duration-300', 'hover:text-info-800', 'cursor-pointer'],
+  [
+    'text-info-400',
+    'ease-in-out',
+    'duration-300',
+    'hover:text-info-800',
+    'cursor-pointer',
+  ],
   {
     variants: {
       open: {

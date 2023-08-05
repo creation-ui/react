@@ -41,7 +41,9 @@ const TableRow = ({
       <td className='prose dark:prose-invert prose-sm py-3 align-baseline'>
         <span className=''>
           {defaultValue ? (
-            <code dangerouslySetInnerHTML={{ __html: defaultValue }} />
+            <code
+              dangerouslySetInnerHTML={{ __html: defaultValue?.toString() }}
+            />
           ) : (
             <span className='text-gray-400'>—</span>
           )}

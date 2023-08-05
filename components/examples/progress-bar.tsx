@@ -29,7 +29,7 @@ export const ProgressBarAnimatedExample = props => {
   }, [isRunning, state, pause])
 
   return (
-     <Container>
+    <Container>
       <ProgressBar value={state} key='animated-progress-bar' showValue />
       <Button onClick={isRunning ? pause : start}>
         {isRunning ? 'Stop' : 'Start'}
@@ -45,17 +45,17 @@ export const ProgressBarAnimatedExample = props => {
   )
 }
 
-export const ProgressBarPlayground = () =>
-    <Playground
-      name='ProgressBar'
-      component={ProgressBar}
-      controls={[
-        sizeControl,
-        { name: 'value', type: 'number', defaultValue: 50 },
-        { name: 'showValue', type: 'boolean', defaultValue: true },
-      ]}
-    />
-
+export const ProgressBarPlayground = () => (
+  <Playground
+    name='ProgressBar'
+    component={ProgressBar}
+    controls={[
+      sizeControl,
+      { name: 'value', type: 'number', defaultValue: 50 },
+      { name: 'showValue', type: 'boolean', defaultValue: true },
+    ]}
+  />
+)
 
 export const properties: DocumentedProperty[] = [
   {

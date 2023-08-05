@@ -23,16 +23,16 @@ export const Show = ({
   children,
   fallback = null,
   animationProps = defaultAnimationProps,
-}: ShowProps) =>
-    <AnimatePresence>
-      {when ? (
-        <motion.div key='true' {...animationProps}>
-          {children}
-        </motion.div>
-      ) : (
-        <motion.div key='false' {...animationProps}>
-          {fallback}
-        </motion.div>
-      )}
-    </AnimatePresence>
-
+}: ShowProps) => (
+  <AnimatePresence>
+    {when ? (
+      <motion.div key='true' {...animationProps}>
+        {children}
+      </motion.div>
+    ) : (
+      <motion.div key='false' {...animationProps}>
+        {fallback}
+      </motion.div>
+    )}
+  </AnimatePresence>
+)

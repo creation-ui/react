@@ -212,7 +212,7 @@ export const inputClassesCVA = cva(
       {
         clearable: true,
         endAdornment: true,
-        className:['pr-16']
+        className: ['pr-16'],
       },
       {
         type: 'color',

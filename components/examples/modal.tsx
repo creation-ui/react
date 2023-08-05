@@ -1,5 +1,9 @@
 import { Button, Modal, ModalProps } from '@creation-ui/react'
-import { childrenProp, elementTypeProp, openProp } from '@components/examples/shared-props'
+import {
+  childrenProp,
+  elementTypeProp,
+  openProp,
+} from '@components/examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 

@@ -3,10 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "prettier"
-  ],
+  "extends": ["plugin:react/recommended", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -25,10 +22,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".tsx"
-        ]
+        "extensions": [".js", ".tsx"]
       }
     ],
     "react/require-default-props": "off",
@@ -41,10 +35,7 @@
     },
     "import/resolver": {
       "node": {
-        "moduleDirectory": [
-          "node_modules",
-          "src/"
-        ]
+        "moduleDirectory": ["node_modules", "src/"]
       }
     }
   },

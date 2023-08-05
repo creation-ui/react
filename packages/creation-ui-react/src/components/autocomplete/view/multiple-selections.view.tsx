@@ -15,7 +15,7 @@ export const MultipleSelections = () => {
         const onDelete = () => handleRemoveSelected(option)
         return (
           <Chip
-          {...defaultTagProps}
+            {...defaultTagProps}
             key={label}
             label={label}
             onDelete={onDelete}

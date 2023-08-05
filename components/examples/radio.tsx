@@ -21,13 +21,13 @@ export const RadioExample = ({
 
 export const radioControlsSet = createRadioControls()
 
-export const RadioPlayground = () =>
-    <Playground
-      name='Radio'
-      component={RadioExample}
-      controls={radioControlsSet}
-    />
-
+export const RadioPlayground = () => (
+  <Playground
+    name='Radio'
+    component={RadioExample}
+    controls={radioControlsSet}
+  />
+)
 
 export const properties: DocumentedProperty[] = [
   {

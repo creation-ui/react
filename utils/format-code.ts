@@ -1,5 +1,5 @@
-import prettier from 'prettier/standalone';
-import parserBabel from 'prettier/parser-babel';
+import prettier from 'prettier/standalone'
+import parserBabel from 'prettier/parser-babel'
 
 export const formatCode = (code: string) =>
   prettier.format(code, {

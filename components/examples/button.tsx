@@ -12,29 +12,29 @@ import {
 } from './shared-playground-controls'
 import { iconProp } from './shared-props'
 
-export const ButtonPlayground = () =>
-    <Playground
-      component={Button}
-      name='Button'
-      controls={[
-        childrenControl,
-        sizeControl,
-        variantControl,
-        statusControl,
-        loadingControl,
-        disabledControl,
-        {
-          name: 'uppercase',
-          type: 'boolean',
-        },
-        fullWidthControl,
-        {
-          name: 'circle',
-          type: 'boolean',
-        },
-      ]}
-    />
-
+export const ButtonPlayground = () => (
+  <Playground
+    component={Button}
+    name='Button'
+    controls={[
+      childrenControl,
+      sizeControl,
+      variantControl,
+      statusControl,
+      loadingControl,
+      disabledControl,
+      {
+        name: 'uppercase',
+        type: 'boolean',
+      },
+      fullWidthControl,
+      {
+        name: 'circle',
+        type: 'boolean',
+      },
+    ]}
+  />
+)
 
 export const properties: DocumentedProperty[] = [
   {

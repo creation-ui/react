@@ -30,5 +30,3 @@ export const tests = [
   },
   { description: 'applies the correct styles when circle prop is true' },
 ]
-
-

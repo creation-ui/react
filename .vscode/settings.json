@@ -10,7 +10,5 @@
   },
   "git.ignoreLimitWarning": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "conventionalCommits.scopes": [
-    "github-actions"
-  ],
+  "conventionalCommits.scopes": ["github-actions"]
 }

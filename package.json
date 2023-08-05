@@ -28,7 +28,8 @@
     "e2e": "pnpm package:build && cypress run",
     "e2e:dev": "pnpm package:build && cypress open",
     "override-version": "sh ./override-version.sh",
-    "generate:docs": "node ./scripts/generate-docs.js"
+    "generate:docs": "node ./scripts/generate-docs.js",
+    "prettify": "prettier --write ."
   },
   "dependencies": {
     "keyboard-key": "^1.1.0",

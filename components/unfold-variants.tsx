@@ -36,7 +36,7 @@ export const UnfoldVariants = ({
 const getName = (
   variant: string,
   nameProp: string,
-  componentProps?: Record<string, any>
+  componentProps?: Record<string, any>,
 ) => {
   const nameInProps = componentProps?.[nameProp]
   if (nameInProps) {

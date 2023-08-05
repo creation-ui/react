@@ -6,12 +6,8 @@ import { createInputControls } from './shared-playground-controls'
 
 const controls = createInputControls('TextArea')
 
-export const TextAreaPlayground = () =>
-    <Playground
-      name='TextArea'
-      component={TextArea}
-      controls={controls}
-    />
-
+export const TextAreaPlayground = () => (
+  <Playground name='TextArea' component={TextArea} controls={controls} />
+)
 
 export const properties: DocumentedProperty[] = inputBaseProperties

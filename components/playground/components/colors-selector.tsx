@@ -42,7 +42,7 @@ export const ColorsSelector = ({
   const disabled = props.disabled || readOnly
   const containerClasses = clsx(
     inputContainer({ disabled, error: !!error }),
-    text({ size })
+    text({ size }),
   )
   return (
     <div className={containerClasses}>

@@ -30,6 +30,14 @@ export const Header = ({
   </Tag>
 )
 
-export const Description = ({ children, id}: { children: React.ReactNode, id?:string }) => (
-  <div className='prose dark:prose-invert' id={id} >{children}</div>
+export const Description = ({
+  children,
+  id,
+}: {
+  children: React.ReactNode
+  id?: string
+}) => (
+  <div className='prose dark:prose-invert' id={id}>
+    {children}
+  </div>
 )
