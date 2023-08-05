@@ -1,10 +1,10 @@
 import React from 'react'
 
 export type DocumentedProperty = {
-  name: React.ReactNode
-  type: React.ReactNode
-  description: React.ReactNode
-  defaultValue?: React.ReactNode
-  note?: React.ReactNode
+  name: string
+  type: string
+  description: string
+  defaultValue?: string
+  note?: string
   experimental?: boolean
 }

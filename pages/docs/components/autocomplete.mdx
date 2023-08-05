@@ -3,19 +3,21 @@ import {
   AutocompletePlayground,
   AutocompleteMultipleExample,
   AutocompleteMultiPlayground,
-  AutocompleteOptionComponent,
-  AutocompleteOptionType,
   AutocompleteExampleCustomOptions,
 } from '@components/examples/autocomplete'
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
 import { Container } from '@components/container'
+import {
+  defaultOptionType,
+  renderOptionProps,
+} from '@components/examples/shared-props'
 
 # Autocomplete
 
 The Autocomplete component dynamically suggests options as users type into an input field. This enhances user experience by making data entry faster and more accurate, particularly when dealing with large data sets. With multiple selection and customization capabilities, it offers high versatility for a wide range of applications.
 
-Let's dive in and see the Autocomplete component in action:
+This component is built upon fantastic [@floating-ui/react](https://floating-ui.com/) library.<br/>
 
 <AutocompletePlayground />
 
@@ -23,6 +25,7 @@ Let's dive in and see the Autocomplete component in action:
 
 With the `multiple` prop, the Autocomplete component allows for the selection of multiple options, providing a dynamic and versatile user experience.
 
+<br />
 <AutocompleteMultiPlayground />
 
 In the `multiple` mode, the `value` and `onChange` props adjust their signature as follows:
@@ -34,72 +37,16 @@ In the `multiple` mode, the `value` and `onChange` props adjust their signature 
 
 For more details, please refer to the [properties table.](#onChange)
 
-## Option and selection customization
-
-Enhance your Autocomplete experience by using custom Option and SelectedOption components. This provides the flexibility to design and style options according to your application's needs and aesthetics.
-
-<Container>
-  <AutocompleteExampleCustomOptions />
-</Container>
-
-Below is an example of a custom `renderOption` and `renderSelection` functions.
-
-Notice that `props` of `renderOption` carry `className` that has all interaction on hover and focus.
-You can either preserve this like in example or skip altogether if you want to have your own styles for things like `selected`, `hover` or `disabled`.
-Please refer to type definition to find out what you can base your styles on.
-
-Highlighting of search term is lost in custom option component, but you can implement it yourself, e.g. using [react-highlight-words](https://github.com/bvaughn/react-highlight-words) library.
-
-```tsx
-type Character = {
-  id: string
-  name: string
-  image: string
-  species: string
-  //... other fields
-}
-
-const renderOption = (props: AutocompleteOptionProps, option: Character) => (
-  <div {...props} className={clsx(props.className, 'h-fit w-fit p-2')}>
-    <div className='flex gap-2 items-center'>
-      <Avatar size='sm' src={option.image} />
-      <div className='flex flex-col'>
-        <span className='font-medium'>{option.name}</span>
-        <span className='text-info-500 text-xs'>{option.species}</span>
-      </div>
-    </div>
-  </div>
-)
-
-const renderSelection = (option: Character) => (
-  <div className='h-fit w-fit p-2 mr-2'>
-    <div className='flex gap-2 items-center'>
-      <Avatar size='sm' src={option.image} />
-      <div className='flex flex-col'>
-        <span className='font-medium'>{option.name}</span>
-        <span className='text-info-500 text-xs'>{option.species}</span>
-      </div>
-    </div>
-  </div>
-)
-```
-
 ## Component API
 
 <PropsTable
   properties={properties}
   name='Autocomplete'
-  description='The main Autocomplete component.'
+  description='The main Autocomplete component. Extends props of <a href="/docs/components/input-base">InputBase</a> component.'
 />
 
 <PropsTable
-  properties={AutocompleteOptionComponent}
-  name='AutocompleteOption'
-  description='The default Autocomplete option component.'
-/>
-
-<PropsTable
-  properties={AutocompleteOptionType}
-  name='AutocompleteOptionsType'
-  description='Default shape of options. This may be ignored in favor of `any` depending on your requirements.'
+  properties={defaultOptionType}
+  name='AutocompleteOptionType'
+  description='Default option shape. You can provide your own option shape by passing it to component.'
 />

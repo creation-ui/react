@@ -156,21 +156,20 @@ export interface BaseComponentProps {
 }
 
 export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
-  as?: any
   /**
-   * Is button loading?
+   * Component is in loading state?
    */
   loading?: boolean
   /**
-   * What variant should button be ?
+   * Variant of the component?
    */
   variant?: ElementVariant
   /**
-   * Icon to be displayed on the left side of the input
+   * Element to be displayed on the left side of the input
    */
   startAdornment?: React.ReactNode
   /**
-   * Icon to be displayed on the right side of the input
+   * Element to be displayed on the right side of the input
    */
   endAdornment?: React.ReactNode
   /**
@@ -182,7 +181,7 @@ export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
    */
   children: React.ReactNode
   /**
-   * clearable icon
+   * Show clear input icon?
    */
   clearable?: boolean
   /**
@@ -201,6 +200,10 @@ export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
    * Disable interactions e.g. while loading, readOnly, disabled. This will prevent interactions with the input by "pointer-events-none".
    */
   interactionsDisabled?: boolean
+  /**
+   * Placeholder
+   */
+  placeholder?: string
 }
 
 export type InputClassNamesAPI = {

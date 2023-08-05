@@ -7,7 +7,7 @@ import {
   classNameProps,
   loaderWhiteProp,
   onClickCallback,
-  openProps,
+  openProp,
   sizeProp,
 } from './shared-props'
 
@@ -38,7 +38,7 @@ export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
 
 export const properties: DocumentedProperty[] = [
   classNameProps,
-  openProps,
+  openProp,
   sizeProp,
   loaderWhiteProp,
   onClickCallback,

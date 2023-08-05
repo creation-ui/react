@@ -1,6 +1,6 @@
 # Creation UI
 
-is a design system that lets you build a React powered websites
+is a design system that lets you build React-powered websites
 and apps. It's built on top of <b>React</b> and [Tailwind CSS](https://tailwindcss.com)
 and it's fully customizable. It's a great starting point for your next project.
 
@@ -20,7 +20,7 @@ Creation UI is working with your app's Tailwind CSS and you need to have Tailwin
 
 ## Installation
 
-To install Creation UI, run command below:
+To install Creation UI, run the command below:
 
 
     ```bash copy
@@ -90,10 +90,9 @@ module.exports = withTailwindConfig({
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
-
-2. Import library's CSS file into your app.
-   If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-   If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
+Import the library's CSS file into your app.
+   If you're using the standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
+   If you're using the standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
 import '@creation-ui/react/index.css'

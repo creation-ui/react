@@ -1,4 +1,3 @@
-import Keyboard from 'keyboard-key'
 import {
   autoUpdate,
   flip,
@@ -10,14 +9,15 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
+import Keyboard from 'keyboard-key'
 import React, { useEffect, useRef, useState } from 'react'
 import { selectOptionClasses } from '../../../classes'
 import { Theme, useTheme } from '../../../theme'
 import { getFlatOptions } from '../../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../../dropdown-chevron'
 import { InputBase } from '../../input-base'
-import { getDropdownHeight } from '../../shared'
 import { dropdownInitialProps } from '../../select/constants'
+import { getDropdownHeight } from '../../shared'
 import { AUTOCOMPLETE_MARGIN } from '../constants'
 import { AutocompleteContext } from '../context'
 import {
@@ -26,8 +26,7 @@ import {
   GetItemPropsReturnType,
 } from '../types'
 import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
-import { _renderOption } from '../utils/render-option'
-import { createFilterOptions, getTop } from '../utils/utils'
+import { createFilterOptions } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
@@ -48,7 +47,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     zIndex,
     cx,
     value,
-    defaultValue,
     options = [],
     filterSelectedOptions = false,
     defaultTagProps,

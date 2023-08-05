@@ -4,7 +4,7 @@ import { DocumentedProperty } from 'models/system'
 import { sizeControl, statusControl } from './shared-playground-controls'
 import {
   classNameProps,
-  disabledProps,
+  disabledProp,
   labelProp,
   onClickCallback,
   sizeProp,
@@ -43,5 +43,5 @@ export const buttonGroupOptions: DocumentedProperty[] = [
   classNameProps,
   labelProp,
   onClickCallback,
-  disabledProps,
+  disabledProp,
 ]

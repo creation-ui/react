@@ -11,7 +11,10 @@ export type AutocompleteOptionDefault =
   | { label: string; disabled?: boolean }
 
 export interface AutocompleteProps<T = AutocompleteOptionDefault>
-  extends BaseComponentProps {
+  extends Omit<
+    InputBaseProps,
+    'interactionsDisabled' | 'layout' | 'children' | 'type'
+  > {
   /**
    * Custom function to compare option and value
    */
@@ -37,7 +40,7 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    */
   renderTags?: (selected: T[]) => React.ReactNode
   /**
-   * The label to display when the tags are truncated (limitTags).
+   * Text to display when the tags are truncated (limitTags).
     Signature:
     function(more: number) => ReactNode
     more: The number of truncated tags.
@@ -51,21 +54,9 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
     filterOptions: AutocompleteFilterOptions
   ) => T[]
   /**
-   * CSS classes API
-   */
-  cx?: InputBaseProps['cx']
-  /**
-   * Placeholder
-   */
-  placeholder?: string | null
-  /**
    * List options
    */
   options?: T[]
-  /**
-   * Default value to display when component is not controlled
-   */
-  defaultValue?: T
   /**
    * Current value to display
    */
@@ -82,42 +73,27 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    * Loading icon tooltip text
    */
   textLoading?: string | null
+
   /**
    * Clear button tooltip text
    */
   textClear?: string | null
-  /**
-   * Close button tooltip text
-   */
-  textClose?: string | null
-  /**
-   * Should display clear value button
-   */
-  clearable?: boolean
-  /**
-   * Is field required
-   */
-  required?: boolean
-  /**
-   * Is disabled
-   */
-  disabled?: boolean
+
   /**
    * Allow selection of multiple value
    */
   multiple?: boolean
+
   /**
    * Should highlight matched text
    */
   autoHighlight?: boolean
+
   /**
    * Limit of multiple selected to be displayed in input
    */
   limit?: number
-  /**
-   * Should display Loader
-   */
-  loading?: boolean
+
   /**
    * Callback function that is called when the value changes.
    * @param { T | T[] | null } value - The new value(s). Returns an array of selected values. If !multiple, will return an array with one value.
@@ -131,11 +107,7 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    */
   maxHeight?: DropdownMaxHeight
   /**
-   * Variant of the input
-   */
-  variant?: ElementVariant
-  /**
-   * Variant of the default Tags
+   * Props of the default tags component (Chip)
    */
   defaultTagProps?: ChipProps
   /**

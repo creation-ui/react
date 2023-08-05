@@ -1,16 +1,18 @@
-# Select
-
 import {
   SelectExample,
   properties,
-  renderOptionProps,
-  defaultSelectType,
   SelectPlayground,
 } from '@components/examples/select'
 import PropsTable from '@components/props-table'
 import { Description } from '@components/typography'
+import {
+  defaultOptionType,
+  renderOptionProps,
+} from '@components/examples/shared-props'
 
-This component uses native `<select>` HTML tag underneath. This allows passing `<option>` as children.
+# Select
+
+This component is built upon fantastic [@floating-ui/react](https://floating-ui.com/) library.<br/>
 
 <SelectPlayground />
 
@@ -54,17 +56,11 @@ export const SelectExample = ({ ...props }: DropdownProps) => {
 <PropsTable
   properties={properties}
   name='Select'
-  description='Native Select component.'
+  description='Select component props. Extends props of <a href="/docs/components/input-base">InputBase</a> component.'
 />
 
 <PropsTable
-  properties={renderOptionProps}
-  name='RenderOptionProps'
-  description='Type of props passed to renderOption function.'
-/>
-
-<PropsTable
-  properties={defaultSelectType}
-  name='SelectOptionDefault'
+  properties={defaultOptionType}
+  name='type SelectOptionDefault'
   description='Default type of option if custom was not provided.'
 />

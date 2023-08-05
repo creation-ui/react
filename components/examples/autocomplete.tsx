@@ -1,12 +1,13 @@
 import { Playground } from '@components/playground'
-import { Autocomplete, Avatar, ELEMENT_SIZES } from '@creation-ui/react'
+import { Autocomplete, Avatar } from '@creation-ui/react'
 import { AutocompleteOptionProps } from '@creation-ui/react/components/autocomplete/types'
 import clsx from 'clsx'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
-import { ListOrTypes } from 'utils/list-or-types'
 import { options } from './data'
 import { createInputControls } from './shared-playground-controls'
+import { onChangeProp, valueProp } from './shared-props'
+import { createDocsLink } from './utils'
 
 type OptionType = (typeof options)[0]
 
@@ -141,9 +142,7 @@ export const AutocompleteMultiPlayground = () => {
     options[3],
   ])
 
-  const handleChange = (value: OptionType[] | null) => {
-    setValue(value)
-  }
+  const handleChange = (value: OptionType[] | null) => setValue(value)
 
   return (
     <Playground
@@ -161,127 +160,213 @@ export const AutocompleteMultiPlayground = () => {
   )
 }
 
-const multipleWarning = (
-  <>
-    If multiple is set, the type of <code>value</code> will be <code>T[]</code>
-  </>
-)
+const multipleWarning = `If multiple is set, the type of <code>value</code> will be <code>T[]</code>`
 
 export const properties: DocumentedProperty[] = [
-  { description: 'Element id', name: 'id', type: 'string' },
-  {
-    description: 'Label',
-    name: 'label',
-    type: 'React.ReactNode',
-  },
-  {
-    name: 'size',
-    type: ListOrTypes([...ELEMENT_SIZES]),
-    defaultValue: 'md',
-    description: 'Size of element',
-  },
-  {
-    description: 'Placeholder',
-    name: 'placeholder',
-    type: 'string | string[]',
-  },
-  {
-    description: 'Class names to add to wrapper component',
-    name: 'className',
-    type: 'string | string[]',
-  },
   {
     description: 'List available options',
     name: 'options',
-    type: 'AutocompleteOptionsType[]',
-    defaultValue: '[]',
+    type: 'T[]',
+    defaultValue: '{ label:string, disabled?: boolean }[]',
   },
   {
-    description: 'Functional component returning ReactNode to display option',
-    name: 'optionComponent',
-    type: '((option: any) => React.ReactNode) | ((props: AutocompleteOptionProps) => JSX.Element)',
-  },
-  {
-    description: 'Default value to display when component is not controlled',
-    name: 'defaultValue',
-    type: 'AutocompleteOptionsType',
-  },
-  {
-    description: 'Current value of component',
-    name: 'value',
-    type: 'AutocompleteOptionsType',
+    ...valueProp,
+    type: 'T',
     note: multipleWarning,
   },
   {
-    name: 'onChange',
-    type: '(value: AutocompleteOptionsType | AutocompleteOptionsType[]) => void',
-    description: 'Change event callback',
+    ...onChangeProp,
+    type: '(value: T | T[] | null) => void',
     note: multipleWarning,
   },
   {
-    description: 'Disabled',
-    name: 'disabled',
-    type: 'boolean',
-    defaultValue: 'false',
-  },
-  {
-    description: 'Allow autocompletion of multiple values',
+    description: 'Allow multiple values',
     name: 'multiple',
     type: 'boolean',
     defaultValue: 'false',
   },
   {
-    name: 'highlight',
+    name: 'autoHighlight',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Highlight search text fragment in options',
+    description:
+      'Highlight search text fragment in options. Works only with default getOptionLabel',
   },
   {
-    description: 'Error text displayed under the component.',
-    name: 'error',
+    name: 'renderOption',
+    type: '(props: AutocompleteOptionProps, option: T) => ReactNode',
+    defaultValue: '_renderOption',
+    description: `Function rendering option in dropdown.
+      ${createDocsLink({
+        label: 'Docs',
+        component: 'render-option',
+        parent: 'autocomplete',
+      })}
+      `,
+  },
+  {
+    name: 'renderSelection',
+    type: '(option: T) => ReactNode',
+    defaultValue: '_renderSelection',
+    description: `Function rendering single selection. ${createDocsLink({
+      label: 'Docs',
+      component: 'render-selection',
+      parent: 'autocomplete',
+    })}
+      `,
+  },
+  {
+    name: 'renderTags',
+    type: '(selected: T[]) => ReactNode',
+    defaultValue: '_renderTags',
+    description: `Function rendering option in dropdown. ${createDocsLink({
+      label: 'Docs',
+      component: 'render-tags',
+      parent: 'autocomplete',
+    })}`,
+  },
+  {
+    name: 'getLimitTagsText',
+    type: '(more: number) => string',
+    defaultValue: 'more => `+${more}`',
+    description:
+      'Text to display when the tags are truncated. Also see <code>limit</code> prop',
+  },
+  {
+    name: 'limit',
+    type: 'number',
+    defaultValue: '3',
+    description: 'Limit of multiple selected to be displayed in input',
+  },
+  {
+    name: 'defaultTagProps: ChipProps',
+    type: 'ChipProps',
+    description: `Props of the default tags component (Chip).
+      ${createDocsLink({
+        label: 'Chip component docs.',
+        component: 'chip',
+      })}
+      `,
+  },
+  {
+    name: 'isOptionEqualToValue',
+    type: '(option: T, value?: T | null) => boolean',
+    defaultValue: '_isOptionEqualToValue',
+    description: `Function to compare option and value.
+      ${createDocsLink({
+        label: 'Docs',
+        component: 'is-option-equal-to-value',
+        parent: 'autocomplete',
+      })}`,
+  },
+  {
+    name: 'getOptionDisabled',
+    type: ' (option: T) => boolean',
+    defaultValue: 'option => option.disabled',
+    description: 'Getter for option disabled state.',
+  },
+  {
+    name: 'getOptionLabel',
+    type: ' (option: T) => string',
+    defaultValue: 'option => option.label ?? option',
+    description: 'Getter for option label.',
+  },
+  {
+    name: 'filterOptions',
+    type: `(
+      options: T[],
+      filterOptions: AutocompleteFilterOptions
+    ) => T[]`,
+    defaultValue: '_filterOptions',
+    description: `Filter options function. ${createDocsLink({
+      label: 'Docs',
+      component: 'filter-options',
+      parent: 'autocomplete',
+    })}`,
+  },
+  {
+    name: 'textEmpty',
     type: 'string',
-    note: 'When set, the component is styled as having errors.',
+    defaultValue: 'No options',
+    description: 'Text to display for empty list.',
+  },
+  {
+    name: 'textNotFound',
+    type: 'string',
+    defaultValue: 'No results found',
+    description: 'Text to display when no options match search.',
+  },
+  {
+    name: 'textLoading',
+    type: 'string',
+    defaultValue: 'Loading...',
+    description:
+      'Text to display for loading state input. Replaces <code>placeholder</code> for the duration of loading.',
+  },
+  {
+    name: 'textClear',
+    type: 'string',
+    defaultValue: 'Clear',
+    description: 'Text to display as HTML "title" of clear button.',
+  },
+  {
+    name: 'maxHeight',
+    type: 'number | string | "available"',
+    defaultValue: '500',
+    description: `How heigh should dropdown list be? Either provide a number of pixels or a string like <code>1rem</code>, <code>20vh</code>, etc. The <code>available</code> option will set the max height of the dropdown to the available height of the screen.
+    `,
+  },
+  {
+    name: 'zIndex',
+    type: '{ list?: number}',
+    description:
+      'Escape hatch for z-index of dropdown list. Helpful when using with modals and drawers that might have their own, higher z-index.',
+  },
+  {
+    name: 'filterSelectedOptions',
+    type: 'boolean',
+    defaultValue: 'false',
+    description: 'Should filter out selected options from options list',
   },
 ]
 
-export const AutocompleteOptionComponent: DocumentedProperty[] = [
+export const filterOptionProps: DocumentedProperty[] = [
   {
-    description: 'Option value',
-    name: 'option',
-    type: 'AutocompleteOptionsType',
-  },
-  {
-    description: 'Is option active?',
-    name: 'active',
+    name: 'ignoreCase',
     type: 'boolean',
+    defaultValue: 'true',
+    description: 'Should ignore case when filtering',
   },
   {
-    description: 'Is option disabled?',
-    name: 'disabled',
+    name: 'ignoreAccents',
     type: 'boolean',
+    defaultValue: 'true',
+    description: 'Should ignore accents when filtering',
   },
   {
-    description: (
-      <>
-        <code>multiple</code> prop passed from parent. Using this flag we may
-        style component in the <code>multiple</code> mode with e.g. checkmark
-      </>
-    ),
-    name: 'multiple',
+    name: 'trim',
     type: 'boolean',
-  },
-]
-
-export const AutocompleteOptionType: DocumentedProperty[] = [
-  { name: 'value', type: 'React.ReactNode', description: 'Value' },
-  {
-    name: 'id',
-    type: 'React.ReactNode',
-    description: 'ID of element used as `key`',
+    defaultValue: 'false',
+    description: 'Should trim search text',
   },
   {
-    name: 'disabled',
-    type: 'boolean',
-    description: 'Is option available to Autocomplete',
+    name: 'limit',
+    type: 'number',
+    description: 'Limit of options to return',
+  },
+  {
+    name: 'matchFrom',
+    type: "'start' | 'any' | 'end'",
+    defaultValue: 'any',
+    description: 'Where to match search text',
+  },
+  {
+    name: 'stringify',
+    type: '(option: T) => string',
+    defaultValue: 'getOptionLabel',
+    description: `Function to convert option to string.${createDocsLink({
+      label: '<code>getOptionLabel</code> docs.',
+      component: 'autocomplete#getOptionLabel',
+    })}`,
   },
 ]

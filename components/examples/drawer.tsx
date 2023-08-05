@@ -1,4 +1,4 @@
-import { childrenProp, openProps } from '@components/examples/shared-props'
+import { childrenProp, openProp } from '@components/examples/shared-props'
 import { Playground } from '@components/playground'
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
@@ -42,7 +42,7 @@ export const DrawerPlayground = () => (
 )
 
 export const properties: DocumentedProperty[] = [
-  openProps,
+  openProp,
   childrenProp,
   {
     description: 'Callback function called when closing Drawer',
