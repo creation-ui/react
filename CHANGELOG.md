@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.9.1](https://github.com/creation-ui/react/compare/v0.8.0...v0.9.1) (2023-08-05)
+
+
+### Features
+
+* improve docs: autocomplete, select ([1510390](https://github.com/creation-ui/react/commit/1510390e55e03b1e7d1c33f2094a451c209b2a89))
+
+
+### Bug Fixes
+
+* add remove-ring class for select, handle padding when both clearable and endAndornment are provided to input ([1a43f35](https://github.com/creation-ui/react/commit/1a43f3584075ad19a26ff0b9ab43bb63c55b7b2a))
+* center options and value of dropdowns ([32dfba4](https://github.com/creation-ui/react/commit/32dfba47ecf355b7a91527fffcd854e541fb1bb4))
+* misc ([42cd6a8](https://github.com/creation-ui/react/commit/42cd6a87d078f0e12dd254bd0a52b16e747a4585))
+* tsc ([95677e5](https://github.com/creation-ui/react/commit/95677e5a799ae585973d99b7823b1e684379360f))
+* tsc, prettier ([62a0514](https://github.com/creation-ui/react/commit/62a05149bef4894b198358c6a20bc1e170f01be4))
+
+
+### Miscellaneous Chores
+
+* release 0.9.1 ([94cc8f2](https://github.com/creation-ui/react/commit/94cc8f231367f644029025d4adb975f4af8620a0))
+
 ## [0.8.0](https://github.com/creation-ui/react/compare/v0.7.1...v0.8.0) (2023-07-28)
 
 ### Features
