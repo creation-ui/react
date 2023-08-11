@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.1](https://github.com/creation-ui/react/compare/v0.10.0...v0.10.1) (2023-08-11)
+
+
+### Bug Fixes
+
+* do not forgot to add libs of package to landing page because build does not take them into account ([82a5fb6](https://github.com/creation-ui/react/commit/82a5fb65f533fdbdfc40eb880906e474389c3fa8))
+* use one version of TS, fix type inferring bug ([07fec2e](https://github.com/creation-ui/react/commit/07fec2ec81f6839c69991a54ffbd26c40255424c))
+
 ## [0.10.0](https://github.com/creation-ui/react/compare/v0.9.1...v0.10.0) (2023-08-11)
 
 
