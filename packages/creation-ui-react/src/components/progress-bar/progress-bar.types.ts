@@ -1,4 +1,4 @@
-import type { ClassName, ElementSize } from '../../types'
+import type { ClassName, ElementSize, ElementStatus } from '../../types'
 
 export interface ProgressBarProps {
   /**
@@ -21,4 +21,12 @@ export interface ProgressBarProps {
    * Function to format the value of the progress bar.
    */
   formatDisplayValue?: (value: number) => string
+
+  status?: ElementStatus
+
+  /**
+   * This will decide when to invert the progress bar when the value is below the threshold.
+   * If your text is longer than default string `{value}%` then you will find this option useful.
+   */
+  invertThreshold?: number
 }

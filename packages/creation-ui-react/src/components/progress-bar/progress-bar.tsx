@@ -3,23 +3,15 @@ import clsx from 'clsx'
 import type { ProgressBarProps } from './progress-bar.types'
 import { cva } from 'class-variance-authority'
 
+const INVERT_THRESHOLD = 52
+
 const classes = {
   container: [
-    'text-xs',
     'w-full',
     'bg-info-200',
     'rounded-full',
     'dark:bg-info-700',
     'relative',
-  ],
-  value: [
-    'absolute',
-    'top-1/2',
-    'left-1/2',
-    'transform',
-    '-translate-x-1/2',
-    '-translate-y-1/2',
-    'invert',
   ],
 }
 
@@ -31,11 +23,18 @@ const progressValue = cva(
     'transform',
     '-translate-x-1/2',
     '-translate-y-1/2',
+    'text-xs',
   ],
   {
     variants: {
       invert: {
-        true: ['invert'],
+        true: ['text-info-50'],
+        false: ['text-info-800'],
+      },
+      size: {
+        sm: ['!top-0', '!-translate-y-full', 'pb-2', '!text-info-800'],
+        md: [],
+        lg: ['!text-base'],
       },
     },
   }
@@ -43,8 +42,6 @@ const progressValue = cva(
 
 const progressBar = cva(
   [
-    'bg-primary-500',
-    'text-primary-100',
     'text-center',
     'leading-none',
     'rounded-full',
@@ -62,9 +59,17 @@ const progressBar = cva(
       value: {
         false: ['!bg-transparent'],
       },
+      status: {
+        primary: ['bg-primary-500'],
+        success: ['bg-success-500'],
+        warning: ['bg-warning-500'],
+        error: ['bg-error-500'],
+        info: ['bg-info-500'],
+      },
     },
     defaultVariants: {
       size: 'md',
+      status: 'primary',
     },
   }
 )
@@ -74,21 +79,28 @@ const formatDisplayValueDefault = (value: number) => `${value}%`
 const ProgressBar = (props: ProgressBarProps) => {
   const { size: defaultSize } = useTheme()
   const {
-    value = 0,
+    value: _value = 0,
     showValue = false,
     formatDisplayValue = formatDisplayValueDefault,
     className,
     size = defaultSize,
+    status,
+    invertThreshold = INVERT_THRESHOLD,
   } = props
 
+  const value = isNaN(_value) ? 0 : Math.min(100, Math.max(0, _value))
+
+  const invert = value >= invertThreshold
+  const formattedValue = formatDisplayValue(value)
+  const width = formatDisplayValueDefault(value)
   return (
     <div {...props} className={clsx(classes.container, className)}>
       <div
-        className={progressBar({ size, value: value !== 0 })}
-        style={{ width: formatDisplayValueDefault(value) }}
+        className={progressBar({ size, value: value !== 0, status })}
+        style={{ width }}
       ></div>
-      <span className={progressValue({ invert: value >= 50 })}>
-        {showValue && formatDisplayValue(value)}
+      <span className={progressValue({ invert, size })}>
+        {showValue && formattedValue}
       </span>
     </div>
   )

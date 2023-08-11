@@ -7,7 +7,7 @@ import { ListOrTypes } from 'utils/list-or-types'
 // @ts-ignore
 import { useStopwatch } from 'react-timer-hook'
 import { Playground } from '@components/playground'
-import { sizeControl } from './shared-playground-controls'
+import { sizeControl, statusControl } from './shared-playground-controls'
 
 export const ProgressBarAnimatedExample = props => {
   const [state, setState] = useState(0)
@@ -53,6 +53,7 @@ export const ProgressBarPlayground = () => (
       sizeControl,
       { name: 'value', type: 'number', defaultValue: 50 },
       { name: 'showValue', type: 'boolean', defaultValue: true },
+      statusControl,
     ]}
   />
 )
