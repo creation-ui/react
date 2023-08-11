@@ -3,17 +3,16 @@ import {
   flip,
   offset,
   shift,
+  useClick,
+  useDismiss,
   useFloating,
+  useInteractions,
+  useRole,
 } from '@floating-ui/react'
 import { useState } from 'react'
 import { PopoverOptions } from './types'
 
-import {
-  useClick,
-  useDismiss,
-  useInteractions,
-  useRole,
-} from '@floating-ui/react'
+import type {} from '@floating-ui/react-dom'
 import { useMemo } from 'react'
 import { ElementSize } from '../../types'
 
