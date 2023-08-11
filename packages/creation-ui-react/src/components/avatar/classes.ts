@@ -66,11 +66,11 @@ export const avatar = {
           dot: [],
         },
         color: {
-          primary: ['bg-primary-600', 'text-primary-100'],
-          warning: ['bg-warning-600', 'text-warning-100'],
-          success: ['bg-success-600', 'text-success-100'],
-          error: ['bg-error-600', 'text-error-100'],
-          info: ['bg-info-600', 'text-info-100'],
+          primary: ['bg-primary-500', 'text-primary-100'],
+          warning: ['bg-warning-500', 'text-warning-100'],
+          success: ['bg-success-500', 'text-success-100'],
+          error: ['bg-error-500', 'text-error-100'],
+          info: ['bg-info-500', 'text-info-100'],
         },
       },
       defaultVariants: {
