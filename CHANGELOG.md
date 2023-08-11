@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0](https://github.com/creation-ui/react/compare/v0.9.1...v0.10.0) (2023-08-11)
+
+
+### Features
+
+* refactor progress bar ([b3a17fc](https://github.com/creation-ui/react/commit/b3a17fca40bb622027dd4e7da207b1486b892cef))
+* update avatar notification color ([d4e6adc](https://github.com/creation-ui/react/commit/d4e6adc7c5fcac19db33a3d4b68d71fd67eb25e7))
+
 ## [0.9.1](https://github.com/creation-ui/react/compare/v0.8.0...v0.9.1) (2023-08-05)
 
 
