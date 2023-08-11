@@ -1,7 +1,7 @@
 {
   "name": "@creation-ui/react",
   "homepage": "https://creation-ui.com",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "@creation-ui/react is an easy-to-use components library for ReactJS & Tailwind CSS.",
   "repository": "https://github.com/creativetimofficial/creation-ui",
   "license": "MIT",
