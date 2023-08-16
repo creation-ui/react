@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2](https://github.com/creation-ui/react/compare/v0.10.1...v0.10.2) (2023-08-16)
+
+
+### Bug Fixes
+
+* export AutocompleteProps and other AC types for better DX ([4c0ea26](https://github.com/creation-ui/react/commit/4c0ea264b680261e9f248a058c243fd59199f11b))
+
 ## [0.10.1](https://github.com/creation-ui/react/compare/v0.10.0...v0.10.1) (2023-08-11)
 
 
