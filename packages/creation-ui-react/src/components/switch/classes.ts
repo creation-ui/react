@@ -5,8 +5,7 @@ export const switchClasses = cva(
   [
     ...classes.input,
     microInteractions,
-    'text-primary-500',
-    'checked:border-none',
+    'checked:border-transparent',
     'dark:checked:bg-primary-500',
     'cursor-pointer',
     'peer',
@@ -17,13 +16,14 @@ export const switchClasses = cva(
     '!bg-info-300',
     '!dark:bg-info-700',
     '!rounded-full',
+    'h-fit',
   ],
   {
     variants: {
       size: {
-        sm: ['h-4', 'w-8'],
-        md: ['h-6', 'w-12'],
-        lg: ['h-8', 'w-16'],
+        sm: ['w-8', 'p-0'],
+        md: ['w-12', 'p-0.5'],
+        lg: ['w-14', 'p-0.5'],
       },
       checked: {
         true: ['!bg-primary-500', '!border-primary-500'],
@@ -39,7 +39,6 @@ export const switchClasses = cva(
 export const switchCircle = cva(
   [
     microInteractions,
-    'inline-block',
     'transform',
     'transition-all',
     'rounded-full',
@@ -51,8 +50,8 @@ export const switchCircle = cva(
     variants: {
       size: {
         sm: ['h-3', 'w-3'],
-        md: ['h-5', 'w-5'],
-        lg: ['h-7', 'w-7'],
+        md: ['h-4', 'w-4'],
+        lg: ['h-5', 'w-5'],
       },
       checked: {
         true: null,
@@ -63,17 +62,17 @@ export const switchCircle = cva(
       {
         checked: true,
         size: 'sm',
-        className: ['translate-x-[16px]'],
+        className: ['translate-x-4'],
       },
       {
         checked: true,
         size: 'md',
-        className: ['translate-x-[24px]'],
+        className: ['translate-x-6'],
       },
       {
         checked: true,
         size: 'lg',
-        className: ['translate-x-[32px]'],
+        className: ['translate-x-7'],
       },
     ],
   }
