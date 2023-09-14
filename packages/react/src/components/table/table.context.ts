@@ -1,6 +1,6 @@
 import type { Table } from '@tanstack/table-core'
 import { createContext, useContext } from 'react'
-import type { ElementVariant, ReadableError } from '../../types'
+import type { ElementVariant, ReadableError } from '@creation-ui/core'
 
 export interface TableContextValue<T = any> {
   table: Table<T>

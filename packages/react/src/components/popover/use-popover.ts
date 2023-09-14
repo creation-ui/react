@@ -14,7 +14,7 @@ import { PopoverOptions } from './types'
 
 import type {} from '@floating-ui/react-dom'
 import { useMemo } from 'react'
-import { ElementSize } from '../../types'
+import { ElementSize } from '@creation-ui/core'
 
 export type PopoverContextType =
   | (ReturnType<typeof usePopover> & {

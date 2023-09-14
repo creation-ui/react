@@ -5,7 +5,7 @@ import {
 } from '@floating-ui/react'
 import type { HTMLProps } from 'react'
 import { forwardRef } from 'react'
-import { ElementSize } from '../../types'
+import { ElementSize } from '@creation-ui/core'
 import { popoverContentClasses } from './classes'
 import { usePopoverContext } from './context'
 import { usePopover } from './use-popover'

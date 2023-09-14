@@ -1,4 +1,4 @@
-import { ElementTheme } from '../../types'
+import { ElementTheme } from '@creation-ui/core'
 
 export const isDarkThemeSet = () =>
   document.documentElement.classList.contains('dark') ||

@@ -1,4 +1,4 @@
-import { noop, isBrowser } from '../../../core/src'
+import { noop, isBrowser } from '@creation-ui/core'
 import {
   Dispatch,
   SetStateAction,

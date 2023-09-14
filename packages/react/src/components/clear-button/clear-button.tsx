@@ -1,10 +1,10 @@
 import { forwardRef } from 'react'
-import { ElementSize } from '../../types'
+import { ElementSize } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
 import type { IconProps } from '../icon'
 import { Icon } from '../icon'
 import { cva } from 'class-variance-authority'
-import { sharedSizeSquareCVA } from '../../classes'
+import { sharedSizeSquareCVA } from '@creation-ui/core'
 
 const classes = cva(
   [

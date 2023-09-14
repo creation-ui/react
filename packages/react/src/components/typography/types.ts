@@ -1,6 +1,5 @@
 import { ElementType } from 'react'
-import { TypographyConfig } from '../../theme'
-import { ClassName, ElementSize, ElementTypography } from '../../types'
+import { ClassName, ElementSize, TypographyConfig } from '@creation-ui/core'
 
 export interface TypographyProps extends React.ComponentProps<any> {
   as?: ElementType

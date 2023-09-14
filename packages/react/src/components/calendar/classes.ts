@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions, sharedSizeClassesCVA } from '../../classes'
+import { microInteractions, sharedSizeClassesCVA } from '@creation-ui/core'
 
 export const headerClasses = [
   '!text-lg',

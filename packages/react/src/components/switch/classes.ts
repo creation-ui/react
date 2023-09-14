@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions, classes, sharedReadOnlyCVA } from '../../classes'
+import { microInteractions, classes, sharedReadOnlyCVA } from '@creation-ui/core'
 
 export const switchClasses = cva(
   [

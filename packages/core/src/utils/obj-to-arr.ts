@@ -1,4 +1,4 @@
-export default function objectsToArray(object) {
+export function objectsToArray(object) {
   let result = []
 
   Object.values(object).forEach(value => {

@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions } from '../../classes'
+import { microInteractions } from '@creation-ui/core'
 
 export const chipClasses = cva(
   [

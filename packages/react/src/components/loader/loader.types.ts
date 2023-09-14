@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '../../types'
+import type { BaseComponentProps } from '@creation-ui/core'
 
 export interface LoaderProps
   extends Pick<BaseComponentProps, 'size' | 'className'> {

@@ -1,6 +1,6 @@
 import { RadioGroup } from '@headlessui/react'
 import { twMerge } from 'tailwind-merge'
-import { getElementPosition } from '../../utils/get-element-position'
+import { getElementPosition } from '@creation-ui/core'
 import { useInputBase } from '../input-base/input-base.context'
 import { toggleGroup } from './classes'
 import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
@@ -30,6 +30,7 @@ export const ToggleGroupView = ({
             className={({ checked, disabled }) =>
               toggleGroup.button({
                 checked,
+                // @ts-ignore
                 disabled,
                 size,
                 element: getElementPosition(array, index),

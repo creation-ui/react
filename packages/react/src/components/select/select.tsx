@@ -20,7 +20,7 @@ import {
 } from '@floating-ui/react'
 
 import { useRef, useState } from 'react'
-import { selectOptionClasses } from '../../classes'
+import { selectOptionClasses } from '@creation-ui/core'
 import { DropdownChevron } from '../dropdown-chevron'
 import { getDropdownHeight } from '../shared'
 import { Placeholder } from '../shared/Placeholder'

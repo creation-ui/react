@@ -6,10 +6,10 @@ import {
   inputContainer,
   label,
   text,
-} from '../../classes'
+} from '@creation-ui/core'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { InputBaseProps } from '../../types'
+import { InputBaseProps } from '@creation-ui/core'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { Description } from '../typography'

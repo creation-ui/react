@@ -3,7 +3,7 @@ import type {
   BaseComponentProps,
   ElementBaseVariant,
   ElementStatus,
-} from '../../types'
+} from '@creation-ui/core'
 
 export interface ChipProps
   extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {

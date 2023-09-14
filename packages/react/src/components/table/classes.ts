@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { sharedDisabledCVA } from '../../classes'
+import { sharedDisabledCVA } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
 
 export const rowGridClasses = ['grid', 'grid-flow-col']

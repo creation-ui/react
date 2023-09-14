@@ -1,5 +1,5 @@
-import objectsToArray from './obj-to-arr'
+import { objectsToArray } from './obj-to-arr'
 
-export default function objectsToString(object) {
+export function objectsToString(object) {
   return objectsToArray(object).join(' ')
 }

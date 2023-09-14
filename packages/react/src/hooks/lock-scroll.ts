@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef } from 'react'
-import { isBrowser, off, on } from '../utils/functions'
+import { isBrowser, off, on } from '@creation-ui/core'
 
 export function getClosestBody(
   el: Element | HTMLElement | HTMLIFrameElement | null

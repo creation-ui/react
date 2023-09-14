@@ -1,5 +1,5 @@
 import type { HTMLProps, SVGProps } from 'react'
-import type { ClassName, IconType } from '../../types'
+import type { ClassName, IconType } from '@creation-ui/core'
 
 export interface IconProps
   extends Omit<HTMLProps<HTMLDivElement>, 'className'> {

@@ -1,4 +1,4 @@
-import type { IconType } from '../../types'
+import type { IconType } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
 import { Check } from './check'
 import { ChevronDown } from './chevron-down'

@@ -3,7 +3,7 @@ import {
   microInteractions,
   sharedDisabledCVA,
   sharedSizeClassesCVA,
-} from '../../classes'
+} from '@creation-ui/core'
 
 export const toggleGroup = {
   container: [

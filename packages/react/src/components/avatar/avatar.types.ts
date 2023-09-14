@@ -4,7 +4,7 @@ import type {
   ElementPlacement,
   ElementSize,
   ElementStatus,
-} from '../../types'
+} from '@creation-ui/core'
 
 export const AVATAR_VARIANTS = ['circle', 'rounded', 'square'] as const
 

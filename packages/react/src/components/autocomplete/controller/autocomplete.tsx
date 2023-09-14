@@ -1,3 +1,4 @@
+import { getFlatOptions, selectOptionClasses } from '@creation-ui/core'
 import {
   autoUpdate,
   flip,
@@ -11,9 +12,7 @@ import {
 } from '@floating-ui/react'
 import Keyboard from 'keyboard-key'
 import React, { useEffect, useRef, useState } from 'react'
-import { selectOptionClasses } from '../../../classes'
 import { Theme, useTheme } from '../../../theme'
-import { getFlatOptions } from '../../../utils/normalize-dropdown-options'
 import { DropdownChevron } from '../../dropdown-chevron'
 import { InputBase } from '../../input-base'
 import { dropdownInitialProps } from '../../select/constants'
