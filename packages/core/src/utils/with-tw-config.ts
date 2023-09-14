@@ -1,17 +1,14 @@
-/**
- * This is a helper function for merging the main configuration of @creation-ui with the Tailwind CSS configuration
- */
-
-const { merge } = require('lodash')
-const themeColors = require('../theme/base/colors')
-const typography = require('../theme/base/typography')
-// const shadows = require('../theme/base/shadows')
-const breakpoints = require('../theme/base/breakpoints')
-const twColors = require('tailwindcss/colors')
+import { merge, keys } from 'lodash'
+import themeColors from '../theme/base/colors'
+import typography from '../theme/base/typography'
+import breakpoints from '../theme/base/breakpoints'
+import twColors from 'tailwindcss/colors'
+import forms from './forms'
+import headless from '@headlessui/tailwindcss'
 
 const deprecated = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
 
-Object.keys(twColors).forEach(key => {
+keys(twColors).forEach(key => {
   if (deprecated.includes(key)) {
     delete twColors[key]
   }
@@ -26,12 +23,7 @@ const creationUiConfig = {
     screens: breakpoints,
     // boxShadow: shadows,
   },
-  plugins: [
-    require('./forms')({
-      strategy: 'class', // only generate classes
-    }),
-    require('@headlessui/tailwindcss')({ prefix: 'ui' }),
-  ],
+  plugins: [forms({ strategy: 'class' }), headless({ prefix: 'ui' })],
 }
 
 /**
@@ -42,4 +34,4 @@ const creationUiConfig = {
 const withTailwindConfig = (userConfig = {}) =>
   merge(creationUiConfig, { ...userConfig })
 
-module.exports = withTailwindConfig
+export default withTailwindConfig

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../packages/creation-ui-react/build'
+import { Button } from '../../packages/react/build'
 import { buttonClasses } from '../fixtures/classes'
 
 describe('<Button />', () => {

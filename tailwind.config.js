@@ -1,4 +1,4 @@
-const withTailwindConfig = require('./packages/creation-ui-react/src/utils/withTailwindConfig')
+const withTailwindConfig = require('./packages/react/src/utils/withTailwindConfig')
 
 /** @type {import('tailwindcss').Config} */
 const config = withTailwindConfig({

@@ -6,10 +6,11 @@
  *
  */
 
-const svgToDataUri = require('mini-svg-data-uri')
-const plugin = require('tailwindcss/plugin')
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
+import svgToDataUri from 'mini-svg-data-uri'
+import plugin from 'tailwindcss/plugin'
+import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors'
+
 const [baseFontSize, { lineHeight: baseLineHeight }] =
   defaultTheme.fontSize.base
 const { spacing, borderWidth, borderRadius } = defaultTheme
@@ -18,7 +19,15 @@ function resolveColor(color, opacityVariableName) {
   return color.replace('<alpha-value>', `var(${opacityVariableName}, 1)`)
 }
 
-const forms = plugin.withOptions(function (options = { strategy: undefined }) {
+type Strategy = 'base' | 'class'
+
+interface FormsOptions {
+  strategy?: Strategy
+}
+
+const forms = plugin.withOptions(function (
+  options: FormsOptions = { strategy: undefined }
+) {
   return function ({ addBase, addComponents, theme }) {
     const strategy =
       options.strategy === undefined ? ['base', 'class'] : [options.strategy]
@@ -331,7 +340,7 @@ const forms = plugin.withOptions(function (options = { strategy: undefined }) {
       },
     ]
 
-    const getStrategyRules = strategy =>
+    const getStrategyRules = (strategy: Strategy) =>
       rules
         .map(rule => {
           if (rule[strategy] === null) return null
@@ -341,13 +350,15 @@ const forms = plugin.withOptions(function (options = { strategy: undefined }) {
         .filter(Boolean)
 
     if (strategy.includes('base')) {
+      // @ts-expect-error
       addBase(getStrategyRules('base'))
     }
 
     if (strategy.includes('class')) {
+      // @ts-expect-error
       addComponents(getStrategyRules('class'))
     }
   }
 })
 
-module.exports = forms
+export default forms

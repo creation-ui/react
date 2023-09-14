@@ -1,5 +1,5 @@
 import React from 'react'
-import { Calendar } from '../../packages/creation-ui-react/build'
+import { Calendar } from '../../packages/react/build'
 
 describe('<Calendar />', () => {
   it('renders', () => {

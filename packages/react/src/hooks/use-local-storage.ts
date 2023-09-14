@@ -1,4 +1,4 @@
-import { noop, isBrowser } from '../utils/functions'
+import { noop, isBrowser } from '../../../core/src'
 import {
   Dispatch,
   SetStateAction,

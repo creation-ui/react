@@ -11,7 +11,7 @@ const configurations = [
   {
     config: {
       ...baseConfig,
-      path: './packages/creation-ui-react/src/types/index.ts',
+      path: './packages/react/src/types/index.ts',
     },
     output: './docs/types.json',
   },

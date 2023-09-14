@@ -4,7 +4,7 @@ import values from 'lodash.values'
 import { ElementType } from 'react'
 import { ClassName, ElementTypography } from '../../types'
 import { twMerge } from 'tailwind-merge'
-import { ThemeTypography, TypographyConfig } from '../../theme'
+import { ThemeTypography, TypographyConfig } from '../../../../core/src'
 import { getElementType } from './get-element-type'
 
 interface GetDetailsArgs {
