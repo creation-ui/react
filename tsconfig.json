@@ -23,8 +23,6 @@
       "@components": ["./components/"],
       "@creation-ui/react/*": ["./packages/react/src/*"],
       "@creation-ui/react": ["./packages/react/src"],
-      "@creation-ui/core/*": ["./packages/core/src/*"],
-      "@creation-ui/core": ["./packages/core/src"],
       "@examples/*": ["./components/examples/*"],
       "@examples": ["./components/examples/"],
       "@pages/*": ["pages/*"],

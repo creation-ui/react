@@ -31,6 +31,7 @@
     "prettify": "prettier --write ."
   },
   "dependencies": {
+    "@creation-ui/core": "latest",
     "keyboard-key": "^1.1.0",
     "@babel/parser": "^7.21.4",
     "@floating-ui/react": "^0.25.1",
