@@ -1,5 +1,5 @@
 import { docsMicroInteractions } from '@components/classes'
-import { ElementStatus } from '@creation-ui/react/types'
+import { ElementStatus } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
 
 interface ColorBoxProps {

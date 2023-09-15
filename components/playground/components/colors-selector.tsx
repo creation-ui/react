@@ -9,7 +9,7 @@ import {
   BaseComponentProps,
   ElementSize,
   ElementStatus,
-} from '@creation-ui/react/types'
+} from '@creation-ui/core'
 import { useTheme } from '@creation-ui/react/theme'
 import { capitalize } from '@utils/list-or-types'
 

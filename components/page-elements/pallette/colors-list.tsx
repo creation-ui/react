@@ -1,6 +1,6 @@
 import { docsMicroInteractions } from '@components/classes'
 import colors from '@creation-ui/react/theme/base/colors'
-import { ElementStatus } from '@creation-ui/react/types'
+import { ElementStatus } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
 
 interface ColorShadesProps {

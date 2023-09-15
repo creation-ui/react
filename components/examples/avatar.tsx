@@ -4,7 +4,7 @@ import {
   ELEMENT_PLACEMENT_HORIZONTAL,
   ELEMENT_PLACEMENT_VERTICAL,
   ELEMENT_SIZES,
-} from '@creation-ui/react/types'
+} from '@creation-ui/core'
 import {
   mdiCircleOutline,
   mdiSquareOutline,
