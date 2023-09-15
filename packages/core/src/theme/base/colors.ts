@@ -1,4 +1,6 @@
-const { lime, red, amber, white, black, gray } = require('tailwindcss/colors')
+import twColors from 'tailwindcss/colors'
+
+const { lime, red, amber, white, black, gray } = twColors
 
 const colors = {
   inherit: 'inherit',
@@ -25,4 +27,4 @@ const colors = {
   info: gray,
 }
 
-module.exports = colors
+export default colors

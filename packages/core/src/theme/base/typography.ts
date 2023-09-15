@@ -4,4 +4,4 @@ const typography = {
   mono: ['Fira Code', 'monospace'],
 }
 
-module.exports = typography
+export default typography

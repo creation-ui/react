@@ -1,9 +1,8 @@
 {
   "name": "@creation-ui/react",
   "version": "0.10.3",
-  "description": "",
+  "description": "React.js UI library.",
   "main": "index.js",
-  "private": true,
   "author": {
     "name": "Paweł Krystkiewicz",
     "email": "pawelkrystkiewicz@outlook.com"
@@ -41,7 +40,6 @@
     "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
     "@tanstack/match-sorter-utils": "^8.7.6",
     "@tanstack/react-table": "^8.7.9",

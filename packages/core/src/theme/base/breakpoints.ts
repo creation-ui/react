@@ -6,4 +6,5 @@ const breakpoints = {
   xl: '1140px',
   '2xl': '1320px',
 }
-module.exports = breakpoints
+
+export default breakpoints
