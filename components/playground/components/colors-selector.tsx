@@ -1,9 +1,7 @@
 import type {
   BaseComponentProps,
-  ElementColor,
   ElementSize,
   ElementStatus,
-  ElementVariants,
 } from '@creation-ui/core'
 import { inputContainer, label as labelClasses, text } from '@creation-ui/core'
 import { useTheme } from '@creation-ui/react/theme'

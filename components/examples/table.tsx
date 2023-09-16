@@ -213,7 +213,7 @@ export const TableExample = () => {
         loading={loading}
         error={error}
         errorVariant='outlined'
-        table={table}
+        table={table as any}
         height='50vh'
         pagination={{
           pageButtonsVariant: 'buttons',

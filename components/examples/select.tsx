@@ -1,18 +1,12 @@
 import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context/context'
-import { DropdownProps, Select } from '@creation-ui/react'
+import { DropdownProps } from '@creation-ui/core'
+import { Select } from '@creation-ui/react'
 import { pick } from 'lodash'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { options } from './data'
 import { createInputControls } from './shared-playground-controls'
-import {
-  cxProps,
-  helperTextProp,
-  idProp,
-  labelProp,
-  sizeProp,
-} from './shared-props'
 import { createDocsLink } from './utils'
 
 export const SelectExample = ({ ...props }: DropdownProps) => {
@@ -51,8 +45,6 @@ export const SelectPlayground = () => (
     showCode={false}
   />
 )
-
-const cx = { container: { inner: 'string', outer: 'string' }, input: 'string' }
 
 export const properties: DocumentedProperty[] = [
   {
