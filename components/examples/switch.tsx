@@ -1,5 +1,6 @@
 import { Playground } from '@components/playground'
-import { ELEMENT_SIZES, Switch, SwitchProps } from '@creation-ui/react'
+import { Switch, SwitchProps } from '@creation-ui/react'
+import { ELEMENT_SIZES } from '@creation-ui/core'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

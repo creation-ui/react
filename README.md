@@ -94,7 +94,7 @@ If you're using the standard config of `Next.js`, you should import it in `pages
 If you're using the standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import '@creation-ui/react/index.css'
+import '@creation-ui/core/index.css'
 ```
 
 3. Start using it!

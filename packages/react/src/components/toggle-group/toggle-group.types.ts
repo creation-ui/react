@@ -1,6 +1,11 @@
-import type { GetComponentProps } from '@creation-ui/core'
 import type { RadioGroupProps } from '../radio'
 import type { RadioGroup } from '@headlessui/react'
+
+export type GetComponentProps<T> = T extends
+  | React.ComponentType<infer P>
+  | React.Component<infer P>
+  ? P
+  : never
 
 export type HeadlessRadioGroupOptionProps = GetComponentProps<
   typeof RadioGroup.Option

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,24 +19,56 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["react/next", "react-dom/next", "mdx"],
+    "types": [
+      "react/next",
+      "react-dom/next",
+      "mdx"
+    ],
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./components/*"],
-      "@components": ["./components/"],
-      "@creation-ui/react/*": ["./packages/react/src/*"],
-      "@creation-ui/react": ["./packages/react/src"],
-      "@examples/*": ["./components/examples/*"],
-      "@examples": ["./components/examples/"],
-      "@pages/*": ["pages/*"],
-      "@pages": ["pages"],
-      "@utils/*": ["utils/*"],
-      "@utils": ["utils"],
-      "@models/*": ["./models/*"],
-      "@models": ["./models"],
-      "@root/*": ["./*"],
-      "@root": ["./"]
+      "@components/*": [
+        "./components/*"
+      ],
+      "@components": [
+        "./components/"
+      ],
+      "@creation-ui/react/*": [
+        "./packages/react/src/*"
+      ],
+      "@creation-ui/react": [
+        "./packages/react/src"
+      ],
+      "@examples/*": [
+        "./components/examples/*"
+      ],
+      "@examples": [
+        "./components/examples/"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@pages": [
+        "pages"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@utils": [
+        "utils"
+      ],
+      "@models/*": [
+        "./models/*"
+      ],
+      "@models": [
+        "./models"
+      ],
+      "@root/*": [
+        "./*"
+      ],
+      "@root": [
+        "./"
+      ]
     },
     "plugins": [
       {
@@ -48,7 +84,13 @@
     "pages/index.tsx",
     ".next/types/**/*.ts",
     "pages/_app.msx",
-    "scripts/generate-docs.js"
+    "scripts/generate-docs.js",
+    "@creation-ui/react",
+    "@creation-ui/core"
   ],
-  "exclude": ["node_modules", "**/build", "cypress"]
+  "exclude": [
+    "node_modules",
+    "**/build",
+    "cypress"
+  ]
 }

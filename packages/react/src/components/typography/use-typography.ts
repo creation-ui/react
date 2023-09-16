@@ -1,10 +1,14 @@
+import {
+  ClassName,
+  ElementTypography,
+  ThemeTypography,
+  TypographyConfig,
+} from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
 import merge from 'lodash.merge'
 import values from 'lodash.values'
 import { ElementType } from 'react'
-import { ClassName, ElementTypography } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
-import { ThemeTypography, TypographyConfig } from '../../../../core/src'
 import { getElementType } from './get-element-type'
 
 interface GetDetailsArgs {

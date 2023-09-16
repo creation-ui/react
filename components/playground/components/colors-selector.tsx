@@ -1,17 +1,15 @@
-import clsx from 'clsx'
-import { useId } from 'react'
-import {
-  inputContainer,
-  label as labelClasses,
-  text,
-} from '@creation-ui/react/classes'
-import {
+import type {
   BaseComponentProps,
+  ElementColor,
   ElementSize,
   ElementStatus,
+  ElementVariants,
 } from '@creation-ui/core'
+import { inputContainer, label as labelClasses, text } from '@creation-ui/core'
 import { useTheme } from '@creation-ui/react/theme'
 import { capitalize } from '@utils/list-or-types'
+import clsx from 'clsx'
+import { useId } from 'react'
 
 export type ColorDefinition = {
   label: ElementStatus

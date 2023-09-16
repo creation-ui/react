@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { ElementVariant } from '../../../types'
+import type { ElementVariant } from '@creation-ui/core'
 import { Button } from '../../button'
 import { useCalendar } from '../calendar.context'
 import { calendarDaysViewClasses } from '../classes'

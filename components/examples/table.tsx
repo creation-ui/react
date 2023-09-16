@@ -1,14 +1,12 @@
+import { ReadableError } from '@creation-ui/core'
 import {
   Avatar,
   Checkbox,
-  ReadableError,
   Chip,
   ChipProps,
   Switch,
   Table,
 } from '@creation-ui/react'
-import { useMemo, useState } from 'react'
-
 import { mdiPencil } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import {
@@ -18,6 +16,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 import clsx from 'clsx'
+import { useMemo, useState } from 'react'
 import data from './table-data.json'
 
 type Person = {
