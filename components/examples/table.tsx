@@ -1,4 +1,4 @@
-import { ReadableError } from '@creation-ui/core'
+import type { ReadableError } from '@creation-ui/core'
 import {
   Avatar,
   Checkbox,
