@@ -1,13 +1,10 @@
 import { docsMicroInteractions } from '@components/classes'
-// import  {colors} from '@creation-ui/core'
-import { ElementStatus } from '@creation-ui/core'
+import { ElementStatus, colors } from '@creation-ui/core'
 import { twMerge } from 'tailwind-merge'
 
 interface ColorShadesProps {
   color: ElementStatus
 }
-
-const colors = {}
 
 export const ColorShades = ({ color }: ColorShadesProps) => {
   const shades = colors[color]

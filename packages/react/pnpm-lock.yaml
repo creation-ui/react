@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': ^7.21.3
-  '@creation-ui/core': ^0.4.5
+  '@creation-ui/core': ^0.4.6
   '@floating-ui/react': ^0.25.1
   '@floating-ui/react-dom': ^2.0.1
   '@headlessui/react': ^1.7.13
@@ -59,7 +59,7 @@ specifiers:
   uuid: ^9.0.0
 
 dependencies:
-  '@creation-ui/core': 0.4.5_4pcen57ma5kb43zvhduvfbpg6a
+  '@creation-ui/core': 0.4.6_4pcen57ma5kb43zvhduvfbpg6a
   '@floating-ui/react': 0.25.1_biqbaboplfbrettd7655fr4n2y
   '@floating-ui/react-dom': 2.0.1_biqbaboplfbrettd7655fr4n2y
   '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
@@ -1449,8 +1449,8 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@creation-ui/core/0.4.5_4pcen57ma5kb43zvhduvfbpg6a:
-    resolution: {integrity: sha512-YNKCZ4PsAqWL0E64iU2ECIMytlZRdCW2sESmir+eM8OsB6bSZfNtEtBsahi3dMH6ZqbZwP7pEOLWpmFkb7SyjA==}
+  /@creation-ui/core/0.4.6_4pcen57ma5kb43zvhduvfbpg6a:
+    resolution: {integrity: sha512-JN2O6jRDVDC6gnRA4zsQUeDcWQ9A07Bv6upGIkggZy7MnEvIoy4FpOM0XOoUeWVyTsqtiaRZ58OaLMCGxMiQMA==}
     peerDependencies:
       tailwindcss: ^3.0
     dependencies:

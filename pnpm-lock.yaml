@@ -7,7 +7,7 @@ specifiers:
   '@babel/preset-react': ^7.18.6
   '@babel/preset-typescript': ^7.21.0
   '@changesets/cli': ^2.26.1
-  '@creation-ui/core': ^0.4.5
+  '@creation-ui/core': ^0.4.6
   '@floating-ui/react': ^0.25.1
   '@floating-ui/react-dom': ^2.0.1
   '@headlessui/react': ^1.7.13
@@ -91,7 +91,7 @@ specifiers:
 
 dependencies:
   '@babel/parser': 7.22.16
-  '@creation-ui/core': 0.4.5_doddzzp776t3gxshu6xcqprcoe
+  '@creation-ui/core': 0.4.6_doddzzp776t3gxshu6xcqprcoe
   '@floating-ui/react': 0.25.4_biqbaboplfbrettd7655fr4n2y
   '@floating-ui/react-dom': 2.0.2_biqbaboplfbrettd7655fr4n2y
   '@headlessui/react': 1.7.17_biqbaboplfbrettd7655fr4n2y
@@ -1754,8 +1754,8 @@ packages:
     dev: false
     optional: true
 
-  /@creation-ui/core/0.4.5_doddzzp776t3gxshu6xcqprcoe:
-    resolution: {integrity: sha512-YNKCZ4PsAqWL0E64iU2ECIMytlZRdCW2sESmir+eM8OsB6bSZfNtEtBsahi3dMH6ZqbZwP7pEOLWpmFkb7SyjA==}
+  /@creation-ui/core/0.4.6_doddzzp776t3gxshu6xcqprcoe:
+    resolution: {integrity: sha512-JN2O6jRDVDC6gnRA4zsQUeDcWQ9A07Bv6upGIkggZy7MnEvIoy4FpOM0XOoUeWVyTsqtiaRZ58OaLMCGxMiQMA==}
     peerDependencies:
       tailwindcss: ^3.0
     dependencies:
