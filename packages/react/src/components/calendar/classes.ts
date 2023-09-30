@@ -47,9 +47,9 @@ export const calendarDaysViewClasses = {
       'justify-center',
       //
       'text-center',
-      'rounded-md',
+
       'relative',
-      '[&:has([aria-selected])]:bg-info-300',
+      '[&:has([aria-selected])]:bg-info-200',
       'first:[&:has([aria-selected])]:rounded-l-md',
       'last:[&:has([aria-selected])]:rounded-r-md',
       'hover:bg-info-300',
@@ -60,10 +60,11 @@ export const calendarDaysViewClasses = {
           true: ['border', 'border-info-500'],
           false: '',
         },
+        isInRange: { true: 'bg-info-200', false: '' },
         isSelected: {
           true: [
             '!text-info-100',
-            'bg-info-500',
+            '!bg-info-500',
             'text-info-200',
             'hover:bg-info-600',
             'hover:text-info-300',
@@ -75,9 +76,9 @@ export const calendarDaysViewClasses = {
           false: ['text-info-400', 'dark:text-info-600'],
         },
         size: {
-          sm: ['w-8', 'h-8', 'text-sm'],
-          md: ['w-10', 'h-10', 'text-sm'],
-          lg: ['w-12', 'h-12'],
+          sm: ['w-full', 'h-8', 'text-sm'],
+          md: ['w-full', 'h-10', 'text-sm'],
+          lg: ['w-full', 'h-12'],
         },
         isWeekend: {
           true: '!text-error-500',
@@ -117,4 +118,4 @@ export const calendarDaysViewTitleClasses = {
   }),
 }
 
-export const dayRowClasses = twix('grid', 'grid-cols-7', 'gap-1')
+export const dayRowClasses = twix('grid', 'grid-cols-7')

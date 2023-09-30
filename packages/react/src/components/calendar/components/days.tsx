@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useCallback, type ReactNode } from 'react'
 import { useCalendar } from '../calendar.context'
 import {
   calendarDaysViewClasses,
@@ -9,10 +9,10 @@ import { getFirstDayOfWeek } from '../utils'
 
 export const CalendarDaysView = () => {
   const {
-    currentDate,
-    selectedDate,
-    setSelectedDate,
-    setCurrentDate,
+    viewDate,
+    selectedDates,
+    setSelectedDates,
+    mode,
     size,
     locale,
     weekStartsOn,
@@ -26,8 +26,8 @@ export const CalendarDaysView = () => {
     )
   )
 
-  const month = currentDate.getMonth()
-  const year = currentDate.getFullYear()
+  const month = viewDate.getMonth()
+  const year = viewDate.getFullYear()
 
   const monthStart = new Date(year, month, 1)
   const monthEnd = new Date(year, month + 1, 0)
@@ -42,25 +42,33 @@ export const CalendarDaysView = () => {
     monthEnd.setDate(monthEnd.getDate() + (6 - monthEnd.getDay()))
   )
 
+  const isDateSelected = useCallback(
+    (date: Date) => {
+      const first = selectedDates?.[0]?.toDateString()
+      const second = selectedDates?.[1]?.toDateString()
+      const dateString = date.toDateString()
+      return first === dateString || second === dateString
+    },
+    [selectedDates]
+  )
+
+  const isDateInRange = (date: Date) => {
+    if (mode === 'range' && selectedDates[0] && selectedDates[1]) {
+      return date >= selectedDates[0] && date <= selectedDates[1]
+    }
+    return false
+  }
+
   const handleRowClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const day = (e.target as HTMLElement).closest('button')
-
     if (!day) return
 
     const date: string | null = day.getAttribute('data-date')
     if (!date) return
 
-    const selectedDate = new Date(date)
-    const m = selectedDate.getMonth()
+    const clickedDate = new Date(date)
 
-    const isBeforeMonthStart = m < month
-    const isAfterMonthEnd = m > month
-
-    if (isBeforeMonthStart || isAfterMonthEnd) {
-      setCurrentDate(selectedDate)
-    }
-
-    setSelectedDate(selectedDate)
+    setSelectedDates(clickedDate)
   }
 
   let date = startDate
@@ -72,21 +80,23 @@ export const CalendarDaysView = () => {
     for (let i = 0; i < 7; i++) {
       const cellDate = date.toDateString()
       const isToday = new Date().toDateString() === cellDate
-      const isCurrentMonth = date.getMonth() === currentDate?.getMonth()
-      const isSelected = selectedDate?.toDateString() === cellDate
+      const isCurrentMonth = date.getMonth() === viewDate?.getMonth()
+      const isSelected = isDateSelected(date)
+      const isInRange = isDateInRange(date)
       const isWeekend = [5, 6].includes(i)
 
       days.push(
         <button
           data-date={cellDate}
           key={`${rows.length}-${i}`}
-          aria-selected={isSelected}
+          aria-selected={isSelected || isInRange}
           className={calendarDaysViewClasses.day({
             size,
             isCurrentMonth,
             isSelected,
             isToday,
             isWeekend,
+            isInRange
           })}
         >
           {date.getDate().toString()}

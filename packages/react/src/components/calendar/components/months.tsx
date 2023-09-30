@@ -3,7 +3,7 @@ import { Button } from '../../button'
 import type { ReactNode } from 'react'
 
 export const CalendarMonthsView = () => {
-  const { currentDate, setCurrentDate, setView, size, locale } = useCalendar()
+  const { viewDate: currentDate, setViewDate: setCurrentDate, setView, size, locale } = useCalendar()
 
   const effectiveLocale = locale || navigator.language
 

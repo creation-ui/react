@@ -56,7 +56,7 @@ export const DatePicker: FC<DatePickerProps> = props => {
         />
       </PopoverTrigger>
       <PopoverContent className='!p-0 !bg-transparent'>
-        <Calendar size={size} onClick={handleDateSelect} value={value} />
+        <Calendar size={size} onChange={handleDateSelect} value={value} />
       </PopoverContent>
     </Popover>
   )

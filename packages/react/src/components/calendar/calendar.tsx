@@ -1,21 +1,17 @@
 import clsx from 'clsx'
-import { FC, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { Button } from '../button'
 import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
-import { CalendarContext } from './calendar.context'
-import {
-  CalendarDateValue,
-  CalendarProps,
-  CalendarView,
-} from './calendar.types'
+import { CalendarContext, CalendarContextValue } from './calendar.context'
+import { CalendarProps, CalendarView, DateRange } from './calendar.types'
 import { calendarClasses, headerClasses } from './classes'
 import { CalendarDaysView } from './components/days'
 import { CalendarMonthsView } from './components/months'
 import { CalendarYearsView } from './components/years'
-import { changeCalendarView } from './utils'
+import { changeCalendarView, getCalendarInitialValue } from './utils'
 
 const Calendar: FC<CalendarProps> = props => {
   const theme = useTheme()
@@ -24,57 +20,88 @@ const Calendar: FC<CalendarProps> = props => {
     size = theme.size ?? 'md',
     className,
     id,
-    onClick,
+    onChange,
     weekStartsOn = 1,
+    numberOfMonths = 1,
+    mode = 'single',
     value,
     todayText = 'Today',
+    startOn,
   } = props
+
   const componentId = useId(id)
 
   const [view, setView] = useState<CalendarView>('days')
+  const [viewDate, setViewDate] = useState<Date>(startOn ?? new Date())
+  const [selectedDates, setSelectedDates] = useState<DateRange>([null, null])
 
-  const [selectedDate, setSelectedDate] = useState<CalendarDateValue>(value)
-  const [currentDate, setCurrentDate] = useState<Date>(value ?? new Date())
+  useEffect(() => {
+    setSelectedDates(getCalendarInitialValue(value))
+  }, [])
 
-  const handleDayClick = (date: CalendarDateValue) => {
-    onClick?.(date)
-    setSelectedDate(date)
+  const handleDayClick = (date: Date | null) => {
+    if (mode === 'range') {
+      if (!selectedDates[0] || (selectedDates[0] && selectedDates[1])) {
+        setSelectedDates([date, null])
+      } else if (selectedDates[0] && !selectedDates[1]) {
+        // Check if selected date is before the initial date and swap if necessary
+        if (date && selectedDates[0] && date < selectedDates[0]) {
+          setSelectedDates([date, selectedDates[0]])
+          // @ts-expect-error
+          onChange?.([date, selectedDates[0]])
+        } else {
+          setSelectedDates([selectedDates[0], date])
+          // @ts-expect-error
+          onChange?.([selectedDates[0], date])
+        }
+      }
+    } else {
+      setSelectedDates([date, null])
+      // @ts-expect-error
+      onChange?.(date)
+    }
   }
 
   const onNextClick = () => {
-    const date = changeCalendarView(currentDate, view, 'next')
-    setCurrentDate(date)
+    const date = changeCalendarView(viewDate, view, 'next')
+    setViewDate(date)
   }
   const onPrevClick = () => {
-    const date = changeCalendarView(currentDate, view, 'prev')
-    setCurrentDate(date)
+    const date = changeCalendarView(viewDate, view, 'prev')
+    setViewDate(date)
   }
 
   const onTodayClick = () => {
     const today = new Date()
-    setCurrentDate(today)
+    setViewDate(today)
     handleDayClick(today)
     setView('days')
   }
 
   const isMonthName = view === 'days'
   const isYearName = ['months', 'days'].includes(view)
-  const isTodaySelected = useMemo(
-    () => selectedDate?.toDateString() === new Date().toDateString(),
-    [selectedDate]
-  )
+  const isTodaySelected = useMemo(() => {
+    if (mode === 'range') return false
+    const first = selectedDates?.[0]?.toDateString()
+    const second = selectedDates?.[1]?.toDateString()
+    const today = new Date().toDateString()
+    return first === today || second === today
+  }, [selectedDates])
 
-  const context = useMemo(
+  const context: CalendarContextValue = useMemo(
     () => ({
-      setSelectedDate: handleDayClick,
-      setCurrentDate,
+      setSelectedDates: handleDayClick,
+      setViewDate: setViewDate,
       setView,
       size,
-      currentDate,
-      selectedDate,
+      currentDate: viewDate,
+      selectedDates,
       weekStartsOn,
+      viewDate,
+      mode,
+      numberOfMonths,
     }),
-    [size, currentDate, selectedDate, weekStartsOn]
+    [size, viewDate, selectedDates, weekStartsOn]
   )
 
   const currentView = useMemo(() => {
@@ -99,13 +126,13 @@ const Calendar: FC<CalendarProps> = props => {
                 onClick={setView.bind(null, 'months')}
               >
                 {isMonthName &&
-                  currentDate.toLocaleDateString(undefined, { month: 'long' })}
+                  viewDate.toLocaleDateString(undefined, { month: 'long' })}
               </button>
               <button
                 className={clsx(headerClasses)}
                 onClick={setView.bind(null, 'years')}
               >
-                {isYearName && currentDate.getFullYear()}
+                {isYearName && viewDate.getFullYear()}
               </button>
             </div>
 

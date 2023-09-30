@@ -1,12 +1,28 @@
 import { Playground } from '@components/playground'
-import { Calendar } from '@creation-ui/react'
+import { Calendar, DateRange } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
 import { sizeControl } from './shared-playground-controls'
 import { classNameProps, idProp, sizeProp } from './shared-props'
+import { useState } from 'react'
 
 export const CalendarPlayground = () => (
   <Playground component={Calendar} name='Calendar' controls={[sizeControl]} />
 )
+
+export const CalendarExample = () => {
+  const [value, setValue] = useState<DateRange>([null, null])
+
+  return (
+    <Calendar
+      mode='range'
+      value={value}
+      onChange={setValue}
+      weekStartsOn={1}
+      numberOfMonths={2}
+      todayText='Heute'
+    />
+  )
+}
 
 export const properties: DocumentedProperty[] = [
   sizeProp,
