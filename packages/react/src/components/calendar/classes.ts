@@ -1,5 +1,6 @@
+import { microInteractions } from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
-import { microInteractions, sharedSizeClassesCVA } from '@creation-ui/core'
+import { twix } from '../utils'
 
 export const headerClasses = [
   '!text-lg',
@@ -13,14 +14,19 @@ export const calendarClasses = {
   container: cva(
     [
       microInteractions,
-      'bg-white dark:bg-info-800 dark:border-info-700 border p-4 rounded-md',
+      'bg-white',
+      'dark:bg-info-800',
+      'dark:border-info-700',
+      'border',
+      'p-4',
+      'rounded-md',
     ],
     {
       variants: {
         size: {
-          sm: ['w-72', 'h-72'],
-          md: ['w-96', 'h-80'],
-          lg: ['w-[406px]', 'h-96'],
+          sm: ['w-72'],
+          md: ['w-96'],
+          lg: ['w-[406px]'],
         },
       },
     }
@@ -28,38 +34,87 @@ export const calendarClasses = {
 }
 
 export const calendarDaysViewClasses = {
-  day: cva(['w-full'], {
+  day: cva(
+    [
+      //
+      microInteractions,
+      'cursor-pointer',
+      'select-none',
+      'justify-self-center',
+      'bg-none',
+      'flex',
+      'items-center',
+      'justify-center',
+      //
+      'text-center',
+      'rounded-md',
+      'relative',
+      '[&:has([aria-selected])]:bg-info-300',
+      'first:[&:has([aria-selected])]:rounded-l-md',
+      'last:[&:has([aria-selected])]:rounded-r-md',
+      'hover:bg-info-300',
+    ],
+    {
+      variants: {
+        isToday: {
+          true: ['border', 'border-info-500'],
+          false: '',
+        },
+        isSelected: {
+          true: [
+            '!text-info-100',
+            'bg-info-500',
+            'text-info-200',
+            'hover:bg-info-600',
+            'hover:text-info-300',
+            'focus:bg-info-600',
+          ],
+        },
+        isCurrentMonth: {
+          true: ['text-info-900', 'dark:text-info-100'],
+          false: ['text-info-400', 'dark:text-info-600'],
+        },
+        size: {
+          sm: ['w-8', 'h-8', 'text-sm'],
+          md: ['w-10', 'h-10', 'text-sm'],
+          lg: ['w-12', 'h-12'],
+        },
+        isWeekend: {
+          true: '!text-error-500',
+          false: '',
+        },
+      },
+      defaultVariants: {
+        isSelected: false,
+        isToday: false,
+        isCurrentMonth: true,
+        isWeekend: true,
+      },
+      compoundVariants: [
+        {
+          isSelected: true,
+          isWeekend: true,
+          isCurrentMonth: true,
+          className: '!text-info-100',
+        },
+      ],
+    }
+  ),
+}
+
+export const calendarDaysViewTitleClasses = {
+  day: cva(['select-none', 'justify-self-center'], {
     variants: {
       isToday: {
         true: '',
         false: '',
       },
-      isSelected: {
-        true: '!text-info-100',
-      },
-      isCurrentMonth: {
-        true: 'text-info-900 dark:text-info-100',
-        false: 'text-info-400 dark:text-info-600',
-      },
-      size: sharedSizeClassesCVA,
       isWeekend: {
         true: '!text-error-500',
         false: '',
       },
     },
-    defaultVariants: {
-      isSelected: false,
-      isToday: false,
-      isCurrentMonth: true,
-      isWeekend: true,
-    },
-    compoundVariants: [
-      {
-        isSelected: true,
-        isWeekend: true,
-        isCurrentMonth: true,
-        className: '!text-info-100',
-      },
-    ],
   }),
 }
+
+export const dayRowClasses = twix('grid', 'grid-cols-7', 'gap-1')

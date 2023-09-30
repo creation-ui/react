@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
-import type { ElementVariant } from '@creation-ui/core'
-import { Button } from '../../button'
 import { useCalendar } from '../calendar.context'
-import { calendarDaysViewClasses } from '../classes'
+import {
+  calendarDaysViewClasses,
+  calendarDaysViewTitleClasses,
+  dayRowClasses,
+} from '../classes'
 import { getFirstDayOfWeek } from '../utils'
 
 export const CalendarDaysView = () => {
@@ -41,11 +43,11 @@ export const CalendarDaysView = () => {
   )
 
   const handleRowClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const button = (e.target as HTMLElement).closest('button')
+    const day = (e.target as HTMLElement).closest('button')
 
-    if (!button) return
+    if (!day) return
 
-    const date: string | null = button.getAttribute('data-date')
+    const date: string | null = day.getAttribute('data-date')
     if (!date) return
 
     const selectedDate = new Date(date)
@@ -74,40 +76,28 @@ export const CalendarDaysView = () => {
       const isSelected = selectedDate?.toDateString() === cellDate
       const isWeekend = [5, 6].includes(i)
 
-      const dayClassName = calendarDaysViewClasses.day({
-        size,
-        isCurrentMonth,
-        isSelected,
-        isToday,
-        isWeekend,
-      })
-
-      const variant: ElementVariant = isSelected
-        ? 'contained'
-        : isToday
-        ? 'outlined'
-        : 'text'
-
-      const dynamicKey = `${rows.length}-${i}`
-
       days.push(
-        <Button
-          key={dynamicKey}
-          size={size}
-          variant={variant}
-          status={isWeekend ? 'error' : 'primary'}
-          className={dayClassName}
+        <button
           data-date={cellDate}
+          key={`${rows.length}-${i}`}
+          aria-selected={isSelected}
+          className={calendarDaysViewClasses.day({
+            size,
+            isCurrentMonth,
+            isSelected,
+            isToday,
+            isWeekend,
+          })}
         >
           {date.getDate().toString()}
-        </Button>
+        </button>
       )
 
       date.setDate(date.getDate() + 1)
     }
 
     rows.push(
-      <div key={`week-${date.toString()}`} className='flex justify-between'>
+      <div key={`week-${date.toString()}`} className={dayRowClasses()}>
         {days}
       </div>
     )
@@ -115,11 +105,11 @@ export const CalendarDaysView = () => {
 
   return (
     <>
-      <div className='flex justify-between py-2 text-xs font-semibold capitalize'>
+      <div className={dayRowClasses('py-2 text-xs font-semibold capitalize')}>
         {dayNames.map((dayName, i) => (
           <div
             key={dayName}
-            className={calendarDaysViewClasses.day({
+            className={calendarDaysViewTitleClasses.day({
               isWeekend: [5, 6].includes(i),
             })}
           >
@@ -127,7 +117,9 @@ export const CalendarDaysView = () => {
           </div>
         ))}
       </div>
-      <div onClick={handleRowClick}>{rows}</div>
+      <div onClick={handleRowClick} className='flex-col flex gap-1 py-2'>
+        {rows}
+      </div>
     </>
   )
 }

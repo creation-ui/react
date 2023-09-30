@@ -18,6 +18,7 @@ export type CalendarProps = Omit<
   onClick?: (date: CalendarDateValue) => void
   weekStartsOn?: WeekDayIndex
   value?: CalendarDateValue
+  todayText?: string
 }
 
 export type CalendarView = 'days' | 'months' | 'years'

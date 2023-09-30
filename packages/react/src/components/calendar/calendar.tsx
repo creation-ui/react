@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { FC, useEffect, useState } from 'react'
+import { FC, useMemo, useState } from 'react'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { Button } from '../button'
@@ -27,13 +27,14 @@ const Calendar: FC<CalendarProps> = props => {
     onClick,
     weekStartsOn = 1,
     value,
+    todayText = 'Today',
   } = props
   const componentId = useId(id)
 
   const [view, setView] = useState<CalendarView>('days')
 
   const [selectedDate, setSelectedDate] = useState<CalendarDateValue>(value)
-  const [currentDate, setCurrentDate] = useState<Date>(value || new Date())
+  const [currentDate, setCurrentDate] = useState<Date>(value ?? new Date())
 
   const handleDayClick = (date: CalendarDateValue) => {
     onClick?.(date)
@@ -57,19 +58,38 @@ const Calendar: FC<CalendarProps> = props => {
   }
 
   const isMonthName = view === 'days'
-  const isYearName = view === 'days' || view === 'months'
+  const isYearName = ['months', 'days'].includes(view)
+  const isTodaySelected = useMemo(
+    () => selectedDate?.toDateString() === new Date().toDateString(),
+    [selectedDate]
+  )
+
+  const context = useMemo(
+    () => ({
+      setSelectedDate: handleDayClick,
+      setCurrentDate,
+      setView,
+      size,
+      currentDate,
+      selectedDate,
+      weekStartsOn,
+    }),
+    [size, currentDate, selectedDate, weekStartsOn]
+  )
+
+  const currentView = useMemo(() => {
+    switch (view) {
+      case 'days':
+        return <CalendarDaysView />
+      case 'months':
+        return <CalendarMonthsView />
+      case 'years':
+        return <CalendarYearsView />
+    }
+  }, [view])
+
   return (
-    <CalendarContext.Provider
-      value={{
-        currentDate,
-        selectedDate,
-        setSelectedDate: handleDayClick,
-        setCurrentDate,
-        setView,
-        size,
-        weekStartsOn,
-      }}
-    >
+    <CalendarContext.Provider value={context}>
       <InteractiveContainer className={className}>
         <div className={calendarClasses.container({ size })} id={componentId}>
           <div className='flex items-center justify-between mb-2'>
@@ -88,6 +108,7 @@ const Calendar: FC<CalendarProps> = props => {
                 {isYearName && currentDate.getFullYear()}
               </button>
             </div>
+
             <div className='flex items-center gap-2'>
               <Button
                 circle
@@ -109,19 +130,18 @@ const Calendar: FC<CalendarProps> = props => {
               </Button>
             </div>
           </div>
-          <div>
-            <>{view === 'days' && <CalendarDaysView />}</>
-            <>{view === 'months' && <CalendarMonthsView />}</>
-            <>{view === 'years' && <CalendarYearsView />}</>
+          <div>{currentView}</div>
+          <div className='p-2'>
+            <Button
+              variant='text'
+              size='sm'
+              onClick={onTodayClick}
+              disabled={isTodaySelected}
+              className='absolute bottom-2 left-2'
+            >
+              {todayText}
+            </Button>
           </div>
-          <Button
-            variant='text'
-            size='sm'
-            onClick={onTodayClick}
-            className='absolute bottom-2 left-2'
-          >
-            Today
-          </Button>
         </div>
       </InteractiveContainer>
     </CalendarContext.Provider>
