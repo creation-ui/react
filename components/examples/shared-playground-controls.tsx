@@ -1,4 +1,4 @@
-import { ColorDefinition } from '@components/playground/components/colors-selector'
+import { GenericColorDefinition } from '@components/playground/components/colors-selector'
 import { INPUT_TYPES } from '@components/playground/constants'
 import { PlaygroundControl } from '@components/playground/types'
 import {
@@ -44,7 +44,7 @@ const VARIANTS_BASE = [
   },
 ]
 
-const COLORS: ColorDefinition[] = [
+const COLORS: GenericColorDefinition[] = [
   { value: 'primary', label: 'primary', className: 'bg-primary-500' },
   { value: 'success', label: 'success', className: 'bg-success-500' },
   { value: 'warning', label: 'warning', className: 'bg-warning-500' },

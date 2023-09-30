@@ -1,49 +1,32 @@
-import { twMerge } from 'tailwind-merge'
+import { forwardRef, type HTMLAttributes } from 'react'
 
-export interface CardProps {
-  children?: React.ReactNode
-  className?: string
+import { twix } from '../utils'
+
+const cardClasses = twix(
+  'border',
+  'min-h-fit',
+  'min-w-fit',
+  'flex-grow',
+  'rounded-xl',
+  'p-6',
+  'shadow',
+  'border-global'
+)
+
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  href?: string
 }
 
-const classes = {
-  card: [
-    'bg-white',
-    'dark:bg-info-800',
-    'dark:text-info-100',
-    'text-info-900',
-    'border',
-    'border-gray-200',
-    'dark:border-gray-700',
-    'rounded-md',
-    'p-4',
-    'flex',
-    'flex-col',
-    'gap-4',
-    'w-fit',
-    'h-fit',
-    'overflow-clip',
-  ],
-  header: ['text-lg', 'font-semibold', 'mb-2', 'leading-relaxed'],
-  body: ['text-info-600', 'dark:text-info-400'],
-  footer: [],
-}
-
-export const Card = ({ children, className }: CardProps) => {
-  return <div className={twMerge(className, classes.card)}>{children}</div>
-}
-
-const Header = ({ children, className }: CardProps) => {
-  return <h3 className={twMerge(className, classes.header)}>{children}</h3>
-}
-
-const Body = ({ children, className }: CardProps) => {
-  return <div className={twMerge(className, classes.body)}>{children}</div>
-}
-
-const Footer = ({ children, className }: CardProps) => {
-  return <div className={twMerge(className, classes.footer)}>{children}</div>
-}
-
-Card.Footer = Footer
-Card.Body = Body
-Card.Header = Header
+export const Card = forwardRef<HTMLDivElement, CardProps>(
+  ({ className, href, children, ...props }, ref) => (
+    <div ref={ref} className={cardClasses(className)} {...props}>
+      {href ? (
+        <a href={href} className='block'>
+          {children}
+        </a>
+      ) : (
+        children
+      )}
+    </div>
+  )
+)

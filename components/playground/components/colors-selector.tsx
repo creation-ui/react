@@ -1,27 +1,55 @@
-import type {
-  BaseComponentProps,
-  ElementSize,
-  ElementStatus,
+import Icon from '@components/icon'
+import type { BaseComponentProps, ElementSize } from '@creation-ui/core'
+import {
+  inputContainer,
+  label as labelClasses,
+  microInteractions,
+  text,
 } from '@creation-ui/core'
-import { inputContainer, label as labelClasses, text } from '@creation-ui/core'
 import { useTheme } from '@creation-ui/react/theme'
+import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'
+import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
-import { useId } from 'react'
+import { FC, useId } from 'react'
 
-export type ColorDefinition = {
-  label: ElementStatus
-  value: ElementStatus
+export type GenericColorDefinition = {
+  label: string
+  value: string | undefined
   className: string
 }
 
 interface ColorsSelectorProps extends BaseComponentProps {
-  options: ColorDefinition[]
+  options: GenericColorDefinition[]
   onClick: (value: string | boolean | undefined) => void
   label: string
-  value?: string
+  value?: GenericColorDefinition
   size?: ElementSize
 }
+
+const elementClasses = cva(
+  [
+    'relative',
+    'transform',
+    'h-6',
+    'w-6',
+    'rounded',
+    'cursor-pointer',
+    'transition-all',
+    'hover:scale-125',
+  ],
+  {
+    variants: {
+      selected: {
+        true: ['scale-125'],
+        false: ['scale-100'],
+      },
+      undef: {
+        true: 'border',
+      },
+    },
+  },
+)
 
 export const ColorsSelector = ({
   options,
@@ -39,7 +67,9 @@ export const ColorsSelector = ({
   const containerClasses = clsx(
     inputContainer({ disabled, error: !!error }),
     text({ size }),
+    microInteractions,
   )
+
   return (
     <div className={containerClasses}>
       <label
@@ -49,25 +79,50 @@ export const ColorsSelector = ({
       >
         {label}
       </label>
-      <div className='flex gap-3 w-fit' aria-required={required}>
-        {options.map(o => (
-          <div
-            key={o.value}
-            title={capitalize(o.label)}
-            onClick={onClick.bind(null, o.value)}
-            className={clsx([
-              'transform',
-              'transition-transform',
-              o.className,
-              'h-6',
-              'w-6',
-              'rounded',
-              'cursor-pointer',
-              value === o.value && 'scale-125',
-            ])}
+      <div className='flex flex-wrap gap-3 w-fit' aria-required={required}>
+        {options.map(option => (
+          <ColorOption
+            key={option.label}
+            onClick={onClick.bind(null, option.value)}
+            option={option}
+            selected={option.value === value?.value}
           />
         ))}
       </div>
+    </div>
+  )
+}
+
+interface ColorOptionProps {
+  option: GenericColorDefinition
+  onClick: () => void
+  selected: boolean
+}
+
+const ColorOption: FC<ColorOptionProps> = ({ option, onClick, selected }) => {
+  const { value, label, className } = option
+  const undef = value === 'default'
+
+  return (
+    <div
+      key={value}
+      title={capitalize(label)}
+      onClick={onClick}
+      className={elementClasses({
+        undef,
+        selected,
+        className: className,
+      })}
+    >
+      {undef && !selected && (
+        <Icon path={mdiClose} className='text-info-500' size={0.9} />
+      )}
+      {selected && (
+        <Icon
+          path={mdiCircle}
+          className='text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+        />
+      )}
     </div>
   )
 }
