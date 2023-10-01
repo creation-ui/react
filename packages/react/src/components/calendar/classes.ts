@@ -1,6 +1,6 @@
 import { microInteractions } from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
-import { twix } from '../utils'
+import { twix } from '@creation-ui/core'
 
 export const headerClasses = twix(
   // '!text-lg',
