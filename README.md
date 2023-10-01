@@ -9,6 +9,8 @@ and it's fully customizable. It's a great starting point for your next project.
 ## Prerequisites
 
 Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation/using-postcss).
+Also @creation-ui/core package is required for the React packages to work. It contains sharable theme config, styles and utilities.
+
 
 ```
   "peerDependencies": {
@@ -23,15 +25,15 @@ Creation UI is working with your app's Tailwind CSS and you need to have Tailwin
 To install Creation UI, run the command below:
 
     ```bash copy
-     yarn add @creation-ui/react
+     yarn add @creation-ui/core @creation-ui/react
      ```
 
     ```bash copy
-     npm i @creation-ui/react
+     npm i @creation-ui/core @creation-ui/react
      ```
 
     ```bash copy
-     pnpm i @creation-ui/react
+     pnpm i @creation-ui/core @creation-ui/react
      ```
 
 ## Components
@@ -76,22 +78,35 @@ In development
 - [ ] [Timeline](/docs/components/timeline)
 - [ ] [Breadcrumbs](/docs/components/breadcrumbs)
 
+
 ## Configuration
 
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
 
 ```js copy
-const withTailwindConfig = require('@creation-ui/react/utils/withTailwindConfig')
+const { withTailwindConfig } = require('@creation-ui/core')
 
-module.exports = withTailwindConfig({
-  content: ['!node_modules/**/*', './**/*.{js,ts,jsx,tsx,mdx}', '*.css'],
+/** @type {import('tailwindcss').Config} */
+const config = withTailwindConfig({
+  content: [
+    //
+    './packages/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './**/*.css',
+  ],
+  plugins: [require('@tailwindcss/typography')],
 })
+
+module.exports = config
+
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
-Import the library's CSS file into your app.
-If you're using the standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-If you're using the standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
+
+2. Import library's CSS file into your app.
+   If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
+   If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
 import '@creation-ui/core/index.css'
