@@ -1,19 +1,17 @@
 import { Tab, Tabs } from 'nextra-theme-docs'
 import { SCRIPTS_TABS } from '@root/constants'
-import { Button } from '@creation-ui/react'
 
-# Creation UI
+# Core
+> @creation-ui/core
 
-is a design system that lets you build a React powered websites
-and apps. It's built on top of <b>React</b> and [Tailwind CSS](https://tailwindcss.com)
-and it's fully customizable. It's a great starting point for your next project.
+This packages contains sharable theme config, styles and utilities.
+It can also be used as standalone for your vanilla JS projects or other not yet supported frameworks.
 
 <br />
 
 ## Prerequisites
 
 Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation/using-postcss).
-Also @creation-ui/core package is required for the React packages to work. It contains sharable theme config, styles and utilities.
 
 ```
   "peerDependencies": {
@@ -31,18 +29,18 @@ To install Creation UI, run command below:
   <Tab>
 
     ```bash copy
-     yarn add @creation-ui/core @creation-ui/react
+     yarn add @creation-ui/core
      ```
 
   </Tab>
   <Tab>
     ```bash copy
-     npm i add @creation-ui/core @creation-ui/react
+     npm i add @creation-ui/core
      ```
      </Tab>
   <Tab>
     ```bash copy
-     pnpm i add @creation-ui/core @creation-ui/react
+     pnpm i add @creation-ui/core
      ```
      </Tab>
 </Tabs>
@@ -67,7 +65,6 @@ const config = withTailwindConfig({
 })
 
 module.exports = config
-
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
@@ -81,12 +78,34 @@ import '@creation-ui/core/index.css'
 ```
 
 3. Start using it!
+   Here an example of using included colors like `primary`, `success` and `info`:
 
 ```jsx copy
-import { Button } from '@creation-ui/react'
+import { twix } from '@creation-ui/core'
+
+const buttonClasses = twix(
+  'bg-primary-500',
+  'hover:bg-success-300',
+  'text-info-100',
+  'hover:text-info-900',
+  'rounded-md',
+  'px-3',
+  'py-1',
+)
+
+const Button = ({ className, children, ...props }) => {
+  return (
+    <button className={buttonClasses(className)} {...props}>
+      {children}
+    </button>
+  )
+}
 
 export default function App() {
   return <Button>Click me</Button>
 }
 ```
-<Button>Click me</Button>
+
+<button className='bg-primary-500 hover:bg-success-300 text-info-100 hover:text-info-900 rounded-md px-3 py-1'>
+  Click me
+</button>
