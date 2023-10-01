@@ -14,6 +14,7 @@ export interface CalendarContextValue {
   setSelectedDates: (value: CalendarDateValue) => void
   setViewDate: (value: Date) => void
   setView: (value: CalendarView) => void
+  view: CalendarView
   size: ElementSize
   locale?: string
   weekStartsOn: WeekDayIndex

@@ -2,13 +2,13 @@ import { microInteractions } from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
 import { twix } from '../utils'
 
-export const headerClasses = [
-  '!text-lg',
+export const headerClasses = twix(
+  // '!text-lg',
   'font-semibold',
   'capitalize ',
   'text-primary-900',
-  'dark:text-primary-200',
-]
+  'dark:text-primary-200'
+)
 
 export const calendarClasses = {
   container: cva(
@@ -27,6 +27,9 @@ export const calendarClasses = {
           sm: ['w-72'],
           md: ['w-96'],
           lg: ['w-[406px]'],
+        },
+        hasSecondView: {
+          true: ['!min-w-fit'],
         },
       },
     }
@@ -116,6 +119,7 @@ export const calendarDaysViewClasses = {
   ),
 }
 
+export const dayRowClasses = twix('grid', 'grid-cols-7')
 export const calendarDaysViewTitleClasses = {
   day: cva(['select-none', 'justify-self-center'], {
     variants: {
@@ -129,6 +133,22 @@ export const calendarDaysViewTitleClasses = {
       },
     },
   }),
+  row: cva(
+    [
+      //
+      dayRowClasses(),
+      'py-2',
+      'text-xs',
+      'font-semibold',
+      'capitalize',
+    ],
+    {
+      variants: {
+        offsetMonth: {
+          0: '',
+          1: ['md:grid', 'hidden'],
+        },
+      },
+    }
+  ),
 }
-
-export const dayRowClasses = twix('grid', 'grid-cols-7')

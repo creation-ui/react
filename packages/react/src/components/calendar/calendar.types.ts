@@ -11,25 +11,22 @@ export type CalendarProps = Omit<
   | 'disabled'
   | 'readOnly'
   | 'loading'
-> &
-  (
+> & {
+  showTodaySelector?: boolean
+  weekStartsOn?: WeekDayIndex
+  todayText?: string
+  startOn?: CalendarDateValue
+  numberOfMonths?: 1 | 2
+} & (
     | {
         onChange?: (date: CalendarDateValue) => void
-        weekStartsOn?: WeekDayIndex
         value?: CalendarDateValue
-        todayText?: string
-        numberOfMonths?: 1 | 2
         mode?: 'single'
-        startOn?: CalendarDateValue
       }
     | {
         onChange?: (date: DateRange) => void
-        weekStartsOn?: WeekDayIndex
         value?: DateRange
-        todayText?: string
-        numberOfMonths?: 1 | 2
         mode?: 'range'
-        startOn?: CalendarDateValue
       }
   )
 

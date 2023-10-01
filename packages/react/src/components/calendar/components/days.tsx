@@ -1,4 +1,4 @@
-import { useCallback, type ReactNode } from 'react'
+import { useCallback, type ReactNode, FC } from 'react'
 import { useCalendar } from '../calendar.context'
 import {
   calendarDaysViewClasses,
@@ -7,9 +7,15 @@ import {
 } from '../classes'
 import { getFirstDayOfWeek } from '../utils'
 
-export const CalendarDaysView = () => {
+interface CalendarDaysViewProps {
+  offsetMonth?: 0 | 1
+}
+
+export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
+  offsetMonth,
+}) => {
   const {
-    viewDate,
+    viewDate: originalViewDate,
     selectedDates,
     setSelectedDates,
     mode,
@@ -17,6 +23,10 @@ export const CalendarDaysView = () => {
     locale,
     weekStartsOn,
   } = useCalendar()
+
+  //adjust for offset month
+  const viewDate = new Date(originalViewDate)
+  viewDate.setMonth(originalViewDate.getMonth() + offsetMonth)
 
   const firstDayOfWeek = getFirstDayOfWeek(new Date(), weekStartsOn)
 
@@ -124,13 +134,14 @@ export const CalendarDaysView = () => {
   }
 
   return (
-    <>
-      <div className={dayRowClasses('py-2 text-xs font-semibold capitalize')}>
+    <div className='w-full'>
+      <div className={calendarDaysViewTitleClasses.row({offsetMonth})}>
         {dayNames.map((dayName, i) => (
           <div
             key={dayName}
             className={calendarDaysViewTitleClasses.day({
               isWeekend: [5, 6].includes(i),
+              
             })}
           >
             {dayName}
@@ -140,6 +151,6 @@ export const CalendarDaysView = () => {
       <div onClick={handleRowClick} className='flex-col flex gap-1 py-2'>
         {rows}
       </div>
-    </>
+    </div>
   )
 }
