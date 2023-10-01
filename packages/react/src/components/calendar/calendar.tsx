@@ -5,7 +5,12 @@ import { Button } from '../button'
 import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
 import { CalendarContext, CalendarContextValue } from './calendar.context'
-import { CalendarProps, CalendarView, DateRange } from './calendar.types'
+import {
+  CalendarDateValue,
+  CalendarProps,
+  CalendarView,
+  DateRange,
+} from './calendar.types'
 import { calendarClasses } from './classes'
 import { MonthYearTitle } from './components/container/month-year-title'
 import { CalendarDaysView } from './components/days'
@@ -42,7 +47,7 @@ const Calendar: FC<CalendarProps> = props => {
     setSelectedDates(getCalendarInitialValue(value))
   }, [])
 
-  const handleDayClick = (date: Date | null) => {
+  const handleDayClick = (date: CalendarDateValue) => {
     if (mode === 'range') {
       if (!selectedDates[0] || (selectedDates[0] && selectedDates[1])) {
         setSelectedDates([date, null])
@@ -108,7 +113,7 @@ const Calendar: FC<CalendarProps> = props => {
 
   const hasSecondView = useMemo(() => numberOfMonths === 2, [numberOfMonths])
   const currentView = useMemo(() => {
-    let views = []
+    let views: any[] = []
     for (let i = 0; i < numberOfMonths; i++) {
       switch (view) {
         case 'days':

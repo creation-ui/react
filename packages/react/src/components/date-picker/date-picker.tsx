@@ -50,13 +50,20 @@ export const DatePicker: FC<DatePickerProps> = props => {
           ref={ref}
           size={size}
           onClear={clearValue}
+          // @ts-expect-error
           value={value ? value.toLocaleDateString() : ''}
           onChange={handleInputChange}
           onClick={handleClick}
         />
       </PopoverTrigger>
       <PopoverContent className='!p-0 !bg-transparent'>
-        <Calendar size={size} onChange={handleDateSelect} value={value} />
+        {/* @ts-expect-error */}
+        <Calendar
+          size={size}
+          onChange={handleDateSelect}
+          value={value}
+          mode='single'
+        />
       </PopoverContent>
     </Popover>
   )

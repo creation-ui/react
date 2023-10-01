@@ -12,7 +12,7 @@ interface CalendarDaysViewProps {
 }
 
 export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
-  offsetMonth,
+  offsetMonth = 0,
 }) => {
   const {
     viewDate: originalViewDate,
@@ -135,13 +135,12 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
 
   return (
     <div className='w-full'>
-      <div className={calendarDaysViewTitleClasses.row({offsetMonth})}>
+      <div className={calendarDaysViewTitleClasses.row({ offsetMonth })}>
         {dayNames.map((dayName, i) => (
           <div
             key={dayName}
             className={calendarDaysViewTitleClasses.day({
               isWeekend: [5, 6].includes(i),
-              
             })}
           >
             {dayName}
