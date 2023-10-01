@@ -1,5 +1,5 @@
 import React from 'react'
-import Checkbox from '../../packages/creation-ui-react/src/components/checkbox/checkbox'
+import Checkbox from '../../packages/react/src/components/checkbox/checkbox'
 
 describe('<Checkbox />', () => {
   it('renders', () => {

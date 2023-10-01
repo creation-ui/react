@@ -1,9 +1,10 @@
-import { ElementSize, useTheme } from '@creation-ui/react'
+import { useTheme } from '@creation-ui/react'
 import {
+  ElementSize,
   inputContainer,
   label as labelClasses,
   text,
-} from '@creation-ui/react/classes'
+} from '@creation-ui/core'
 import clsx from 'clsx'
 import { ReactNode, useId } from 'react'
 

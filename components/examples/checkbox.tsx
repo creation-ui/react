@@ -1,5 +1,6 @@
 import { Playground } from '@components/playground'
-import { Checkbox, ELEMENT_SIZES } from '@creation-ui/react'
+import { ELEMENT_SIZES } from '@creation-ui/core'
+import { Checkbox } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'

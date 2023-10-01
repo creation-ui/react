@@ -1,4 +1,4 @@
-import { ElementSize } from '@root/packages/creation-ui-react/src/types'
+import { ElementSize } from '@creation-ui/core'
 import clsx from 'clsx'
 
 type LogoSizes = ElementSize | 'xl' | 'hero'

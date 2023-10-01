@@ -3,7 +3,7 @@ import {
   ELEMENT_SIZES,
   ELEMENT_STATUS,
   ELEMENT_VARIANTS,
-} from '@creation-ui/react'
+} from '@creation-ui/core'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
 import { createDocsLink } from './utils'

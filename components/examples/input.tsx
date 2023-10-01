@@ -1,6 +1,5 @@
-import { Container } from '@components/container'
 import { Playground } from '@components/playground'
-import { HTMLInputType, Input, InputProps } from '@creation-ui/react'
+import { Input, InputProps } from '@creation-ui/react'
 import { mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
@@ -65,7 +64,7 @@ export const PasswordExample = ({ ...props }: InputExampleProps) => {
   const onIconClick = () => {
     setType(type === 'password' ? 'text' : 'password')
   }
-  const htmlType = type as HTMLInputType
+  const htmlType = type as any
 
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>

@@ -1,31 +1,58 @@
-import { Button, Card } from '@creation-ui/react'
+import Icon from '@components/icon'
+import { Playground } from '@components/playground'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardStats,
+  CardTitle,
+} from '@creation-ui/react'
+import { mdiAccount } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
+import type { FC } from 'react'
 import { childrenProp, classNameProps } from './shared-props'
 
-export const CardExample = () => (
-  <div className='mx-auto w-fit'>
-    <Card className='items-center !w-80'>
-      <div className='-mx-4 -mt-4'>
-        <img
-          src='/bottle.jpeg'
-          alt='Water bottle'
-          className='rounded w-80 h-96 object-bottom object-cover'
-        />
-      </div>
-      <Card.Header>Water bottle</Card.Header>
-      <Card.Body>
-        <p>
-          This high-quality water bottle is made of durable material and
-          designed for easy carrying. Perfect for outdoor activities or daily
-          use. Stay hydrated on the go!
-        </p>
-      </Card.Body>
-      <Card.Footer className='flex flex-col justify-between items-center mt-4'>
-        <span className='text-lg font-semibold'>$19.99</span>
-        <Button variant='text'>Add to cart</Button>
-      </Card.Footer>
+interface CardExampleProps {
+  title: string
+  description: string
+  content: string
+}
+
+export const CardExample: FC<CardExampleProps> = ({
+  title,
+  content,
+  description,
+}) => (
+  <>
+    <Card>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <Icon path={mdiAccount} className='block flex-shrink-0' />
+      </CardHeader>
+      <CardContent>
+        <CardStats>{content}</CardStats>
+      </CardContent>
+      <CardDescription>{description}</CardDescription>
     </Card>
-  </div>
+  </>
+)
+
+export const CardPlayground = () => (
+  <Playground
+    component={CardExample}
+    showCode={false}
+    name='CardExample'
+    controls={[
+      { name: 'title', type: 'string', defaultValue: 'Active users' },
+      { name: 'content', type: 'string', defaultValue: '1,234' },
+      {
+        name: 'description',
+        type: 'string',
+        defaultValue: 'Updated 10mins ago',
+      },
+    ]}
+  />
 )
 
 export const properties: DocumentedProperty[] = [childrenProp, classNameProps]

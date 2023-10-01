@@ -1,15 +1,14 @@
 import { Container } from '@components/container'
-import { Button, ProgressBar, ProgressBarProps } from '@creation-ui/react'
-import { ELEMENT_SIZES } from '@creation-ui/react'
-import { DocumentedProperty } from 'models/system'
+import { ELEMENT_SIZES } from '@creation-ui/core'
+import { Button, ProgressBar } from '@creation-ui/react'
+import type { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
-// @ts-ignore
-import { useStopwatch } from 'react-timer-hook'
 import { Playground } from '@components/playground'
+import { useStopwatch } from 'react-timer-hook'
 import { sizeControl, statusControl } from './shared-playground-controls'
 
-export const ProgressBarAnimatedExample = props => {
+export const ProgressBarAnimatedExample = (props: unknown) => {
   const [state, setState] = useState(0)
 
   const { isRunning, start, pause } = useStopwatch({

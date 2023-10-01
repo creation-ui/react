@@ -9,7 +9,7 @@ import {
   H5,
   H6,
 } from '@creation-ui/react'
-import { microInteractions } from '@creation-ui/react/classes'
+import { microInteractions } from '@creation-ui/core'
 import { DocumentedProperty } from 'models/system'
 import { sizeControl } from './shared-playground-controls'
 import { childrenProp, sizeProp } from './shared-props'

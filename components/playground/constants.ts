@@ -1,7 +1,6 @@
-import { HTMLInputType } from '@creation-ui/react/index'
 import { PlaygroundControls, PlaygroundValueType } from './types'
 
-export const INPUT_TYPES: HTMLInputType[] = [
+export const INPUT_TYPES = [
   'text',
   'password',
   'submit',

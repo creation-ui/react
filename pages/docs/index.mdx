@@ -1,5 +1,6 @@
 import { Tab, Tabs } from 'nextra-theme-docs'
 import { SCRIPTS_TABS } from '@root/constants'
+import { Button } from '@creation-ui/react'
 
 # Creation UI
 
@@ -12,6 +13,7 @@ and it's fully customizable. It's a great starting point for your next project.
 ## Prerequisites
 
 Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation/using-postcss).
+Also @creation-ui/core package is required for the React packages to work. It contains sharable theme config, styles and utilities.
 
 ```
   "peerDependencies": {
@@ -29,18 +31,18 @@ To install Creation UI, run command below:
   <Tab>
 
     ```bash copy
-     yarn add @creation-ui/react
+     yarn add @creation-ui/core @creation-ui/react
      ```
 
   </Tab>
   <Tab>
     ```bash copy
-     npm i @creation-ui/react
+     npm i add @creation-ui/core @creation-ui/react
      ```
      </Tab>
   <Tab>
     ```bash copy
-     pnpm i @creation-ui/react
+     pnpm i add @creation-ui/core @creation-ui/react
      ```
      </Tab>
 </Tabs>
@@ -50,11 +52,22 @@ To install Creation UI, run command below:
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
 
 ```js copy
-const withTailwindConfig = require('@creation-ui/react/utils/withTailwindConfig')
+const { withTailwindConfig } = require('@creation-ui/core')
 
-module.exports = withTailwindConfig({
-  content: ['!node_modules/**/*', './**/*.{js,ts,jsx,tsx,mdx}', '*.css'],
+/** @type {import('tailwindcss').Config} */
+const config = withTailwindConfig({
+  content: [
+    //
+    './packages/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './**/*.css',
+  ],
+  plugins: [require('@tailwindcss/typography')],
 })
+
+module.exports = config
+
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
@@ -64,7 +77,7 @@ You can extend all properties [as usual](https://tailwindcss.com/docs/configurat
    If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import '@creation-ui/react/index.css'
+import '@creation-ui/core/index.css'
 ```
 
 3. Start using it!
@@ -76,3 +89,4 @@ export default function App() {
   return <Button>Click me</Button>
 }
 ```
+<Button>Click me</Button>
