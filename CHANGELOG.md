@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.11.0](https://github.com/creation-ui/react/compare/v0.10.3...v0.11.0) (2023-10-01)
+
+
+### Features
+
+* calendar double view ([8c2c6d0](https://github.com/creation-ui/react/commit/8c2c6d02e07f76de9b07f846e44e15fc5496dcd5))
+* create core package ([2300032](https://github.com/creation-ui/react/commit/230003203f5e117f0b28c871b0749656f15e48c9))
+* use signals in drawer example ([333fcac](https://github.com/creation-ui/react/commit/333fcac48f5e53fa7852b50ac70edbac74c35df8))
+
+
+### Bug Fixes
+
+* Calendar: rounding of selected date range ([56ec74c](https://github.com/creation-ui/react/commit/56ec74c4b7e733af345373e59e82282335206a26))
+* imports in mdx, colors from core ([e12c198](https://github.com/creation-ui/react/commit/e12c198057acd86ada61025fa1787f1d8b483447))
+* progress bat types ([c92979a](https://github.com/creation-ui/react/commit/c92979ac4b7bdfb0f058c19979d2eab90669e528))
+* tsc ([f57ad52](https://github.com/creation-ui/react/commit/f57ad52100e572ee05ebff833a617edcc14161b0))
+* tsc errors ([e0f10d2](https://github.com/creation-ui/react/commit/e0f10d21cdda308ed5798d2311a6584ebb9f5358))
+
 ## [0.10.3](https://github.com/creation-ui/react/compare/v0.10.2...v0.10.3) (2023-09-03)
 
 
