@@ -59,6 +59,13 @@ export const CalendarDaysView = () => {
     return false
   }
 
+  const isDateFirstOrLast = (date: Date) => {
+    const first = selectedDates?.[0]?.toDateString()
+    const second = selectedDates?.[1]?.toDateString()
+    const dateString = date.toDateString()
+    return first === dateString ? 0 : second === dateString ? 1 : -1
+  }
+
   const handleRowClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const day = (e.target as HTMLElement).closest('button')
     if (!day) return
@@ -85,18 +92,21 @@ export const CalendarDaysView = () => {
       const isInRange = isDateInRange(date)
       const isWeekend = [5, 6].includes(i)
 
+      const idx = isDateFirstOrLast(date)
+
       days.push(
         <button
           data-date={cellDate}
           key={`${rows.length}-${i}`}
-          aria-selected={isSelected || isInRange}
           className={calendarDaysViewClasses.day({
             size,
             isCurrentMonth,
             isSelected,
             isToday,
             isWeekend,
-            isInRange
+            isInRange,
+            isStart: idx === 0,
+            isEnd: idx === 1,
           })}
         >
           {date.getDate().toString()}

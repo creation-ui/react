@@ -6,8 +6,8 @@ export const headerClasses = [
   '!text-lg',
   'font-semibold',
   'capitalize ',
-  'text-info-900',
-  'dark:text-info-200',
+  'text-primary-900',
+  'dark:text-primary-200',
 ]
 
 export const calendarClasses = {
@@ -15,8 +15,8 @@ export const calendarClasses = {
     [
       microInteractions,
       'bg-white',
-      'dark:bg-info-800',
-      'dark:border-info-700',
+      'dark:bg-primary-800',
+      'dark:border-primary-700',
       'border',
       'p-4',
       'rounded-md',
@@ -47,29 +47,42 @@ export const calendarDaysViewClasses = {
       'justify-center',
       //
       'text-center',
-
       'relative',
-      '[&:has([aria-selected])]:bg-info-200',
-      'first:[&:has([aria-selected])]:rounded-l-md',
-      'last:[&:has([aria-selected])]:rounded-r-md',
-      'hover:bg-info-300',
+      'rounded-md',
+      'hover:bg-primary-300',
     ],
     {
       variants: {
         isToday: {
-          true: ['border', 'border-info-500'],
+          true: ['font-bold'],
           false: '',
         },
-        isInRange: { true: 'bg-info-200', false: '' },
+        isInRange: {
+          true: [
+            //
+            'bg-primary-50/50',
+            'rounded-none',
+            'first:rounded-l-md',
+            'last:rounded-r-md',
+          ],
+          false: '',
+        },
         isSelected: {
           true: [
             '!text-info-100',
-            '!bg-info-500',
-            'text-info-200',
-            'hover:bg-info-600',
-            'hover:text-info-300',
-            'focus:bg-info-600',
+            '!bg-primary-500',
+            'hover:bg-primary-600',
+            'hover:text-primary-300',
+            'focus:bg-primary-600',
           ],
+        },
+        isStart: {
+          true: ['rounded-l-md'],
+          false: '',
+        },
+        isEnd: {
+          true: ['rounded-r-md'],
+          false: '',
         },
         isCurrentMonth: {
           true: ['text-info-900', 'dark:text-info-100'],
