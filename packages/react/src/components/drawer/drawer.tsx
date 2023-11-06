@@ -12,8 +12,8 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const {
     //
     position = drawers!.position ?? 'right',
-    widthClassName = drawers!.widthClassName,
-    heightClassName = drawers!.heightClassName,
+    widthClassName = drawers!.widthClassNames,
+    heightClassName = drawers!.heightClassNames,
     onClose = () => {},
   } = props
 
