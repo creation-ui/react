@@ -5,6 +5,7 @@ import { useTheme } from '../../theme'
 import { child, drawer, drawerAnimation } from './classes'
 import type { DrawerProps } from './drawer.types'
 import { Overlay } from '../overlay'
+import { twMerge } from 'tailwind-merge'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
@@ -42,10 +43,12 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
           unmount={false}
           // @ts-ignore
           onClose={onClose}
-          className={drawer({
-            className: [zIndex?.modals, finalSize],
-            position,
-          })}
+          className={twMerge(
+            drawer({
+              className: [zIndex?.modals, finalSize],
+              position,
+            })
+          )}
         >
           <div className='h-full flex'>
             <div className={clsx(child)}>{children}</div>

@@ -1,20 +1,20 @@
 import { childrenProp, openProp } from '@components/examples/shared-props'
 import { Playground } from '@components/playground'
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
-import { useSignal } from '@preact/signals-react'
 import { DocumentedProperty } from 'models/system'
 import { positionControl } from './shared-playground-controls'
+import { useState } from 'react'
 
 export const DrawerExample = (props: DrawerProps) => {
-  const open = useSignal(false)
+  const [open, setOpen] = useState(false)
 
-  const handleOpen = () => (open.value = true)
-  const handleClose = () => (open.value = false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   return (
     <>
       <Button onClick={handleOpen}>Open Drawer</Button>
-      <Drawer open={open.value} onClose={handleClose} {...props}>
+      <Drawer open={open} onClose={handleClose} {...props}>
         <div className='p-5'>
           <h1>Payment successful</h1>
           <div className='mt-2'>
