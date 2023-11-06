@@ -43,10 +43,10 @@ export const drawer = cva(
   {
     variants: {
       position: {
-        bottom: ['inset-x-0', 'bottom-0', 'md:h-1/2'],
-        top: ['inset-x-0', 'top-0', 'md:h-1/2'],
-        right: ['inset-y-0', 'right-0', 'md:w-1/2'],
-        left: ['inset-y-0', 'left-0', 'md:w-1/2'],
+        bottom: ['inset-x-0', 'bottom-0'],
+        top: ['inset-x-0', 'top-0'],
+        right: ['inset-y-0', 'right-0'],
+        left: ['inset-y-0', 'left-0'],
       },
       size: {
         sm: [],

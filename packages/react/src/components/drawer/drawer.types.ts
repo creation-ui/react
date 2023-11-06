@@ -6,4 +6,6 @@ export interface DrawerProps {
   open?: boolean
   onClose?: () => void
   onOverlayClick?: () => void
+  widthClassName?: string
+  heightClassName?: string
 }

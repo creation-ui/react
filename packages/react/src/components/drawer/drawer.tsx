@@ -8,11 +8,21 @@ import { Overlay } from '../overlay'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
+
   const {
     //
-    position = drawers!.position,
+    position = drawers!.position ?? 'right',
+    widthClassName = drawers!.widthClassName,
+    heightClassName = drawers!.heightClassName,
     onClose = () => {},
   } = props
+
+  const finalSize = {
+    right: widthClassName,
+    left: widthClassName,
+    top: heightClassName,
+    bottom: heightClassName,
+  }[position]
 
   return (
     <>
@@ -32,7 +42,10 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
           unmount={false}
           // @ts-ignore
           onClose={onClose}
-          className={drawer({ className: [zIndex?.modals], position })}
+          className={drawer({
+            className: [zIndex?.modals, finalSize],
+            position,
+          })}
         >
           <div className='h-full flex'>
             <div className={clsx(child)}>{children}</div>
