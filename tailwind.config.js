@@ -8,6 +8,7 @@ const config = withTailwindConfig({
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     '!node_modules',
+    'node_modules/@creation-ui/core/**/*.{js,ts,jsx,tsx,mdx}',
     './**/*.css',
   ],
   extend: {
