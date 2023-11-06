@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.1](https://github.com/creation-ui/react/compare/v0.11.0...v0.11.1) (2023-11-06)
+
+
+### Bug Fixes
+
+* drawer width and height class names ([ed8943f](https://github.com/creation-ui/react/commit/ed8943f66d1b25aed177694d08805b8780cf6687))
+
+
+### Miscellaneous Chores
+
+* release 0.11.1 ([099229d](https://github.com/creation-ui/react/commit/099229d12a57f85cbfb33ae8eba73e8a1bc0f10a))
+
 ## [0.11.0](https://github.com/creation-ui/react/compare/v0.10.3...v0.11.0) (2023-10-01)
 
 
