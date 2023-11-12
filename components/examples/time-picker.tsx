@@ -3,16 +3,15 @@ import { TimePicker } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
 import React, { useState } from 'react'
 import { createInputControls } from './shared-playground-controls'
+import { TimePickerValue } from '@creation-ui/react/components/time-picker/types'
 
 const controls = createInputControls('TimePicker')
 
 export const TimePickerExample: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date)
+  const [selectedDate, setSelectedDate] = useState<TimePickerValue>(null)
+  const onClear = () => {
+    setSelectedDate(null)
   }
-
   return (
     <div>
       <Playground
@@ -21,11 +20,13 @@ export const TimePickerExample: React.FC = () => {
         controls={controls}
         componentProps={{
           value: selectedDate,
-          onChange: handleDateChange,
+          onChange: setSelectedDate,
+          zIndex: { popover: 9999 },
+          onClear,
         }}
       />
       {selectedDate && (
-        <p>Selected date: {selectedDate.toLocaleDateString()}</p>
+        <pre>Selected time: {JSON.stringify(selectedDate, null, 2)}</pre>
       )}
     </div>
   )

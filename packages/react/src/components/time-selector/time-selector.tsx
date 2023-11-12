@@ -22,27 +22,22 @@ const cellClasses = cva(
 
 const columnClasses = clsx('overflow-y-scroll', 'h-48')
 
+const MINUTES = Array.from({ length: 60 }, (_, i) => i)
+const HOURS_12 = Array.from({ length: 12 }, (_, i) => i)
+const HOURS_24 = Array.from({ length: 24 }, (_, i) => i)
+
 export const TimeSelector: FC<TimeSelectorProps> = ({
   value,
   onSelect,
   format = 24,
 }) => {
-  const hours = Array.from({ length: format }, (_, i) => i)
-  const minutes = Array.from({ length: 60 }, (_, i) => i)
-
-  const currentDate = value ? new Date(value) : undefined
+  const HOURS = format === 12 ? HOURS_12 : HOURS_24
 
   const handleSelect = useCallback(
     ({ hour, minute }: OnTimeSliderSelectArgs) => {
-      const newDate = currentDate ? new Date(currentDate) : new Date()
-      if (!currentDate) newDate.setHours(0, 0, 0, 0)
-
-      const h = hour ?? newDate.getHours()
-      const min = minute ?? newDate.getMinutes()
-
-      newDate.setHours(h, min)
-
-      onSelect(newDate)
+      const hours = hour ?? value?.hours ?? 0
+      const minutes = minute ?? value?.minutes ?? 0
+      onSelect({ hours, minutes })
     },
     [onSelect]
   )
@@ -51,8 +46,8 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
   const minuteRef = useRef<HTMLDivElement[]>([])
 
   useEffect(() => {
-    const h = currentDate?.getHours()
-    const m = currentDate?.getMinutes()
+    const h = value?.hours
+    const m = value?.minutes
 
     h &&
       hourRef.current[h]?.scrollIntoView({
@@ -75,13 +70,13 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       )}
     >
       <div className={columnClasses}>
-        {hours.map(hour => (
+        {HOURS.map(hour => (
           <div
             ref={el => ((hourRef as any).current[hour] = el)}
             key={hour}
             onClick={() => handleSelect({ hour })}
             className={cellClasses({
-              selected: currentDate?.getHours() === hour,
+              selected: value?.hours === hour,
             })}
           >
             {hour.toString().padStart(2, '0')}
@@ -89,13 +84,13 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
         ))}
       </div>
       <div className={columnClasses}>
-        {minutes.map(minute => (
+        {MINUTES.map(minute => (
           <div
             ref={el => ((minuteRef as any).current[minute] = el)}
             key={minute}
             onClick={() => handleSelect({ minute })}
             className={cellClasses({
-              selected: currentDate?.getMinutes() === minute,
+              selected: value?.minutes === minute,
             })}
           >
             {minute.toString().padStart(2, '0')}

@@ -7,13 +7,7 @@ import { DatePickerProps } from './types'
 
 export const DatePicker: FC<DatePickerProps> = props => {
   const { size: defaultSize } = useTheme()
-  const {
-    size = defaultSize,
-    value,
-    onChange,
-    zIndex = { popover: 'inherit' },
-    ...inputProps
-  } = props
+  const { size = defaultSize, value, onChange, ...inputProps } = props
 
   const [popoverVisible, setPopoverVisible] = useState(false)
   const ref = useRef(null)
@@ -64,7 +58,7 @@ export const DatePicker: FC<DatePickerProps> = props => {
       </PopoverTrigger>
       <PopoverContent
         className='!p-0 !bg-transparent'
-        style={{ zIndex: props.zIndex?.popover }}
+        zIndex={props.zIndex?.popover}
       >
         {/* @ts-expect-error */}
         <Calendar

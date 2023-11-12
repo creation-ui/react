@@ -1,6 +1,9 @@
 import { InputProps } from '../input'
 
-export type TimePickerValue = Date | null | undefined
+export type TimePickerValue =
+  | { hours: number; minutes: number }
+  | null
+  | undefined
 
 export interface TimePickerProps
   extends Omit<InputProps, 'onChange' | 'value'> {

@@ -44,6 +44,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-highlight-words: ^0.20.0
+  react-input-mask: ^2.0.4
   react-spring: ^9.7.1
   rollup: ^3.20.0
   rollup-plugin-copy: ^3.4.0
@@ -76,6 +77,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-highlight-words: 0.20.0_react@18.2.0
+  react-input-mask: 2.0.4_biqbaboplfbrettd7655fr4n2y
   react-spring: 9.7.1_jik6p3lciwlvvidl2crbyhd5oy
   tailwind-merge: 1.12.0
   tailwindcss: 3.3.2
@@ -8108,6 +8110,18 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-input-mask/2.0.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==}
+    peerDependencies:
+      react: '>=0.14.0'
+      react-dom: '>=0.14.0'
+    dependencies:
+      invariant: 2.2.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      warning: 4.0.3
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -9709,6 +9723,12 @@ packages:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
     dependencies:
       makeerror: 1.0.12
+    dev: false
+
+  /warning/4.0.3:
+    resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
+    dependencies:
+      loose-envify: 1.4.0
     dev: false
 
   /wcwidth/1.0.1:

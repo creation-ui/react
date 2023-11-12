@@ -1,3 +1,4 @@
+import { ElementSize } from '@creation-ui/core'
 import {
   FloatingFocusManager,
   FloatingPortal,
@@ -5,17 +6,16 @@ import {
 } from '@floating-ui/react'
 import type { HTMLProps } from 'react'
 import { forwardRef } from 'react'
-import { ElementSize } from '@creation-ui/core'
 import { popoverContentClasses } from './classes'
 import { usePopoverContext } from './context'
-import { usePopover } from './use-popover'
 
 interface PopoverContentProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   size?: ElementSize
+  zIndex?: number
 }
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
-  function PopoverContent({ size, className, ...props }, propRef) {
+  function PopoverContent({ size, className, zIndex,...props }, propRef) {
     const { context: floatingContext, ...ctx } = usePopoverContext()
     const ref = useMergeRefs([ctx.refs.setFloating, propRef])
 
@@ -27,6 +27,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       // @ts-ignore
       ...ctx.floatingStyles,
       ...props.style,
+      zIndex
     }
 
     return (

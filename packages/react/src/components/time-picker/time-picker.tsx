@@ -1,66 +1,126 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTheme } from '../../theme'
 import { Input } from '../input'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover'
 import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
-
-const padStart = (value?: number): string =>
-  String(value ? (value < 10 ? '0' + value : value) : '--')
-
-const formatTime = (date?: Date): string => {
-  const hours = date?.getHours()
-  const minutes = date?.getMinutes()
-
-  const h = padStart(hours)
-  const min = padStart(minutes)
-
-  return `${h}:${min}`
-}
+import { formatTime, sanitizeTime } from './utils'
+import InputMask from 'react-input-mask'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
+
   const {
     size = defaultSize,
     value,
-    format,
+    format = 24,
     clearable = true,
     onChange,
-    onClear = () => {
-      onChange?.(null)
-      setOpen(false)
-    },
-    zIndex = { popover: 'inherit' },
+    zIndex,
     ...rest
   } = props
 
+  const [_value, setValue] = useState<TimePickerValue>(value)
   const [open, setOpen] = useState(false)
+
+  const onClear = () => {
+    setValue(null)
+    setOpen(false)
+    props.onClear?.()
+  }
+
   const ref = useRef(null)
 
-  const handleTimeSelect = (date: TimePickerValue) => onChange?.(date)
+  const inputValue = useMemo(
+    () => (_value ? formatTime(_value) : '__:__'),
+    [_value, value]
+  )
+  console.table({ inputValue, value, _value })
+
   const handleClick = () => setOpen(true)
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const [h, m] = event.target.value.split(':')
+
+    const hours = sanitizeTime(h)
+    const minutes = sanitizeTime(m)
+    if (isNaN(hours) || isNaN(minutes)) return
+
+    setValue({ hours, minutes })
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') {
+      setOpen(false)
+      return
+    }
+    const cursorPosition = event.currentTarget.selectionStart
+    const [h, m] = event.currentTarget.value.split(':')
+
+    let hours = sanitizeTime(h)
+    let minutes = sanitizeTime(m)
+    console.log(
+      event.currentTarget.selectionStart,
+      event.currentTarget.selectionEnd
+    )
+    if (isNaN(hours)) {
+      hours = 0
+    }
+    if (isNaN(minutes)) {
+      minutes = 0
+    }
+
+    switch (event.key) {
+      case 'ArrowUp':
+        event.preventDefault()
+        if (cursorPosition <= 2) {
+          const nextHours = (hours + 1) % format
+          setValue({ hours: nextHours, minutes })
+        } else {
+          const nextMinutes = (minutes + 1) % 60
+          setValue({ hours, minutes: nextMinutes })
+        }
+        break
+      case 'ArrowDown':
+        event.preventDefault()
+        if (cursorPosition <= 2) {
+          const nextHours = (hours - 1 + format) % format
+          setValue({ hours: nextHours, minutes })
+        } else {
+          const nextMinutes = (minutes - 1 + 60) % 60
+          setValue({ hours, minutes: nextMinutes })
+        }
+        break
+      default:
+        break
+    }
+  }
+
+  useEffect(() => {
+    onChange?.(_value)
+  }, [_value])
 
   return (
     <Popover open={open} onOpenChange={setOpen} placement='bottom-start'>
       <PopoverTrigger>
-        <Input
+        <InputMask
           {...rest}
+          mask='99:99'
+          maskChar='_'
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
           clearable={clearable}
           ref={ref}
           size={size}
-          readOnly
-          value={value ? formatTime(value) : ''}
           onClick={handleClick}
           onClear={onClear}
-        />
+        >
+          {inputProps => <Input {...inputProps} />}
+        </InputMask>
       </PopoverTrigger>
-      <PopoverContent className='!p-0 !bg-transparent' style={{ zIndex: props.zIndex?.popover }}>
+      <PopoverContent className='!p-0 !bg-transparent' zIndex={zIndex?.popover}>
         {open && (
-          <TimeSelector
-            value={value}
-            onSelect={handleTimeSelect}
-            format={format}
-          />
+          <TimeSelector value={value} onSelect={setValue} format={format} />
         )}
       </PopoverContent>
     </Popover>
