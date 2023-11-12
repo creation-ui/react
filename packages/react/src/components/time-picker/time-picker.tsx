@@ -29,8 +29,6 @@ export const TimePicker: FC<TimePickerProps> = props => {
     props.onClear?.()
   }
 
-  const ref = useRef(null)
-
   const inputValue = useMemo(
     () => (_value ? formatTime(_value) : '__:__'),
     [_value, value]
@@ -54,6 +52,9 @@ export const TimePicker: FC<TimePickerProps> = props => {
       return
     }
     const cursorPosition = event.currentTarget.selectionStart
+
+    if (!cursorPosition) return
+
     const [h, m] = event.currentTarget.value.split(':')
 
     let hours = sanitizeTime(h)
@@ -110,12 +111,11 @@ export const TimePicker: FC<TimePickerProps> = props => {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           clearable={clearable}
-          ref={ref}
-          size={size}
           onClick={handleClick}
           onClear={onClear}
         >
-          {inputProps => <Input {...inputProps} />}
+          {/* @ts-ignore */}
+          {inputProps => <Input {...inputProps} size={size} />}
         </InputMask>
       </PopoverTrigger>
       <PopoverContent className='!p-0 !bg-transparent' zIndex={zIndex?.popover}>
