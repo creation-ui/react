@@ -30,6 +30,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
       onChange?.(null)
       setOpen(false)
     },
+    zIndex = { popover: 'inherit' },
     ...rest
   } = props
 
@@ -53,7 +54,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
           onClear={onClear}
         />
       </PopoverTrigger>
-      <PopoverContent className='!p-0 !bg-transparent'>
+      <PopoverContent className='!p-0 !bg-transparent' style={{ zIndex: props.zIndex?.popover }}>
         {open && (
           <TimeSelector
             value={value}
