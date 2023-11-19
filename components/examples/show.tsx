@@ -39,7 +39,7 @@ export const ShowFirstMatchingExample = () => {
         </Button>
       </div>
       <div>
-        Value <code>"{value}"</code>
+        Value <code>&#34;{value}&#34;</code>
         <ShowFirstMatching fallback={<div>No match</div>}>
           <Show when={value < 0}>is a negative number</Show>
           <Show when={value >= 0 && value <= 5}>is between 0 and 5</Show>
