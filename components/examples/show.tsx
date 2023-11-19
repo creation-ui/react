@@ -52,10 +52,25 @@ export const ShowFirstMatchingExample = () => {
   )
 }
 
-export const properties: DocumentedProperty[] = [
-  // classNameProps,
-  // openProps,
-  // sizeProp,
-  // loaderWhiteProp,
-  // onClickCallback,
+export const propertiesShow: DocumentedProperty[] = [
+  { name: 'when', type: 'boolean', description: 'Condition to check' },
+  {
+    name: 'fallback',
+    type: 'React.ReactNode',
+    description: 'Fallback component',
+  },
+]
+export const propertiesShowFirstMatching: DocumentedProperty[] = [
+  {
+    name: 'fallback',
+    type: 'React.ReactNode',
+    description: 'Fallback component',
+    defaultValue: 'null',
+  },
+  {
+    name: 'children',
+    type: 'React.ReactNode',
+    description:
+      'Children of this component. Must be <code>Show</code> components. Each children will be checked for <code>when</code> property.',
+  },
 ]
