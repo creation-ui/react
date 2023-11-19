@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.12.0](https://github.com/creation-ui/react/compare/v0.11.1...v0.12.0) (2023-11-19)
+
+
+### Features
+
+* add zIndex ([91c69b1](https://github.com/creation-ui/react/commit/91c69b1bdd51abdc77224edf9b6966b74bca4d79))
+
+
+### Bug Fixes
+
+* code formatting in ShowFirstMatchingExample ([f057a97](https://github.com/creation-ui/react/commit/f057a9720f7f38e5f0f5b3e507ae0bbd8d65241b))
+* increment and decrement functions in ([e2541ed](https://github.com/creation-ui/react/commit/e2541ed80455a6fa93f1213a6ae7f47b1cdb5048))
+* tsc errors ([c46607b](https://github.com/creation-ui/react/commit/c46607b557a01fa6bcf5e95302197262715f56e9))
+
 ## [0.11.1](https://github.com/creation-ui/react/compare/v0.11.0...v0.11.1) (2023-11-06)
 
 
