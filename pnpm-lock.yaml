@@ -35,6 +35,7 @@ specifiers:
   '@types/react-datepicker': ^4.10.0
   '@types/react-dom': 18.0.9
   '@types/react-highlight-words': ^0.16.4
+  '@types/react-input-mask': ^3.0.5
   '@typescript-eslint/eslint-plugin': ^5.56.0
   '@typescript-eslint/parser': ^5.56.0
   '@vercel/analytics': ^0.1.11
@@ -70,6 +71,7 @@ specifiers:
   react-datepicker: ^4.10.0
   react-dom: 18.2.0
   react-highlight-words: ^0.20.0
+  react-input-mask: ^2.0.4
   react-spring: ^9.7.1
   react-stick: ^5.0.3
   react-timer-hook: ^3.0.5
@@ -132,6 +134,7 @@ dependencies:
   react-datepicker: 4.18.0_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-highlight-words: 0.20.0_react@18.2.0
+  react-input-mask: 2.0.4_biqbaboplfbrettd7655fr4n2y
   react-spring: 9.7.2_wj3pzambivorw7hmjlshwnr2ea
   react-stick: 5.0.3_biqbaboplfbrettd7655fr4n2y
   react-timer-hook: 3.0.7_react@18.2.0
@@ -157,6 +160,7 @@ devDependencies:
   '@swc/core': 1.3.85
   '@swc/css': 0.0.20
   '@types/react-datepicker': 4.15.0_biqbaboplfbrettd7655fr4n2y
+  '@types/react-input-mask': 3.0.5
   '@typescript-eslint/eslint-plugin': 5.62.0_hxrl62dmumtpcvc3mepzzsildm
   '@typescript-eslint/parser': 5.62.0_ry3k2fv3h54r6otuoyuqfu6qkq
   autoprefixer: 10.4.15_postcss@8.4.29
@@ -3600,6 +3604,12 @@ packages:
     dependencies:
       '@types/react': 18.0.26
     dev: false
+
+  /@types/react-input-mask/3.0.5:
+    resolution: {integrity: sha512-vQ1x6ykwjDrDrJZq1zw5/uQ+nqGHUV6bWscsVZJ/qsNwNXWxZm7KRBHLJ5k6TQt3MHjhpoYHzPH6FwjVSZODHA==}
+    dependencies:
+      '@types/react': 18.0.26
+    dev: true
 
   /@types/react-reconciler/0.26.7:
     resolution: {integrity: sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ==}
@@ -11564,6 +11574,18 @@ packages:
       memoize-one: 4.0.3
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /react-input-mask/2.0.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==}
+    peerDependencies:
+      react: '>=0.14.0'
+      react-dom: '>=0.14.0'
+    dependencies:
+      invariant: 2.2.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      warning: 4.0.3
     dev: false
 
   /react-is/16.13.1:
