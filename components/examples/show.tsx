@@ -25,8 +25,8 @@ export const ShowExample = () => {
 export const ShowFirstMatchingExample = () => {
   const [value, setValue] = useState(-1)
 
-  const increment = () => setValue(value + 1)
-  const decrement = () => setValue(value - 1)
+  const increment = () => setValue(v => v + 1)
+  const decrement = () => setValue(v => v - 1)
 
   return (
     <Container variant='column'>
