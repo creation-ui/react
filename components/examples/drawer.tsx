@@ -1,4 +1,8 @@
-import { childrenProp, openProp } from '@components/examples/shared-props'
+import {
+  childrenProp,
+  openProp,
+  positionProp,
+} from '@components/examples/shared-props'
 import { Playground } from '@components/playground'
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
@@ -85,6 +89,7 @@ export const DrawerCustomizedExample = (props: DrawerProps) => {
 export const properties: DocumentedProperty[] = [
   openProp,
   childrenProp,
+  positionProp,
   {
     description: 'Callback function called when closing Drawer',
     name: 'onClose',
@@ -95,5 +100,18 @@ export const properties: DocumentedProperty[] = [
       'Callback function called on overlay click. Maybe used to close Drawer or prevent closing.',
     name: 'onOverlayClick',
     type: '() => void',
+  },
+  {
+    name: 'cx',
+    description:
+      'Class names manipulation API. Width and height control how much space Drawer takes. <code>container.outer</code> and <code>container.inner</code> control can be used to change how content is styled.',
+    type: JSON.stringify({
+      'height?': 'string',
+      'width?': 'string',
+      'container?': {
+        'outer?': 'string',
+        'inner?': 'string',
+      },
+    }),
   },
 ]

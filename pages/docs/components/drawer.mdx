@@ -14,10 +14,10 @@ import PropsTable from '@components/props-table'
 ## Code example
 
 ```tsx copy
-import { Button, Drawer, DrawerProps } from '@creation-ui/react'
+import { Button, Drawer } from '@creation-ui/react'
 import { useState } from 'react'
 
-export const DrawerExample = (props: DrawerProps) => {
+export const DrawerExample = () => {
   const [open, setOpen] = useState(false)
 
   const onClose = () => setOpen(false)
@@ -26,7 +26,7 @@ export const DrawerExample = (props: DrawerProps) => {
   return (
     <>
       <Button onClick={onClick}>Open Drawer</Button>
-      <Drawer open={open} onClose={onClose} {...props}>
+      <Drawer open={open} onClose={onClose}>
         <div className='p-5'>
           <h1>Payment successful</h1>
           <div className='mt-2'>
@@ -48,6 +48,51 @@ export const DrawerExample = (props: DrawerProps) => {
 ## Custom styles drawer
 
 <DrawerCustomizedExample />
+
+```tsx copy
+import { Button, Drawer } from '@creation-ui/react'
+import { useState } from 'react'
+
+export const DrawerCustomizedExample = () => {
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+
+  const innerClasses = [
+    '!w-[calc(100%-30px)]',
+    '!h-[calc(100%-30px)]',
+    'rounded-xl',
+    'm-[15px]',
+  ]
+
+  return (
+    <Container>
+      <Button onClick={handleOpen}>Open Drawer</Button>
+      <Drawer
+        open={open}
+        onClose={handleClose}
+        cx={{
+          width: 'xl:w-1/3 lg:w-1/2 w-full',
+          container: {
+            inner: clsx(innerClasses),
+          },
+        }}
+      >
+        <div className='p-5 flex flex-col'>
+          <h1>Title</h1>
+          <div className='mt-2 flex-grow'>
+            <p className='text-sm text-gray-500'>Content</p>
+          </div>
+          <div className='mt-4'>
+            <Button onClick={handleClose}>Save</Button>
+          </div>
+        </div>
+      </Drawer>
+    </Container>
+  )
+}
+```
 
 ## Component API
 
