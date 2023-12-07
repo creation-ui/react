@@ -2,13 +2,12 @@
 
 A drawer is a UI element that overlays on top of the current page. It is commonly used to display additional content or actions for the user.
 
-import { Container } from '@components/container'
-import { properties, DrawerPlayground } from '@components/examples/drawer'
-import { UnfoldVariants } from '@components/unfold-variants'
-import { ELEMENT_POSITION, ELEMENT_SIZES } from '@creation-ui/core'
-import { Drawer } from '@creation-ui/react'
+import {
+  DrawerPlayground,
+  DrawerCustomizedExample,
+  properties,
+} from '@components/examples/drawer'
 import PropsTable from '@components/props-table'
-import { ListOrTypes } from '@utils/list-or-types'
 
 <DrawerPlayground />
 
@@ -45,6 +44,10 @@ export const DrawerExample = (props: DrawerProps) => {
   )
 }
 ```
+
+## Custom styles drawer
+
+<DrawerCustomizedExample />
 
 ## Component API
 

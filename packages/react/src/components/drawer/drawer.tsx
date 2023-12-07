@@ -6,28 +6,31 @@ import { child, drawer, drawerAnimation } from './classes'
 import type { DrawerProps } from './drawer.types'
 import { Overlay } from '../overlay'
 import { twMerge } from 'tailwind-merge'
+import merge from 'lodash.merge'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
-
-  const {
-    //
-    position = drawers!.position ?? 'right',
-    widthClassName = drawers!.widthClassNames,
-    heightClassName = drawers!.heightClassNames,
-    onClose = () => {},
-  } = props
+  const { position = drawers!.position ?? 'right', onClose = () => {} } = props
+  const defaultCX = {
+    width: drawers!.widthClassNames,
+    height: drawers!.heightClassNames,
+  }
+  const cx = merge(props.cx, defaultCX)
 
   const finalSize = {
-    right: widthClassName,
-    left: widthClassName,
-    top: heightClassName,
-    bottom: heightClassName,
+    right: cx.width,
+    left: cx.width,
+    top: cx.height,
+    bottom: cx.height,
   }[position]
 
   return (
     <>
-      <Overlay className={'fixed'} active={open} onClick={onOverlayClick} />
+      <Overlay
+        className={'!fixed'}
+        active={open}
+        onClick={onOverlayClick}
+      />
       <Transition
         show={open}
         as={Fragment}
@@ -45,13 +48,13 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
           onClose={onClose}
           className={twMerge(
             drawer({
-              className: [zIndex?.modals, finalSize],
+              className: [zIndex?.modals, finalSize, cx?.container?.outer],
               position,
             })
           )}
         >
-          <div className='h-full flex'>
-            <div className={clsx(child)}>{children}</div>
+          <div className={clsx(child, 'h-full flex', cx?.container?.inner)}>
+            {children}
           </div>
         </Dialog>
       </Transition>
