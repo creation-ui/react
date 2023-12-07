@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/creation-ui/react/compare/v0.12.0...v0.13.0) (2023-12-07)
+
+
+### Features
+
+* **design:** Add customization options for Drawer component ([2ef1f76](https://github.com/creation-ui/react/commit/2ef1f76ee5802adfb9361c71d85085c317a6c8fc))
+
 ## [0.12.0](https://github.com/creation-ui/react/compare/v0.11.1...v0.12.0) (2023-11-19)
 
 
