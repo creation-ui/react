@@ -1,5 +1,17 @@
 # Changelog
 
+## [13.1.0](https://github.com/creation-ui/react/compare/v0.13.0...v13.1.0) (2023-12-11)
+
+
+### Features
+
+* **autocomplete:** add functionality to listen to input value changes ([5472698](https://github.com/creation-ui/react/commit/547269824ff55f77c45b63d8a518c07096eae882))
+
+
+### Miscellaneous Chores
+
+* release 13.1.0 ([28f7b1b](https://github.com/creation-ui/react/commit/28f7b1b62b4b11c7caa83e2154ddada45ba5cb16))
+
 ## [0.13.0](https://github.com/creation-ui/react/compare/v0.12.0...v0.13.0) (2023-12-07)
 
 
