@@ -4,8 +4,7 @@ export interface ShowProps {
   fallback?: React.ReactNode
 }
 
-export type ShowOneProps = {
+export type ShowFirstMatchingProps = {
   children: React.ReactElement<ShowProps>[] | React.ReactElement<ShowProps>
   fallback?: React.ReactNode
-  dependencies?: any[]
 }

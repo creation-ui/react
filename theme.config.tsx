@@ -6,22 +6,21 @@ import Footer from '@components/footer'
 import React from 'react'
 
 export default {
-  toc: {
-    extraContent: <React.Fragment />,
-  },
+  // toc: {
+  //   extraContent: <React.Fragment />,
+  // },
   logo: <Logo size='lg' />,
   project: {
-    link: 'https://github.com/pawelkrystkiewicz/creation-ui',
+    link: 'https://github.com/creation-ui/react',
   },
-  docsRepositoryBase:
-    'https://github.com/pawelkrystkiewicz/creation-ui/tree/develop/packages/docs',
+  docsRepositoryBase: 'https://github.com/creation-ui/react/tree/master',
   primaryHue: 213,
   editLink: {
     text: 'Edit this page on GitHub',
   },
-  // feedback: {
-  //   link: 'Question? Give us feedback →',
-  // },
+  feedback: {
+    link: 'Question? Give us feedback →',
+  },
   head: () => {
     const { asPath } = useRouter()
     const { frontMatter } = useConfig()
@@ -65,6 +64,6 @@ export default {
     defaultTheme: 'light',
   },
   search: {
-    placeholder: 'Search documentation…',
+    placeholder: 'Search docs…',
   },
 }

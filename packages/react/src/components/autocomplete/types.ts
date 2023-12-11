@@ -88,13 +88,15 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    * Limit of multiple selected to be displayed in input
    */
   limit?: number
-
   /**
    * Callback function that is called when the value changes.
    * @param { T | T[] | null } value - The new value(s). Returns an array of selected values. If !multiple, will return an array with one value.
    */
   onChange?: (value: T | T[] | null) => void
-
+  /**
+   * Callback function that is called when the input value changes.
+   */
+  onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   /**
    * @default 500
    * either provide a number of pixels or a string like 1rem, 20vh, etc.

@@ -172,13 +172,15 @@ export const TableExample = () => {
 
   const table = useReactTable({
     columns,
-    state: { rowSelection },
     data: data as Person[],
+    state: { rowSelection },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    debugAll: true,
   })
+
 
   const toggleLoading = () => setLoading(!loading)
   const toggleError = () =>

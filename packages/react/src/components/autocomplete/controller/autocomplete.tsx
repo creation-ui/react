@@ -100,6 +100,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const clearableCallback = () => {
     onChange?.(null)
+    props.onInputChange?.({ target: { value: '' } } as any)
     clearSearch()
   }
   // @ts-ignore
@@ -146,12 +147,15 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [role, dismiss, listNav]
   )
 
-  function onInputChange({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) {
+  function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (interactionsDisabled) return
+    const {
+      target: { value },
+    } = event
+
     const text = value
     setQuery(text)
+    props.onInputChange?.(event)
 
     if (text) {
       setOpen(true)

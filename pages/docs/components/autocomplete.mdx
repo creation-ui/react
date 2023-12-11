@@ -1,17 +1,11 @@
 import {
   properties,
   AutocompletePlayground,
-  AutocompleteMultipleExample,
   AutocompleteMultiPlayground,
-  AutocompleteExampleCustomOptions,
+  AutocompleteExternalSearchValueExample,
 } from '@components/examples/autocomplete'
 import PropsTable from '@components/props-table'
-import { Description } from '@components/typography'
-import { Container } from '@components/container'
-import {
-  defaultOptionType,
-  renderOptionProps,
-} from '@components/examples/shared-props'
+import { defaultOptionType } from '@components/examples/shared-props'
 
 # Autocomplete
 
@@ -21,7 +15,24 @@ This component is built upon fantastic [@floating-ui/react](https://floating-ui.
 
 <AutocompletePlayground />
 
-## Autocompleteing multiple options
+### Listening to input value changes
+
+Sometimes you need to get to the actual value passed to the input. For example, you might want to use it to make an external API call. In this case, you can use the `onInputChange` prop to listen to the input value changes.
+
+<b>Caveat</b>
+When is cleared by default clearable callback the event will be synthetic and will not contain the actual value.
+
+```jsx
+  const clearableCallback = () => {
+    onChange?.(null)
+    props.onInputChange?.({ target: { value: '' } } as any)
+    clearSearch()
+  }
+```
+
+<AutocompleteExternalSearchValueExample />
+
+## Autocompleting multiple options
 
 With the `multiple` prop, the Autocomplete component allows for the selection of multiple options, providing a dynamic and versatile user experience.
 

@@ -3,11 +3,13 @@ import { Autocomplete, Avatar } from '@creation-ui/react'
 import { AutocompleteOptionProps } from '@creation-ui/react/components/autocomplete/types'
 import clsx from 'clsx'
 import { DocumentedProperty } from 'models/system'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { options } from './data'
 import { createInputControls } from './shared-playground-controls'
 import { onChangeProp, valueProp } from './shared-props'
 import { createDocsLink } from './utils'
+import { set } from 'cypress/types/lodash'
+import { Container } from '@components/container'
 
 type OptionType = (typeof options)[0]
 
@@ -115,6 +117,37 @@ export const AutocompleteExampleCustomOptions = () => {
       isOptionEqualToValue={(a, b) => a?.id === b?.id}
       getOptionLabel={({ name }: Character) => name}
     />
+  )
+}
+
+export const AutocompleteExternalSearchValueExample = () => {
+  const [value, setValue] = useState<OptionType>(options[0])
+  const [query, setQuery] = useState('')
+
+  const onChange = (value: OptionType | OptionType[] | null) => {
+    // @ts-expect-error
+    setValue(value)
+  }
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value)
+  }
+
+  return (
+    <Container variant='column'>
+      <Autocomplete<OptionType>
+        label={'Autocomplete - custom'}
+        clearable
+        value={value}
+        options={options}
+        onChange={onChange}
+        onInputChange={onInputChange}
+        getOptionLabel={(option: OptionType) => option?.label}
+      />
+      <div className='w-64 border border-info-300 rounded-md p-5 mt-3'>
+        <span className='uppercase text-sm'>Search query</span>
+        <pre className='whitespace-pre-wrap'>{query}</pre>
+      </div>
+    </Container>
   )
 }
 
