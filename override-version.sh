@@ -7,4 +7,4 @@ fi
 
 VERSION="$1"
 
-git commit --allow-empty -m "chore: release $VERSION" -m "Release-As: $VERSION"
+git commit --allow-empty -m "chore: release $VERSION" -m "Release-As: $VERSION" && git push origin master

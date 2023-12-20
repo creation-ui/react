@@ -48,7 +48,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <button
           id={componentId}
           ref={ref}
-          disabled={disabled}
+          disabled={Boolean(disabled)}
+          aria-disabled={Boolean(disabled)}
+          type='button'
           {...props}
           className={classes}
         >

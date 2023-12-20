@@ -10,6 +10,7 @@ export const Loader = (props: LoaderProps) => {
     <div className={loaderClasses({ size, className, active })}>
       <svg
         aria-hidden='true'
+        data-testid='cui-loader'
         className={loaderIconClasses({ size, white })}
         viewBox='0 0 100 101'
         fill='none'

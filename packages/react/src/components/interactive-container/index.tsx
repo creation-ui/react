@@ -22,6 +22,7 @@ export const InteractiveContainer = ({
         disabled,
         className: [widthClasses],
       })}
+      data-testid='cui-interactive-container'
     >
       {children}
     </div>
