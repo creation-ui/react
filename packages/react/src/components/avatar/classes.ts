@@ -10,11 +10,6 @@ export const avatar = {
     ],
     {
       variants: {
-        size: {
-          sm: ['h-12 w-12'],
-          md: ['h-16 w-16'],
-          lg: ['h-20 w-20'],
-        },
         variant: {
           circle: ['rounded-full'],
           rounded: ['rounded-md'],
@@ -22,7 +17,6 @@ export const avatar = {
         },
       },
       defaultVariants: {
-        size: 'md',
         variant: 'circle',
       },
     }
@@ -33,38 +27,20 @@ export const avatar = {
       'bg-error-600',
       'text-error-100',
       'absolute',
-      'p-1.5',
-      // 'm-2',
       'outline',
+      'outline-2',
       'outline-white',
       'text-sm',
       'inline-flex',
-      // 'transform',
-      // 'translate-x-1/2',
-      // 'translate-y-1/2',
+      'leading-none',
+      'text-center',
+      'p-1.5',
       'items-center',
       'justify-center',
-      'leading-none',
+      // '-translate-x-1/2',
     ],
     {
       variants: {
-        size: {
-          sm: ['w-3', 'h-3'],
-          md: ['w-4', 'h-4'],
-          lg: ['w-5', 'h-5'],
-        },
-        horizontal: {
-          right: ['right-0'],
-          left: ['left-0'],
-        },
-        vertical: {
-          top: ['top-0'],
-          bottom: ['bottom-0'],
-        },
-        type: {
-          count: ['!w-6', '!h-6'],
-          dot: [],
-        },
         color: {
           primary: ['bg-primary-500', 'text-primary-100'],
           warning: ['bg-warning-500', 'text-warning-100'],
@@ -87,13 +63,10 @@ export const avatar = {
           'rounded-full',
           'opacity-75',
           'animate-ping',
+          'min-h-fit',
+          'min-w-fit',
         ],
         false: ['hidden'],
-      },
-      size: {
-        sm: ['w-5', 'h-5'],
-        md: ['w-6', 'h-6'],
-        lg: ['w-6', 'h-6'],
       },
       color: {
         primary: ['bg-primary-400'],

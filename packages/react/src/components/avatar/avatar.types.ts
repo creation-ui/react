@@ -33,7 +33,7 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
   /**
    * How large should the button be?
    */
-  size?: ElementSize
+  size?: ElementSize | number
   /**
    * Class name
    */

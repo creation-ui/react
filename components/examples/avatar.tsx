@@ -19,6 +19,10 @@ import {
   sizeControl,
   statusControl,
 } from './shared-playground-controls'
+import { Container } from '@components/container'
+
+const SRC =
+  'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80'
 
 const avatarVariants = [
   {
@@ -56,8 +60,7 @@ export const AvatarPlayground = () => (
         name: 'src',
         label: 'Image URL',
         type: 'string',
-        defaultValue:
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80',
+        defaultValue: SRC,
       },
       {
         name: 'badge',
@@ -89,6 +92,37 @@ export const AvatarPlayground = () => (
     ]}
   />
 )
+
+export const AvatarWithNumberSize = () => {
+  const numberSize = [10, 20, 30, 40, 50, 60, 100]
+  return (
+    <Container variant='column'>
+      {numberSize.map(size => (
+        <div className='flex gap-10 items-center' key={size}>
+          <p>{size}px</p>
+          <Avatar src={SRC} size={size} />
+          <Avatar
+            src={SRC}
+            size={size}
+            badge={{
+              count: 10,
+              placement: { horizontal: 'right', vertical: 'top' },
+            }}
+          />
+          <Avatar
+            src={SRC}
+            size={size}
+            badge={{
+              color: 'success',
+              placement: { horizontal: 'right', vertical: 'top' },
+              pulse: true,
+            }}
+          />
+        </div>
+      ))}
+    </Container>
+  )
+}
 
 export const properties: DocumentedProperty[] = [
   {

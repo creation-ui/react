@@ -1,15 +1,12 @@
 # Avatar
 
-import { Avatar } from '@creation-ui/react'
-import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/core'
-import { Container } from '@components/container'
-import { UnfoldVariants } from '@components/unfold-variants'
 import PropsTable from '@components/props-table'
 import {
   properties,
   badgeProperties,
   placementProperties,
   AvatarPlayground,
+  AvatarWithNumberSize,
 } from '@components/examples/avatar'
 
 export const defaultProps = {
@@ -20,6 +17,13 @@ export const defaultProps = {
 }
 
 <AvatarPlayground />
+
+## Custom size avatar
+
+Use `size` prop to set custom size of avatar in pixels. <br/>
+Not all features (badges, notifications) might work - <b>use with caution</b>.
+
+<AvatarWithNumberSize />
 
 ## Component API
 

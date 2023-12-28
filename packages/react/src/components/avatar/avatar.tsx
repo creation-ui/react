@@ -1,38 +1,88 @@
 import clsx from 'clsx'
-import { forwardRef } from 'react'
+import { forwardRef, useMemo, useRef } from 'react'
+import { Show } from '../show'
 import type AvatarProps from './avatar.types'
 import { avatar } from './classes'
+import {
+  AVATAR_SIZE_MAP,
+  BADGE_FONT_SIZE_MODIFIER,
+  BADGE_SIZE_MODIFIER,
+  NOTIFICATION_SIZE_MODIFIER,
+} from './constants'
+import { calcPosition } from './utils'
+import { useMeasureDirty } from '../../hooks'
 
 const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { size, badge, variant } = props
+  const { badge, variant = 'circle', ...rest } = props
 
-  const badgeType = badge?.count ? 'count' : 'dot'
+  const notifRef = useRef<HTMLDivElement>(null)
+  const { width } = useMeasureDirty(notifRef)
+
+  const size =
+    typeof props.size === 'number' ? props.size : AVATAR_SIZE_MAP[props.size]
+
+  const { calculatedPosition, badgeSize, hasCount } = useMemo(() => {
+    const hasCount = !!badge?.count
+    const badgeSize = Math.ceil(
+      (hasCount ? BADGE_SIZE_MODIFIER : NOTIFICATION_SIZE_MODIFIER) * size
+    )
+    return {
+      calculatedPosition: calcPosition(
+        width,
+        badge?.placement,
+        variant,
+        hasCount
+      ),
+      badgeSize,
+      hasCount,
+    }
+  }, [badge?.placement, variant])
 
   return (
     <div ref={ref} className={clsx(avatar.container)}>
-      <img {...props} className={avatar.img({ size, variant })} />
-      {props.badge && (
-        <>
-          <div
-            className={avatar.notifications({
-              horizontal: badge?.placement?.horizontal,
-              vertical: badge?.placement?.vertical,
-              type: badgeType,
-              color: badge?.color,
-              size,
-            })}
-          >
-            <span>{props.badge?.count}</span>
-            <span
+      <img
+        {...rest}
+        className={avatar.img({ variant })}
+        style={{
+          ...props.style,
+          width: size,
+          height: size,
+        }}
+      />
+      <Show when={!!props.badge}>
+        <div
+          ref={notifRef}
+          className={avatar.notifications({ color: badge?.color })}
+          style={{
+            aspectRatio: 1,
+            minHeight: badgeSize,
+            minWidth: badgeSize,
+            ...calculatedPosition,
+          }}
+        >
+          <Show when={hasCount}>
+            <div
+              style={{
+                fontSize: size * BADGE_FONT_SIZE_MODIFIER,
+              }}
+            >
+              {props.badge?.count}
+            </div>
+          </Show>
+          <Show when={props.badge?.pulse}>
+            <div
               className={avatar.pulse({
                 pulse: badge?.pulse,
                 color: badge?.color,
-                size,
               })}
+              style={{
+                width: badgeSize * 1.1,
+                height: badgeSize * 1.1,
+              }}
             />
-          </div>
-        </>
-      )}
+          </Show>
+        </div>
+      </Show>
     </div>
   )
 })
