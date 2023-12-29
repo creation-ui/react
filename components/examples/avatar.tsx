@@ -1,10 +1,12 @@
+import { Container } from '@components/container'
 import { Playground } from '@components/playground'
-import { Avatar, AVATAR_VARIANTS } from '@creation-ui/react'
+import { ELEMENT_SIZES } from '@creation-ui/core'
 import {
-  ELEMENT_PLACEMENT_HORIZONTAL,
-  ELEMENT_PLACEMENT_VERTICAL,
-  ELEMENT_SIZES,
-} from '@creation-ui/core'
+  Avatar,
+  AVATAR_VARIANTS,
+  AvatarGroup,
+  AvatarGroupProps,
+} from '@creation-ui/react'
 import {
   mdiCircleOutline,
   mdiSquareOutline,
@@ -13,13 +15,7 @@ import {
 import Icon from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
-import {
-  positionHorizontalControl,
-  positionVerticalControl,
-  sizeControl,
-  statusControl,
-} from './shared-playground-controls'
-import { Container } from '@components/container'
+import { sizeControl } from './shared-playground-controls'
 
 const SRC =
   'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80'
@@ -62,33 +58,11 @@ export const AvatarPlayground = () => (
         type: 'string',
         defaultValue: SRC,
       },
-      {
-        name: 'badge',
-        type: 'object',
-        controls: [
-          {
-            name: 'placement',
-            label: 'Placement',
-            type: 'object',
-            controls: [positionHorizontalControl, positionVerticalControl],
-          },
-          {
-            name: 'pulse',
-            type: 'boolean',
-            label: 'Pulse',
-          },
-          {
-            name: 'count',
-            label: 'Counter',
-            type: 'number',
-          },
-          {
-            ...statusControl,
-            name: 'color',
-            label: 'Color',
-          },
-        ],
-      },
+      // {
+      //   name: 'size',
+      //   label: 'Size (number)',
+      //   type: 'number',
+      // },
     ]}
   />
 )
@@ -96,33 +70,29 @@ export const AvatarPlayground = () => (
 export const AvatarWithNumberSize = () => {
   const numberSize = [10, 20, 30, 40, 50, 60, 100]
   return (
-    <Container variant='column'>
+    <Container className='items-start'>
       {numberSize.map(size => (
-        <div className='flex gap-10 items-center' key={size}>
+        <div className='flex flex-col gap-10 items-center' key={size}>
           <p>{size}px</p>
           <Avatar src={SRC} size={size} />
-          <Avatar
-            src={SRC}
-            size={size}
-            badge={{
-              count: 10,
-              placement: { horizontal: 'right', vertical: 'top' },
-            }}
-          />
-          <Avatar
-            src={SRC}
-            size={size}
-            badge={{
-              color: 'success',
-              placement: { horizontal: 'right', vertical: 'top' },
-              pulse: true,
-            }}
-          />
         </div>
       ))}
     </Container>
   )
 }
+
+export const AvatarGroupExample = (props: AvatarGroupProps) => (
+  <Container>
+    <AvatarGroup {...props}>
+      <Avatar src={SRC} />
+      <Avatar src={SRC} />
+      <Avatar src={SRC} />
+      <Avatar src={SRC} />
+    </AvatarGroup>
+  </Container>
+)
+
+const sizeType = `${ListOrTypes([...ELEMENT_SIZES])} | number`
 
 export const properties: DocumentedProperty[] = [
   {
@@ -133,8 +103,8 @@ export const properties: DocumentedProperty[] = [
   },
   {
     name: 'size',
-    type: ListOrTypes([...ELEMENT_SIZES]),
-    defaultValue: 'sm',
+    type: sizeType,
+    defaultValue: 'md',
     description: 'The size of the avatar.',
   },
   {
@@ -155,38 +125,47 @@ export const properties: DocumentedProperty[] = [
   },
 ]
 
-export const badgeProperties: DocumentedProperty[] = [
+export const groupProperties: DocumentedProperty[] = [
   {
-    name: 'placement',
-    type: 'ElementPlacement',
-    description: 'Vertical and horizontal placement of the badge',
-  },
-  {
-    name: 'pulse',
-    type: 'boolean',
-    description: 'Notification badge pulsing?',
-  },
-  {
-    name: 'type',
-    type: 'dot | count',
-    description: 'Badge type',
-  },
-  {
-    name: 'count',
+    name: 'total',
     type: 'number',
-    description: 'Badge notifications count',
-  },
-]
-
-export const placementProperties: DocumentedProperty[] = [
-  {
-    name: 'horizontal',
-    type: ListOrTypes([...ELEMENT_PLACEMENT_HORIZONTAL]),
-    description: 'Horizontal placement of the badge',
+    defaultValue: "0",
+    description: 'Manually controls the count displayed in last Avatar.',
   },
   {
-    name: 'vertical',
-    type: ListOrTypes([...ELEMENT_PLACEMENT_VERTICAL]),
-    description: 'Vertical placement of the badge',
+    name: 'max',
+    type: 'number',
+    description:
+      'Amount of avatars to display. Surplus will be rendered as count in an extra (last) Avatar.',
+  },
+  { name: 'children', type: 'ReactNode', description: 'Avatars.' },
+  {
+    name: 'size',
+    type: sizeType,
+    defaultValue: 'md',
+    description: 'The size of the avatars and counter.',
+  },
+  {
+    name: 'offsetMultiplier',
+    type: 'number',
+    defaultValue: -0.3,
+    description: 'Multiplier for the offset of Avatars. Controls the overlap.',
+  },
+  {
+    name: 'className',
+    type: 'string',
+    description: 'Container <code>className</code>',
+  },
+  {
+    name: 'surplusClassName',
+    type: 'string',
+    description:
+      '<code>className</code> of surplus displaying Avatar (counter).',
+  },
+  {
+    name: 'renderSurplus',
+    type: '(surplusCount: number) => ReactNode',
+    description:
+      'Custom render function for surplus displaying Avatar (counter).',
   },
 ]
