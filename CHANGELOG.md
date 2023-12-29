@@ -1,5 +1,21 @@
 # Changelog
 
+## [13.2.0](https://github.com/creation-ui/react/compare/v13.1.0...v13.2.0) (2023-12-29)
+
+
+### Bug Fixes
+
+* Add resize-observer-polyfill dependency to landing page ([eaaa40f](https://github.com/creation-ui/react/commit/eaaa40f87344871beefbe001c5362f7e544d7dda))
+* tests ([add7d3d](https://github.com/creation-ui/react/commit/add7d3da739761db30560f223c5ca104307fb46f))
+* type issues ([eb92c6a](https://github.com/creation-ui/react/commit/eb92c6a3edc25f131b7ef35d9593f0432e74ecc0))
+* Update Button import path ([d163825](https://github.com/creation-ui/react/commit/d1638258d7c4ed63a1431202fb03f3917bed37c4))
+
+
+### Miscellaneous Chores
+
+* release 13.2.0 ([8c8c4c2](https://github.com/creation-ui/react/commit/8c8c4c2f72d466073bf5f6af2b497a5b1446e85c))
+* release 13.2.0 ([7b728b8](https://github.com/creation-ui/react/commit/7b728b8ee8b5bcaf6e5a70b86dbad0fd5fb0eec2))
+
 ## [13.1.0](https://github.com/creation-ui/react/compare/v0.13.0...v13.1.0) (2023-12-11)
 
 
