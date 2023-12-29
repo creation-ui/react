@@ -1,8 +1,7 @@
 'use strict'
 import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/core'
-import { Button } from '../../packages/react/build'
+import { Button } from '@root/packages/react/src'
 import clsx from 'clsx'
-
 
 // tabIndex attributes set
 
