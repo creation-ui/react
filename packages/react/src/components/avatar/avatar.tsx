@@ -4,20 +4,29 @@ import type AvatarProps from './avatar.types'
 import { avatar } from './classes'
 import { AVATAR_CONTAINER_PROPS, AVATAR_SIZE_MAP } from './constants'
 import { pick } from '../utils'
+import { useTheme } from '../../theme'
 
 const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { variant = 'circle', children, className, ...rest } = props
+  const theme = useTheme()
+  const {
+    variant = 'circle',
+    children,
+    className,
+    size: userSize = theme.size ?? 'md',
+    ...rest
+  } = props
+
   const { style } = useMemo(() => {
     const size =
-      typeof props.size === 'number' ? props.size : AVATAR_SIZE_MAP[props.size]
-
+      typeof userSize === 'number' ? userSize : AVATAR_SIZE_MAP[userSize]
+    //@ts-ignore
     const containerStyle = pick(props.style, AVATAR_CONTAINER_PROPS)
 
     return {
       size,
       style: { width: size, height: size, ...containerStyle },
     }
-  }, [props.size, props.style])
+  }, [userSize, props.style])
 
   return (
     <div

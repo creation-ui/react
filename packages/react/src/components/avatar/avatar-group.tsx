@@ -28,36 +28,30 @@ export const AvatarGroup: FC<AvatarGroupProps> = ({
   ...rest
 }) => {
   const theme = useTheme()
+  const { size: userSize = theme.size ?? 'md' } = rest
 
   const { surplusCount, size, offset } = useMemo(() => {
-    const { size = theme.size } = rest
-    const finalSize: number =
-      typeof size === 'number' ? size : AVATAR_SIZE_MAP[size]
+    const size: number =
+      typeof userSize === 'number' ? userSize : AVATAR_SIZE_MAP[userSize]
     const count = Children.count(children)
     const surplus = max ? count - max : total - count
 
     return {
       childrenCount: count,
       surplusCount: surplus,
-      size: finalSize,
+      size,
       offset: {
-        marginLeft: finalSize * offsetMultiplier,
+        marginLeft: size * offsetMultiplier,
       } as CSSProperties,
     }
-  }, [children, max, total, rest.size, theme.size])
+  }, [children, max, total, userSize])
 
   return (
     <div className={clsx('flex', className)}>
       {Children.map(children, (child, index) => {
         if (max && index >= max) return null
         if (isValidElement(child)) {
-          return (
-            <div style={offset}>
-              {cloneElement<AvatarProps>(child, {
-                size,
-              })}
-            </div>
-          )
+          return <div style={offset}>{cloneElement<any>(child, { size })}</div>
         }
         return null
       })}
