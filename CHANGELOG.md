@@ -1,5 +1,13 @@
 # Changelog
 
+## [13.2.1](https://github.com/creation-ui/react/compare/v13.2.0...v13.2.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* dark mode toggle detect exisiting LS value, do not parse simple string ([ec929aa](https://github.com/creation-ui/react/commit/ec929aa0b9244a7733e5f93683aca7aaa9077cf1))
+* tsc issues ([3a099e6](https://github.com/creation-ui/react/commit/3a099e6516f019a6368c0726e6053fbf0fea0fd5))
+
 ## [13.2.0](https://github.com/creation-ui/react/compare/v13.1.0...v13.2.0) (2023-12-29)
 
 
