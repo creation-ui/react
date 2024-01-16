@@ -55,7 +55,7 @@ export const DarkModeToggle: FC<DarkModeToggleProps> = ({
       return
     }
 
-    handleThemeChange(lsTheme)
+    handleThemeChange(lsTheme ?? 'light')
   }, [])
 
   const uniqueMaskId = `circle-mask-${lsTheme}`

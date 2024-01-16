@@ -1,18 +1,11 @@
 import { Container } from '@components/container'
 import { DarkModeToggle } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { useState } from 'react'
 
 export const DarkModeToggleExample = () => {
-  const [dark, setDark] = useState(false)
-
-  const onChange = (checked: boolean) => {
-    setDark(checked)
-  }
-
   return (
     <Container>
-      <DarkModeToggle onChange={onChange} checked={dark} />
+      <DarkModeToggle />
     </Container>
   )
 }

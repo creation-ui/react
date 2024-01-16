@@ -63,8 +63,8 @@ export interface AnimationProperties {
 export type SVGProps = Omit<React.HTMLAttributes<HTMLOrSVGElement>, 'onChange'>
 
 export interface DarkModeToggleProps extends SVGProps {
-  onModeChange: (theme: ElementTheme) => void
-  theme: ElementTheme
+  onModeChange?: (theme: ElementTheme) => void
+  theme?: ElementTheme
   style?: React.CSSProperties
   size?: number | string
   animationProperties?: AnimationProperties
