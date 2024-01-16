@@ -1,3 +1,5 @@
+import { ElementTheme } from '@creation-ui/core'
+
 export interface Circle {
   r: number
 }
@@ -61,11 +63,13 @@ export interface AnimationProperties {
 export type SVGProps = Omit<React.HTMLAttributes<HTMLOrSVGElement>, 'onChange'>
 
 export interface DarkModeToggleProps extends SVGProps {
-  onChange: (checked: boolean) => void
-  checked: boolean
+  onModeChange: (theme: ElementTheme) => void
+  theme: ElementTheme
   style?: React.CSSProperties
   size?: number | string
   animationProperties?: AnimationProperties
   moonColor?: string
   sunColor?: string
+  defaultTheme?: ElementTheme
+  localStorageKey?: string
 }

@@ -8,15 +8,11 @@ import {
   useLayoutEffect,
 } from 'react'
 
-type parserOptions<T> =
-  | {
-      raw: true
-    }
-  | {
-      raw: false
-      serializer: (value: T) => string
-      deserializer: (value: string) => T
-    }
+type parserOptions<T> = {
+  raw: boolean
+  serializer?: (value: T) => string
+  deserializer?: (value: string) => T
+}
 
 const useLocalStorage = <T>(
   key: string,
@@ -30,22 +26,16 @@ const useLocalStorage = <T>(
     throw new Error('useLocalStorage key may not be falsy')
   }
 
-  const deserializer = options
-    ? options.raw
-      ? value => value
-      : // @ts-ignore
-        options.deserializer
-    : JSON.parse
+  const deserializer = options?.raw
+    ? value => value
+    : options?.deserializer || JSON.parse
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const initializer = useRef((key: string) => {
     try {
-      const serializer = options
-        ? options.raw
-          ? String
-          : // @ts-ignore
-            options.serializer
-        : JSON.stringify
+      const serializer = options?.raw
+        ? String
+        : options?.serializer || JSON.stringify
 
       const localStorageValue = localStorage.getItem(key)
       if (localStorageValue !== null) {

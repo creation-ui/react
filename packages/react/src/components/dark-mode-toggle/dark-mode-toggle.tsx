@@ -1,23 +1,29 @@
-import { useEffect, useMemo } from 'react'
+import type { ElementTheme } from '@creation-ui/core'
+import { FC, useEffect, useMemo } from 'react'
 import { animated, useSpring } from 'react-spring'
 import { useLocalStorage } from '../../hooks'
-import type { ElementTheme } from '@creation-ui/core'
 import { darkModeToggleDefaultProperties } from './constants'
 import type { DarkModeToggleProps } from './dark-mode-toggle.type'
-import { isDarkThemeSet, updateDocumentClasses } from './utils'
+import { updateDocumentClasses } from './utils'
 
-export const DarkModeToggle = ({
-  onChange,
+export const DarkModeToggle: FC<DarkModeToggleProps> = ({
+  onModeChange: onChange,
   children,
-  checked = false,
+  theme,
   size = 24,
   animationProperties = darkModeToggleDefaultProperties,
   moonColor = 'white',
   sunColor = 'black',
+  defaultTheme = 'light',
+  localStorageKey = 'theme',
   style,
   ...rest
-}: DarkModeToggleProps) => {
-  const [theme, setTheme, _clearLS] = useLocalStorage<ElementTheme>('theme')
+}) => {
+  const [lsTheme, setLSTheme, _clearLS] = useLocalStorage<ElementTheme>(
+    localStorageKey,
+    defaultTheme,
+    { raw: true }
+  )
   const properties = useMemo(() => {
     if (animationProperties !== darkModeToggleDefaultProperties) {
       return Object.assign(darkModeToggleDefaultProperties, animationProperties)
@@ -25,9 +31,9 @@ export const DarkModeToggle = ({
     return animationProperties
   }, [animationProperties])
 
-  const isDarkTheme = theme === 'dark'
+  const isDarkTheme = lsTheme === 'dark'
 
-  const { circle, svg, lines, mask } = properties[checked ? 'dark' : 'light']
+  const { circle, svg, lines, mask } = properties[lsTheme ?? 'light']
 
   const { springConfig } = animationProperties
 
@@ -38,19 +44,21 @@ export const DarkModeToggle = ({
 
   const handleThemeChange = (theme: ElementTheme) => {
     updateDocumentClasses(theme)
-    setTheme(theme)
-    onChange?.(isDarkTheme ? true : false)
+    setLSTheme(theme)
+    onChange?.(theme)
   }
 
   const toggle = () => handleThemeChange(isDarkTheme ? 'light' : 'dark')
 
   useEffect(() => {
-    if (!theme) {
-      handleThemeChange(isDarkThemeSet() ? 'dark' : 'light')
+    if (lsTheme === theme) {
+      return
     }
-  }, [theme])
 
-  const uniqueMaskId = `circle-mask-${theme}`
+    handleThemeChange(lsTheme)
+  }, [])
+
+  const uniqueMaskId = `circle-mask-${lsTheme}`
   const color = isDarkTheme ? moonColor : sunColor
   return (
     <animated.svg
@@ -67,6 +75,7 @@ export const DarkModeToggle = ({
       onClick={toggle}
       style={{
         cursor: 'pointer',
+        // mixBlendMode: 'difference',
         ...svgContainerProps,
         ...style,
       }}
