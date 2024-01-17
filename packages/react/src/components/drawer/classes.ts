@@ -47,15 +47,9 @@ export const drawer = cva(
         right: ['inset-y-0', 'right-0'],
         left: ['inset-y-0', 'left-0'],
       },
-      size: {
-        sm: [],
-        md: [],
-        lg: [],
-      },
     },
     defaultVariants: {
       position: 'right',
-      size: 'md',
     },
   }
 )

@@ -1,21 +1,22 @@
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment } from 'react'
+import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
+import { Overlay } from '../overlay'
 import { child, drawer, drawerAnimation } from './classes'
 import type { DrawerProps } from './drawer.types'
-import { Overlay } from '../overlay'
-import { twMerge } from 'tailwind-merge'
 import merge from 'lodash.merge'
+import get from 'lodash.get'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { drawers, zIndex } = useTheme()
-  const { position = drawers!.position ?? 'right', onClose = () => {} } = props
-  const defaultCX = {
-    width: drawers!.widthClassNames,
-    height: drawers!.heightClassNames,
-  }
-  const cx = merge(props.cx, defaultCX)
+  const { position = drawers?.position || 'right', onClose = () => {} } = props
+
+  const cx = merge({}, props.cx, {
+    width: get(props, 'cx.width', drawers?.widthClassNames ?? ''),
+    height: get(props, 'cx.height', drawers?.heightClassNames ?? ''),
+  })
 
   const finalSize = {
     right: cx.width,
@@ -26,11 +27,7 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
 
   return (
     <>
-      <Overlay
-        className={'!fixed'}
-        active={open}
-        onClick={onOverlayClick}
-      />
+      <Overlay className={'!fixed'} active={open} onClick={onOverlayClick} />
       <Transition
         show={open}
         as={Fragment}
@@ -53,7 +50,7 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
             })
           )}
         >
-          <div className={clsx(child, 'h-full flex', cx?.container?.inner)}>
+          <div className={clsx(child, 'h-full', cx?.container?.inner)}>
             {children}
           </div>
         </Dialog>
