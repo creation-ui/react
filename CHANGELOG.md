@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.2.2](https://github.com/creation-ui/react/compare/v13.2.1...v13.2.2) (2024-01-17)
+
+
+### Miscellaneous Chores
+
+* release 13.2.2 ([012a634](https://github.com/creation-ui/react/commit/012a634badaf3cc68930653c844e905ce0375763))
+
 ## [13.2.1](https://github.com/creation-ui/react/compare/v13.2.0...v13.2.1) (2024-01-16)
 
 
