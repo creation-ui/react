@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.16](https://github.com/creation-ui/react/compare/v13.3.15...v13.3.16) (2024-01-20)
+
+
+### Bug Fixes
+
+* test new config 1 ([f062cb7](https://github.com/creation-ui/react/commit/f062cb7ca42eba86deb3b2c121457e47666fed43))
+
 ## [13.3.15](https://github.com/creation-ui/react/compare/v13.3.14...v13.3.15) (2024-01-20)
 
 
