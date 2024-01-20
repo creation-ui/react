@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.6](https://github.com/creation-ui/react/compare/v13.3.5...v13.3.6) (2024-01-20)
+
+
+### Bug Fixes
+
+* update actions version ([89bba4c](https://github.com/creation-ui/react/commit/89bba4c697e38e83937ce4df2e523a1f2fe2a74f))
+
 ## [13.3.5](https://github.com/creation-ui/react/compare/v13.3.4...v13.3.5) (2024-01-20)
 
 
