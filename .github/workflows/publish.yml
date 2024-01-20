@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install -r
 
-      - name: Login to NPM
-        run: npm login
-
       - name: Build and Test
         run: pnpm package
         env:
