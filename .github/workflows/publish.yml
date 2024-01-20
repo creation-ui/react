@@ -19,6 +19,9 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
+      - name: Authorize NPM
+        run: npm adduser
+
       - name: Install dependencies
         run: pnpm install -r
 
@@ -26,3 +29,4 @@ jobs:
         run: pnpm package
         env:
           NPM_TOKEN_AUTOMATION: ${{secrets.NPM_TOKEN_AUTOMATION}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_AUTOMATION}}
