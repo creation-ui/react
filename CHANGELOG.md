@@ -1,5 +1,13 @@
 # Changelog
 
+## [13.3.4](https://github.com/creation-ui/react/compare/v13.3.3...v13.3.4) (2024-01-20)
+
+
+### Bug Fixes
+
+* publish action installs pnpm ([8a4a8d2](https://github.com/creation-ui/react/commit/8a4a8d28e3768bbb4b6bfc8d4575168d303137ff))
+* save version number in action ([7fafef7](https://github.com/creation-ui/react/commit/7fafef7d0075a0cfe48a216d41f94057ca1e0c02))
+
 ## [13.3.3](https://github.com/creation-ui/react/compare/v13.3.2...v13.3.3) (2024-01-20)
 
 
