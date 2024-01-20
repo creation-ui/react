@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.1](https://github.com/creation-ui/react/compare/v13.3.0...v13.3.1) (2024-01-20)
+
+
+### Bug Fixes
+
+* improve publish action ([bb654ae](https://github.com/creation-ui/react/commit/bb654ae2e285154e83c4e23ad9f05397324fafef))
+
 ## [13.3.0](https://github.com/creation-ui/react/compare/v13.2.2...v13.3.0) (2024-01-20)
 
 
