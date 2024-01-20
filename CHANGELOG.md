@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.14](https://github.com/creation-ui/react/compare/v13.3.13...v13.3.14) (2024-01-20)
+
+
+### Bug Fixes
+
+* add registry-url ([6b95060](https://github.com/creation-ui/react/commit/6b9506058af5b06dc934bb10d50ccc7e27ecf6e9))
+
 ## [13.3.13](https://github.com/creation-ui/react/compare/v13.3.12...v13.3.13) (2024-01-20)
 
 
