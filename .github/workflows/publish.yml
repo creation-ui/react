@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
@@ -23,7 +23,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install -r
 
+      - name: Update version
+        run: pnpm package:version
+
+      - name: Commit version number
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "chore: save version number" || true
+          git push
+
       - name: Build and Test
-        run: pnpm run package
+        run: pnpm package:auto
         env:
           NPM_TOKEN_AUTOMATION: ${{secrets.NPM_TOKEN_AUTOMATION}}
