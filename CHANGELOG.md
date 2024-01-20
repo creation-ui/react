@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.13](https://github.com/creation-ui/react/compare/v13.3.12...v13.3.13) (2024-01-20)
+
+
+### Bug Fixes
+
+* remove npm adduser ([5e75853](https://github.com/creation-ui/react/commit/5e75853e6632ca640d35cf82b74c48913069f583))
+
 ## [13.3.12](https://github.com/creation-ui/react/compare/v13.3.11...v13.3.12) (2024-01-20)
 
 
