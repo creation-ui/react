@@ -1,0 +1,13 @@
+name: Post release flow
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  afterMergeJob:
+    if: github.event.pull_request.merged == true && github.event.pull_request.user.login == 'release-please[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wykonaj kroki po zmergowaniu PR
+        run: echo "Release Please PR was merged!"
