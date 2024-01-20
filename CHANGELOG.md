@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.9](https://github.com/creation-ui/react/compare/v13.3.8...v13.3.9) (2024-01-20)
+
+
+### Bug Fixes
+
+* remove failing action step ([0b3e7ed](https://github.com/creation-ui/react/commit/0b3e7edde5519cd6932ce19fcef9224a9d4e05d4))
+
 ## [13.3.8](https://github.com/creation-ui/react/compare/v13.3.7...v13.3.8) (2024-01-20)
 
 
