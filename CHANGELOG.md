@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.3](https://github.com/creation-ui/react/compare/v13.3.2...v13.3.3) (2024-01-20)
+
+
+### Bug Fixes
+
+* add PAT ([d629083](https://github.com/creation-ui/react/commit/d629083a1659601ec389c77bf2baa3980557f63c))
+
 ## [13.3.2](https://github.com/creation-ui/react/compare/v13.3.1...v13.3.2) (2024-01-20)
 
 
