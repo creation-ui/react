@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.15](https://github.com/creation-ui/react/compare/v13.3.14...v13.3.15) (2024-01-20)
+
+
+### Bug Fixes
+
+* add curly braces to token ([d81b358](https://github.com/creation-ui/react/commit/d81b358a11e2f7d0ef67ff81de4885044179217c))
+
 ## [13.3.14](https://github.com/creation-ui/react/compare/v13.3.13...v13.3.14) (2024-01-20)
 
 
