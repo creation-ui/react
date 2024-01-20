@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.7](https://github.com/creation-ui/react/compare/v13.3.6...v13.3.7) (2024-01-20)
+
+
+### Bug Fixes
+
+* change publish action trigger type ([3205b00](https://github.com/creation-ui/react/commit/3205b0021b70356bcf96820f1d523e9d1a396a20))
+
 ## [13.3.6](https://github.com/creation-ui/react/compare/v13.3.5...v13.3.6) (2024-01-20)
 
 
