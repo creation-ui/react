@@ -19,9 +19,6 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Authorize NPM
-        run: npm adduser
-
       - name: Install dependencies
         run: pnpm install -r
 
