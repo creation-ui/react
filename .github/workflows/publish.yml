@@ -26,7 +26,7 @@ jobs:
       - name: Update version
         run: pnpm package:version
 
-        - name: Commit version number
+      - name: Commit version number
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
