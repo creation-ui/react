@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.12](https://github.com/creation-ui/react/compare/v13.3.11...v13.3.12) (2024-01-20)
+
+
+### Bug Fixes
+
+* authorize npm with adduser ([e9492e7](https://github.com/creation-ui/react/commit/e9492e7ece668d05c5fc84924079373d33162ca4))
+
 ## [13.3.11](https://github.com/creation-ui/react/compare/v13.3.10...v13.3.11) (2024-01-20)
 
 
