@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.0](https://github.com/creation-ui/react/compare/v13.2.2...v13.3.0) (2024-01-20)
+
+
+### Features
+
+* refactor publish script ([ef54801](https://github.com/creation-ui/react/commit/ef548017640e5a4d7bb39d8cd9eae2856bdc89de))
+
 ## [13.2.2](https://github.com/creation-ui/react/compare/v13.2.1...v13.2.2) (2024-01-17)
 
 
