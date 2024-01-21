@@ -1,5 +1,13 @@
 # Changelog
 
+## [13.3.22](https://github.com/creation-ui/react/compare/v13.3.21...v13.3.22) (2024-01-21)
+
+
+### Bug Fixes
+
+* restore .npmrc ([caaf7fb](https://github.com/creation-ui/react/commit/caaf7fb6da5c79bc21d44fd1dab4f26c79681328))
+* script ([173b052](https://github.com/creation-ui/react/commit/173b052099d63b517a7e6400603937561600a979))
+
 ## [13.3.21](https://github.com/creation-ui/react/compare/v13.3.20...v13.3.21) (2024-01-21)
 
 
