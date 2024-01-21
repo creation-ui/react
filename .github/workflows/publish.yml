@@ -24,8 +24,8 @@ jobs:
       - name: Append NPM token to .npmrc in react package
         run: |
           cd packages/react
+          echo -e "\n//registry.npmjs.org/:_authToken=${NPM_TOKEN_AUTOMATION}" >> .npmrc
           ls -la
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN_AUTOMATION}" >> .npmrc
 
       - name: Verify token set
         run: |
@@ -33,7 +33,7 @@ jobs:
           echo "${TOKEN_LINE:0:41}"
 
       - name: Verify NPM Authentication
-        run: cd packages/react/ && npm whoami
+        run: cd packages/react && npm whoami
 
       - name: Install dependencies
         run: pnpm install -r
