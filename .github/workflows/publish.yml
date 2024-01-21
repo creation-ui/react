@@ -7,6 +7,8 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -23,18 +25,15 @@ jobs:
         run: pnpm install -r
 
       - name: Append NPM token to .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN_AUTOMATION}" >> .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN_AUTOMATION}" >> ./packages/react/.npmrc
 
       - name: Verify token set
         run: |
-          TOKEN_LINE=$(grep '_authToken' .npmrc)
+          TOKEN_LINE=$(grep '_authToken' ./packages/react/.npmrc)
           echo "${TOKEN_LINE:0:41}"
 
       - name: Verify NPM Authentication
-        run: npm whoami
+        run: cd ./packages/react/ && npm whoami
 
       - name: Build and Test
         run: pnpm package
-        env:
-          NPM_TOKEN_AUTOMATION: ${{secrets.NPM_TOKEN_AUTOMATION}}
-          NPM_TOKEN: ${{secrets.NPM_TOKEN_AUTOMATION}}
