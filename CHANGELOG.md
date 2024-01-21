@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.19](https://github.com/creation-ui/react/compare/v13.3.18...v13.3.19) (2024-01-21)
+
+
+### Bug Fixes
+
+* order of operations ([9d7d405](https://github.com/creation-ui/react/commit/9d7d405d14eea8ff67a9ea3dbc5993c4d5cf8518))
+
 ## [13.3.18](https://github.com/creation-ui/react/compare/v13.3.17...v13.3.18) (2024-01-21)
 
 
