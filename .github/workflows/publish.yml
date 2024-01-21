@@ -22,8 +22,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install -r
 
-      - name: Set NPM token
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN_AUTOMATION}" > .npmrc
+      - name: Append NPM token to .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN_AUTOMATION}" >> .npmrc
+
+      - name: Verify token set
+        run: |
+          TOKEN_LINE=$(grep '_authToken' .npmrc)
+          echo "${TOKEN_LINE:0:41}"
+
+      - name: Verify NPM Authentication
+        run: npm whoami
 
       - name: Build and Test
         run: pnpm package
