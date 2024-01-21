@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.4.0](https://github.com/creation-ui/react/compare/v13.3.23...v13.4.0) (2024-01-21)
+
+
+### Features
+
+* add create option for autocomplete ([ce5b073](https://github.com/creation-ui/react/commit/ce5b0731c4f195f348181c369b0545b4e9c509fe))
+
 ## [13.3.23](https://github.com/creation-ui/react/compare/v13.3.22...v13.3.23) (2024-01-21)
 
 
