@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.23](https://github.com/creation-ui/react/compare/v13.3.22...v13.3.23) (2024-01-21)
+
+
+### Bug Fixes
+
+* copy .npmrc to ./build ([c323093](https://github.com/creation-ui/react/commit/c323093b657b1e3383ac95da4dc9845c2113822c))
+
 ## [13.3.22](https://github.com/creation-ui/react/compare/v13.3.21...v13.3.22) (2024-01-21)
 
 
