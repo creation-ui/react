@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.17](https://github.com/creation-ui/react/compare/v13.3.16...v13.3.17) (2024-01-21)
+
+
+### Bug Fixes
+
+* remove .npmrc from main repo, add registry for organisation ([6f0be20](https://github.com/creation-ui/react/commit/6f0be20d2a77c33dc3f08b1d371c55693986c27a))
+
 ## [13.3.16](https://github.com/creation-ui/react/compare/v13.3.15...v13.3.16) (2024-01-20)
 
 
