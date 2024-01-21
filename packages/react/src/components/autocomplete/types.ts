@@ -73,6 +73,10 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    * Clear button tooltip text
    */
   textClear?: string | null
+  /**
+   * Create option text
+   */
+  textCreate?: string | null
 
   /**
    * Allow selection of multiple value
@@ -88,6 +92,11 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    * Limit of multiple selected to be displayed in input
    */
   limit?: number
+  /**
+   * Callback function that is called when creating new option.
+   * @param title:string - The new value(s). Calls with the current input value.
+   */
+  onCreate?: (title: string) => void
   /**
    * Callback function that is called when the value changes.
    * @param { T | T[] | null } value - The new value(s). Returns an array of selected values. If !multiple, will return an array with one value.
@@ -150,3 +159,6 @@ export type GetItemPropsReturnType = {
   onClick: (event: React.MouseEvent<HTMLElement>) => void
   ref: React.RefObject<HTMLLIElement>
 } & React.HTMLProps<HTMLLIElement>
+
+export type AutocompleteInnerInputProps =
+  React.InputHTMLAttributes<HTMLInputElement>

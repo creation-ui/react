@@ -20,6 +20,7 @@ import { getDropdownHeight } from '../../shared'
 import { AUTOCOMPLETE_MARGIN } from '../constants'
 import { AutocompleteContext } from '../context'
 import {
+  AutocompleteInnerInputProps,
   AutocompleteOptionProps,
   AutocompleteProps,
   GetItemPropsReturnType,
@@ -36,6 +37,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     textEmpty = 'No options',
     textNotFound = 'No results found',
     placeholder = 'Select...',
+    textCreate = 'Create',
     multiple = false,
     helperText,
     error,
@@ -103,35 +105,40 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     props.onInputChange?.({ target: { value: '' } } as any)
     clearSearch()
   }
+
+  const createCallback = () => {
+    props.onCreate?.(query)
+    clearSearch()
+  }
+
   // @ts-ignore
-  const { x, strategy, refs, context, floatingStyles } =
-    useFloating<HTMLInputElement>({
-      placement: 'bottom',
-      whileElementsMounted: autoUpdate,
-      onOpenChange: open => {
-        if (interactionsDisabled) return
-        setOpen(open)
-      },
-      open,
-      middleware: [
-        flip({ padding: AUTOCOMPLETE_MARGIN }),
-        offset(5),
-        floatingSize({
-          apply({ rects, availableHeight, elements }) {
-            const height = getDropdownHeight(maxHeight, availableHeight)
+  const { refs, context, floatingStyles } = useFloating<HTMLInputElement>({
+    placement: 'bottom',
+    whileElementsMounted: autoUpdate,
+    onOpenChange: open => {
+      if (interactionsDisabled) return
+      setOpen(open)
+    },
+    open,
+    middleware: [
+      flip({ padding: AUTOCOMPLETE_MARGIN }),
+      offset(5),
+      floatingSize({
+        apply({ rects, availableHeight, elements }) {
+          const height = getDropdownHeight(maxHeight, availableHeight)
 
-            setWidth(Number(rects.reference.width?.toFixed(0)))
+          setWidth(Number(rects.reference.width?.toFixed(0)))
 
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-              maxHeight: height,
-              overflowY: 'auto',
-            })
-          },
-          padding: AUTOCOMPLETE_MARGIN,
-        }),
-      ],
-    })
+          Object.assign(elements.floating.style, {
+            width: `${rects.reference.width}px`,
+            maxHeight: height,
+            overflowY: 'auto',
+          })
+        },
+        padding: AUTOCOMPLETE_MARGIN,
+      }),
+    ],
+  })
 
   const role = useRole(context, { role: 'listbox' })
   const dismiss = useDismiss(context)
@@ -187,7 +194,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const handleSelect = option => {
     if (multiple) {
       clearSearch()
-
       const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
       onChange?.(newValue)
     } else {
@@ -228,7 +234,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     retainInputValue()
   }, [])
 
-  const inputProps = {
+  const inputProps: AutocompleteInnerInputProps = {
     onChange: onInputChange,
     value: query,
     placeholder,
@@ -242,20 +248,20 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       retainInputValue()
     },
     onKeyDown(event) {
-      if (
-        event.key === 'Enter' &&
-        activeIndex != null &&
-        filteredOptions[activeIndex]
-      ) {
-        handleSelect(filteredOptions[activeIndex])
-      }
-
-      if (event.key === 'Escape') {
-        setOpen(false)
-      }
-
-      if (event.key === 'ArrowDown') {
-        setOpen(true)
+      switch (event.key) {
+        case 'Enter':
+          if (activeIndex != null && filteredOptions[activeIndex]) {
+            handleSelect(filteredOptions[activeIndex])
+          } else {
+            createCallback()
+          }
+          break
+        case 'Escape':
+          setOpen(false)
+          break
+        case 'ArrowDown':
+          setOpen(true)
+          break
       }
     },
   }
@@ -400,6 +406,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
             getOptionLabel,
             getOptionProps,
             getLimitTagsText,
+            onCreate: createCallback,
+            textCreate,
+            query,
           }}
         >
           <AutocompleteView />

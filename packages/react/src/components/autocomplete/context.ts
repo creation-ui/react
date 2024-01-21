@@ -3,6 +3,7 @@ import {
   AutocompleteOptionProps,
   AutocompleteOptionDefault,
   AutocompleteProps,
+  AutocompleteInnerInputProps,
 } from './types'
 
 interface AutocompleteContextValue<T = any>
@@ -23,13 +24,16 @@ interface AutocompleteContextValue<T = any>
     | 'textNotFound'
     | 'defaultTagProps'
     | 'autoHighlight'
+    | 'onCreate'
+    | 'textCreate'
   > {
+  query?: string
   open?: boolean
   floatingContext: any
   activeIndex: number | null
   selected?: AutocompleteOptionDefault | AutocompleteOptionDefault[] | null
   /** PROPS **/
-  propsInput: Record<string, unknown>
+  propsInput: AutocompleteInnerInputProps
   propsList: Record<string, unknown>
   getOptionProps: (
     option: AutocompleteOptionDefault,

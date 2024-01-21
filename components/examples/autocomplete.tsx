@@ -1,3 +1,4 @@
+import { Container } from '@components/container'
 import { Playground } from '@components/playground'
 import { Autocomplete, Avatar } from '@creation-ui/react'
 import { AutocompleteOptionProps } from '@creation-ui/react/components/autocomplete/types'
@@ -8,8 +9,6 @@ import { options } from './data'
 import { createInputControls } from './shared-playground-controls'
 import { onChangeProp, valueProp } from './shared-props'
 import { createDocsLink } from './utils'
-import { set } from 'cypress/types/lodash'
-import { Container } from '@components/container'
 
 type OptionType = (typeof options)[0]
 
@@ -176,6 +175,9 @@ export const AutocompleteMultiPlayground = () => {
   ])
 
   const handleChange = (value: OptionType[] | null) => setValue(value)
+  const onCreate = (value: string) => {
+    setValue(prev => [...(prev ?? []), { label: value, id: value }])
+  }
 
   return (
     <Playground
@@ -186,6 +188,7 @@ export const AutocompleteMultiPlayground = () => {
         label: 'Autocomplete - multiple',
         value,
         options,
+        onCreate,
         onChange: handleChange,
       }}
       controls={autocompleteControlsMultiple}
@@ -211,6 +214,11 @@ export const properties: DocumentedProperty[] = [
     ...onChangeProp,
     type: '(value: T | T[] | null) => void',
     note: multipleWarning,
+  },
+  {
+    description: 'Callback for creating new option',
+    name: 'onCreate',
+    type: '(title: string) => void',
   },
   {
     description: 'Allow multiple values',
@@ -323,6 +331,12 @@ export const properties: DocumentedProperty[] = [
     type: 'string',
     defaultValue: 'No results found',
     description: 'Text to display when no options match search.',
+  },
+  {
+    name: 'textCreate',
+    type: 'string',
+    defaultValue: 'Create',
+    description: 'Text to display when no options matches search and <code>onCreate</code> is provided. Precedes quoted search query like so: <code>Create "${query}"</code>',
   },
   {
     name: 'textLoading',

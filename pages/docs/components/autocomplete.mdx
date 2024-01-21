@@ -20,7 +20,8 @@ This component is built upon fantastic [@floating-ui/react](https://floating-ui.
 Sometimes you need to get to the actual value passed to the input. For example, you might want to use it to make an external API call. In this case, you can use the `onInputChange` prop to listen to the input value changes.
 
 <b>Caveat</b>
-When is cleared by default clearable callback the event will be synthetic and will not contain the actual value.
+When is cleared by default clearable callback the event will be synthetic and will
+not contain the actual value.
 
 ```jsx
   const clearableCallback = () => {
@@ -35,6 +36,7 @@ When is cleared by default clearable callback the event will be synthetic and wi
 ## Autocompleting multiple options
 
 With the `multiple` prop, the Autocomplete component allows for the selection of multiple options, providing a dynamic and versatile user experience.
+This example also makes use of the `onCreate` callback, which is triggered when the user selects an option that does not exist in the options list. This callback can be used to create new options on the fly.
 
 <br />
 <AutocompleteMultiPlayground />
