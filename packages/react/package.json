@@ -11,7 +11,7 @@
     "access": "public"
   },
   "scripts": {
-    "copy": "cp ./package.json ./build && cp ./README.md ./build && cp ./LICENSE ./build",
+    "copy": "cp ./package.json ./README.md ./LICENSE ./.npmrc ./.npmignore ./build",
     "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
     "prettier:check": "prettier -c .",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",

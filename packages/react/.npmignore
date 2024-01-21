@@ -1,6 +1,7 @@
 .eslintrc
 .gitignore
 .nvmrc
+.npmrc
 .travis.yml
 webpack.config.js
 .idea
