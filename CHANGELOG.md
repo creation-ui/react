@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.21](https://github.com/creation-ui/react/compare/v13.3.20...v13.3.21) (2024-01-21)
+
+
+### Bug Fixes
+
+* print with new line ([0ced08f](https://github.com/creation-ui/react/commit/0ced08f0536805c693d9e70e031bc712970f4257))
+
 ## [13.3.20](https://github.com/creation-ui/react/compare/v13.3.19...v13.3.20) (2024-01-21)
 
 
