@@ -8,6 +8,7 @@ interface InputBaseContainerInnerProps {
 
 const classes = ['relative', 'max-h-min']
 
+// TODO: ref should be passed to input/textarea/select!
 export const InputBaseContainerInner = forwardRef<
   HTMLDivElement,
   InputBaseContainerInnerProps

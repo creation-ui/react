@@ -20,6 +20,7 @@ import { Adornment } from './adornment'
 import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
+import { Show } from '../show'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
@@ -115,9 +116,9 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
                 type={type}
                 adornment={
                   <>
-                    {clearable && !disableInteractions && (
+                    <Show when={clearable && !disableInteractions}>
                       <ClearButton onClick={onClear} />
-                    )}
+                    </Show>
                     {endAdornment}
                   </>
                 }
