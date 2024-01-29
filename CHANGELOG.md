@@ -1,5 +1,17 @@
 # Changelog
 
+## [13.5.0](https://github.com/creation-ui/react/compare/v13.4.0...v13.5.0) (2024-01-29)
+
+
+### Features
+
+* update tailwindcss and related libs to latest version ([1d44f20](https://github.com/creation-ui/react/commit/1d44f20386ff5f5313ff74004a8cb2a8efaa688a))
+
+
+### Bug Fixes
+
+* remove duplicated imports ([e80d6f0](https://github.com/creation-ui/react/commit/e80d6f0f0e0888df63f9aba3e78aa2e43878af3f))
+
 ## [13.4.0](https://github.com/creation-ui/react/compare/v13.3.23...v13.4.0) (2024-01-21)
 
 
