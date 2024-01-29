@@ -24,12 +24,12 @@ jobs:
       - name: Verify token set in root
         run: |
           TOKEN_LINE=$(grep '_authToken' .npmrc)
-          echo "${TOKEN_LINE:0:41}"
+          echo "${TOKEN_LINE:0:40}"
 
       - name: Verify token set in packages/react
         run: |
           TOKEN_LINE=$(grep '_authToken' packages/react/.npmrc)
-          echo "${TOKEN_LINE:0:41}"
+          echo "${TOKEN_LINE:0:40}"
 
       - name: Verify NPM Authentication
         run: npm whoami
