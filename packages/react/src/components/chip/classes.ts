@@ -14,6 +14,7 @@ export const chipClasses = cva(
     'items-center',
     'flex-row',
     'gap-1',
+    'py-0.5',
     microInteractions,
   ],
   {
@@ -26,9 +27,9 @@ export const chipClasses = cva(
         info: ['text-info-800', 'dark:text-info-200'],
       },
       size: {
-        sm: ['!text-xs'],
-        md: ['!text-sm'],
-        lg: ['!text-base'],
+        sm: ['!text-xs', 'px-1'],
+        md: ['!text-sm', 'px-1.5'],
+        lg: ['!text-base', 'px-2'],
       },
       variant: {
         contained: ['border-none'],
@@ -39,13 +40,13 @@ export const chipClasses = cva(
         false: [],
       },
       interactive: {
-        true: ['cursor-pointer'],
-        false: ['cursor-default'],
+        true: ['!cursor-pointer'],
+        false: ['!cursor-default'],
       },
     },
     defaultVariants: {
       size: 'md',
-      status: 'info',
+      // status: 'info',
       variant: 'contained',
       uppercase: false,
       interactive: false,

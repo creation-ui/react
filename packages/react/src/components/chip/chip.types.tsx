@@ -3,6 +3,7 @@ import type {
   BaseComponentProps,
   ElementBaseVariant,
   ElementStatus,
+  InputClassNamesAPI,
 } from '@creation-ui/core'
 
 export interface ChipProps
@@ -28,6 +29,10 @@ export interface ChipProps
    */
   startAdornment?: ReactNode
   /**
+   * Start adornment
+   */
+  endAdornment?: ReactNode
+  /**
    * Callback when delete button is clicked
    */
   onDelete?: () => void
@@ -36,4 +41,12 @@ export interface ChipProps
    * Callback when chip is clicked
    */
   onClick?: () => void
+  /**
+   * Class names overrides
+   */
+  cx?: Pick<InputClassNamesAPI, 'container'>
+  /**
+   * Style overrides, helpful with adding custom colors. Passing `style` will disable `status` prop.
+   */
+  style?: React.CSSProperties
 }
