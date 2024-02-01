@@ -7,15 +7,12 @@ import { Flex } from '../flex'
 
 interface TreeNodeProps {
   branch: Branch
-  level: IndentationLevel
+  level?: IndentationLevel
 }
 
 export const TreeNode: FC<TreeNodeProps> = ({ branch, level = 0 }) => {
   const [open, setOpen] = useState(false)
-  const toggle = () => {
-    console.log('toggle', open)
-    setOpen(o => !o)
-  }
+  const toggle = () => setOpen(o => !o)
 
   const hasChildren = Boolean(branch.children?.length)
   return (
@@ -32,7 +29,11 @@ export const TreeNode: FC<TreeNodeProps> = ({ branch, level = 0 }) => {
       </Flex>
       <Show when={hasChildren && open}>
         {branch.children?.map(child => (
-          <TreeNode branch={child} key={child.id} level={level + 1} />
+          <TreeNode
+            branch={child}
+            key={child.id}
+            level={(level + 1) as IndentationLevel}
+          />
         ))}
       </Show>
     </Flex>
