@@ -20,12 +20,7 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
 
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>
-      <Input
-        onChange={e => setValue(e.target.value)}
-        value={value}
-        placeholder='Placeholder'
-        {...props}
-      />
+      <Input onChange={e => setValue(e.target.value)} value={value} placeholder='Placeholder' {...props} />
     </div>
   )
 }
@@ -92,13 +87,7 @@ export const InputWidthsExample = ({ ...props }: InputExampleProps) => {
   return (
     <div className='flex flex-col gap-10 my-10 w-full'>
       {test.map(width => (
-        <Input
-          cx={{ container: { inner: width } }}
-          label={width}
-          placeholder='Placeholder'
-          clearable
-          key={width}
-        />
+        <Input cx={{ container: { inner: width } }} label={width} placeholder='Placeholder' clearable key={width} />
       ))}
     </div>
   )

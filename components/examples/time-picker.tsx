@@ -25,9 +25,7 @@ export const TimePickerExample: React.FC = () => {
           onClear,
         }}
       />
-      {selectedDate && (
-        <pre>Selected time: {JSON.stringify(selectedDate, null, 2)}</pre>
-      )}
+      {selectedDate && <pre>Selected time: {JSON.stringify(selectedDate, null, 2)}</pre>}
     </div>
   )
 }

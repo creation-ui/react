@@ -1,17 +1,8 @@
 import { Container } from '@components/container'
 import { Playground } from '@components/playground'
 import { ELEMENT_SIZES } from '@creation-ui/core'
-import {
-  Avatar,
-  AVATAR_VARIANTS,
-  AvatarGroup,
-  AvatarGroupProps,
-} from '@creation-ui/react'
-import {
-  mdiCircleOutline,
-  mdiSquareOutline,
-  mdiSquareRoundedOutline,
-} from '@mdi/js'
+import { Avatar, AVATAR_VARIANTS, AvatarGroup, AvatarGroupProps } from '@creation-ui/react'
+import { mdiCircleOutline, mdiSquareOutline, mdiSquareRoundedOutline } from '@mdi/js'
 import Icon from '@mdi/react'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
@@ -129,14 +120,13 @@ export const groupProperties: DocumentedProperty[] = [
   {
     name: 'total',
     type: 'number',
-    defaultValue: "0",
+    defaultValue: '0',
     description: 'Manually controls the count displayed in last Avatar.',
   },
   {
     name: 'max',
     type: 'number',
-    description:
-      'Amount of avatars to display. Surplus will be rendered as count in an extra (last) Avatar.',
+    description: 'Amount of avatars to display. Surplus will be rendered as count in an extra (last) Avatar.',
   },
   { name: 'children', type: 'ReactNode', description: 'Avatars.' },
   {
@@ -159,13 +149,11 @@ export const groupProperties: DocumentedProperty[] = [
   {
     name: 'surplusClassName',
     type: 'string',
-    description:
-      '<code>className</code> of surplus displaying Avatar (counter).',
+    description: '<code>className</code> of surplus displaying Avatar (counter).',
   },
   {
     name: 'renderSurplus',
     type: '(surplusCount: number) => ReactNode',
-    description:
-      'Custom render function for surplus displaying Avatar (counter).',
+    description: 'Custom render function for surplus displaying Avatar (counter).',
   },
 ]

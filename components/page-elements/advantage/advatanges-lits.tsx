@@ -39,9 +39,8 @@ export const advantages: AdvantageItem[] = [
         <a href='https://tailwindcss.com/' target={'_blank'} rel='noreferrer'>
           Tailwind CSS
         </a>
-        , a utility-first CSS framework that enables rapid styling,
-        responsiveness, and customization to accelerate development and maintain
-        design consistency.
+        , a utility-first CSS framework that enables rapid styling, responsiveness, and customization to accelerate
+        development and maintain design consistency.
       </>
     ),
     icon: <Icon size={1} path={mdiTailwind} title='wind' />,
@@ -76,29 +75,12 @@ export const advantages: AdvantageItem[] = [
 export const AdvantageList = () => (
   <div className='grid grid-cols-1 lg:grid-cols-3 gap-7 w-full mx-auto lg:max-w-4xl xl:max-w-full lg:pt-20 '>
     {advantages.map(({ description, icon, title }) => (
-      <div
-        className='h-42 border rounded-lg px-5 py-4  border-purple-300 snap-center'
-        key={title?.toString()}
-      >
+      <div className='h-42 border rounded-lg px-5 py-4  border-purple-300 snap-center' key={title?.toString()}>
         <div className='flex flex-col gap-1'>
-          <span
-            className={clsx(
-              'text-white h-10 w-10 rounded-full border flex flex-col items-center',
-              gradient.bg,
-            )}
-          >
+          <span className={clsx('text-white h-10 w-10 rounded-full border flex flex-col items-center', gradient.bg)}>
             {icon}
           </span>
-          <span
-            className={clsx(
-              gradient.text,
-              'font-bold',
-              'md:text-base',
-              'w-fit',
-            )}
-          >
-            {title}
-          </span>
+          <span className={clsx(gradient.text, 'font-bold', 'md:text-base', 'w-fit')}>{title}</span>
           <div className='mt-1 text-xs leading-normal'>{description}</div>
         </div>
       </div>

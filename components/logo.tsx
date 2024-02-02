@@ -23,9 +23,5 @@ const sizeMap: Record<LogoSizes, string> = {
 }
 
 export const Logo = ({ size = 'sm', className }: LogoProps) => (
-  <img
-    src={'/logo.png'}
-    alt='Logo'
-    className={clsx('rounded-full', className, sizeMap[size])}
-  />
+  <img src={'/logo.png'} alt='Logo' className={clsx('rounded-full', className, sizeMap[size])} />
 )

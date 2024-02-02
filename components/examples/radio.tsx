@@ -6,29 +6,15 @@ import { useState } from 'react'
 import { ListOrTypes } from 'utils/list-or-types'
 import { createRadioControls } from './shared-playground-controls'
 
-export const RadioExample = ({
-  ...props
-}: Omit<RadioProps, 'onChange' | 'ref'>) => {
+export const RadioExample = ({ ...props }: Omit<RadioProps, 'onChange' | 'ref'>) => {
   const [checked, setChecked] = useState<boolean>(false)
 
-  return (
-    <Radio
-      onChange={e => setChecked(e.target.checked)}
-      checked={checked}
-      {...props}
-    />
-  )
+  return <Radio onChange={e => setChecked(e.target.checked)} checked={checked} {...props} />
 }
 
 export const radioControlsSet = createRadioControls()
 
-export const RadioPlayground = () => (
-  <Playground
-    name='Radio'
-    component={RadioExample}
-    controls={radioControlsSet}
-  />
-)
+export const RadioPlayground = () => <Playground name='Radio' component={RadioExample} controls={radioControlsSet} />
 
 export const properties: DocumentedProperty[] = [
   {

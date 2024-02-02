@@ -5,7 +5,7 @@ import { indentationClasses, type IndentationLevel } from './classes'
 import type { Branch } from './types'
 import { Flex } from '../flex'
 
-interface TreeNodeProps {
+export interface TreeNodeProps {
   branch: Branch
   level?: IndentationLevel
 }

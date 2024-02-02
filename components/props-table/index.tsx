@@ -5,15 +5,9 @@ import { useEffect, useState } from 'react'
 
 const TableHeader = () => (
   <tr className='w-1/4 dark:text-white'>
-    <td className='w-1/6 whitespace-nowrap py-2 pl-4 text-sm font-medium sm:pl-0'>
-      Prop
-    </td>
-    <td className='w-1/6 whitespace-nowrap py-2 text-sm font-medium'>
-      Default
-    </td>
-    <td className='w-2/3 whitespace-nowrap py-2 text-sm font-medium'>
-      Description
-    </td>
+    <td className='w-1/6 whitespace-nowrap py-2 pl-4 text-sm font-medium sm:pl-0'>Prop</td>
+    <td className='w-1/6 whitespace-nowrap py-2 text-sm font-medium'>Default</td>
+    <td className='w-2/3 whitespace-nowrap py-2 text-sm font-medium'>Description</td>
   </tr>
 )
 
@@ -41,9 +35,7 @@ const TableRow = ({
       <td className='prose dark:prose-invert prose-sm py-3 align-baseline'>
         <span className=''>
           {defaultValue ? (
-            <code
-              dangerouslySetInnerHTML={{ __html: defaultValue?.toString() }}
-            />
+            <code dangerouslySetInnerHTML={{ __html: defaultValue?.toString() }} />
           ) : (
             <span className='text-gray-400'>—</span>
           )}
@@ -64,9 +56,7 @@ const TableRow = ({
           )}
           {experimental && (
             <p className='text-red-500'>
-              <em>
-                This feature is experimental and might not work correctly.
-              </em>
+              <em>This feature is experimental and might not work correctly.</em>
             </p>
           )}
         </div>

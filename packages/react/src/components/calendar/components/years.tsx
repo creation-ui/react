@@ -3,7 +3,12 @@ import { Button } from '../../button'
 import { useCalendar } from '../calendar.context'
 
 export const CalendarYearsView = () => {
-  const { viewDate: currentDate, setViewDate: setCurrentDate, setView, size } = useCalendar()
+  const {
+    viewDate: currentDate,
+    setViewDate: setCurrentDate,
+    setView,
+    size,
+  } = useCalendar()
 
   const startYear = Math.floor(currentDate.getFullYear() / 10) * 10 - 1
   const years = Array.from({ length: 12 }, (_, i) => startYear + i)

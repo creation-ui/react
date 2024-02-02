@@ -14,12 +14,7 @@ import { DocumentedProperty } from '@models/system'
 import { pick } from 'lodash'
 import { useState } from 'react'
 import { sizeControl } from './shared-playground-controls'
-import {
-  childrenProp,
-  classNameProps,
-  onClickCallback,
-  sizeProp,
-} from './shared-props'
+import { childrenProp, classNameProps, onClickCallback, sizeProp } from './shared-props'
 
 export const PopoverExampleUncontrolled = () => {
   const playground = usePlayground()
@@ -31,8 +26,7 @@ export const PopoverExampleUncontrolled = () => {
         <PopoverContent className='w-52'>
           <PopoverHeading>Popover</PopoverHeading>
           <PopoverDescription className='pt-2'>
-            In the uncontrolled variant, the open and close behavior of the
-            Popover is managed internally.
+            In the uncontrolled variant, the open and close behavior of the Popover is managed internally.
           </PopoverDescription>
           <br />
           <PopoverClose>Dismiss</PopoverClose>
@@ -51,11 +45,7 @@ export const PopoverExampleControlled = () => {
 
   return (
     <div>
-      <Switch
-        checked={open}
-        onChange={setOpen}
-        label={open ? 'Opened' : 'Closed'}
-      />
+      <Switch checked={open} onChange={setOpen} label={open ? 'Opened' : 'Closed'} />
       <Popover open={open} onOpenChange={setOpen} {...state}>
         <PopoverTrigger onClick={toggleOpen}>Open</PopoverTrigger>
         <PopoverContent className='w-52'>
@@ -66,8 +56,8 @@ export const PopoverExampleControlled = () => {
             </PopoverClose>
           </div>
           <PopoverDescription className='pt-2'>
-            In the controlled variant, you can manage the open and close
-            behavior of the Popover externally through props.
+            In the controlled variant, you can manage the open and close behavior of the Popover externally through
+            props.
           </PopoverDescription>
         </PopoverContent>
       </Popover>
@@ -76,26 +66,14 @@ export const PopoverExampleControlled = () => {
 }
 
 export const PopoverPlaygroundUncontrolled = () => (
-  <Playground
-    name='Popover'
-    component={PopoverExampleUncontrolled}
-    controls={[sizeControl]}
-  />
+  <Playground name='Popover' component={PopoverExampleUncontrolled} controls={[sizeControl]} />
 )
 
 export const PopoverPlaygroundControlled = () => (
-  <Playground
-    name='Popover'
-    component={PopoverExampleControlled}
-    controls={[sizeControl]}
-  />
+  <Playground name='Popover' component={PopoverExampleControlled} controls={[sizeControl]} />
 )
 
-export const commonProperties: DocumentedProperty[] = [
-  childrenProp,
-  sizeProp,
-  classNameProps,
-]
+export const commonProperties: DocumentedProperty[] = [childrenProp, sizeProp, classNameProps]
 
 export const properties = [
   ...commonProperties,

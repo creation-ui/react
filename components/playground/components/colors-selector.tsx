@@ -1,11 +1,6 @@
 import Icon from '@components/icon'
 import type { BaseComponentProps, ElementSize } from '@creation-ui/core'
-import {
-  inputContainer,
-  label as labelClasses,
-  microInteractions,
-  text,
-} from '@creation-ui/core'
+import { inputContainer, label as labelClasses, microInteractions, text } from '@creation-ui/core'
 import { useTheme } from '@creation-ui/react/theme'
 import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'
@@ -28,16 +23,7 @@ interface ColorsSelectorProps extends BaseComponentProps {
 }
 
 const elementClasses = cva(
-  [
-    'relative',
-    'transform',
-    'h-6',
-    'w-6',
-    'rounded',
-    'cursor-pointer',
-    'transition-all',
-    'hover:scale-125',
-  ],
+  ['relative', 'transform', 'h-6', 'w-6', 'rounded', 'cursor-pointer', 'transition-all', 'hover:scale-125'],
   {
     variants: {
       selected: {
@@ -51,24 +37,14 @@ const elementClasses = cva(
   },
 )
 
-export const ColorsSelector = ({
-  options,
-  onClick,
-  label,
-  value,
-  ...props
-}: ColorsSelectorProps) => {
+export const ColorsSelector = ({ options, onClick, label, value, ...props }: ColorsSelectorProps) => {
   const componentId = useId()
 
   const { size: defaultSize } = useTheme()
   const { size = defaultSize, required, readOnly, error } = props
 
   const disabled = props.disabled || readOnly
-  const containerClasses = clsx(
-    inputContainer({ disabled, error: !!error }),
-    text({ size }),
-    microInteractions,
-  )
+  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), text({ size }), microInteractions)
 
   return (
     <div className={containerClasses}>
@@ -114,9 +90,7 @@ const ColorOption: FC<ColorOptionProps> = ({ option, onClick, selected }) => {
         className: className,
       })}
     >
-      {undef && !selected && (
-        <Icon path={mdiClose} className='text-info-500' size={0.9} />
-      )}
+      {undef && !selected && <Icon path={mdiClose} className='text-info-500' size={0.9} />}
       {selected && (
         <Icon
           path={mdiCircle}

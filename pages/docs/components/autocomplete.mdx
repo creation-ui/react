@@ -3,7 +3,7 @@ import {
   AutocompletePlayground,
   AutocompleteMultiPlayground,
   AutocompleteExternalSearchValueExample,
-} from '@components/examples/autocomplete'
+} from '@components/examples/autocomplete/index'
 import PropsTable from '@components/props-table'
 import { defaultOptionType } from '@components/examples/shared-props'
 
@@ -20,8 +20,7 @@ This component is built upon fantastic [@floating-ui/react](https://floating-ui.
 Sometimes you need to get to the actual value passed to the input. For example, you might want to use it to make an external API call. In this case, you can use the `onInputChange` prop to listen to the input value changes.
 
 <b>Caveat</b>
-When is cleared by default clearable callback the event will be synthetic and will
-not contain the actual value.
+When is cleared by default clearable callback the event will be synthetic and will not contain the actual value.
 
 ```jsx
   const clearableCallback = () => {

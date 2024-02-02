@@ -15,8 +15,4 @@ export const ClearButtonPlayground = () => (
   />
 )
 
-export const properties: DocumentedProperty[] = [
-  classNameProps,
-  sizeProp,
-  onClickCallback,
-]
+export const properties: DocumentedProperty[] = [classNameProps, sizeProp, onClickCallback]

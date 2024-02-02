@@ -1,8 +1,4 @@
-import {
-  childrenProp,
-  openProp,
-  positionProp,
-} from '@components/examples/shared-props'
+import { childrenProp, openProp, positionProp } from '@components/examples/shared-props'
 import { Playground } from '@components/playground'
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
@@ -25,8 +21,8 @@ export const DrawerExample = (props: DrawerProps) => {
           <h1>Payment successful</h1>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>
-              Your payment has been successfully submitted. We&apos;ve sent you
-              an email with all of the details of your order.
+              Your payment has been successfully submitted. We&apos;ve sent you an email with all of the details of your
+              order.
             </p>
           </div>
           <div className='mt-4'>
@@ -39,12 +35,7 @@ export const DrawerExample = (props: DrawerProps) => {
 }
 
 export const DrawerPlayground = () => (
-  <Playground
-    name='Drawer'
-    component={DrawerExample}
-    controls={[positionControl]}
-    showCode={false}
-  />
+  <Playground name='Drawer' component={DrawerExample} controls={[positionControl]} showCode={false} />
 )
 export const DrawerCustomizedExample = (props: DrawerProps) => {
   const [open, setOpen] = useState(false)
@@ -52,12 +43,7 @@ export const DrawerCustomizedExample = (props: DrawerProps) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const innerClasses = [
-    '!w-[calc(100%-30px)]',
-    '!h-[calc(100%-30px)]',
-    'rounded-xl',
-    'm-[15px]',
-  ]
+  const innerClasses = ['!w-[calc(100%-30px)]', '!h-[calc(100%-30px)]', 'rounded-xl', 'm-[15px]']
 
   return (
     <Container>
@@ -96,8 +82,7 @@ export const properties: DocumentedProperty[] = [
     type: '() => void',
   },
   {
-    description:
-      'Callback function called on overlay click. Maybe used to close Drawer or prevent closing.',
+    description: 'Callback function called on overlay click. Maybe used to close Drawer or prevent closing.',
     name: 'onOverlayClick',
     type: '() => void',
   },

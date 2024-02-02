@@ -1,5 +1,8 @@
+import { ReactNode } from 'react'
+
 export interface TreeProps {
   options: any[]
+  label?: ReactNode
 }
 
 export type Entry = {

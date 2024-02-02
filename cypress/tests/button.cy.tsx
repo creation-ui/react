@@ -128,10 +128,7 @@ describe('Button', () => {
       .should('have.attr', 'id', 'button-1-test')
       .should('have.class', 'pointer-events-none')
 
-    cy.get("[data-testid='cui-interactive-container']").should(
-      'have.class',
-      'cursor-not-allowed',
-    )
+    cy.get("[data-testid='cui-interactive-container']").should('have.class', 'cursor-not-allowed')
     cy.mount(<Button id='button-1-test'>Click me</Button>)
 
     cy.get('button')
@@ -143,10 +140,7 @@ describe('Button', () => {
       .click()
       .trigger('mouseleave')
 
-    cy.get('[data-testid="cui-interactive-container"]').should(
-      'not.have.class',
-      'cursor-not-allowed',
-    )
+    cy.get('[data-testid="cui-interactive-container"]').should('not.have.class', 'cursor-not-allowed')
   })
 
   it('button should handle [loading] prop', () => {
@@ -177,12 +171,7 @@ describe('Button', () => {
             ELEMENT_STATUS.forEach(status => {
               it(status, () => {
                 cy.mount(
-                  <div
-                    className={clsx(
-                      `w-full h-full`,
-                      mode === 'dark' && 'bg-black dark',
-                    )}
-                  >
+                  <div className={clsx(`w-full h-full`, mode === 'dark' && 'bg-black dark')}>
                     <Button status={status} variant={variant}>
                       {status}
                     </Button>
@@ -194,11 +183,8 @@ describe('Button', () => {
                   .invoke('attr', 'class') // returns "class1 class2 class3"
                   .then(classList => {
                     const classes = classList?.split(' ')
-                    const expectedClasses =
-                      modeVariantStatusExpectedClasses[mode][variant][status]
-                    expectedClasses.forEach(expectedClass =>
-                      expect(classes).to.include(expectedClass),
-                    )
+                    const expectedClasses = modeVariantStatusExpectedClasses[mode][variant][status]
+                    expectedClasses.forEach(expectedClass => expect(classes).to.include(expectedClass))
                   })
               })
             })

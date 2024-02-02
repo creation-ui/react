@@ -180,9 +180,7 @@ export const labelControl: PlaygroundControl = {
   defaultValue: 'Label',
 }
 
-export const createInputControls = (
-  labelFieldDefaultValue = 'Input',
-): PlaygroundControl[] => {
+export const createInputControls = (labelFieldDefaultValue = 'Input'): PlaygroundControl[] => {
   let base: PlaygroundControl[] = [
     sizeControl,
     requiredControl,
@@ -203,9 +201,7 @@ export const createInputControls = (
   return base
 }
 
-export const createRadioControls = (
-  labelFieldDefaultValue = 'Radio',
-): PlaygroundControl[] => {
+export const createRadioControls = (labelFieldDefaultValue = 'Radio'): PlaygroundControl[] => {
   const isRadio = labelFieldDefaultValue === 'Radio'
 
   const customErrorControl: PlaygroundControl = isRadio

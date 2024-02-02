@@ -14,10 +14,7 @@ interface PlaygroundControlProps {
   parentKey?: string
 }
 
-export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
-  property,
-  parentKey,
-}) => {
+export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({ property, parentKey }) => {
   const { state, handleChange } = usePlayground()
   const { name: n, type, values, component: controls, helperText } = property
 
@@ -63,14 +60,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
         />
       )
     case 'switch':
-      return (
-        <Switch
-          label={label}
-          checked={value as boolean}
-          onChange={handlePlainChange}
-          helperText={helperText}
-        />
-      )
+      return <Switch label={label} checked={value as boolean} onChange={handlePlainChange} helperText={helperText} />
     case 'toggle-group':
       return (
         <ToggleGroup
@@ -83,16 +73,10 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
       )
     case 'nested':
       return (
-        <div
-          className={clsx(classes.controls, '!pl-0', '!pt-0', '!border-none')}
-        >
+        <div className={clsx(classes.controls, '!pl-0', '!pt-0', '!border-none')}>
           <div className='font-semibold'>{label}</div>
           {property.controls!.map(childProperty => (
-            <PlaygroundControlComponent
-              property={childProperty}
-              key={childProperty.name}
-              parentKey={name}
-            />
+            <PlaygroundControlComponent property={childProperty} key={childProperty.name} parentKey={name} />
           ))}
         </div>
       )

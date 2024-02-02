@@ -25,13 +25,7 @@ const ring: Record<ElementStatus, any> = {
 }
 
 export const ColorBox = ({ onClick, color, selected }: ColorBoxProps) => (
-  <div
-    className={twMerge(
-      'group',
-      docsMicroInteractions,
-      'flex flex-col items-center',
-    )}
-  >
+  <div className={twMerge('group', docsMicroInteractions, 'flex flex-col items-center')}>
     <div
       onClick={onClick}
       className={twMerge(

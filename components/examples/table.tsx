@@ -1,20 +1,8 @@
 import type { ReadableError } from '@creation-ui/core'
-import {
-  Avatar,
-  Checkbox,
-  Chip,
-  ChipProps,
-  Switch,
-  Table,
-} from '@creation-ui/react'
+import { Avatar, Checkbox, Chip, ChipProps, Switch, Table } from '@creation-ui/react'
 import { mdiPencil } from '@mdi/js'
 import { Icon } from '@mdi/react'
-import {
-  ColumnDef,
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
+import { ColumnDef, getCoreRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
 import clsx from 'clsx'
 import { useMemo, useState } from 'react'
 import data from './table-data.json'
@@ -87,9 +75,7 @@ export const TableExample = () => {
         id: 'avatar',
         header: () => 'Avatar',
         enableResizing: true,
-        cell: info => (
-          <Avatar src={info.getValue() as Person['avatar']} size='sm' />
-        ),
+        cell: info => <Avatar src={info.getValue() as Person['avatar']} size='sm' />,
         enableColumnFilter: false,
       },
       {
@@ -124,10 +110,7 @@ export const TableExample = () => {
         footer: ({ table }) => {
           const value = table
             .getFilteredRowModel()
-            .rows.reduce(
-              (total, row) => total + (row as any).getValue('workTime'),
-              0,
-            )
+            .rows.reduce((total, row) => total + (row as any).getValue('workTime'), 0)
           return formatMinutes(value)
         },
       },
@@ -140,14 +123,7 @@ export const TableExample = () => {
 
           const label = status === 'primary' ? 'Active' : status
 
-          return (
-            <Chip
-              status={status as Person['status']}
-              size='sm'
-              uppercase
-              label={label}
-            />
-          )
+          return <Chip status={status as Person['status']} size='sm' uppercase label={label} />
         },
         enableColumnFilter: false,
         meta: {
@@ -181,7 +157,6 @@ export const TableExample = () => {
     debugAll: true,
   })
 
-
   const toggleLoading = () => setLoading(!loading)
   const toggleError = () =>
     setError(
@@ -189,8 +164,7 @@ export const TableExample = () => {
         ? undefined
         : {
             title: 'Service unavailable',
-            message:
-              'An error occurred in your request. Please try again or change your query',
+            message: 'An error occurred in your request. Please try again or change your query',
           },
     )
 
@@ -198,18 +172,8 @@ export const TableExample = () => {
     <div>
       <h2>Playground</h2>
       <div className='flex flex-col gap-3 mb-3'>
-        <Switch
-          onChange={toggleLoading}
-          checked={loading}
-          label='Loading'
-          size='sm'
-        />
-        <Switch
-          onChange={toggleError}
-          checked={!!error}
-          label='Error'
-          size='sm'
-        />
+        <Switch onChange={toggleLoading} checked={loading} label='Loading' size='sm' />
+        <Switch onChange={toggleError} checked={!!error} label='Error' size='sm' />
       </div>
       <Table
         loading={loading}

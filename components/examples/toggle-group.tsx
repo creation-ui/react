@@ -2,11 +2,7 @@ import Icon from '@components/icon'
 import { Playground } from '@components/playground'
 
 import { ToggleGroup } from '@creation-ui/react'
-import {
-  mdiFormatAlignCenter,
-  mdiFormatAlignLeft,
-  mdiFormatAlignRight,
-} from '@mdi/js'
+import { mdiFormatAlignCenter, mdiFormatAlignLeft, mdiFormatAlignRight } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
 import { labelControl, sizeControl } from './shared-playground-controls'
@@ -24,10 +20,7 @@ export const ToggleGroupPlayground = () => {
     <Playground
       name='ToggleGroup'
       component={ToggleGroup}
-      controls={[
-        sizeControl,
-        { ...labelControl, defaultValue: 'Text alignment' },
-      ]}
+      controls={[sizeControl, { ...labelControl, defaultValue: 'Text alignment' }]}
       componentProps={{ options, value, onChange: setValue }}
       showCode={false}
     />
@@ -53,8 +46,7 @@ export const properties: DocumentedProperty[] = [
   {
     name: 'onChange',
     type: '(value: T = string): void;',
-    description:
-      'Callback when the value changes. Type of value is inherited from the options - string is default',
+    description: 'Callback when the value changes. Type of value is inherited from the options - string is default',
   },
 ]
 

@@ -30,14 +30,8 @@ export const ProgressBarAnimatedExample = (props: unknown) => {
   return (
     <Container>
       <ProgressBar value={state} key='animated-progress-bar' showValue />
-      <Button onClick={isRunning ? pause : start}>
-        {isRunning ? 'Stop' : 'Start'}
-      </Button>
-      <Button
-        disabled={isRunning || state === 0}
-        onClick={onReset}
-        variant='outlined'
-      >
+      <Button onClick={isRunning ? pause : start}>{isRunning ? 'Stop' : 'Start'}</Button>
+      <Button disabled={isRunning || state === 0} onClick={onReset} variant='outlined'>
         Reset
       </Button>
     </Container>

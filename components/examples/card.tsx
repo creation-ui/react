@@ -1,13 +1,6 @@
 import Icon from '@components/icon'
 import { Playground } from '@components/playground'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardStats,
-  CardTitle,
-} from '@creation-ui/react'
+import { Card, CardContent, CardDescription, CardHeader, CardStats, CardTitle } from '@creation-ui/react'
 import { mdiAccount } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
 import type { FC } from 'react'
@@ -19,11 +12,7 @@ interface CardExampleProps {
   content: string
 }
 
-export const CardExample: FC<CardExampleProps> = ({
-  title,
-  content,
-  description,
-}) => (
+export const CardExample: FC<CardExampleProps> = ({ title, content, description }) => (
   <>
     <Card>
       <CardHeader>

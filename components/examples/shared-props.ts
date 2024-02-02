@@ -1,9 +1,4 @@
-import {
-  ELEMENT_POSITION,
-  ELEMENT_SIZES,
-  ELEMENT_STATUS,
-  ELEMENT_VARIANTS,
-} from '@creation-ui/core'
+import { ELEMENT_POSITION, ELEMENT_SIZES, ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/core'
 import { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
 import { createDocsLink } from './utils'
@@ -72,14 +67,12 @@ export const openProp: DocumentedProperty = {
   defaultValue: 'false',
 }
 export const disabledProp: DocumentedProperty = {
-  description:
-    'Is component disabled? This will disable all interactions with component and styling.',
+  description: 'Is component disabled? This will disable all interactions with component and styling.',
   name: 'disabled',
   type: 'boolean',
 }
 export const readOnlyProp: DocumentedProperty = {
-  description:
-    'Is component read only? This will disable all interactions with component.',
+  description: 'Is component read only? This will disable all interactions with component.',
   name: 'readOnly',
   type: 'boolean',
 }
@@ -124,15 +117,13 @@ export const requiredProp: DocumentedProperty = {
 export const loadingProp: DocumentedProperty = {
   name: 'loading',
   type: 'boolean',
-  description:
-    'Is component in loading state? Shows loader and disables interactions.',
+  description: 'Is component in loading state? Shows loader and disables interactions.',
 }
 
 export const interactionsDisabledProp: DocumentedProperty = {
   name: 'interactionsDisabled',
   type: 'boolean',
-  description:
-    'Sets "pointer-events-none" class. Internal prop of <code>InputBase</code> component.',
+  description: 'Sets "pointer-events-none" class. Internal prop of <code>InputBase</code> component.',
 }
 
 export const onClickCallback: DocumentedProperty = {
@@ -151,8 +142,7 @@ export const errorProp: DocumentedProperty = {
 export const onClearCallback: DocumentedProperty = {
   name: 'onClear',
   type: '() => void',
-  description:
-    'Callback function called on clear button click. Requires <code>clearable</code> to be set to true.',
+  description: 'Callback function called on clear button click. Requires <code>clearable</code> to be set to true.',
 }
 
 const cx = { container: { inner: 'string', outer: 'string' }, input: 'string' }
@@ -245,8 +235,7 @@ export const renderOptionProps: DocumentedProperty[] = [
     type: 'string',
   },
   {
-    description:
-      'ref passed to the option <code>li</code> tag. Used by @floating-ui/react',
+    description: 'ref passed to the option <code>li</code> tag. Used by @floating-ui/react',
     name: 'ref',
     type: '(node: any) => void',
   },

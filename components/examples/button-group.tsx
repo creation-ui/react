@@ -2,13 +2,7 @@ import { Playground } from '@components/playground'
 import { ButtonGroup } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { sizeControl, statusControl } from './shared-playground-controls'
-import {
-  classNameProps,
-  disabledProp,
-  labelProp,
-  onClickCallback,
-  sizeProp,
-} from './shared-props'
+import { classNameProps, disabledProp, labelProp, onClickCallback, sizeProp } from './shared-props'
 
 export const ButtonGroupPlayground = () => {
   const buttons = [
@@ -39,9 +33,4 @@ export const properties: DocumentedProperty[] = [
   sizeProp,
 ]
 
-export const buttonGroupOptions: DocumentedProperty[] = [
-  classNameProps,
-  labelProp,
-  onClickCallback,
-  disabledProp,
-]
+export const buttonGroupOptions: DocumentedProperty[] = [classNameProps, labelProp, onClickCallback, disabledProp]

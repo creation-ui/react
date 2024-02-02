@@ -3,6 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority'
 export const indentationClasses = cva([], {
   variants: {
     level: {
+      false: [],
       0: ['pl-2'],
       1: ['pl-4'],
       2: ['pl-6'],

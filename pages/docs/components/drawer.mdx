@@ -2,11 +2,7 @@
 
 A drawer is a UI element that overlays on top of the current page. It is commonly used to display additional content or actions for the user.
 
-import {
-  DrawerPlayground,
-  DrawerCustomizedExample,
-  properties,
-} from '@components/examples/drawer'
+import { DrawerPlayground, DrawerCustomizedExample, properties } from '@components/examples/drawer'
 import PropsTable from '@components/props-table'
 
 <DrawerPlayground />
@@ -31,8 +27,8 @@ export const DrawerExample = () => {
           <h1>Payment successful</h1>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>
-              Your payment has been successfully submitted. We&apos;ve sent you
-              an email with all of the details of your order.
+              Your payment has been successfully submitted. We&apos;ve sent you an email with all of the details of your
+              order.
             </p>
           </div>
           <div className='mt-4'>
@@ -59,12 +55,7 @@ export const DrawerCustomizedExample = () => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const innerClasses = [
-    '!w-[calc(100%-30px)]',
-    '!h-[calc(100%-30px)]',
-    'rounded-xl',
-    'm-[15px]',
-  ]
+  const innerClasses = ['!w-[calc(100%-30px)]', '!h-[calc(100%-30px)]', 'rounded-xl', 'm-[15px]']
 
   return (
     <Container>
@@ -96,8 +87,4 @@ export const DrawerCustomizedExample = () => {
 
 ## Component API
 
-<PropsTable
-  properties={properties}
-  name='Drawer'
-  description='Drawer component props.'
-/>
+<PropsTable properties={properties} name='Drawer' description='Drawer component props.' />

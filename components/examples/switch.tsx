@@ -16,9 +16,7 @@ export const SwitchExample = ({ ...props }: SwitchExampleProps) => {
   return <Switch onChange={setChecked} checked={checked} size='md' {...props} />
 }
 
-export const SwitchPlayground = () => (
-  <Playground name='Switch' component={SwitchExample} controls={controls} />
-)
+export const SwitchPlayground = () => <Playground name='Switch' component={SwitchExample} controls={controls} />
 
 export const properties: DocumentedProperty[] = [
   {

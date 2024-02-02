@@ -50,9 +50,7 @@ export const Hero = () => {
         <div className='flex flex-col place-items-center gap-5'>
           <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-center leading-snug'>
             Make beautiful things <br className='sm:block hidden' /> with&nbsp;
-            <span className={clsx(gradient.text, 'block sm:inline')}>
-              Creation UI
-            </span>
+            <span className={clsx(gradient.text, 'block sm:inline')}>Creation UI</span>
           </h1>
           <p className='max-w-sm text-center font-thin'>
             Streamlined components to accelerate your development process
@@ -60,10 +58,7 @@ export const Hero = () => {
         </div>
         <div className='flex place-items-center gap-3 lg:flex-row flex-col w-full lg:w-fit'>
           <div className='lg:w-52 w-full'>
-            <Button
-              size='lg'
-              className={clsx(gradient.bg, 'w-full  hover:scale-110')}
-            >
+            <Button size='lg' className={clsx(gradient.bg, 'w-full  hover:scale-110')}>
               <Link href='/docs'>Start &rarr;</Link>
             </Button>
           </div>

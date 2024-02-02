@@ -15,20 +15,9 @@ export const Pallette = () => {
   const [state, setState] = useState<ElementStatus | null>(null)
   return (
     <div className='h-screen-nextra w-full snap-start'>
-      <HeaderSubbed
-        href='#advantages'
-        title='The colors'
-        subtitle='We picked only the best'
-        ariaLabel=' The colors'
-      />
+      <HeaderSubbed href='#advantages' title='The colors' subtitle='We picked only the best' ariaLabel=' The colors' />
       <div className='h-full flex flex-col justify-center gap-16 pb-52'>
-        <div
-          className={twMerge(
-            'flex',
-            'justify-evenly w-full',
-            docsMicroInteractions,
-          )}
-        >
+        <div className={twMerge('flex', 'justify-evenly w-full', docsMicroInteractions)}>
           {colors.map(color => (
             <ColorBox
               color={color as ElementStatus}
@@ -40,10 +29,7 @@ export const Pallette = () => {
         </div>
 
         <div
-          className={clsx(
-            state ? 'capitalize' : 'dark:text-gray-500 text-gray-200',
-            'font-bold text-3xl text-center ',
-          )}
+          className={clsx(state ? 'capitalize' : 'dark:text-gray-500 text-gray-200', 'font-bold text-3xl text-center ')}
         >
           {state ? state : 'Pick a color'}
         </div>
