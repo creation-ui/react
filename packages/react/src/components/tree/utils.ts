@@ -1,10 +1,10 @@
-import { Branch, Entry, Tree } from './types'
+import { BranchType, RawElement, TreeType } from './types'
 
-export const buildTree = (entries: Entry[]): Tree => {
-  const entryMap = entries.reduce((acc, entry: Branch) => {
+export const buildTree = (entries: RawElement[]): TreeType => {
+  const entryMap = entries.reduce((acc, entry: BranchType) => {
     acc[entry.id] = { ...entry, children: [] }
     return acc
-  }, {} as Record<string, Branch>)
+  }, {} as Record<string, BranchType>)
 
   entries.forEach(entry => {
     if (entry.parent_id) {

@@ -1,13 +1,12 @@
 import { useState, type FC } from 'react'
 import { DropdownChevron } from '../dropdown-chevron'
-import { Show } from '../show'
-import { indentationClasses, type IndentationLevel } from './classes'
-import type { Branch } from './types'
 import { Flex } from '../flex'
+import { Show } from '../show'
+import type { BranchType } from './types'
 
 export interface TreeNodeProps {
-  branch: Branch
-  level?: IndentationLevel
+  branch: BranchType
+  level?: number
 }
 
 export const TreeNode: FC<TreeNodeProps> = ({ branch, level = 0 }) => {
@@ -16,7 +15,7 @@ export const TreeNode: FC<TreeNodeProps> = ({ branch, level = 0 }) => {
 
   const hasChildren = Boolean(branch.children?.length)
   return (
-    <Flex column gap={1} className={indentationClasses({ level })}>
+    <Flex column gap={1}>
       <Flex
         className='w-full cursor-pointer'
         items={'center'}
@@ -29,11 +28,7 @@ export const TreeNode: FC<TreeNodeProps> = ({ branch, level = 0 }) => {
       </Flex>
       <Show when={hasChildren && open}>
         {branch.children?.map(child => (
-          <TreeNode
-            branch={child}
-            key={child.id}
-            level={(level + 1) as IndentationLevel}
-          />
+          <TreeNode branch={child} key={child.id} level={level + 1} />
         ))}
       </Show>
     </Flex>

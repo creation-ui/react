@@ -3,7 +3,7 @@ import data from './tree-data.json'
 import { Tree } from '@creation-ui/react'
 
 export const TreeExample = () => {
-  return <Tree options={data} />
+  return <Tree options={data} label='Category' />
 }
 
 export const properties: DocumentedProperty[] = [

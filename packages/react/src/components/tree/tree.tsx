@@ -1,35 +1,57 @@
-import { FC } from 'react'
-import { Menu, MenuItem } from './core'
+import { FC, useMemo } from 'react'
+import { Menu, MenuItem } from '../menu'
+import { DropdownMenu } from '../shared/DropdownMenu'
+import { MIN_ITEM_PADDING, TREE_OFFSET_MULTIPLIER } from './constants'
 import { TreeNodeProps } from './tree-node'
 import { TreeProps } from './types'
 import { buildTree } from './utils'
-import { DropdownMenu } from '../shared/DropdownMenu'
 
-// nested branch indent modifier
-const TREE_MARGIN_MOD = 10
+const getPadding = (level: number) =>
+  level > 0 ? level * TREE_OFFSET_MULTIPLIER : MIN_ITEM_PADDING
 
-const Node = ({ branch, level = 0 }: TreeNodeProps) => {
+const Branch = ({ branch, level = 0 }: TreeNodeProps) => {
   if (!branch.children.length) {
-    return <MenuItem label={branch.name} />
+    return (
+      <MenuItem
+        onClick={() => alert(branch.name + ' clicked')}
+        label={branch.name}
+        cx={{
+          container:
+            'truncate max-w-[200px] w-full text-left hover:bg-primary-200/20 rounded-md px-2',
+        }}
+        style={{ paddingLeft: getPadding(level) }}
+      />
+    )
   }
 
   return (
-    <Menu label={branch.name} level={level}>
+    <Menu
+      label={branch.name}
+      level={level}
+      style={{ paddingLeft: getPadding(level) }}
+      cx={{
+        container: {
+          outer: 'max-w-[200px] w-full text-left',
+          inner: 'flex flex-col items-start text-left gap-1',
+        },
+        trigger: 'w-full hover:bg-primary-200/20 rounded-md px-2',
+      }}
+    >
       {branch.children.map(option => (
-        <Node branch={option} level={level + 1} />
+        <Branch branch={option} level={level + 1} key={option.id} />
       ))}
     </Menu>
   )
 }
 
 export const Tree: FC<TreeProps> = ({ options = [], label }) => {
-  const tree = buildTree(options)
+  const tree = useMemo(() => buildTree(options), [options])
 
   return (
     <Menu label={label}>
       <DropdownMenu>
         {tree.map(option => (
-          <Node branch={option} level={0} />
+          <Branch branch={option} level={0} key={option.id} />
         ))}
       </DropdownMenu>
     </Menu>

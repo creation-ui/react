@@ -1,21 +1,19 @@
-import { ReactNode } from 'react'
-
 export interface TreeProps {
-  options: any[]
-  label?: ReactNode
+  options?: any[]
+  label?: string
 }
 
-export type Entry = {
+export type RawElement = {
   id: number
   name: string
   parent_id: number
 }
 
-export type Branch = {
+export type BranchType = {
   id: number
   name: string
   parent_id: number
-  children?: Branch[]
+  children?: BranchType[]
 }
 
-export type Tree = Branch[]
+export type TreeType = BranchType[]
