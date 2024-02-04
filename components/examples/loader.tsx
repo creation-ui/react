@@ -10,8 +10,4 @@ export const LoaderExample = (props: LoaderProps) => (
   </Container>
 )
 
-export const properties: DocumentedProperty[] = [
-  sizeProp,
-  classNameProps,
-  loaderWhiteProp,
-]
+export const properties: DocumentedProperty[] = [sizeProp, classNameProps, loaderWhiteProp]

@@ -22,11 +22,10 @@ export const INPUT_TYPES = [
   'tel',
 ]
 
-export const DEFAULT_CONTROLS: Record<PlaygroundValueType, PlaygroundControls> =
-  {
-    boolean: 'switch',
-    array: 'toggle-group',
-    string: 'input:text',
-    number: 'input:number',
-    object: 'nested',
-  }
+export const DEFAULT_CONTROLS: Record<PlaygroundValueType, PlaygroundControls> = {
+  boolean: 'switch',
+  array: 'toggle-group',
+  string: 'input:text',
+  number: 'input:number',
+  object: 'nested',
+}

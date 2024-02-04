@@ -11,7 +11,6 @@ and it's fully customizable. It's a great starting point for your next project.
 Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation/using-postcss).
 Also @creation-ui/core package is required for the React packages to work. It contains sharable theme config, styles and utilities.
 
-
 ```
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",
@@ -78,7 +77,6 @@ In development
 - [ ] [Timeline](/docs/components/timeline)
 - [ ] [Breadcrumbs](/docs/components/breadcrumbs)
 
-
 ## Configuration
 
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
@@ -99,7 +97,6 @@ const config = withTailwindConfig({
 })
 
 module.exports = config
-
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).

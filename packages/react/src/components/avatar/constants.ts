@@ -16,6 +16,6 @@ export const AVATAR_CONTAINER_PROPS: (keyof CSSProperties)[] = [
   'boxShadow',
   'margin',
   'padding',
-];
+]
 
-export const AVATAR_GROUP_OFFSET_MOD= -0.3
+export const AVATAR_GROUP_OFFSET_MOD = -0.3

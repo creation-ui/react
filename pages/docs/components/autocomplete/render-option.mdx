@@ -10,24 +10,13 @@ import { useAutocomplete } from '../context'
 import { AutocompleteOptionDefault, AutocompleteProps } from '../types'
 import Highlighter from 'react-highlight-words'
 
-export const _renderOption = (
-  props: RenderOptionProps,
-  option: AutocompleteOptionDefault,
-) => {
+export const _renderOption = (props: RenderOptionProps, option: AutocompleteOptionDefault) => {
   const { getOptionLabel, autoHighlight } = useAutocomplete()
   const label = getOptionLabel!(option)
 
   return (
     <li {...props}>
-      {autoHighlight ? (
-        <Highlighter
-          searchWords={[props.query]}
-          autoEscape={true}
-          textToHighlight={label}
-        />
-      ) : (
-        label
-      )}
+      {autoHighlight ? <Highlighter searchWords={[props.query]} autoEscape={true} textToHighlight={label} /> : label}
     </li>
   )
 }
@@ -67,8 +56,4 @@ Highlighting of search term is lost in custom option component, but you can impl
 
 ## Component API
 
-<PropsTable
-  properties={renderOptionProps}
-  name='RenderOptionProps'
-  description='type of RenderOptionProps'
-/>
+<PropsTable properties={renderOptionProps} name='RenderOptionProps' description='type of RenderOptionProps' />

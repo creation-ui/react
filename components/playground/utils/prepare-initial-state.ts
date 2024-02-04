@@ -8,14 +8,7 @@ const prepareInitialState = (controls: PlaygroundControl[]) =>
     }
 
     const [first] = values ?? []
-    const fallback =
-      type === 'boolean'
-        ? false
-        : type === 'string'
-        ? ''
-        : type === 'array'
-        ? first.value
-        : null
+    const fallback = type === 'boolean' ? false : type === 'string' ? '' : type === 'array' ? first.value : null
 
     return { ...acc, [name]: defaultValue ?? fallback }
   }, {})

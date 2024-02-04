@@ -24,9 +24,7 @@ export const DatePickerPlayground: React.FC = () => {
           onChange: handleDateChange,
         }}
       />
-      {selectedDate && (
-        <p>Selected date: {selectedDate.toLocaleDateString()}</p>
-      )}
+      {selectedDate && <p>Selected date: {selectedDate.toLocaleDateString()}</p>}
     </div>
   )
 }

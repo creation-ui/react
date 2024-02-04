@@ -15,6 +15,8 @@ export const dropdownMenuClasses = cva(
     'rounded-md',
     'flex',
     'flex-col',
+    'items-start',
+    'text-left',
     'gap-1',
     'p-1',
     'dark:bg-info-800',

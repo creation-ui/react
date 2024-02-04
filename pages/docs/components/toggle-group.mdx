@@ -31,27 +31,11 @@ const options = [
 export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
   const [value, setValue] = useState<string>('1')
 
-  return (
-    <ToggleGroup
-      label='Select option'
-      size={'sm'}
-      options={options}
-      value={value}
-      onChange={setValue}
-    />
-  )
+  return <ToggleGroup label='Select option' size={'sm'} options={options} value={value} onChange={setValue} />
 }
 ```
 
 ## Component API
 
-<PropsTable
-  properties={properties}
-  name='ToggleGroup'
-  description={'Props of ToggleGroup component.'}
-/>
-<PropsTable
-  properties={optionProps}
-  name='ToggleGroupOption'
-  description={'Props of ToggleGroupOption component.'}
-/>
+<PropsTable properties={properties} name='ToggleGroup' description={'Props of ToggleGroup component.'} />
+<PropsTable properties={optionProps} name='ToggleGroupOption' description={'Props of ToggleGroupOption component.'} />

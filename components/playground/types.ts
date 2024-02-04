@@ -1,19 +1,8 @@
 import type { FC } from 'react'
 
-export type PlaygroundValueType =
-  | 'string'
-  | 'boolean'
-  | 'number'
-  | 'array'
-  | 'object'
+export type PlaygroundValueType = 'string' | 'boolean' | 'number' | 'array' | 'object'
 export type PlaygroundValues = string | boolean | number
-export type PlaygroundControls =
-  | 'input:text'
-  | 'input:number'
-  | 'colors'
-  | 'switch'
-  | 'toggle-group'
-  | 'nested'
+export type PlaygroundControls = 'input:text' | 'input:number' | 'colors' | 'switch' | 'toggle-group' | 'nested'
 
 export type PlaygroundControl = {
   name: string

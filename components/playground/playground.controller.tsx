@@ -5,11 +5,7 @@ import { PlaygroundCode } from './playground.code'
 import { PlaygroundComponent } from './playground.component'
 import { PlaygroundControls } from './playground.controls'
 import { PlaygroundView } from './playground.view'
-import {
-  PlaygroundControl,
-  PlaygroundControllerProps,
-  PlaygroundState,
-} from './types'
+import { PlaygroundControl, PlaygroundControllerProps, PlaygroundState } from './types'
 
 const prepareInitialState = (controls: PlaygroundControl[]) =>
   controls?.reduce((acc, { type, name, defaultValue, values, controls: c }) => {
@@ -19,26 +15,15 @@ const prepareInitialState = (controls: PlaygroundControl[]) =>
     }
 
     const [first] = values ?? []
-    const fallback =
-      type === 'boolean'
-        ? false
-        : type === 'string'
-        ? ''
-        : type === 'array'
-        ? first.value
-        : null
+    const fallback = type === 'boolean' ? false : type === 'string' ? '' : type === 'array' ? first.value : null
 
     return { ...acc, [name]: defaultValue ?? fallback }
   }, {})
 
-export const PlaygroundController: React.FC<
-  PlaygroundControllerProps
-> = props => {
+export const PlaygroundController: React.FC<PlaygroundControllerProps> = props => {
   const { showCode = true, controls } = props
 
-  const [state, setState] = useState<PlaygroundState>(
-    prepareInitialState(controls),
-  )
+  const [state, setState] = useState<PlaygroundState>(prepareInitialState(controls))
 
   const handleChange = (name: string, value: any) => {
     setState(state => {

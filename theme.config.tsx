@@ -29,10 +29,7 @@ export default {
       <>
         <meta property='og:url' content={`${BASE_URL}${asPath}`} />
         <meta property='og:title' content={frontMatter.title || TITLE} />
-        <meta
-          property='og:description'
-          content={frontMatter.description || 'React Tailwind components'}
-        />
+        <meta property='og:description' content={frontMatter.description || 'React Tailwind components'} />
       </>
     )
   },

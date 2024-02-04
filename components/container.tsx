@@ -16,12 +16,7 @@ const classes: Record<ContainerVariants | 'base' | 'centered', string[]> = {
   centered: ['justify-center', 'place-items-center', 'gap-5'],
 }
 
-export const Container = ({
-  children,
-  className,
-  variant = 'row',
-  ...props
-}: ContainerProps) => (
+export const Container = ({ children, className, variant = 'row', ...props }: ContainerProps) => (
   <div className={clsx(classes.base, classes[variant], className)} {...props}>
     {children}
   </div>

@@ -5,23 +5,17 @@ import { Select } from '@creation-ui/react'
 import { pick } from 'lodash'
 import { DocumentedProperty } from 'models/system'
 import { useState } from 'react'
-import { options } from './data'
+import { PersonOnListType } from './autocomplete/types'
+import options from './people-short-list.json'
 import { createInputControls } from './shared-playground-controls'
 import { createDocsLink } from './utils'
 
 export const SelectExample = ({ ...props }: DropdownProps) => {
-  const [value, setValue] = useState<(typeof options)[0] | null>(null)
+  const [value, setValue] = useState<PersonOnListType | null>(null)
 
   const playground = usePlayground()
 
-  const state = pick(playground.state, [
-    'size',
-    'error',
-    'loading',
-    'disabled',
-    'readOnly',
-    'clearable',
-  ])
+  const state = pick(playground.state, ['size', 'error', 'loading', 'disabled', 'readOnly', 'clearable'])
 
   const onClear = () => setValue(null)
   return (
@@ -38,12 +32,7 @@ export const SelectExample = ({ ...props }: DropdownProps) => {
 }
 
 export const SelectPlayground = () => (
-  <Playground
-    name='Select'
-    component={SelectExample}
-    controls={createInputControls('Select')}
-    showCode={false}
-  />
+  <Playground name='Select' component={SelectExample} controls={createInputControls('Select')} showCode={false} />
 )
 
 export const properties: DocumentedProperty[] = [

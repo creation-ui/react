@@ -1,7 +1,10 @@
 import { Children, isValidElement, useMemo } from 'react'
 import type { ShowFirstMatchingProps } from './types'
 
-export const ShowFirstMatching: React.FC<ShowFirstMatchingProps> = ({ children, fallback = null }) => {
+export const ShowFirstMatching: React.FC<ShowFirstMatchingProps> = ({
+  children,
+  fallback = null,
+}) => {
   let matchFound = false
 
   const renderChildren = useMemo(

@@ -15,7 +15,7 @@ interface PopoverContentProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
 }
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
-  function PopoverContent({ size, className, zIndex,...props }, propRef) {
+  function PopoverContent({ size, className, zIndex, ...props }, propRef) {
     const { context: floatingContext, ...ctx } = usePopoverContext()
     const ref = useMergeRefs([ctx.refs.setFloating, propRef])
 
@@ -27,7 +27,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       // @ts-ignore
       ...ctx.floatingStyles,
       ...props.style,
-      zIndex
+      zIndex,
     }
 
     return (

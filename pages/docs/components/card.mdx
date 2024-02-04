@@ -9,15 +9,7 @@ import PropsTable from '@components/props-table'
 
 ```tsx copy
 import Icon from '@components/icon'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardProps,
-  CardStats,
-  CardTitle,
-} from '@creation-ui/react'
+import { Card, CardContent, CardDescription, CardHeader, CardProps, CardStats, CardTitle } from '@creation-ui/react'
 import { mdiAccount } from '@mdi/js'
 import type { FC } from 'react'
 
@@ -27,11 +19,7 @@ interface CardExampleProps {
   content: string
 }
 
-export const CardExample: FC<CardExampleProps> = ({
-  title,
-  content,
-  description,
-}) => (
+export const CardExample: FC<CardExampleProps> = ({ title, content, description }) => (
   <Card>
     <CardHeader>
       <CardTitle>{title}</CardTitle>

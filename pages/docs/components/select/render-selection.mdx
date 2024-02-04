@@ -10,6 +10,5 @@ By default T = [SelectOptionDefault](/docs/components/select#SelectOptionDefault
 ```tsx
 import { SelectOptionDefault } from './types'
 
-const _renderSelection = (value: T) =>
-  value ? getOptionLabel(value) : <Placeholder>{placeholder}</Placeholder>
+const _renderSelection = (value: T) => (value ? getOptionLabel(value) : <Placeholder>{placeholder}</Placeholder>)
 ```

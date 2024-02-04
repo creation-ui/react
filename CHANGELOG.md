@@ -2,337 +2,290 @@
 
 ## [13.5.0](https://github.com/creation-ui/react/compare/v13.4.0...v13.5.0) (2024-01-29)
 
-
 ### Features
 
-* update tailwindcss and related libs to latest version ([1d44f20](https://github.com/creation-ui/react/commit/1d44f20386ff5f5313ff74004a8cb2a8efaa688a))
-
+- update tailwindcss and related libs to latest version ([1d44f20](https://github.com/creation-ui/react/commit/1d44f20386ff5f5313ff74004a8cb2a8efaa688a))
 
 ### Bug Fixes
 
-* remove duplicated imports ([e80d6f0](https://github.com/creation-ui/react/commit/e80d6f0f0e0888df63f9aba3e78aa2e43878af3f))
+- remove duplicated imports ([e80d6f0](https://github.com/creation-ui/react/commit/e80d6f0f0e0888df63f9aba3e78aa2e43878af3f))
 
 ## [13.4.0](https://github.com/creation-ui/react/compare/v13.3.23...v13.4.0) (2024-01-21)
 
-
 ### Features
 
-* add create option for autocomplete ([ce5b073](https://github.com/creation-ui/react/commit/ce5b0731c4f195f348181c369b0545b4e9c509fe))
+- add create option for autocomplete ([ce5b073](https://github.com/creation-ui/react/commit/ce5b0731c4f195f348181c369b0545b4e9c509fe))
 
 ## [13.3.23](https://github.com/creation-ui/react/compare/v13.3.22...v13.3.23) (2024-01-21)
 
-
 ### Bug Fixes
 
-* copy .npmrc to ./build ([c323093](https://github.com/creation-ui/react/commit/c323093b657b1e3383ac95da4dc9845c2113822c))
+- copy .npmrc to ./build ([c323093](https://github.com/creation-ui/react/commit/c323093b657b1e3383ac95da4dc9845c2113822c))
 
 ## [13.3.22](https://github.com/creation-ui/react/compare/v13.3.21...v13.3.22) (2024-01-21)
 
-
 ### Bug Fixes
 
-* restore .npmrc ([caaf7fb](https://github.com/creation-ui/react/commit/caaf7fb6da5c79bc21d44fd1dab4f26c79681328))
-* script ([173b052](https://github.com/creation-ui/react/commit/173b052099d63b517a7e6400603937561600a979))
+- restore .npmrc ([caaf7fb](https://github.com/creation-ui/react/commit/caaf7fb6da5c79bc21d44fd1dab4f26c79681328))
+- script ([173b052](https://github.com/creation-ui/react/commit/173b052099d63b517a7e6400603937561600a979))
 
 ## [13.3.21](https://github.com/creation-ui/react/compare/v13.3.20...v13.3.21) (2024-01-21)
 
-
 ### Bug Fixes
 
-* print with new line ([0ced08f](https://github.com/creation-ui/react/commit/0ced08f0536805c693d9e70e031bc712970f4257))
+- print with new line ([0ced08f](https://github.com/creation-ui/react/commit/0ced08f0536805c693d9e70e031bc712970f4257))
 
 ## [13.3.20](https://github.com/creation-ui/react/compare/v13.3.19...v13.3.20) (2024-01-21)
 
-
 ### Bug Fixes
 
-* list dir ([c443c17](https://github.com/creation-ui/react/commit/c443c170f8efce28609e4bb34dcbba8d98188296))
+- list dir ([c443c17](https://github.com/creation-ui/react/commit/c443c170f8efce28609e4bb34dcbba8d98188296))
 
 ## [13.3.19](https://github.com/creation-ui/react/compare/v13.3.18...v13.3.19) (2024-01-21)
 
-
 ### Bug Fixes
 
-* order of operations ([9d7d405](https://github.com/creation-ui/react/commit/9d7d405d14eea8ff67a9ea3dbc5993c4d5cf8518))
+- order of operations ([9d7d405](https://github.com/creation-ui/react/commit/9d7d405d14eea8ff67a9ea3dbc5993c4d5cf8518))
 
 ## [13.3.18](https://github.com/creation-ui/react/compare/v13.3.17...v13.3.18) (2024-01-21)
 
-
 ### Bug Fixes
 
-* move env to job level ([739b1b7](https://github.com/creation-ui/react/commit/739b1b78a229985b905e8f01dd933dc36398f936))
+- move env to job level ([739b1b7](https://github.com/creation-ui/react/commit/739b1b78a229985b905e8f01dd933dc36398f936))
 
 ## [13.3.17](https://github.com/creation-ui/react/compare/v13.3.16...v13.3.17) (2024-01-21)
 
-
 ### Bug Fixes
 
-* remove .npmrc from main repo, add registry for organisation ([6f0be20](https://github.com/creation-ui/react/commit/6f0be20d2a77c33dc3f08b1d371c55693986c27a))
+- remove .npmrc from main repo, add registry for organisation ([6f0be20](https://github.com/creation-ui/react/commit/6f0be20d2a77c33dc3f08b1d371c55693986c27a))
 
 ## [13.3.16](https://github.com/creation-ui/react/compare/v13.3.15...v13.3.16) (2024-01-20)
 
-
 ### Bug Fixes
 
-* test new config 1 ([f062cb7](https://github.com/creation-ui/react/commit/f062cb7ca42eba86deb3b2c121457e47666fed43))
+- test new config 1 ([f062cb7](https://github.com/creation-ui/react/commit/f062cb7ca42eba86deb3b2c121457e47666fed43))
 
 ## [13.3.15](https://github.com/creation-ui/react/compare/v13.3.14...v13.3.15) (2024-01-20)
 
-
 ### Bug Fixes
 
-* add curly braces to token ([d81b358](https://github.com/creation-ui/react/commit/d81b358a11e2f7d0ef67ff81de4885044179217c))
+- add curly braces to token ([d81b358](https://github.com/creation-ui/react/commit/d81b358a11e2f7d0ef67ff81de4885044179217c))
 
 ## [13.3.14](https://github.com/creation-ui/react/compare/v13.3.13...v13.3.14) (2024-01-20)
 
-
 ### Bug Fixes
 
-* add registry-url ([6b95060](https://github.com/creation-ui/react/commit/6b9506058af5b06dc934bb10d50ccc7e27ecf6e9))
+- add registry-url ([6b95060](https://github.com/creation-ui/react/commit/6b9506058af5b06dc934bb10d50ccc7e27ecf6e9))
 
 ## [13.3.13](https://github.com/creation-ui/react/compare/v13.3.12...v13.3.13) (2024-01-20)
 
-
 ### Bug Fixes
 
-* remove npm adduser ([5e75853](https://github.com/creation-ui/react/commit/5e75853e6632ca640d35cf82b74c48913069f583))
+- remove npm adduser ([5e75853](https://github.com/creation-ui/react/commit/5e75853e6632ca640d35cf82b74c48913069f583))
 
 ## [13.3.12](https://github.com/creation-ui/react/compare/v13.3.11...v13.3.12) (2024-01-20)
 
-
 ### Bug Fixes
 
-* authorize npm with adduser ([e9492e7](https://github.com/creation-ui/react/commit/e9492e7ece668d05c5fc84924079373d33162ca4))
+- authorize npm with adduser ([e9492e7](https://github.com/creation-ui/react/commit/e9492e7ece668d05c5fc84924079373d33162ca4))
 
 ## [13.3.11](https://github.com/creation-ui/react/compare/v13.3.10...v13.3.11) (2024-01-20)
 
-
 ### Bug Fixes
 
-* remove npm login ([c84cc7b](https://github.com/creation-ui/react/commit/c84cc7b4cf210cd4fa8b68a6879ef204b2829864))
+- remove npm login ([c84cc7b](https://github.com/creation-ui/react/commit/c84cc7b4cf210cd4fa8b68a6879ef204b2829864))
 
 ## [13.3.10](https://github.com/creation-ui/react/compare/v13.3.9...v13.3.10) (2024-01-20)
 
-
 ### Bug Fixes
 
-* try npm login ([fcc551e](https://github.com/creation-ui/react/commit/fcc551e6b2137b8a1b57101e584e7e379118e39d))
+- try npm login ([fcc551e](https://github.com/creation-ui/react/commit/fcc551e6b2137b8a1b57101e584e7e379118e39d))
 
 ## [13.3.9](https://github.com/creation-ui/react/compare/v13.3.8...v13.3.9) (2024-01-20)
 
-
 ### Bug Fixes
 
-* remove failing action step ([0b3e7ed](https://github.com/creation-ui/react/commit/0b3e7edde5519cd6932ce19fcef9224a9d4e05d4))
+- remove failing action step ([0b3e7ed](https://github.com/creation-ui/react/commit/0b3e7edde5519cd6932ce19fcef9224a9d4e05d4))
 
 ## [13.3.8](https://github.com/creation-ui/react/compare/v13.3.7...v13.3.8) (2024-01-20)
 
-
 ### Bug Fixes
 
-* yaml indent ([a6048b6](https://github.com/creation-ui/react/commit/a6048b6b941b662f5c9daaf511600557147db6d8))
+- yaml indent ([a6048b6](https://github.com/creation-ui/react/commit/a6048b6b941b662f5c9daaf511600557147db6d8))
 
 ## [13.3.7](https://github.com/creation-ui/react/compare/v13.3.6...v13.3.7) (2024-01-20)
 
-
 ### Bug Fixes
 
-* change publish action trigger type ([3205b00](https://github.com/creation-ui/react/commit/3205b0021b70356bcf96820f1d523e9d1a396a20))
+- change publish action trigger type ([3205b00](https://github.com/creation-ui/react/commit/3205b0021b70356bcf96820f1d523e9d1a396a20))
 
 ## [13.3.6](https://github.com/creation-ui/react/compare/v13.3.5...v13.3.6) (2024-01-20)
 
-
 ### Bug Fixes
 
-* update actions version ([89bba4c](https://github.com/creation-ui/react/commit/89bba4c697e38e83937ce4df2e523a1f2fe2a74f))
+- update actions version ([89bba4c](https://github.com/creation-ui/react/commit/89bba4c697e38e83937ce4df2e523a1f2fe2a74f))
 
 ## [13.3.5](https://github.com/creation-ui/react/compare/v13.3.4...v13.3.5) (2024-01-20)
 
-
 ### Bug Fixes
 
-* action pushes to master ([e9b1eb9](https://github.com/creation-ui/react/commit/e9b1eb9662ee68852ef5e5b4f16a90d732a0e0ee))
+- action pushes to master ([e9b1eb9](https://github.com/creation-ui/react/commit/e9b1eb9662ee68852ef5e5b4f16a90d732a0e0ee))
 
 ## [13.3.4](https://github.com/creation-ui/react/compare/v13.3.3...v13.3.4) (2024-01-20)
 
-
 ### Bug Fixes
 
-* publish action installs pnpm ([8a4a8d2](https://github.com/creation-ui/react/commit/8a4a8d28e3768bbb4b6bfc8d4575168d303137ff))
-* save version number in action ([7fafef7](https://github.com/creation-ui/react/commit/7fafef7d0075a0cfe48a216d41f94057ca1e0c02))
+- publish action installs pnpm ([8a4a8d2](https://github.com/creation-ui/react/commit/8a4a8d28e3768bbb4b6bfc8d4575168d303137ff))
+- save version number in action ([7fafef7](https://github.com/creation-ui/react/commit/7fafef7d0075a0cfe48a216d41f94057ca1e0c02))
 
 ## [13.3.3](https://github.com/creation-ui/react/compare/v13.3.2...v13.3.3) (2024-01-20)
 
-
 ### Bug Fixes
 
-* add PAT ([d629083](https://github.com/creation-ui/react/commit/d629083a1659601ec389c77bf2baa3980557f63c))
+- add PAT ([d629083](https://github.com/creation-ui/react/commit/d629083a1659601ec389c77bf2baa3980557f63c))
 
 ## [13.3.2](https://github.com/creation-ui/react/compare/v13.3.1...v13.3.2) (2024-01-20)
 
-
 ### Bug Fixes
 
-* add test flow ([133a9c1](https://github.com/creation-ui/react/commit/133a9c1e1147a7f091fc4f693b0de43b4a781f40))
+- add test flow ([133a9c1](https://github.com/creation-ui/react/commit/133a9c1e1147a7f091fc4f693b0de43b4a781f40))
 
 ## [13.3.1](https://github.com/creation-ui/react/compare/v13.3.0...v13.3.1) (2024-01-20)
 
-
 ### Bug Fixes
 
-* improve publish action ([bb654ae](https://github.com/creation-ui/react/commit/bb654ae2e285154e83c4e23ad9f05397324fafef))
+- improve publish action ([bb654ae](https://github.com/creation-ui/react/commit/bb654ae2e285154e83c4e23ad9f05397324fafef))
 
 ## [13.3.0](https://github.com/creation-ui/react/compare/v13.2.2...v13.3.0) (2024-01-20)
 
-
 ### Features
 
-* refactor publish script ([ef54801](https://github.com/creation-ui/react/commit/ef548017640e5a4d7bb39d8cd9eae2856bdc89de))
+- refactor publish script ([ef54801](https://github.com/creation-ui/react/commit/ef548017640e5a4d7bb39d8cd9eae2856bdc89de))
 
 ## [13.2.2](https://github.com/creation-ui/react/compare/v13.2.1...v13.2.2) (2024-01-17)
 
-
 ### Miscellaneous Chores
 
-* release 13.2.2 ([012a634](https://github.com/creation-ui/react/commit/012a634badaf3cc68930653c844e905ce0375763))
+- release 13.2.2 ([012a634](https://github.com/creation-ui/react/commit/012a634badaf3cc68930653c844e905ce0375763))
 
 ## [13.2.1](https://github.com/creation-ui/react/compare/v13.2.0...v13.2.1) (2024-01-16)
 
-
 ### Bug Fixes
 
-* dark mode toggle detect exisiting LS value, do not parse simple string ([ec929aa](https://github.com/creation-ui/react/commit/ec929aa0b9244a7733e5f93683aca7aaa9077cf1))
-* tsc issues ([3a099e6](https://github.com/creation-ui/react/commit/3a099e6516f019a6368c0726e6053fbf0fea0fd5))
+- dark mode toggle detect exisiting LS value, do not parse simple string ([ec929aa](https://github.com/creation-ui/react/commit/ec929aa0b9244a7733e5f93683aca7aaa9077cf1))
+- tsc issues ([3a099e6](https://github.com/creation-ui/react/commit/3a099e6516f019a6368c0726e6053fbf0fea0fd5))
 
 ## [13.2.0](https://github.com/creation-ui/react/compare/v13.1.0...v13.2.0) (2023-12-29)
 
-
 ### Bug Fixes
 
-* Add resize-observer-polyfill dependency to landing page ([eaaa40f](https://github.com/creation-ui/react/commit/eaaa40f87344871beefbe001c5362f7e544d7dda))
-* tests ([add7d3d](https://github.com/creation-ui/react/commit/add7d3da739761db30560f223c5ca104307fb46f))
-* type issues ([eb92c6a](https://github.com/creation-ui/react/commit/eb92c6a3edc25f131b7ef35d9593f0432e74ecc0))
-* Update Button import path ([d163825](https://github.com/creation-ui/react/commit/d1638258d7c4ed63a1431202fb03f3917bed37c4))
-
+- Add resize-observer-polyfill dependency to landing page ([eaaa40f](https://github.com/creation-ui/react/commit/eaaa40f87344871beefbe001c5362f7e544d7dda))
+- tests ([add7d3d](https://github.com/creation-ui/react/commit/add7d3da739761db30560f223c5ca104307fb46f))
+- type issues ([eb92c6a](https://github.com/creation-ui/react/commit/eb92c6a3edc25f131b7ef35d9593f0432e74ecc0))
+- Update Button import path ([d163825](https://github.com/creation-ui/react/commit/d1638258d7c4ed63a1431202fb03f3917bed37c4))
 
 ### Miscellaneous Chores
 
-* release 13.2.0 ([8c8c4c2](https://github.com/creation-ui/react/commit/8c8c4c2f72d466073bf5f6af2b497a5b1446e85c))
-* release 13.2.0 ([7b728b8](https://github.com/creation-ui/react/commit/7b728b8ee8b5bcaf6e5a70b86dbad0fd5fb0eec2))
+- release 13.2.0 ([8c8c4c2](https://github.com/creation-ui/react/commit/8c8c4c2f72d466073bf5f6af2b497a5b1446e85c))
+- release 13.2.0 ([7b728b8](https://github.com/creation-ui/react/commit/7b728b8ee8b5bcaf6e5a70b86dbad0fd5fb0eec2))
 
 ## [13.1.0](https://github.com/creation-ui/react/compare/v0.13.0...v13.1.0) (2023-12-11)
 
-
 ### Features
 
-* **autocomplete:** add functionality to listen to input value changes ([5472698](https://github.com/creation-ui/react/commit/547269824ff55f77c45b63d8a518c07096eae882))
-
+- **autocomplete:** add functionality to listen to input value changes ([5472698](https://github.com/creation-ui/react/commit/547269824ff55f77c45b63d8a518c07096eae882))
 
 ### Miscellaneous Chores
 
-* release 13.1.0 ([28f7b1b](https://github.com/creation-ui/react/commit/28f7b1b62b4b11c7caa83e2154ddada45ba5cb16))
+- release 13.1.0 ([28f7b1b](https://github.com/creation-ui/react/commit/28f7b1b62b4b11c7caa83e2154ddada45ba5cb16))
 
 ## [0.13.0](https://github.com/creation-ui/react/compare/v0.12.0...v0.13.0) (2023-12-07)
 
-
 ### Features
 
-* **design:** Add customization options for Drawer component ([2ef1f76](https://github.com/creation-ui/react/commit/2ef1f76ee5802adfb9361c71d85085c317a6c8fc))
+- **design:** Add customization options for Drawer component ([2ef1f76](https://github.com/creation-ui/react/commit/2ef1f76ee5802adfb9361c71d85085c317a6c8fc))
 
 ## [0.12.0](https://github.com/creation-ui/react/compare/v0.11.1...v0.12.0) (2023-11-19)
 
-
 ### Features
 
-* add zIndex ([91c69b1](https://github.com/creation-ui/react/commit/91c69b1bdd51abdc77224edf9b6966b74bca4d79))
-
+- add zIndex ([91c69b1](https://github.com/creation-ui/react/commit/91c69b1bdd51abdc77224edf9b6966b74bca4d79))
 
 ### Bug Fixes
 
-* code formatting in ShowFirstMatchingExample ([f057a97](https://github.com/creation-ui/react/commit/f057a9720f7f38e5f0f5b3e507ae0bbd8d65241b))
-* increment and decrement functions in ([e2541ed](https://github.com/creation-ui/react/commit/e2541ed80455a6fa93f1213a6ae7f47b1cdb5048))
-* tsc errors ([c46607b](https://github.com/creation-ui/react/commit/c46607b557a01fa6bcf5e95302197262715f56e9))
+- code formatting in ShowFirstMatchingExample ([f057a97](https://github.com/creation-ui/react/commit/f057a9720f7f38e5f0f5b3e507ae0bbd8d65241b))
+- increment and decrement functions in ([e2541ed](https://github.com/creation-ui/react/commit/e2541ed80455a6fa93f1213a6ae7f47b1cdb5048))
+- tsc errors ([c46607b](https://github.com/creation-ui/react/commit/c46607b557a01fa6bcf5e95302197262715f56e9))
 
 ## [0.11.1](https://github.com/creation-ui/react/compare/v0.11.0...v0.11.1) (2023-11-06)
 
-
 ### Bug Fixes
 
-* drawer width and height class names ([ed8943f](https://github.com/creation-ui/react/commit/ed8943f66d1b25aed177694d08805b8780cf6687))
-
+- drawer width and height class names ([ed8943f](https://github.com/creation-ui/react/commit/ed8943f66d1b25aed177694d08805b8780cf6687))
 
 ### Miscellaneous Chores
 
-* release 0.11.1 ([099229d](https://github.com/creation-ui/react/commit/099229d12a57f85cbfb33ae8eba73e8a1bc0f10a))
+- release 0.11.1 ([099229d](https://github.com/creation-ui/react/commit/099229d12a57f85cbfb33ae8eba73e8a1bc0f10a))
 
 ## [0.11.0](https://github.com/creation-ui/react/compare/v0.10.3...v0.11.0) (2023-10-01)
 
-
 ### Features
 
-* calendar double view ([8c2c6d0](https://github.com/creation-ui/react/commit/8c2c6d02e07f76de9b07f846e44e15fc5496dcd5))
-* create core package ([2300032](https://github.com/creation-ui/react/commit/230003203f5e117f0b28c871b0749656f15e48c9))
-* use signals in drawer example ([333fcac](https://github.com/creation-ui/react/commit/333fcac48f5e53fa7852b50ac70edbac74c35df8))
-
+- calendar double view ([8c2c6d0](https://github.com/creation-ui/react/commit/8c2c6d02e07f76de9b07f846e44e15fc5496dcd5))
+- create core package ([2300032](https://github.com/creation-ui/react/commit/230003203f5e117f0b28c871b0749656f15e48c9))
+- use signals in drawer example ([333fcac](https://github.com/creation-ui/react/commit/333fcac48f5e53fa7852b50ac70edbac74c35df8))
 
 ### Bug Fixes
 
-* Calendar: rounding of selected date range ([56ec74c](https://github.com/creation-ui/react/commit/56ec74c4b7e733af345373e59e82282335206a26))
-* imports in mdx, colors from core ([e12c198](https://github.com/creation-ui/react/commit/e12c198057acd86ada61025fa1787f1d8b483447))
-* progress bat types ([c92979a](https://github.com/creation-ui/react/commit/c92979ac4b7bdfb0f058c19979d2eab90669e528))
-* tsc ([f57ad52](https://github.com/creation-ui/react/commit/f57ad52100e572ee05ebff833a617edcc14161b0))
-* tsc errors ([e0f10d2](https://github.com/creation-ui/react/commit/e0f10d21cdda308ed5798d2311a6584ebb9f5358))
+- Calendar: rounding of selected date range ([56ec74c](https://github.com/creation-ui/react/commit/56ec74c4b7e733af345373e59e82282335206a26))
+- imports in mdx, colors from core ([e12c198](https://github.com/creation-ui/react/commit/e12c198057acd86ada61025fa1787f1d8b483447))
+- progress bat types ([c92979a](https://github.com/creation-ui/react/commit/c92979ac4b7bdfb0f058c19979d2eab90669e528))
+- tsc ([f57ad52](https://github.com/creation-ui/react/commit/f57ad52100e572ee05ebff833a617edcc14161b0))
+- tsc errors ([e0f10d2](https://github.com/creation-ui/react/commit/e0f10d21cdda308ed5798d2311a6584ebb9f5358))
 
 ## [0.10.3](https://github.com/creation-ui/react/compare/v0.10.2...v0.10.3) (2023-09-03)
 
-
 ### Miscellaneous Chores
 
-* release 0.10.3 ([f0a8671](https://github.com/creation-ui/react/commit/f0a8671a3b870894386baa04ec61688a28ded767))
+- release 0.10.3 ([f0a8671](https://github.com/creation-ui/react/commit/f0a8671a3b870894386baa04ec61688a28ded767))
 
 ## [0.10.2](https://github.com/creation-ui/react/compare/v0.10.1...v0.10.2) (2023-08-16)
 
-
 ### Bug Fixes
 
-* export AutocompleteProps and other AC types for better DX ([4c0ea26](https://github.com/creation-ui/react/commit/4c0ea264b680261e9f248a058c243fd59199f11b))
+- export AutocompleteProps and other AC types for better DX ([4c0ea26](https://github.com/creation-ui/react/commit/4c0ea264b680261e9f248a058c243fd59199f11b))
 
 ## [0.10.1](https://github.com/creation-ui/react/compare/v0.10.0...v0.10.1) (2023-08-11)
 
-
 ### Bug Fixes
 
-* do not forgot to add libs of package to landing page because build does not take them into account ([82a5fb6](https://github.com/creation-ui/react/commit/82a5fb65f533fdbdfc40eb880906e474389c3fa8))
-* use one version of TS, fix type inferring bug ([07fec2e](https://github.com/creation-ui/react/commit/07fec2ec81f6839c69991a54ffbd26c40255424c))
+- do not forgot to add libs of package to landing page because build does not take them into account ([82a5fb6](https://github.com/creation-ui/react/commit/82a5fb65f533fdbdfc40eb880906e474389c3fa8))
+- use one version of TS, fix type inferring bug ([07fec2e](https://github.com/creation-ui/react/commit/07fec2ec81f6839c69991a54ffbd26c40255424c))
 
 ## [0.10.0](https://github.com/creation-ui/react/compare/v0.9.1...v0.10.0) (2023-08-11)
 
-
 ### Features
 
-* refactor progress bar ([b3a17fc](https://github.com/creation-ui/react/commit/b3a17fca40bb622027dd4e7da207b1486b892cef))
-* update avatar notification color ([d4e6adc](https://github.com/creation-ui/react/commit/d4e6adc7c5fcac19db33a3d4b68d71fd67eb25e7))
+- refactor progress bar ([b3a17fc](https://github.com/creation-ui/react/commit/b3a17fca40bb622027dd4e7da207b1486b892cef))
+- update avatar notification color ([d4e6adc](https://github.com/creation-ui/react/commit/d4e6adc7c5fcac19db33a3d4b68d71fd67eb25e7))
 
 ## [0.9.1](https://github.com/creation-ui/react/compare/v0.8.0...v0.9.1) (2023-08-05)
 
-
 ### Features
 
-* improve docs: autocomplete, select ([1510390](https://github.com/creation-ui/react/commit/1510390e55e03b1e7d1c33f2094a451c209b2a89))
-
+- improve docs: autocomplete, select ([1510390](https://github.com/creation-ui/react/commit/1510390e55e03b1e7d1c33f2094a451c209b2a89))
 
 ### Bug Fixes
 
-* add remove-ring class for select, handle padding when both clearable and endAndornment are provided to input ([1a43f35](https://github.com/creation-ui/react/commit/1a43f3584075ad19a26ff0b9ab43bb63c55b7b2a))
-* center options and value of dropdowns ([32dfba4](https://github.com/creation-ui/react/commit/32dfba47ecf355b7a91527fffcd854e541fb1bb4))
-* misc ([42cd6a8](https://github.com/creation-ui/react/commit/42cd6a87d078f0e12dd254bd0a52b16e747a4585))
-* tsc ([95677e5](https://github.com/creation-ui/react/commit/95677e5a799ae585973d99b7823b1e684379360f))
-* tsc, prettier ([62a0514](https://github.com/creation-ui/react/commit/62a05149bef4894b198358c6a20bc1e170f01be4))
-
+- add remove-ring class for select, handle padding when both clearable and endAndornment are provided to input ([1a43f35](https://github.com/creation-ui/react/commit/1a43f3584075ad19a26ff0b9ab43bb63c55b7b2a))
+- center options and value of dropdowns ([32dfba4](https://github.com/creation-ui/react/commit/32dfba47ecf355b7a91527fffcd854e541fb1bb4))
+- misc ([42cd6a8](https://github.com/creation-ui/react/commit/42cd6a87d078f0e12dd254bd0a52b16e747a4585))
+- tsc ([95677e5](https://github.com/creation-ui/react/commit/95677e5a799ae585973d99b7823b1e684379360f))
+- tsc, prettier ([62a0514](https://github.com/creation-ui/react/commit/62a05149bef4894b198358c6a20bc1e170f01be4))
 
 ### Miscellaneous Chores
 
-* release 0.9.1 ([94cc8f2](https://github.com/creation-ui/react/commit/94cc8f231367f644029025d4adb975f4af8620a0))
+- release 0.9.1 ([94cc8f2](https://github.com/creation-ui/react/commit/94cc8f231367f644029025d4adb975f4af8620a0))
 
 ## [0.8.0](https://github.com/creation-ui/react/compare/v0.7.1...v0.8.0) (2023-07-28)
 

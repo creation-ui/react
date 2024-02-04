@@ -3,13 +3,7 @@ import { LoadingOverlay, Button } from '@creation-ui/react'
 import { LoadingOverlayProps } from '@creation-ui/react/components/loading-overlay/loading-overlay.types'
 import { DocumentedProperty } from '@models/system'
 import { useState } from 'react'
-import {
-  classNameProps,
-  loaderWhiteProp,
-  onClickCallback,
-  openProp,
-  sizeProp,
-} from './shared-props'
+import { classNameProps, loaderWhiteProp, onClickCallback, openProp, sizeProp } from './shared-props'
 
 export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
   const [loading, setLoading] = useState(true)
@@ -29,17 +23,9 @@ export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
         <LoadingOverlay active={loading} {...props} />
       </div>
 
-      <Button onClick={handleClick}>
-        {loading ? 'Stop' : 'Start'} loading
-      </Button>
+      <Button onClick={handleClick}>{loading ? 'Stop' : 'Start'} loading</Button>
     </Container>
   )
 }
 
-export const properties: DocumentedProperty[] = [
-  classNameProps,
-  openProp,
-  sizeProp,
-  loaderWhiteProp,
-  onClickCallback,
-]
+export const properties: DocumentedProperty[] = [classNameProps, openProp, sizeProp, loaderWhiteProp, onClickCallback]
