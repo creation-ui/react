@@ -1,5 +1,19 @@
 # Changelog
 
+## [13.6.0](https://github.com/creation-ui/react/compare/v13.5.0...v13.6.0) (2024-02-04)
+
+
+### Features
+
+* add For component, finalise Tree component, fix TS issues ([57745e7](https://github.com/creation-ui/react/commit/57745e716648ebcb48c6b8de01331b5e429806f4))
+* add tree stub component, add flex component, add script for stubbing new components ([b19b5bb](https://github.com/creation-ui/react/commit/b19b5bb67be6156c793ac1b5f847f4db2db5cf15))
+* create first version of tree component ([dcee5ae](https://github.com/creation-ui/react/commit/dcee5aeb59fb70ba83f842480b7828db625280ec))
+
+
+### Bug Fixes
+
+* tree node type ([86d3cb7](https://github.com/creation-ui/react/commit/86d3cb747bb9279d6f3e87045825b1badc7fa1a9))
+
 ## [13.5.0](https://github.com/creation-ui/react/compare/v13.4.0...v13.5.0) (2024-01-29)
 
 ### Features
