@@ -51,7 +51,7 @@ touch "$COMPONENT_DIR/classes.ts"
 touch "$COMPONENT_DIR/constants.ts"
 
 # Append export to components index.ts with a new line before
-echo "\n export * from './$COMPONENT_NAME'" >> "$COMPONENTS_INDEX"
+echo "export * from './$COMPONENT_NAME'" >> "$COMPONENTS_INDEX"
 
 
 echo "Component '$COMPONENT_NAME' created successfully."

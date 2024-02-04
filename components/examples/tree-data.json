@@ -164,7 +164,6 @@
   { "id": 163, "name": "Soft Drinks", "parent_id": 159 },
   { "id": 164, "name": "Food", "parent_id": 158 },
   { "id": 165, "name": "BBQ & Grilling", "parent_id": 164 },
-  { "id": 166, "name": "Baked Goods & Dessert", "parent_id": 164 },
   { "id": 167, "name": "Baked Goods & Desserts", "parent_id": 164 },
   { "id": 168, "name": "Breakfast Foods", "parent_id": 164 },
   { "id": 169, "name": "Candy & Sweets", "parent_id": 164 },

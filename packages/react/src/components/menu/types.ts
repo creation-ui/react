@@ -1,16 +1,10 @@
-import { HTMLProps } from '@creation-ui/core'
-import { ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
-export interface MenuProps
-  extends Partial<
-    Omit<HTMLProps<HTMLButtonElement>, 'label' | 'children' | 'style'>
-  > {
+export interface MenuProps extends HTMLAttributes<HTMLButtonElement> {
+  renderInput?: (props: any) => ReactNode
   level?: number
   nested?: boolean
   label?: string
-  children?: ReactNode
-  style?: React.CSSProperties
-  maxWidth?: number
   cx?: {
     container?: { outer?: string; inner?: string }
     trigger?: string
@@ -18,11 +12,11 @@ export interface MenuProps
 }
 
 export interface MenuItemProps {
+  onClick?: () => void
   level?: number
   label: ReactNode
   disabled?: boolean
   maxWidth?: number
-  onClick?: () => void
   cx?: {
     container?: string
     label?: string

@@ -9,8 +9,9 @@ export const MenuItem = forwardRef<
   HTMLButtonElement,
   MenuItemProps & ButtonHTMLAttributes<HTMLButtonElement>
 >(({ label, disabled, cx, ...props }, forwardedRef) => {
+  const title = props.title ?? label?.toString()
   const menu = useContext(MenuContext)
-  const item = useListItem({ label: disabled ? null : label })
+  const item = useListItem({ label: disabled ? null : title })
   const tree = useFloatingTree()
   const isActive = item.index === menu.activeIndex
 
@@ -34,7 +35,9 @@ export const MenuItem = forwardRef<
         },
       })}
     >
-      <span className={twMerge('truncate', cx?.label)}>{label}</span>
+      <span className={twMerge('truncate', cx?.label)} title={title}>
+        {label}
+      </span>
     </button>
   )
 })

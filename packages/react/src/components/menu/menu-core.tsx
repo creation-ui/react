@@ -20,7 +20,7 @@ import {
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import React, { useContext, useRef } from 'react'
+import React, { Fragment, useContext, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { DropdownChevron } from '../dropdown-chevron'
 import { Show, ShowFirstMatching } from '../show'
@@ -28,7 +28,7 @@ import { MenuContext } from './context'
 import { MenuProps } from './types'
 
 export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
-  ({ children, label, level = 0, cx, ...props }, forwardedRef) => {
+  ({ children, label, renderInput, level = 0, cx, ...props }, forwardedRef) => {
     const [isOpen, setIsOpen] = React.useState(false)
     const [hasFocusInside, setHasFocusInside] = React.useState(false)
     const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
@@ -52,13 +52,6 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
       middleware: [offset(), flip(), shift()],
       whileElementsMounted: autoUpdate,
     })
-
-    // const hover = useHover(context, {
-    //   enabled: isNested,
-    //   delay: { open: 75 },
-    //   handleClose: safePolygon({ blockPointerEvents: true }),
-
-    // })
 
     const click = useClick(context, { event: 'mousedown' })
     const role = useRole(context, { role: 'menu' })
@@ -121,7 +114,10 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
             data-open={isOpen ? '' : undefined}
             data-nested={isNested ? '' : undefined}
             data-focus-inside={hasFocusInside ? '' : undefined}
-            className={twMerge(cx?.trigger, 'flex items-center justify-between')}
+            className={twMerge(
+              cx?.trigger,
+              'flex items-center justify-between'
+            )}
             {...getReferenceProps(
               parent.getItemProps({
                 ...props,
@@ -133,10 +129,25 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
               })
             )}
           >
-              <span className='truncate'>{label}</span>
-              <div aria-hidden>
-                <DropdownChevron open={isOpen} />
-              </div>
+            <ShowFirstMatching>
+              <Show when={!!renderInput}>
+                {renderInput?.({
+                  chevron: (
+                    <div aria-hidden>
+                      <DropdownChevron open={isOpen} />
+                    </div>
+                  ),
+                })}
+              </Show>
+              <Show when={true}>
+                <span className='truncate' title={label}>
+                  {label}
+                </span>
+                <div aria-hidden>
+                  <DropdownChevron open={isOpen} />
+                </div>
+              </Show>
+            </ShowFirstMatching>
           </button>
           <ShowFirstMatching>
             <Show when={isNested && isOpen}>
@@ -144,7 +155,6 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                 // this is nested list container
                 ref={refs.setFloating}
                 className={twMerge(cx?.container?.inner)}
-                style={props.style}
                 {...getFloatingProps()}
               >
                 {children}
@@ -172,7 +182,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                         <div
                           ref={refs.setFloating}
                           className={twMerge(cx?.container?.inner)}
-                          style={{ ...floatingStyles, ...props.style }}
+                          style={{ ...floatingStyles }}
                           {...getFloatingProps()}
                         >
                           {children}
