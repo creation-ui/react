@@ -1,3 +1,5 @@
+import { ElementSize } from '@creation-ui/core'
+
 export type RawElement = {
   id: number | string
   name: string
@@ -26,15 +28,16 @@ export type TreeProps = {
   tree?: TreeType
   value?: BranchType | null
   placeholder?: string
+  size?: ElementSize
   cx?: {
     placeholder?: string
     value?: string
     container?: { inner?: string; outer?: string }
   }
   onClear?: () => void
-  disabled?: boolean,
-  readOnly?: boolean,
-  loading?: boolean,
+  disabled?: boolean
+  readOnly?: boolean
+  loading?: boolean
 } & Pick<
   BranchProps,
   'onBranchClick' | 'onLeafClick' | 'getItemOffset' | 'getItemLabel'

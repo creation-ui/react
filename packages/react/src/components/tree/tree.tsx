@@ -9,6 +9,7 @@ import { Show, ShowFirstMatching } from '../show'
 import { Branch } from './branch'
 import { BranchType, TreeProps } from './types'
 import { Loader } from '../loader'
+import { useTheme } from '../../theme'
 
 export const Tree: FC<TreeProps> = ({
   tree = [],
@@ -23,7 +24,11 @@ export const Tree: FC<TreeProps> = ({
   disabled,
   readOnly,
   loading,
+  ...rest
 }) => {
+  const { size: defaultSize } = useTheme()
+  const { size = defaultSize } = rest
+
   const hasClearButton = useMemo(
     () => !!onClear && !!value && !disabled && !readOnly && !loading,
     [onClear, value, disabled, readOnly, loading]
@@ -63,10 +68,10 @@ export const Tree: FC<TreeProps> = ({
               </Show>
             </ShowFirstMatching>
           </div>
-          <Loader active={loading} />
+          <Loader active={!!loading} size={size} />
           <Show when={hasClearButton}>
             &nbsp;
-            <ClearButton onClick={onClear} />
+            <ClearButton onClick={onClear} size={size} />
           </Show>
           <Show when={hasDropdown}>{props.chevron}</Show>
         </Flex>
