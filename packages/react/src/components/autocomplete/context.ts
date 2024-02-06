@@ -28,6 +28,7 @@ interface AutocompleteContextValue<T = any>
     | 'textCreate'
   > {
   query?: string
+  allowCreate?: boolean
   open?: boolean
   floatingContext: any
   activeIndex: number | null

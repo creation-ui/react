@@ -407,6 +407,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
             getOptionProps,
             getLimitTagsText,
             onCreate: createCallback,
+            allowCreate: !!props.onCreate,
             textCreate,
             query,
           }}

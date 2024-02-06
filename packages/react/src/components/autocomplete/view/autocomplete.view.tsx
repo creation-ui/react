@@ -25,11 +25,11 @@ export const AutocompleteView: FC = () => {
     onCreate,
     textCreate,
     query,
+    allowCreate,
   } = useAutocomplete()
 
   const customRenderValue = renderSelection && !multiple && selected
   const hasOptions = options.length > 0
-  const allowCreate = !!onCreate
 
   const handleCreate = useCallback(() => {
     if (!onCreate || !query) return
@@ -73,7 +73,7 @@ export const AutocompleteView: FC = () => {
                   >
                     <ShowFirstMatching>
                       <Show when={!allowCreate}>{textNotFound}</Show>
-                      <Show when={allowCreate}>
+                      <Show when={!!allowCreate}>
                         <span onClick={handleCreate}>
                           {textCreate} &quot;{query}&quot;
                         </span>
