@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { ClearButton } from '../clear-button'
 import { Flex } from '../flex'
@@ -8,9 +8,10 @@ import { DropdownMenu } from '../shared/DropdownMenu'
 import { Show, ShowFirstMatching } from '../show'
 import { Branch } from './branch'
 import { BranchType, TreeProps } from './types'
+import { Loader } from '../loader'
 
 export const Tree: FC<TreeProps> = ({
-  tree,
+  tree = [],
   placeholder = 'Select...',
   cx,
   onBranchClick,
@@ -19,7 +20,20 @@ export const Tree: FC<TreeProps> = ({
   getItemLabel,
   getItemOffset,
   value,
+  disabled,
+  readOnly,
+  loading,
 }) => {
+  const hasClearButton = useMemo(
+    () => !!onClear && !!value && !disabled && !readOnly && !loading,
+    [onClear, value, disabled, readOnly, loading]
+  )
+
+  const hasDropdown = useMemo(
+    () => !disabled && !readOnly,
+    [disabled, readOnly]
+  )
+
   return (
     <Menu
       className={twMerge(cx?.container?.outer)}
@@ -29,7 +43,7 @@ export const Tree: FC<TreeProps> = ({
           gap={1}
           className={twMerge('cursor-pointer', cx?.container?.inner)}
         >
-          <div className='truncate'>
+          <div className='truncate flex-grow'>
             <ShowFirstMatching>
               <Show when={!value}>
                 <span
@@ -49,11 +63,12 @@ export const Tree: FC<TreeProps> = ({
               </Show>
             </ShowFirstMatching>
           </div>
-          <Show when={!!value && !!onClear}>
+          <Loader active={loading} />
+          <Show when={hasClearButton}>
             &nbsp;
             <ClearButton onClick={onClear} />
           </Show>
-          {props.chevron}
+          <Show when={hasDropdown}>{props.chevron}</Show>
         </Flex>
       )}
     >

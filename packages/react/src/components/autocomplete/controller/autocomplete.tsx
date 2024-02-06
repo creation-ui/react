@@ -319,6 +319,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         }
         refs.domReference.current?.focus()
       },
+      style: { ...(truncate ? { maxWidth: width } : {}) },
     }) as unknown as GetItemPropsReturnType
 
     return {
@@ -332,7 +333,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         size,
         disabled,
         truncate,
-        className: [truncate ? `!w-[${width}px]` : ''],
       }),
       index,
       query,

@@ -8,7 +8,7 @@ import {
   text,
 } from '@creation-ui/core'
 import clsx from 'clsx'
-import type { FC } from 'react'
+import { forwardRef, type FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -22,7 +22,7 @@ import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
 
-const InputBase: FC<InputBaseProps> = props => {
+const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
   const {
     loading,
@@ -95,10 +95,11 @@ const InputBase: FC<InputBaseProps> = props => {
               required: props.required,
               className: cx?.label,
             })}
-            children={props.label}
             aria-label={props.label?.toString()}
-          />
-          <InputBaseContainerInner className={cx?.container?.inner}>
+          >
+            {props.label}
+          </label>
+          <InputBaseContainerInner className={cx?.container?.inner} ref={ref}>
             <Adornment position='left' type={type} adornment={startAdornment} />
             {children}
             {loading ? (
@@ -136,6 +137,6 @@ const InputBase: FC<InputBaseProps> = props => {
       </InputBaseContext.Provider>
     </InteractiveContainer>
   )
-}
+})
 
 export default InputBase

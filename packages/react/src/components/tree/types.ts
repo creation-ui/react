@@ -32,6 +32,9 @@ export type TreeProps = {
     container?: { inner?: string; outer?: string }
   }
   onClear?: () => void
+  disabled?: boolean,
+  readOnly?: boolean,
+  loading?: boolean,
 } & Pick<
   BranchProps,
   'onBranchClick' | 'onLeafClick' | 'getItemOffset' | 'getItemLabel'
