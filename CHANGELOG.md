@@ -1,5 +1,14 @@
 # Changelog
 
+## [13.6.1](https://github.com/creation-ui/react/compare/v13.6.0...v13.6.1) (2024-02-06)
+
+
+### Bug Fixes
+
+* autocomplete ref is not passed down, input ref is now accessible ([ae8a4c7](https://github.com/creation-ui/react/commit/ae8a4c76d19f3fb6392644d739e08473fd49e246))
+* autocomplete: check if props.onCreate exists to set allowCreate to true and show "Create XXXX" prompt ([d7542ca](https://github.com/creation-ui/react/commit/d7542ca7bd910bdc1ec1f586de8451761f1badd6))
+* tree:  loading was always visible, add size and useTheme ([f1d6cac](https://github.com/creation-ui/react/commit/f1d6cac69edd090bb481f334bde71eec4bab1bcd))
+
 ## [13.6.0](https://github.com/creation-ui/react/compare/v13.5.0...v13.6.0) (2024-02-04)
 
 
