@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.6.2](https://github.com/creation-ui/react/compare/v13.6.1...v13.6.2) (2024-02-26)
+
+
+### Bug Fixes
+
+* export useAutocomplete ([057c338](https://github.com/creation-ui/react/commit/057c338e2e46ddd2e371d6fa6aeecb95ac9ae553))
+
 ## [13.6.1](https://github.com/creation-ui/react/compare/v13.6.0...v13.6.1) (2024-02-06)
 
 
