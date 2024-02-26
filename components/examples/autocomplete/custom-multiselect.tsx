@@ -1,18 +1,9 @@
-import { AutocompleteExampleCustomMultiselect } from '@components/examples/autocomplete'
-
-# renderTags
-
-This an example of the default **multiple selections** rendering function. Based on that you can create your own `renderTags` function.
-For single selection rendering see [renderSelection](/docs/components/autocomplete/render-selection).
-
-<AutocompleteExampleCustomMultiselect />
-
-```tsx
 import { Autocomplete, Avatar, ClearButton, Flex, useAutocomplete } from '@creation-ui/react'
 import { useState } from 'react'
 import { renderOption } from './custom'
 import { Character } from './types'
 import users from './users.json'
+import { Container } from '@components/container'
 
 const renderTags = (selected: Character[] = []) => {
   const { handleRemoveSelected } = useAutocomplete()
@@ -42,19 +33,20 @@ export const AutocompleteExampleCustomMultiselect = () => {
   }
 
   return (
-    <Autocomplete<Character>
-      renderOption={renderOption}
-      renderTags={renderTags}
-      label={'Autocomplete - custom'}
-      clearable
-      multiple
-      filterSelectedOptions
-      value={value as any}
-      options={users}
-      onChange={onChange as any}
-      isOptionEqualToValue={(a, b) => a?.id === b?.id}
-      getOptionLabel={({ name }: Character) => name}
-    />
+    <Container variant='column'>
+      <Autocomplete<Character>
+        renderOption={renderOption}
+        renderTags={renderTags}
+        label={'Autocomplete - custom'}
+        clearable
+        multiple
+        filterSelectedOptions
+        value={value as any}
+        options={users}
+        onChange={onChange as any}
+        isOptionEqualToValue={(a, b) => a?.id === b?.id}
+        getOptionLabel={({ name }: Character) => name}
+      />
+    </Container>
   )
 }
-```

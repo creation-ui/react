@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Character } from './types'
 import users from './users.json'
 
-const renderOption = (props: AutocompleteOptionProps, option: Character) => (
+export const renderOption = (props: AutocompleteOptionProps, option: Character) => (
   // @ts-expect-error
   <div {...props} className={clsx(props.className, 'h-fit w-fit p-2')}>
     <div className='flex gap-2 items-center'>

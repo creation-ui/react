@@ -36,7 +36,11 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     >
       <ShowFirstMatching>
         <Show when={!children}>
-          <img {...rest} className={avatar.img({ variant })} />
+          <img
+            {...rest}
+            className={avatar.img({ variant })}
+            style={{ width: style.width, height: style.height }}
+          />
         </Show>
         <Show when={!!children}>{children}</Show>
       </ShowFirstMatching>

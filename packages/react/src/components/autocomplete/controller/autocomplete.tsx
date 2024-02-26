@@ -28,6 +28,7 @@ import {
 import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
 import { createFilterOptions } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
+import { _renderTags } from '../utils/render-tags'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()
@@ -50,7 +51,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     value,
     options = [],
     filterSelectedOptions = false,
-    defaultTagProps,
+    defaultTagProps = { variant: 'outlined', status: 'info' },
     autoHighlight = false,
     onChange,
     filterOptions = createFilterOptions<T>(),
@@ -61,6 +62,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       typeof option === 'string' ? option : (option as any).label,
     isOptionEqualToValue = _isOptionEqualToValue<T>,
     getOptionDisabled = (option: T) => (option as any).disabled,
+    renderTags = _renderTags,
   } = props
 
   let getOptionLabel = getOptionLabelProp
@@ -101,7 +103,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const clearSearch = () => setQuery('')
 
   const clearableCallback = () => {
-    onChange?.(null)
+    onChange?.(multiple ? [] : null)
     props.onInputChange?.({ target: { value: '' } } as any)
     clearSearch()
   }
@@ -384,6 +386,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       >
         <AutocompleteContext.Provider
           value={{
+            renderTags,
             handleRemoveSelected,
             setOpen,
             multiple,
