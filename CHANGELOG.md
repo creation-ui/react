@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.7.0](https://github.com/creation-ui/react/compare/v13.6.2...v13.7.0) (2024-02-26)
+
+
+### Features
+
+* AutocompleteExampleCustomMultiselect ([4b83ef6](https://github.com/creation-ui/react/commit/4b83ef67c0bbca019254ccfd54a4c8fceec3a86c))
+
 ## [13.6.2](https://github.com/creation-ui/react/compare/v13.6.1...v13.6.2) (2024-02-26)
 
 
