@@ -1,5 +1,17 @@
 # Changelog
 
+## [13.7.1](https://github.com/creation-ui/react/compare/v13.7.0...v13.7.1) (2024-03-03)
+
+
+### Bug Fixes
+
+* Add size prop to Tree component and fix consistent item margin in MenuItem component ([c9487af](https://github.com/creation-ui/react/commit/c9487afb7b70e2ab7c1ad9909fda6bd686221ad6))
+* add zIndex to tree ([516b905](https://github.com/creation-ui/react/commit/516b90510745cf31e6b584a4ec3b1c801072dc01))
+* build errors ([c6972fb](https://github.com/creation-ui/react/commit/c6972fb76e561df49d3bb6abaf787bb56cb6eb9e))
+* rename parent_id to parentId ([2c96d59](https://github.com/creation-ui/react/commit/2c96d59df8c1a8729188894889cdbfdf554a6c20))
+* renderTags ([43f6aea](https://github.com/creation-ui/react/commit/43f6aea9051c493eed7bb21f7830c6d5ffc2cf02))
+* renderTags function call in MultipleSelections component ([f7327e2](https://github.com/creation-ui/react/commit/f7327e256c9bd651be95a8dce87b3a344284426d))
+
 ## [13.7.0](https://github.com/creation-ui/react/compare/v13.6.2...v13.7.0) (2024-02-26)
 
 
