@@ -3,13 +3,13 @@ import { ElementSize } from '@creation-ui/core'
 export type RawElement = {
   id: number | string
   name: string
-  parent_id?: number | string
+  parentId?: number | string
 }
 
 export type BranchType = {
   id: number | string
   name: string
-  parent_id?: number | string | null
+  parentId?: number | string | null
   children?: BranchType[]
 }
 

@@ -13,7 +13,7 @@ const defaultPaginationConfig = {
 }
 
 export default function TableController(props: TableContextValue) {
-  let value = { ...props }
+  let value = structuredClone(props)
 
   if (props.pagination) {
     value.pagination = merge(defaultPaginationConfig, { ...props.pagination })

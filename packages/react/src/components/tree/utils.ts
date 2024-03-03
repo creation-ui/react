@@ -8,15 +8,15 @@ export const buildTree = (entries: RawElement[]): TreeType => {
   }, {} as Record<string, BranchType>)
 
   entries.forEach(entry => {
-    if (entry.parent_id) {
-      const parentBranch = entryMap[entry.parent_id]
+    if (entry.parentId) {
+      const parentBranch = entryMap[entry.parentId]
       if (parentBranch) {
         parentBranch?.children?.push(entryMap[entry.id])
       }
     }
   })
 
-  return Object.values(entryMap).filter(branch => !branch.parent_id)
+  return Object.values(entryMap).filter(branch => !branch.parentId)
 }
 
 export const _getItemOffset = (level: number) =>
