@@ -1,4 +1,3 @@
-import { renderOptionProps } from '@components/examples/shared-props'
 import PropsTable from '@components/props-table'
 
 # renderSelection
@@ -10,7 +9,8 @@ For multiple selection rendering see [renderTags](/docs/components/autocomplete/
 import { useAutocomplete } from '../context'
 import { AutocompleteOptionDefault } from '../types'
 
-export const _renderSelection = (option: AutocompleteOptionDefault) => {
+export const _renderSelection = (option: AutocompleteOptionDefault, _removeSelected: (option:any) => void) => {
+  // you can use _removeSelected to remove the selected option
   const { getOptionLabel } = useAutocomplete()
   return option ? <span>{getOptionLabel?.(option)}</span> : null
 }
