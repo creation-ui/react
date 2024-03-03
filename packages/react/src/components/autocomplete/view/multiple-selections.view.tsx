@@ -16,7 +16,7 @@ export const MultipleSelections = () => {
   const more = selected?.length - limit
   return (
     <>
-      {renderTags(limitedOptions)}
+      {renderTags?.(limitedOptions)}
       {more > 0 && <span>{getLimitTagsText!(more)}</span>}
     </>
   )
