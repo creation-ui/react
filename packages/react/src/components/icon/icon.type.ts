@@ -1,8 +1,24 @@
-import type { HTMLProps, SVGProps } from 'react'
-import type { ClassName, IconType } from '@creation-ui/core'
+import type { ClassName } from '@creation-ui/core'
+import type { SVGProps } from 'react'
+
+export const icons = [
+  'check',
+  'chevron_down',
+  'chevron_left',
+  'chevron_right',
+  'close',
+  'dot',
+  'home',
+  'readonly',
+  'slash',
+  'straight',
+  'plus',
+  'minus',
+]
+export type IconType = (typeof icons)[number]
 
 export interface IconProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'className'> {
+  extends Omit<SVGProps<SVGSVGElement>, 'className' | 'children'> {
   /**
    * Icon name from Material Icons collection
    */
@@ -11,8 +27,8 @@ export interface IconProps
    * Additional class names
    */
   className?: ClassName
-}
-
-export interface SVGElementProps extends SVGProps<SVGSVGElement> {
+  /**
+   * Title for the icon
+   */
   title?: string
 }

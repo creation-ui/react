@@ -20,12 +20,13 @@ import {
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import React, { Fragment, useContext, useRef } from 'react'
+import React, { useContext, useMemo, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { DropdownChevron } from '../dropdown-chevron'
 import { Show, ShowFirstMatching } from '../show'
 import { MenuContext } from './context'
 import { MenuProps } from './types'
+import { TreeChevron } from '../tree-chevron'
 
 export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
   ({ children, label, renderInput, level = 0, cx, ...props }, forwardedRef) => {
@@ -43,6 +44,10 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
     const item = useListItem()
 
     const isNested = parentId != null
+    const Chevron = useMemo(
+      () => (!isNested ? DropdownChevron : TreeChevron),
+      [isNested]
+    )
 
     const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
       nodeId,
@@ -134,7 +139,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                 {renderInput?.({
                   chevron: (
                     <div aria-hidden>
-                      <DropdownChevron open={isOpen} />
+                      <Chevron open={isOpen} />
                     </div>
                   ),
                 })}
@@ -144,7 +149,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                   {label}
                 </span>
                 <div aria-hidden>
-                  <DropdownChevron open={isOpen} />
+                  <Chevron open={isOpen} />
                 </div>
               </Show>
             </ShowFirstMatching>
