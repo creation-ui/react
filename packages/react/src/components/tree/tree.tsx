@@ -24,6 +24,7 @@ export const Tree: FC<TreeProps> = ({
   disabled,
   readOnly,
   loading,
+  zIndex,
   ...rest
 }) => {
   const { size: defaultSize } = useTheme()
@@ -78,7 +79,7 @@ export const Tree: FC<TreeProps> = ({
         </Flex>
       )}
     >
-      <DropdownMenu>
+      <DropdownMenu style={{ zIndex: zIndex?.list }}>
         <For<BranchType> each={tree}>
           {option => (
             <Branch

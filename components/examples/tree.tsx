@@ -17,19 +17,29 @@ export const TreeExample = () => {
   }
 
   return (
-    <Tree
-      placeholder='Select category...'
-      tree={tree}
-      value={value}
-      onClear={handleClear}
-      onLeafClick={handleLeafClick}
-      onBranchClick={handleBranchClick}
-      cx={{
-        container: {
-          inner: 'w-48',
-        },
-      }}
-    />
+    <div>
+      <Tree
+        placeholder='Select category...'
+        tree={tree}
+        value={value}
+        onClear={handleClear}
+        onLeafClick={handleLeafClick}
+        onBranchClick={handleBranchClick}
+        cx={{
+          container: {
+            inner: 'w-48',
+          },
+        }}
+        // zIndex={{ list: 51 }}
+      />
+      {/* <div
+        className='h-fit w-fit rounded-lg mx-auto  bg-amber-300 shadow p-2 text-xs text-center flex flex-col items-center'
+        style={{ zIndex: 50 }}
+      >
+        <b>Potentially higher z-index</b>
+        <span>Block with z-50</span>
+      </div> */}
+    </div>
   )
 }
 
@@ -110,5 +120,11 @@ export const properties: DocumentedProperty[] = [
     type: '(level: number) => number',
     defaultValue: '(level: number) => level > 0 ? level * TREE_OFFSET_MULTIPLIER /*=16*/ : MIN_ITEM_PADDING /*=5*/',
     description: 'Custom offset getter. Used to apply `paddingLeft` to items. `level` starts from `0`.',
+  },
+  {
+    name: 'zIndex',
+    type: '{ list?: number}',
+    description:
+      'Escape hatch for z-index of dropdown list. Helpful when using with modals and drawers that might have their own, higher z-index.',
   },
 ]

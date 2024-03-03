@@ -38,6 +38,10 @@ export type TreeProps = {
   disabled?: boolean
   readOnly?: boolean
   loading?: boolean
+  /**
+   * z-index configuration
+   */
+  zIndex?: { list?: number }
 } & Pick<
   BranchProps,
   'onBranchClick' | 'onLeafClick' | 'getItemOffset' | 'getItemLabel'
