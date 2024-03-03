@@ -22,10 +22,14 @@ const chevron = cva(
   }
 )
 
-const DropdownChevron = ({ open, ...props }: DropdownChevronProps) => (
+const DropdownChevron = ({
+  open,
+  className,
+  ...props
+}: DropdownChevronProps) => (
   <Icon
     icon='chevron_down'
-    className={chevron({ open })}
+    className={chevron({ open, className })}
     aria-hidden='true'
     {...props}
   />

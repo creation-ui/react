@@ -41,6 +41,7 @@ export const Tree: FC<TreeProps> = ({
 
   return (
     <Menu
+      size={size}
       className={twMerge(cx?.container?.outer)}
       renderInput={(props: any) => (
         <Flex

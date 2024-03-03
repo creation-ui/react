@@ -4,6 +4,7 @@ import { forwardRef, useContext } from 'react'
 import { MenuContext } from './context'
 import { MenuItemProps } from './types'
 import { twMerge } from 'tailwind-merge'
+import { CONSISTENT_ITEM_MARGIN } from './constants'
 
 export const MenuItem = forwardRef<
   HTMLButtonElement,
@@ -35,7 +36,10 @@ export const MenuItem = forwardRef<
         },
       })}
     >
-      <span className={twMerge('truncate', cx?.label)} title={title}>
+      <span
+        className={twMerge('truncate', CONSISTENT_ITEM_MARGIN, cx?.label)}
+        title={title}
+      >
         {label}
       </span>
     </button>

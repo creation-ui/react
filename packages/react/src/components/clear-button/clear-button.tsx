@@ -1,27 +1,16 @@
-import { forwardRef } from 'react'
 import { ElementSize } from '@creation-ui/core'
+import { cva } from 'class-variance-authority'
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import type { IconProps } from '../icon'
 import { Icon } from '../icon'
-import { cva } from 'class-variance-authority'
-import { sharedSizeSquareCVA } from '@creation-ui/core'
 
-const classes = cva(
-  [
-    'hover:fill-error-500',
-    'dark:hover:fill-error-500',
-    'cursor-pointer',
-    'select-none',
-    'z-0',
-    'h-4',
-    'w-4',
-  ],
-  {
-    variants: {
-      size: sharedSizeSquareCVA,
-    },
-  }
-)
+const classes = cva([
+  'hover:fill-error-500',
+  'dark:hover:fill-error-500',
+  'cursor-pointer',
+  'select-none',
+])
 
 export interface ClearButtonProps extends Omit<IconProps, 'icon' | 'size'> {
   size?: ElementSize
@@ -32,8 +21,9 @@ const ClearButton = forwardRef<any, ClearButtonProps>(
     <Icon
       ref={ref}
       icon='close'
+      size={size}
       onClick={onClick}
-      className={twMerge(classes({ size }), className)}
+      className={twMerge(classes(), className)}
       aria-hidden='true'
       {...props}
     />

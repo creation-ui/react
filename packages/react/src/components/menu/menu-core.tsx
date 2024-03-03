@@ -27,9 +27,14 @@ import { Show, ShowFirstMatching } from '../show'
 import { MenuContext } from './context'
 import { MenuProps } from './types'
 import { TreeChevron } from '../tree-chevron'
+import clsx from 'clsx'
+import { CONSISTENT_ITEM_MARGIN } from './constants'
 
 export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
-  ({ children, label, renderInput, level = 0, cx, ...props }, forwardedRef) => {
+  (
+    { children, label, renderInput, level = 0, cx, size, ...props },
+    forwardedRef
+  ) => {
     const [isOpen, setIsOpen] = React.useState(false)
     const [hasFocusInside, setHasFocusInside] = React.useState(false)
     const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
@@ -119,10 +124,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
             data-open={isOpen ? '' : undefined}
             data-nested={isNested ? '' : undefined}
             data-focus-inside={hasFocusInside ? '' : undefined}
-            className={twMerge(
-              cx?.trigger,
-              'flex items-center justify-between'
-            )}
+            className={twMerge(cx?.trigger, 'relative text-left')}
             {...getReferenceProps(
               parent.getItemProps({
                 ...props,
@@ -137,20 +139,22 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
             <ShowFirstMatching>
               <Show when={!!renderInput}>
                 {renderInput?.({
-                  chevron: (
-                    <div aria-hidden>
-                      <Chevron open={isOpen} />
-                    </div>
-                  ),
+                  chevron: <Chevron open={isOpen} aria-hidden size={size} />,
                 })}
               </Show>
               <Show when={true}>
-                <span className='truncate' title={label}>
+                <Chevron
+                  open={isOpen}
+                  aria-hidden
+                  size={size}
+                  className={'absolute left-0 top-1/2 -translate-y-1/2'}
+                />
+                <span
+                  className={clsx('truncate text-left', CONSISTENT_ITEM_MARGIN)}
+                  title={label}
+                >
                   {label}
                 </span>
-                <div aria-hidden>
-                  <Chevron open={isOpen} />
-                </div>
               </Show>
             </ShowFirstMatching>
           </button>

@@ -1,4 +1,4 @@
-import type { ClassName } from '@creation-ui/core'
+import type { ClassName, ElementSize } from '@creation-ui/core'
 import type { SVGProps } from 'react'
 
 export const icons = [
@@ -31,4 +31,8 @@ export interface IconProps
    * Title for the icon
    */
   title?: string
+  /**
+   * Size of the icon
+   */
+  size?: ElementSize
 }
