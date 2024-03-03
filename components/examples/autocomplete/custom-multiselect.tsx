@@ -1,15 +1,12 @@
-import { Autocomplete, Avatar, ClearButton, Flex, useAutocomplete } from '@creation-ui/react'
+import { Container } from '@components/container'
+import { Autocomplete, Avatar, ClearButton, Flex } from '@creation-ui/react'
 import { useState } from 'react'
 import { renderOption } from './custom'
 import { Character } from './types'
 import users from './users.json'
-import { Container } from '@components/container'
 
-const renderTags = (selected: Character[] = []) => {
-  const { handleRemoveSelected } = useAutocomplete()
-
+const renderTags = (selected: Character[], handleRemoveSelected: (option: any) => void) => {
   return selected?.map(option => {
-    const onDelete = () => handleRemoveSelected(option as any)
     return (
       <Flex
         key={option.id}
@@ -19,7 +16,7 @@ const renderTags = (selected: Character[] = []) => {
       >
         <Avatar size={16} src={option.image} className={'size-fit object-cover'} />
         <span className='font-medium'>{option.name}</span>
-        <ClearButton onClick={onDelete} />
+        <ClearButton onClick={() => handleRemoveSelected(option as any)} />
       </Flex>
     )
   })

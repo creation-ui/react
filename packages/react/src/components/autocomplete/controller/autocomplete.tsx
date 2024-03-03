@@ -12,6 +12,7 @@ import {
 } from '@floating-ui/react'
 import Keyboard from 'keyboard-key'
 import React, { useEffect, useRef, useState } from 'react'
+import { Chip } from '../../chip'
 import { Theme, useTheme } from '../../../theme'
 import { DropdownChevron } from '../../dropdown-chevron'
 import { InputBase } from '../../input-base'
@@ -28,7 +29,6 @@ import {
 import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
 import { createFilterOptions } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
-import { _renderTags } from '../utils/render-tags'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()
@@ -62,7 +62,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       typeof option === 'string' ? option : (option as any).label,
     isOptionEqualToValue = _isOptionEqualToValue<T>,
     getOptionDisabled = (option: T) => (option as any).disabled,
-    renderTags = _renderTags,
   } = props
 
   let getOptionLabel = getOptionLabelProp
@@ -86,6 +85,21 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     }
 
     return optionLabel
+  }
+
+  const _renderTags = (selected: T[], handleRemoveSelected) => {
+    return selected?.map(option => {
+      const label = getOptionLabel(option)
+      const onDelete = () => handleRemoveSelected(option)
+      return (
+        <Chip
+          {...defaultTagProps}
+          key={label}
+          label={label}
+          onDelete={onDelete}
+        />
+      )
+    })
   }
 
   const [open, setOpen] = useState<boolean>(false)
@@ -386,7 +400,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       >
         <AutocompleteContext.Provider
           value={{
-            renderTags,
+            renderTags: _renderTags,
             handleRemoveSelected,
             setOpen,
             multiple,

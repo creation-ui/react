@@ -6,6 +6,7 @@ export const MultipleSelections = () => {
     selected = [],
     renderTags,
     getLimitTagsText,
+    handleRemoveSelected,
   } = useAutocomplete()
 
   if (!Array.isArray(selected) || !selected.length) {
@@ -16,7 +17,7 @@ export const MultipleSelections = () => {
   const more = selected?.length - limit
   return (
     <>
-      {renderTags?.(limitedOptions)}
+      {renderTags?.(limitedOptions, handleRemoveSelected)}
       {more > 0 && <span>{getLimitTagsText!(more)}</span>}
     </>
   )

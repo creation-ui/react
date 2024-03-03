@@ -33,7 +33,10 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
   /**
    * Component to display selection in `multiple` mode
    */
-  renderTags?: (selected: T[]) => React.ReactNode
+  renderTags?: (
+    selected: T[],
+    removeSelected: (option: T) => void
+  ) => React.ReactNode
   /**
    * Text to display when the tags are truncated (limitTags).
     Signature:
