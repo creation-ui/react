@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.8.0](https://github.com/creation-ui/react/compare/v13.7.1...v13.8.0) (2024-03-20)
+
+
+### Miscellaneous Chores
+
+* release 13.8.0 ([e718552](https://github.com/creation-ui/react/commit/e718552af75e4cf777091df5f5b1d9cee7b01d19))
+
 ## [13.7.1](https://github.com/creation-ui/react/compare/v13.7.0...v13.7.1) (2024-03-03)
 
 
