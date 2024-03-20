@@ -28,7 +28,7 @@ const SIZES = [
   { value: 'lg', label: <Icon path={mdiSizeL} size={1} /> },
 ]
 
-const VARIANTS = [
+export const VARIANTS = [
   { value: 'contained', label: <Icon path={mdiSquareRounded} size={1} /> },
   {
     value: 'outlined',
